@@ -1,22 +1,12 @@
 #Netbeans
-HenriPittier/nbproject/private/
-HenriPittier/build/
-HenriPittier/nbbuild/
-HenriPittier/dist/
-HenriPittier/nbdist/
-HenriPittier/.nb-gradle/
-HenriPittier/nbactions.xml
-HenriPittier/nb-configuration.xml
-
-
-HenriPittierWeb/nbproject/private/
-HenriPittierWeb/build/
-HenriPittierWeb/nbbuild/
-HenriPittierWeb/dist/
-HenriPittierWeb/nbdist/
-HenriPittierWeb/.nb-gradle/
-HenriPittierWeb/nbactions.xml
-HenriPittierWeb/nb-configuration.xml
+nbproject/private/
+build/
+nbbuild/
+dist/
+nbdist/
+.nb-gradle/
+nbactions.xml
+nb-configuration.xml
 
 # Built application files
 *.apk
