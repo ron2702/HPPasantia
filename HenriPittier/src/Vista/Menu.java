@@ -73,6 +73,7 @@ public class Menu extends JFrame {
         empleadoMenu.add(modificarEM);
         empleadoMenu.add(borrarEM);
         
+        
         registrarES.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -82,6 +83,7 @@ public class Menu extends JFrame {
             }
         });
     }
+
     
     public static void main(String[] args){
         Menu me = new Menu();

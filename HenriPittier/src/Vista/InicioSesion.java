@@ -5,18 +5,54 @@
  */
 package Vista;
 
+import Modelo.ComunicacionREST;
+import comun.Usuario;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.security.MessageDigest;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+
 /**
  *
  * @author Bárbara Fernández
  */
 public class InicioSesion extends javax.swing.JFrame {
 
-    /**
-     * Creates new form InicioSesion
-     */
     public InicioSesion() {
         initComponents();
         this.setLocationRelativeTo(null);
+    }
+    
+    private String encriptarClave(String clave){
+        String claveHash = "";
+        try{
+            MessageDigest messageDigest = MessageDigest.getInstance("MD5"); // Inicializa MD5
+
+               try{
+                  byte[] bytesClave = clave.getBytes("UTF-8");
+                  messageDigest.update(bytesClave);
+                  byte[] hash = messageDigest.digest(); // Genera el hash MD5
+
+                  //Pasar los hash a hexadecimal
+                  for (int i = 0; i < hash.length; i++)
+                  {
+                     claveHash += Integer.toHexString((hash[i] >> 4) & 0xf);
+                     claveHash += Integer.toHexString(hash[i] & 0xf);
+                  }
+               }
+               catch(Exception e) {
+                   e.getStackTrace();
+               }
+
+            }   
+        catch(Exception e) {
+            e.getStackTrace();
+        }
+        return claveHash;
     }
 
     /**
@@ -68,6 +104,11 @@ public class InicioSesion extends javax.swing.JFrame {
         btn_Ingresar.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         btn_Ingresar.setText("Ingresar");
         btn_Ingresar.setBorder(null);
+        btn_Ingresar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_IngresarActionPerformed(evt);
+            }
+        });
 
         lbl_tituloInicioSesion.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         lbl_tituloInicioSesion.setText("Inicio de Sesión");
@@ -114,8 +155,6 @@ public class InicioSesion extends javax.swing.JFrame {
 
         pnl_blanco.setBackground(new java.awt.Color(255, 255, 255));
 
-        lbl_logo.setIcon(new javax.swing.ImageIcon("C:\\Users\\Bárbara Fernández\\Desktop\\Archivos\\UNIVERSIDAD\\PASANTIA\\logo mini.png")); // NOI18N
-
         lbl_rif.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         lbl_rif.setText("R.I.F. J-31139418-4");
 
@@ -159,6 +198,32 @@ public class InicioSesion extends javax.swing.JFrame {
     private void txt_claveUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_claveUsuarioActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_claveUsuarioActionPerformed
+
+    private void btn_IngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_IngresarActionPerformed
+        
+        try {
+            
+            Usuario usuarioLogin = new Usuario(txt_nombreUsuario.getText(), encriptarClave(txt_claveUsuario.getText()));
+            ComunicacionREST com = new ComunicacionREST();
+            Usuario validar = com.iniciarSesion(usuarioLogin);
+            
+            if(validar.getError() == 200)
+            {
+                setVisible(false);
+                Menu me = new Menu();
+                me.setVisible(true);
+            }
+            else
+            {
+                final JPanel panel = new JPanel();
+                JOptionPane.showMessageDialog(panel, "Usuario no encontrado", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+            
+        } catch (Exception ex) {
+            Logger.getLogger(InicioSesion.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }//GEN-LAST:event_btn_IngresarActionPerformed
 
     /**
      * @param args the command line arguments
