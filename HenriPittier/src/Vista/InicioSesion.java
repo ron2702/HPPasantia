@@ -26,7 +26,7 @@ public class InicioSesion extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
     }
-    
+      
     private String encriptarClave(String clave){
         String claveHash = "";
         try{
@@ -82,7 +82,7 @@ public class InicioSesion extends javax.swing.JFrame {
         lbl_ventanaInicio.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 102, 51), 2, true));
 
         txt_nombreUsuario.setForeground(new java.awt.Color(153, 153, 153));
-        txt_nombreUsuario.setText("Nombre de Usuario");
+        txt_nombreUsuario.setText("Nombre del usuario");
         txt_nombreUsuario.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(4, 166, 72)));
         txt_nombreUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -192,7 +192,7 @@ public class InicioSesion extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void txt_nombreUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_nombreUsuarioActionPerformed
-        // TODO add your handling code here:
+       
     }//GEN-LAST:event_txt_nombreUsuarioActionPerformed
 
     private void txt_claveUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_claveUsuarioActionPerformed

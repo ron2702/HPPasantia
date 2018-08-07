@@ -11,6 +11,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -19,8 +20,8 @@ import javax.swing.JMenuItem;
 public class Menu extends JFrame {
     
     JMenuBar menuBar;
-    JMenu estudianteMenu, representanteMenu, empleadoMenu, salirMenu;
-    JMenuItem registrarES, modificarES, consultarES, borrarES, registrarEM, modificarEM, consultarEM, borrarEM, registrarRE, modificarRE, consultarRE, borrarRE;
+    JMenu estudianteMenu, representanteMenu, empleadoMenu, opcionesMenu;
+    JMenuItem registrarES, modificarES, consultarES, borrarES, registrarEM, modificarEM, consultarEM, borrarEM, registrarRE, modificarRE, consultarRE, borrarRE, cerrarSesion, salir;
     
     public Menu(){
         
@@ -36,12 +37,12 @@ public class Menu extends JFrame {
         estudianteMenu = new JMenu ("Estudiantes");
         representanteMenu = new JMenu ("Representante");
         empleadoMenu = new JMenu ("Empleado");
-        salirMenu = new JMenu("Salir");
+        opcionesMenu = new JMenu("Salir");
         
         menuBar.add(estudianteMenu);
         menuBar.add(representanteMenu);
         menuBar.add(empleadoMenu);
-        menuBar.add(salirMenu);
+        menuBar.add(opcionesMenu);
          
         // Create and add simple menu item to one of the drop down menu
         registrarES = new JMenuItem("Registrar");
@@ -58,6 +59,9 @@ public class Menu extends JFrame {
         consultarRE = new JMenuItem("Consultar");
         modificarRE = new JMenuItem("Modificar");
         borrarRE = new JMenuItem("Borrar");
+        
+        cerrarSesion = new JMenuItem("Cerrar Sesion");
+        salir = new JMenuItem("Salir de la aplicacion");
         // Create and add CheckButton as a menu item to one of the drop down
         // menu
         estudianteMenu.add(registrarES);
@@ -72,7 +76,8 @@ public class Menu extends JFrame {
         empleadoMenu.add(consultarEM);
         empleadoMenu.add(modificarEM);
         empleadoMenu.add(borrarEM);
-        
+        opcionesMenu.add(cerrarSesion);
+        opcionesMenu.add(salir);
         
         registrarES.addActionListener(new ActionListener() {
             @Override
@@ -80,6 +85,17 @@ public class Menu extends JFrame {
                 setVisible(false);
                 RegistroEstudiante re = new RegistroEstudiante();
                 re.setVisible(true);
+            }
+        });
+        
+        salir.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                int confirmed = JOptionPane.showConfirmDialog(null,"¿Seguro que desea salir de la aplicación?", "Exit Program Message Box", JOptionPane.YES_NO_OPTION);
+                
+                if (confirmed == JOptionPane.YES_OPTION) {
+                    System.exit(0);
+                }
             }
         });
     }
