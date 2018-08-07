@@ -20,6 +20,7 @@ public class DAOEstudiante extends DAO {
     private Connection _bdCon;
     private static String _sqlEstudianteRegistro = "{?=call ESTUDIANTE_REGISTRAR(?,?,?,?,?,?,?)}";
     private static String _sqlEstudianteModificado = "{?=call ESTUDIANTE_MODIFICAR(?,?,?,?,?,?,?)}";
+    private static String _sqlEstudianteBorrado = "{?=call ESTUDIANTE_BORRAR(?)}";
     private ResultSet rs;
     
     public Estudiante registrarEstudiante (Estudiante _estudiante) throws Exception{
@@ -118,6 +119,49 @@ public class DAOEstudiante extends DAO {
             _bdCon.close();
             
         }
+    }
+    
+    public Estudiante borrarEstudiante (Estudiante _estudiante) throws SQLException, Exception{
+        
+        Estudiante _estudianteFallido = new Estudiante();
+        
+        CallableStatement cstmt;
+        
+        int respuesta = 0;
+        
+        try {
+            
+            _bdCon = DAO.getBdConnect();
+            cstmt = _bdCon.prepareCall(_sqlEstudianteBorrado);
+            //Parametro de salida
+            cstmt.registerOutParameter(1, Types.INTEGER);
+            cstmt.setInt(2, _estudiante.getCedulaEscolar());
+          
+            cstmt.execute();
+            
+            respuesta = cstmt.getInt(1);
+            
+            if(respuesta == Registry.RESULT_CODE_OK){
+                
+                _estudiante.setError(200);
+                return _estudiante;       
+            }else{
+                _estudianteFallido.setError(101);
+                return _estudianteFallido;
+            }
+            
+        } catch (SQLException ex) {
+            throw ex;
+        } catch (Exception ex) {
+            
+            throw ex;
+            
+        } finally {
+            
+            _bdCon.close();
+            
+        }
         
     }
+    
 }

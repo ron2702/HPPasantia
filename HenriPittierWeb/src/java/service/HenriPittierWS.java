@@ -9,6 +9,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import comun.Estudiante;
 import comun.Usuario;
+import controlador.modulo_estudiantes.BorrarEstudianteComando;
 import controlador.modulo_estudiantes.ModificarEstudianteComando;
 import controlador.modulo_estudiantes.RegistrarEstudianteComando;
 import controlador.modulo_usuarios.InicioSesionComando;
@@ -121,4 +122,22 @@ public class HenriPittierWS {
             return gson.toJson(error);//nuevo
         }
     }
+    
+    @GET
+    @Path("borrarEstudiante")
+    @Produces("application/json")
+    public String BorrarEstudiante (@QueryParam("estudiante") String _estudiante){
+        Gson gson = new GsonBuilder().create();
+        Estudiante estudianteBorrar = gson.fromJson(_estudiante, Estudiante.class);
+        BorrarEstudianteComando cmd = new BorrarEstudianteComando(estudianteBorrar);
+        try {
+            cmd.execute();
+            return gson.toJson(cmd.obtenerRespuesta());//nuevo
+        } catch (Exception ex) {
+            Estudiante error = new Estudiante();
+            error.setError(500);
+            return gson.toJson(error);//nuevo
+        }
+    }
+    
 }

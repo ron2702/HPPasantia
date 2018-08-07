@@ -9,20 +9,23 @@ import comun.Estudiante;
 import controlador.Comando;
 import modelo.modulo_estudiantes.DAOEstudiante;
 
-
-public class ModificarEstudianteComando extends Comando{
+/**
+ *
+ * @author LuisAlejandro
+ */
+public class BorrarEstudianteComando extends Comando{
     
-    private Estudiante modificarEstudiante;
+    private Estudiante borrarEstudiante;
     private Estudiante respuesta;
     
-    public ModificarEstudianteComando (Estudiante _modificarEstudiante){
-        this.modificarEstudiante = _modificarEstudiante;
+    public BorrarEstudianteComando(Estudiante _borrarEstudiante){
+        this.borrarEstudiante = _borrarEstudiante;
     }
 
     @Override
     public void execute() throws Exception {
         DAOEstudiante daoEst = new DAOEstudiante();
-        respuesta = daoEst.modificarEstudiante(modificarEstudiante);
+        respuesta = daoEst.borrarEstudiante(borrarEstudiante);
     }
     
     public Estudiante obtenerRespuesta(){
