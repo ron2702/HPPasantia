@@ -19,6 +19,7 @@ public class DAOEstudiante extends DAO {
     
     private Connection _bdCon;
     private static String _sqlEstudianteRegistro = "{?=call ESTUDIANTE_REGISTRAR(?,?,?,?,?,?,?)}";
+    private static String _sqlEstudianteModificado = "{?=call ESTUDIANTE_MODIFICAR(?,?,?,?,?,?,?)}";
     private ResultSet rs;
     
     public Estudiante registrarEstudiante (Estudiante _estudiante) throws Exception{
@@ -68,5 +69,55 @@ public class DAOEstudiante extends DAO {
             _bdCon.close();
             
         }
-    }   
+    }
+    
+    public Estudiante modificarEstudiante (Estudiante _estudiante) throws SQLException, Exception{
+        
+        Estudiante _estudianteFallido = new Estudiante();
+        
+        CallableStatement cstmt;
+        
+        int respuesta = 0;
+        
+        try {
+            
+            _bdCon = DAO.getBdConnect();
+            cstmt = _bdCon.prepareCall(_sqlEstudianteModificado);
+            //Parametro de salida
+            cstmt.registerOutParameter(1, Types.INTEGER);
+            
+            java.sql.Date sqlFecha = new java.sql.Date(_estudiante.getFechaNac().getTime());
+            cstmt.setInt(2, _estudiante.getCedulaEscolar());
+            cstmt.setString(3, _estudiante.getPrimerNombre());
+            cstmt.setString(4, _estudiante.getSegundoNombre());
+            cstmt.setString(5, _estudiante.getPrimerApellido());
+            cstmt.setString(6, _estudiante.getSegundoApellido());
+            cstmt.setDate(7, sqlFecha);
+            cstmt.setString(8, _estudiante.getFoto());
+            cstmt.execute();
+            
+            respuesta = cstmt.getInt(1);
+            
+            if(respuesta == Registry.RESULT_CODE_OK){
+                
+                _estudiante.setError(200);
+                return _estudiante;       
+            }else{
+                _estudianteFallido.setError(101);
+                return _estudianteFallido;
+            }
+            
+        } catch (SQLException ex) {
+            throw ex;
+        } catch (Exception ex) {
+            
+            throw ex;
+            
+        } finally {
+            
+            _bdCon.close();
+            
+        }
+        
+    }
 }

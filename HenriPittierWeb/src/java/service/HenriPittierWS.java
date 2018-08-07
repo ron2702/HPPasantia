@@ -9,6 +9,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import comun.Estudiante;
 import comun.Usuario;
+import controlador.modulo_estudiantes.ModificarEstudianteComando;
 import controlador.modulo_estudiantes.RegistrarEstudianteComando;
 import controlador.modulo_usuarios.InicioSesionComando;
 import java.text.ParseException;
@@ -86,10 +87,11 @@ public class HenriPittierWS {
         }
     }
     
+    /*WS DE ESTUDIANTE*/
     @GET
     @Path("registroEstudiante")
     @Produces("application/json")
-    public String RegistroEstudiante (@QueryParam("estudiante") String _estudiante) throws ParseException{
+    public String RegistroEstudiante (@QueryParam("estudiante") String _estudiante){
         Gson gson = new GsonBuilder().create();
         Estudiante estudianteRegistrar = gson.fromJson(_estudiante, Estudiante.class);
         RegistrarEstudianteComando cmd = new RegistrarEstudianteComando(estudianteRegistrar);
@@ -102,5 +104,21 @@ public class HenriPittierWS {
             return gson.toJson(error);//nuevo
         }
     }
-    
+    // http://localhost:8084/HenriPittierWeb/webresources/WS/modificarEstudiante?cedula=123456&primerNombre=Ronaldsito&segundoNombre=Efrainsito&primerApellido=Navasito&segundoApellido=Hernandez&fechaNac=27/02/1993&foto=nulaso
+    @GET
+    @Path("modificarEstudiante")
+    @Produces("application/json")
+    public String ModificarEstudiante (@QueryParam("estudiante") String _estudiante){
+        Gson gson = new GsonBuilder().create();
+        Estudiante estudianteModificar = gson.fromJson(_estudiante, Estudiante.class);
+        ModificarEstudianteComando cmd = new ModificarEstudianteComando(estudianteModificar);
+        try {
+            cmd.execute();
+            return gson.toJson(cmd.obtenerRespuesta());//nuevo
+        } catch (Exception ex) {
+            Estudiante error = new Estudiante();
+            error.setError(500);
+            return gson.toJson(error);//nuevo
+        }
+    }
 }
