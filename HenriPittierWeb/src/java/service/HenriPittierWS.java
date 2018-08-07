@@ -7,8 +7,13 @@ package service;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import comun.Estudiante;
 import comun.Usuario;
+import controlador.modulo_estudiantes.RegistrarEstudianteComando;
 import controlador.modulo_usuarios.InicioSesionComando;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.UriInfo;
 import javax.ws.rs.PathParam;
@@ -80,4 +85,22 @@ public class HenriPittierWS {
             return gson.toJson(error);//nuevo
         }
     }
+    
+    @GET
+    @Path("registroEstudiante")
+    @Produces("application/json")
+    public String RegistroEstudiante (@QueryParam("estudiante") String _estudiante) throws ParseException{
+        Gson gson = new GsonBuilder().create();
+        Estudiante estudianteRegistrar = gson.fromJson(_estudiante, Estudiante.class);
+        RegistrarEstudianteComando cmd = new RegistrarEstudianteComando(estudianteRegistrar);
+        try {
+            cmd.execute();
+            return gson.toJson(cmd.obtenerRespuesta());//nuevo
+        } catch (Exception ex) {
+            Estudiante error = new Estudiante();
+            error.setError(500);
+            return gson.toJson(error);//nuevo
+        }
+    }
+    
 }

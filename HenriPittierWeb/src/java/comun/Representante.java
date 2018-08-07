@@ -24,6 +24,10 @@ public class Representante {
     private String tipo;
     private String foto;
     private int fk_Lugar;
+    private int error;
+    
+    public Representante(){
+    }
 
     public Representante(int _cedula, String _primerNombre, String _segundoNombre, String _primerApellido, String _segundoApellido, Date _fechaNac, String _telefonoCasa, String _telefonoMovil, String _tipo, String _foto, int _fk_Lugar) {
         this.cedula = _cedula;
@@ -126,9 +130,13 @@ public class Representante {
     public void setFk_Lugar(int fk_Lugar) {
         this.fk_Lugar = fk_Lugar;
     }
-    
-    
-    
-    
+
+    public int getError() {
+        return error;
+    }
+
+    public void setError(int error) {
+        this.error = error;
+    }
     
 }

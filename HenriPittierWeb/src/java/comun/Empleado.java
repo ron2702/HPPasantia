@@ -34,7 +34,11 @@ public class Empleado {
     private String usuario;
     private String clave;
     private int fk_Lugar;
-
+    private int error;
+    
+    public Empleado(){       
+    }
+    
     public Empleado(int _cedula, String _primerNombre, String _segundoNombre, String _primerApellido, String _segundoApellido, String _banco, int _sueldoMensual, int _sueldoMensualextra, int _sueldoQuincenal, int _sueldoQuincenalextra, Date _fechaIngreso, Date _fechaNac, String _telefonoCasa, String _telefonoMovil, String _cargo, int _asistencia, int _suplencia, String _foto, String _usuario, String _clave, int _fk_Lugar) {
         this.cedula = _cedula;
         this.primerNombre = _primerNombre;
@@ -225,6 +229,14 @@ public class Empleado {
 
     public void setFk_Lugar(int fk_Lugar) {
         this.fk_Lugar = fk_Lugar;
+    }
+
+    public int getError() {
+        return error;
+    }
+
+    public void setError(int error) {
+        this.error = error;
     }
     
     
