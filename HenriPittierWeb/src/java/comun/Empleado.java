@@ -33,13 +33,15 @@ public class Empleado {
     private String foto;
     private String usuario;
     private String clave;
-    private int fk_Lugar;
+    private String estado;
+    private String municipio;
+    private String parroquia;
     private int error;
     
     public Empleado(){       
     }
     
-    public Empleado(int _cedula, String _primerNombre, String _segundoNombre, String _primerApellido, String _segundoApellido, String _banco, int _sueldoMensual, int _sueldoMensualextra, int _sueldoQuincenal, int _sueldoQuincenalextra, Date _fechaIngreso, Date _fechaNac, String _telefonoCasa, String _telefonoMovil, String _cargo, int _asistencia, int _suplencia, String _foto, String _usuario, String _clave, int _fk_Lugar) {
+    public Empleado(int _cedula, String _primerNombre, String _segundoNombre, String _primerApellido, String _segundoApellido, String _banco, int _sueldoMensual, int _sueldoMensualextra, int _sueldoQuincenal, int _sueldoQuincenalextra, Date _fechaIngreso, Date _fechaNac, String _telefonoCasa, String _telefonoMovil, String _cargo, int _asistencia, int _suplencia, String _foto, String _usuario, String _clave, String _estado, String _municipio, String _parroquia) {
         this.cedula = _cedula;
         this.primerNombre = _primerNombre;
         this.segundoNombre = _segundoNombre;
@@ -60,7 +62,9 @@ public class Empleado {
         this.foto = _foto;
         this.usuario = _usuario;
         this.clave = _clave;
-        this.fk_Lugar = _fk_Lugar;
+        this.estado = _estado;
+        this.municipio = _municipio;
+        this.parroquia = _parroquia;
     }
 
     public int getCedula() {
@@ -223,12 +227,28 @@ public class Empleado {
         this.clave = clave;
     }
 
-    public int getFk_Lugar() {
-        return fk_Lugar;
+    public String getEstado() {
+        return estado;
     }
 
-    public void setFk_Lugar(int fk_Lugar) {
-        this.fk_Lugar = fk_Lugar;
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
+
+    public String getMunicipio() {
+        return municipio;
+    }
+
+    public void setMunicipio(String municipio) {
+        this.municipio = municipio;
+    }
+
+    public String getParroquia() {
+        return parroquia;
+    }
+
+    public void setParroquia(String parroquia) {
+        this.parroquia = parroquia;
     }
 
     public int getError() {
