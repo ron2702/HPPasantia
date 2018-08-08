@@ -10,6 +10,7 @@ import com.google.gson.GsonBuilder;
 import comun.Estudiante;
 import comun.Usuario;
 import controlador.modulo_estudiantes.BorrarEstudianteComando;
+import controlador.modulo_estudiantes.ConsultarTodosEstudianteComando;
 import controlador.modulo_estudiantes.ModificarEstudianteComando;
 import controlador.modulo_estudiantes.RegistrarEstudianteComando;
 import controlador.modulo_usuarios.InicioSesionComando;
@@ -130,6 +131,38 @@ public class HenriPittierWS {
         Gson gson = new GsonBuilder().create();
         Estudiante estudianteBorrar = gson.fromJson(_estudiante, Estudiante.class);
         BorrarEstudianteComando cmd = new BorrarEstudianteComando(estudianteBorrar);
+        try {
+            cmd.execute();
+            return gson.toJson(cmd.obtenerRespuesta());//nuevo
+        } catch (Exception ex) {
+            Estudiante error = new Estudiante();
+            error.setError(500);
+            return gson.toJson(error);//nuevo
+        }
+    }
+    
+//    @GET
+//    @Path("consultarEstudiante")
+//    @Produces("application/json")
+//    public String ConsultarEstudiante (@QueryParam("estudiante") String _estudiante){
+//        Gson gson = new GsonBuilder().create();
+//        Estudiante estudianteConsultar = gson.fromJson(_estudiante, Estudiante.class);
+//        ConsultarTodosEstudianteComando cmd = new ConsultarTodosEstudianteComando(estudianteConsultar);
+//        try {
+//            cmd.execute();
+//            return gson.toJson(cmd.obtenerRespuesta());//nuevo
+//        } catch (Exception ex) {
+//            Estudiante error = new Estudiante();
+//            error.setError(500);
+//            return gson.toJson(error);//nuevo
+//        }
+//    }
+    
+    @GET
+    @Path("consultarEstudiante")
+    @Produces("application/json")
+    public String ConsultarEstudiante (){
+        ConsultarTodosEstudianteComando cmd = new ConsultarTodosEstudianteComando();
         try {
             cmd.execute();
             return gson.toJson(cmd.obtenerRespuesta());//nuevo

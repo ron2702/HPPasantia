@@ -14,6 +14,7 @@ import modelo.DAO;
 import modelo.Registry;
 import comun.Estudiante;
 import java.sql.Date;
+import java.util.ArrayList;
 
 public class DAOEstudiante extends DAO {
     
@@ -21,6 +22,7 @@ public class DAOEstudiante extends DAO {
     private static String _sqlEstudianteRegistro = "{?=call ESTUDIANTE_REGISTRAR(?,?,?,?,?,?,?)}";
     private static String _sqlEstudianteModificado = "{?=call ESTUDIANTE_MODIFICAR(?,?,?,?,?,?,?)}";
     private static String _sqlEstudianteBorrado = "{?=call ESTUDIANTE_BORRAR(?)}";
+    private static String _sqlEstudianteConsultado = "{call ESTUDIANTE_CONSULTAR_TODOS()}";
     private ResultSet rs;
     
     public Estudiante registrarEstudiante (Estudiante _estudiante) throws Exception{
@@ -162,6 +164,47 @@ public class DAOEstudiante extends DAO {
             
         }
         
+    }
+    
+     public ArrayList<Estudiante> consultarEstudiante() throws Exception {
+
+        
+        ArrayList<Estudiante> listaEstudiantes = new ArrayList<Estudiante>();
+        
+        CallableStatement cstmt;
+
+        int response = 0;
+
+        try {
+            _bdCon = DAO.getBdConnect();
+            cstmt = _bdCon.prepareCall(_sqlEstudianteConsultado);
+            
+            rs = cstmt.executeQuery();
+            while(rs.next()){
+                Estudiante estudiante = new Estudiante(rs.getInt("cedulaescolar"), 
+                                  rs.getString("primernombre"),
+                                  rs.getString("segundonombre"),
+                                  rs.getString("primerapellido"),
+                                  rs.getString("segundoapellido"),
+                                  rs.getDate("fechanac"),
+                                  rs.getString("foto"));
+                estudiante.setError(200);
+                listaEstudiantes.add(estudiante);
+            }
+            return listaEstudiantes;
+
+
+        } catch (SQLException ex) {
+
+            throw ex;
+
+        } catch (Exception ex) {
+            
+            throw ex;
+
+        } finally {
+            _bdCon.close();
+        }
     }
     
 }
