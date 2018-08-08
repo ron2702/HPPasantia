@@ -23,7 +23,7 @@ public class DAOEstudiante extends DAO {
     private static String _sqlEstudianteModificado = "{?=call ESTUDIANTE_MODIFICAR(?,?,?,?,?,?,?)}";
     private static String _sqlEstudianteBorrado = "{?=call ESTUDIANTE_BORRAR(?)}";
     private static String _sqlEstudianteConsultado = "{call ESTUDIANTE_CONSULTAR_TODOS()}";
-    private static String _sqlEstudianteConsultadoPörCedula = "{call ESTUDIANTE_CONSULTAR_DETALLE(?)}";
+    private static String _sqlEstudianteConsultadoPorCedula = "{call ESTUDIANTE_CONSULTAR_DETALLE(?)}";
     private ResultSet rs;
     
     public Estudiante registrarEstudiante (Estudiante _estudiante) throws Exception{
@@ -219,7 +219,7 @@ public class DAOEstudiante extends DAO {
 
         try {
             _bdCon = DAO.getBdConnect();
-            cstmt = _bdCon.prepareCall(_sqlEstudianteConsultadoPörCedula);
+            cstmt = _bdCon.prepareCall(_sqlEstudianteConsultadoPorCedula);
             
             cstmt.setInt(1, _estudiante.getCedulaEscolar());
             rs = cstmt.executeQuery();

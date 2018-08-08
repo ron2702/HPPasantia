@@ -41,6 +41,10 @@ public class Empleado {
     public Empleado(){       
     }
     
+    public Empleado(int _cedula){
+        this.cedula = _cedula;
+    }
+    
     public Empleado(int _cedula, String _primerNombre, String _segundoNombre, String _primerApellido, String _segundoApellido, String _banco, int _sueldoMensual, int _sueldoMensualextra, int _sueldoQuincenal, int _sueldoQuincenalextra, Date _fechaIngreso, Date _fechaNac, String _telefonoCasa, String _telefonoMovil, String _cargo, int _asistencia, int _suplencia, String _foto, String _usuario, String _clave, String _estado, String _municipio, String _parroquia) {
         this.cedula = _cedula;
         this.primerNombre = _primerNombre;
