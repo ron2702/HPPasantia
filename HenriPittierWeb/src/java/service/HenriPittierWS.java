@@ -10,6 +10,7 @@ import com.google.gson.GsonBuilder;
 import comun.Empleado;
 import comun.Estudiante;
 import comun.Usuario;
+import controlador.modulo_empleados.BorrarEmpleadoComando;
 import controlador.modulo_empleados.ConsultarEmpleadoPorCedulaComando;
 import controlador.modulo_empleados.ConsultarTodosEmpleadoComando;
 import controlador.modulo_estudiantes.BorrarEstudianteComando;
@@ -178,6 +179,24 @@ public class HenriPittierWS {
     }
     
     /*WS DE EMPLEADO*/
+    @GET
+    @Path("borrarEmpleado")
+    @Produces("application/json")
+    public String BorrarEmpleado (@QueryParam("empleado") String _empleado){
+        int ci = Integer.parseInt(_empleado);
+        Gson gson = new GsonBuilder().create();
+        Empleado empleadoBorrar = /*gson.fromJson(_empleado, Empleado.class)*/ new Empleado(ci);
+        BorrarEmpleadoComando cmd = new BorrarEmpleadoComando(empleadoBorrar);
+        try {
+            cmd.execute();
+            return gson.toJson(cmd.obtenerRespuesta());//nuevo
+        } catch (Exception ex) {
+            Empleado error = new Empleado();
+            error.setError(500);
+            return gson.toJson(error);//nuevo
+        }
+    }
+    
     @GET
     @Path("consultarEmpleado")
     @Produces("application/json")
