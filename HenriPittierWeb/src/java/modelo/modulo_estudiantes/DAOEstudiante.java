@@ -23,6 +23,7 @@ public class DAOEstudiante extends DAO {
     private static String _sqlEstudianteModificado = "{?=call ESTUDIANTE_MODIFICAR(?,?,?,?,?,?,?)}";
     private static String _sqlEstudianteBorrado = "{?=call ESTUDIANTE_BORRAR(?)}";
     private static String _sqlEstudianteConsultado = "{call ESTUDIANTE_CONSULTAR_TODOS()}";
+    private static String _sqlEstudianteConsultadoPörCedula = "{call ESTUDIANTE_CONSULTAR_DETALLE(?)}";
     private ResultSet rs;
     
     public Estudiante registrarEstudiante (Estudiante _estudiante) throws Exception{
@@ -179,6 +180,48 @@ public class DAOEstudiante extends DAO {
             _bdCon = DAO.getBdConnect();
             cstmt = _bdCon.prepareCall(_sqlEstudianteConsultado);
             
+            rs = cstmt.executeQuery();
+            while(rs.next()){
+                Estudiante estudiante = new Estudiante(rs.getInt("cedulaescolar"), 
+                                  rs.getString("primernombre"),
+                                  rs.getString("segundonombre"),
+                                  rs.getString("primerapellido"),
+                                  rs.getString("segundoapellido"),
+                                  rs.getDate("fechanac"),
+                                  rs.getString("foto"));
+                estudiante.setError(200);
+                listaEstudiantes.add(estudiante);
+            }
+            return listaEstudiantes;
+
+
+        } catch (SQLException ex) {
+
+            throw ex;
+
+        } catch (Exception ex) {
+            
+            throw ex;
+
+        } finally {
+            _bdCon.close();
+        }
+    }
+     
+    public ArrayList<Estudiante> consultarEstudiantePorCedula(Estudiante _estudiante) throws Exception {
+
+        
+        ArrayList<Estudiante> listaEstudiantes = new ArrayList<Estudiante>();
+        
+        CallableStatement cstmt;
+
+        int response = 0;
+
+        try {
+            _bdCon = DAO.getBdConnect();
+            cstmt = _bdCon.prepareCall(_sqlEstudianteConsultadoPörCedula);
+            
+            cstmt.setInt(1, _estudiante.getCedulaEscolar());
             rs = cstmt.executeQuery();
             while(rs.next()){
                 Estudiante estudiante = new Estudiante(rs.getInt("cedulaescolar"), 
