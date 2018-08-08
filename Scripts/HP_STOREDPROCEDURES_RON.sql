@@ -22,7 +22,6 @@ END;
 $$ LANGUAGE plpgsql;
 
 
-
 CREATE OR REPLACE FUNCTION REPRESENTANTE_MODIFICAR(integer, varchar(30), varchar(30), varchar(30), varchar(30), date, varchar(11), varchar(11), varchar(17), varchar(100), varchar(80), varchar(80), varchar(80)) RETURNS integer AS $$
 DECLARE
  RESULT integer;
@@ -160,8 +159,8 @@ BEGIN
 
 	RETURN QUERY
 	SELECT ES.CEDULAESCOLAR, ES.PRIMERNOMBRE, ES.SEGUNDONOMBRE, ES.PRIMERAPELLIDO, ES.SEGUNDOAPELLIDO, ES.FECHANAC, ES.FOTO
-	FROM ESTUDIANTE ES;
-
+	FROM ESTUDIANTE ES
+	;
 END;
 $$ LANGUAGE plpgsql;
 
