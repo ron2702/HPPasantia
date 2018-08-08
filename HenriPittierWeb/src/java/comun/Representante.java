@@ -23,13 +23,15 @@ public class Representante {
     private String telefonoMovil;
     private String tipo;
     private String foto;
-    private int fk_Lugar;
+    private String estado;
+    private String municipio;
+    private String parroquia;
     private int error;
     
     public Representante(){
     }
 
-    public Representante(int _cedula, String _primerNombre, String _segundoNombre, String _primerApellido, String _segundoApellido, Date _fechaNac, String _telefonoCasa, String _telefonoMovil, String _tipo, String _foto, int _fk_Lugar) {
+    public Representante(int _cedula, String _primerNombre, String _segundoNombre, String _primerApellido, String _segundoApellido, Date _fechaNac, String _telefonoCasa, String _telefonoMovil, String _tipo, String _foto, String _estado, String _municipio, String _parroquia) {
         this.cedula = _cedula;
         this.primerNombre = _primerNombre;
         this.segundoNombre = _segundoNombre;
@@ -40,7 +42,9 @@ public class Representante {
         this.telefonoMovil = _telefonoMovil;
         this.tipo = _tipo;
         this.foto = _foto;
-        this.fk_Lugar = _fk_Lugar;
+        this.estado = _estado;
+        this.municipio = _municipio;
+        this.parroquia = _parroquia;
     }
 
     public int getCedula() {
@@ -123,13 +127,31 @@ public class Representante {
         this.foto = foto;
     }
 
-    public int getFk_Lugar() {
-        return fk_Lugar;
+    public String getEstado() {
+        return estado;
     }
 
-    public void setFk_Lugar(int fk_Lugar) {
-        this.fk_Lugar = fk_Lugar;
+    public void setEstado(String estado) {
+        this.estado = estado;
     }
+
+    public String getMunicipio() {
+        return municipio;
+    }
+
+    public void setMunicipio(String municipio) {
+        this.municipio = municipio;
+    }
+
+    public String getParroquia() {
+        return parroquia;
+    }
+
+    public void setParroquia(String parroquia) {
+        this.parroquia = parroquia;
+    }
+
+    
 
     public int getError() {
         return error;
