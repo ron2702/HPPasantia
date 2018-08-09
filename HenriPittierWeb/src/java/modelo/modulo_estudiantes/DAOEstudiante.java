@@ -15,22 +15,24 @@ import modelo.Registry;
 import comun.Estudiante;
 import java.sql.Date;
 import java.util.ArrayList;
+import static modelo.Registry.RESULTADO_CODIGO_BIEN;
+import static modelo.Registry.RESULTADO_CODIGO_FALLIDO;
+import static modelo.Registry.RESULTADO_CODIGO_NO_ENCONTRADO;
+import static modelo.Registry.RESULTADO_CODIGO_RECURSO_CREADO;
 
 public class DAOEstudiante extends DAO {
     
     private Connection _bdCon;
-    private static String _sqlEstudianteRegistro = "{?=call ESTUDIANTE_REGISTRAR(?,?,?,?,?,?,?)}";
-    private static String _sqlEstudianteModificado = "{?=call ESTUDIANTE_MODIFICAR(?,?,?,?,?,?,?)}";
-    private static String _sqlEstudianteBorrado = "{?=call ESTUDIANTE_BORRAR(?)}";
-    private static String _sqlEstudianteConsultado = "{call ESTUDIANTE_CONSULTAR_TODOS()}";
-    private static String _sqlEstudianteConsultadoPorCedula = "{call ESTUDIANTE_CONSULTAR_DETALLE(?)}";
+    private static String _sqlEstudianteRegistrar = "{?=call ESTUDIANTE_REGISTRAR(?,?,?,?,?,?,?)}";
+    private static String _sqlEstudianteModificar = "{?=call ESTUDIANTE_MODIFICAR(?,?,?,?,?,?,?)}";
+    private static String _sqlEstudianteBorrar = "{?=call ESTUDIANTE_BORRAR(?)}";
+    private static String _sqlEstudiantesConsultar = "{call ESTUDIANTE_CONSULTAR_TODOS()}";
+    private static String _sqlEstudianteDetalle = "{call ESTUDIANTE_CONSULTAR_DETALLE(?)}";
     private ResultSet rs;
     
     public Estudiante registrarEstudiante (Estudiante _estudiante) throws Exception{
         
-        
         Estudiante _estudianteFallido = new Estudiante();
-        
         CallableStatement cstmt;
         
         int respuesta = 0;
@@ -38,7 +40,7 @@ public class DAOEstudiante extends DAO {
         try {
             
             _bdCon = DAO.getBdConnect();
-            cstmt = _bdCon.prepareCall(_sqlEstudianteRegistro);
+            cstmt = _bdCon.prepareCall(_sqlEstudianteRegistrar);
             //Parametro de salida
             cstmt.registerOutParameter(1, Types.INTEGER);
             java.sql.Date sqlFecha = new java.sql.Date(_estudiante.getFechaNac().getTime());
@@ -53,17 +55,20 @@ public class DAOEstudiante extends DAO {
             
             respuesta = cstmt.getInt(1);
             
-            if(respuesta == Registry.RESULT_CODE_OK){
+            if(respuesta == Registry.RESULTADO_CODIGO_RECURSO_CREADO){
                 
-                _estudiante.setError(200);
-                return _estudiante;       
+                _estudiante.setError(RESULTADO_CODIGO_RECURSO_CREADO);
+                return _estudiante;    
+                
             }else{
-                _estudianteFallido.setError(101);
+                _estudianteFallido.setError(RESULTADO_CODIGO_FALLIDO);
                 return _estudianteFallido;
             }
             
         } catch (SQLException ex) {
+            
             throw ex;
+            
         } catch (Exception ex) {
             
             throw ex;
@@ -78,7 +83,6 @@ public class DAOEstudiante extends DAO {
     public Estudiante modificarEstudiante (Estudiante _estudiante) throws SQLException, Exception{
         
         Estudiante _estudianteFallido = new Estudiante();
-        
         CallableStatement cstmt;
         
         int respuesta = 0;
@@ -86,10 +90,9 @@ public class DAOEstudiante extends DAO {
         try {
             
             _bdCon = DAO.getBdConnect();
-            cstmt = _bdCon.prepareCall(_sqlEstudianteModificado);
+            cstmt = _bdCon.prepareCall(_sqlEstudianteModificar);
             //Parametro de salida
             cstmt.registerOutParameter(1, Types.INTEGER);
-            
             java.sql.Date sqlFecha = new java.sql.Date(_estudiante.getFechaNac().getTime());
             cstmt.setInt(2, _estudiante.getCedulaEscolar());
             cstmt.setString(3, _estudiante.getPrimerNombre());
@@ -102,17 +105,21 @@ public class DAOEstudiante extends DAO {
             
             respuesta = cstmt.getInt(1);
             
-            if(respuesta == Registry.RESULT_CODE_OK){
+            if(respuesta == Registry.RESULTADO_CODIGO_RECURSO_CREADO){
                 
-                _estudiante.setError(200);
-                return _estudiante;       
+                _estudiante.setError(RESULTADO_CODIGO_RECURSO_CREADO);
+                return _estudiante;      
+                
             }else{
-                _estudianteFallido.setError(101);
+                
+                _estudianteFallido.setError(RESULTADO_CODIGO_NO_ENCONTRADO);
                 return _estudianteFallido;
             }
             
         } catch (SQLException ex) {
+            
             throw ex;
+            
         } catch (Exception ex) {
             
             throw ex;
@@ -127,7 +134,6 @@ public class DAOEstudiante extends DAO {
     public Estudiante borrarEstudiante (Estudiante _estudiante) throws SQLException, Exception{
         
         Estudiante _estudianteFallido = new Estudiante();
-        
         CallableStatement cstmt;
         
         int respuesta = 0;
@@ -135,7 +141,7 @@ public class DAOEstudiante extends DAO {
         try {
             
             _bdCon = DAO.getBdConnect();
-            cstmt = _bdCon.prepareCall(_sqlEstudianteBorrado);
+            cstmt = _bdCon.prepareCall(_sqlEstudianteBorrar);
             //Parametro de salida
             cstmt.registerOutParameter(1, Types.INTEGER);
             cstmt.setInt(2, _estudiante.getCedulaEscolar());
@@ -144,17 +150,21 @@ public class DAOEstudiante extends DAO {
             
             respuesta = cstmt.getInt(1);
             
-            if(respuesta == Registry.RESULT_CODE_OK){
+            if(respuesta == Registry.RESULTADO_CODIGO_BIEN){
                 
-                _estudiante.setError(200);
-                return _estudiante;       
+                _estudiante.setError(RESULTADO_CODIGO_BIEN);
+                return _estudiante;   
+                
             }else{
-                _estudianteFallido.setError(101);
+                
+                _estudianteFallido.setError(RESULTADO_CODIGO_NO_ENCONTRADO);
                 return _estudianteFallido;
             }
             
         } catch (SQLException ex) {
+            
             throw ex;
+            
         } catch (Exception ex) {
             
             throw ex;
@@ -167,21 +177,21 @@ public class DAOEstudiante extends DAO {
         
     }
     
-     public ArrayList<Estudiante> consultarEstudiante() throws Exception {
+     public ArrayList<Estudiante> consultarEstudiantes() throws Exception {
 
-        
         ArrayList<Estudiante> listaEstudiantes = new ArrayList<Estudiante>();
-        
         CallableStatement cstmt;
 
         int response = 0;
 
         try {
             _bdCon = DAO.getBdConnect();
-            cstmt = _bdCon.prepareCall(_sqlEstudianteConsultado);
+            cstmt = _bdCon.prepareCall(_sqlEstudiantesConsultar);
             
             rs = cstmt.executeQuery();
+            
             while(rs.next()){
+                
                 Estudiante estudiante = new Estudiante(rs.getInt("cedulaescolar"), 
                                   rs.getString("primernombre"),
                                   rs.getString("segundonombre"),
@@ -189,8 +199,9 @@ public class DAOEstudiante extends DAO {
                                   rs.getString("segundoapellido"),
                                   rs.getDate("fechanac"),
                                   rs.getString("foto"));
-                estudiante.setError(200);
+                estudiante.setError(RESULTADO_CODIGO_BIEN);
                 listaEstudiantes.add(estudiante);
+                
             }
             return listaEstudiantes;
 
@@ -208,33 +219,33 @@ public class DAOEstudiante extends DAO {
         }
     }
      
-    public ArrayList<Estudiante> consultarEstudiantePorCedula(Estudiante _estudiante) throws Exception {
-
+    public Estudiante consultarEstudianteDetalle(Estudiante _estudiante) throws Exception {
         
-        ArrayList<Estudiante> listaEstudiantes = new ArrayList<Estudiante>();
-        
+        Estudiante estudianteConsultado = new Estudiante();
         CallableStatement cstmt;
 
         int response = 0;
 
         try {
-            _bdCon = DAO.getBdConnect();
-            cstmt = _bdCon.prepareCall(_sqlEstudianteConsultadoPorCedula);
             
+            _bdCon = DAO.getBdConnect();
+            cstmt = _bdCon.prepareCall(_sqlEstudianteDetalle);
             cstmt.setInt(1, _estudiante.getCedulaEscolar());
             rs = cstmt.executeQuery();
+            
             while(rs.next()){
-                Estudiante estudiante = new Estudiante(rs.getInt("cedulaescolar"), 
+                
+                estudianteConsultado = new Estudiante(rs.getInt("cedulaescolar"), 
                                   rs.getString("primernombre"),
                                   rs.getString("segundonombre"),
                                   rs.getString("primerapellido"),
                                   rs.getString("segundoapellido"),
                                   rs.getDate("fechanac"),
                                   rs.getString("foto"));
-                estudiante.setError(200);
-                listaEstudiantes.add(estudiante);
+                estudianteConsultado.setError(RESULTADO_CODIGO_BIEN);
+                
             }
-            return listaEstudiantes;
+            return estudianteConsultado;
 
 
         } catch (SQLException ex) {

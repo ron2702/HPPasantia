@@ -20,9 +20,9 @@ public class Empleado {
     private String segundoApellido;
     private String banco;
     private int sueldoMensual;
-    private int sueldoMensualextra;
+    private int sueldoMensualExtra;
     private int sueldoQuincenal;
-    private int sueldoQuincenalextra;
+    private int sueldoQuincenalExtra;
     private Date fechaIngreso;
     private Date fechaNac;
     private String telefonoCasa;
@@ -45,7 +45,7 @@ public class Empleado {
         this.cedula = _cedula;
     }
     
-    public Empleado(int _cedula, String _primerNombre, String _segundoNombre, String _primerApellido, String _segundoApellido, String _banco, int _sueldoMensual, int _sueldoMensualextra, int _sueldoQuincenal, int _sueldoQuincenalextra, Date _fechaIngreso, Date _fechaNac, String _telefonoCasa, String _telefonoMovil, String _cargo, int _asistencia, int _suplencia, String _foto, String _usuario, String _clave, String _estado, String _municipio, String _parroquia) {
+    public Empleado(int _cedula, String _primerNombre, String _segundoNombre, String _primerApellido, String _segundoApellido, String _banco, int _sueldoMensual, int _sueldoMensualExtra, int _sueldoQuincenal, int _sueldoQuincenalExtra, Date _fechaIngreso, Date _fechaNac, String _telefonoCasa, String _telefonoMovil, String _cargo, int _asistencia, int _suplencia, String _foto, String _usuario, String _clave, String _estado, String _municipio, String _parroquia) {
         this.cedula = _cedula;
         this.primerNombre = _primerNombre;
         this.segundoNombre = _segundoNombre;
@@ -53,9 +53,9 @@ public class Empleado {
         this.segundoApellido = _segundoApellido;
         this.banco = _banco;
         this.sueldoMensual = _sueldoMensual;
-        this.sueldoMensualextra = _sueldoMensualextra;
+        this.sueldoMensualExtra = _sueldoMensualExtra;
         this.sueldoQuincenal = _sueldoQuincenal;
-        this.sueldoQuincenalextra = _sueldoQuincenalextra;
+        this.sueldoQuincenalExtra = _sueldoQuincenalExtra;
         this.fechaIngreso = _fechaIngreso;
         this.fechaNac = _fechaNac;
         this.telefonoCasa = _telefonoCasa;
@@ -127,12 +127,12 @@ public class Empleado {
         this.sueldoMensual = sueldoMensual;
     }
 
-    public int getSueldoMensualextra() {
-        return sueldoMensualextra;
+    public int getSueldoMensualExtra() {
+        return sueldoMensualExtra;
     }
 
-    public void setSueldoMensualextra(int sueldoMensualextra) {
-        this.sueldoMensualextra = sueldoMensualextra;
+    public void setSueldoMensualExtra(int sueldoMensualextra) {
+        this.sueldoMensualExtra = sueldoMensualextra;
     }
 
     public int getSueldoQuincenal() {
@@ -143,12 +143,12 @@ public class Empleado {
         this.sueldoQuincenal = sueldoQuincenal;
     }
 
-    public int getSueldoQuincenalextra() {
-        return sueldoQuincenalextra;
+    public int getSueldoQuincenalExtra() {
+        return sueldoQuincenalExtra;
     }
 
-    public void setSueldoQuincenalextra(int sueldoQuincenalextra) {
-        this.sueldoQuincenalextra = sueldoQuincenalextra;
+    public void setSueldoQuincenalExtra(int sueldoQuincenalExtra) {
+        this.sueldoQuincenalExtra = sueldoQuincenalExtra;
     }
 
     public Date getFechaIngreso() {

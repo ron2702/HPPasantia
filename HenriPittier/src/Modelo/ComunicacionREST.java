@@ -7,6 +7,7 @@ package Modelo;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
+import comun.Empleado;
 import comun.Usuario;
 
 import java.io.BufferedReader;
@@ -61,17 +62,37 @@ public class ComunicacionREST {
             Gson gson = new GsonBuilder().create();
             BufferedReader br = comunicar("GET", "inicioSesionUsuario?usuario=" + URLEncoder.encode(gson.toJson(u).toString(), "UTF-8"));
             String output;
-            Usuario _user = new Usuario();
+            Usuario _usuario = new Usuario();
             while ((output = br.readLine()) != null) {
-                _user = gson.fromJson(output, Usuario.class);
+                _usuario = gson.fromJson(output, Usuario.class);
             }
             conn.disconnect();
-            return _user;
+            return _usuario;
         }
         catch (Exception ex){
             throw ex;
         }
     }
+    
+    /*SERVICIOS WEB DE EMPLEADOS*/    
+    public Empleado registrarEmpleado(Empleado e) throws Exception {
+        try {
+            conn = null;
+            Gson gson = new GsonBuilder().create();
+            BufferedReader br = comunicar("GET", "registrarEmpleado?empleado=" + URLEncoder.encode(gson.toJson(e).toString(), "UTF-8"));
+            String output;
+            Empleado _empleado = new Empleado();
+            while ((output = br.readLine()) != null) {
+                _empleado = gson.fromJson(output, Empleado.class);
+            }
+            conn.disconnect();
+            return _empleado;
+        }
+        catch (Exception ex){
+            throw ex;
+        }
+    }
+    /*SERVICIOS WEB DE EMPLEADOS*/
 }
     
 

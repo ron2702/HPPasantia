@@ -15,18 +15,18 @@ import modelo.modulo_estudiantes.DAOEstudiante;
  *
  * @author LuisAlejandro
  */
-public class ConsultarTodosEstudianteComando extends Comando {
+public class ConsultarEstudiantesComando extends Comando {
 
     private ArrayList<Estudiante> respuesta;
     
-    public ConsultarTodosEstudianteComando (){
+    public ConsultarEstudiantesComando (){
     }
     
     @Override
     public void execute() throws Exception {
         
         DAOEstudiante daoEst = new DAOEstudiante();
-        respuesta = daoEst.consultarEstudiante();
+        respuesta = daoEst.consultarEstudiantes();
     }
     
     public ArrayList<Estudiante> obtenerRespuesta(){

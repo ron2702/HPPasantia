@@ -7,27 +7,27 @@ package controlador.modulo_empleados;
 
 import comun.Empleado;
 import controlador.Comando;
-import java.util.ArrayList;
 import modelo.modulo_empleados.DAOEmpleado;
 
 /**
  *
  * @author LuisAlejandro
  */
-public class ConsultarTodosEmpleadoComando extends Comando {
+public class RegistrarEmpleadoComando extends Comando{
+    private Empleado registroEmpleado;
+    private Empleado respuesta;
     
-    private ArrayList<Empleado> respuesta;
-    
-    public ConsultarTodosEmpleadoComando (){
+    public RegistrarEmpleadoComando (Empleado _registroEmpleado){
+        this.registroEmpleado = _registroEmpleado;
     }
 
     @Override
     public void execute() throws Exception {
-        DAOEmpleado daoEmp = new DAOEmpleado();
-        respuesta = daoEmp.consultarEmpleado();
+        DAOEmpleado daoEst = new DAOEmpleado();
+        respuesta = daoEst.registrarEmpleado(registroEmpleado);
     }
     
-    public ArrayList<Empleado> obtenerRespuesta(){
-        return this.respuesta;
+    public Empleado obtenerRespuesta(){
+        return respuesta;
     }
 }

@@ -9,6 +9,7 @@ import java.sql.SQLException;
 import java.sql.Types;
 import modelo.DAO;
 import modelo.Registry;
+import static modelo.Registry.*;
 
 /**
  *
@@ -42,13 +43,13 @@ public class DAOUsuario extends DAO {
             
             respuesta = cstmt.getInt(1);
             
-            if(respuesta == Registry.RESULT_CODE_OK){
+            if(respuesta == Registry.RESULTADO_CODIGO_BIEN){
                 
-                _usuario.setError(200);
+                _usuario.setError(RESULTADO_CODIGO_BIEN);
                 return _usuario;
             }
             else{
-                _usuarioFallido.setError(301);
+                _usuarioFallido.setError(RESULTADO_CODIGO_NO_ENCONTRADO);
                 return _usuarioFallido;
             }
             

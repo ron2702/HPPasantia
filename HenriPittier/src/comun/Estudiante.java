@@ -13,16 +13,24 @@ import java.util.Date;
  */
 public class Estudiante {
     
-    private int cedula;
+    private int cedulaEscolar;
     private String primerNombre;
     private String segundoNombre;
     private String primerApellido;
     private String segundoApellido;
     private Date fechaNac;
     private String foto;
+    private int error;
 
+    public Estudiante(){
+    }
+    
+    public Estudiante(int _cedula){
+        this.cedulaEscolar = _cedula;
+    }
+    
     public Estudiante(int _cedula, String _primerNombre, String _segundoNombre, String _primerApellido, String _segundoApellido, Date _fechaNac, String _foto) {
-        this.cedula = _cedula;
+        this.cedulaEscolar = _cedula;
         this.primerNombre = _primerNombre;
         this.segundoNombre = _segundoNombre;
         this.primerApellido = _primerApellido;
@@ -32,13 +40,13 @@ public class Estudiante {
     }
 
     
-    public int getCedula() {
-        return cedula;
+    public int getCedulaEscolar() {
+        return cedulaEscolar;
     }
 
 
-    public void setCedula(int cedula) {
-        this.cedula = cedula;
+    public void setCedulaEscolar(int cedulaEscolar) {
+        this.cedulaEscolar = cedulaEscolar;
     }
 
 
@@ -95,6 +103,14 @@ public class Estudiante {
 
     public void setFoto(String foto) {
         this.foto = foto;
+    }
+
+    public int getError() {
+        return error;
+    }
+
+    public void setError(int error) {
+        this.error = error;
     }
     
 }
