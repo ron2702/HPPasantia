@@ -70,10 +70,10 @@ public class UrlTester extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         try {
             
-            Empleado empleado = new Empleado(24773340, "Luis", "Alejandro", "Pérez", "González", "Mercantil", 60000000, 60000000, 60000000, 60000000, new Date(), 
+            Empleado empleado = new Empleado(24773340, "Pepe", "Alejandro", "Pérez", "González", "Mercantil", 60000000, 60000000, 60000000, 60000000, new Date(), 
                                              new Date(), "04242846494", "04242846494", "Desarrollador", 10, 10, "foto", "", "", "Trujillo", "Sucre", "El Paraiso");
             ComunicacionREST com = new ComunicacionREST();
-            Empleado resp = com.registrarEmpleado(empleado);
+            Empleado resp = com.modificarEmpleado(empleado);
             
             
             System.out.println(resp.toString());

@@ -92,6 +92,24 @@ public class ComunicacionREST {
             throw ex;
         }
     }
+    
+    public Empleado modificarEmpleado(Empleado e) throws Exception {
+        try {
+            conn = null;
+            Gson gson = new GsonBuilder().create();
+            BufferedReader br = comunicar("GET", "modificarEmpleado?empleado=" + URLEncoder.encode(gson.toJson(e).toString(), "UTF-8"));
+            String output;
+            Empleado _empleado = new Empleado();
+            while ((output = br.readLine()) != null) {
+                _empleado = gson.fromJson(output, Empleado.class);
+            }
+            conn.disconnect();
+            return _empleado;
+        }
+        catch (Exception ex){
+            throw ex;
+        }
+    }
     /*SERVICIOS WEB DE EMPLEADOS*/
 }
     

@@ -13,6 +13,7 @@ import comun.Usuario;
 import controlador.modulo_empleados.BorrarEmpleadoComando;
 import controlador.modulo_empleados.ConsultarEmpleadoDetalleComando;
 import controlador.modulo_empleados.ConsultarEmpleadosComando;
+import controlador.modulo_empleados.ModificarEmpleadoComando;
 import controlador.modulo_empleados.RegistrarEmpleadoComando;
 import controlador.modulo_estudiantes.BorrarEstudianteComando;
 import controlador.modulo_estudiantes.ConsultarEstudianteDetalleComando;
@@ -219,6 +220,28 @@ public class HenriPittierWS {
         } catch (Exception ex) {
             
             Estudiante error = new Estudiante();
+            error.setError(RESULTADO_CODIGO_FALLIDO);
+            return gson.toJson(error);
+            
+        }
+    }
+    
+     @GET
+    @Path("modificarEmpleado")
+    @Produces("application/json")
+    public String modificarEmpleado (@QueryParam("empleado") String _empleado){
+        
+        Gson gson = new GsonBuilder().create();
+        Empleado empleadoModificar = gson.fromJson(_empleado, Empleado.class);
+        ModificarEmpleadoComando cmd = new ModificarEmpleadoComando(empleadoModificar);
+        
+        try {
+            cmd.execute();
+            return gson.toJson(cmd.obtenerRespuesta());
+            
+        } catch (Exception ex) {
+            
+            Empleado error = new Empleado();
             error.setError(RESULTADO_CODIGO_FALLIDO);
             return gson.toJson(error);
             
