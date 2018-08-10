@@ -1861,18 +1861,18 @@ INSERT INTO LUGAR VALUES (nextval('lugar_codigo_seq'),'Parroquia','Rafael Urdane
 INSERT INTO LUGAR VALUES (nextval('lugar_codigo_seq'),'Parroquia','Raul Cuenca',(SELECT CODIGO FROM LUGAR WHERE TIPO = 'Municipio' AND NOMBRE = 'Valmore Rodriguez'));
 
 /*EMPLEADOS*/
-INSERT INTO EMPLEADO VALUES (648949, 'Lucila', 'Crisolia', 'De Gonzalez', 'Aranguren', 'Mercantil', 20000000, null, 10000000, null, '02/05/2006', '31/10/1948', null, null, 'Directora', 0, 0, null, null, null, 1);
-INSERT INTO EMPLEADO VALUES (2110338, 'Jose', 'Felix', 'Gonzalez', 'Perez', 'Banesco', 20000000, null, 10000000, null, '01/09/2006', '25/02/1944', null, null, 'Administrador', 0, 0, null, null, null, 1);
-INSERT INTO EMPLEADO VALUES (10332708, 'Roxana', 'Maria', 'Gonzalez', 'Aranguren', 'Banesco', 6000000, 1500000, 3000000, 750000, '01/09/2006', '06/11/1969', null, null, 'Secretaria Adm', 0, 0, null, null, null, 1);
-INSERT INTO EMPLEADO VALUES (18329356, 'Yalitza', 'C', 'Insua', 'Santoyo', 'Banesco', 4500000, 750000, 2250000, 375000, '13/09/2012', null, null, null, 'Coordinadora', 0, 0, null, null, null, 1);
-INSERT INTO EMPLEADO VALUES (16438861, 'Andreina', null, 'Mundo', null, 'Banesco', 3200000, null, 1600000, null, '16/01/2014', null, null, null, 'Docente', 0, 0, null, null, null, 1);
-INSERT INTO EMPLEADO VALUES (26217421, 'Skarleth', 'A', 'Almeida', 'N', 'Provincial', 3200000, null, 1600000, null, '05/03/2018', null, null, null, 'Docente', 0, 0, null, null, null, 1);
-INSERT INTO EMPLEADO VALUES (15166540, 'Elizabeth', 'J', 'Cayonez', 'R', 'Banesco', 3200000, null, 1600000, null, '12/09/2013', null, null, null, 'Docente', 0, 0, null, null, null, 1);
-INSERT INTO EMPLEADO VALUES (5416652, 'Taydee', 'G', 'Naranjo', 'Seijas', 'Provincial', 3200000, null, 1600000, null, '14/02/2018', null, null, null, 'Docente', 0, 0, null, null, null, 1);
-INSERT INTO EMPLEADO VALUES (6868252, 'Nelly', 'M', 'Rodriguez', 'De Veira', 'Banesco', 3000000, null, 1500000, null, '09/09/2014', null, null, null, 'Auxiliar', 0, 0, null, null, null, 1);
-INSERT INTO EMPLEADO VALUES (6293741, 'Kilsin', null, 'Mijares', null, 'Mercantil', 3000000, null, 1500000, null, '13/09/2010', null, null, null, 'Auxiliar', 0, 0, null, null, null, 1);
-INSERT INTO EMPLEADO VALUES (5223483, 'Noris', null, 'Rivas', null, 'Mercantil', 3000000, null, 1500000, null, '02/05/2006', null, null, null, 'Auxiliar', 0, 0, null, null, null, 1);
-INSERT INTO EMPLEADO VALUES (8421185, 'Marleny', null, 'Rueda', 'H', 'Mercantil', 3000000, null, 1500000, null, '16/09/2008', null, null, null, 'Auxiliar', 0, 0, null, null, null, 1);
-INSERT INTO EMPLEADO VALUES (14409682, 'Eglee', 'Milagros', 'Fernandez', null, 'Banesco', 3000000, null, 1500000, null,'14/09/2009', null, null, null, 'Auxiliar', 0, 0, null, null, null, 1);
-INSERT INTO EMPLEADO VALUES (17078153, 'Nikarilis', 'E', 'Madrid', 'Fonseca', 'Mercantil', 3000000, null, 1500000, null, '15/09/2014', null, null, null, 'Auxiliar', 0, 0, null, null, null, 1);
-INSERT INTO EMPLEADO VALUES (25281481, 'Rosanna', null, 'Rodriguez', null, 'Banesco', 3000000, null, 1500000, null, '15/10/2015', null, null, null, 'Obrera', 0, 0, null, null, null, 1);
+INSERT INTO EMPLEADO VALUES (648949, 'Lucila', 'Crisolia', 'De Gonzalez', 'Aranguren', 'Mercantil', 20000000, '02/05/2006', '31/10/1948', null, null, 'Directora', null, null, null, 1);
+INSERT INTO EMPLEADO VALUES (2110338, 'Jose', 'Felix', 'Gonzalez', 'Perez', 'Banesco', 20000000, '01/09/2006', '25/02/1944', null, null, 'Administrador', null, null, null, 1);
+INSERT INTO EMPLEADO VALUES (10332708, 'Roxana', 'Maria', 'Gonzalez', 'Aranguren', 'Banesco', 6000000, '01/09/2006', '06/11/1969', null, null, 'Secretaria Adm', null, null, null, 1);
+INSERT INTO EMPLEADO VALUES (18329356, 'Yalitza', 'C', 'Insua', 'Santoyo', 'Banesco', 4500000, '13/09/2012', null, null, null, 'Coordinadora', null, null, null, 1);
+INSERT INTO EMPLEADO VALUES (16438861, 'Andreina', null, 'Mundo', null, 'Banesco', 3200000, '16/01/2014', null, null, null, 'Docente', null, null, null, 1);
+INSERT INTO EMPLEADO VALUES (26217421, 'Skarleth', 'A', 'Almeida', 'N', 'Provincial', 3200000, '05/03/2018', null, null, null, 'Docente', null, null, null, 1);
+INSERT INTO EMPLEADO VALUES (15166540, 'Elizabeth', 'J', 'Cayonez', 'R', 'Banesco', 3200000, '12/09/2013', null, null, null, 'Docente', null, null, null, 1);
+INSERT INTO EMPLEADO VALUES (5416652, 'Taydee', 'G', 'Naranjo', 'Seijas', 'Provincial', 3200000, '14/02/2018', null, null, null, 'Docente', null, null, null, 1);
+INSERT INTO EMPLEADO VALUES (6868252, 'Nelly', 'M', 'Rodriguez', 'De Veira', 'Banesco', 3000000, '09/09/2014', null, null, null, 'Auxiliar', null, null, null, 1);
+INSERT INTO EMPLEADO VALUES (6293741, 'Kilsin', null, 'Mijares', null, 'Mercantil', 3000000, '13/09/2010', null, null, null, 'Auxiliar', null, null, null, 1);
+INSERT INTO EMPLEADO VALUES (5223483, 'Noris', null, 'Rivas', null, 'Mercantil', 3000000, '02/05/2006', null, null, null, 'Auxiliar', null, null, null, 1);
+INSERT INTO EMPLEADO VALUES (8421185, 'Marleny', null, 'Rueda', 'H', 'Mercantil', 3000000, '16/09/2008', null, null, null, 'Auxiliar', null, null, null, 1);
+INSERT INTO EMPLEADO VALUES (14409682, 'Eglee', 'Milagros', 'Fernandez', null, 'Banesco', 3000000, '14/09/2009', null, null, null, 'Auxiliar', null, null, null, 1);
+INSERT INTO EMPLEADO VALUES (17078153, 'Nikarilis', 'E', 'Madrid', 'Fonseca', 'Mercantil', 3000000, '15/09/2014', null, null, null, 'Auxiliar', null, null, null, 1);
+INSERT INTO EMPLEADO VALUES (25281481, 'Rosanna', null, 'Rodriguez', null, 'Banesco', 3000000, '15/10/2015', null, null, null, 'Obrera', null, null, null, 1);

@@ -45,7 +45,7 @@ public class Empleado {
         this.cedula = _cedula;
     }
     
-    public Empleado(int _cedula, String _primerNombre, String _segundoNombre, String _primerApellido, String _segundoApellido, String _banco, int _sueldoMensual, int _sueldoMensualExtra, int _sueldoQuincenal, int _sueldoQuincenalExtra, Date _fechaIngreso, Date _fechaNac, String _telefonoCasa, String _telefonoMovil, String _cargo, int _asistencia, int _suplencia, String _foto, String _usuario, String _clave, String _estado, String _municipio, String _parroquia) {
+    public Empleado(int _cedula, String _primerNombre, String _segundoNombre, String _primerApellido, String _segundoApellido, String _banco, int _sueldoMensual, Date _fechaIngreso, Date _fechaNac, String _telefonoCasa, String _telefonoMovil, String _cargo, String _foto, String _usuario, String _clave, String _estado, String _municipio, String _parroquia) {
         this.cedula = _cedula;
         this.primerNombre = _primerNombre;
         this.segundoNombre = _segundoNombre;
@@ -53,16 +53,11 @@ public class Empleado {
         this.segundoApellido = _segundoApellido;
         this.banco = _banco;
         this.sueldoMensual = _sueldoMensual;
-        this.sueldoMensualExtra = _sueldoMensualExtra;
-        this.sueldoQuincenal = _sueldoQuincenal;
-        this.sueldoQuincenalExtra = _sueldoQuincenalExtra;
         this.fechaIngreso = _fechaIngreso;
         this.fechaNac = _fechaNac;
         this.telefonoCasa = _telefonoCasa;
         this.telefonoMovil = _telefonoMovil;
         this.cargo = _cargo;
-        this.asistencia = _asistencia;
-        this.suplencia = _suplencia;
         this.foto = _foto;
         this.usuario = _usuario;
         this.clave = _clave;
@@ -127,30 +122,6 @@ public class Empleado {
         this.sueldoMensual = sueldoMensual;
     }
 
-    public int getSueldoMensualExtra() {
-        return sueldoMensualExtra;
-    }
-
-    public void setSueldoMensualExtra(int sueldoMensualextra) {
-        this.sueldoMensualExtra = sueldoMensualextra;
-    }
-
-    public int getSueldoQuincenal() {
-        return sueldoQuincenal;
-    }
-
-    public void setSueldoQuincenal(int sueldoQuincenal) {
-        this.sueldoQuincenal = sueldoQuincenal;
-    }
-
-    public int getSueldoQuincenalExtra() {
-        return sueldoQuincenalExtra;
-    }
-
-    public void setSueldoQuincenalExtra(int sueldoQuincenalExtra) {
-        this.sueldoQuincenalExtra = sueldoQuincenalExtra;
-    }
-
     public Date getFechaIngreso() {
         return fechaIngreso;
     }
@@ -189,22 +160,6 @@ public class Empleado {
 
     public void setCargo(String cargo) {
         this.cargo = cargo;
-    }
-
-    public int getAsistencia() {
-        return asistencia;
-    }
-
-    public void setAsistencia(int asistencia) {
-        this.asistencia = asistencia;
-    }
-
-    public int getSuplencia() {
-        return suplencia;
-    }
-
-    public void setSuplencia(int suplencia) {
-        this.suplencia = suplencia;
     }
 
     public String getFoto() {

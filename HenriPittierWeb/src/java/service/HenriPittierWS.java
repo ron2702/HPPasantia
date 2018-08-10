@@ -23,6 +23,7 @@ import controlador.modulo_estudiantes.RegistrarEstudianteComando;
 import controlador.modulo_usuarios.InicioSesionComando;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.UriInfo;
@@ -219,7 +220,7 @@ public class HenriPittierWS {
             
         } catch (Exception ex) {
             
-            Estudiante error = new Estudiante();
+            Empleado error = new Empleado();
             error.setError(RESULTADO_CODIGO_FALLIDO);
             return gson.toJson(error);
             
@@ -285,8 +286,7 @@ public class HenriPittierWS {
             
         } catch (Exception ex) {
             
-            Empleado error = new Empleado();
-            error.setError(RESULTADO_CODIGO_FALLIDO);
+            ArrayList<Empleado> error = null;
             return gson.toJson(error);
             
         }
@@ -308,7 +308,7 @@ public class HenriPittierWS {
             
         } catch (Exception ex) {
             
-            Estudiante error = new Estudiante();
+            Empleado error = new Empleado();
             error.setError(RESULTADO_CODIGO_FALLIDO);
             return gson.toJson(error);
             

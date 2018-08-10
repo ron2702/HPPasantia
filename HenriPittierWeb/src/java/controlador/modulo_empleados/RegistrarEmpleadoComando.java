@@ -23,8 +23,8 @@ public class RegistrarEmpleadoComando extends Comando{
 
     @Override
     public void execute() throws Exception {
-        DAOEmpleado daoEst = new DAOEmpleado();
-        respuesta = daoEst.registrarEmpleado(registroEmpleado);
+        DAOEmpleado daoEmp = new DAOEmpleado();
+        respuesta = daoEmp.registrarEmpleado(registroEmpleado);
     }
     
     public Empleado obtenerRespuesta(){

@@ -23,8 +23,8 @@ import static modelo.Registry.*;
 public class DAOEmpleado extends DAO{
     
     private Connection _bdCon;
-    private static String _sqlEmpleadoRegistrar = "{?=call EMPLEADO_REGISTRAR(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)}";
-    private static String _sqlEmpleadoModificar = "{?=call EMPLEADO_MODIFICAR(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)}";
+    private static String _sqlEmpleadoRegistrar = "{?=call EMPLEADO_REGISTRAR(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)}";
+    private static String _sqlEmpleadoModificar = "{?=call EMPLEADO_MODIFICAR(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)}";
     private static String _sqlEmpleadoBorrar = "{?=call EMPLEADO_BORRAR(?)}";
     private static String _sqlEmpleadosConsultar = "{call EMPLEADO_CONSULTAR_TODOS()}";
     private static String _sqlEmpleadoDetalle = "{call EMPLEADO_CONSULTAR_DETALLE(?)}";
@@ -52,22 +52,17 @@ public class DAOEmpleado extends DAO{
             cstmt.setString(6, _empleado.getSegundoApellido());
             cstmt.setString(7, _empleado.getBanco());
             cstmt.setInt(8, _empleado.getSueldoMensual());
-            cstmt.setInt(9, _empleado.getSueldoMensualExtra());
-            cstmt.setInt(10, _empleado.getSueldoQuincenal());
-            cstmt.setInt(11, _empleado.getSueldoQuincenalExtra());
-            cstmt.setDate(12, sqlFechaIngreso);
-            cstmt.setDate(13, sqlFecha);
-            cstmt.setString(14, _empleado.getTelefonoCasa());
-            cstmt.setString(15, _empleado.getTelefonoMovil());
-            cstmt.setString(16, _empleado.getCargo());
-            cstmt.setInt(17, _empleado.getAsistencia());
-            cstmt.setInt(18, _empleado.getSuplencia());
-            cstmt.setString(19, _empleado.getFoto());
-            cstmt.setString(20, _empleado.getUsuario());
-            cstmt.setString(21, _empleado.getClave());
-            cstmt.setString(22, _empleado.getEstado());
-            cstmt.setString(23, _empleado.getMunicipio());
-            cstmt.setString(24, _empleado.getParroquia());
+            cstmt.setDate(9, sqlFechaIngreso);
+            cstmt.setDate(10, sqlFecha);
+            cstmt.setString(11, _empleado.getTelefonoCasa());
+            cstmt.setString(12, _empleado.getTelefonoMovil());
+            cstmt.setString(13, _empleado.getCargo());
+            cstmt.setString(14, _empleado.getFoto());
+            cstmt.setString(15, _empleado.getUsuario());
+            cstmt.setString(16, _empleado.getClave());
+            cstmt.setString(17, _empleado.getEstado());
+            cstmt.setString(18, _empleado.getMunicipio());
+            cstmt.setString(19, _empleado.getParroquia());
             cstmt.execute();
             
             respuesta = cstmt.getInt(1);
@@ -121,22 +116,17 @@ public class DAOEmpleado extends DAO{
             cstmt.setString(6, _empleado.getSegundoApellido());
             cstmt.setString(7, _empleado.getBanco());
             cstmt.setInt(8, _empleado.getSueldoMensual());
-            cstmt.setInt(9, _empleado.getSueldoMensualExtra());
-            cstmt.setInt(10, _empleado.getSueldoQuincenal());
-            cstmt.setInt(11, _empleado.getSueldoQuincenalExtra());
-            cstmt.setDate(12, sqlFechaIngreso);
-            cstmt.setDate(13, sqlFecha);
-            cstmt.setString(14, _empleado.getTelefonoCasa());
-            cstmt.setString(15, _empleado.getTelefonoMovil());
-            cstmt.setString(16, _empleado.getCargo());
-            cstmt.setInt(17, _empleado.getAsistencia());
-            cstmt.setInt(18, _empleado.getSuplencia());
-            cstmt.setString(19, _empleado.getFoto());
-            cstmt.setString(20, _empleado.getUsuario());
-            cstmt.setString(21, _empleado.getClave());
-            cstmt.setString(22, _empleado.getEstado());
-            cstmt.setString(23, _empleado.getMunicipio());
-            cstmt.setString(24, _empleado.getParroquia());
+            cstmt.setDate(9, sqlFechaIngreso);
+            cstmt.setDate(10, sqlFecha);
+            cstmt.setString(11, _empleado.getTelefonoCasa());
+            cstmt.setString(12, _empleado.getTelefonoMovil());
+            cstmt.setString(13, _empleado.getCargo());
+            cstmt.setString(14, _empleado.getFoto());
+            cstmt.setString(15, _empleado.getUsuario());
+            cstmt.setString(16, _empleado.getClave());
+            cstmt.setString(17, _empleado.getEstado());
+            cstmt.setString(18, _empleado.getMunicipio());
+            cstmt.setString(19, _empleado.getParroquia());
             cstmt.execute();
             
             respuesta = cstmt.getInt(1);
@@ -238,16 +228,11 @@ public class DAOEmpleado extends DAO{
                                   rs.getString("segundoapellido"),
                                   rs.getString("banco"),
                                   rs.getInt("sueldomen"),
-                                  rs.getInt("sueldomenextra"),
-                                  rs.getInt("suedoquin"),
-                                  rs.getInt("sueldoquinextra"),
                                   rs.getDate("fechaingreso"),
                                   rs.getDate("fechanac"),
                                   rs.getString("telfcasa"),
                                   rs.getString("telfmovil"),
                                   rs.getString("cargo"),
-                                  rs.getInt("asistencia"),
-                                  rs.getInt("suplencia"),
                                   rs.getString("foto"),
                                   rs.getString("usuario"),
                                   rs.getString("clave"),
@@ -302,16 +287,11 @@ public class DAOEmpleado extends DAO{
                                   rs.getString("segundoapellido"),
                                   rs.getString("banco"),
                                   rs.getInt("sueldomen"),
-                                  rs.getInt("sueldomenextra"),
-                                  rs.getInt("suedoquin"),
-                                  rs.getInt("sueldoquinextra"),
                                   rs.getDate("fechaingreso"),
                                   rs.getDate("fechanac"),
                                   rs.getString("telfcasa"),
                                   rs.getString("telfmovil"),
                                   rs.getString("cargo"),
-                                  rs.getInt("asistencia"),
-                                  rs.getInt("suplencia"),
                                   rs.getString("foto"),
                                   rs.getString("usuario"),
                                   rs.getString("clave"),
