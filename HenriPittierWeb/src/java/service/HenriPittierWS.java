@@ -21,6 +21,7 @@ import controlador.modulo_estudiantes.ConsultarEstudianteDetalleComando;
 import controlador.modulo_estudiantes.ConsultarEstudiantesComando;
 import controlador.modulo_estudiantes.ModificarEstudianteComando;
 import controlador.modulo_estudiantes.RegistrarEstudianteComando;
+import controlador.modulo_representantes.BorrarRepresentanteComando;
 import controlador.modulo_representantes.ConsultarRepresentanteDetalleComando;
 import controlador.modulo_representantes.ConsultarRepresentantesComando;
 import controlador.modulo_usuarios.InicioSesionComando;
@@ -319,6 +320,30 @@ public class HenriPittierWS {
     }
     
     /*WS DE REPRESENTANTE*/
+    
+    @GET
+    @Path("borrarRepresentante")
+    @Produces("application/json")
+    public String borrarRepresentante (@QueryParam("representante") String _representante){
+        
+        Gson gson = new GsonBuilder().create();
+        Representante representanteBorrar = gson.fromJson(_representante, Representante.class);
+        BorrarRepresentanteComando cmd = new BorrarRepresentanteComando(representanteBorrar);
+        
+        try {
+            
+            cmd.execute();
+            return gson.toJson(cmd.obtenerRespuesta());
+            
+        } catch (Exception ex) {
+            
+            Representante error = new Representante();
+            error.setError(RESULTADO_CODIGO_FALLIDO);
+            return gson.toJson(error);
+            
+        }
+    }
+    
     @GET
     @Path("consultarRepresentantes")
     @Produces("application/json")

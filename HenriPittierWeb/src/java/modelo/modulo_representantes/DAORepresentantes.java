@@ -6,9 +6,11 @@ import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Types;
 import java.util.ArrayList;
 import modelo.DAO;
-import static modelo.Registry.RESULTADO_CODIGO_BIEN;
+import modelo.Registry;
+import static modelo.Registry.*;
 
 /**
  *
@@ -17,9 +19,58 @@ import static modelo.Registry.RESULTADO_CODIGO_BIEN;
 public class DAORepresentantes extends DAO {
     
     private Connection _bdCon;
+    private static String _sqlRepresentanteBorrar = "{?=call REPRESENTANTE_BORRAR(?)}";
     private static String _sqlRepresentantesConsultar = "{call REPRESENTANTE_CONSULTAR_TODOS()}";
     private static String _sqlRepresentantesDetalle = "{call REPRESENTANTE_CONSULTAR_DETALLE(?)}";
     private ResultSet rs;
+    
+    
+    public Representante borrarRepresentante (Representante _representante) throws SQLException, Exception{
+        
+        Representante _representanteFallido = new Representante();
+        CallableStatement cstmt;
+        
+        int respuesta = 0;
+        
+        try {
+            
+            _bdCon = DAO.getBdConnect();
+            cstmt = _bdCon.prepareCall(_sqlRepresentanteBorrar);
+            //Parametro de salida
+            cstmt.registerOutParameter(1, Types.INTEGER);
+            cstmt.setInt(2, _representante.getCedula());
+          
+            cstmt.execute();
+            
+            respuesta = cstmt.getInt(1);
+            
+            if(respuesta == Registry.RESULTADO_CODIGO_BIEN){
+                
+                _representante.setError(RESULTADO_CODIGO_BIEN);
+                return _representante;       
+                
+            }else{
+                
+                _representanteFallido.setError(RESULTADO_CODIGO_NO_ENCONTRADO);
+                return _representanteFallido;
+                
+            }
+            
+        } catch (SQLException ex) {
+            
+            throw ex;
+            
+        } catch (Exception ex) {
+            
+            throw ex;
+            
+        } finally {
+            
+            _bdCon.close();
+            
+        }
+        
+    }
     
     public ArrayList<Representante> consultarRepresentantes() throws Exception {
 
