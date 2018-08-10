@@ -9,6 +9,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import comun.Empleado;
 import comun.Estudiante;
+import comun.Representante;
 import comun.Usuario;
 import controlador.modulo_empleados.BorrarEmpleadoComando;
 import controlador.modulo_empleados.ConsultarEmpleadoDetalleComando;
@@ -20,6 +21,7 @@ import controlador.modulo_estudiantes.ConsultarEstudianteDetalleComando;
 import controlador.modulo_estudiantes.ConsultarEstudiantesComando;
 import controlador.modulo_estudiantes.ModificarEstudianteComando;
 import controlador.modulo_estudiantes.RegistrarEstudianteComando;
+import controlador.modulo_representantes.ConsultarRepresentantesComando;
 import controlador.modulo_usuarios.InicioSesionComando;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -314,4 +316,26 @@ public class HenriPittierWS {
             
         }
     }
+    
+    /*WS DE REPRESENTANTE*/
+    @GET
+    @Path("consultarRepresentantes")
+    @Produces("application/json")
+    public String consultarRepresentantes (){
+        
+        ConsultarRepresentantesComando cmd = new ConsultarRepresentantesComando();
+        
+        try {
+            
+            cmd.execute();
+            return gson.toJson(cmd.obtenerRespuesta());
+            
+        } catch (Exception ex) {
+            
+            ArrayList<Representante> error = null;
+            return gson.toJson(error);
+            
+        }
+    }
+    
 }
