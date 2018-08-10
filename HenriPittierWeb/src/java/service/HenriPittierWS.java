@@ -21,6 +21,7 @@ import controlador.modulo_estudiantes.ConsultarEstudianteDetalleComando;
 import controlador.modulo_estudiantes.ConsultarEstudiantesComando;
 import controlador.modulo_estudiantes.ModificarEstudianteComando;
 import controlador.modulo_estudiantes.RegistrarEstudianteComando;
+import controlador.modulo_representantes.ConsultarRepresentanteDetalleComando;
 import controlador.modulo_representantes.ConsultarRepresentantesComando;
 import controlador.modulo_usuarios.InicioSesionComando;
 import java.text.ParseException;
@@ -333,6 +334,29 @@ public class HenriPittierWS {
         } catch (Exception ex) {
             
             ArrayList<Representante> error = null;
+            return gson.toJson(error);
+            
+        }
+    }
+    
+    @GET
+    @Path("consultarRepresentanteDetalle")
+    @Produces("application/json")
+    public String consultarRepresentanteDetalle (@QueryParam("representante") String _representante){
+        
+        Gson gson = new GsonBuilder().create();
+        Representante representanteConsultar = gson.fromJson(_representante, Representante.class);
+        ConsultarRepresentanteDetalleComando cmd = new ConsultarRepresentanteDetalleComando(representanteConsultar);
+        
+        try {
+            
+            cmd.execute();
+            return gson.toJson(cmd.obtenerRespuesta());
+            
+        } catch (Exception ex) {
+            
+            Representante error = new Representante();
+            error.setError(RESULTADO_CODIGO_FALLIDO);
             return gson.toJson(error);
             
         }

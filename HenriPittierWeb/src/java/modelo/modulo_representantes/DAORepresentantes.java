@@ -69,4 +69,52 @@ public class DAORepresentantes extends DAO {
         }
     }
     
+    public Representante consultarRepresentanteDetalle(Representante _representante) throws Exception {
+
+        Representante representanteConsultar = new Representante();
+        CallableStatement cstmt;
+
+        int response = 0;
+
+        try {
+            _bdCon = DAO.getBdConnect();
+            cstmt = _bdCon.prepareCall(_sqlRepresentantesDetalle);
+            
+            cstmt.setInt(1, _representante.getCedula());
+            
+            rs = cstmt.executeQuery();
+            
+            while(rs.next()){
+                
+                representanteConsultar = new Representante(rs.getInt("cedula"), 
+                                  rs.getString("primernombre"),
+                                  rs.getString("segundonombre"),
+                                  rs.getString("primerapellido"),
+                                  rs.getString("segundoapellido"),
+                                  rs.getDate("fechanac"),
+                                  rs.getString("telefonocasa"),
+                                  rs.getString("telefonomovil"),
+                                  rs.getString("tipo"),
+                                  rs.getString("foto"),
+                                  rs.getString("estado"),
+                                  rs.getString("municipio"),
+                                  rs.getString("parroquia"));
+                representanteConsultar.setError(RESULTADO_CODIGO_BIEN);    
+            }
+            return representanteConsultar;
+
+
+        } catch (SQLException ex) {
+
+            throw ex;
+
+        } catch (Exception ex) {
+            
+            throw ex;
+
+        } finally {
+            _bdCon.close();
+        }
+    }
+    
 }
