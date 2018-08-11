@@ -7,27 +7,29 @@ package controlador.modulo_representantes;
 
 import comun.Representante;
 import controlador.Comando;
-import java.util.ArrayList;
 import modelo.modulo_representantes.DAORepresentante;
 
 /**
  *
  * @author Ronald
  */
-public class ConsultarRepresentantesComando extends Comando {
-
-    private ArrayList<Representante> respuesta;
+public class RegistrarRepresentanteComando extends Comando {
     
-    public ConsultarRepresentantesComando(){
+    private Representante registroRepresentante;
+    private Representante respuesta;
+    
+    public RegistrarRepresentanteComando(Representante _representante){
+        this.registroRepresentante = _representante;
     }
-    
+
+    @Override
     public void execute() throws Exception {
         DAORepresentante daoRep = new DAORepresentante();
-        respuesta = daoRep.consultarRepresentantes();
+        respuesta = daoRep.registrarRepresentante(registroRepresentante);
     }
     
-    public ArrayList<Representante> obtenerRespuesta(){
-        return this.respuesta;
+    public Representante obtenerRespuesta(){
+        return respuesta;
     }
     
 }

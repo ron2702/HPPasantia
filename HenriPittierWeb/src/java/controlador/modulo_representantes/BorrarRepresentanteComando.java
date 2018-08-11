@@ -7,7 +7,7 @@ package controlador.modulo_representantes;
 
 import comun.Representante;
 import controlador.Comando;
-import modelo.modulo_representantes.DAORepresentantes;
+import modelo.modulo_representantes.DAORepresentante;
 
 /**
  *
@@ -24,7 +24,7 @@ public class BorrarRepresentanteComando extends Comando {
 
     @Override
     public void execute() throws Exception {
-        DAORepresentantes daoRep = new DAORepresentantes();
+        DAORepresentante daoRep = new DAORepresentante();
         respuesta = daoRep.borrarRepresentante(borrarEmpleado);
     }
     
