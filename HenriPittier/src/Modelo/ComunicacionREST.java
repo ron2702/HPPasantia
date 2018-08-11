@@ -130,6 +130,24 @@ public class ComunicacionREST {
             throw ex;
         }
     }
+     
+     public Representante modificarRepresentante(Representante e) throws Exception {
+        try {
+            conn = null;
+            Gson gson = new GsonBuilder().create();
+            BufferedReader br = comunicar("GET", "modificarRepresentante?representante=" + URLEncoder.encode(gson.toJson(e).toString(), "UTF-8"));
+            String output;
+            Representante _representante = new Representante();
+            while ((output = br.readLine()) != null) {
+                _representante = gson.fromJson(output, Representante.class);
+            }
+            conn.disconnect();
+            return _representante;
+        }
+        catch (Exception ex){
+            throw ex;
+        }
+    }
 }
     
 
