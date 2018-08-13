@@ -23,6 +23,7 @@ import controlador.modulo_estudiantes.ConsultarEstudiantesComando;
 import controlador.modulo_estudiantes.ModificarEstudianteComando;
 import controlador.modulo_estudiantes.RegistrarEstudianteComando;
 import controlador.modulo_repest.BorrarRepEstComando;
+import controlador.modulo_repest.ConsultarRepEstComando;
 import controlador.modulo_repest.RegistrarRepEstComando;
 import controlador.modulo_representantes.BorrarRepresentanteComando;
 import controlador.modulo_representantes.ConsultarRepresentanteDetalleComando;
@@ -467,8 +468,7 @@ public class HenriPittierWS {
     public String borrarREPEST (@QueryParam("repest") String _repest){
         
         Gson gson = new GsonBuilder().create();
-        int ci = Integer.parseInt(_repest);
-        REPEST repestBorrar = /*gson.fromJson(_repest, REPEST.class)*/ new REPEST(ci);
+        REPEST repestBorrar = gson.fromJson(_repest, REPEST.class);
         BorrarRepEstComando cmd = new BorrarRepEstComando(repestBorrar);
         
         try {
@@ -480,6 +480,26 @@ public class HenriPittierWS {
             
             REPEST error = new REPEST();
             error.setError(RESULTADO_CODIGO_FALLIDO);
+            return gson.toJson(error);
+            
+        }
+    }
+    
+    @GET
+    @Path("consultarREPEST")
+    @Produces("application/json")
+    public String consultarREPEST (){
+        
+        ConsultarRepEstComando cmd = new ConsultarRepEstComando();
+        
+        try {
+            
+            cmd.execute();
+            return gson.toJson(cmd.obtenerRespuesta());
+            
+        } catch (Exception ex) {
+            
+            ArrayList<REPEST> error = null;
             return gson.toJson(error);
             
         }
