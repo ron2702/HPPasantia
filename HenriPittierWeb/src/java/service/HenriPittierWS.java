@@ -9,6 +9,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import comun.Empleado;
 import comun.Estudiante;
+import comun.REPEST;
 import comun.Representante;
 import comun.Usuario;
 import controlador.modulo_empleados.BorrarEmpleadoComando;
@@ -21,6 +22,7 @@ import controlador.modulo_estudiantes.ConsultarEstudianteDetalleComando;
 import controlador.modulo_estudiantes.ConsultarEstudiantesComando;
 import controlador.modulo_estudiantes.ModificarEstudianteComando;
 import controlador.modulo_estudiantes.RegistrarEstudianteComando;
+import controlador.modulo_repest.RegistrarRepEstComando;
 import controlador.modulo_representantes.BorrarRepresentanteComando;
 import controlador.modulo_representantes.ConsultarRepresentanteDetalleComando;
 import controlador.modulo_representantes.ConsultarRepresentantesComando;
@@ -434,4 +436,29 @@ public class HenriPittierWS {
         }
     }
     
+    /*WS DE EMPLEADO*/
+    @GET
+    @Path("registrarREPEST")
+    @Produces("application/json")
+    public String registrarREPEST (@QueryParam("cedula") String _cedula, @QueryParam("cedulaEscolar") String _cedulaEscolar){
+        
+        Gson gson = new GsonBuilder().create();
+        int ci = Integer.parseInt(_cedula);
+        int ci2 = Integer.parseInt(_cedulaEscolar);
+        REPEST representanteRepest = /*gson.fromJson(_repest, REPEST.class)*/ new REPEST(ci, ci2);
+        RegistrarRepEstComando cmd = new RegistrarRepEstComando(representanteRepest);
+        
+        try {
+        
+            cmd.execute();
+            return gson.toJson(cmd.obtenerRespuesta());
+            
+        } catch (Exception ex) {
+            
+            REPEST error = new REPEST();
+            error.setError(RESULTADO_CODIGO_FALLIDO);
+            return gson.toJson(error);
+            
+        }
+    }
 }
