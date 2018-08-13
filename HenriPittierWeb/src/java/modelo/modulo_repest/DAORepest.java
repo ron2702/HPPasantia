@@ -23,6 +23,7 @@ public class DAORepest extends DAO {
     
     private Connection _bdCon;
     private static String _sqlRepestRegistrar = "{?=call REPEST_REGISTRAR(?,?)}";
+    private static String _sqlRepestBorrar = "{?=call REPEST_BORRAR(?)}";
     private ResultSet rs;
     
     public REPEST registrarREPEST (REPEST _repest) throws SQLException, Exception{
@@ -41,6 +42,52 @@ public class DAORepest extends DAO {
             cstmt.setInt(2, _repest.getCedula());
             cstmt.setInt(3, _repest.getCedulaEscolar());
             
+            cstmt.execute();
+            
+            respuesta = cstmt.getInt(1);
+            
+            if(respuesta == Registry.RESULTADO_CODIGO_BIEN){
+                
+                _repest.setError(RESULTADO_CODIGO_BIEN);
+                return _repest;   
+                
+            }else{
+                
+                _repestFallido.setError(RESULTADO_CODIGO_NO_ENCONTRADO);
+                return _repestFallido;
+            }
+            
+        } catch (SQLException ex) {
+            
+            throw ex;
+            
+        } catch (Exception ex) {
+            
+            throw ex;
+            
+        } finally {
+            
+            _bdCon.close();
+            
+        }
+        
+    }
+    
+    public REPEST borrarREPEST (REPEST _repest) throws SQLException, Exception{
+        
+        REPEST _repestFallido = new REPEST();
+        CallableStatement cstmt;
+        
+        int respuesta = 0;
+        
+        try {
+            
+            _bdCon = DAO.getBdConnect();
+            cstmt = _bdCon.prepareCall(_sqlRepestBorrar);
+            //Parametro de salida
+            cstmt.registerOutParameter(1, Types.INTEGER);
+            cstmt.setInt(2, _repest.getCedula());
+          
             cstmt.execute();
             
             respuesta = cstmt.getInt(1);

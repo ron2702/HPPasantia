@@ -18,6 +18,10 @@ public class REPEST {
     public REPEST(){
         
     }
+    
+    public REPEST(int cedula){
+        this.cedula = cedula;
+    }
 
     public REPEST(int cedula, int cedulaEscolar) {
         this.cedula = cedula;

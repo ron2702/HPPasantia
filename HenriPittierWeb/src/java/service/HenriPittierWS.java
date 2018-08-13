@@ -22,6 +22,7 @@ import controlador.modulo_estudiantes.ConsultarEstudianteDetalleComando;
 import controlador.modulo_estudiantes.ConsultarEstudiantesComando;
 import controlador.modulo_estudiantes.ModificarEstudianteComando;
 import controlador.modulo_estudiantes.RegistrarEstudianteComando;
+import controlador.modulo_repest.BorrarRepEstComando;
 import controlador.modulo_repest.RegistrarRepEstComando;
 import controlador.modulo_representantes.BorrarRepresentanteComando;
 import controlador.modulo_representantes.ConsultarRepresentanteDetalleComando;
@@ -440,16 +441,38 @@ public class HenriPittierWS {
     @GET
     @Path("registrarREPEST")
     @Produces("application/json")
-    public String registrarREPEST (@QueryParam("cedula") String _cedula, @QueryParam("cedulaEscolar") String _cedulaEscolar){
+    public String registrarREPEST (@QueryParam("repest") String _repest){
         
         Gson gson = new GsonBuilder().create();
-        int ci = Integer.parseInt(_cedula);
-        int ci2 = Integer.parseInt(_cedulaEscolar);
-        REPEST representanteRepest = /*gson.fromJson(_repest, REPEST.class)*/ new REPEST(ci, ci2);
-        RegistrarRepEstComando cmd = new RegistrarRepEstComando(representanteRepest);
+        REPEST registrarRepest = gson.fromJson(_repest, REPEST.class);
+        RegistrarRepEstComando cmd = new RegistrarRepEstComando(registrarRepest);
         
         try {
         
+            cmd.execute();
+            return gson.toJson(cmd.obtenerRespuesta());
+            
+        } catch (Exception ex) {
+            
+            REPEST error = new REPEST();
+            error.setError(RESULTADO_CODIGO_FALLIDO);
+            return gson.toJson(error);
+            
+        }
+    }
+    
+    @GET
+    @Path("borrarREPEST")
+    @Produces("application/json")
+    public String borrarREPEST (@QueryParam("repest") String _repest){
+        
+        Gson gson = new GsonBuilder().create();
+        int ci = Integer.parseInt(_repest);
+        REPEST repestBorrar = /*gson.fromJson(_repest, REPEST.class)*/ new REPEST(ci);
+        BorrarRepEstComando cmd = new BorrarRepEstComando(repestBorrar);
+        
+        try {
+            
             cmd.execute();
             return gson.toJson(cmd.obtenerRespuesta());
             
