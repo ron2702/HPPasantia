@@ -5,6 +5,7 @@
  */
 package Vista;
 
+import Vista.Frame.InicioSesion;
 import Modelo.ComunicacionREST;
 import comun.Empleado;
 import comun.Representante;

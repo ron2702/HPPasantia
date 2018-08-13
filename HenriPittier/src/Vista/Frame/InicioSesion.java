@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Vista;
+package Vista.Frame;
 
 import Modelo.ComunicacionREST;
 import comun.Usuario;
@@ -64,6 +64,8 @@ public class InicioSesion extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
         lbl_ventanaInicio = new javax.swing.JPanel();
         txt_nombreUsuario = new javax.swing.JTextField();
         txt_claveUsuario = new javax.swing.JPasswordField();
@@ -71,9 +73,13 @@ public class InicioSesion extends javax.swing.JFrame {
         lbl_tituloInicioSesion = new javax.swing.JLabel();
         pnl_verde = new javax.swing.JPanel();
         pnl_blanco = new javax.swing.JPanel();
-        lbl_logo = new javax.swing.JLabel();
         lbl_rif = new javax.swing.JLabel();
         lbl_nit = new javax.swing.JLabel();
+        lbl_logo = new javax.swing.JLabel();
+
+        jTextArea1.setColumns(20);
+        jTextArea1.setRows(5);
+        jScrollPane1.setViewportView(jTextArea1);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -161,29 +167,34 @@ public class InicioSesion extends javax.swing.JFrame {
         lbl_nit.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         lbl_nit.setText("N.I.T. 032550532 ");
 
+        lbl_logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/img/logomini.png"))); // NOI18N
+
         javax.swing.GroupLayout pnl_blancoLayout = new javax.swing.GroupLayout(pnl_blanco);
         pnl_blanco.setLayout(pnl_blancoLayout);
         pnl_blancoLayout.setHorizontalGroup(
             pnl_blancoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnl_blancoLayout.createSequentialGroup()
-                .addGap(108, 108, 108)
                 .addGroup(pnl_blancoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lbl_logo)
-                    .addGroup(pnl_blancoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(lbl_nit)
-                        .addComponent(lbl_rif)))
-                .addContainerGap(405, Short.MAX_VALUE))
+                    .addGroup(pnl_blancoLayout.createSequentialGroup()
+                        .addGap(89, 89, 89)
+                        .addGroup(pnl_blancoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lbl_nit)
+                            .addComponent(lbl_rif)))
+                    .addGroup(pnl_blancoLayout.createSequentialGroup()
+                        .addGap(79, 79, 79)
+                        .addComponent(lbl_logo)))
+                .addContainerGap(419, Short.MAX_VALUE))
         );
         pnl_blancoLayout.setVerticalGroup(
             pnl_blancoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnl_blancoLayout.createSequentialGroup()
-                .addGap(57, 57, 57)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnl_blancoLayout.createSequentialGroup()
+                .addContainerGap(51, Short.MAX_VALUE)
                 .addComponent(lbl_logo)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
                 .addComponent(lbl_rif)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lbl_nit)
-                .addContainerGap(57, Short.MAX_VALUE))
+                .addGap(38, 38, 38))
         );
 
         getContentPane().add(pnl_blanco, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 630, 250));
@@ -208,10 +219,10 @@ public class InicioSesion extends javax.swing.JFrame {
             Usuario validar = com.iniciarSesion(usuarioLogin);
             
             if(validar.getError() == 200)
-            {
-                setVisible(false);
-                Menu me = new Menu();
-                me.setVisible(true);
+            {          
+                AppMenu nuevaVentana = new AppMenu();
+                nuevaVentana.setVisible(true);
+                this.setVisible(false);
             }
             else
             {
@@ -262,6 +273,8 @@ public class InicioSesion extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_Ingresar;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JLabel lbl_logo;
     private javax.swing.JLabel lbl_nit;
     private javax.swing.JLabel lbl_rif;

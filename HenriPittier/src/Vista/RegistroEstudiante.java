@@ -153,9 +153,9 @@ public class RegistroEstudiante extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_regresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_regresarActionPerformed
-        this.setVisible(false);
-        Menu me = new Menu();
-        me.setVisible(true);
+//        this.setVisible(false);
+//        Menu me = new Menu();
+//        me.setVisible(true);
     }//GEN-LAST:event_btn_regresarActionPerformed
 
     /**
