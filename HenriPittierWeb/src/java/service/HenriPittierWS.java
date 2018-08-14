@@ -24,6 +24,7 @@ import controlador.modulo_estudiantes.ModificarEstudianteComando;
 import controlador.modulo_estudiantes.RegistrarEstudianteComando;
 import controlador.modulo_repest.BorrarRepEstComando;
 import controlador.modulo_repest.ConsultarRepEstComando;
+import controlador.modulo_repest.ConsultarRepEstDetalleComando;
 import controlador.modulo_repest.RegistrarRepEstComando;
 import controlador.modulo_representantes.BorrarRepresentanteComando;
 import controlador.modulo_representantes.ConsultarRepresentanteDetalleComando;
@@ -500,6 +501,30 @@ public class HenriPittierWS {
         } catch (Exception ex) {
             
             ArrayList<REPEST> error = null;
+            return gson.toJson(error);
+            
+        }
+    }
+    
+    @GET
+    @Path("consultarREPESTDetalle")
+    @Produces("application/json")
+    public String consultarREPESTDetalle (@QueryParam("repest") String _repest){
+        
+        Gson gson = new GsonBuilder().create();
+        int ci = Integer.parseInt(_repest);
+        REPEST repestConsultar = /*gson.fromJson(_repest, REPEST.class)*/ new REPEST(ci);
+        ConsultarRepEstDetalleComando cmd = new ConsultarRepEstDetalleComando(repestConsultar);
+        
+        try {
+            
+            cmd.execute();
+            return gson.toJson(cmd.obtenerRespuesta());
+            
+        } catch (Exception ex) {
+            
+            REPEST error = new REPEST();
+            error.setError(RESULTADO_CODIGO_FALLIDO);
             return gson.toJson(error);
             
         }

@@ -164,4 +164,45 @@ public class DAORepest extends DAO {
         }
     }
     
+    public REPEST consultarREPESTDetalle(REPEST _repest) throws Exception {
+        
+        REPEST repestConsultado = new REPEST();
+        CallableStatement cstmt;
+
+        int response = 0;
+
+        try {
+            
+            _bdCon = DAO.getBdConnect();
+            cstmt = _bdCon.prepareCall(_sqlRepestDetalle);
+            cstmt.setInt(1, _repest.getCedula());
+            rs = cstmt.executeQuery();
+            
+            while(rs.next()){
+                
+                repestConsultado = new REPEST(rs.getInt("cedularep"), 
+                                  rs.getString("primernombrerep"),
+                                  rs.getString("primerapellidorep"),
+                                  rs.getInt("cedulaescolares"),
+                                  rs.getString("primernombrees"),
+                                  rs.getString("primerapellidoes"));
+                repestConsultado.setError(RESULTADO_CODIGO_BIEN);
+                
+            }
+            return repestConsultado;
+
+
+        } catch (SQLException ex) {
+
+            throw ex;
+
+        } catch (Exception ex) {
+            
+            throw ex;
+
+        } finally {
+            _bdCon.close();
+        }
+    }
+    
 }
