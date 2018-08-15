@@ -1,5 +1,5 @@
 /*LUGAR*/
-INSERT INTO LUGAR VALUES (1, 'País', 'Venezuela', null);
+INSERT INTO LUGAR VALUES (nextval('lugar_codigo_seq'),'País', 'Venezuela', null);
 INSERT INTO LUGAR VALUES (nextval('lugar_codigo_seq'),'Estado','Amazonas',1);
 INSERT INTO LUGAR VALUES (nextval('lugar_codigo_seq'),'Estado','Anzoátegui',1);
 INSERT INTO LUGAR VALUES (nextval('lugar_codigo_seq'),'Estado','Apure',1);

@@ -19,6 +19,8 @@ $$ LANGUAGE plpgsql;
 
 
 /****************************************CRUD EMPLEADO******************************************/
+
+/*---------------------REGISTRAR EMPLEADO------------------------*/
 CREATE OR REPLACE FUNCTION EMPLEADO_REGISTRAR(integer, varchar(30), varchar(30), varchar(30), varchar(30), varchar(20), integer, date, date, varchar(11), varchar(11), varchar(30), varchar(100), varchar(50), varchar(80), varchar(80), varchar(80), varchar(80)) RETURNS integer AS $$
 DECLARE
  RESULT integer;
@@ -29,6 +31,7 @@ BEGIN
 
 		FK_LUGAR := (SELECT P.CODIGO FROM LUGAR m, LUGAR e, LUGAR p WHERE E.NOMBRE = $16 AND M.NOMBRE = $17 AND P.NOMBRE = $18 AND E.CODIGO = M.FK_LUGAR AND M.CODIGO = P.FK_LUGAR);
 		INSERT INTO EMPLEADO (CEDULA, PRIMERNOMBRE, SEGUNDONOMBRE, PRIMERAPELLIDO, SEGUNDOAPELLIDO, BANCO, SUELDOMENSUAL, FECHAINGRESO, FECHANAC, TELEFONOCASA, TELEFONOMOVIL, CARGO, FOTO, NOMBREUSUARIO, CONTRASENA, FK_LUGAR) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, FK_LUGAR);
+		
 		RESULT := 201;
   	
   	ELSE
@@ -39,9 +42,9 @@ BEGIN
  	RETURN RESULT;
 END;
 $$ LANGUAGE plpgsql;
+/*----------------------REGISTRAR EMPLEADO-----------------------*/
 
-
-
+/*----------------CONSULTAR TODOS LOS EMPLEADOS-----------------*/
 CREATE OR REPLACE FUNCTION EMPLEADO_CONSULTAR_TODOS() RETURNS TABLE(CEDULA integer, PRIMERNOMBRE varchar(30), SEGUNDONOMBRE varchar(30), PRIMERAPELLIDO varchar(30), SEGUNDOAPELLIDO varchar(30), BANCO varchar(20), SUELDOMEN integer, FECHAINGRESO date, FECHANAC date, TELFCASA varchar(11), TELFMOVIL varchar(11), CARGO varchar(30), FOTO varchar(100), USUARIO varchar(50), CLAVE varchar(15), ESTADO varchar(80), MUNICIPIO varchar(80), PARROQUIA varchar(80)) AS $$
 DECLARE
 
@@ -53,7 +56,9 @@ BEGIN
 	 ;
 END;
 $$ LANGUAGE plpgsql;
+/*----------------CONSULTAR TODOS LOS EMPLEADOS-----------------*/
 
+/*-----------------CONSULTAR EMPLEADOS POR CEDULA-----------------*/
 CREATE OR REPLACE FUNCTION EMPLEADO_CONSULTAR_DETALLE(integer) RETURNS TABLE(CEDULA integer, PRIMERNOMBRE varchar(30), SEGUNDONOMBRE varchar(30), PRIMERAPELLIDO varchar(30), SEGUNDOAPELLIDO varchar(30), BANCO varchar(20), SUELDOMEN integer, FECHAINGRESO date, FECHANAC date, TELFCASA varchar(11), TELFMOVIL varchar(11), CARGO varchar(30), FOTO varchar(100), USUARIO varchar(50), CLAVE varchar(15), ESTADO varchar(80), MUNICIPIO varchar(80), PARROQUIA varchar(80)) AS $$
 DECLARE
 
@@ -65,9 +70,9 @@ BEGIN
 	 ;
 END;
 $$ LANGUAGE plpgsql;
+/*-----------------CONSULTAR EMPLEADOS POR CEDULA-----------------*/
 
-
-
+/*-----------------------MODIFICAR EMPLEADOS-----------------------*/
 CREATE OR REPLACE FUNCTION EMPLEADO_MODIFICAR(integer, varchar(30), varchar(30), varchar(30), varchar(30), varchar(20), integer, date, date, varchar(11), varchar(11), varchar(30), varchar(100), varchar(50), varchar(80), varchar(80), varchar(80), varchar(80)) RETURNS integer AS $$
 DECLARE
  RESULT integer;
@@ -78,6 +83,7 @@ BEGIN
 
 		lugar := (SELECT P.CODIGO FROM LUGAR m, LUGAR e, LUGAR p WHERE E.NOMBRE = $16 AND M.NOMBRE = $17 AND P.NOMBRE = $18 AND E.CODIGO = M.FK_LUGAR AND M.CODIGO = P.FK_LUGAR);
 		UPDATE EMPLEADO SET CEDULA = $1, PRIMERNOMBRE = $2, SEGUNDONOMBRE = $3, PRIMERAPELLIDO = $4, SEGUNDOAPELLIDO = $5, BANCO = $6, SUELDOMENSUAL = $7, FECHAINGRESO = $8, FECHANAC = $9, TELEFONOCASA = $10, TELEFONOMOVIL = $11, CARGO = $12, FOTO = $13, NOMBREUSUARIO = $14, CONTRASENA = $15, FK_LUGAR = lugar WHERE CEDULA = $1;
+		
 		RESULT := 201;
   	
   	ELSE
@@ -88,8 +94,9 @@ BEGIN
  	RETURN RESULT;
 END;
 $$ LANGUAGE plpgsql;
+/*-----------------------MODIFICAR EMPLEADOS-----------------------*/
 
-
+/*-------------------------BORRAR EMPLEADOS-------------------------*/
 CREATE OR REPLACE FUNCTION EMPLEADO_BORRAR(integer) RETURNS integer AS $$
 DECLARE
  RESULT integer;
@@ -98,6 +105,7 @@ BEGIN
 	IF ((SELECT COUNT(*) FROM EMPLEADO WHERE CEDULA = $1) = 1) THEN 
 
 		DELETE FROM EMPLEADO WHERE CEDULA = $1;
+		
 		RESULT := 200;
 
 	ELSE
@@ -108,6 +116,131 @@ BEGIN
 	RETURN RESULT;
 END;
 $$ LANGUAGE plpgsql;
+/*-------------------------BORRAR EMPLEADOS-------------------------*/
 
 
+/****************************************CRUD INASISTENCIA******************************************/
 
+/*------------------REGISTRAR INASISTENCIA--------------------*/
+CREATE OR REPLACE FUNCTION INASISTENCIA_REGISTRAR(integer, varchar(15), integer, integer) RETURNS integer AS $$
+DECLARE
+ RESULT integer;
+
+BEGIN
+	 INSERT INTO INASISTENCIA (DIASFALTADOS, MES, ANO, FK_EMPLEADO) VALUES ($1, $2, $3, $4);
+	 
+	  RESULT := 201;
+
+ 	 RETURN RESULT;
+END;
+$$ LANGUAGE plpgsql;
+/*------------------REGISTRAR INASISTENCIA--------------------*/
+
+/*--------------CONSULTAR INASISTENCIAS X EMPLEADO-------------*/
+CREATE OR REPLACE FUNCTION INASISTENCIA_CONSULTAR_DETALLE(integer) RETURNS TABLE(CEDULA integer, DIASFALTADOS integer, MES varchar(15), ANO integer) AS $$
+DECLARE
+
+BEGIN
+	 RETURN QUERY
+	 SELECT INA.FK_EMPLEADO, INA.DIASFALTADOS, INA.MES, INA.ANO
+	 FROM INASISTENCIA INA
+	 WHERE INA.FK_EMPLEADO = $1		
+	 ;
+END;
+$$ LANGUAGE plpgsql;
+/*--------------CONSULTAR INASISTENCIAS X EMPLEADO-------------*/
+
+/*------------MODIFICAR INASISTENCIAS X EMPLEADO---------------*/
+CREATE OR REPLACE FUNCTION INASISTENCIA_MODIFICAR(integer, varchar(15), integer, integer) RETURNS integer AS $$
+DECLARE
+ RESULT integer;
+
+BEGIN
+	IF (SELECT COUNT(*) FROM INASISTENCIA WHERE ((FK_EMPLEADO = $4) AND (MES = $2) AND (ANO = $3)) = 1) THEN
+		UPDATE INASISTENCIA SET DIASFALTADOS = $1 WHERE ((FK_EMPLEADO = $4) AND (MES = $2) AND (ANO = $3));
+		
+		RESULT := 201;
+  	
+  	ELSE
+	
+		RESULT := 204;
+	
+	END IF;
+ 	RETURN RESULT;
+END;
+$$ LANGUAGE plpgsql;
+/*------------MODIFICAR INASISTENCIAS X EMPLEADO---------------*/
+
+/*--------------BORRAR INASISTENCIAS X EMPLEADO----------------*/
+CREATE OR REPLACE FUNCTION INASISTENCIA_BORRAR(integer, varchar(15), integer, integer) RETURNS integer AS $$
+DECLARE
+ RESULT integer;
+
+BEGIN
+	IF (SELECT COUNT(*) FROM INASISTENCIA WHERE ((FK_EMPLEADO = $4) AND (MES = $2) AND (ANO = $3)) = 1) THEN
+
+		DELETE FROM INASISTENCIA WHERE ID = (SELECT ID FROM INASISTENCIA WHERE ((FK_EMPLEADO = $4) AND (MES = $2) AND (ANO = $3)) = 1);
+		
+		RESULT := 200;
+
+	ELSE
+
+		RESULT := 204;
+
+	END IF;
+	RETURN RESULT;
+END;
+$$ LANGUAGE plpgsql;
+/*--------------BORRAR INASISTENCIAS X EMPLEADO----------------*/
+
+/****************************************CRUD SUPLENCIA ******************************************/
+/*------------------REGISTRAR SUPLENCIA--------------------*/
+CREATE OR REPLACE FUNCTION SUPLENCIA_REGISTRAR(integer, varchar(15), integer, integer) RETURNS integer AS $$
+DECLARE
+ RESULT integer;
+
+BEGIN
+	 INSERT INTO SUPLENCIA (DIASFALTADOS, MES, ANO, FK_EMPLEADO) VALUES ($1, $2, $3, $4);
+	 
+	  RESULT := 201;
+
+ 	 RETURN RESULT;
+END;
+$$ LANGUAGE plpgsql;
+/*------------------REGISTRAR INASISTENCIA--------------------*/
+
+/*------------CONSULTAR INASISTENCIAS X EMPLEADO---------------*/
+CREATE OR REPLACE FUNCTION SUPLENCIA_CONSULTAR_DETALLE(integer) RETURNS TABLE(CEDULA integer, DIASFALTADOS integer, MES varchar(15), ANO integer) AS $$
+DECLARE
+
+BEGIN
+	 RETURN QUERY
+	 SELECT SU.FK_EMPLEADO, SU.DIASFALTADOS, SU.MES, SU.ANO
+	 FROM SUPLENCIA SU
+	 WHERE SU.FK_EMPLEADO = $1		
+	 ;
+END;
+$$ LANGUAGE plpgsql;
+/*------------CONSULTAR INASISTENCIAS X EMPLEADO---------------*/
+
+/*--------------BORRAR SUPLENCIA X EMPLEADO----------------*/
+CREATE OR REPLACE FUNCTION SUPLENCIA_BORRAR(integer, varchar(15), integer, integer) RETURNS integer AS $$
+DECLARE
+ RESULT integer;
+
+BEGIN
+	IF (SELECT COUNT(*) FROM SUPLENCIA WHERE ((FK_EMPLEADO = $4) AND (MES = $2) AND (ANO = $3)) = 1) THEN
+
+		DELETE FROM SUPLENCIA WHERE ID = (SELECT ID FROM SUPLENCIA WHERE ((FK_EMPLEADO = $4) AND (MES = $2) AND (ANO = $3)) = 1);
+		
+		RESULT := 200;
+
+	ELSE
+
+		RESULT := 204;
+
+	END IF;
+	RETURN RESULT;
+END;
+$$ LANGUAGE plpgsql;
+/*--------------BORRAR SUPLENCIA X EMPLEADO----------------*/

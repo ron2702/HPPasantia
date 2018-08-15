@@ -5,8 +5,8 @@
  */
 package Vista;
 
-import Vista.Frame.InicioSesion;
-import Modelo.ComunicacionREST;
+import vista.frame.InicioSesion;
+import modelo.ComunicacionREST;
 import comun.Empleado;
 import comun.Representante;
 import comun.Usuario;

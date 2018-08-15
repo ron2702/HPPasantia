@@ -3,34 +3,32 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Vista.Frame;
+package vista.frame;
 
-import Vista.Frame.InicioSesion;
-import Vista.Panel.Empleados.ModificarEmpleado;
-import Vista.Panel.Inicio;
-import Vista.Panel.Empleados.RegistrarEmpleado;
+//import Vista.Frame.InicioSesion;
+import vista.panel.empleados.ModificarEmpleado;
+import vista.panel.Inicio;
+import vista.panel.empleados.RegistrarEmpleado;
 import java.awt.CardLayout;
 
-/**
- *
- * @author LuisAlejandro
- */
+
 public class AppMenu extends javax.swing.JFrame {
     final static String PANELINICIO = "PANELINICIO";
     final static String REGISTRAREMPLEADO = "REGISTRAREMPELADO";
     final static String MODIFICAREMPLEADO = "MODIFICAREMPLEADO";
-    Inicio inicio = new Inicio();
-    RegistrarEmpleado registrarEmp = new RegistrarEmpleado();
-    ModificarEmpleado modificarEmp = new ModificarEmpleado();
+    Inicio inicioPanel = new Inicio();
+    RegistrarEmpleado registrarEmpleadoPanel = new RegistrarEmpleado();
+    ModificarEmpleado modificarEmpleadoPanel = new ModificarEmpleado();
+   
     /**
      * Creates new form AppMenu
      */
     public AppMenu() {
         initComponents();
         this.setLocationRelativeTo(null);
-        contentPane.add(inicio, PANELINICIO);
-        contentPane.add(registrarEmp, REGISTRAREMPLEADO);
-        contentPane.add(modificarEmp, MODIFICAREMPLEADO);
+        contentPane.add(inicioPanel, PANELINICIO);
+        contentPane.add(registrarEmpleadoPanel, REGISTRAREMPLEADO);
+        contentPane.add(modificarEmpleadoPanel, MODIFICAREMPLEADO);
     }
 
     /**
@@ -44,7 +42,6 @@ public class AppMenu extends javax.swing.JFrame {
 
         contentPane = new javax.swing.JPanel();
         barraMenu = new javax.swing.JMenuBar();
-        menuInicio = new javax.swing.JMenu();
         menuEstudiantes = new javax.swing.JMenu();
         registrarEstudiante = new javax.swing.JMenuItem();
         consultarEstudiante = new javax.swing.JMenuItem();
@@ -61,20 +58,14 @@ public class AppMenu extends javax.swing.JFrame {
         modificarEmpleado = new javax.swing.JMenuItem();
         eliminarEmpleado = new javax.swing.JMenuItem();
         menuConfiguracion = new javax.swing.JMenu();
+        inicio = new javax.swing.JMenuItem();
+        menuSalir = new javax.swing.JMenu();
         cerrarSesion = new javax.swing.JMenuItem();
         salirAplicacion = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         contentPane.setLayout(new java.awt.CardLayout());
-
-        menuInicio.setText("Inicio");
-        menuInicio.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menuInicioActionPerformed(evt);
-            }
-        });
-        barraMenu.add(menuInicio);
 
         menuEstudiantes.setText("Estudiantes");
 
@@ -186,13 +177,23 @@ public class AppMenu extends javax.swing.JFrame {
 
         menuConfiguracion.setText("Salir");
 
+        inicio.setText("Inicio");
+        inicio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                inicioActionPerformed(evt);
+            }
+        });
+        menuConfiguracion.add(inicio);
+
+        menuSalir.setText("Salir");
+
         cerrarSesion.setText("Cerrar Sesion");
         cerrarSesion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cerrarSesionActionPerformed(evt);
             }
         });
-        menuConfiguracion.add(cerrarSesion);
+        menuSalir.add(cerrarSesion);
 
         salirAplicacion.setText("Salir de la aplicacion");
         salirAplicacion.addActionListener(new java.awt.event.ActionListener() {
@@ -200,7 +201,9 @@ public class AppMenu extends javax.swing.JFrame {
                 salirAplicacionActionPerformed(evt);
             }
         });
-        menuConfiguracion.add(salirAplicacion);
+        menuSalir.add(salirAplicacion);
+
+        menuConfiguracion.add(menuSalir);
 
         barraMenu.add(menuConfiguracion);
 
@@ -280,10 +283,10 @@ public class AppMenu extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_salirAplicacionActionPerformed
 
-    private void menuInicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuInicioActionPerformed
+    private void inicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inicioActionPerformed
         CardLayout cardPanel = (CardLayout)(contentPane.getLayout());
         cardPanel.show(contentPane, PANELINICIO);
-    }//GEN-LAST:event_menuInicioActionPerformed
+    }//GEN-LAST:event_inicioActionPerformed
 
     /**
      * @param args the command line arguments
@@ -330,11 +333,12 @@ public class AppMenu extends javax.swing.JFrame {
     private javax.swing.JMenuItem eliminarEmpleado;
     private javax.swing.JMenuItem eliminarEstudiante;
     private javax.swing.JMenuItem eliminarRepresentante;
+    private javax.swing.JMenuItem inicio;
     private javax.swing.JMenu menuConfiguracion;
     private javax.swing.JMenu menuEmpleados;
     private javax.swing.JMenu menuEstudiantes;
-    private javax.swing.JMenu menuInicio;
     private javax.swing.JMenu menuRepresentantes;
+    private javax.swing.JMenu menuSalir;
     private javax.swing.JMenuItem modificarEmpleado;
     private javax.swing.JMenuItem modificarEstudiante;
     private javax.swing.JMenuItem modificarRepresentante;

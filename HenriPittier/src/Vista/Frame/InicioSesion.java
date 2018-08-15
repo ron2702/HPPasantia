@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Vista.Frame;
+package vista.frame;
 
-import Modelo.ComunicacionREST;
+import modelo.ComunicacionREST;
 import comun.Usuario;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
+import java.net.MalformedURLException; 
 import java.net.URL;
 import java.security.MessageDigest;
 import java.util.logging.Level;
