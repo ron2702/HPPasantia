@@ -3,9 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package vista.panel.empleados;
-
-import vista.panel.empleados.*;
+package vistas.panel.empleados;
 
 /**
  *

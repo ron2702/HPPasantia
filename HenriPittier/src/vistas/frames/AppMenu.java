@@ -3,13 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package vista.frame;
+package vistas.frames;
 
 //import Vista.Frame.InicioSesion; 
-import vista.frame.*;
-import vista.panel.empleados.ModificarEmpleado;
-import vista.panel.Inicio;
-import vista.panel.empleados.RegistrarEmpleado;
+import vistas.panel.empleados.ModificarEmpleado;
+import vistas.panel.Inicio;
+import vistas.panel.empleados.RegistrarEmpleado;
 import java.awt.CardLayout;
 
 
@@ -315,7 +314,6 @@ public class AppMenu extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(AppMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */

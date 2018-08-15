@@ -3,9 +3,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package vista.frame;
+package vistas.frames;
 
-import vista.frame.*;
 import modelo.ComunicacionREST;
 import comun.Usuario;
 import java.net.HttpURLConnection;
@@ -262,7 +261,6 @@ public class InicioSesion extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(InicioSesion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */

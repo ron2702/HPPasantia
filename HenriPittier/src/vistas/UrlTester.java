@@ -3,10 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package vista;
+package vistas;
 
-import vista.*;
-import vista.frame.InicioSesion;
+import vistas.frames.InicioSesion;
 import modelo.ComunicacionREST;
 import comun.Empleado;
 import comun.Representante;
@@ -119,7 +118,6 @@ public class UrlTester extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(UrlTester.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */

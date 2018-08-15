@@ -3,20 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package vista.panel.empleados;
-
-import vista.panel.empleados.*;
+package vistas.panel;
 
 /**
  *
  * @author LuisAlejandro
  */
-public class ModificarEmpleado extends javax.swing.JPanel {
+public class Inicio extends javax.swing.JPanel {
 
     /**
      * Creates new form RegistrarEmpleado
      */
-    public ModificarEmpleado() {
+    public Inicio() {
         initComponents();
     }
 
@@ -29,30 +27,22 @@ public class ModificarEmpleado extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-
+        setBackground(new java.awt.Color(204, 204, 204));
         setPreferredSize(new java.awt.Dimension(1047, 789));
-
-        jLabel1.setText("Empleados modificar");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jLabel1)
-                .addGap(0, 825, Short.MAX_VALUE))
+            .addGap(0, 922, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jLabel1)
-                .addGap(0, 709, Short.MAX_VALUE))
+            .addGap(0, 723, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }

@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package vista.panel.empleados;
+package controlador;
 
-import vista.panel.empleados.*;
+import vistas.panel.empleados.*;
 
 /**
  *
