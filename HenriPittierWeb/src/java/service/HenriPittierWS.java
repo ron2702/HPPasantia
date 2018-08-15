@@ -23,6 +23,7 @@ import controlador.modulo_estudiantes.ConsultarEstudianteDetalleComando;
 import controlador.modulo_estudiantes.ConsultarEstudiantesComando;
 import controlador.modulo_estudiantes.ModificarEstudianteComando;
 import controlador.modulo_estudiantes.RegistrarEstudianteComando;
+import controlador.modulo_grupos.BorrarGrupoComando;
 import controlador.modulo_grupos.ModificarGrupoComando;
 import controlador.modulo_grupos.RegistrarGrupoComando;
 import controlador.modulo_repest.BorrarRepEstComando;
@@ -569,6 +570,29 @@ public class HenriPittierWS {
         
         try {
         
+            cmd.execute();
+            return gson.toJson(cmd.obtenerRespuesta());
+            
+        } catch (Exception ex) {
+            
+            Grupo error = new Grupo();
+            error.setError(RESULTADO_CODIGO_FALLIDO);
+            return gson.toJson(error);
+            
+        }
+    }
+    
+    @GET
+    @Path("borrarGrupo")
+    @Produces("application/json")
+    public String borrarGrupo (@QueryParam("grupo") String _grupo){
+        
+        Gson gson = new GsonBuilder().create();
+        Grupo grupoBorrar = /*gson.fromJson(_grupo, Grupo.class)*/ new Grupo(_grupo);
+        BorrarGrupoComando cmd = new BorrarGrupoComando(grupoBorrar);
+        
+        try {
+            
             cmd.execute();
             return gson.toJson(cmd.obtenerRespuesta());
             

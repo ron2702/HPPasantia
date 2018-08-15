@@ -124,4 +124,51 @@ public class DAOGrupo extends DAO{
             
         }
     }
+    
+    public Grupo borrarGrupo (Grupo _grupo) throws SQLException, Exception{
+        
+        Grupo _grupoFallido = new Grupo();
+        CallableStatement cstmt;
+        
+        int respuesta = 0;
+        
+        try {
+            
+            _bdCon = DAO.getBdConnect();
+            cstmt = _bdCon.prepareCall(_sqlGrupoBorrar);
+            //Parametro de salida
+            cstmt.registerOutParameter(1, Types.INTEGER);
+            cstmt.setString(2, _grupo.getCodigo());
+          
+            cstmt.execute();
+            
+            respuesta = cstmt.getInt(1);
+            
+            if(respuesta == Registry.RESULTADO_CODIGO_BIEN){
+                
+                _grupo.setError(RESULTADO_CODIGO_BIEN);
+                return _grupo;       
+                
+            }else{
+                
+                _grupoFallido.setError(RESULTADO_CODIGO_NO_ENCONTRADO);
+                return _grupoFallido;
+                
+            }
+            
+        } catch (SQLException ex) {
+            
+            throw ex;
+            
+        } catch (Exception ex) {
+            
+            throw ex;
+            
+        } finally {
+            
+            _bdCon.close();
+            
+        }
+        
+    }
 }
