@@ -4,14 +4,6 @@
   <NonVisualComponents>
     <Menu class="javax.swing.JMenuBar" name="barraMenu">
       <SubComponents>
-        <Menu class="javax.swing.JMenu" name="menuInicio">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Inicio"/>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuInicioActionPerformed"/>
-          </Events>
-        </Menu>
         <Menu class="javax.swing.JMenu" name="menuEstudiantes">
           <Properties>
             <Property name="text" type="java.lang.String" value="Estudiantes"/>
@@ -134,22 +126,37 @@
             <Property name="text" type="java.lang.String" value="Salir"/>
           </Properties>
           <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="cerrarSesion">
+            <MenuItem class="javax.swing.JMenuItem" name="inicio">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Cerrar Sesion"/>
+                <Property name="text" type="java.lang.String" value="Inicio"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cerrarSesionActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="inicioActionPerformed"/>
               </Events>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="salirAplicacion">
+            <Menu class="javax.swing.JMenu" name="menuSalir">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Salir de la aplicacion"/>
+                <Property name="text" type="java.lang.String" value="Salir"/>
               </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="salirAplicacionActionPerformed"/>
-              </Events>
-            </MenuItem>
+              <SubComponents>
+                <MenuItem class="javax.swing.JMenuItem" name="cerrarSesion">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Cerrar Sesion"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cerrarSesionActionPerformed"/>
+                  </Events>
+                </MenuItem>
+                <MenuItem class="javax.swing.JMenuItem" name="salirAplicacion">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Salir de la aplicacion"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="salirAplicacionActionPerformed"/>
+                  </Events>
+                </MenuItem>
+              </SubComponents>
+            </Menu>
           </SubComponents>
         </Menu>
       </SubComponents>
