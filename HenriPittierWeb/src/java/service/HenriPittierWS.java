@@ -9,6 +9,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import comun.Empleado;
 import comun.Estudiante;
+import comun.Grupo;
 import comun.REPEST;
 import comun.Representante;
 import comun.Usuario;
@@ -22,6 +23,8 @@ import controlador.modulo_estudiantes.ConsultarEstudianteDetalleComando;
 import controlador.modulo_estudiantes.ConsultarEstudiantesComando;
 import controlador.modulo_estudiantes.ModificarEstudianteComando;
 import controlador.modulo_estudiantes.RegistrarEstudianteComando;
+import controlador.modulo_grupos.ModificarGrupoComando;
+import controlador.modulo_grupos.RegistrarGrupoComando;
 import controlador.modulo_repest.BorrarRepEstComando;
 import controlador.modulo_repest.ConsultarRepEstComando;
 import controlador.modulo_repest.ConsultarRepEstDetalleComando;
@@ -439,7 +442,7 @@ public class HenriPittierWS {
         }
     }
     
-    /*WS DE EMPLEADO*/
+    /*WS DE REPEST*/
     @GET
     @Path("registrarREPEST")
     @Produces("application/json")
@@ -524,6 +527,54 @@ public class HenriPittierWS {
         } catch (Exception ex) {
             
             REPEST error = new REPEST();
+            error.setError(RESULTADO_CODIGO_FALLIDO);
+            return gson.toJson(error);
+            
+        }
+    }
+    
+    /*WS DE GRUPO*/
+    /*@QueryParam("codigo") String _codigo, @QueryParam("nombre") String _nombre, @QueryParam("descripcion") String _descripcion, @QueryParam("capacidad") String _capacidad, @QueryParam("periodo") String _periodo*/
+    @GET
+    @Path("registrarGrupo")
+    @Produces("application/json")
+    public String registrarGrupo (@QueryParam("grupo") String _grupo){
+        
+        Gson gson = new GsonBuilder().create();
+        Grupo registrarGrupo = gson.fromJson(_grupo, Grupo.class);
+        RegistrarGrupoComando cmd = new RegistrarGrupoComando(registrarGrupo);
+        
+        try {
+        
+            cmd.execute();
+            return gson.toJson(cmd.obtenerRespuesta());
+            
+        } catch (Exception ex) {
+            
+            Grupo error = new Grupo();
+            error.setError(RESULTADO_CODIGO_FALLIDO);
+            return gson.toJson(error);
+            
+        }
+    }
+    
+    @GET
+    @Path("modificarGrupo")
+    @Produces("application/json")
+    public String modificarGrupo (@QueryParam("grupo") String _grupo){
+        
+        Gson gson = new GsonBuilder().create();
+        Grupo modificarGrupo = gson.fromJson(_grupo, Grupo.class);
+        ModificarGrupoComando cmd = new ModificarGrupoComando(modificarGrupo);
+        
+        try {
+        
+            cmd.execute();
+            return gson.toJson(cmd.obtenerRespuesta());
+            
+        } catch (Exception ex) {
+            
+            Grupo error = new Grupo();
             error.setError(RESULTADO_CODIGO_FALLIDO);
             return gson.toJson(error);
             
