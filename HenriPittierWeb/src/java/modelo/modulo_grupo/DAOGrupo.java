@@ -11,6 +11,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Types;
+import java.util.ArrayList;
 import modelo.DAO;
 import modelo.Registry;
 import static modelo.Registry.*;
@@ -170,5 +171,84 @@ public class DAOGrupo extends DAO{
             
         }
         
+    }
+    
+    public ArrayList<Grupo> consultarGrupos() throws Exception {
+
+        ArrayList<Grupo> listaGrupos = new ArrayList<Grupo>();
+        CallableStatement cstmt;
+
+        int response = 0;
+
+        try {
+            _bdCon = DAO.getBdConnect();
+            cstmt = _bdCon.prepareCall(_sqlGrupoConsultar);
+            
+            rs = cstmt.executeQuery();
+            
+            while(rs.next()){
+                
+                Grupo grupo = new Grupo(rs.getString("codigo"), 
+                                  rs.getString("nombre"),
+                                  rs.getString("descripcion"),
+                                  rs.getInt("capacidad"),
+                                  rs.getString("periodo"));
+                grupo.setError(RESULTADO_CODIGO_BIEN);
+                listaGrupos.add(grupo);
+                
+            }
+            return listaGrupos;
+
+
+        } catch (SQLException ex) {
+
+            throw ex;
+
+        } catch (Exception ex) {
+            
+            throw ex;
+
+        } finally {
+            _bdCon.close();
+        }
+    }
+    
+    public Grupo consultarGrupoDetalle(Grupo _grupo) throws Exception {
+
+        Grupo grupoConsultado = new Grupo();
+        CallableStatement cstmt;
+
+        int response = 0;
+
+        try {
+            _bdCon = DAO.getBdConnect();
+            cstmt = _bdCon.prepareCall(_sqlGrupoDetalle);
+            cstmt.setString(1, _grupo.getCodigo());
+            
+            rs = cstmt.executeQuery();
+            
+            while(rs.next()){
+                
+                grupoConsultado = new Grupo(rs.getString("codigo"), 
+                                  rs.getString("nombre"),
+                                  rs.getString("descripcion"),
+                                  rs.getInt("capacidad"),
+                                  rs.getString("periodo"));
+                grupoConsultado.setError(RESULTADO_CODIGO_BIEN);
+            }
+            return grupoConsultado;
+
+
+        } catch (SQLException ex) {
+
+            throw ex;
+
+        } catch (Exception ex) {
+            
+            throw ex;
+
+        } finally {
+            _bdCon.close();
+        }
     }
 }
