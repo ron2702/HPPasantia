@@ -588,7 +588,7 @@ public class HenriPittierWS {
     public String borrarGrupo (@QueryParam("grupo") String _grupo){
         
         Gson gson = new GsonBuilder().create();
-        Grupo grupoBorrar = /*gson.fromJson(_grupo, Grupo.class)*/ new Grupo(_grupo);
+        Grupo grupoBorrar = gson.fromJson(_grupo, Grupo.class);
         BorrarGrupoComando cmd = new BorrarGrupoComando(grupoBorrar);
         
         try {
