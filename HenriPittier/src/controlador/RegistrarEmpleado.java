@@ -5,7 +5,7 @@
  */
 package controlador;
 
-import vistas.panel.empleados.*;
+import vista.panel.empleados.*;
 
 /**
  *
