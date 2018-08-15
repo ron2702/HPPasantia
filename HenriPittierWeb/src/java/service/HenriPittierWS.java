@@ -472,12 +472,10 @@ public class HenriPittierWS {
     @GET
     @Path("borrarREPEST")
     @Produces("application/json")
-    public String borrarREPEST (/*@QueryParam("repest") String _repest*/ @QueryParam("cedula") String _cedula, @QueryParam("cedulaEscolar") String _cedulaEscolar){
+    public String borrarREPEST (@QueryParam("repest") String _repest){
         
         Gson gson = new GsonBuilder().create();
-        int ci = Integer.parseInt(_cedula);
-        int ci2 = Integer.parseInt(_cedulaEscolar);
-        REPEST repestBorrar = /*gson.fromJson(_repest, REPEST.class)*/ new REPEST(ci, ci2);
+        REPEST repestBorrar = gson.fromJson(_repest, REPEST.class);
         BorrarRepEstComando cmd = new BorrarRepEstComando(repestBorrar);
         
         try {
