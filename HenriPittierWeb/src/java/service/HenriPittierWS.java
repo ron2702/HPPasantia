@@ -7,12 +7,16 @@ package service;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import comun.Emp_Gru_Est;
 import comun.Empleado;
 import comun.Estudiante;
 import comun.Grupo;
 import comun.REPEST;
 import comun.Representante;
 import comun.Usuario;
+import controlador.modulo_emp_gru_est.ConsultarEmpGruEstComando;
+import controlador.modulo_emp_gru_est.ConsultarEmpGruEstDetalleComando;
+import controlador.modulo_emp_gru_est.RegistrarEmpGruEstComando;
 import controlador.modulo_empleados.BorrarEmpleadoComando;
 import controlador.modulo_empleados.ConsultarEmpleadoDetalleComando;
 import controlador.modulo_empleados.ConsultarEmpleadosComando;
@@ -643,6 +647,74 @@ public class HenriPittierWS {
         } catch (Exception ex) {
             
             Grupo error = new Grupo();
+            error.setError(RESULTADO_CODIGO_FALLIDO);
+            return gson.toJson(error);
+            
+        }
+    }
+    
+    /*WS DE Emp_Gru_Est*/
+    //@QueryParam("empgruest") String _empgruest
+    @GET
+    @Path("registrarEmpGruEst")
+    @Produces("application/json")
+    public String registrarEmpGruEst (@QueryParam("empgruest") String _empgruest){
+        
+        Gson gson = new GsonBuilder().create();
+        Emp_Gru_Est registrarEmpGruEst = gson.fromJson(_empgruest, Emp_Gru_Est.class);
+        RegistrarEmpGruEstComando cmd = new RegistrarEmpGruEstComando(registrarEmpGruEst);
+        
+        try {
+        
+            cmd.execute();
+            return gson.toJson(cmd.obtenerRespuesta());
+            
+        } catch (Exception ex) {
+            
+            Emp_Gru_Est error = new Emp_Gru_Est();
+            error.setError(RESULTADO_CODIGO_FALLIDO);
+            return gson.toJson(error);
+            
+        }
+    }
+    
+    @GET
+    @Path("consultarEmpGruEst")
+    @Produces("application/json")
+    public String consultarEmpGruEst (){
+        
+        ConsultarEmpGruEstComando cmd = new ConsultarEmpGruEstComando();
+        
+        try {
+            
+            cmd.execute();
+            return gson.toJson(cmd.obtenerRespuesta());
+            
+        } catch (Exception ex) {
+            
+            ArrayList<Emp_Gru_Est> error = null;
+            return gson.toJson(error);
+            
+        }
+    }
+    
+    @GET
+    @Path("consultarEmpGruEstDetalle")
+    @Produces("application/json")
+    public String consultarEmpGruEstDetalle (@QueryParam("empgruest") String _empgruest){
+        
+        Gson gson = new GsonBuilder().create();
+        Emp_Gru_Est empgruestConsultar = gson.fromJson(_empgruest, Emp_Gru_Est.class);
+        ConsultarEmpGruEstDetalleComando cmd = new ConsultarEmpGruEstDetalleComando(empgruestConsultar);
+        
+        try {
+            
+            cmd.execute();
+            return gson.toJson(cmd.obtenerRespuesta());
+            
+        } catch (Exception ex) {
+            
+            Emp_Gru_Est error = new Emp_Gru_Est();
             error.setError(RESULTADO_CODIGO_FALLIDO);
             return gson.toJson(error);
             

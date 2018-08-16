@@ -24,7 +24,7 @@ public class DAORepest extends DAO {
     
     private Connection _bdCon;
     private static String _sqlRepestRegistrar = "{?=call REPEST_REGISTRAR(?,?)}";
-    private static String _sqlRepestBorrar = "{?=call REPEST_BORRAR(?)}";
+    private static String _sqlRepestBorrar = "{?=call REPEST_BORRAR(?,?)}";
     private static String _sqlRepestConsultar = "{call REPEST_CONSULTAR_TODOS()}";
     private static String _sqlRepestDetalle = "{call REPEST_CONSULTAR_DETALLE(?)}";
     private ResultSet rs;
@@ -90,6 +90,7 @@ public class DAORepest extends DAO {
             //Parametro de salida
             cstmt.registerOutParameter(1, Types.INTEGER);
             cstmt.setInt(2, _repest.getCedula());
+            cstmt.setInt(3, _repest.getCedulaEscolar());
           
             cstmt.execute();
             
