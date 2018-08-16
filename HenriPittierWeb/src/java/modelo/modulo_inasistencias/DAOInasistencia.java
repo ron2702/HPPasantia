@@ -75,4 +75,51 @@ public class DAOInasistencia extends DAO {
         }
     }
     
+    public Inasistencia modificarEstudiante (Inasistencia _inasistencia) throws Exception{
+        
+        Inasistencia _inasistenciaFallido = new Inasistencia();
+        CallableStatement cstmt;
+        
+        int respuesta = 0;
+        
+        try {
+            
+            _bdCon = DAO.getBdConnect();
+            cstmt = _bdCon.prepareCall(_sqlInasistenciaModificar);
+            //Parametro de salida
+            cstmt.registerOutParameter(1, Types.INTEGER);
+            
+            cstmt.setInt(2, _inasistencia.getDiasFaltados());
+            cstmt.setString(3, _inasistencia.getMes());
+            cstmt.setInt(4, _inasistencia.getAno());
+            cstmt.setInt(5, _inasistencia.getCedulaEmpleado());
+            cstmt.execute();
+            
+            respuesta = cstmt.getInt(1);
+            
+            if(respuesta == Registry.RESULTADO_CODIGO_RECURSO_CREADO){
+                
+                _inasistencia.setError(RESULTADO_CODIGO_RECURSO_CREADO);
+                return _inasistencia;    
+                
+            }else{
+                _inasistenciaFallido.setError(RESULTADO_CODIGO_FALLIDO);
+                return _inasistenciaFallido;
+            }
+            
+        } catch (SQLException ex) {
+            
+            throw ex;
+            
+        } catch (Exception ex) {
+            
+            throw ex;
+            
+        } finally {
+            
+            _bdCon.close();
+            
+        }
+    }
+    
 }
