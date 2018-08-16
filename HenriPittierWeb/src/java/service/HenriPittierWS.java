@@ -11,6 +11,7 @@ import comun.Emp_Gru_Est;
 import comun.Empleado;
 import comun.Estudiante;
 import comun.Grupo;
+import comun.Inasistencia;
 import comun.REPEST;
 import comun.Representante;
 import comun.Usuario;
@@ -32,6 +33,7 @@ import controlador.modulo_grupos.ConsultarGrupoComando;
 import controlador.modulo_grupos.ConsultarGrupoDetalleComando;
 import controlador.modulo_grupos.ModificarGrupoComando;
 import controlador.modulo_grupos.RegistrarGrupoComando;
+import controlador.modulo_inasistencias.RegistrarInasistenciaComando;
 import controlador.modulo_repest.BorrarRepEstComando;
 import controlador.modulo_repest.ConsultarRepEstComando;
 import controlador.modulo_repest.ConsultarRepEstDetalleComando;
@@ -715,6 +717,31 @@ public class HenriPittierWS {
         } catch (Exception ex) {
             
             Emp_Gru_Est error = new Emp_Gru_Est();
+            error.setError(RESULTADO_CODIGO_FALLIDO);
+            return gson.toJson(error);
+            
+        }
+    }
+    
+    /*WS DE Inasistencia*/
+    //@QueryParam("inasistencia") String _inasistencia
+    @GET
+    @Path("registrarInasistencia")
+    @Produces("application/json")
+    public String registrarInasistencia (@QueryParam("inasistencia") String _inasistencia){
+        
+        Gson gson = new GsonBuilder().create();
+        Inasistencia registrarInasistencia = gson.fromJson(_inasistencia, Inasistencia.class);
+        RegistrarInasistenciaComando cmd = new RegistrarInasistenciaComando(registrarInasistencia);
+        
+        try {
+        
+            cmd.execute();
+            return gson.toJson(cmd.obtenerRespuesta());
+            
+        } catch (Exception ex) {
+            
+            Inasistencia error = new Inasistencia();
             error.setError(RESULTADO_CODIGO_FALLIDO);
             return gson.toJson(error);
             
