@@ -215,11 +215,11 @@ public class AppMenu extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(contentPane, javax.swing.GroupLayout.DEFAULT_SIZE, 1047, Short.MAX_VALUE)
+            .addComponent(contentPane, javax.swing.GroupLayout.DEFAULT_SIZE, 940, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(contentPane, javax.swing.GroupLayout.DEFAULT_SIZE, 768, Short.MAX_VALUE)
+            .addComponent(contentPane, javax.swing.GroupLayout.DEFAULT_SIZE, 629, Short.MAX_VALUE)
         );
 
         pack();
