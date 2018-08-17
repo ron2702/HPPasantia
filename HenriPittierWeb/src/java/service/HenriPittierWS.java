@@ -905,8 +905,7 @@ public class HenriPittierWS {
     public String consultarSuplenciaDetalle (@QueryParam("suplencia") String _suplencia){
         
         Gson gson = new GsonBuilder().create();
-        int numero = Integer.parseInt(_suplencia);
-        Suplencia suplenciaConsultar = /*gson.fromJson(_suplencia, Suplencia.class)*/ new Suplencia(numero);
+        Suplencia suplenciaConsultar = gson.fromJson(_suplencia, Suplencia.class);
         ConsultarSuplenciaDetalleComando cmd = new ConsultarSuplenciaDetalleComando(suplenciaConsultar);
         
         try {
