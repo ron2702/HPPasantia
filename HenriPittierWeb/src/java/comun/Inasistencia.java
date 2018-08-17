@@ -30,7 +30,14 @@ public class Inasistencia {
         this.ano = ano;
         this.cedulaEmpleado = cedulaEmpleado;
     }
-
+    
+    public Inasistencia(int _cedulaEmpleado, int _diasFaltados, String _mes, int _ano){
+        this.cedulaEmpleado = _cedulaEmpleado;
+        this.diasFaltados = _diasFaltados;
+        this.mes = _mes;
+        this.ano = _ano;
+    }
+    
     public int getDiasFaltados() {
         return diasFaltados;
     }

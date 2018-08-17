@@ -11,21 +11,21 @@ import modelo.modulo_inasistencias.DAOInasistencia;
 
 /**
  *
- * @author LuisAlejandro
+ * @author Ronald
  */
-public class ModificarInasistenciaComando extends Comando {
+public class ConsultarInasistenciaDetalleComando extends Comando {
     
-    private Inasistencia modificarInasistencia;
+    private Inasistencia consultarInasistencia;
     private Inasistencia respuesta;
-
-    public ModificarInasistenciaComando(Inasistencia _modificarInasistencia) {
-        this.modificarInasistencia = _modificarInasistencia;
+    
+    public ConsultarInasistenciaDetalleComando(Inasistencia _consultarInasistencia){
+        this.consultarInasistencia = _consultarInasistencia;
     }
-      
+
     @Override
     public void execute() throws Exception {
         DAOInasistencia daoin = new DAOInasistencia();
-        respuesta = daoin.modificarInasistencia(modificarInasistencia);
+        respuesta = daoin.consultarInasistenciaDetalle(consultarInasistencia);
     }
     
     public Inasistencia obtenerRespuesta(){

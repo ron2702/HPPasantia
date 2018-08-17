@@ -34,6 +34,7 @@ import controlador.modulo_grupos.ConsultarGrupoDetalleComando;
 import controlador.modulo_grupos.ModificarGrupoComando;
 import controlador.modulo_grupos.RegistrarGrupoComando;
 import controlador.modulo_inasistencias.BorrarInasistenciaComando;
+import controlador.modulo_inasistencias.ConsultarInasistenciaDetalleComando;
 import controlador.modulo_inasistencias.ModificarInasistenciaComando;
 import controlador.modulo_inasistencias.RegistrarInasistenciaComando;
 import controlador.modulo_repest.BorrarRepEstComando;
@@ -783,6 +784,29 @@ public class HenriPittierWS {
         Gson gson = new GsonBuilder().create();
         Inasistencia inasistenciaBorrar = gson.fromJson(_inasistencia, Inasistencia.class);
         BorrarInasistenciaComando cmd = new BorrarInasistenciaComando(inasistenciaBorrar);
+        
+        try {
+            
+            cmd.execute();
+            return gson.toJson(cmd.obtenerRespuesta());
+            
+        } catch (Exception ex) {
+            
+            Inasistencia error = new Inasistencia();
+            error.setError(RESULTADO_CODIGO_FALLIDO);
+            return gson.toJson(error);
+            
+        }
+    }
+    
+    @GET
+    @Path("consultarInasistenciaDetalle")
+    @Produces("application/json")
+    public String consultarInasistenciaDetalle (@QueryParam("inasistencia") String _inasistencia){
+        
+        Gson gson = new GsonBuilder().create();
+        Inasistencia inasistenciaConsultar = gson.fromJson(_inasistencia, Inasistencia.class);
+        ConsultarInasistenciaDetalleComando cmd = new ConsultarInasistenciaDetalleComando(inasistenciaConsultar);
         
         try {
             
