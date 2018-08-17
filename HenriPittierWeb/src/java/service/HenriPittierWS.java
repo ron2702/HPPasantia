@@ -14,6 +14,7 @@ import comun.Grupo;
 import comun.Inasistencia;
 import comun.REPEST;
 import comun.Representante;
+import comun.Suplencia;
 import comun.Usuario;
 import controlador.modulo_emp_gru_est.ConsultarEmpGruEstComando;
 import controlador.modulo_emp_gru_est.ConsultarEmpGruEstDetalleComando;
@@ -46,6 +47,8 @@ import controlador.modulo_representantes.ConsultarRepresentanteDetalleComando;
 import controlador.modulo_representantes.ConsultarRepresentantesComando;
 import controlador.modulo_representantes.ModificarRepresentanteComando;
 import controlador.modulo_representantes.RegistrarRepresentanteComando;
+import controlador.modulo_suplencia.ModificarSuplenciaComando;
+import controlador.modulo_suplencia.RegistrarSuplenciaComando;
 import controlador.modulo_usuarios.InicioSesionComando;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -816,6 +819,54 @@ public class HenriPittierWS {
         } catch (Exception ex) {
             
             Inasistencia error = new Inasistencia();
+            error.setError(RESULTADO_CODIGO_FALLIDO);
+            return gson.toJson(error);
+            
+        }
+    }
+    
+    @GET
+    @Path("registrarSuplencia")
+    @Produces("application/json")
+    //@QueryParam("suplencia") String _suplencia
+    public String registrarSuplencia (@QueryParam("suplencia") String _suplencia){
+        
+        Gson gson = new GsonBuilder().create();
+        Suplencia registrarSuplencia = gson.fromJson(_suplencia, Suplencia.class);
+        RegistrarSuplenciaComando cmd = new RegistrarSuplenciaComando(registrarSuplencia);
+        
+        try {
+        
+            cmd.execute();
+            return gson.toJson(cmd.obtenerRespuesta());
+            
+        } catch (Exception ex) {
+            
+            Suplencia error = new Suplencia();
+            error.setError(RESULTADO_CODIGO_FALLIDO);
+            return gson.toJson(error);
+            
+        }
+    }
+    
+    @GET
+    @Path("modificarSuplencia")
+    @Produces("application/json")
+    //@QueryParam("suplencia") String _suplencia
+    public String modificarSuplencia (@QueryParam("suplencia") String _suplencia){
+        
+        Gson gson = new GsonBuilder().create();
+        Suplencia modificarSuplencia = gson.fromJson(_suplencia, Suplencia.class);
+        ModificarSuplenciaComando cmd = new ModificarSuplenciaComando(modificarSuplencia);
+        
+        try {
+        
+            cmd.execute();
+            return gson.toJson(cmd.obtenerRespuesta());
+            
+        } catch (Exception ex) {
+            
+            Suplencia error = new Suplencia();
             error.setError(RESULTADO_CODIGO_FALLIDO);
             return gson.toJson(error);
             
