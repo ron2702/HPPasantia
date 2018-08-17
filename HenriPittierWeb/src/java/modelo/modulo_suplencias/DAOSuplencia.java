@@ -122,4 +122,54 @@ public class DAOSuplencia extends DAO {
         }
     }
     
+    public Suplencia borrarInasistencia (Suplencia _suplencia) throws SQLException, Exception{
+        
+        Suplencia _suplenciaFallido = new Suplencia();
+        CallableStatement cstmt;
+        
+        int respuesta = 0;
+        
+        try {
+            
+            _bdCon = DAO.getBdConnect();
+            cstmt = _bdCon.prepareCall(_sqlSuplenciaBorrar);
+            //Parametro de salida
+            cstmt.registerOutParameter(1, Types.INTEGER);
+            cstmt.setInt(2, _suplencia.getDiasAdicionales());
+            cstmt.setString(3, _suplencia.getMes());
+            cstmt.setInt(4, _suplencia.getAno());
+            cstmt.setInt(5, _suplencia.getCedulaEmpleado());
+          
+            cstmt.execute();
+            
+            respuesta = cstmt.getInt(1);
+            
+            if(respuesta == Registry.RESULTADO_CODIGO_BIEN){
+                
+                _suplencia.setError(RESULTADO_CODIGO_BIEN);
+                return _suplencia;       
+                
+            }else{
+                
+                _suplenciaFallido.setError(RESULTADO_CODIGO_NO_ENCONTRADO);
+                return _suplenciaFallido;
+                
+            }
+            
+        } catch (SQLException ex) {
+            
+            throw ex;
+            
+        } catch (Exception ex) {
+            
+            throw ex;
+            
+        } finally {
+            
+            _bdCon.close();
+            
+        }
+        
+    }
+    
 }

@@ -47,6 +47,7 @@ import controlador.modulo_representantes.ConsultarRepresentanteDetalleComando;
 import controlador.modulo_representantes.ConsultarRepresentantesComando;
 import controlador.modulo_representantes.ModificarRepresentanteComando;
 import controlador.modulo_representantes.RegistrarRepresentanteComando;
+import controlador.modulo_suplencia.BorrarSuplenciaComando;
 import controlador.modulo_suplencia.ModificarSuplenciaComando;
 import controlador.modulo_suplencia.RegistrarSuplenciaComando;
 import controlador.modulo_usuarios.InicioSesionComando;
@@ -861,6 +862,30 @@ public class HenriPittierWS {
         
         try {
         
+            cmd.execute();
+            return gson.toJson(cmd.obtenerRespuesta());
+            
+        } catch (Exception ex) {
+            
+            Suplencia error = new Suplencia();
+            error.setError(RESULTADO_CODIGO_FALLIDO);
+            return gson.toJson(error);
+            
+        }
+    }
+    
+    @GET
+    @Path("borrarSuplencia")
+    @Produces("application/json")
+    //@QueryParam("suplencia") String _suplencia
+    public String borrarSuplencia (@QueryParam("suplencia") String _suplencia){
+        
+        Gson gson = new GsonBuilder().create();
+        Suplencia suplenciaBorrar = gson.fromJson(_suplencia, Suplencia.class);
+        BorrarSuplenciaComando cmd = new BorrarSuplenciaComando(suplenciaBorrar);
+        
+        try {
+            
             cmd.execute();
             return gson.toJson(cmd.obtenerRespuesta());
             
