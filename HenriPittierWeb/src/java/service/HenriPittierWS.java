@@ -33,6 +33,7 @@ import controlador.modulo_grupos.ConsultarGrupoComando;
 import controlador.modulo_grupos.ConsultarGrupoDetalleComando;
 import controlador.modulo_grupos.ModificarGrupoComando;
 import controlador.modulo_grupos.RegistrarGrupoComando;
+import controlador.modulo_inasistencias.BorrarInasistenciaComando;
 import controlador.modulo_inasistencias.ModificarInasistenciaComando;
 import controlador.modulo_inasistencias.RegistrarInasistenciaComando;
 import controlador.modulo_repest.BorrarRepEstComando;
@@ -596,7 +597,7 @@ public class HenriPittierWS {
     public String borrarGrupo (@QueryParam("grupo") String _grupo){
         
         Gson gson = new GsonBuilder().create();
-        Grupo grupoBorrar = /*gson.fromJson(_grupo, Grupo.class)*/ new Grupo(_grupo);
+        Grupo grupoBorrar = gson.fromJson(_grupo, Grupo.class);
         BorrarGrupoComando cmd = new BorrarGrupoComando(grupoBorrar);
         
         try {
@@ -761,6 +762,30 @@ public class HenriPittierWS {
         
         try {
         
+            cmd.execute();
+            return gson.toJson(cmd.obtenerRespuesta());
+            
+        } catch (Exception ex) {
+            
+            Inasistencia error = new Inasistencia();
+            error.setError(RESULTADO_CODIGO_FALLIDO);
+            return gson.toJson(error);
+            
+        }
+    }
+    
+    @GET
+    @Path("borrarInasistencia")
+    @Produces("application/json")
+    //@QueryParam("inasistencia") String _inasistencia
+    public String borrarInasistencia (@QueryParam("inasistencia") String _inasistencia){
+        
+        Gson gson = new GsonBuilder().create();
+        Inasistencia inasistenciaBorrar = gson.fromJson(_inasistencia, Inasistencia.class);
+        BorrarInasistenciaComando cmd = new BorrarInasistenciaComando(inasistenciaBorrar);
+        
+        try {
+            
             cmd.execute();
             return gson.toJson(cmd.obtenerRespuesta());
             
