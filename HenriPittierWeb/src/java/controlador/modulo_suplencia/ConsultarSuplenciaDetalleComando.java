@@ -13,19 +13,19 @@ import modelo.modulo_suplencias.DAOSuplencia;
  *
  * @author Ronald
  */
-public class BorrarSuplenciaComando extends Comando {
+public class ConsultarSuplenciaDetalleComando extends Comando {
     
-    private Suplencia borrarSuplencia;
+    private Suplencia consultarSuplencia;
     private Suplencia respuesta;
 
-    public BorrarSuplenciaComando(Suplencia _borrarSuplencia) {
-        this.borrarSuplencia = _borrarSuplencia;
+    public ConsultarSuplenciaDetalleComando(Suplencia _consultarSuplencia) {
+        this.consultarSuplencia = _consultarSuplencia;
     }
-    
+
     @Override
     public void execute() throws Exception {
         DAOSuplencia daosup = new DAOSuplencia();
-        respuesta = daosup.borrarSuplencia(borrarSuplencia);
+        respuesta = daosup.consultarSuplenciaDetalle(consultarSuplencia);
     }
     
     public Suplencia obtenerRespuesta(){
