@@ -976,7 +976,7 @@ public class HenriPittierWS {
     public String consultarParroquia (@QueryParam("parroquia") String _parroquia){
         
         Gson gson = new GsonBuilder().create();
-        Lugar parroquiaConsultar = gson.fromJson(_municipio, Lugar.class);
+        Lugar parroquiaConsultar = gson.fromJson(_parroquia, Lugar.class);
         ConsultarParroquiaComando cmd = new ConsultarParroquiaComando(parroquiaConsultar);
         
         try {
