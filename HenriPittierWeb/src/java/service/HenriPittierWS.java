@@ -40,6 +40,8 @@ import controlador.modulo_inasistencias.ConsultarInasistenciaDetalleComando;
 import controlador.modulo_inasistencias.ModificarInasistenciaComando;
 import controlador.modulo_inasistencias.RegistrarInasistenciaComando;
 import controlador.modulo_lugares.ConsultarEstadoComando;
+import controlador.modulo_lugares.ConsultarMunicipioComando;
+import controlador.modulo_lugares.ConsultarParroquiaComando;
 import controlador.modulo_repest.BorrarRepEstComando;
 import controlador.modulo_repest.ConsultarRepEstComando;
 import controlador.modulo_repest.ConsultarRepEstDetalleComando;
@@ -945,4 +947,49 @@ public class HenriPittierWS {
         }
     }
     
+    @GET
+    @Path("consultarMunicipio")
+    @Produces("application/json")
+    public String consultarMunicipio (@QueryParam("municipio") String _municipio){
+        
+        Gson gson = new GsonBuilder().create();
+        Lugar municipioConsultar = gson.fromJson(_municipio, Lugar.class);
+        ConsultarMunicipioComando cmd = new ConsultarMunicipioComando(municipioConsultar);
+        
+        try {
+            
+            cmd.execute();
+            return gson.toJson(cmd.obtenerRespuesta());
+            
+        } catch (Exception ex) {
+            
+            Lugar error = new Lugar();
+            error.setError(RESULTADO_CODIGO_FALLIDO);
+            return gson.toJson(error);
+            
+        }
+    }
+    
+    @GET
+    @Path("consultarParroquia")
+    @Produces("application/json")
+    public String consultarParroquia (@QueryParam("parroquia") String _parroquia){
+        
+        Gson gson = new GsonBuilder().create();
+        Lugar parroquiaConsultar = gson.fromJson(_municipio, Lugar.class);
+        ConsultarParroquiaComando cmd = new ConsultarParroquiaComando(parroquiaConsultar);
+        
+        try {
+            
+            cmd.execute();
+            return gson.toJson(cmd.obtenerRespuesta());
+            
+        } catch (Exception ex) {
+            
+            Lugar error = new Lugar();
+            error.setError(RESULTADO_CODIGO_FALLIDO);
+            return gson.toJson(error);
+            
+        }
+    }
 }

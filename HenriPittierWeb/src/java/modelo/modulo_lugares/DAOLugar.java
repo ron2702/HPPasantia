@@ -64,4 +64,80 @@ public class DAOLugar extends DAO {
         }
     }
     
+    public ArrayList<Lugar> consultarMunicipio(Lugar _lugar) throws Exception {
+
+        ArrayList<Lugar> listaMunicipios = new ArrayList<Lugar>();
+        CallableStatement cstmt;
+
+        int response = 0;
+
+        try {
+            _bdCon = DAO.getBdConnect();
+            cstmt = _bdCon.prepareCall(_sqlMunicipioDetalle);
+            cstmt.setString(1, _lugar.getNombre());
+            
+            rs = cstmt.executeQuery();
+            
+            while(rs.next()){
+                
+                Lugar lugar = new Lugar(rs.getInt("codigo"), 
+                                  rs.getString("nombre"));
+                lugar.setError(RESULTADO_CODIGO_BIEN);
+                listaMunicipios.add(lugar);
+                
+            }
+            return listaMunicipios;
+
+
+        } catch (SQLException ex) {
+
+            throw ex;
+
+        } catch (Exception ex) {
+            
+            throw ex;
+
+        } finally {
+            _bdCon.close();
+        }
+    }
+    
+    public ArrayList<Lugar> consultarParroquia(Lugar _lugar) throws Exception {
+
+        ArrayList<Lugar> listaParroquias = new ArrayList<Lugar>();
+        CallableStatement cstmt;
+
+        int response = 0;
+
+        try {
+            _bdCon = DAO.getBdConnect();
+            cstmt = _bdCon.prepareCall(_sqlParroquiaDetalle);
+            cstmt.setString(1, _lugar.getNombre());
+            
+            rs = cstmt.executeQuery();
+            
+            while(rs.next()){
+                
+                Lugar lugar = new Lugar(rs.getInt("codigo"), 
+                                  rs.getString("nombre"));
+                lugar.setError(RESULTADO_CODIGO_BIEN);
+                listaParroquias.add(lugar);
+                
+            }
+            return listaParroquias;
+
+
+        } catch (SQLException ex) {
+
+            throw ex;
+
+        } catch (Exception ex) {
+            
+            throw ex;
+
+        } finally {
+            _bdCon.close();
+        }
+    }
+    
 }
