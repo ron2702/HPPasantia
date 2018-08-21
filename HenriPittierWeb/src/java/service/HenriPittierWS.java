@@ -12,6 +12,7 @@ import comun.Empleado;
 import comun.Estudiante;
 import comun.Grupo;
 import comun.Inasistencia;
+import comun.Lugar;
 import comun.REPEST;
 import comun.Representante;
 import comun.Suplencia;
@@ -38,6 +39,7 @@ import controlador.modulo_inasistencias.BorrarInasistenciaComando;
 import controlador.modulo_inasistencias.ConsultarInasistenciaDetalleComando;
 import controlador.modulo_inasistencias.ModificarInasistenciaComando;
 import controlador.modulo_inasistencias.RegistrarInasistenciaComando;
+import controlador.modulo_lugares.ConsultarEstadoComando;
 import controlador.modulo_repest.BorrarRepEstComando;
 import controlador.modulo_repest.ConsultarRepEstComando;
 import controlador.modulo_repest.ConsultarRepEstDetalleComando;
@@ -921,4 +923,26 @@ public class HenriPittierWS {
             
         }
     }
+    
+    /*WS DE Inasistencia*/
+    @GET
+    @Path("consultarEstado")
+    @Produces("application/json")
+    public String consultarEstado (){
+        
+        ConsultarEstadoComando cmd = new ConsultarEstadoComando();
+        
+        try {
+            
+            cmd.execute();
+            return gson.toJson(cmd.obtenerRespuesta());
+            
+        } catch (Exception ex) {
+            
+            ArrayList<Lugar> error = null;
+            return gson.toJson(error);
+            
+        }
+    }
+    
 }
