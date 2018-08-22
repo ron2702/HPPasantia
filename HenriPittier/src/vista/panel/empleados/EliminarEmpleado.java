@@ -3,20 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package vista.panel;
-
-import vista.panel.*;
+package vista.panel.empleados;
 
 /**
  *
  * @author LuisAlejandro
  */
-public class Inicio extends javax.swing.JPanel {
+public class EliminarEmpleado extends javax.swing.JPanel {
 
     /**
-     * Creates new form RegistrarEmpleado
+     * Creates new form EliminarEmpleado
      */
-    public Inicio() {
+    public EliminarEmpleado() {
         initComponents();
     }
 
@@ -30,7 +28,6 @@ public class Inicio extends javax.swing.JPanel {
     private void initComponents() {
 
         setBackground(new java.awt.Color(204, 204, 204));
-        setPreferredSize(new java.awt.Dimension(1047, 789));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);

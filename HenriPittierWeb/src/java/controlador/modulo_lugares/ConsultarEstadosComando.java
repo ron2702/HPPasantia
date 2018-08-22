@@ -14,17 +14,17 @@ import modelo.modulo_lugares.DAOLugar;
  *
  * @author Ronald
  */
-public class ConsultarEstadoComando extends Comando {
+public class ConsultarEstadosComando extends Comando {
     
     private ArrayList<Lugar> respuesta;
 
-    public ConsultarEstadoComando() {
+    public ConsultarEstadosComando() {
     }
 
     @Override
     public void execute() throws Exception {
         DAOLugar daolugar = new DAOLugar();
-        respuesta = daolugar.consultarEstado();
+        respuesta = daolugar.consultarEstados();
     }
     
     public ArrayList<Lugar> obtenerRespuesta(){

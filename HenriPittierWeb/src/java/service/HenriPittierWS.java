@@ -39,7 +39,7 @@ import controlador.modulo_inasistencias.BorrarInasistenciaComando;
 import controlador.modulo_inasistencias.ConsultarInasistenciaDetalleComando;
 import controlador.modulo_inasistencias.ModificarInasistenciaComando;
 import controlador.modulo_inasistencias.RegistrarInasistenciaComando;
-import controlador.modulo_lugares.ConsultarEstadoComando;
+import controlador.modulo_lugares.ConsultarEstadosComando;
 import controlador.modulo_repest.BorrarRepEstComando;
 import controlador.modulo_repest.ConsultarRepEstComando;
 import controlador.modulo_repest.ConsultarRepEstDetalleComando;
@@ -926,11 +926,11 @@ public class HenriPittierWS {
     
     /*WS DE Inasistencia*/
     @GET
-    @Path("consultarEstado")
+    @Path("consultarEstados")
     @Produces("application/json")
-    public String consultarEstado (){
+    public String consultarEstados (){
         
-        ConsultarEstadoComando cmd = new ConsultarEstadoComando();
+        ConsultarEstadosComando cmd = new ConsultarEstadosComando();
         
         try {
             

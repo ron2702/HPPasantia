@@ -51,10 +51,10 @@ public class Lugar {
         this.error = error;
     }
     
-        
     @Override
     public String toString() {
         return this.nombre;
     }
+    
     
 }

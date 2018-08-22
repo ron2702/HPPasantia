@@ -27,7 +27,7 @@ public class DAOLugar extends DAO {
     private static String _sqlParroquiaDetalle = "{call LUGAR_CONSULTAR_PARROQUIA(?)}";
     private ResultSet rs;
     
-    public ArrayList<Lugar> consultarEstado() throws Exception {
+    public ArrayList<Lugar> consultarEstados() throws Exception {
 
         ArrayList<Lugar> listaEstados = new ArrayList<Lugar>();
         CallableStatement cstmt;

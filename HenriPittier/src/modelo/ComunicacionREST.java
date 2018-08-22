@@ -8,6 +8,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import comun.Empleado;
+import comun.Lugar;
 import comun.Representante;
 import comun.Usuario;
 
@@ -113,7 +114,7 @@ public class ComunicacionREST {
     }
     /*SERVICIOS WEB DE REPRESENTANTES*/
     
-     public Representante registrarRepresentante(Representante e) throws Exception {
+    public Representante registrarRepresentante(Representante e) throws Exception {
         try {
             conn = null;
             Gson gson = new GsonBuilder().create();
@@ -131,7 +132,7 @@ public class ComunicacionREST {
         }
     }
      
-     public Representante modificarRepresentante(Representante e) throws Exception {
+    public Representante modificarRepresentante(Representante e) throws Exception {
         try {
             conn = null;
             Gson gson = new GsonBuilder().create();
@@ -143,6 +144,61 @@ public class ComunicacionREST {
             }
             conn.disconnect();
             return _representante;
+        }
+        catch (Exception ex){
+            throw ex;
+        }
+    }
+    /*SERVICIOS WEB DE LUGARES*/
+    public ArrayList<Lugar> consultarEstados() throws Exception {
+        try {
+            conn = null;
+            Gson gson = new GsonBuilder().create();
+            BufferedReader br = comunicar("GET", "consultarEstados");
+            String output;
+            ArrayList<Lugar> _lugares = new ArrayList<>();
+            Type listType = new TypeToken<ArrayList<Lugar>>() {}.getType();
+            while ((output = br.readLine()) != null) {
+                _lugares = gson.fromJson(output, listType);
+            }
+            conn.disconnect();
+            return _lugares;
+        }
+        catch (Exception ex){
+            throw ex;
+        }
+    }
+    public ArrayList<Lugar> consultarMunicipios(int codigoEstado) throws Exception {
+        try {
+            conn = null;
+            Gson gson = new GsonBuilder().create();
+            BufferedReader br = comunicar("GET", "consultarMunicipios?estado=" + URLEncoder.encode(gson.toJson(codigoEstado).toString(), "UTF-8"));
+            String output;
+            ArrayList<Lugar> _lugares = new ArrayList<>();
+            Type listType = new TypeToken<ArrayList<Lugar>>() {}.getType();
+            while ((output = br.readLine()) != null) {
+                _lugares = gson.fromJson(output, listType);
+            }
+            conn.disconnect();
+            return _lugares;
+        }
+        catch (Exception ex){
+            throw ex;
+        }
+    }
+    public ArrayList<Lugar> consultarParroquias(int codigoMunicipio) throws Exception {
+        try {
+            conn = null;
+            Gson gson = new GsonBuilder().create();
+            BufferedReader br = comunicar("GET", "consultarParroquias?municipio=" + URLEncoder.encode(gson.toJson(codigoMunicipio).toString(), "UTF-8"));
+            String output;
+            ArrayList<Lugar> _lugares = new ArrayList<>();
+            Type listType = new TypeToken<ArrayList<Lugar>>() {}.getType();
+            while ((output = br.readLine()) != null) {
+                _lugares = gson.fromJson(output, listType);
+            }
+            conn.disconnect();
+            return _lugares;
         }
         catch (Exception ex){
             throw ex;
