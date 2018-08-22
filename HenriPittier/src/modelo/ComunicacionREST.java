@@ -168,11 +168,11 @@ public class ComunicacionREST {
             throw ex;
         }
     }
-    public ArrayList<Lugar> consultarMunicipios(int codigoEstado) throws Exception {
+    public ArrayList<Lugar> consultarMunicipios(Lugar estado) throws Exception {
         try {
             conn = null;
             Gson gson = new GsonBuilder().create();
-            BufferedReader br = comunicar("GET", "consultarMunicipios?estado=" + URLEncoder.encode(gson.toJson(codigoEstado).toString(), "UTF-8"));
+            BufferedReader br = comunicar("GET", "consultarMunicipios?estado=" + URLEncoder.encode(gson.toJson(estado).toString(), "UTF-8"));
             String output;
             ArrayList<Lugar> _lugares = new ArrayList<>();
             Type listType = new TypeToken<ArrayList<Lugar>>() {}.getType();
@@ -186,11 +186,11 @@ public class ComunicacionREST {
             throw ex;
         }
     }
-    public ArrayList<Lugar> consultarParroquias(int codigoMunicipio) throws Exception {
+    public ArrayList<Lugar> consultarParroquias(Lugar municipio) throws Exception {
         try {
             conn = null;
             Gson gson = new GsonBuilder().create();
-            BufferedReader br = comunicar("GET", "consultarParroquias?municipio=" + URLEncoder.encode(gson.toJson(codigoMunicipio).toString(), "UTF-8"));
+            BufferedReader br = comunicar("GET", "consultarParroquias?municipio=" + URLEncoder.encode(gson.toJson(municipio).toString(), "UTF-8"));
             String output;
             ArrayList<Lugar> _lugares = new ArrayList<>();
             Type listType = new TypeToken<ArrayList<Lugar>>() {}.getType();

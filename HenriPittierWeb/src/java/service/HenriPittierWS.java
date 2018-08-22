@@ -40,6 +40,8 @@ import controlador.modulo_inasistencias.ConsultarInasistenciaDetalleComando;
 import controlador.modulo_inasistencias.ModificarInasistenciaComando;
 import controlador.modulo_inasistencias.RegistrarInasistenciaComando;
 import controlador.modulo_lugares.ConsultarEstadosComando;
+import controlador.modulo_lugares.ConsultarMunicipiosComando;
+import controlador.modulo_lugares.ConsultarParroquiasComando;
 import controlador.modulo_repest.BorrarRepEstComando;
 import controlador.modulo_repest.ConsultarRepEstComando;
 import controlador.modulo_repest.ConsultarRepEstDetalleComando;
@@ -924,7 +926,7 @@ public class HenriPittierWS {
         }
     }
     
-    /*WS DE Inasistencia*/
+    /*WS DE Lugares*/
     @GET
     @Path("consultarEstados")
     @Produces("application/json")
@@ -945,4 +947,49 @@ public class HenriPittierWS {
         }
     }
     
+    @GET
+    @Path("consultarMunicipios")
+    @Produces("application/json")
+    public String consultarMunicipios (@QueryParam("municipio") String _municipio){
+        
+        Gson gson = new GsonBuilder().create();
+        Lugar municipioConsultar = gson.fromJson(_municipio, Lugar.class);
+        ConsultarMunicipiosComando cmd = new ConsultarMunicipiosComando(municipioConsultar);
+        
+        try {
+            
+            cmd.execute();
+            return gson.toJson(cmd.obtenerRespuesta());
+            
+        } catch (Exception ex) {
+            
+            Lugar error = new Lugar();
+            error.setError(RESULTADO_CODIGO_FALLIDO);
+            return gson.toJson(error);
+            
+        }
+    }
+    
+    @GET
+    @Path("consultarParroquias")
+    @Produces("application/json")
+    public String consultarParroquias (@QueryParam("parroquia") String _parroquia){
+        
+        Gson gson = new GsonBuilder().create();
+        Lugar parroquiaConsultar = gson.fromJson(_parroquia, Lugar.class);
+        ConsultarParroquiasComando cmd = new ConsultarParroquiasComando(parroquiaConsultar);
+        
+        try {
+            
+            cmd.execute();
+            return gson.toJson(cmd.obtenerRespuesta());
+            
+        } catch (Exception ex) {
+            
+            Lugar error = new Lugar();
+            error.setError(RESULTADO_CODIGO_FALLIDO);
+            return gson.toJson(error);
+            
+        }
+    }
 }

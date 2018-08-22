@@ -38,7 +38,7 @@ public class RegistrarEmpleado extends javax.swing.JPanel {
                 public void actionPerformed(ActionEvent e) {
                     try {
                         Lugar estadoSeleccionado = (Lugar) cb_estados.getSelectedItem();
-                        ArrayList<Lugar> listaLugares = comRest.consultarMunicipios(estadoSeleccionado.getCodigo());
+                        ArrayList<Lugar> listaLugares = comRest.consultarMunicipios(estadoSeleccionado);
                         for (Lugar lugar : listaLugares) {
                             cb_municipios.addItem(lugar);
                         }
@@ -52,7 +52,7 @@ public class RegistrarEmpleado extends javax.swing.JPanel {
                 public void actionPerformed(ActionEvent e) {
                     try {
                         Lugar municipioSeleccionado = (Lugar) cb_municipios.getSelectedItem();
-                        ArrayList<Lugar> listaLugares = comRest.consultarParroquias(municipioSeleccionado.getCodigo());
+                        ArrayList<Lugar> listaLugares = comRest.consultarParroquias(municipioSeleccionado);
                         for (Lugar lugar : listaLugares) {
                             cb_parroquias.addItem(lugar);
                         }
