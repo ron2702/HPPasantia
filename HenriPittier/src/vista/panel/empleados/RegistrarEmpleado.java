@@ -9,10 +9,16 @@ import comun.Lugar;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
+import java.io.File;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
 import javax.swing.JTextField;
+import javax.swing.filechooser.FileFilter;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import modelo.ComunicacionREST;
 import vista.panel.empleados.*;
 
@@ -21,7 +27,7 @@ import vista.panel.empleados.*;
  * @author LuisAlejandro
  */
 public class RegistrarEmpleado extends javax.swing.JPanel {
-
+    private File archivoSeleccionado;
     /**
      * Creates new form RegistrarEmpleado
      */
@@ -472,11 +478,12 @@ txt_primerApellido.addKeyListener(new java.awt.event.KeyAdapter() {
                         .addComponent(lbl_primerApellido)
                         .addComponent(lbl_direccion))
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                    .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(lbl_segundoApellido)
+                    .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(txt_segundoApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(cb_estados, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(lbl_estado))
+                        .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lbl_segundoApellido)
+                            .addComponent(cb_estados, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lbl_estado)))
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                     .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(txt_telefonoCasa, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -545,7 +552,18 @@ txt_primerApellido.addKeyListener(new java.awt.event.KeyAdapter() {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_cargarImagenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cargarImagenActionPerformed
-        // TODO add your handling code here:
+        FileFilter filtroImagenes = new FileNameExtensionFilter("Archivos de imagen", ImageIO.getReaderFileSuffixes());
+        JFileChooser exploradorArchivos = new JFileChooser();
+        exploradorArchivos.setAcceptAllFileFilterUsed(false);
+        exploradorArchivos.addChoosableFileFilter(filtroImagenes);
+        int opcionElegida = exploradorArchivos.showOpenDialog(null);
+        if (opcionElegida == JFileChooser.APPROVE_OPTION) 
+        {
+            archivoSeleccionado = exploradorArchivos.getSelectedFile();
+            ImageIcon imagenEmpleado;
+            imagenEmpleado = new ImageIcon(archivoSeleccionado.getAbsoluteFile().getAbsolutePath());
+            lbl_foto.setIcon(imagenEmpleado);
+        }
     }//GEN-LAST:event_btn_cargarImagenActionPerformed
 
     private void txt_telefonoCasaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_telefonoCasaKeyTyped

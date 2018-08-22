@@ -6,6 +6,7 @@
 package modelo.modulo_empleados;
 
 import comun.Empleado;
+import java.io.File;
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -57,7 +58,7 @@ public class DAOEmpleado extends DAO{
             cstmt.setString(11, _empleado.getTelefonoCasa());
             cstmt.setString(12, _empleado.getTelefonoMovil());
             cstmt.setString(13, _empleado.getCargo());
-            cstmt.setString(14, _empleado.getFoto());
+            cstmt.setString(14, _empleado.getFoto().getAbsolutePath());
             cstmt.setString(15, _empleado.getUsuario());
             cstmt.setString(16, _empleado.getClave());
             cstmt.setString(17, _empleado.getEstado());
@@ -121,7 +122,7 @@ public class DAOEmpleado extends DAO{
             cstmt.setString(11, _empleado.getTelefonoCasa());
             cstmt.setString(12, _empleado.getTelefonoMovil());
             cstmt.setString(13, _empleado.getCargo());
-            cstmt.setString(14, _empleado.getFoto());
+            cstmt.setString(14, _empleado.getFoto().getAbsolutePath());
             cstmt.setString(15, _empleado.getUsuario());
             cstmt.setString(16, _empleado.getClave());
             cstmt.setString(17, _empleado.getEstado());
@@ -220,7 +221,7 @@ public class DAOEmpleado extends DAO{
             rs = cstmt.executeQuery();
             
             while(rs.next()){
-                
+                File imagenEmpleado = new File(rs.getString("foto"));
                 Empleado empleado = new Empleado(rs.getInt("cedula"), 
                                   rs.getString("primernombre"),
                                   rs.getString("segundonombre"),
@@ -233,7 +234,7 @@ public class DAOEmpleado extends DAO{
                                   rs.getString("telfcasa"),
                                   rs.getString("telfmovil"),
                                   rs.getString("cargo"),
-                                  rs.getString("foto"),
+                                  imagenEmpleado,
                                   rs.getString("usuario"),
                                   rs.getString("clave"),
                                   rs.getString("estado"),
@@ -280,7 +281,8 @@ public class DAOEmpleado extends DAO{
             
             while(rs.next()){
                 
-                empleadoConsultar = new Empleado(rs.getInt("cedula"), 
+                File imagenEmpleado = new File(rs.getString("foto"));
+                Empleado empleado = new Empleado(rs.getInt("cedula"), 
                                   rs.getString("primernombre"),
                                   rs.getString("segundonombre"),
                                   rs.getString("primerapellido"),
@@ -292,13 +294,13 @@ public class DAOEmpleado extends DAO{
                                   rs.getString("telfcasa"),
                                   rs.getString("telfmovil"),
                                   rs.getString("cargo"),
-                                  rs.getString("foto"),
+                                  imagenEmpleado,
                                   rs.getString("usuario"),
                                   rs.getString("clave"),
                                   rs.getString("estado"),
                                   rs.getString("municipio"),
                                   rs.getString("parroquia"));
-                empleadoConsultar.setError(RESULTADO_CODIGO_BIEN);
+                empleado.setError(RESULTADO_CODIGO_BIEN);
                 
             }
             return empleadoConsultar;
