@@ -74,7 +74,7 @@ public class DAOLugar extends DAO {
         try {
             _bdCon = DAO.getBdConnect();
             cstmt = _bdCon.prepareCall(_sqlMunicipiosConsultar);
-            cstmt.setString(1, _lugar.getNombre());
+            cstmt.setInt(1, _lugar.getCodigo());
             
             rs = cstmt.executeQuery();
             
@@ -112,7 +112,7 @@ public class DAOLugar extends DAO {
         try {
             _bdCon = DAO.getBdConnect();
             cstmt = _bdCon.prepareCall(_sqlParroquiasConsultar);
-            cstmt.setString(1, _lugar.getNombre());
+            cstmt.setInt(1, _lugar.getCodigo());
             
             rs = cstmt.executeQuery();
             
