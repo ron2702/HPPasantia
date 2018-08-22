@@ -950,7 +950,7 @@ public class HenriPittierWS {
     @GET
     @Path("consultarMunicipios")
     @Produces("application/json")
-    public String consultarMunicipios (@QueryParam("municipio") String _municipio){
+    public String consultarMunicipios (@QueryParam("estado") String _municipio){
         
         Gson gson = new GsonBuilder().create();
         Lugar municipioConsultar = gson.fromJson(_municipio, Lugar.class);
@@ -963,8 +963,7 @@ public class HenriPittierWS {
             
         } catch (Exception ex) {
             
-            Lugar error = new Lugar();
-            error.setError(RESULTADO_CODIGO_FALLIDO);
+            ArrayList<Lugar> error = null;
             return gson.toJson(error);
             
         }
@@ -973,7 +972,7 @@ public class HenriPittierWS {
     @GET
     @Path("consultarParroquias")
     @Produces("application/json")
-    public String consultarParroquias (@QueryParam("parroquia") String _parroquia){
+    public String consultarParroquias (@QueryParam("municipio") String _parroquia){
         
         Gson gson = new GsonBuilder().create();
         Lugar parroquiaConsultar = gson.fromJson(_parroquia, Lugar.class);
@@ -986,8 +985,7 @@ public class HenriPittierWS {
             
         } catch (Exception ex) {
             
-            Lugar error = new Lugar();
-            error.setError(RESULTADO_CODIGO_FALLIDO);
+            ArrayList<Lugar> error = null;
             return gson.toJson(error);
             
         }

@@ -37,6 +37,7 @@ public class RegistrarEmpleado extends javax.swing.JPanel {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     try {
+                        cb_municipios.removeAllItems();
                         Lugar estadoSeleccionado = (Lugar) cb_estados.getSelectedItem();
                         ArrayList<Lugar> listaLugares = comRest.consultarMunicipios(estadoSeleccionado);
                         for (Lugar lugar : listaLugares) {
@@ -51,6 +52,7 @@ public class RegistrarEmpleado extends javax.swing.JPanel {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     try {
+                        cb_parroquias.removeAllItems();
                         Lugar municipioSeleccionado = (Lugar) cb_municipios.getSelectedItem();
                         ArrayList<Lugar> listaLugares = comRest.consultarParroquias(municipioSeleccionado);
                         for (Lugar lugar : listaLugares) {
