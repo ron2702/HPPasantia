@@ -19,6 +19,8 @@ import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.filechooser.FileFilter;
 import javax.swing.filechooser.FileNameExtensionFilter;
@@ -242,7 +244,6 @@ public class RegistrarEmpleado extends javax.swing.JPanel {
                 true)));
     dc_fechaIngreso.setCalendarBackground(new java.awt.Color(255, 255, 255));
     dc_fechaIngreso.setCalendarPreferredSize(new java.awt.Dimension(400, 250));
-    dc_fechaIngreso.setFormat(3);
     dc_fechaIngreso.setFieldFont(new java.awt.Font("Tahoma", java.awt.Font.PLAIN, 12));
     dc_fechaIngreso.setNavigateFont(new java.awt.Font("Serif", java.awt.Font.PLAIN, 8));
 
@@ -608,24 +609,38 @@ txt_primerApellido.addKeyListener(new java.awt.event.KeyAdapter() {
     }//GEN-LAST:event_txt_cargoKeyTyped
 
     private void btn_registrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_registrarActionPerformed
-        try {
-            Lugar estadoSeleccionado = (Lugar) cb_estados.getSelectedItem();
-            Lugar municipioSeleccionado = (Lugar) cb_municipios.getSelectedItem();
-            Lugar parroquiaSeleccionada = (Lugar) cb_parroquias.getSelectedItem();
-            SimpleDateFormat parseFecha = new SimpleDateFormat("dd/MM/yy");
-            Date fechaIngreso = parseFecha.parse(dc_fechaIngreso.getText());
-            Date fechaNacimiento = parseFecha.parse(dc_fechaNac.getText());
-            ManejadorImagen img = new ManejadorImagen();
-            Empleado empleadoRegistrar = new Empleado(Integer.parseInt(txt_cedula.getText()), txt_primerNombre.getText(), txt_segundoNombre.getText(), 
-                                                      txt_primerApellido.getText(), txt_segundoApellido.getText(), (String) cb_banco.getSelectedItem(),  
-                                                      (Integer.parseInt(txt_sueldoMensual.getText())), fechaIngreso, fechaNacimiento,
-                                                      txt_telefonoCasa.getText(), txt_telefonoMovil.getText(), txt_cargo.getText(), null, 
-                                                      "", "", estadoSeleccionado.getNombre(), municipioSeleccionado.getNombre(), parroquiaSeleccionada.getNombre());
-            ComunicacionREST comRest = new ComunicacionREST();
-            Empleado empleadoRegistrado = comRest.registrarEmpleado(empleadoRegistrar);
-        } catch (Exception ex) {
-            Logger.getLogger(RegistrarEmpleado.class.getName()).log(Level.SEVERE, null, ex);
+        Object objeto = cb_estados.getSelectedItem();
+        Object objeto1 = cb_municipios.getSelectedItem();
+        Object objeto2 = cb_parroquias.getSelectedItem();
+        if((!txt_cedula.getText().equals("")) && (!txt_primerNombre.getText().equals("")) && (!txt_segundoNombre.getText().equals("")) 
+                && (!txt_primerApellido.getText().equals("")) && (!txt_segundoApellido.getText().equals("")) && (!txt_sueldoMensual.getText().equals("")) 
+                && (!dc_fechaIngreso.getText().equals("")) && (!dc_fechaNac.getText().equals("")) && (!txt_telefonoCasa.getText().equals("")) 
+                && (!txt_telefonoMovil.getText().equals("")) && (!txt_cargo.getText().equals("")) && (cb_estados.getSelectedItem() != null) 
+                && (cb_municipios.getSelectedItem() != null) && (cb_parroquias.getSelectedItem() != null) && (archivoSeleccionado != null)) {
+            
+            try {
+                Lugar estadoSeleccionado = (Lugar) cb_estados.getSelectedItem();
+                Lugar municipioSeleccionado = (Lugar) cb_municipios.getSelectedItem();
+                Lugar parroquiaSeleccionada = (Lugar) cb_parroquias.getSelectedItem();
+                SimpleDateFormat parseFecha = new SimpleDateFormat("dd/MM/yy");
+                Date fechaIngreso = parseFecha.parse(dc_fechaIngreso.getText());
+                Date fechaNacimiento = parseFecha.parse(dc_fechaNac.getText());
+                ManejadorImagen img = new ManejadorImagen();
+                Empleado empleadoRegistrar = new Empleado(Integer.parseInt(txt_cedula.getText()), txt_primerNombre.getText(), txt_segundoNombre.getText(), 
+                                                          txt_primerApellido.getText(), txt_segundoApellido.getText(), (String) cb_banco.getSelectedItem(),  
+                                                          (Integer.parseInt(txt_sueldoMensual.getText())), fechaIngreso, fechaNacimiento,
+                                                          txt_telefonoCasa.getText(), txt_telefonoMovil.getText(), txt_cargo.getText(), null, 
+                                                          "", "", estadoSeleccionado.getNombre(), municipioSeleccionado.getNombre(), parroquiaSeleccionada.getNombre());
+                ComunicacionREST comRest = new ComunicacionREST();
+                Empleado empleadoRegistrado = comRest.registrarEmpleado(empleadoRegistrar);
+            } catch (Exception ex) {
+                Logger.getLogger(RegistrarEmpleado.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }else{
+            final JPanel panel = new JPanel();
+            JOptionPane.showMessageDialog(panel, "Existen campos vacíos", "Error", JOptionPane.ERROR_MESSAGE);
         }
+
     }//GEN-LAST:event_btn_registrarActionPerformed
 
 
