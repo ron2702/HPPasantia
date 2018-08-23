@@ -14,6 +14,7 @@ import java.sql.SQLException;
 import java.sql.Types;
 import java.util.ArrayList;
 import modelo.DAO;
+import modelo.ManejadorImagen;
 import modelo.Registry;
 import static modelo.Registry.*;
 
@@ -58,7 +59,7 @@ public class DAOEmpleado extends DAO{
             cstmt.setString(11, _empleado.getTelefonoCasa());
             cstmt.setString(12, _empleado.getTelefonoMovil());
             cstmt.setString(13, _empleado.getCargo());
-            cstmt.setString(14, _empleado.getFoto().getAbsolutePath());
+            cstmt.setString(14, "test");
             cstmt.setString(15, _empleado.getUsuario());
             cstmt.setString(16, _empleado.getClave());
             cstmt.setString(17, _empleado.getEstado());
@@ -122,7 +123,7 @@ public class DAOEmpleado extends DAO{
             cstmt.setString(11, _empleado.getTelefonoCasa());
             cstmt.setString(12, _empleado.getTelefonoMovil());
             cstmt.setString(13, _empleado.getCargo());
-            cstmt.setString(14, _empleado.getFoto().getAbsolutePath());
+            cstmt.setString(14, "test");
             cstmt.setString(15, _empleado.getUsuario());
             cstmt.setString(16, _empleado.getClave());
             cstmt.setString(17, _empleado.getEstado());
@@ -222,6 +223,7 @@ public class DAOEmpleado extends DAO{
             
             while(rs.next()){
                 File imagenEmpleado = new File(rs.getString("foto"));
+                ManejadorImagen img = new ManejadorImagen();
                 Empleado empleado = new Empleado(rs.getInt("cedula"), 
                                   rs.getString("primernombre"),
                                   rs.getString("segundonombre"),
@@ -234,7 +236,7 @@ public class DAOEmpleado extends DAO{
                                   rs.getString("telfcasa"),
                                   rs.getString("telfmovil"),
                                   rs.getString("cargo"),
-                                  imagenEmpleado,
+                                  img.obtenerBytesDeArchivo(imagenEmpleado),
                                   rs.getString("usuario"),
                                   rs.getString("clave"),
                                   rs.getString("estado"),
@@ -282,6 +284,7 @@ public class DAOEmpleado extends DAO{
             while(rs.next()){
                 
                 File imagenEmpleado = new File(rs.getString("foto"));
+                ManejadorImagen img = new ManejadorImagen();
                 Empleado empleado = new Empleado(rs.getInt("cedula"), 
                                   rs.getString("primernombre"),
                                   rs.getString("segundonombre"),
@@ -294,7 +297,7 @@ public class DAOEmpleado extends DAO{
                                   rs.getString("telfcasa"),
                                   rs.getString("telfmovil"),
                                   rs.getString("cargo"),
-                                  imagenEmpleado,
+                                  img.obtenerBytesDeArchivo(imagenEmpleado),
                                   rs.getString("usuario"),
                                   rs.getString("clave"),
                                   rs.getString("estado"),

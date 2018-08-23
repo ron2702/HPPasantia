@@ -5,7 +5,6 @@
  */
 package comun;
 
-import java.io.File;
 import java.util.Date;
 
 /**
@@ -31,7 +30,7 @@ public class Empleado {
     private String cargo;
     private int asistencia;
     private int suplencia;
-    private File foto;
+    private byte[] foto;
     private String usuario;
     private String clave;
     private String estado;
@@ -46,7 +45,7 @@ public class Empleado {
         this.cedula = _cedula;
     }
     
-    public Empleado(int _cedula, String _primerNombre, String _segundoNombre, String _primerApellido, String _segundoApellido, String _banco, int _sueldoMensual, Date _fechaIngreso, Date _fechaNac, String _telefonoCasa, String _telefonoMovil, String _cargo, File _foto, String _usuario, String _clave, String _estado, String _municipio, String _parroquia) {
+    public Empleado(int _cedula, String _primerNombre, String _segundoNombre, String _primerApellido, String _segundoApellido, String _banco, int _sueldoMensual, Date _fechaIngreso, Date _fechaNac, String _telefonoCasa, String _telefonoMovil, String _cargo, byte[] _foto, String _usuario, String _clave, String _estado, String _municipio, String _parroquia) {
         this.cedula = _cedula;
         this.primerNombre = _primerNombre;
         this.segundoNombre = _segundoNombre;
@@ -163,11 +162,11 @@ public class Empleado {
         this.cargo = cargo;
     }
 
-    public File getFoto() {
+    public byte[] getFoto() {
         return foto;
     }
 
-    public void setFoto(File foto) {
+    public void setFoto(byte[] foto) {
         this.foto = foto;
     }
 
