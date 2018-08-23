@@ -26,6 +26,7 @@ import javax.swing.filechooser.FileFilter;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import modelo.ComunicacionREST;
 import modelo.ManejadorImagen;
+import modelo.Registry;
 import vista.panel.empleados.*;
 
 /**
@@ -633,6 +634,13 @@ txt_primerApellido.addKeyListener(new java.awt.event.KeyAdapter() {
                                                           "", "", estadoSeleccionado.getNombre(), municipioSeleccionado.getNombre(), parroquiaSeleccionada.getNombre());
                 ComunicacionREST comRest = new ComunicacionREST();
                 Empleado empleadoRegistrado = comRest.registrarEmpleado(empleadoRegistrar);
+                if (empleadoRegistrado.getError() == Registry.RESULTADO_CODIGO_BIEN){
+                    final JPanel panel = new JPanel();
+                    JOptionPane.showMessageDialog(panel, "Se registro existamente el empleado", "Información", JOptionPane.INFORMATION_MESSAGE);
+                }else{
+                    final JPanel panel = new JPanel();
+                    JOptionPane.showMessageDialog(panel, "No se ha podido registrar el empleado, intente nuevamente", "Error", JOptionPane.ERROR_MESSAGE);
+                }
             } catch (Exception ex) {
                 Logger.getLogger(RegistrarEmpleado.class.getName()).log(Level.SEVERE, null, ex);
             }
