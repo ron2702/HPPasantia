@@ -5,12 +5,15 @@
  */
 package vista.panel.empleados;
 
+import comun.Empleado;
 import comun.Lugar;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.io.File;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
@@ -20,6 +23,7 @@ import javax.swing.JTextField;
 import javax.swing.filechooser.FileFilter;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import modelo.ComunicacionREST;
+import modelo.ManejadorImagen;
 import vista.panel.empleados.*;
 
 /**
@@ -238,6 +242,7 @@ public class RegistrarEmpleado extends javax.swing.JPanel {
                 true)));
     dc_fechaIngreso.setCalendarBackground(new java.awt.Color(255, 255, 255));
     dc_fechaIngreso.setCalendarPreferredSize(new java.awt.Dimension(400, 250));
+    dc_fechaIngreso.setFormat(3);
     dc_fechaIngreso.setFieldFont(new java.awt.Font("Tahoma", java.awt.Font.PLAIN, 12));
     dc_fechaIngreso.setNavigateFont(new java.awt.Font("Serif", java.awt.Font.PLAIN, 8));
 
@@ -368,6 +373,11 @@ txt_primerApellido.addKeyListener(new java.awt.event.KeyAdapter() {
     btn_registrar.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
     btn_registrar.setText("Registrar");
     btn_registrar.setPreferredSize(new java.awt.Dimension(109, 25));
+    btn_registrar.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            btn_registrarActionPerformed(evt);
+        }
+    });
 
     btn_cancelar.setBackground(new java.awt.Color(218, 87, 54));
     btn_cancelar.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
@@ -376,11 +386,6 @@ txt_primerApellido.addKeyListener(new java.awt.event.KeyAdapter() {
 
     cb_banco.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
     cb_banco.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "100% Banco", "BBVA Banco Provincial", "Bancamiga", "Bancaribe", "Banco Activo", "Banco Agricola de Venezuela", "Banco Bicentenario del Pueblo", "Banco Caroni", "Banco del Tesoro", "Banco de Venezuela", "Banco Exterior", "Banco Mercantil", "Banco Plaza", "Banco Sofitasa", "Banco Venezolano de Credito", "Banesco", "Banfanb", "Banplus", "BFC Banco Fondo Comun", "BNC Banco Nacional de Credito", "BOD Banco Occidental de Descuento", "CitiBank", "DELSUR", "Mi Banco" }));
-    cb_banco.addActionListener(new java.awt.event.ActionListener() {
-        public void actionPerformed(java.awt.event.ActionEvent evt) {
-            cb_bancoActionPerformed(evt);
-        }
-    });
 
     javax.swing.GroupLayout pnl_datosLayout = new javax.swing.GroupLayout(pnl_datos);
     pnl_datos.setLayout(pnl_datosLayout);
@@ -587,24 +592,41 @@ txt_primerApellido.addKeyListener(new java.awt.event.KeyAdapter() {
     }//GEN-LAST:event_txt_primerNombreKeyTyped
 
     private void txt_segundoNombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_segundoNombreKeyTyped
-        keyTypedSoloLetras(evt, txt_primerNombre, 30); 
+        keyTypedSoloLetras(evt, txt_segundoNombre, 30); 
     }//GEN-LAST:event_txt_segundoNombreKeyTyped
 
     private void txt_primerApellidoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_primerApellidoKeyTyped
-        keyTypedSoloLetras(evt, txt_primerNombre, 30); 
+        keyTypedSoloLetras(evt, txt_primerApellido, 30); 
     }//GEN-LAST:event_txt_primerApellidoKeyTyped
 
     private void txt_segundoApellidoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_segundoApellidoKeyTyped
-        keyTypedSoloLetras(evt, txt_primerNombre, 30); 
+        keyTypedSoloLetras(evt, txt_segundoApellido, 30); 
     }//GEN-LAST:event_txt_segundoApellidoKeyTyped
 
     private void txt_cargoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_cargoKeyTyped
-        keyTypedSoloLetras(evt, txt_primerNombre, 30); 
+        keyTypedSoloLetras(evt, txt_cargo, 30); 
     }//GEN-LAST:event_txt_cargoKeyTyped
 
-    private void cb_bancoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_bancoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cb_bancoActionPerformed
+    private void btn_registrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_registrarActionPerformed
+        try {
+            Lugar estadoSeleccionado = (Lugar) cb_estados.getSelectedItem();
+            Lugar municipioSeleccionado = (Lugar) cb_municipios.getSelectedItem();
+            Lugar parroquiaSeleccionada = (Lugar) cb_parroquias.getSelectedItem();
+            SimpleDateFormat parseFecha = new SimpleDateFormat("dd/MM/yy");
+            Date fechaIngreso = parseFecha.parse(dc_fechaIngreso.getText());
+            Date fechaNacimiento = parseFecha.parse(dc_fechaNac.getText());
+            ManejadorImagen img = new ManejadorImagen();
+            Empleado empleadoRegistrar = new Empleado(Integer.parseInt(txt_cedula.getText()), txt_primerNombre.getText(), txt_segundoNombre.getText(), 
+                                                      txt_primerApellido.getText(), txt_segundoApellido.getText(), (String) cb_banco.getSelectedItem(),  
+                                                      (Integer.parseInt(txt_sueldoMensual.getText())), fechaIngreso, fechaNacimiento,
+                                                      txt_telefonoCasa.getText(), txt_telefonoMovil.getText(), txt_cargo.getText(), null, 
+                                                      "", "", estadoSeleccionado.getNombre(), municipioSeleccionado.getNombre(), parroquiaSeleccionada.getNombre());
+            ComunicacionREST comRest = new ComunicacionREST();
+            Empleado empleadoRegistrado = comRest.registrarEmpleado(empleadoRegistrar);
+        } catch (Exception ex) {
+            Logger.getLogger(RegistrarEmpleado.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btn_registrarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
