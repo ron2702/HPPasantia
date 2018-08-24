@@ -3,20 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package vista.panel;
-
-import vista.panel.*;
+package vista.panel.estudiantes;
 
 /**
  *
  * @author LuisAlejandro
  */
-public class Inicio extends javax.swing.JPanel {
+public class EliminarEstudiante extends javax.swing.JPanel {
 
     /**
-     * Creates new form RegistrarEmpleado
+     * Creates new form EliminarEstudiante
      */
-    public Inicio() {
+    public EliminarEstudiante() {
         initComponents();
     }
 
@@ -29,19 +27,15 @@ public class Inicio extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setBackground(new java.awt.Color(204, 204, 204));
-        setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        setPreferredSize(new java.awt.Dimension(950, 640));
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 950, Short.MAX_VALUE)
+            .addGap(0, 400, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 640, Short.MAX_VALUE)
+            .addGap(0, 300, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 

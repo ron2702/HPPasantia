@@ -11,16 +11,26 @@ import vista.panel.empleados.ModificarEmpleado;
 import vista.panel.Inicio;
 import vista.panel.empleados.RegistrarEmpleado;
 import java.awt.CardLayout;
+import vista.panel.estudiantes.RegistrarEstudiante;
 
 
 public class AppMenu extends javax.swing.JFrame {
     final static String PANELINICIO = "PANELINICIO";
+    Inicio inicioPanel = new Inicio();
+    
+    //EMPLEADOS
     final static String REGISTRAREMPLEADO = "REGISTRAREMPELADO";
     final static String MODIFICAREMPLEADO = "MODIFICAREMPLEADO";
-    Inicio inicioPanel = new Inicio();
     RegistrarEmpleado registrarEmpleadoPanel = new RegistrarEmpleado();
     ModificarEmpleado modificarEmpleadoPanel = new ModificarEmpleado();
-   
+    
+    //ESTUDIANTES
+    final static String REGISTRARESTUDIANTE = "REGISTRARESTUDIANTE";
+    RegistrarEstudiante registrarEstudiantePanel = new RegistrarEstudiante();
+    
+    //REPRESENTANTES
+
+
     /**
      * Creates new form AppMenu
      */
@@ -28,8 +38,15 @@ public class AppMenu extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         contentPane.add(inicioPanel, PANELINICIO);
+        
+        //EMPLEADOS
         contentPane.add(registrarEmpleadoPanel, REGISTRAREMPLEADO);
         contentPane.add(modificarEmpleadoPanel, MODIFICAREMPLEADO);
+        
+        //ESTUDIANTES
+        contentPane.add(registrarEstudiantePanel, REGISTRARESTUDIANTE);
+        
+        //REPRESENTANTES
     }
 
     /**
@@ -67,6 +84,7 @@ public class AppMenu extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         contentPane.setBackground(new java.awt.Color(204, 204, 204));
+        contentPane.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         contentPane.setLayout(new java.awt.CardLayout());
 
         menuEstudiantes.setText("Estudiantes");
@@ -215,18 +233,19 @@ public class AppMenu extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(contentPane, javax.swing.GroupLayout.DEFAULT_SIZE, 940, Short.MAX_VALUE)
+            .addComponent(contentPane, javax.swing.GroupLayout.DEFAULT_SIZE, 950, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(contentPane, javax.swing.GroupLayout.DEFAULT_SIZE, 629, Short.MAX_VALUE)
+            .addComponent(contentPane, javax.swing.GroupLayout.DEFAULT_SIZE, 619, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void registrarEstudianteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrarEstudianteActionPerformed
-        
+        CardLayout cardPanel = (CardLayout)(contentPane.getLayout());
+        cardPanel.show(contentPane, REGISTRARESTUDIANTE);
     }//GEN-LAST:event_registrarEstudianteActionPerformed
 
     private void consultarEstudianteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultarEstudianteActionPerformed
