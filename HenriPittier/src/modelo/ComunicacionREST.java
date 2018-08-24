@@ -8,6 +8,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import comun.Empleado;
+import comun.Estudiante;
 import comun.Lugar;
 import comun.Representante;
 import comun.Usuario;
@@ -149,6 +150,25 @@ public class ComunicacionREST {
             throw ex;
         }
     }
+    
+    public ArrayList<Representante> consultarRepresentantes() throws Exception {
+        try {
+            conn = null;
+            Gson gson = new GsonBuilder().create();
+            BufferedReader br = comunicar("GET", "consultarRepresentantes");
+            String output;
+            ArrayList<Representante> _representantes = new ArrayList<>();
+            Type listType = new TypeToken<ArrayList<Representante>>() {}.getType();
+            while ((output = br.readLine()) != null) {
+                _representantes = gson.fromJson(output, listType);
+            }
+            conn.disconnect();
+            return _representantes;
+        }
+        catch (Exception ex){
+            throw ex;
+        }
+    }
     /*SERVICIOS WEB DE LUGARES*/
     public ArrayList<Lugar> consultarEstados() throws Exception {
         try {
@@ -204,6 +224,63 @@ public class ComunicacionREST {
             throw ex;
         }
     }
+    
+    /*SERVICIOS WEB DE ESTUDIANTE*/
+    public Estudiante registrarEstudiante(Estudiante e) throws Exception {
+        try {
+            conn = null;
+            Gson gson = new GsonBuilder().create();
+            BufferedReader br = comunicar("GET", "registrarEstudiante?estudiante=" + URLEncoder.encode(gson.toJson(e).toString(), "UTF-8"));
+            String output;
+            Estudiante _estudiante = new Estudiante();
+            while ((output = br.readLine()) != null) {
+                _estudiante = gson.fromJson(output, Estudiante.class);
+            }
+            conn.disconnect();
+            return _estudiante;
+        }
+        catch (Exception ex){
+            throw ex;
+        }
+    }
+    
+    public Estudiante modificarEstudiante(Estudiante e) throws Exception {
+        try {
+            conn = null;
+            Gson gson = new GsonBuilder().create();
+            BufferedReader br = comunicar("GET", "modificarEstudiante?estudiante=" + URLEncoder.encode(gson.toJson(e).toString(), "UTF-8"));
+            String output;
+            Estudiante _estudiante = new Estudiante();
+            while ((output = br.readLine()) != null) {
+                _estudiante = gson.fromJson(output, Estudiante.class);
+            }
+            conn.disconnect();
+            return _estudiante;
+        }
+        catch (Exception ex){
+            throw ex;
+        }
+    }
+    
+    public ArrayList<Estudiante> consultarEstudiantes() throws Exception {
+        try {
+            conn = null;
+            Gson gson = new GsonBuilder().create();
+            BufferedReader br = comunicar("GET", "consultarEstados");
+            String output;
+            ArrayList<Estudiante> _estudiantes = new ArrayList<>();
+            Type listType = new TypeToken<ArrayList<Estudiante>>() {}.getType();
+            while ((output = br.readLine()) != null) {
+                _estudiantes = gson.fromJson(output, listType);
+            }
+            conn.disconnect();
+            return _estudiantes;
+        }
+        catch (Exception ex){
+            throw ex;
+        }
+    }
+    
 }
     
 
