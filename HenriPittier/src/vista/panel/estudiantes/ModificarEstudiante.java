@@ -35,7 +35,7 @@ public class ModificarEstudiante extends javax.swing.JPanel {
         lbl_primerNombre = new javax.swing.JLabel();
         lbl_segundoNombre = new javax.swing.JLabel();
         lbl_primerApellido = new javax.swing.JLabel();
-        btn_cancelar = new javax.swing.JButton();
+        btn_limpiar = new javax.swing.JButton();
         btn_modificar = new javax.swing.JButton();
         dc_fechaNac = new datechooser.beans.DateChooserCombo();
         lbl_fechaNac = new javax.swing.JLabel();
@@ -77,10 +77,10 @@ public class ModificarEstudiante extends javax.swing.JPanel {
         lbl_primerApellido.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         lbl_primerApellido.setText("Primer Apellido:");
 
-        btn_cancelar.setBackground(new java.awt.Color(218, 87, 54));
-        btn_cancelar.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        btn_cancelar.setText("Cancelar");
-        btn_cancelar.setPreferredSize(new java.awt.Dimension(109, 25));
+        btn_limpiar.setBackground(new java.awt.Color(218, 87, 54));
+        btn_limpiar.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        btn_limpiar.setText("Limpiar");
+        btn_limpiar.setPreferredSize(new java.awt.Dimension(109, 25));
 
         btn_modificar.setBackground(new java.awt.Color(121, 213, 177));
         btn_modificar.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
@@ -200,7 +200,7 @@ public class ModificarEstudiante extends javax.swing.JPanel {
             .addGap(0, 87, Short.MAX_VALUE))
         .addGroup(pnl_datosLayout.createSequentialGroup()
             .addGap(305, 305, 305)
-            .addComponent(btn_cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(btn_limpiar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
             .addComponent(btn_modificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -251,7 +251,7 @@ public class ModificarEstudiante extends javax.swing.JPanel {
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 305, Short.MAX_VALUE)))
             .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                 .addComponent(btn_modificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(btn_cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(btn_limpiar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGap(31, 31, 31))
     );
 
@@ -347,8 +347,8 @@ public class ModificarEstudiante extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btn_cancelar;
     private javax.swing.JButton btn_cargarImagen;
+    private javax.swing.JButton btn_limpiar;
     private javax.swing.JButton btn_modificar;
     private javax.swing.JComboBox cb_listaEstudiantes;
     private datechooser.beans.DateChooserCombo dc_fechaNac;

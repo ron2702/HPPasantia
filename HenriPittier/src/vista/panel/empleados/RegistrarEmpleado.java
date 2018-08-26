@@ -136,7 +136,7 @@ public class RegistrarEmpleado extends javax.swing.JPanel {
         lbl_parroquia = new javax.swing.JLabel();
         cb_parroquias = new javax.swing.JComboBox();
         btn_registrar = new javax.swing.JButton();
-        btn_cancelar = new javax.swing.JButton();
+        btn_limpiar = new javax.swing.JButton();
         cb_banco = new javax.swing.JComboBox();
         lbl_tituloRegistroEmpleados = new javax.swing.JLabel();
 
@@ -379,10 +379,10 @@ txt_primerApellido.addKeyListener(new java.awt.event.KeyAdapter() {
         }
     });
 
-    btn_cancelar.setBackground(new java.awt.Color(218, 87, 54));
-    btn_cancelar.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-    btn_cancelar.setText("Cancelar");
-    btn_cancelar.setPreferredSize(new java.awt.Dimension(109, 25));
+    btn_limpiar.setBackground(new java.awt.Color(218, 87, 54));
+    btn_limpiar.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+    btn_limpiar.setText("Limpiar");
+    btn_limpiar.setPreferredSize(new java.awt.Dimension(109, 25));
 
     cb_banco.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
     cb_banco.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "100% Banco", "BBVA Banco Provincial", "Bancamiga", "Bancaribe", "Banco Activo", "Banco Agricola de Venezuela", "Banco Bicentenario del Pueblo", "Banco Caroni", "Banco del Tesoro", "Banco de Venezuela", "Banco Exterior", "Banco Mercantil", "Banco Plaza", "Banco Sofitasa", "Banco Venezolano de Credito", "Banesco", "Banfanb", "Banplus", "BFC Banco Fondo Comun", "BNC Banco Nacional de Credito", "BOD Banco Occidental de Descuento", "CitiBank", "DELSUR", "Mi Banco" }));
@@ -425,15 +425,14 @@ txt_primerApellido.addKeyListener(new java.awt.event.KeyAdapter() {
                                         .addComponent(lbl_fechaIngreso)
                                         .addComponent(lbl_fechaNac)
                                         .addComponent(lbl_banco)
-                                        .addComponent(lbl_direccion))
-                                    .addGap(45, 45, 45))
+                                        .addComponent(lbl_direccion)))
                                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnl_datosLayout.createSequentialGroup()
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                     .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(lbl_estado, javax.swing.GroupLayout.Alignment.TRAILING)
                                         .addComponent(lbl_municipio, javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(lbl_parroquia, javax.swing.GroupLayout.Alignment.TRAILING))
-                                    .addGap(45, 45, 45)))
+                                        .addComponent(lbl_parroquia, javax.swing.GroupLayout.Alignment.TRAILING))))
+                            .addGap(45, 45, 45)
                             .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(dc_fechaIngreso, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(dc_fechaNac, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -448,7 +447,7 @@ txt_primerApellido.addKeyListener(new java.awt.event.KeyAdapter() {
                             .addComponent(btn_cargarImagen))))
                 .addGroup(pnl_datosLayout.createSequentialGroup()
                     .addGap(307, 307, 307)
-                    .addComponent(btn_cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_limpiar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                     .addComponent(btn_registrar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
             .addContainerGap(42, Short.MAX_VALUE))
@@ -527,7 +526,7 @@ txt_primerApellido.addKeyListener(new java.awt.event.KeyAdapter() {
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
                     .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(btn_registrar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btn_cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btn_limpiar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGap(23, 23, 23))))
     );
 
@@ -651,8 +650,8 @@ txt_primerApellido.addKeyListener(new java.awt.event.KeyAdapter() {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btn_cancelar;
     private javax.swing.JButton btn_cargarImagen;
+    private javax.swing.JButton btn_limpiar;
     private javax.swing.JButton btn_registrar;
     private javax.swing.JComboBox cb_banco;
     private javax.swing.JComboBox cb_estados;

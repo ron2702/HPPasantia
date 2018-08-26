@@ -62,7 +62,7 @@ public class RegistrarEstudiante extends javax.swing.JPanel {
         dc_fechaNac = new datechooser.beans.DateChooserCombo();
         lbl_foto = new javax.swing.JLabel();
         btn_cargarImagen = new javax.swing.JButton();
-        btn_cancelar = new javax.swing.JButton();
+        btn_limpiar = new javax.swing.JButton();
         btn_registrar = new javax.swing.JButton();
         lbl_cedulaRepresentante = new javax.swing.JLabel();
         txt_cedulaRepresentante = new javax.swing.JTextField();
@@ -75,6 +75,7 @@ public class RegistrarEstudiante extends javax.swing.JPanel {
         setPreferredSize(new java.awt.Dimension(950, 640));
 
         pnl_datos.setBackground(new java.awt.Color(204, 204, 204));
+        pnl_datos.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
         pnl_datos.setPreferredSize(new java.awt.Dimension(840, 520));
 
         lbl_primerNombre.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
@@ -176,10 +177,15 @@ public class RegistrarEstudiante extends javax.swing.JPanel {
         }
     });
 
-    btn_cancelar.setBackground(new java.awt.Color(218, 87, 54));
-    btn_cancelar.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-    btn_cancelar.setText("Cancelar");
-    btn_cancelar.setPreferredSize(new java.awt.Dimension(109, 25));
+    btn_limpiar.setBackground(new java.awt.Color(218, 87, 54));
+    btn_limpiar.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+    btn_limpiar.setText("Limpiar");
+    btn_limpiar.setPreferredSize(new java.awt.Dimension(109, 25));
+    btn_limpiar.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            btn_limpiarActionPerformed(evt);
+        }
+    });
 
     btn_registrar.setBackground(new java.awt.Color(121, 213, 177));
     btn_registrar.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
@@ -241,7 +247,7 @@ public class RegistrarEstudiante extends javax.swing.JPanel {
                                 .addComponent(dc_fechaNac, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGroup(pnl_datosLayout.createSequentialGroup()
                                     .addGap(124, 124, 124)
-                                    .addComponent(btn_cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(btn_limpiar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                     .addComponent(btn_registrar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -249,7 +255,7 @@ public class RegistrarEstudiante extends javax.swing.JPanel {
                             .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addComponent(txt_primerNombre)
                                 .addComponent(txt_segundoNombre)
-                                .addComponent(txt_primerApellido, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE))
+                                .addComponent(txt_primerApellido, javax.swing.GroupLayout.DEFAULT_SIZE, 156, Short.MAX_VALUE))
                             .addGap(56, 56, 56)
                             .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addGroup(pnl_datosLayout.createSequentialGroup()
@@ -296,9 +302,9 @@ public class RegistrarEstudiante extends javax.swing.JPanel {
                 .addGroup(pnl_datosLayout.createSequentialGroup()
                     .addGap(48, 48, 48)
                     .addComponent(btn_cargarImagen)))
-            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 81, Short.MAX_VALUE)
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 76, Short.MAX_VALUE)
             .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                .addComponent(btn_cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btn_limpiar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addComponent(btn_registrar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGap(31, 31, 31))
     );
@@ -396,10 +402,14 @@ public class RegistrarEstudiante extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_cedulaEscolarKeyTyped
 
+    private void btn_limpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_limpiarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_limpiarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btn_cancelar;
     private javax.swing.JButton btn_cargarImagen;
+    private javax.swing.JButton btn_limpiar;
     private javax.swing.JButton btn_registrar;
     private datechooser.beans.DateChooserCombo dc_fechaNac;
     private javax.swing.JLabel lbl_cedulaEscolar;
