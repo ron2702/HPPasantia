@@ -5,14 +5,23 @@
  */
 package vista.panel.estudiantes;
 
+import comun.Estudiante;
 import java.awt.event.KeyEvent;
 import java.io.File;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.filechooser.FileFilter;
 import javax.swing.filechooser.FileNameExtensionFilter;
+import modelo.ComunicacionREST;
+import modelo.Registry;
 
 
 public class RegistrarEstudiante extends javax.swing.JPanel {
@@ -355,8 +364,31 @@ public class RegistrarEstudiante extends javax.swing.JPanel {
 
     private void btn_registrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_registrarActionPerformed
 
-       
+    if ((!txt_primerNombre.getText().equals("")) && (!txt_primerApellido.getText().equals("")) && (!txt_segundoNombre.getText().equals(""))
+            && (!txt_segundoApellido.getText().equals("")) &&(!dc_fechaNac.getText().equals(""))){
         
+        try {
+            
+            SimpleDateFormat parseFecha = new SimpleDateFormat("dd/MM/yy");
+            Date fechaNacimiento = parseFecha.parse(dc_fechaNac.getText());
+            Estudiante estudianteRegistrar = new Estudiante(20678868, txt_primerNombre.getText(), txt_primerApellido.getText(), txt_segundoNombre.getText(),
+                                        txt_segundoApellido.getText(), fechaNacimiento, "");
+            ComunicacionREST comRest = new ComunicacionREST();
+            Estudiante estudianteRegistrado = comRest.registrarEstudiante(estudianteRegistrar);
+            if (estudianteRegistrado.getError() == Registry.RESULTADO_CODIGO_RECURSO_CREADO){
+                    final JPanel panel = new JPanel();
+                    JOptionPane.showMessageDialog(panel, "Se registro existosamente el estudiante", "Información", JOptionPane.INFORMATION_MESSAGE);
+                }else{
+                    final JPanel panel = new JPanel();
+                    JOptionPane.showMessageDialog(panel, "No se ha podido registrar el estudiante, intente nuevamente", "Error", JOptionPane.ERROR_MESSAGE);
+                }
+        } catch (Exception ex) {
+             Logger.getLogger(RegistrarEstudiante.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }else{
+        final JPanel panel = new JPanel();
+        JOptionPane.showMessageDialog(panel, "No se ha podido registrar el estudiante, intente nuevamente", "Error", JOptionPane.ERROR_MESSAGE);
+    }
     }//GEN-LAST:event_btn_registrarActionPerformed
 
     private void txt_cedulaRepresentanteKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_cedulaRepresentanteKeyTyped

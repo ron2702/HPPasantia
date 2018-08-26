@@ -266,7 +266,7 @@ public class ComunicacionREST {
         try {
             conn = null;
             Gson gson = new GsonBuilder().create();
-            BufferedReader br = comunicar("GET", "consultarEstados");
+            BufferedReader br = comunicar("GET", "consultarEstudiantes");
             String output;
             ArrayList<Estudiante> _estudiantes = new ArrayList<>();
             Type listType = new TypeToken<ArrayList<Estudiante>>() {}.getType();
