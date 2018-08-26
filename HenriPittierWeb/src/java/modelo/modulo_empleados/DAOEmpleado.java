@@ -222,8 +222,8 @@ public class DAOEmpleado extends DAO{
             rs = cstmt.executeQuery();
             
             while(rs.next()){
-                File imagenEmpleado = new File(rs.getString("foto"));
-                ManejadorImagen img = new ManejadorImagen();
+                /*File imagenEmpleado = new File(rs.getString("foto"));
+                ManejadorImagen img = new ManejadorImagen();*/
                 Empleado empleado = new Empleado(rs.getInt("cedula"), 
                                   rs.getString("primernombre"),
                                   rs.getString("segundonombre"),
@@ -236,7 +236,7 @@ public class DAOEmpleado extends DAO{
                                   rs.getString("telfcasa"),
                                   rs.getString("telfmovil"),
                                   rs.getString("cargo"),
-                                  img.obtenerBytesDeArchivo(imagenEmpleado),
+                                  rs.getString("foto"),
                                   rs.getString("usuario"),
                                   rs.getString("clave"),
                                   rs.getString("estado"),
@@ -283,8 +283,8 @@ public class DAOEmpleado extends DAO{
             
             while(rs.next()){
                 
-                File imagenEmpleado = new File(rs.getString("foto"));
-                ManejadorImagen img = new ManejadorImagen();
+                /*File imagenEmpleado = new File(rs.getString("foto"));
+                ManejadorImagen img = new ManejadorImagen();*/
                 Empleado empleado = new Empleado(rs.getInt("cedula"), 
                                   rs.getString("primernombre"),
                                   rs.getString("segundonombre"),
@@ -297,7 +297,7 @@ public class DAOEmpleado extends DAO{
                                   rs.getString("telfcasa"),
                                   rs.getString("telfmovil"),
                                   rs.getString("cargo"),
-                                  img.obtenerBytesDeArchivo(imagenEmpleado),
+                                  rs.getString("foto"),
                                   rs.getString("usuario"),
                                   rs.getString("clave"),
                                   rs.getString("estado"),

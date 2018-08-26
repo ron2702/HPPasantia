@@ -39,7 +39,9 @@ public class RegistrarEmpleado extends javax.swing.JPanel {
         try {
             initComponents();
             ComunicacionREST comRest = new ComunicacionREST();
+            
             ArrayList<Lugar> listaLugares = comRest.consultarEstados();
+            
             for (Lugar lugar : listaLugares) {
                 cb_estados.addItem(lugar);
             }
