@@ -144,7 +144,7 @@ public class ModificarEmpleado extends javax.swing.JPanel {
         lbl_foto = new javax.swing.JLabel();
         btn_cargarImagen = new javax.swing.JButton();
         cb_listaEmpleados = new javax.swing.JComboBox();
-        jLabel1 = new javax.swing.JLabel();
+        lbl_tituloModificar = new javax.swing.JLabel();
         lbl_tituloModificarEmpleados = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(204, 204, 204));
@@ -330,8 +330,8 @@ btn_cargarImagen.addActionListener(new java.awt.event.ActionListener() {
 
     cb_listaEmpleados.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
 
-    jLabel1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-    jLabel1.setText("Empleado a modificar:");
+    lbl_tituloModificar.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+    lbl_tituloModificar.setText("Empleado a modificar:");
 
     javax.swing.GroupLayout pnl_datosLayout = new javax.swing.GroupLayout(pnl_datos);
     pnl_datos.setLayout(pnl_datosLayout);
@@ -343,18 +343,14 @@ btn_cargarImagen.addActionListener(new java.awt.event.ActionListener() {
                 .addComponent(lbl_cargo)
                 .addGroup(pnl_datosLayout.createSequentialGroup()
                     .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(lbl_segundoNombre)
-                                .addComponent(lbl_primerApellido)
-                                .addComponent(lbl_segundoApellido)
-                                .addComponent(lbl_primerNombre)
-                                .addComponent(lbl_telefonoCasa)
-                                .addComponent(jLabel1))
-                            .addGroup(pnl_datosLayout.createSequentialGroup()
-                                .addComponent(lbl_telefonoMovil)
-                                .addGap(19, 19, 19)))
-                        .addComponent(lbl_sueldoMensual))
+                        .addComponent(lbl_segundoNombre)
+                        .addComponent(lbl_primerApellido)
+                        .addComponent(lbl_segundoApellido)
+                        .addComponent(lbl_primerNombre)
+                        .addComponent(lbl_telefonoCasa)
+                        .addComponent(lbl_tituloModificar)
+                        .addComponent(lbl_sueldoMensual)
+                        .addComponent(lbl_telefonoMovil))
                     .addGap(35, 35, 35)
                     .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -412,7 +408,7 @@ btn_cargarImagen.addActionListener(new java.awt.event.ActionListener() {
                 .addComponent(dc_fechaNac, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cb_listaEmpleados, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
+                    .addComponent(lbl_tituloModificar))
                 .addComponent(lbl_fechaNac))
             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
             .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -577,7 +573,6 @@ btn_cargarImagen.addActionListener(new java.awt.event.ActionListener() {
     private javax.swing.JComboBox cb_parroquias;
     private datechooser.beans.DateChooserCombo dc_fechaIngreso;
     private datechooser.beans.DateChooserCombo dc_fechaNac;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel lbl_banco;
     private javax.swing.JLabel lbl_cargo;
     private javax.swing.JLabel lbl_direccion;
@@ -594,6 +589,7 @@ btn_cargarImagen.addActionListener(new java.awt.event.ActionListener() {
     private javax.swing.JLabel lbl_sueldoMensual;
     private javax.swing.JLabel lbl_telefonoCasa;
     private javax.swing.JLabel lbl_telefonoMovil;
+    private javax.swing.JLabel lbl_tituloModificar;
     private javax.swing.JLabel lbl_tituloModificarEmpleados;
     private javax.swing.JPanel pnl_datos;
     private javax.swing.JTextField txt_cargo;

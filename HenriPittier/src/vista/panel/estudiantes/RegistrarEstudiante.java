@@ -1,8 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
+
 package vista.panel.estudiantes;
 
 import java.awt.event.KeyEvent;
@@ -62,7 +59,7 @@ public class RegistrarEstudiante extends javax.swing.JPanel {
         txt_cedulaRepresentante = new javax.swing.JTextField();
         lbl_cedulaEscolar = new javax.swing.JLabel();
         txt_cedulaEscolar = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
+        lbl_tituloRegistroEstudiantes = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(204, 204, 204));
         setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
@@ -297,8 +294,8 @@ public class RegistrarEstudiante extends javax.swing.JPanel {
             .addGap(31, 31, 31))
     );
 
-    jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-    jLabel1.setText("Registro de Estudiantes");
+    lbl_tituloRegistroEstudiantes.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+    lbl_tituloRegistroEstudiantes.setText("Registro de Estudiantes");
 
     javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
     this.setLayout(layout);
@@ -307,7 +304,7 @@ public class RegistrarEstudiante extends javax.swing.JPanel {
         .addGroup(layout.createSequentialGroup()
             .addGap(56, 56, 56)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(jLabel1)
+                .addComponent(lbl_tituloRegistroEstudiantes)
                 .addComponent(pnl_datos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addContainerGap(54, Short.MAX_VALUE))
     );
@@ -315,7 +312,7 @@ public class RegistrarEstudiante extends javax.swing.JPanel {
         layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
             .addGap(26, 26, 26)
-            .addComponent(jLabel1)
+            .addComponent(lbl_tituloRegistroEstudiantes)
             .addGap(18, 18, 18)
             .addComponent(pnl_datos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addContainerGap(59, Short.MAX_VALUE))
@@ -373,7 +370,6 @@ public class RegistrarEstudiante extends javax.swing.JPanel {
     private javax.swing.JButton btn_cargarImagen;
     private javax.swing.JButton btn_registrar;
     private datechooser.beans.DateChooserCombo dc_fechaNac;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel lbl_cedulaEscolar;
     private javax.swing.JLabel lbl_cedulaRepresentante;
     private javax.swing.JLabel lbl_fechaNac;
@@ -382,6 +378,7 @@ public class RegistrarEstudiante extends javax.swing.JPanel {
     private javax.swing.JLabel lbl_primerNombre;
     private javax.swing.JLabel lbl_segundoApellido;
     private javax.swing.JLabel lbl_segundoNombre;
+    private javax.swing.JLabel lbl_tituloRegistroEstudiantes;
     private javax.swing.JPanel pnl_datos;
     private javax.swing.JTextField txt_cedulaEscolar;
     private javax.swing.JTextField txt_cedulaRepresentante;

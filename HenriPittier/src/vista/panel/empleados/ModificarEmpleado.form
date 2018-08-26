@@ -77,21 +77,14 @@
                       <Component id="lbl_cargo" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Group type="102" alignment="0" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="103" alignment="0" groupAlignment="1" attributes="0">
-                                  <Group type="103" alignment="1" groupAlignment="0" attributes="0">
-                                      <Component id="lbl_segundoNombre" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="lbl_primerApellido" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="lbl_segundoApellido" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="lbl_primerNombre" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="lbl_telefonoCasa" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" alignment="1" attributes="0">
-                                      <Component id="lbl_telefonoMovil" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
-                                  </Group>
-                              </Group>
+                              <Component id="lbl_segundoNombre" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="lbl_primerApellido" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="lbl_segundoApellido" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="lbl_primerNombre" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="lbl_telefonoCasa" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="lbl_tituloModificar" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="lbl_sueldoMensual" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="lbl_telefonoMovil" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
@@ -166,7 +159,7 @@
                       <Component id="dc_fechaNac" alignment="1" min="-2" pref="30" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="cb_listaEmpleados" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
-                          <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lbl_tituloModificar" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <Component id="lbl_fechaNac" alignment="1" min="-2" max="-2" attributes="0"/>
                   </Group>
@@ -566,7 +559,7 @@
             </Property>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel1">
+        <Component class="javax.swing.JLabel" name="lbl_tituloModificar">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="12" style="0"/>

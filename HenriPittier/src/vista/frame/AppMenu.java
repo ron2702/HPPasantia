@@ -11,6 +11,7 @@ import vista.panel.empleados.ModificarEmpleado;
 import vista.panel.Inicio;
 import vista.panel.empleados.RegistrarEmpleado;
 import java.awt.CardLayout;
+import vista.panel.estudiantes.ModificarEstudiante;
 import vista.panel.estudiantes.RegistrarEstudiante;
 
 
@@ -26,7 +27,9 @@ public class AppMenu extends javax.swing.JFrame {
     
     //ESTUDIANTES
     final static String REGISTRARESTUDIANTE = "REGISTRARESTUDIANTE";
+    final static String MODIFICARESTUDIANTE = "MODIFICARESTUDIANTE";
     RegistrarEstudiante registrarEstudiantePanel = new RegistrarEstudiante();
+    ModificarEstudiante modificarEstudiantePanel = new ModificarEstudiante();
     
     //REPRESENTANTES
 
@@ -45,7 +48,7 @@ public class AppMenu extends javax.swing.JFrame {
         
         //ESTUDIANTES
         contentPane.add(registrarEstudiantePanel, REGISTRARESTUDIANTE);
-        
+        contentPane.add(modificarEstudiantePanel, MODIFICARESTUDIANTE);
         //REPRESENTANTES
     }
 
@@ -253,7 +256,8 @@ public class AppMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_consultarEstudianteActionPerformed
 
     private void modificarEstudianteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarEstudianteActionPerformed
-        // TODO add your handling code here:
+        CardLayout cardPanel = (CardLayout)(contentPane.getLayout());
+        cardPanel.show(contentPane, MODIFICARESTUDIANTE);
     }//GEN-LAST:event_modificarEstudianteActionPerformed
 
     private void eliminarEstudianteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarEstudianteActionPerformed
