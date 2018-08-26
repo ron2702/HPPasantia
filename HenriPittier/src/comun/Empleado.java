@@ -30,7 +30,7 @@ public class Empleado {
     private String cargo;
     private int asistencia;
     private int suplencia;
-    private byte[] foto;
+    private String foto;
     private String usuario;
     private String clave;
     private String estado;
@@ -45,7 +45,7 @@ public class Empleado {
         this.cedula = _cedula;
     }
     
-    public Empleado(int _cedula, String _primerNombre, String _segundoNombre, String _primerApellido, String _segundoApellido, String _banco, int _sueldoMensual, Date _fechaIngreso, Date _fechaNac, String _telefonoCasa, String _telefonoMovil, String _cargo, byte[] _foto, String _usuario, String _clave, String _estado, String _municipio, String _parroquia) {
+    public Empleado(int _cedula, String _primerNombre, String _segundoNombre, String _primerApellido, String _segundoApellido, String _banco, int _sueldoMensual, Date _fechaIngreso, Date _fechaNac, String _telefonoCasa, String _telefonoMovil, String _cargo, String _foto, String _usuario, String _clave, String _estado, String _municipio, String _parroquia) {
         this.cedula = _cedula;
         this.primerNombre = _primerNombre;
         this.segundoNombre = _segundoNombre;
@@ -162,11 +162,11 @@ public class Empleado {
         this.cargo = cargo;
     }
 
-    public byte[] getFoto() {
+    public String getFoto() {
         return foto;
     }
 
-    public void setFoto(byte[] foto) {
+    public void setFoto(String foto) {
         this.foto = foto;
     }
 
@@ -218,7 +218,9 @@ public class Empleado {
         this.error = error;
     }
 
-    
-    
+    @Override
+    public String toString() {
+        return this.cedula + "- " + this.primerNombre + " " + this.primerApellido;
+    }
     
 }

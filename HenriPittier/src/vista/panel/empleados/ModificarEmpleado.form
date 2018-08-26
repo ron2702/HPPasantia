@@ -31,9 +31,9 @@
               <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="lbl_tituloModificarEmpleados" min="-2" max="-2" attributes="0"/>
-                  <Component id="pnl_datos" min="-2" pref="832" max="-2" attributes="0"/>
+                  <Component id="pnl_datos" min="-2" pref="838" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="62" max="32767" attributes="0"/>
+              <EmptySpace pref="56" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -72,21 +72,19 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="1" attributes="0">
-                  <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <Component id="lbl_cargo" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="953" max="-2" attributes="0"/>
-                      </Group>
+                      <Component id="lbl_cargo" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Group type="102" alignment="0" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="103" groupAlignment="1" attributes="0">
+                              <Group type="103" alignment="0" groupAlignment="1" attributes="0">
                                   <Group type="103" alignment="1" groupAlignment="0" attributes="0">
                                       <Component id="lbl_segundoNombre" alignment="0" min="-2" max="-2" attributes="0"/>
                                       <Component id="lbl_primerApellido" alignment="0" min="-2" max="-2" attributes="0"/>
                                       <Component id="lbl_segundoApellido" alignment="0" min="-2" max="-2" attributes="0"/>
                                       <Component id="lbl_primerNombre" alignment="0" min="-2" max="-2" attributes="0"/>
                                       <Component id="lbl_telefonoCasa" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="1" attributes="0">
                                       <Component id="lbl_telefonoMovil" min="-2" max="-2" attributes="0"/>
@@ -95,154 +93,174 @@
                               </Group>
                               <Component id="lbl_sueldoMensual" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Group type="103" groupAlignment="1" attributes="0">
-                                      <Component id="txt_telefonoCasa" min="-2" pref="175" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                          <Component id="txt_primerApellido" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="txt_segundoApellido" alignment="0" pref="175" max="32767" attributes="0"/>
-                                      </Group>
-                                      <Component id="txt_telefonoMovil" alignment="1" min="-2" pref="175" max="-2" attributes="0"/>
-                                      <Component id="txt_cargo" alignment="1" min="-2" pref="175" max="-2" attributes="0"/>
-                                      <Component id="txt_sueldoMensual" alignment="1" min="-2" pref="175" max="-2" attributes="0"/>
+                              <Group type="103" alignment="0" groupAlignment="1" attributes="0">
+                                  <Component id="txt_telefonoCasa" min="-2" pref="175" max="-2" attributes="0"/>
+                                  <Group type="103" alignment="1" groupAlignment="1" max="-2" attributes="0">
+                                      <Component id="txt_primerApellido" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="txt_segundoApellido" alignment="0" min="-2" pref="175" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace min="-2" pref="61" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="1" attributes="0">
-                                      <Component id="lbl_estado" min="-2" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="lbl_direccion" min="-2" max="-2" attributes="0"/>
-                                          <Component id="lbl_banco" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Component id="lbl_municipio" alignment="1" min="-2" max="-2" attributes="0"/>
-                                      <Component id="lbl_parroquia" alignment="1" min="-2" max="-2" attributes="0"/>
-                                  </Group>
+                                  <Component id="txt_telefonoMovil" alignment="1" min="-2" pref="175" max="-2" attributes="0"/>
+                                  <Component id="txt_cargo" alignment="1" min="-2" pref="175" max="-2" attributes="0"/>
+                                  <Component id="txt_sueldoMensual" alignment="1" min="-2" pref="175" max="-2" attributes="0"/>
                               </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="-2" pref="115" max="-2" attributes="0"/>
-                                  <Component id="btn_cancelar" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="btn_modificar" min="-2" max="-2" attributes="0"/>
+                              <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="txt_primerNombre" max="32767" attributes="0"/>
+                                  <Component id="txt_segundoNombre" min="-2" pref="175" max="-2" attributes="0"/>
                               </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="txt_primerNombre" pref="175" max="32767" attributes="0"/>
-                                      <Component id="txt_segundoNombre" max="32767" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace min="61" pref="61" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="lbl_fechaIngreso" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="lbl_fechaNac" alignment="1" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="dc_fechaIngreso" min="-2" pref="192" max="-2" attributes="0"/>
-                                      <Component id="dc_fechaNac" min="-2" pref="192" max="-2" attributes="0"/>
-                                      <Component id="cb_banco" alignment="0" min="-2" pref="192" max="-2" attributes="0"/>
-                                      <Component id="cb_estados" alignment="0" min="-2" pref="192" max="-2" attributes="0"/>
-                                      <Component id="cb_municipios" alignment="0" min="-2" pref="192" max="-2" attributes="0"/>
-                                      <Component id="cb_parroquias" alignment="0" min="-2" pref="192" max="-2" attributes="0"/>
-                                  </Group>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="-2" pref="296" max="-2" attributes="0"/>
-                                  <Component id="lbl_foto" min="-2" pref="134" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="btn_cargarImagen" min="-2" max="-2" attributes="0"/>
-                              </Group>
+                              <Component id="cb_listaEmpleados" alignment="1" min="-2" pref="192" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                       </Group>
                   </Group>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="lbl_direccion" min="-2" max="-2" attributes="0"/>
+                              <Component id="lbl_banco" min="-2" max="-2" attributes="0"/>
+                              <Component id="lbl_fechaIngreso" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="lbl_fechaNac" alignment="0" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <Group type="102" attributes="0">
+                          <EmptySpace min="-2" pref="138" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="1" attributes="0">
+                              <Component id="lbl_estado" min="-2" max="-2" attributes="0"/>
+                              <Component id="lbl_municipio" min="-2" max="-2" attributes="0"/>
+                              <Component id="lbl_parroquia" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="dc_fechaIngreso" min="-2" pref="192" max="-2" attributes="0"/>
+                              <Component id="dc_fechaNac" min="-2" pref="192" max="-2" attributes="0"/>
+                              <Component id="cb_banco" alignment="0" min="-2" pref="192" max="-2" attributes="0"/>
+                              <Component id="cb_estados" alignment="0" min="-2" pref="192" max="-2" attributes="0"/>
+                              <Component id="cb_municipios" alignment="0" min="-2" pref="192" max="-2" attributes="0"/>
+                              <Component id="cb_parroquias" alignment="0" min="-2" pref="192" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <Group type="102" attributes="0">
+                          <EmptySpace min="-2" pref="94" max="-2" attributes="0"/>
+                          <Component id="lbl_foto" min="-2" pref="134" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="btn_cargarImagen" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <EmptySpace min="0" pref="35" max="32767" attributes="0"/>
+              </Group>
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace min="-2" pref="305" max="-2" attributes="0"/>
+                  <Component id="btn_cancelar" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="btn_modificar" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="1" attributes="0">
-                  <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="1" attributes="0">
+                      <Component id="dc_fechaNac" alignment="1" min="-2" pref="30" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="txt_primerNombre" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
-                          <Component id="lbl_primerNombre" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="lbl_fechaNac" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="cb_listaEmpleados" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                          <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <Component id="dc_fechaNac" min="-2" pref="30" max="-2" attributes="0"/>
+                      <Component id="lbl_fechaNac" alignment="1" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="txt_segundoNombre" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
-                              <Component id="lbl_segundoNombre" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="lbl_fechaIngreso" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="txt_primerApellido" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
-                              <Component id="lbl_primerApellido" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="lbl_banco" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="txt_segundoApellido" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
-                              <Component id="lbl_segundoApellido" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="lbl_direccion" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="lbl_telefonoCasa" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="txt_telefonoCasa" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
-                              <Component id="lbl_estado" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="cb_estados" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="txt_telefonoMovil" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
-                              <Component id="lbl_telefonoMovil" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="lbl_municipio" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="cb_municipios" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="txt_cargo" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
-                              <Component id="lbl_cargo" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="lbl_parroquia" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="cb_parroquias" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
-                          </Group>
+                          <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
+                          <Component id="lbl_fechaIngreso" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="lbl_banco" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
+                          <Component id="lbl_direccion" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Component id="lbl_estado" min="-2" pref="15" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="lbl_municipio" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="lbl_parroquia" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="157" pref="207" max="32767" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="dc_fechaIngreso" min="-2" pref="30" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="cb_banco" min="-2" pref="31" max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="txt_sueldoMensual" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
-                              <Component id="lbl_sueldoMensual" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace min="-2" pref="135" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="1" attributes="0">
-                          <Group type="103" groupAlignment="1" attributes="0">
-                              <Component id="lbl_foto" min="-2" pref="134" max="-2" attributes="0"/>
-                              <Group type="102" alignment="1" attributes="0">
-                                  <Component id="btn_cargarImagen" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="102" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="txt_primerNombre" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                                      <Component id="lbl_primerNombre" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="txt_segundoNombre" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                                      <Component id="lbl_segundoNombre" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace min="-2" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="txt_primerApellido" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                                      <Component id="lbl_primerApellido" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="txt_segundoApellido" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                                      <Component id="lbl_segundoApellido" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="lbl_telefonoCasa" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="txt_telefonoCasa" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="txt_telefonoMovil" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                                      <Component id="lbl_telefonoMovil" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="txt_cargo" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                                      <Component id="lbl_cargo" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="txt_sueldoMensual" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                                      <Component id="lbl_sueldoMensual" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace min="-2" pref="55" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="cb_banco" min="-2" pref="31" max="-2" attributes="0"/>
+                                  <EmptySpace max="32767" attributes="0"/>
+                                  <Component id="cb_estados" min="-2" pref="31" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="cb_municipios" min="-2" pref="31" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="cb_parroquias" min="-2" pref="31" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="102" attributes="0">
+                                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                                          <Component id="lbl_foto" min="-2" pref="134" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+                                          <Component id="btn_cargarImagen" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                                  <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="btn_cancelar" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="btn_modificar" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="btn_cancelar" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -259,6 +277,9 @@
         <Component class="javax.swing.JTextField" name="txt_segundoApellido">
         </Component>
         <Component class="javax.swing.JTextField" name="txt_primerApellido">
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txt_primerApellidoActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="lbl_telefonoCasa">
           <Properties>
@@ -534,6 +555,24 @@
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_cargarImagenActionPerformed"/>
           </Events>
+        </Component>
+        <Component class="javax.swing.JComboBox" name="cb_listaEmpleados">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tahoma" size="12" style="0"/>
+            </Property>
+            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+              <StringArray count="0"/>
+            </Property>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel1">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tahoma" size="12" style="0"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Empleado a modificar:"/>
+          </Properties>
         </Component>
       </SubComponents>
     </Container>

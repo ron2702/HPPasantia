@@ -26,6 +26,7 @@ import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 /**
@@ -113,6 +114,44 @@ public class ComunicacionREST {
             throw ex;
         }
     }
+    
+    public Empleado consultarEmpleadoDetalle(Empleado e) throws Exception {
+        try {
+            conn = null;
+            Gson gson = new GsonBuilder().create();
+            BufferedReader br = comunicar("GET", "consultarEmpleadoDetalle?empleado=" + URLEncoder.encode(gson.toJson(e).toString(), "UTF-8"));
+            String output;
+            Empleado _empleado = new Empleado();
+            while ((output = br.readLine()) != null) {
+                _empleado = gson.fromJson(output, Empleado.class);
+            }
+            conn.disconnect();
+            return _empleado;
+        }
+        catch (Exception ex){
+            throw ex;
+        }
+    }
+    
+    public ArrayList<Empleado> consultarEmpleados() throws Exception {
+        try {
+            conn = null;
+            Gson gson = new GsonBuilder().registerTypeAdapter(Date.class, new JsonDateDeserializer()).create();
+            BufferedReader br = comunicar("GET", "consultarEmpleados");
+            String output;
+            ArrayList<Empleado> _empleado = new ArrayList<>();
+            Type listType = new TypeToken<ArrayList<Empleado>>() {}.getType();
+            while ((output = br.readLine()) != null) {
+                _empleado = gson.fromJson(output, listType);
+            }
+            conn.disconnect();
+            return _empleado;
+        }
+        catch (Exception ex){
+            throw ex;
+        }
+    }
+    
     /*SERVICIOS WEB DE REPRESENTANTES*/
     
     public Representante registrarRepresentante(Representante e) throws Exception {
