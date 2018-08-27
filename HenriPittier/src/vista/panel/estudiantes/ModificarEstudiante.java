@@ -126,6 +126,11 @@ public class ModificarEstudiante extends javax.swing.JPanel {
         btn_limpiar.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         btn_limpiar.setText("Limpiar");
         btn_limpiar.setPreferredSize(new java.awt.Dimension(109, 25));
+        btn_limpiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_limpiarActionPerformed(evt);
+            }
+        });
 
         btn_modificar.setBackground(new java.awt.Color(121, 213, 177));
         btn_modificar.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
@@ -419,6 +424,15 @@ public class ModificarEstudiante extends javax.swing.JPanel {
         JOptionPane.showMessageDialog(panel, "No se ha podido modificar el estudiante, revise los campos e intente nuevamente", "Error", JOptionPane.ERROR_MESSAGE);
     }
     }//GEN-LAST:event_btn_modificarActionPerformed
+
+    private void btn_limpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_limpiarActionPerformed
+        txt_cedulaEscolar.setText("");
+        txt_primerNombre.setText("");
+        txt_primerApellido.setText("");
+        txt_segundoNombre.setText("");
+        txt_segundoApellido.setText("");
+        dc_fechaNac.setCurrent(null);
+    }//GEN-LAST:event_btn_limpiarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

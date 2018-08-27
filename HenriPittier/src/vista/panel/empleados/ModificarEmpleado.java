@@ -219,6 +219,11 @@ public class ModificarEmpleado extends javax.swing.JPanel {
         btn_limnpiar.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         btn_limnpiar.setText("Limpiar");
         btn_limnpiar.setPreferredSize(new java.awt.Dimension(109, 25));
+        btn_limnpiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_limnpiarActionPerformed(evt);
+            }
+        });
 
         btn_modificar.setBackground(new java.awt.Color(121, 213, 177));
         btn_modificar.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
@@ -557,6 +562,23 @@ try {
     private void txt_primerApellidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_primerApellidoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_primerApellidoActionPerformed
+
+    private void btn_limnpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_limnpiarActionPerformed
+        txt_primerNombre.setText("");
+        txt_primerApellido.setText("");
+        txt_segundoNombre.setText("");
+        txt_segundoApellido.setText("");
+        txt_telefonoCasa.setText("");
+        txt_telefonoMovil.setText("");
+        txt_cargo.setText("");
+        txt_sueldoMensual.setText("");
+        dc_fechaIngreso.setCurrent(null);
+        dc_fechaNac.setCurrent(null);
+        cb_banco.setSelectedItem(null);
+        /*cb_estados.setSelectedItem(null);
+        cb_municipios.setSelectedItem(null);
+        cb_parroquias.setSelectedItem(null);*/
+    }//GEN-LAST:event_btn_limnpiarActionPerformed
 
     private void txt_telefonoCasaKeyTyped(java.awt.event.KeyEvent evt) {                                          
         keyTypedSoloNumeros(evt, txt_telefonoCasa, 11);

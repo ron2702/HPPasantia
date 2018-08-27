@@ -6,6 +6,7 @@ import comun.Estudiante;
 import java.awt.event.KeyEvent;
 import java.io.File;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -403,7 +404,13 @@ public class RegistrarEstudiante extends javax.swing.JPanel {
     }//GEN-LAST:event_txt_cedulaEscolarKeyTyped
 
     private void btn_limpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_limpiarActionPerformed
-        // TODO add your handling code here:
+        txt_cedulaEscolar.setText("");
+        txt_cedulaRepresentante.setText("");
+        txt_primerNombre.setText("");
+        txt_primerApellido.setText("");
+        txt_segundoNombre.setText("");
+        txt_segundoApellido.setText("");
+        dc_fechaNac.setCurrent(null);
     }//GEN-LAST:event_btn_limpiarActionPerformed
 
 

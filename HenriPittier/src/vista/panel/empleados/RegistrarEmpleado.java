@@ -383,6 +383,11 @@ txt_primerApellido.addKeyListener(new java.awt.event.KeyAdapter() {
     btn_limpiar.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
     btn_limpiar.setText("Limpiar");
     btn_limpiar.setPreferredSize(new java.awt.Dimension(109, 25));
+    btn_limpiar.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            btn_limpiarActionPerformed(evt);
+        }
+    });
 
     cb_banco.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
     cb_banco.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "100% Banco", "BBVA Banco Provincial", "Bancamiga", "Bancaribe", "Banco Activo", "Banco Agricola de Venezuela", "Banco Bicentenario del Pueblo", "Banco Caroni", "Banco del Tesoro", "Banco de Venezuela", "Banco Exterior", "Banco Mercantil", "Banco Plaza", "Banco Sofitasa", "Banco Venezolano de Credito", "Banesco", "Banfanb", "Banplus", "BFC Banco Fondo Comun", "BNC Banco Nacional de Credito", "BOD Banco Occidental de Descuento", "CitiBank", "DELSUR", "Mi Banco" }));
@@ -630,7 +635,7 @@ txt_primerApellido.addKeyListener(new java.awt.event.KeyAdapter() {
                                                           "", "", estadoSeleccionado.getNombre(), municipioSeleccionado.getNombre(), parroquiaSeleccionada.getNombre());
                 ComunicacionREST comRest = new ComunicacionREST();
                 Empleado empleadoRegistrado = comRest.registrarEmpleado(empleadoRegistrar);
-                if (empleadoRegistrado.getError() == Registry.RESULTADO_CODIGO_BIEN){
+                if (empleadoRegistrado.getError() == Registry.RESULTADO_CODIGO_RECURSO_CREADO){
                     final JPanel panel = new JPanel();
                     JOptionPane.showMessageDialog(panel, "Se registro existosamente el empleado", "Información", JOptionPane.INFORMATION_MESSAGE);
                 }else{
@@ -646,6 +651,24 @@ txt_primerApellido.addKeyListener(new java.awt.event.KeyAdapter() {
         }
 
     }//GEN-LAST:event_btn_registrarActionPerformed
+
+    private void btn_limpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_limpiarActionPerformed
+        txt_cedula.setText("");
+        txt_primerNombre.setText("");
+        txt_primerApellido.setText("");
+        txt_segundoNombre.setText("");
+        txt_segundoApellido.setText("");
+        txt_telefonoCasa.setText("");
+        txt_telefonoMovil.setText("");
+        txt_cargo.setText("");
+        txt_sueldoMensual.setText("");
+        dc_fechaIngreso.setCurrent(null);
+        dc_fechaNac.setCurrent(null);
+        cb_banco.setSelectedItem(null);
+        /*cb_estados.setSelectedItem(null);
+        cb_municipios.setSelectedItem(null);
+        cb_parroquias.setSelectedItem(null);*/
+    }//GEN-LAST:event_btn_limpiarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
