@@ -115,6 +115,6 @@ public class Estudiante {
     
     @Override
     public String toString() {
-        return this.cedulaEscolar + " - " + this.primerNombre + this.primerApellido;
+        return this.cedulaEscolar + " - " + this.primerNombre + " " + this.primerApellido;
     }
 }

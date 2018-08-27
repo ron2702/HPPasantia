@@ -6,16 +6,21 @@ import comun.Estudiante;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.filechooser.FileFilter;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import modelo.ComunicacionREST;
+import modelo.Registry;
 
 
 public class ModificarEstudiante extends javax.swing.JPanel {
@@ -37,6 +42,8 @@ public class ModificarEstudiante extends javax.swing.JPanel {
                 public void actionPerformed(ActionEvent e) {
                     try {
                         Estudiante estudianteSeleccionado = (Estudiante) cb_listaEstudiantes.getSelectedItem();
+                        String cedulaEscolar = Integer.toString(estudianteSeleccionado.getCedulaEscolar());
+                        txt_cedulaEscolar.setText(cedulaEscolar);
                         txt_primerNombre.setText(estudianteSeleccionado.getPrimerNombre());
                         txt_primerApellido.setText(estudianteSeleccionado.getPrimerApellido());
                         txt_segundoNombre.setText(estudianteSeleccionado.getSegundoNombre());
@@ -124,6 +131,11 @@ public class ModificarEstudiante extends javax.swing.JPanel {
         btn_modificar.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         btn_modificar.setText("Modificar");
         btn_modificar.setPreferredSize(new java.awt.Dimension(109, 25));
+        btn_modificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_modificarActionPerformed(evt);
+            }
+        });
 
         dc_fechaNac.setCurrentView(new datechooser.view.appearance.AppearancesList("Swing",
             new datechooser.view.appearance.ViewAppearance("custom",
@@ -272,21 +284,15 @@ public class ModificarEstudiante extends javax.swing.JPanel {
                             .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(txt_segundoApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(lbl_segundoApellido))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(pnl_datosLayout.createSequentialGroup()
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(lbl_fechaNac))
-                                .addGroup(pnl_datosLayout.createSequentialGroup()
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(dc_fechaNac, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 175, Short.MAX_VALUE))
-                        .addGroup(pnl_datosLayout.createSequentialGroup()
-                            .addComponent(lbl_foto, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(39, 215, Short.MAX_VALUE))))
+                                .addComponent(lbl_fechaNac)
+                                .addComponent(dc_fechaNac, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(lbl_foto, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGroup(pnl_datosLayout.createSequentialGroup()
                     .addGap(62, 62, 62)
-                    .addComponent(btn_cargarImagen)
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 305, Short.MAX_VALUE)))
+                    .addComponent(btn_cargarImagen)))
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 175, Short.MAX_VALUE)
             .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                 .addComponent(btn_modificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addComponent(btn_limpiar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -382,6 +388,37 @@ public class ModificarEstudiante extends javax.swing.JPanel {
     private void txt_cedulaEscolarKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_cedulaEscolarKeyTyped
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_cedulaEscolarKeyTyped
+
+    private void btn_modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_modificarActionPerformed
+       if ((!txt_primerNombre.getText().equals("")) && (!txt_primerApellido.getText().equals("")) && (!txt_segundoNombre.getText().equals(""))
+            && (!txt_segundoApellido.getText().equals("")) &&(!dc_fechaNac.getText().equals(""))){
+           
+           try {
+               
+               SimpleDateFormat parseFecha = new SimpleDateFormat("dd/MM/yy");
+               Date fechaNacimiento = parseFecha.parse(dc_fechaNac.getText());
+               int ciEscolar = Integer.parseInt(txt_cedulaEscolar.getText());
+               estudianteModificar = new Estudiante(ciEscolar, txt_primerNombre.getText(), txt_primerApellido.getText(), txt_segundoNombre.getText(),
+                                        txt_segundoApellido.getText(), fechaNacimiento, "");
+               ComunicacionREST comRest = new ComunicacionREST();
+               Estudiante estudianteModificado = comRest.modificarEstudiante(estudianteModificar);
+               if (estudianteModificado.getError() == Registry.RESULTADO_CODIGO_RECURSO_CREADO){
+                    final JPanel panel = new JPanel();
+                    JOptionPane.showMessageDialog(panel, "Se modifico existosamente el estudiante", "Información", JOptionPane.INFORMATION_MESSAGE);
+                }else{
+                    final JPanel panel = new JPanel();
+                    JOptionPane.showMessageDialog(panel, "No se ha podido modificar el estudiante, intente nuevamente", "Error", JOptionPane.ERROR_MESSAGE);
+                }
+               
+           } catch (Exception ex) {
+               Logger.getLogger(RegistrarEstudiante.class.getName()).log(Level.SEVERE, null, ex);
+           }
+           
+       }else{
+        final JPanel panel = new JPanel();
+        JOptionPane.showMessageDialog(panel, "No se ha podido modificar el estudiante, revise los campos e intente nuevamente", "Error", JOptionPane.ERROR_MESSAGE);
+    }
+    }//GEN-LAST:event_btn_modificarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

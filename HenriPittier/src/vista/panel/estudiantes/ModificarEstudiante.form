@@ -316,6 +316,9 @@
                       <Dimension value="[109, 25]"/>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_modificarActionPerformed"/>
+                  </Events>
                 </Component>
                 <Component class="datechooser.beans.DateChooserCombo" name="dc_fechaNac">
                   <Properties>
