@@ -80,8 +80,6 @@ public class ModificarEmpleado extends javax.swing.JPanel {
                     try {
                         Empleado empleadoSeleccionado = (Empleado) cb_listaEmpleados.getSelectedItem();
                         String sueldomensual = Integer.toString(empleadoSeleccionado.getSueldoMensual());
-                        SimpleDateFormat parseFechaNac = new SimpleDateFormat("dd/MM/yy");
-                        String fechaNacString = parseFechaNac.format(empleadoSeleccionado.getFechaNac());
                         txt_primerNombre.setText(empleadoSeleccionado.getPrimerNombre());
                         txt_segundoNombre.setText(empleadoSeleccionado.getSegundoNombre());
                         txt_primerApellido.setText(empleadoSeleccionado.getPrimerApellido());

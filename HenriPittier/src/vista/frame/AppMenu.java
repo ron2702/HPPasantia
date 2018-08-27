@@ -11,6 +11,7 @@ import vista.panel.empleados.ModificarEmpleado;
 import vista.panel.Inicio;
 import vista.panel.empleados.RegistrarEmpleado;
 import java.awt.CardLayout;
+import vista.panel.empleados.EliminarEmpleado;
 import vista.panel.estudiantes.ModificarEstudiante;
 import vista.panel.estudiantes.RegistrarEstudiante;
 
@@ -22,8 +23,11 @@ public class AppMenu extends javax.swing.JFrame {
     //EMPLEADOS
     final static String REGISTRAREMPLEADO = "REGISTRAREMPELADO";
     final static String MODIFICAREMPLEADO = "MODIFICAREMPLEADO";
+    final static String ELIMINAREMPLEADO = "ELIMINAREMPLEADO";
+    
     RegistrarEmpleado registrarEmpleadoPanel = new RegistrarEmpleado();
     ModificarEmpleado modificarEmpleadoPanel = new ModificarEmpleado();
+    EliminarEmpleado eliminarEmpleadoPanel = new EliminarEmpleado();
     
     //ESTUDIANTES
     final static String REGISTRARESTUDIANTE = "REGISTRARESTUDIANTE";
@@ -45,6 +49,7 @@ public class AppMenu extends javax.swing.JFrame {
         //EMPLEADOS
         contentPane.add(registrarEmpleadoPanel, REGISTRAREMPLEADO);
         contentPane.add(modificarEmpleadoPanel, MODIFICAREMPLEADO);
+        contentPane.add(eliminarEmpleadoPanel, ELIMINAREMPLEADO);
         
         //ESTUDIANTES
         contentPane.add(registrarEstudiantePanel, REGISTRARESTUDIANTE);
@@ -295,7 +300,8 @@ public class AppMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_modificarEmpleadoActionPerformed
 
     private void eliminarEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarEmpleadoActionPerformed
-        
+        CardLayout cardPanel = (CardLayout)(contentPane.getLayout());
+        cardPanel.show(contentPane, ELIMINAREMPLEADO);
     }//GEN-LAST:event_eliminarEmpleadoActionPerformed
 
     private void cerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cerrarSesionActionPerformed
