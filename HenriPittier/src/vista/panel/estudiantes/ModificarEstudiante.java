@@ -2,20 +2,58 @@
 
 package vista.panel.estudiantes;
 
+import comun.Estudiante;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.File;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileFilter;
 import javax.swing.filechooser.FileNameExtensionFilter;
+import modelo.ComunicacionREST;
 
 
 public class ModificarEstudiante extends javax.swing.JPanel {
     private File archivoSeleccionado;
+    private Estudiante estudianteModificar;
     
     
     public ModificarEstudiante() {
-        initComponents();
+        try {
+            initComponents();
+            ComunicacionREST comRest = new ComunicacionREST();
+            ArrayList<Estudiante> listaEstudiantes = comRest.consultarEstudiantes();
+            
+            for (Estudiante estudiante : listaEstudiantes) {
+                cb_listaEstudiantes.addItem(estudiante);
+            }
+            cb_listaEstudiantes.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    try {
+                        Estudiante estudianteSeleccionado = (Estudiante) cb_listaEstudiantes.getSelectedItem();
+                        txt_primerNombre.setText(estudianteSeleccionado.getPrimerNombre());
+                        txt_primerApellido.setText(estudianteSeleccionado.getPrimerApellido());
+                        txt_segundoNombre.setText(estudianteSeleccionado.getSegundoNombre());
+                        txt_segundoApellido.setText(estudianteSeleccionado.getSegundoApellido());
+                        Calendar calNac = Calendar.getInstance();
+                        calNac.setTime(estudianteSeleccionado.getFechaNac());
+                        dc_fechaNac.setSelectedDate(calNac);
+                    } catch (Exception ex) {
+                        Logger.getLogger(ModificarEstudiante.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+            });
+            
+            
+        } catch (Exception ex) {
+            Logger.getLogger(ModificarEstudiante.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     

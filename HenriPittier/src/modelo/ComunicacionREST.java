@@ -304,16 +304,16 @@ public class ComunicacionREST {
     public ArrayList<Estudiante> consultarEstudiantes() throws Exception {
         try {
             conn = null;
-            Gson gson = new GsonBuilder().create();
+            Gson gson = new GsonBuilder().registerTypeAdapter(Date.class, new JsonDateDeserializer()).create();
             BufferedReader br = comunicar("GET", "consultarEstudiantes");
             String output;
-            ArrayList<Estudiante> _estudiantes = new ArrayList<>();
+            ArrayList<Estudiante> _estudiante = new ArrayList<>();
             Type listType = new TypeToken<ArrayList<Estudiante>>() {}.getType();
             while ((output = br.readLine()) != null) {
-                _estudiantes = gson.fromJson(output, listType);
+                _estudiante = gson.fromJson(output, listType);
             }
             conn.disconnect();
-            return _estudiantes;
+            return _estudiante;
         }
         catch (Exception ex){
             throw ex;

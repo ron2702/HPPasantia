@@ -113,4 +113,8 @@ public class Estudiante {
         this.error = error;
     }
     
+    @Override
+    public String toString() {
+        return this.cedulaEscolar + " - " + this.primerNombre + this.primerApellido;
+    }
 }

@@ -374,7 +374,7 @@ public class RegistrarEstudiante extends javax.swing.JPanel {
             
             SimpleDateFormat parseFecha = new SimpleDateFormat("dd/MM/yy");
             Date fechaNacimiento = parseFecha.parse(dc_fechaNac.getText());
-            Estudiante estudianteRegistrar = new Estudiante(20678868, txt_primerNombre.getText(), txt_primerApellido.getText(), txt_segundoNombre.getText(),
+            Estudiante estudianteRegistrar = new Estudiante(1, txt_primerNombre.getText(), txt_primerApellido.getText(), txt_segundoNombre.getText(),
                                         txt_segundoApellido.getText(), fechaNacimiento, "");
             ComunicacionREST comRest = new ComunicacionREST();
             Estudiante estudianteRegistrado = comRest.registrarEstudiante(estudianteRegistrar);
