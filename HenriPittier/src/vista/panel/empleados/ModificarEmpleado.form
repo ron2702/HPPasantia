@@ -272,10 +272,13 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txt_segundoApellido">
+          <Events>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txt_segundoApellidoKeyTyped"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="txt_primerApellido">
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txt_primerApellidoActionPerformed"/>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txt_primerApellidoKeyTyped"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="lbl_telefonoCasa">
@@ -287,6 +290,9 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txt_segundoNombre">
+          <Events>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txt_segundoNombreKeyTyped"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="lbl_telefonoMovil">
           <Properties>
@@ -297,6 +303,9 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txt_primerNombre">
+          <Events>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txt_primerNombreKeyTyped"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="lbl_cargo">
           <Properties>
@@ -315,8 +324,14 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txt_sueldoMensual">
+          <Events>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txt_sueldoMensualKeyTyped"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="txt_cargo">
+          <Events>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txt_cargoKeyTyped"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="lbl_primerNombre">
           <Properties>
@@ -327,6 +342,9 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txt_telefonoMovil">
+          <Events>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txt_telefonoMovilKeyTyped"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="lbl_segundoNombre">
           <Properties>
@@ -337,6 +355,9 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txt_telefonoCasa">
+          <Events>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txt_telefonoCasaKeyTyped"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="lbl_primerApellido">
           <Properties>
@@ -408,6 +429,9 @@
               <Dimension value="[109, 25]"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_modificarActionPerformed"/>
+          </Events>
         </Component>
         <Component class="datechooser.beans.DateChooserCombo" name="dc_fechaNac">
           <Properties>

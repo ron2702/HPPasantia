@@ -94,7 +94,7 @@ public class ModificarEmpleado extends javax.swing.JPanel {
                         Calendar calIngreso = Calendar.getInstance();
                         calIngreso.setTime(empleadoSeleccionado.getFechaIngreso());
                         dc_fechaIngreso.setSelectedDate(calIngreso);
-                        
+                        cb_banco.setSelectedItem(empleadoSeleccionado.getBanco());
                     } catch (Exception ex) {
                         Logger.getLogger(RegistrarEmpleado.class.getName()).log(Level.SEVERE, null, ex);
                     }
@@ -121,6 +121,7 @@ public class ModificarEmpleado extends javax.swing.JPanel {
             evt.consume();
         }
     }
+
     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -176,17 +177,35 @@ public class ModificarEmpleado extends javax.swing.JPanel {
         lbl_segundoApellido.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         lbl_segundoApellido.setText("Segundo Apellido:");
 
-        txt_primerApellido.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_primerApellidoActionPerformed(evt);
+        txt_segundoApellido.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_segundoApellidoKeyTyped(evt);
+            }
+        });
+
+        txt_primerApellido.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_primerApellidoKeyTyped(evt);
             }
         });
 
         lbl_telefonoCasa.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         lbl_telefonoCasa.setText("Telefono Casa:");
 
+        txt_segundoNombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_segundoNombreKeyTyped(evt);
+            }
+        });
+
         lbl_telefonoMovil.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         lbl_telefonoMovil.setText("Teléfono Móvil:");
+
+        txt_primerNombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_primerNombreKeyTyped(evt);
+            }
+        });
 
         lbl_cargo.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         lbl_cargo.setText("Cargo:");
@@ -194,11 +213,35 @@ public class ModificarEmpleado extends javax.swing.JPanel {
         lbl_sueldoMensual.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         lbl_sueldoMensual.setText("Sueldo Mensual:");
 
+        txt_sueldoMensual.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_sueldoMensualKeyTyped(evt);
+            }
+        });
+
+        txt_cargo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_cargoKeyTyped(evt);
+            }
+        });
+
         lbl_primerNombre.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         lbl_primerNombre.setText("Primer Nombre:");
 
+        txt_telefonoMovil.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_telefonoMovilKeyTyped(evt);
+            }
+        });
+
         lbl_segundoNombre.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         lbl_segundoNombre.setText("Segundo Nombre:");
+
+        txt_telefonoCasa.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_telefonoCasaKeyTyped(evt);
+            }
+        });
 
         lbl_primerApellido.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         lbl_primerApellido.setText("Primer Apellido:");
@@ -229,6 +272,11 @@ public class ModificarEmpleado extends javax.swing.JPanel {
         btn_modificar.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         btn_modificar.setText("Modificar");
         btn_modificar.setPreferredSize(new java.awt.Dimension(109, 25));
+        btn_modificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_modificarActionPerformed(evt);
+            }
+        });
 
         dc_fechaNac.setCurrentView(new datechooser.view.appearance.AppearancesList("Swing",
             new datechooser.view.appearance.ViewAppearance("custom",
@@ -559,10 +607,6 @@ try {
         }
     }//GEN-LAST:event_btn_cargarImagenActionPerformed
 
-    private void txt_primerApellidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_primerApellidoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txt_primerApellidoActionPerformed
-
     private void btn_limnpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_limnpiarActionPerformed
         txt_primerNombre.setText("");
         txt_primerApellido.setText("");
@@ -580,38 +624,70 @@ try {
         cb_parroquias.setSelectedItem(null);*/
     }//GEN-LAST:event_btn_limnpiarActionPerformed
 
-    private void txt_telefonoCasaKeyTyped(java.awt.event.KeyEvent evt) {                                          
-        keyTypedSoloNumeros(evt, txt_telefonoCasa, 11);
-    }                                         
-                                
+    private void btn_modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_modificarActionPerformed
+        /*if ((!txt_primerNombre.getText().equals("")) && (!txt_primerApellido.getText().equals("")) && (!txt_segundoNombre.getText().equals(""))
+            && (!txt_segundoApellido.getText().equals("")) &&(!dc_fechaNac.getText().equals(""))){
+           
+           try {
+               
+               SimpleDateFormat parseFecha = new SimpleDateFormat("dd/MM/yy");
+               Date fechaNacimiento = parseFecha.parse(dc_fechaNac.getText());
+               int ciEscolar = Integer.parseInt(txt_cedulaEscolar.getText());
+               estudianteModificar = new Estudiante(ciEscolar, txt_primerNombre.getText(), txt_primerApellido.getText(), txt_segundoNombre.getText(),
+                                        txt_segundoApellido.getText(), fechaNacimiento, "");
+               ComunicacionREST comRest = new ComunicacionREST();
+               Estudiante estudianteModificado = comRest.modificarEstudiante(estudianteModificar);
+               if (estudianteModificado.getError() == Registry.RESULTADO_CODIGO_RECURSO_CREADO){
+                    final JPanel panel = new JPanel();
+                    JOptionPane.showMessageDialog(panel, "Se modifico existosamente el estudiante", "Información", JOptionPane.INFORMATION_MESSAGE);
+                }else{
+                    final JPanel panel = new JPanel();
+                    JOptionPane.showMessageDialog(panel, "No se ha podido modificar el estudiante, intente nuevamente", "Error", JOptionPane.ERROR_MESSAGE);
+                }
+               
+           } catch (Exception ex) {
+               Logger.getLogger(RegistrarEstudiante.class.getName()).log(Level.SEVERE, null, ex);
+           }
+           
+       }else{
+        final JPanel panel = new JPanel();
+        JOptionPane.showMessageDialog(panel, "No se ha podido modificar el estudiante, revise los campos e intente nuevamente", "Error", JOptionPane.ERROR_MESSAGE);
+    }*/
+    }//GEN-LAST:event_btn_modificarActionPerformed
 
-    private void txt_telefonoMovilKeyTyped(java.awt.event.KeyEvent evt) {                                           
-        keyTypedSoloNumeros(evt, txt_telefonoMovil, 11);
-    }                                          
-
-    private void txt_sueldoMensualKeyTyped(java.awt.event.KeyEvent evt) {                                           
-        keyTypedSoloNumeros(evt, txt_sueldoMensual, 5); 
-    }                                          
-
-    private void txt_primerNombreKeyTyped(java.awt.event.KeyEvent evt) {                                          
-        keyTypedSoloLetras(evt, txt_primerNombre, 30); 
-    }                                         
-
-    private void txt_segundoNombreKeyTyped(java.awt.event.KeyEvent evt) {                                           
-        keyTypedSoloLetras(evt, txt_segundoNombre, 30); 
-    }                                          
-
-    private void txt_primerApellidoKeyTyped(java.awt.event.KeyEvent evt) {                                            
+    private void txt_primerApellidoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_primerApellidoKeyTyped
         keyTypedSoloLetras(evt, txt_primerApellido, 30); 
-    }                                           
+    }//GEN-LAST:event_txt_primerApellidoKeyTyped
 
-    private void txt_segundoApellidoKeyTyped(java.awt.event.KeyEvent evt) {                                             
-        keyTypedSoloLetras(evt, txt_segundoApellido, 30); 
-    }                                            
+    private void txt_primerNombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_primerNombreKeyTyped
+        keyTypedSoloLetras(evt, txt_primerNombre, 30);
+    }//GEN-LAST:event_txt_primerNombreKeyTyped
 
-    private void txt_cargoKeyTyped(java.awt.event.KeyEvent evt) {                                   
+    private void txt_segundoNombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_segundoNombreKeyTyped
+        keyTypedSoloLetras(evt, txt_segundoNombre, 30); 
+    }//GEN-LAST:event_txt_segundoNombreKeyTyped
+
+    private void txt_telefonoCasaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_telefonoCasaKeyTyped
+        keyTypedSoloNumeros(evt, txt_telefonoCasa, 11);
+    }//GEN-LAST:event_txt_telefonoCasaKeyTyped
+
+    private void txt_telefonoMovilKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_telefonoMovilKeyTyped
+        keyTypedSoloNumeros(evt, txt_telefonoMovil, 11);
+    }//GEN-LAST:event_txt_telefonoMovilKeyTyped
+
+    private void txt_cargoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_cargoKeyTyped
         keyTypedSoloLetras(evt, txt_cargo, 30); 
-    }
+    }//GEN-LAST:event_txt_cargoKeyTyped
+
+    private void txt_sueldoMensualKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_sueldoMensualKeyTyped
+        keyTypedSoloNumeros(evt, txt_sueldoMensual, 5); 
+    }//GEN-LAST:event_txt_sueldoMensualKeyTyped
+
+    private void txt_segundoApellidoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_segundoApellidoKeyTyped
+        keyTypedSoloLetras(evt, txt_segundoApellido, 30); 
+    }//GEN-LAST:event_txt_segundoApellidoKeyTyped
+
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_cargarImagen;
