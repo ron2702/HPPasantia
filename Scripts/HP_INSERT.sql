@@ -1865,7 +1865,7 @@ INSERT INTO LUGAR VALUES (nextval('lugar_codigo_seq'),'Parroquia','Rafael Urdane
 INSERT INTO LUGAR VALUES (nextval('lugar_codigo_seq'),'Parroquia','Raul Cuenca',(SELECT CODIGO FROM LUGAR WHERE TIPO = 'Municipio' and NOMBRE = 'Valmore Rodriguez'));
 
 /*EMPLEADOS*/
-INSERT INTO EMPLEADO VALUES (648949, 'Lucila', 'Crisolia', 'De Gonzalez', 'Aranguren', 'Banco Banco Mercantil', 20000000, '02/05/2006', '31/10/1948', null, null, 'Directora', 'abc', null, null, 1);
+INSERT INTO EMPLEADO VALUES (648949, 'Lucila', 'Crisolia', 'De Gonzalez', 'Aranguren', 'Banco Mercantil', 20000000, '02/05/2006', '31/10/1948', null, null, 'Directora', 'abc', null, null, 1);
 INSERT INTO EMPLEADO VALUES (2110338, 'Jose', 'Felix', 'Gonzalez', 'Perez', 'Banesco', 20000000, '01/09/2006', '25/02/1944', null, null, 'Administrador', 'abc', null, null, 1);
 INSERT INTO EMPLEADO VALUES (10332708, 'Roxana', 'Maria', 'Gonzalez', 'Aranguren', 'Banesco', 6000000, '01/09/2006', '06/11/1969', null, null, 'Secretaria Adm', 'abc', null, null, 1);
 INSERT INTO EMPLEADO VALUES (18329356, 'Yalitza', 'C', 'Insua', 'Santoyo', 'Banesco', 4500000, '13/09/2012', '26/08/2018', null, null, 'Coordinadora', 'abc', null, null, 1);
