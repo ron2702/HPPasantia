@@ -27,7 +27,7 @@ public class JsonDateDeserializer implements JsonDeserializer<Date> {
         try {
             String s = json.getAsJsonPrimitive().getAsString();
             String[] s1 = s.split(", ");
-            SimpleDateFormat ft = new SimpleDateFormat("MMM dd, yyyy", Locale.US);
+            SimpleDateFormat ft = new SimpleDateFormat("MMM dd, yyyy", new Locale("es", "ES"));
             Date d = ft.parse(s);
             return d;
         } catch (Exception ex) {
