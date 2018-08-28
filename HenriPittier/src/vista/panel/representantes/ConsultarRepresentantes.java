@@ -62,6 +62,7 @@ public class ConsultarRepresentantes extends javax.swing.JPanel {
         pnl_datos.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         pnl_datos.setPreferredSize(new java.awt.Dimension(840, 520));
 
+        tb_consultarRepresentantes.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         tb_consultarRepresentantes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
