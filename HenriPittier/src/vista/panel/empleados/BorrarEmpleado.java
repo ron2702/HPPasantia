@@ -480,7 +480,7 @@ try {
                     JOptionPane.showMessageDialog(panel, "No se ha podido eliminar el empleado, intente nuevamente", "Error", JOptionPane.ERROR_MESSAGE);
                 }
             } catch (Exception ex) {
-                Logger.getLogger(RegistrarEmpleado.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(BorrarEmpleado.class.getName()).log(Level.SEVERE, null, ex);
             }
         }else {
             final JPanel panel = new JPanel();
