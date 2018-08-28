@@ -247,6 +247,7 @@ public class RegistrarEmpleado extends javax.swing.JPanel {
     dc_fechaIngreso.setCalendarBackground(new java.awt.Color(255, 255, 255));
     dc_fechaIngreso.setCalendarPreferredSize(new java.awt.Dimension(400, 250));
     dc_fechaIngreso.setFieldFont(new java.awt.Font("Tahoma", java.awt.Font.PLAIN, 12));
+    dc_fechaIngreso.setLocale(new java.util.Locale("es", "ES", ""));
     dc_fechaIngreso.setNavigateFont(new java.awt.Font("Serif", java.awt.Font.PLAIN, 8));
 
     lbl_fechaIngreso.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
@@ -296,6 +297,7 @@ public class RegistrarEmpleado extends javax.swing.JPanel {
 dc_fechaNac.setCalendarBackground(new java.awt.Color(255, 255, 255));
 dc_fechaNac.setCalendarPreferredSize(new java.awt.Dimension(400, 250));
 dc_fechaNac.setFieldFont(new java.awt.Font("Tahoma", java.awt.Font.PLAIN, 12));
+dc_fechaNac.setLocale(new java.util.Locale("es", "ES", ""));
 dc_fechaNac.setNavigateFont(new java.awt.Font("Serif", java.awt.Font.PLAIN, 8));
 
 lbl_telefonoCasa.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
@@ -347,7 +349,7 @@ txt_primerApellido.addKeyListener(new java.awt.event.KeyAdapter() {
 
     txt_cedula.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
     txt_cedula.setToolTipText("");
-    txt_cedula.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+    txt_cedula.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
     txt_cedula.addKeyListener(new java.awt.event.KeyAdapter() {
         public void keyTyped(java.awt.event.KeyEvent evt) {
             txt_cedulaKeyTyped(evt);
