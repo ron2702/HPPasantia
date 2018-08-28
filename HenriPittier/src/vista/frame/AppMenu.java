@@ -16,6 +16,7 @@ import vista.panel.estudiantes.BorrarEstudiante;
 import vista.panel.estudiantes.ModificarEstudiante;
 import vista.panel.estudiantes.RegistrarEstudiante;
 import vista.panel.representantes.BorrarRepresentante;
+import vista.panel.representantes.ConsultarRepresentantes;
 import vista.panel.representantes.ModificarRepresentante;
 import vista.panel.representantes.RegistrarRepresentante;
 
@@ -46,10 +47,12 @@ public class AppMenu extends javax.swing.JFrame {
     final static String REGISTRARREPRESENTANTE = "REGISTRARREPRESENTANTE";
     final static String MODIFICARREPRESENTANTE = "MODIFICARREPRESENTANTE";
     final static String BORRARREPRESENTANTE = "BORRARREPRESENTANTE";
+    final static String CONSULTARREPRESENTANTES = "CONSULTARREPRESENTANTES";
     
     RegistrarRepresentante registrarRepresentantePanel = new RegistrarRepresentante();
     ModificarRepresentante modificarRepresentantePanel = new ModificarRepresentante();
     BorrarRepresentante borrarRepresentantePanel = new BorrarRepresentante();
+    ConsultarRepresentantes consultarRepresentantesPanel = new ConsultarRepresentantes();
 
     /**
      * Creates new form AppMenu
@@ -73,6 +76,7 @@ public class AppMenu extends javax.swing.JFrame {
         contentPane.add(registrarRepresentantePanel, REGISTRARREPRESENTANTE);
         contentPane.add(modificarRepresentantePanel, MODIFICARREPRESENTANTE);
         contentPane.add(borrarRepresentantePanel, BORRARREPRESENTANTE);
+        contentPane.add(consultarRepresentantesPanel, CONSULTARREPRESENTANTES);
 
     }
 
@@ -295,7 +299,8 @@ public class AppMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_registrarRepresentanteActionPerformed
 
     private void consultarRepresentanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultarRepresentanteActionPerformed
-        // TODO add your handling code here:
+        CardLayout cardPanel = (CardLayout)(contentPane.getLayout());
+        cardPanel.show(contentPane, CONSULTARREPRESENTANTES);
     }//GEN-LAST:event_consultarRepresentanteActionPerformed
 
     private void modificarRepresentanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarRepresentanteActionPerformed
