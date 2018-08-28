@@ -437,7 +437,7 @@ public class RegistrarRepresentante extends javax.swing.JPanel {
             .addGap(38, 38, 38))
     );
 
-    lbl_tituloRepresentante.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+    lbl_tituloRepresentante.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
     lbl_tituloRepresentante.setText("Registro de Representante");
 
     javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -447,7 +447,7 @@ public class RegistrarRepresentante extends javax.swing.JPanel {
         .addGroup(layout.createSequentialGroup()
             .addGap(54, 54, 54)
             .addComponent(lbl_tituloRepresentante)
-            .addContainerGap(730, Short.MAX_VALUE))
+            .addContainerGap(711, Short.MAX_VALUE))
         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(55, 55, 55)
@@ -459,7 +459,7 @@ public class RegistrarRepresentante extends javax.swing.JPanel {
         .addGroup(layout.createSequentialGroup()
             .addGap(32, 32, 32)
             .addComponent(lbl_tituloRepresentante)
-            .addContainerGap(593, Short.MAX_VALUE))
+            .addContainerGap(591, Short.MAX_VALUE))
         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(60, 60, 60)
