@@ -6,6 +6,7 @@
 package vista.panel.representantes;
 
 import comun.Representante;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Vector;
@@ -38,10 +39,8 @@ public class ConsultarRepresentantes extends javax.swing.JPanel {
             
         } catch (Exception e) {
         }
-        /*model = (DefaultTableModel) jTable1.getModel();
-        model.insertRow(WIDTH, rowData);*/
     }
-
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -79,7 +78,11 @@ public class ConsultarRepresentantes extends javax.swing.JPanel {
                 return types [columnIndex];
             }
         });
-        tb_consultarRepresentantes.setCellSelectionEnabled(true);
+        tb_consultarRepresentantes.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                tb_consultarRepresentantesMousePressed(evt);
+            }
+        });
         jScrollPane1.setViewportView(tb_consultarRepresentantes);
 
         javax.swing.GroupLayout pnl_datosLayout = new javax.swing.GroupLayout(pnl_datos);
@@ -123,6 +126,18 @@ public class ConsultarRepresentantes extends javax.swing.JPanel {
                 .addContainerGap(64, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void tb_consultarRepresentantesMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tb_consultarRepresentantesMousePressed
+        int index = tb_consultarRepresentantes.getSelectedRow();
+        
+        String cedula = model.getValueAt(index, 0).toString();
+        String primerNombre = model.getValueAt(index, 1).toString();
+        String primerApellido = model.getValueAt(index, 2).toString();
+        String segundoNombre = model.getValueAt(index, 3).toString();
+        String segundoApellido = model.getValueAt(index, 4).toString();
+        
+        System.out.println(cedula + " " + primerNombre + " " + primerApellido + " " + segundoNombre + " " + segundoApellido);
+    }//GEN-LAST:event_tb_consultarRepresentantesMousePressed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
