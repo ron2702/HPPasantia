@@ -11,7 +11,7 @@ import vista.panel.empleados.ModificarEmpleado;
 import vista.panel.Inicio;
 import vista.panel.empleados.RegistrarEmpleado;
 import java.awt.CardLayout;
-import vista.panel.empleados.EliminarEmpleado;
+import vista.panel.empleados.BorrarEmpleado;
 import vista.panel.estudiantes.ModificarEstudiante;
 import vista.panel.estudiantes.RegistrarEstudiante;
 
@@ -27,7 +27,7 @@ public class AppMenu extends javax.swing.JFrame {
     
     RegistrarEmpleado registrarEmpleadoPanel = new RegistrarEmpleado();
     ModificarEmpleado modificarEmpleadoPanel = new ModificarEmpleado();
-    EliminarEmpleado eliminarEmpleadoPanel = new EliminarEmpleado();
+    BorrarEmpleado eliminarEmpleadoPanel = new BorrarEmpleado();
     
     //ESTUDIANTES
     final static String REGISTRARESTUDIANTE = "REGISTRARESTUDIANTE";

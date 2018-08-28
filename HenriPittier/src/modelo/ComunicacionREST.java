@@ -152,6 +152,24 @@ public class ComunicacionREST {
         }
     }
     
+    public Empleado borrarEmpleado(Empleado e) throws Exception {
+        try {
+            conn = null;
+            Gson gson = new GsonBuilder().create();
+            BufferedReader br = comunicar("GET", "borrarEmpleado?empleado=" + URLEncoder.encode(gson.toJson(e).toString(), "UTF-8"));
+            String output;
+            Empleado _empleado = new Empleado();
+            while ((output = br.readLine()) != null) {
+                _empleado = gson.fromJson(output, Empleado.class);
+            }
+            conn.disconnect();
+            return _empleado;
+        }
+        catch (Exception ex){
+            throw ex;
+        }
+    }
+    
     /*SERVICIOS WEB DE REPRESENTANTES*/
     
     public Representante registrarRepresentante(Representante e) throws Exception {

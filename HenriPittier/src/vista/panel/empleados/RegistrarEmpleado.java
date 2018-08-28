@@ -637,7 +637,7 @@ txt_primerApellido.addKeyListener(new java.awt.event.KeyAdapter() {
                 Empleado empleadoRegistrado = comRest.registrarEmpleado(empleadoRegistrar);
                 if (empleadoRegistrado.getError() == Registry.RESULTADO_CODIGO_RECURSO_CREADO){
                     final JPanel panel = new JPanel();
-                    JOptionPane.showMessageDialog(panel, "Se registro existosamente el empleado", "Información", JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(panel, "Se registró exitosamente el empleado", "Información", JOptionPane.INFORMATION_MESSAGE);
                 }else{
                     final JPanel panel = new JPanel();
                     JOptionPane.showMessageDialog(panel, "No se ha podido registrar el empleado, intente nuevamente", "Error", JOptionPane.ERROR_MESSAGE);

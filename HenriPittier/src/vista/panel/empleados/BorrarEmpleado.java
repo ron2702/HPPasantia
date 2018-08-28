@@ -28,13 +28,17 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 import modelo.ComunicacionREST;
 import modelo.ManejadorImagen;
 import modelo.Registry;
-import vista.panel.empleados.*;
 
-
-public class ModificarEmpleado extends javax.swing.JPanel {
+/**
+ *
+ * @author LuisAlejandro
+ */
+public class BorrarEmpleado extends javax.swing.JPanel {
     private File archivoSeleccionado;
-    private Empleado empleadoModificar;
-    public ModificarEmpleado() {
+    private Empleado empleadoBorrar;
+    
+    public BorrarEmpleado() {
+        initComponents();
         try {
             initComponents();
             ComunicacionREST comRest = new ComunicacionREST();
@@ -84,7 +88,7 @@ public class ModificarEmpleado extends javax.swing.JPanel {
                 public void actionPerformed(ActionEvent e) {
                     try {
                         Empleado empleadoSeleccionado = (Empleado) cb_listaEmpleados.getSelectedItem();
-                        empleadoModificar = empleadoSeleccionado;
+                        empleadoBorrar = empleadoSeleccionado;
                         String sueldomensual = Integer.toString(empleadoSeleccionado.getSueldoMensual());
                         txt_primerNombre.setText(empleadoSeleccionado.getPrimerNombre());
                         txt_segundoNombre.setText(empleadoSeleccionado.getSegundoNombre());
@@ -111,24 +115,7 @@ public class ModificarEmpleado extends javax.swing.JPanel {
             Logger.getLogger(RegistrarEmpleado.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
-    public void keyTypedSoloNumeros(java.awt.event.KeyEvent evt, JTextField campoEvaluar, int tamanoMax){
-        char vChar = evt.getKeyChar();
-        if (!(Character.isDigit(vChar)) || (vChar == KeyEvent.VK_BACK_SPACE) || (vChar == KeyEvent.VK_DELETE) || (campoEvaluar.getText().length() == tamanoMax)) {
-            evt.consume();
-        }
-    }
-
-    
-    public void keyTypedSoloLetras(java.awt.event.KeyEvent evt, JTextField campoEvaluar, int tamanoMax){
-        char vChar = evt.getKeyChar();
-        
-        if ((!(Character.isAlphabetic(vChar)) && (vChar != ' ')) || (campoEvaluar.getText().length() == tamanoMax)) {
-            evt.consume();
-        }
-    }
-
-    
+   
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -155,7 +142,7 @@ public class ModificarEmpleado extends javax.swing.JPanel {
         lbl_municipio = new javax.swing.JLabel();
         lbl_parroquia = new javax.swing.JLabel();
         btn_limnpiar = new javax.swing.JButton();
-        btn_modificar = new javax.swing.JButton();
+        btn_eliminar = new javax.swing.JButton();
         dc_fechaNac = new datechooser.beans.DateChooserCombo();
         dc_fechaIngreso = new datechooser.beans.DateChooserCombo();
         lbl_fechaNac = new javax.swing.JLabel();
@@ -168,12 +155,10 @@ public class ModificarEmpleado extends javax.swing.JPanel {
         lbl_foto = new javax.swing.JLabel();
         btn_cargarImagen = new javax.swing.JButton();
         cb_listaEmpleados = new javax.swing.JComboBox();
-        lbl_tituloModificar = new javax.swing.JLabel();
-        lbl_tituloModificarEmpleados = new javax.swing.JLabel();
+        lbl_tituloEliminar = new javax.swing.JLabel();
+        lbl_tituloEmpleado = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(204, 204, 204));
-        setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        setPreferredSize(new java.awt.Dimension(950, 640));
 
         pnl_datos.setBackground(new java.awt.Color(204, 204, 204));
         pnl_datos.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
@@ -183,35 +168,19 @@ public class ModificarEmpleado extends javax.swing.JPanel {
         lbl_segundoApellido.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         lbl_segundoApellido.setText("Segundo Apellido:");
 
-        txt_segundoApellido.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txt_segundoApellidoKeyTyped(evt);
-            }
-        });
+        txt_segundoApellido.setEnabled(false);
 
-        txt_primerApellido.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txt_primerApellidoKeyTyped(evt);
-            }
-        });
+        txt_primerApellido.setEnabled(false);
 
         lbl_telefonoCasa.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         lbl_telefonoCasa.setText("Telefono Casa:");
 
-        txt_segundoNombre.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txt_segundoNombreKeyTyped(evt);
-            }
-        });
+        txt_segundoNombre.setEnabled(false);
 
         lbl_telefonoMovil.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         lbl_telefonoMovil.setText("Teléfono Móvil:");
 
-        txt_primerNombre.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txt_primerNombreKeyTyped(evt);
-            }
-        });
+        txt_primerNombre.setEnabled(false);
 
         lbl_cargo.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         lbl_cargo.setText("Cargo:");
@@ -219,35 +188,19 @@ public class ModificarEmpleado extends javax.swing.JPanel {
         lbl_sueldoMensual.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         lbl_sueldoMensual.setText("Sueldo Mensual:");
 
-        txt_sueldoMensual.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txt_sueldoMensualKeyTyped(evt);
-            }
-        });
+        txt_sueldoMensual.setEnabled(false);
 
-        txt_cargo.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txt_cargoKeyTyped(evt);
-            }
-        });
+        txt_cargo.setEnabled(false);
 
         lbl_primerNombre.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         lbl_primerNombre.setText("Primer Nombre:");
 
-        txt_telefonoMovil.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txt_telefonoMovilKeyTyped(evt);
-            }
-        });
+        txt_telefonoMovil.setEnabled(false);
 
         lbl_segundoNombre.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         lbl_segundoNombre.setText("Segundo Nombre:");
 
-        txt_telefonoCasa.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txt_telefonoCasaKeyTyped(evt);
-            }
-        });
+        txt_telefonoCasa.setEnabled(false);
 
         lbl_primerApellido.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         lbl_primerApellido.setText("Primer Apellido:");
@@ -274,13 +227,14 @@ public class ModificarEmpleado extends javax.swing.JPanel {
             }
         });
 
-        btn_modificar.setBackground(new java.awt.Color(121, 213, 177));
-        btn_modificar.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        btn_modificar.setText("Modificar");
-        btn_modificar.setPreferredSize(new java.awt.Dimension(109, 25));
-        btn_modificar.addActionListener(new java.awt.event.ActionListener() {
+        btn_eliminar.setBackground(new java.awt.Color(121, 213, 177));
+        btn_eliminar.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        btn_eliminar.setText("Borrar");
+        btn_eliminar.setActionCommand("Eliminar");
+        btn_eliminar.setPreferredSize(new java.awt.Dimension(109, 25));
+        btn_eliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_modificarActionPerformed(evt);
+                btn_eliminarActionPerformed(evt);
             }
         });
 
@@ -416,8 +370,8 @@ try {
 
     cb_listaEmpleados.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
 
-    lbl_tituloModificar.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-    lbl_tituloModificar.setText("Empleado a modificar:");
+    lbl_tituloEliminar.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+    lbl_tituloEliminar.setText("Empleado a eliminar:");
 
     javax.swing.GroupLayout pnl_datosLayout = new javax.swing.GroupLayout(pnl_datos);
     pnl_datos.setLayout(pnl_datosLayout);
@@ -434,7 +388,7 @@ try {
                         .addComponent(lbl_segundoApellido)
                         .addComponent(lbl_primerNombre)
                         .addComponent(lbl_telefonoCasa)
-                        .addComponent(lbl_tituloModificar)
+                        .addComponent(lbl_tituloEliminar)
                         .addComponent(lbl_sueldoMensual)
                         .addComponent(lbl_telefonoMovil))
                     .addGap(35, 35, 35)
@@ -480,12 +434,12 @@ try {
                         .addComponent(lbl_direccion)
                         .addComponent(lbl_banco)
                         .addComponent(lbl_fechaNac))))
-            .addGap(0, 35, Short.MAX_VALUE))
+            .addGap(0, 43, Short.MAX_VALUE))
         .addGroup(pnl_datosLayout.createSequentialGroup()
             .addGap(305, 305, 305)
             .addComponent(btn_limnpiar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-            .addComponent(btn_modificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(btn_eliminar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
     );
     pnl_datosLayout.setVerticalGroup(
@@ -496,7 +450,7 @@ try {
                 .addComponent(dc_fechaNac, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cb_listaEmpleados, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbl_tituloModificar))
+                    .addComponent(lbl_tituloEliminar))
                 .addComponent(lbl_fechaNac))
             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
             .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -568,50 +522,41 @@ try {
                                     .addComponent(btn_cargarImagen)))
                             .addGap(39, 39, 39)))))
             .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                .addComponent(btn_modificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btn_eliminar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addComponent(btn_limnpiar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGap(31, 31, 31))
     );
 
-    lbl_tituloModificarEmpleados.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-    lbl_tituloModificarEmpleados.setText("Modificar Empleado");
+    lbl_tituloEmpleado.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+    lbl_tituloEmpleado.setText("Eliminar Empleado");
 
     javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
     this.setLayout(layout);
     layout.setHorizontalGroup(
         layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
         .addGroup(layout.createSequentialGroup()
-            .addGap(56, 56, 56)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(lbl_tituloModificarEmpleados)
-                .addComponent(pnl_datos, javax.swing.GroupLayout.PREFERRED_SIZE, 838, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addContainerGap(56, Short.MAX_VALUE))
+            .addGap(57, 57, 57)
+            .addComponent(lbl_tituloEmpleado)
+            .addContainerGap(767, Short.MAX_VALUE))
+        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(56, 56, 56)
+                .addComponent(pnl_datos, javax.swing.GroupLayout.PREFERRED_SIZE, 838, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(56, Short.MAX_VALUE)))
     );
     layout.setVerticalGroup(
         layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
         .addGroup(layout.createSequentialGroup()
-            .addGap(26, 26, 26)
-            .addComponent(lbl_tituloModificarEmpleados)
-            .addGap(18, 18, 18)
-            .addComponent(pnl_datos, javax.swing.GroupLayout.PREFERRED_SIZE, 513, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addContainerGap(66, Short.MAX_VALUE))
+            .addGap(31, 31, 31)
+            .addComponent(lbl_tituloEmpleado)
+            .addContainerGap(592, Short.MAX_VALUE))
+        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(63, 63, 63)
+                .addComponent(pnl_datos, javax.swing.GroupLayout.PREFERRED_SIZE, 513, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(64, Short.MAX_VALUE)))
     );
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btn_cargarImagenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cargarImagenActionPerformed
-        FileFilter filtroImagenes = new FileNameExtensionFilter("Archivos de imagen", ImageIO.getReaderFileSuffixes());
-        JFileChooser exploradorArchivos = new JFileChooser();
-        exploradorArchivos.setAcceptAllFileFilterUsed(false);
-        exploradorArchivos.addChoosableFileFilter(filtroImagenes);
-        int opcionElegida = exploradorArchivos.showOpenDialog(null);
-        if (opcionElegida == JFileChooser.APPROVE_OPTION)
-        {
-            archivoSeleccionado = exploradorArchivos.getSelectedFile();
-            ImageIcon imagenEmpleado;
-            imagenEmpleado = new ImageIcon(archivoSeleccionado.getAbsoluteFile().getAbsolutePath());
-            lbl_foto.setIcon(imagenEmpleado);
-        }
-    }//GEN-LAST:event_btn_cargarImagenActionPerformed
 
     private void btn_limnpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_limnpiarActionPerformed
         txt_primerNombre.setText("");
@@ -630,85 +575,48 @@ try {
         cb_parroquias.setSelectedItem(null);*/
     }//GEN-LAST:event_btn_limnpiarActionPerformed
 
-    private void btn_modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_modificarActionPerformed
-        Object objeto = cb_estados.getSelectedItem();
-        Object objeto1 = cb_municipios.getSelectedItem();
-        Object objeto2 = cb_parroquias.getSelectedItem();
-        if((!txt_primerNombre.getText().equals("")) && (!txt_segundoNombre.getText().equals("")) 
-                && (!txt_primerApellido.getText().equals("")) && (!txt_segundoApellido.getText().equals("")) && (!txt_sueldoMensual.getText().equals("")) 
-                && (!dc_fechaIngreso.getText().equals("")) && (!dc_fechaNac.getText().equals("")) && (!txt_telefonoCasa.getText().equals("")) 
-                && (!txt_telefonoMovil.getText().equals("")) && (!txt_cargo.getText().equals("")) && (cb_estados.getSelectedItem() != null) 
-                && (cb_municipios.getSelectedItem() != null) && (cb_parroquias.getSelectedItem() != null) && (archivoSeleccionado != null)) {
-            
+    private void btn_eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_eliminarActionPerformed
+        
+        if(empleadoBorrar != null) {
             try {
-                Lugar estadoSeleccionado = (Lugar) cb_estados.getSelectedItem();
-                Lugar municipioSeleccionado = (Lugar) cb_municipios.getSelectedItem();
-                Lugar parroquiaSeleccionada = (Lugar) cb_parroquias.getSelectedItem();
-                SimpleDateFormat parseFecha = new SimpleDateFormat("dd/MM/yy");
-                Date fechaIngreso = parseFecha.parse(dc_fechaIngreso.getText());
-                Date fechaNacimiento = parseFecha.parse(dc_fechaNac.getText());
-                ManejadorImagen img = new ManejadorImagen();
-                empleadoModificar = new Empleado(empleadoModificar.getCedula(), txt_primerNombre.getText(), txt_segundoNombre.getText(), 
-                                                          txt_primerApellido.getText(), txt_segundoApellido.getText(), (String) cb_banco.getSelectedItem(),  
-                                                          (Integer.parseInt(txt_sueldoMensual.getText())), fechaIngreso, fechaNacimiento,
-                                                          txt_telefonoCasa.getText(), txt_telefonoMovil.getText(), txt_cargo.getText(), null, 
-                                                          "", "", estadoSeleccionado.getNombre(), municipioSeleccionado.getNombre(), parroquiaSeleccionada.getNombre());
                 ComunicacionREST comRest = new ComunicacionREST();
-                Empleado empleadoRegistrado = comRest.modificarEmpleado(empleadoModificar);
-                if (empleadoRegistrado.getError() == Registry.RESULTADO_CODIGO_RECURSO_CREADO){
+                Empleado empleadoEliminado = comRest.borrarEmpleado(empleadoBorrar);
+                if (empleadoEliminado.getError() == Registry.RESULTADO_CODIGO_BIEN){
                     final JPanel panel = new JPanel();
-                    JOptionPane.showMessageDialog(panel, "Se modificó exitosamente el empleado", "Información", JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(panel, "Se eliminó exitosamente el empleado", "Información", JOptionPane.INFORMATION_MESSAGE);
                 }else{
                     final JPanel panel = new JPanel();
-                    JOptionPane.showMessageDialog(panel, "No se ha podido modificar el empleado, intente nuevamente", "Error", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(panel, "No se ha podido eliminar el empleado, intente nuevamente", "Error", JOptionPane.ERROR_MESSAGE);
                 }
             } catch (Exception ex) {
                 Logger.getLogger(RegistrarEmpleado.class.getName()).log(Level.SEVERE, null, ex);
             }
-        }else{
+        }else {
             final JPanel panel = new JPanel();
-            JOptionPane.showMessageDialog(panel, "Existen campos vacíos", "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(panel, "Debe seleccionar un empleado", "Error", JOptionPane.ERROR_MESSAGE);
         }
-    }//GEN-LAST:event_btn_modificarActionPerformed
+    }//GEN-LAST:event_btn_eliminarActionPerformed
 
-    private void txt_primerApellidoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_primerApellidoKeyTyped
-        keyTypedSoloLetras(evt, txt_primerApellido, 30); 
-    }//GEN-LAST:event_txt_primerApellidoKeyTyped
-
-    private void txt_primerNombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_primerNombreKeyTyped
-        keyTypedSoloLetras(evt, txt_primerNombre, 30);
-    }//GEN-LAST:event_txt_primerNombreKeyTyped
-
-    private void txt_segundoNombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_segundoNombreKeyTyped
-        keyTypedSoloLetras(evt, txt_segundoNombre, 30); 
-    }//GEN-LAST:event_txt_segundoNombreKeyTyped
-
-    private void txt_telefonoCasaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_telefonoCasaKeyTyped
-        keyTypedSoloNumeros(evt, txt_telefonoCasa, 11);
-    }//GEN-LAST:event_txt_telefonoCasaKeyTyped
-
-    private void txt_telefonoMovilKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_telefonoMovilKeyTyped
-        keyTypedSoloNumeros(evt, txt_telefonoMovil, 11);
-    }//GEN-LAST:event_txt_telefonoMovilKeyTyped
-
-    private void txt_cargoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_cargoKeyTyped
-        keyTypedSoloLetras(evt, txt_cargo, 30); 
-    }//GEN-LAST:event_txt_cargoKeyTyped
-
-    private void txt_sueldoMensualKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_sueldoMensualKeyTyped
-        keyTypedSoloNumeros(evt, txt_sueldoMensual, 5); 
-    }//GEN-LAST:event_txt_sueldoMensualKeyTyped
-
-    private void txt_segundoApellidoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_segundoApellidoKeyTyped
-        keyTypedSoloLetras(evt, txt_segundoApellido, 30); 
-    }//GEN-LAST:event_txt_segundoApellidoKeyTyped
-
+    private void btn_cargarImagenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cargarImagenActionPerformed
+        FileFilter filtroImagenes = new FileNameExtensionFilter("Archivos de imagen", ImageIO.getReaderFileSuffixes());
+        JFileChooser exploradorArchivos = new JFileChooser();
+        exploradorArchivos.setAcceptAllFileFilterUsed(false);
+        exploradorArchivos.addChoosableFileFilter(filtroImagenes);
+        int opcionElegida = exploradorArchivos.showOpenDialog(null);
+        if (opcionElegida == JFileChooser.APPROVE_OPTION)
+        {
+            archivoSeleccionado = exploradorArchivos.getSelectedFile();
+            ImageIcon imagenEmpleado;
+            imagenEmpleado = new ImageIcon(archivoSeleccionado.getAbsoluteFile().getAbsolutePath());
+            lbl_foto.setIcon(imagenEmpleado);
+        }
+    }//GEN-LAST:event_btn_cargarImagenActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_cargarImagen;
+    private javax.swing.JButton btn_eliminar;
     private javax.swing.JButton btn_limnpiar;
-    private javax.swing.JButton btn_modificar;
     private javax.swing.JComboBox cb_banco;
     private javax.swing.JComboBox cb_estados;
     private javax.swing.JComboBox cb_listaEmpleados;
@@ -732,8 +640,8 @@ try {
     private javax.swing.JLabel lbl_sueldoMensual;
     private javax.swing.JLabel lbl_telefonoCasa;
     private javax.swing.JLabel lbl_telefonoMovil;
-    private javax.swing.JLabel lbl_tituloModificar;
-    private javax.swing.JLabel lbl_tituloModificarEmpleados;
+    private javax.swing.JLabel lbl_tituloEliminar;
+    private javax.swing.JLabel lbl_tituloEmpleado;
     private javax.swing.JPanel pnl_datos;
     private javax.swing.JTextField txt_cargo;
     private javax.swing.JTextField txt_primerApellido;
@@ -744,5 +652,4 @@ try {
     private javax.swing.JTextField txt_telefonoCasa;
     private javax.swing.JTextField txt_telefonoMovil;
     // End of variables declaration//GEN-END:variables
-
 }
