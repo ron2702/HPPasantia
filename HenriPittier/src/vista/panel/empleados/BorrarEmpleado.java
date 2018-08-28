@@ -233,6 +233,7 @@ public class BorrarEmpleado extends javax.swing.JPanel {
         e1.printStackTrace();
     }
     dc_fechaNac.setFieldFont(new java.awt.Font("Tahoma", java.awt.Font.PLAIN, 12));
+    dc_fechaNac.setLocale(new java.util.Locale("es", "", ""));
     dc_fechaNac.setNavigateFont(new java.awt.Font("Serif", java.awt.Font.PLAIN, 8));
 
     dc_fechaIngreso.setCurrentView(new datechooser.view.appearance.AppearancesList("Swing",
@@ -284,6 +285,7 @@ try {
         e1.printStackTrace();
     }
     dc_fechaIngreso.setFieldFont(new java.awt.Font("Tahoma", java.awt.Font.PLAIN, 12));
+    dc_fechaIngreso.setLocale(new java.util.Locale("es", "", ""));
     dc_fechaIngreso.setNavigateFont(new java.awt.Font("Serif", java.awt.Font.PLAIN, 8));
 
     lbl_fechaNac.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
@@ -401,17 +403,14 @@ try {
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(txt_sueldoMensual, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(lbl_sueldoMensual))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 122, Short.MAX_VALUE))
-                        .addGroup(pnl_datosLayout.createSequentialGroup()
-                            .addComponent(cb_banco, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 373, Short.MAX_VALUE))))
+                                .addComponent(lbl_sueldoMensual)))
+                        .addComponent(cb_banco, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGroup(pnl_datosLayout.createSequentialGroup()
                     .addGap(11, 11, 11)
                     .addComponent(lbl_fechaIngreso)
                     .addGap(18, 18, 18)
-                    .addComponent(lbl_banco)
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(lbl_banco)))
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 67, Short.MAX_VALUE)
             .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                 .addComponent(btn_eliminar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addComponent(btn_limnpiar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
