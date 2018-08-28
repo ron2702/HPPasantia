@@ -12,10 +12,10 @@ import vista.panel.Inicio;
 import vista.panel.empleados.RegistrarEmpleado;
 import java.awt.CardLayout;
 import vista.panel.empleados.BorrarEmpleado;
-import vista.panel.estudiantes.EliminarEstudiante;
+import vista.panel.estudiantes.BorrarEstudiante;
 import vista.panel.estudiantes.ModificarEstudiante;
 import vista.panel.estudiantes.RegistrarEstudiante;
-import vista.panel.representantes.EliminarRepresentante;
+import vista.panel.representantes.BorrarRepresentante;
 import vista.panel.representantes.ModificarRepresentante;
 import vista.panel.representantes.RegistrarRepresentante;
 
@@ -27,29 +27,29 @@ public class AppMenu extends javax.swing.JFrame {
     //EMPLEADOS
     final static String REGISTRAREMPLEADO = "REGISTRAREMPELADO";
     final static String MODIFICAREMPLEADO = "MODIFICAREMPLEADO";
-    final static String ELIMINAREMPLEADO = "ELIMINAREMPLEADO";
+    final static String BORRAREMPLEADO = "BORRAREMPLEADO";
     
     RegistrarEmpleado registrarEmpleadoPanel = new RegistrarEmpleado();
     ModificarEmpleado modificarEmpleadoPanel = new ModificarEmpleado();
-    BorrarEmpleado eliminarEmpleadoPanel = new BorrarEmpleado();
+    BorrarEmpleado borrarEmpleadoPanel = new BorrarEmpleado();
     
     //ESTUDIANTES
     final static String REGISTRARESTUDIANTE = "REGISTRARESTUDIANTE";
     final static String MODIFICARESTUDIANTE = "MODIFICARESTUDIANTE";
-    final static String ELIMINARESTUDIANTE = "ELIMINARESTUDIANTE";
+    final static String BORRARESTUDIANTE = "BORRARESTUDIANTE";
     
     RegistrarEstudiante registrarEstudiantePanel = new RegistrarEstudiante();
     ModificarEstudiante modificarEstudiantePanel = new ModificarEstudiante();
-    EliminarEstudiante eliminarEstudiantePanel = new EliminarEstudiante();
+    BorrarEstudiante borrarEstudiantePanel = new BorrarEstudiante();
     
     //REPRESENTANTES
     final static String REGISTRARREPRESENTANTE = "REGISTRARREPRESENTANTE";
     final static String MODIFICARREPRESENTANTE = "MODIFICARREPRESENTANTE";
-    final static String ELIMINARREPRESENTANTE = "ELIMINARREPRESENTANTE";
+    final static String BORRARREPRESENTANTE = "BORRARREPRESENTANTE";
     
     RegistrarRepresentante registrarRepresentantePanel = new RegistrarRepresentante();
     ModificarRepresentante modificarRepresentantePanel = new ModificarRepresentante();
-    EliminarRepresentante eliminarRepresentantePanel = new EliminarRepresentante();
+    BorrarRepresentante borrarRepresentantePanel = new BorrarRepresentante();
 
     /**
      * Creates new form AppMenu
@@ -62,17 +62,17 @@ public class AppMenu extends javax.swing.JFrame {
         //EMPLEADOS
         contentPane.add(registrarEmpleadoPanel, REGISTRAREMPLEADO);
         contentPane.add(modificarEmpleadoPanel, MODIFICAREMPLEADO);
-        contentPane.add(eliminarEmpleadoPanel, ELIMINAREMPLEADO);
+        contentPane.add(borrarEmpleadoPanel, BORRAREMPLEADO);
         
         //ESTUDIANTES
         contentPane.add(registrarEstudiantePanel, REGISTRARESTUDIANTE);
         contentPane.add(modificarEstudiantePanel, MODIFICARESTUDIANTE);
-        contentPane.add(eliminarEstudiantePanel, ELIMINARESTUDIANTE);
+        contentPane.add(borrarEstudiantePanel, BORRARESTUDIANTE);
         
         //REPRESENTANTES
         contentPane.add(registrarRepresentantePanel, REGISTRARREPRESENTANTE);
         contentPane.add(modificarRepresentantePanel, MODIFICARREPRESENTANTE);
-        contentPane.add(eliminarRepresentantePanel, ELIMINARREPRESENTANTE);
+        contentPane.add(borrarRepresentantePanel, BORRARREPRESENTANTE);
 
     }
 
@@ -286,7 +286,7 @@ public class AppMenu extends javax.swing.JFrame {
 
     private void eliminarEstudianteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarEstudianteActionPerformed
         CardLayout cardPanel = (CardLayout)(contentPane.getLayout());
-        cardPanel.show(contentPane, ELIMINARESTUDIANTE);
+        cardPanel.show(contentPane, BORRARESTUDIANTE);
     }//GEN-LAST:event_eliminarEstudianteActionPerformed
 
     private void registrarRepresentanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrarRepresentanteActionPerformed
@@ -305,7 +305,7 @@ public class AppMenu extends javax.swing.JFrame {
 
     private void eliminarRepresentanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarRepresentanteActionPerformed
         CardLayout cardPanel = (CardLayout)(contentPane.getLayout());
-        cardPanel.show(contentPane, ELIMINARREPRESENTANTE);
+        cardPanel.show(contentPane, BORRARREPRESENTANTE);
     }//GEN-LAST:event_eliminarRepresentanteActionPerformed
 
     private void registrarEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrarEmpleadoActionPerformed
@@ -324,7 +324,7 @@ public class AppMenu extends javax.swing.JFrame {
 
     private void eliminarEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarEmpleadoActionPerformed
         CardLayout cardPanel = (CardLayout)(contentPane.getLayout());
-        cardPanel.show(contentPane, ELIMINAREMPLEADO);
+        cardPanel.show(contentPane, BORRAREMPLEADO);
     }//GEN-LAST:event_eliminarEmpleadoActionPerformed
 
     private void cerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cerrarSesionActionPerformed

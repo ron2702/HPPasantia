@@ -6,19 +6,14 @@
 package vista.panel.empleados;
 
 import comun.Empleado;
-import comun.Lugar;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
-import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.imageio.ImageIO;
-import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -26,7 +21,6 @@ import javax.swing.JTextField;
 import javax.swing.filechooser.FileFilter;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import modelo.ComunicacionREST;
-import modelo.ManejadorImagen;
 import modelo.Registry;
 
 /**
@@ -34,7 +28,6 @@ import modelo.Registry;
  * @author LuisAlejandro
  */
 public class BorrarEmpleado extends javax.swing.JPanel {
-    private File archivoSeleccionado;
     private Empleado empleadoBorrar;
     
     public BorrarEmpleado() {
@@ -43,42 +36,7 @@ public class BorrarEmpleado extends javax.swing.JPanel {
             initComponents();
             ComunicacionREST comRest = new ComunicacionREST();
             
-            ArrayList<Lugar> listaLugares = comRest.consultarEstados();
             ArrayList<Empleado> listaEmpleados = comRest.consultarEmpleados();
-            
-            for (Lugar lugar : listaLugares) {
-                cb_estados.addItem(lugar);
-            }
-            cb_estados.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    try {
-                        cb_municipios.removeAllItems();
-                        Lugar estadoSeleccionado = (Lugar) cb_estados.getSelectedItem();
-                        ArrayList<Lugar> listaLugares = comRest.consultarMunicipios(estadoSeleccionado);
-                        for (Lugar lugar : listaLugares) {
-                            cb_municipios.addItem(lugar);
-                        }
-                    } catch (Exception ex) {
-                        Logger.getLogger(RegistrarEmpleado.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-                }
-            });
-            cb_municipios.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    try {
-                        cb_parroquias.removeAllItems();
-                        Lugar municipioSeleccionado = (Lugar) cb_municipios.getSelectedItem();
-                        ArrayList<Lugar> listaLugares = comRest.consultarParroquias(municipioSeleccionado);
-                        for (Lugar lugar : listaLugares) {
-                            cb_parroquias.addItem(lugar);
-                        }
-                    } catch (Exception ex) {
-                        Logger.getLogger(RegistrarEmpleado.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-                }
-            });
             
             for (Empleado empleado : listaEmpleados) {
                 cb_listaEmpleados.addItem(empleado);
@@ -137,10 +95,6 @@ public class BorrarEmpleado extends javax.swing.JPanel {
         lbl_segundoNombre = new javax.swing.JLabel();
         txt_telefonoCasa = new javax.swing.JTextField();
         lbl_primerApellido = new javax.swing.JLabel();
-        lbl_direccion = new javax.swing.JLabel();
-        lbl_estado = new javax.swing.JLabel();
-        lbl_municipio = new javax.swing.JLabel();
-        lbl_parroquia = new javax.swing.JLabel();
         btn_limnpiar = new javax.swing.JButton();
         btn_eliminar = new javax.swing.JButton();
         dc_fechaNac = new datechooser.beans.DateChooserCombo();
@@ -149,11 +103,6 @@ public class BorrarEmpleado extends javax.swing.JPanel {
         lbl_fechaIngreso = new javax.swing.JLabel();
         cb_banco = new javax.swing.JComboBox();
         lbl_banco = new javax.swing.JLabel();
-        cb_estados = new javax.swing.JComboBox();
-        cb_municipios = new javax.swing.JComboBox();
-        cb_parroquias = new javax.swing.JComboBox();
-        lbl_foto = new javax.swing.JLabel();
-        btn_cargarImagen = new javax.swing.JButton();
         cb_listaEmpleados = new javax.swing.JComboBox();
         lbl_tituloEliminar = new javax.swing.JLabel();
         lbl_tituloEmpleado = new javax.swing.JLabel();
@@ -168,18 +117,23 @@ public class BorrarEmpleado extends javax.swing.JPanel {
         lbl_segundoApellido.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         lbl_segundoApellido.setText("Segundo Apellido:");
 
+        txt_segundoApellido.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         txt_segundoApellido.setEnabled(false);
 
+        txt_primerApellido.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         txt_primerApellido.setEnabled(false);
 
         lbl_telefonoCasa.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         lbl_telefonoCasa.setText("Telefono Casa:");
 
+        txt_segundoNombre.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         txt_segundoNombre.setEnabled(false);
 
         lbl_telefonoMovil.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         lbl_telefonoMovil.setText("Teléfono Móvil:");
 
+        txt_primerNombre.setBackground(new java.awt.Color(240, 240, 240));
+        txt_primerNombre.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         txt_primerNombre.setEnabled(false);
 
         lbl_cargo.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
@@ -188,34 +142,26 @@ public class BorrarEmpleado extends javax.swing.JPanel {
         lbl_sueldoMensual.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         lbl_sueldoMensual.setText("Sueldo Mensual:");
 
+        txt_sueldoMensual.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         txt_sueldoMensual.setEnabled(false);
 
+        txt_cargo.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         txt_cargo.setEnabled(false);
 
         lbl_primerNombre.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         lbl_primerNombre.setText("Primer Nombre:");
 
+        txt_telefonoMovil.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         txt_telefonoMovil.setEnabled(false);
 
         lbl_segundoNombre.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         lbl_segundoNombre.setText("Segundo Nombre:");
 
+        txt_telefonoCasa.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         txt_telefonoCasa.setEnabled(false);
 
         lbl_primerApellido.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         lbl_primerApellido.setText("Primer Apellido:");
-
-        lbl_direccion.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        lbl_direccion.setText("Dirección de vivienda:");
-
-        lbl_estado.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        lbl_estado.setText("Estado:");
-
-        lbl_municipio.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        lbl_municipio.setText("Municipio:");
-
-        lbl_parroquia.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        lbl_parroquia.setText("Parroquia:");
 
         btn_limnpiar.setBackground(new java.awt.Color(218, 87, 54));
         btn_limnpiar.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
@@ -352,22 +298,6 @@ try {
     lbl_banco.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
     lbl_banco.setText("Banco:");
 
-    cb_estados.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-
-    cb_municipios.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-
-    cb_parroquias.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-
-    lbl_foto.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-
-    btn_cargarImagen.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-    btn_cargarImagen.setText("Cargar imagen");
-    btn_cargarImagen.addActionListener(new java.awt.event.ActionListener() {
-        public void actionPerformed(java.awt.event.ActionEvent evt) {
-            btn_cargarImagenActionPerformed(evt);
-        }
-    });
-
     cb_listaEmpleados.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
 
     lbl_tituloEliminar.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
@@ -405,35 +335,17 @@ try {
                             .addComponent(txt_primerNombre)
                             .addComponent(txt_segundoNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addComponent(cb_listaEmpleados, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE))))
+            .addGap(45, 45, 45)
             .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(pnl_datosLayout.createSequentialGroup()
-                    .addGap(94, 94, 94)
-                    .addComponent(lbl_foto, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                    .addComponent(btn_cargarImagen))
-                .addGroup(pnl_datosLayout.createSequentialGroup()
-                    .addGap(45, 45, 45)
+                    .addComponent(lbl_fechaIngreso)
+                    .addGap(78, 78, 78)
                     .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(pnl_datosLayout.createSequentialGroup()
-                            .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(pnl_datosLayout.createSequentialGroup()
-                                    .addGap(93, 93, 93)
-                                    .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(lbl_estado)
-                                        .addComponent(lbl_municipio)
-                                        .addComponent(lbl_parroquia)))
-                                .addComponent(lbl_fechaIngreso))
-                            .addGap(34, 34, 34)
-                            .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(dc_fechaIngreso, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(dc_fechaNac, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(cb_banco, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(cb_estados, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(cb_municipios, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(cb_parroquias, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addComponent(lbl_direccion)
-                        .addComponent(lbl_banco)
-                        .addComponent(lbl_fechaNac))))
+                        .addComponent(dc_fechaIngreso, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(dc_fechaNac, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(cb_banco, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addComponent(lbl_banco)
+                .addComponent(lbl_fechaNac))
             .addGap(0, 43, Short.MAX_VALUE))
         .addGroup(pnl_datosLayout.createSequentialGroup()
             .addGap(305, 305, 305)
@@ -454,20 +366,6 @@ try {
                 .addComponent(lbl_fechaNac))
             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
             .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(pnl_datosLayout.createSequentialGroup()
-                    .addGap(11, 11, 11)
-                    .addComponent(lbl_fechaIngreso)
-                    .addGap(18, 18, 18)
-                    .addComponent(lbl_banco)
-                    .addGap(16, 16, 16)
-                    .addComponent(lbl_direccion)
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                    .addComponent(lbl_estado, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(18, 18, 18)
-                    .addComponent(lbl_municipio)
-                    .addGap(18, 18, 18)
-                    .addComponent(lbl_parroquia)
-                    .addGap(157, 203, Short.MAX_VALUE))
                 .addGroup(pnl_datosLayout.createSequentialGroup()
                     .addComponent(dc_fechaIngreso, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -504,23 +402,16 @@ try {
                             .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(txt_sueldoMensual, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(lbl_sueldoMensual))
-                            .addGap(55, 55, 55))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 122, Short.MAX_VALUE))
                         .addGroup(pnl_datosLayout.createSequentialGroup()
                             .addComponent(cb_banco, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(cb_estados, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(cb_municipios, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(cb_parroquias, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(pnl_datosLayout.createSequentialGroup()
-                                    .addGap(18, 18, 18)
-                                    .addComponent(lbl_foto, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(pnl_datosLayout.createSequentialGroup()
-                                    .addGap(28, 28, 28)
-                                    .addComponent(btn_cargarImagen)))
-                            .addGap(39, 39, 39)))))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 373, Short.MAX_VALUE))))
+                .addGroup(pnl_datosLayout.createSequentialGroup()
+                    .addGap(11, 11, 11)
+                    .addComponent(lbl_fechaIngreso)
+                    .addGap(18, 18, 18)
+                    .addComponent(lbl_banco)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
             .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                 .addComponent(btn_eliminar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addComponent(btn_limnpiar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -597,42 +488,18 @@ try {
         }
     }//GEN-LAST:event_btn_eliminarActionPerformed
 
-    private void btn_cargarImagenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cargarImagenActionPerformed
-        FileFilter filtroImagenes = new FileNameExtensionFilter("Archivos de imagen", ImageIO.getReaderFileSuffixes());
-        JFileChooser exploradorArchivos = new JFileChooser();
-        exploradorArchivos.setAcceptAllFileFilterUsed(false);
-        exploradorArchivos.addChoosableFileFilter(filtroImagenes);
-        int opcionElegida = exploradorArchivos.showOpenDialog(null);
-        if (opcionElegida == JFileChooser.APPROVE_OPTION)
-        {
-            archivoSeleccionado = exploradorArchivos.getSelectedFile();
-            ImageIcon imagenEmpleado;
-            imagenEmpleado = new ImageIcon(archivoSeleccionado.getAbsoluteFile().getAbsolutePath());
-            lbl_foto.setIcon(imagenEmpleado);
-        }
-    }//GEN-LAST:event_btn_cargarImagenActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btn_cargarImagen;
     private javax.swing.JButton btn_eliminar;
     private javax.swing.JButton btn_limnpiar;
     private javax.swing.JComboBox cb_banco;
-    private javax.swing.JComboBox cb_estados;
     private javax.swing.JComboBox cb_listaEmpleados;
-    private javax.swing.JComboBox cb_municipios;
-    private javax.swing.JComboBox cb_parroquias;
     private datechooser.beans.DateChooserCombo dc_fechaIngreso;
     private datechooser.beans.DateChooserCombo dc_fechaNac;
     private javax.swing.JLabel lbl_banco;
     private javax.swing.JLabel lbl_cargo;
-    private javax.swing.JLabel lbl_direccion;
-    private javax.swing.JLabel lbl_estado;
     private javax.swing.JLabel lbl_fechaIngreso;
     private javax.swing.JLabel lbl_fechaNac;
-    private javax.swing.JLabel lbl_foto;
-    private javax.swing.JLabel lbl_municipio;
-    private javax.swing.JLabel lbl_parroquia;
     private javax.swing.JLabel lbl_primerApellido;
     private javax.swing.JLabel lbl_primerNombre;
     private javax.swing.JLabel lbl_segundoApellido;

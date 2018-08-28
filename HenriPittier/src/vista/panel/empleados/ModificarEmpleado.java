@@ -186,12 +186,14 @@ public class ModificarEmpleado extends javax.swing.JPanel {
         lbl_segundoApellido.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         lbl_segundoApellido.setText("Segundo Apellido:");
 
+        txt_segundoApellido.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         txt_segundoApellido.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txt_segundoApellidoKeyTyped(evt);
             }
         });
 
+        txt_primerApellido.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         txt_primerApellido.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txt_primerApellidoKeyTyped(evt);
@@ -201,6 +203,7 @@ public class ModificarEmpleado extends javax.swing.JPanel {
         lbl_telefonoCasa.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         lbl_telefonoCasa.setText("Telefono Casa:");
 
+        txt_segundoNombre.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         txt_segundoNombre.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txt_segundoNombreKeyTyped(evt);
@@ -210,6 +213,7 @@ public class ModificarEmpleado extends javax.swing.JPanel {
         lbl_telefonoMovil.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         lbl_telefonoMovil.setText("Teléfono Móvil:");
 
+        txt_primerNombre.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         txt_primerNombre.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txt_primerNombreKeyTyped(evt);
@@ -222,12 +226,14 @@ public class ModificarEmpleado extends javax.swing.JPanel {
         lbl_sueldoMensual.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         lbl_sueldoMensual.setText("Sueldo Mensual:");
 
+        txt_sueldoMensual.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         txt_sueldoMensual.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txt_sueldoMensualKeyTyped(evt);
             }
         });
 
+        txt_cargo.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         txt_cargo.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txt_cargoKeyTyped(evt);
@@ -237,6 +243,7 @@ public class ModificarEmpleado extends javax.swing.JPanel {
         lbl_primerNombre.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         lbl_primerNombre.setText("Primer Nombre:");
 
+        txt_telefonoMovil.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         txt_telefonoMovil.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txt_telefonoMovilKeyTyped(evt);
@@ -246,6 +253,7 @@ public class ModificarEmpleado extends javax.swing.JPanel {
         lbl_segundoNombre.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         lbl_segundoNombre.setText("Segundo Nombre:");
 
+        txt_telefonoCasa.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         txt_telefonoCasa.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txt_telefonoCasaKeyTyped(evt);
