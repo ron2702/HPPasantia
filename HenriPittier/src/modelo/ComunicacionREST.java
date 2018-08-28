@@ -208,10 +208,28 @@ public class ComunicacionREST {
         }
     }
     
-    public ArrayList<Representante> consultarRepresentantes() throws Exception {
+    public Representante borrarRepresentante(Representante e) throws Exception {
         try {
             conn = null;
             Gson gson = new GsonBuilder().create();
+            BufferedReader br = comunicar("GET", "borrarRepresentante?representante=" + URLEncoder.encode(gson.toJson(e).toString(), "UTF-8"));
+            String output;
+            Representante _representante = new Representante();
+            while ((output = br.readLine()) != null) {
+                _representante = gson.fromJson(output, Representante.class);
+            }
+            conn.disconnect();
+            return _representante;
+        }
+        catch (Exception ex){
+            throw ex;
+        }
+    }
+    
+    public ArrayList<Representante> consultarRepresentantes() throws Exception {
+        try {
+            conn = null;
+            Gson gson = new GsonBuilder().registerTypeAdapter(Date.class, new JsonDateDeserializer()).create();
             BufferedReader br = comunicar("GET", "consultarRepresentantes");
             String output;
             ArrayList<Representante> _representantes = new ArrayList<>();
@@ -221,6 +239,24 @@ public class ComunicacionREST {
             }
             conn.disconnect();
             return _representantes;
+        }
+        catch (Exception ex){
+            throw ex;
+        }
+    }
+    
+    public Representante consultarRepresentanteDetalle(Representante e) throws Exception {
+        try {
+            conn = null;
+            Gson gson = new GsonBuilder().registerTypeAdapter(Date.class, new JsonDateDeserializer()).create();
+            BufferedReader br = comunicar("GET", "consultarRepresentanteDetalle?representante=" + URLEncoder.encode(gson.toJson(e).toString(), "UTF-8"));
+            String output;
+            Representante _representante = new Representante();
+            while ((output = br.readLine()) != null) {
+                _representante = gson.fromJson(output, Representante.class);
+            }
+            conn.disconnect();
+            return _representante;
         }
         catch (Exception ex){
             throw ex;

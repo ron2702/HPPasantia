@@ -162,6 +162,7 @@ public class BorrarRepresentante extends javax.swing.JPanel {
     } catch (datechooser.model.exeptions.IncompatibleDataExeption e1) {
         e1.printStackTrace();
     }
+    dc_fechaNac.setEnabled(false);
     dc_fechaNac.setFieldFont(new java.awt.Font("Tahoma", java.awt.Font.PLAIN, 12));
     dc_fechaNac.setNavigateFont(new java.awt.Font("Serif", java.awt.Font.PLAIN, 8));
 
@@ -173,7 +174,6 @@ public class BorrarRepresentante extends javax.swing.JPanel {
 
     txt_cedulaRepresentante.setBackground(new java.awt.Color(240, 240, 240));
     txt_cedulaRepresentante.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-    txt_cedulaRepresentante.setEnabled(false);
     txt_cedulaRepresentante.addKeyListener(new java.awt.event.KeyAdapter() {
         public void keyTyped(java.awt.event.KeyEvent evt) {
             txt_cedulaRepresentanteKeyTyped(evt);
@@ -303,24 +303,42 @@ public class BorrarRepresentante extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_eliminarActionPerformed
-
+        int cedula;
         if(representanteBorrar != null) {
             try {
+                cedula = representanteBorrar.getCedula();
+                Representante _representante = new Representante(cedula);
                 ComunicacionREST comRest = new ComunicacionREST();
-                //representanteBorrar = comRest.borrarRepresentante(representanteBorrar);  /*DESCOMENTAR CUANDO SE AGREGUE ESE MÉTODO A ComunicacionREST*/
+                representanteBorrar = comRest.borrarRepresentante(_representante);  
                 if (representanteBorrar.getError() == Registry.RESULTADO_CODIGO_BIEN){
                     final JPanel panel = new JPanel();
                     JOptionPane.showMessageDialog(panel, "Se eliminó exitosamente el representante", "Información", JOptionPane.INFORMATION_MESSAGE);
+                    
+                    txt_primerNombre.setText("");
+                    txt_primerApellido.setText("");
+                    txt_segundoNombre.setText("");
+                    txt_segundoApellido.setText("");
+                    txt_telefonoCasa.setText("");
+                    txt_telefonoMovil.setText("");
+                    dc_fechaNac.setCurrent(null);
                 }else{
                     final JPanel panel = new JPanel();
                     JOptionPane.showMessageDialog(panel, "No se ha podido eliminar el representante, intente nuevamente", "Error", JOptionPane.ERROR_MESSAGE);
+                    
+                    txt_primerNombre.setText("");
+                    txt_primerApellido.setText("");
+                    txt_segundoNombre.setText("");
+                    txt_segundoApellido.setText("");
+                    txt_telefonoCasa.setText("");
+                    txt_telefonoMovil.setText("");
+                    dc_fechaNac.setCurrent(null);
                 }
             } catch (Exception ex) {
                 Logger.getLogger(BorrarRepresentante.class.getName()).log(Level.SEVERE, null, ex);
             }
         }else {
             final JPanel panel = new JPanel();
-            JOptionPane.showMessageDialog(panel, "Debe seleccionar un empleado", "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(panel, "Debe seleccionar un representante", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btn_eliminarActionPerformed
 
@@ -332,9 +350,22 @@ public class BorrarRepresentante extends javax.swing.JPanel {
         if(!txt_cedulaRepresentante.getText().equals("")) {
             ComunicacionREST comRest = new ComunicacionREST();
             Representante representanteConsultar = new Representante(Integer.parseInt(txt_cedulaRepresentante.getText()));
-            //representanteBorrar = comRest.consultarRepresentanteDetalle(representanteConsultar);  /*DESCOMENTAR CUANDO SE AGREGUE ESE MÉTODO A ComunicacionREST*/
+            try {
+                representanteBorrar = comRest.consultarRepresentanteDetalle(representanteConsultar);  /*DESCOMENTAR CUANDO SE AGREGUE ESE MÉTODO A ComunicacionREST*/
+            } catch (Exception ex) {
+                Logger.getLogger(BorrarRepresentante.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
             if (representanteBorrar.getError() == Registry.RESULTADO_CODIGO_BIEN){
-                //Se llenan los campos del representante
+                txt_primerNombre.setText(representanteBorrar.getPrimerNombre());
+                txt_segundoNombre.setText(representanteBorrar.getSegundoNombre());
+                txt_primerApellido.setText(representanteBorrar.getPrimerApellido());
+                txt_segundoApellido.setText(representanteBorrar.getSegundoApellido());
+                txt_telefonoCasa.setText(representanteBorrar.getTelefonoCasa());
+                txt_telefonoMovil.setText(representanteBorrar.getTelefonoMovil());
+                Calendar calNac = Calendar.getInstance();
+                calNac.setTime(representanteBorrar.getFechaNac());
+                dc_fechaNac.setSelectedDate(calNac);
             }else{
                 final JPanel panel = new JPanel();
                 JOptionPane.showMessageDialog(panel, "No se obtuvo información sobre dicho representante, por favor revise los datos ingresados", "Error", JOptionPane.ERROR_MESSAGE);
