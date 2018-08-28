@@ -12,8 +12,12 @@ import vista.panel.Inicio;
 import vista.panel.empleados.RegistrarEmpleado;
 import java.awt.CardLayout;
 import vista.panel.empleados.BorrarEmpleado;
+import vista.panel.estudiantes.EliminarEstudiante;
 import vista.panel.estudiantes.ModificarEstudiante;
 import vista.panel.estudiantes.RegistrarEstudiante;
+import vista.panel.representantes.EliminarRepresentante;
+import vista.panel.representantes.ModificarRepresentante;
+import vista.panel.representantes.RegistrarRepresentante;
 
 
 public class AppMenu extends javax.swing.JFrame {
@@ -32,11 +36,20 @@ public class AppMenu extends javax.swing.JFrame {
     //ESTUDIANTES
     final static String REGISTRARESTUDIANTE = "REGISTRARESTUDIANTE";
     final static String MODIFICARESTUDIANTE = "MODIFICARESTUDIANTE";
+    final static String ELIMINARESTUDIANTE = "ELIMINARESTUDIANTE";
+    
     RegistrarEstudiante registrarEstudiantePanel = new RegistrarEstudiante();
     ModificarEstudiante modificarEstudiantePanel = new ModificarEstudiante();
+    EliminarEstudiante eliminarEstudiantePanel = new EliminarEstudiante();
     
     //REPRESENTANTES
-
+    final static String REGISTRARREPRESENTANTE = "REGISTRARREPRESENTANTE";
+    final static String MODIFICARREPRESENTANTE = "MODIFICARREPRESENTANTE";
+    final static String ELIMINARREPRESENTANTE = "ELIMINARREPRESENTANTE";
+    
+    RegistrarRepresentante registrarRepresentantePanel = new RegistrarRepresentante();
+    ModificarRepresentante modificarRepresentantePanel = new ModificarRepresentante();
+    EliminarRepresentante eliminarRepresentantePanel = new EliminarRepresentante();
 
     /**
      * Creates new form AppMenu
@@ -54,7 +67,13 @@ public class AppMenu extends javax.swing.JFrame {
         //ESTUDIANTES
         contentPane.add(registrarEstudiantePanel, REGISTRARESTUDIANTE);
         contentPane.add(modificarEstudiantePanel, MODIFICARESTUDIANTE);
+        contentPane.add(eliminarEstudiantePanel, ELIMINARESTUDIANTE);
+        
         //REPRESENTANTES
+        contentPane.add(registrarRepresentantePanel, REGISTRARREPRESENTANTE);
+        contentPane.add(modificarRepresentantePanel, MODIFICARREPRESENTANTE);
+        contentPane.add(eliminarRepresentantePanel, ELIMINARREPRESENTANTE);
+
     }
 
     /**
@@ -266,11 +285,13 @@ public class AppMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_modificarEstudianteActionPerformed
 
     private void eliminarEstudianteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarEstudianteActionPerformed
-        // TODO add your handling code here:
+        CardLayout cardPanel = (CardLayout)(contentPane.getLayout());
+        cardPanel.show(contentPane, ELIMINARESTUDIANTE);
     }//GEN-LAST:event_eliminarEstudianteActionPerformed
 
     private void registrarRepresentanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrarRepresentanteActionPerformed
-        // TODO add your handling code here:
+        CardLayout cardPanel = (CardLayout)(contentPane.getLayout());
+        cardPanel.show(contentPane, REGISTRARREPRESENTANTE);
     }//GEN-LAST:event_registrarRepresentanteActionPerformed
 
     private void consultarRepresentanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultarRepresentanteActionPerformed
@@ -278,11 +299,13 @@ public class AppMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_consultarRepresentanteActionPerformed
 
     private void modificarRepresentanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarRepresentanteActionPerformed
-        // TODO add your handling code here:
+        CardLayout cardPanel = (CardLayout)(contentPane.getLayout());
+        cardPanel.show(contentPane, MODIFICARREPRESENTANTE);
     }//GEN-LAST:event_modificarRepresentanteActionPerformed
 
     private void eliminarRepresentanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarRepresentanteActionPerformed
-        // TODO add your handling code here:
+        CardLayout cardPanel = (CardLayout)(contentPane.getLayout());
+        cardPanel.show(contentPane, ELIMINARREPRESENTANTE);
     }//GEN-LAST:event_eliminarRepresentanteActionPerformed
 
     private void registrarEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrarEmpleadoActionPerformed

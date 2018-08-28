@@ -7,9 +7,12 @@ package vista.panel.representantes;
 
 import comun.Lugar;
 import comun.Representante;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.io.File;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -23,17 +26,56 @@ import javax.swing.filechooser.FileFilter;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import modelo.ComunicacionREST;
 import modelo.ManejadorImagen;
+import modelo.Registry;
 
-/**
- *
- * @author LuisAlejandro
- */
+
 public class RegistrarRepresentante extends javax.swing.JPanel {
     private File archivoSeleccionado;
     
     
     public RegistrarRepresentante() {
-        initComponents();
+        try {
+            initComponents();
+            ComunicacionREST comRest = new ComunicacionREST();
+            
+            ArrayList<Lugar> listaLugares = comRest.consultarEstados();
+            
+            for (Lugar lugar : listaLugares) {
+                cb_estados.addItem(lugar);
+            }
+            cb_estados.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    try {
+                        cb_municipios.removeAllItems();
+                        Lugar estadoSeleccionado = (Lugar) cb_estados.getSelectedItem();
+                        ArrayList<Lugar> listaLugares = comRest.consultarMunicipios(estadoSeleccionado);
+                        for (Lugar lugar : listaLugares) {
+                            cb_municipios.addItem(lugar);
+                        }
+                    } catch (Exception ex) {
+                        Logger.getLogger(RegistrarRepresentante.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+            });
+            cb_municipios.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    try {
+                        cb_parroquias.removeAllItems();
+                        Lugar municipioSeleccionado = (Lugar) cb_municipios.getSelectedItem();
+                        ArrayList<Lugar> listaLugares = comRest.consultarParroquias(municipioSeleccionado);
+                        for (Lugar lugar : listaLugares) {
+                            cb_parroquias.addItem(lugar);
+                        }
+                    } catch (Exception ex) {
+                        Logger.getLogger(RegistrarRepresentante.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+            });
+        } catch (Exception ex) {
+            Logger.getLogger(RegistrarRepresentante.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     public void keyTypedSoloNumeros(java.awt.event.KeyEvent evt, JTextField campoEvaluar, int tamanoMax){
@@ -65,7 +107,7 @@ public class RegistrarRepresentante extends javax.swing.JPanel {
         txt_telefonoMovil = new javax.swing.JTextField();
         lbl_foto = new javax.swing.JLabel();
         btn_cargarImagen = new javax.swing.JButton();
-        lbl_banco = new javax.swing.JLabel();
+        lbl_tipo = new javax.swing.JLabel();
         lbl_fechaNac = new javax.swing.JLabel();
         dc_fechaNac = new datechooser.beans.DateChooserCombo();
         lbl_telefonoCasa = new javax.swing.JLabel();
@@ -85,7 +127,7 @@ public class RegistrarRepresentante extends javax.swing.JPanel {
         cb_parroquias = new javax.swing.JComboBox();
         btn_registrar = new javax.swing.JButton();
         btn_limpiar = new javax.swing.JButton();
-        cb_banco = new javax.swing.JComboBox();
+        cb_tipo = new javax.swing.JComboBox();
         lbl_tituloRepresentante = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(204, 204, 204));
@@ -130,8 +172,8 @@ public class RegistrarRepresentante extends javax.swing.JPanel {
             }
         });
 
-        lbl_banco.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        lbl_banco.setText("Banco:");
+        lbl_tipo.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        lbl_tipo.setText("Tipo:");
 
         lbl_fechaNac.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         lbl_fechaNac.setText("Fecha de Nacimiento: ");
@@ -260,9 +302,14 @@ public class RegistrarRepresentante extends javax.swing.JPanel {
     btn_limpiar.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
     btn_limpiar.setText("Limpiar");
     btn_limpiar.setPreferredSize(new java.awt.Dimension(109, 25));
+    btn_limpiar.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            btn_limpiarActionPerformed(evt);
+        }
+    });
 
-    cb_banco.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-    cb_banco.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "100% Banco", "BBVA Banco Provincial", "Bancamiga", "Bancaribe", "Banco Activo", "Banco Agricola de Venezuela", "Banco Bicentenario del Pueblo", "Banco Caroni", "Banco del Tesoro", "Banco de Venezuela", "Banco Exterior", "Banco Mercantil", "Banco Plaza", "Banco Sofitasa", "Banco Venezolano de Credito", "Banesco", "Banfanb", "Banplus", "BFC Banco Fondo Comun", "BNC Banco Nacional de Credito", "BOD Banco Occidental de Descuento", "CitiBank", "DELSUR", "Mi Banco" }));
+    cb_tipo.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+    cb_tipo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Representante", "Autorizado" }));
 
     javax.swing.GroupLayout pnl_datosLayout = new javax.swing.GroupLayout(pnl_datos);
     pnl_datos.setLayout(pnl_datosLayout);
@@ -301,18 +348,18 @@ public class RegistrarRepresentante extends javax.swing.JPanel {
                             .addGap(61, 61, 61)
                             .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(lbl_fechaNac)
-                                .addComponent(lbl_banco)
                                 .addComponent(lbl_direccion)))
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnl_datosLayout.createSequentialGroup()
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(lbl_estado, javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addComponent(lbl_municipio, javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(lbl_parroquia, javax.swing.GroupLayout.Alignment.TRAILING))))
+                                .addComponent(lbl_parroquia, javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(lbl_tipo, javax.swing.GroupLayout.Alignment.TRAILING))))
                     .addGap(45, 45, 45)
                     .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(dc_fechaNac, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(cb_banco, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(cb_tipo, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(cb_estados, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(cb_municipios, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(cb_parroquias, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -333,17 +380,24 @@ public class RegistrarRepresentante extends javax.swing.JPanel {
                     .addComponent(txt_cedula, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lbl_fechaNac))
                 .addComponent(dc_fechaNac, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-            .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                .addComponent(txt_primerNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(lbl_primerNombre))
-            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
             .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(pnl_datosLayout.createSequentialGroup()
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                     .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(txt_segundoNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(lbl_segundoNombre)
-                        .addComponent(lbl_banco))
+                        .addComponent(txt_primerNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lbl_primerNombre)))
+                .addGroup(pnl_datosLayout.createSequentialGroup()
+                    .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(pnl_datosLayout.createSequentialGroup()
+                            .addGap(42, 42, 42)
+                            .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(txt_segundoNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(lbl_segundoNombre)))
+                        .addGroup(pnl_datosLayout.createSequentialGroup()
+                            .addGap(21, 21, 21)
+                            .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(lbl_tipo)
+                                .addComponent(cb_tipo, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                     .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(txt_primerApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -361,8 +415,7 @@ public class RegistrarRepresentante extends javax.swing.JPanel {
                         .addComponent(txt_telefonoCasa, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(lbl_telefonoCasa)
                         .addComponent(cb_municipios, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(lbl_municipio)))
-                .addComponent(cb_banco, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(lbl_municipio))))
             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
             .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -462,10 +515,9 @@ public class RegistrarRepresentante extends javax.swing.JPanel {
         Object objeto = cb_estados.getSelectedItem();
         Object objeto1 = cb_municipios.getSelectedItem();
         Object objeto2 = cb_parroquias.getSelectedItem();
-        /*if((!txt_cedula.getText().equals("")) && (!txt_primerNombre.getText().equals("")) && (!txt_segundoNombre.getText().equals(""))
-            && (!txt_primerApellido.getText().equals("")) && (!txt_segundoApellido.getText().equals("")) && (!txt_sueldoMensual.getText().equals(""))
-            && (!dc_fechaIngreso.getText().equals("")) && (!dc_fechaNac.getText().equals("")) && (!txt_telefonoCasa.getText().equals(""))
-            && (!txt_telefonoMovil.getText().equals("")) && (!txt_cargo.getText().equals("")) && (cb_estados.getSelectedItem() != null)
+        if((!txt_cedula.getText().equals("")) && (!txt_primerNombre.getText().equals("")) && (!txt_segundoNombre.getText().equals(""))
+            && (!txt_primerApellido.getText().equals("")) && (!txt_segundoApellido.getText().equals("")) && (!dc_fechaNac.getText().equals("")) && (!txt_telefonoCasa.getText().equals(""))
+            && (!txt_telefonoMovil.getText().equals("")) && (cb_tipo.getSelectedItem() != null) && (cb_estados.getSelectedItem() != null)
             && (cb_municipios.getSelectedItem() != null) && (cb_parroquias.getSelectedItem() != null) && (archivoSeleccionado != null)) {
 
             try {
@@ -473,22 +525,20 @@ public class RegistrarRepresentante extends javax.swing.JPanel {
                 Lugar municipioSeleccionado = (Lugar) cb_municipios.getSelectedItem();
                 Lugar parroquiaSeleccionada = (Lugar) cb_parroquias.getSelectedItem();
                 SimpleDateFormat parseFecha = new SimpleDateFormat("dd/MM/yy");
-                Date fechaIngreso = parseFecha.parse(dc_fechaIngreso.getText());
                 Date fechaNacimiento = parseFecha.parse(dc_fechaNac.getText());
                 ManejadorImagen img = new ManejadorImagen();
                 Representante representanteRegistrar = new Representante(Integer.parseInt(txt_cedula.getText()), txt_primerNombre.getText(), txt_segundoNombre.getText(),
-                    txt_primerApellido.getText(), txt_segundoApellido.getText(), (String) cb_banco.getSelectedItem(),
-                    (Integer.parseInt(txt_sueldoMensual.getText())), fechaIngreso, fechaNacimiento,
-                    txt_telefonoCasa.getText(), txt_telefonoMovil.getText(), txt_cargo.getText(), null,
-                    "", "", estadoSeleccionado.getNombre(), municipioSeleccionado.getNombre(), parroquiaSeleccionada.getNombre());
+                    txt_primerApellido.getText(), txt_segundoApellido.getText(), fechaNacimiento, txt_telefonoCasa.getText(), txt_telefonoMovil.getText(),
+                    (String) cb_tipo.getSelectedItem(), "fotico", estadoSeleccionado.getNombre(), municipioSeleccionado.getNombre(), parroquiaSeleccionada.getNombre());
+                
                 ComunicacionREST comRest = new ComunicacionREST();
-                Representante representanteRegistrado = comRest.registrarEmpleado(representanteRegistrar);
-                if (empleadoRegistrado.getError() == Registry.RESULTADO_CODIGO_BIEN){
+                Representante representanteRegistrado = comRest.registrarRepresentante(representanteRegistrar);
+                if (representanteRegistrado.getError() == Registry.RESULTADO_CODIGO_RECURSO_CREADO){
                     final JPanel panel = new JPanel();
-                    JOptionPane.showMessageDialog(panel, "Se registro existosamente el empleado", "Información", JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(panel, "Se registro exitosamente el representante", "Información", JOptionPane.INFORMATION_MESSAGE);
                 }else{
                     final JPanel panel = new JPanel();
-                    JOptionPane.showMessageDialog(panel, "No se ha podido registrar el empleado, intente nuevamente", "Error", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(panel, "No se ha podido registrar el representante, intente nuevamente", "Error", JOptionPane.ERROR_MESSAGE);
                 }
             } catch (Exception ex) {
                 Logger.getLogger(RegistrarRepresentante.class.getName()).log(Level.SEVERE, null, ex);
@@ -496,20 +546,31 @@ public class RegistrarRepresentante extends javax.swing.JPanel {
         }else{
             final JPanel panel = new JPanel();
             JOptionPane.showMessageDialog(panel, "Existen campos vacíos", "Error", JOptionPane.ERROR_MESSAGE);
-        }*/
+        }
     }//GEN-LAST:event_btn_registrarActionPerformed
+
+    private void btn_limpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_limpiarActionPerformed
+       txt_cedula.setText("");
+       txt_primerNombre.setText("");
+       txt_primerApellido.setText("");
+       txt_segundoNombre.setText("");
+       txt_segundoApellido.setText("");
+       txt_telefonoCasa.setText("");
+       txt_telefonoMovil.setText("");
+       dc_fechaNac.setCurrent(null);
+       cb_tipo.setSelectedItem(null);
+    }//GEN-LAST:event_btn_limpiarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_cargarImagen;
     private javax.swing.JButton btn_limpiar;
     private javax.swing.JButton btn_registrar;
-    private javax.swing.JComboBox cb_banco;
     private javax.swing.JComboBox cb_estados;
     private javax.swing.JComboBox cb_municipios;
     private javax.swing.JComboBox cb_parroquias;
+    private javax.swing.JComboBox cb_tipo;
     private datechooser.beans.DateChooserCombo dc_fechaNac;
-    private javax.swing.JLabel lbl_banco;
     private javax.swing.JLabel lbl_cedula;
     private javax.swing.JLabel lbl_direccion;
     private javax.swing.JLabel lbl_estado;
@@ -523,6 +584,7 @@ public class RegistrarRepresentante extends javax.swing.JPanel {
     private javax.swing.JLabel lbl_segundoNombre;
     private javax.swing.JLabel lbl_telefonoCasa;
     private javax.swing.JLabel lbl_telefonoMovil;
+    private javax.swing.JLabel lbl_tipo;
     private javax.swing.JLabel lbl_tituloRepresentante;
     private javax.swing.JPanel pnl_datos;
     private javax.swing.JTextField txt_cedula;
