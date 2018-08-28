@@ -12,6 +12,7 @@ import vista.panel.Inicio;
 import vista.panel.empleados.RegistrarEmpleado;
 import java.awt.CardLayout;
 import vista.panel.empleados.BorrarEmpleado;
+import vista.panel.empleados.ConsultarEmpleados;
 import vista.panel.estudiantes.BorrarEstudiante;
 import vista.panel.estudiantes.ModificarEstudiante;
 import vista.panel.estudiantes.RegistrarEstudiante;
@@ -29,10 +30,12 @@ public class AppMenu extends javax.swing.JFrame {
     final static String REGISTRAREMPLEADO = "REGISTRAREMPELADO";
     final static String MODIFICAREMPLEADO = "MODIFICAREMPLEADO";
     final static String BORRAREMPLEADO = "BORRAREMPLEADO";
+    final static String CONSULTAREMPLEADOS = "CONSULTAREMPLEADOS";
     
     RegistrarEmpleado registrarEmpleadoPanel = new RegistrarEmpleado();
     ModificarEmpleado modificarEmpleadoPanel = new ModificarEmpleado();
     BorrarEmpleado borrarEmpleadoPanel = new BorrarEmpleado();
+    ConsultarEmpleados consultarEmpleadosPanel = new ConsultarEmpleados();
     
     //ESTUDIANTES
     final static String REGISTRARESTUDIANTE = "REGISTRARESTUDIANTE";
@@ -66,6 +69,7 @@ public class AppMenu extends javax.swing.JFrame {
         contentPane.add(registrarEmpleadoPanel, REGISTRAREMPLEADO);
         contentPane.add(modificarEmpleadoPanel, MODIFICAREMPLEADO);
         contentPane.add(borrarEmpleadoPanel, BORRAREMPLEADO);
+        contentPane.add(consultarEmpleadosPanel, CONSULTAREMPLEADOS);
         
         //ESTUDIANTES
         contentPane.add(registrarEstudiantePanel, REGISTRARESTUDIANTE);
@@ -319,7 +323,8 @@ public class AppMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_registrarEmpleadoActionPerformed
 
     private void consultarEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultarEmpleadoActionPerformed
-        
+        CardLayout cardPanel = (CardLayout)(contentPane.getLayout());
+        cardPanel.show(contentPane, CONSULTAREMPLEADOS);
     }//GEN-LAST:event_consultarEmpleadoActionPerformed
 
     private void modificarEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarEmpleadoActionPerformed

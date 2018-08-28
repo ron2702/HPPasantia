@@ -5,17 +5,35 @@
  */
 package vista.panel.empleados;
 
+import comun.Empleado;
+import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
+import modelo.ComunicacionREST;
+
 /**
  *
  * @author LuisAlejandro
  */
 public class ConsultarEmpleados extends javax.swing.JPanel {
-
+    DefaultTableModel model;
     /**
      * Creates new form ConsultarEmpleados
      */
     public ConsultarEmpleados() {
-        initComponents();
+        try {
+            initComponents();
+            ComunicacionREST comRest = new ComunicacionREST();
+            ArrayList<Empleado> listaEmpleados = comRest.consultarEmpleados();
+            
+            model = (DefaultTableModel) tb_consultarEmpleados.getModel();
+            
+            
+            for (Empleado empleado : listaEmpleados) {
+               model.addRow(new Object[] {empleado.getCedula(), empleado.getPrimerNombre(), empleado.getSegundoNombre(), empleado.getPrimerApellido(), empleado.getSegundoApellido()});
+            }
+            
+        } catch (Exception e) {
+        }
     }
 
     /**
@@ -28,9 +46,9 @@ public class ConsultarEmpleados extends javax.swing.JPanel {
     private void initComponents() {
 
         pnl_datos = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
+        sp_empleados = new javax.swing.JScrollPane();
         tb_consultarEmpleados = new javax.swing.JTable();
-        jLabel1 = new javax.swing.JLabel();
+        lbl_titulo = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(204, 204, 204));
 
@@ -57,7 +75,7 @@ public class ConsultarEmpleados extends javax.swing.JPanel {
             }
         });
         tb_consultarEmpleados.setCellSelectionEnabled(true);
-        jScrollPane1.setViewportView(tb_consultarEmpleados);
+        sp_empleados.setViewportView(tb_consultarEmpleados);
 
         javax.swing.GroupLayout pnl_datosLayout = new javax.swing.GroupLayout(pnl_datos);
         pnl_datos.setLayout(pnl_datosLayout);
@@ -65,19 +83,19 @@ public class ConsultarEmpleados extends javax.swing.JPanel {
             pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnl_datosLayout.createSequentialGroup()
                 .addGap(26, 26, 26)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 605, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(sp_empleados, javax.swing.GroupLayout.PREFERRED_SIZE, 605, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(203, Short.MAX_VALUE))
         );
         pnl_datosLayout.setVerticalGroup(
             pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnl_datosLayout.createSequentialGroup()
                 .addGap(28, 28, 28)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(sp_empleados, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(386, Short.MAX_VALUE))
         );
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel1.setText("Consultar Empleados");
+        lbl_titulo.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lbl_titulo.setText("Consultar Empleados");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -86,7 +104,7 @@ public class ConsultarEmpleados extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(56, 56, 56)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
+                    .addComponent(lbl_titulo)
                     .addComponent(pnl_datos, javax.swing.GroupLayout.PREFERRED_SIZE, 838, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(56, Short.MAX_VALUE))
         );
@@ -94,7 +112,7 @@ public class ConsultarEmpleados extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(31, 31, 31)
-                .addComponent(jLabel1)
+                .addComponent(lbl_titulo)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(pnl_datos, javax.swing.GroupLayout.PREFERRED_SIZE, 513, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(68, Short.MAX_VALUE))
@@ -103,9 +121,9 @@ public class ConsultarEmpleados extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lbl_titulo;
     private javax.swing.JPanel pnl_datos;
+    private javax.swing.JScrollPane sp_empleados;
     private javax.swing.JTable tb_consultarEmpleados;
     // End of variables declaration//GEN-END:variables
 }
