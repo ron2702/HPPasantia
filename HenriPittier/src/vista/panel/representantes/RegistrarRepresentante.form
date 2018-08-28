@@ -512,6 +512,9 @@
               <Dimension value="[109, 25]"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_limpiarActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JComboBox" name="cb_tipo">
           <Properties>

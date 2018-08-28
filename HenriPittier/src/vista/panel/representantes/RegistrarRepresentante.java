@@ -302,6 +302,11 @@ public class RegistrarRepresentante extends javax.swing.JPanel {
     btn_limpiar.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
     btn_limpiar.setText("Limpiar");
     btn_limpiar.setPreferredSize(new java.awt.Dimension(109, 25));
+    btn_limpiar.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            btn_limpiarActionPerformed(evt);
+        }
+    });
 
     cb_tipo.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
     cb_tipo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Representante", "Autorizado" }));
@@ -543,6 +548,18 @@ public class RegistrarRepresentante extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(panel, "Existen campos vacíos", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btn_registrarActionPerformed
+
+    private void btn_limpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_limpiarActionPerformed
+       txt_cedula.setText("");
+       txt_primerNombre.setText("");
+       txt_primerApellido.setText("");
+       txt_segundoNombre.setText("");
+       txt_segundoApellido.setText("");
+       txt_telefonoCasa.setText("");
+       txt_telefonoMovil.setText("");
+       dc_fechaNac.setCurrent(null);
+       cb_tipo.setSelectedItem(null);
+    }//GEN-LAST:event_btn_limpiarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
