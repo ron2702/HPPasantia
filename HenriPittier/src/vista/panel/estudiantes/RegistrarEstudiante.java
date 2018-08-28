@@ -168,6 +168,8 @@ public class RegistrarEstudiante extends javax.swing.JPanel {
     dc_fechaNac.setFieldFont(new java.awt.Font("Tahoma", java.awt.Font.PLAIN, 12));
     dc_fechaNac.setNavigateFont(new java.awt.Font("Serif", java.awt.Font.PLAIN, 8));
 
+    lbl_foto.setBackground(new java.awt.Color(255, 255, 255));
+    lbl_foto.setForeground(new java.awt.Color(255, 255, 255));
     lbl_foto.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
     btn_cargarImagen.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
