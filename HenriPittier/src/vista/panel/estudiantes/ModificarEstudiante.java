@@ -107,11 +107,18 @@ public class ModificarEstudiante extends javax.swing.JPanel {
         lbl_segundoApellido.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         lbl_segundoApellido.setText("Segundo Apellido:");
 
+        txt_segundoApellido.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+
+        txt_primerApellido.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         txt_primerApellido.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_primerApellidoActionPerformed(evt);
             }
         });
+
+        txt_segundoNombre.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+
+        txt_primerNombre.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
 
         lbl_primerNombre.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         lbl_primerNombre.setText("Primer Nombre:");

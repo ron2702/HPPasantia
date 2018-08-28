@@ -66,10 +66,13 @@ public class RegistrarEmpleado extends javax.swing.JPanel {
                     try {
                         cb_parroquias.removeAllItems();
                         Lugar municipioSeleccionado = (Lugar) cb_municipios.getSelectedItem();
-                        ArrayList<Lugar> listaLugares = comRest.consultarParroquias(municipioSeleccionado);
-                        for (Lugar lugar : listaLugares) {
-                            cb_parroquias.addItem(lugar);
+                        if (municipioSeleccionado != null){
+                            ArrayList<Lugar> listaLugares = comRest.consultarParroquias(municipioSeleccionado);
+                            for (Lugar lugar : listaLugares) {
+                                cb_parroquias.addItem(lugar);
+                            }
                         }
+
                     } catch (Exception ex) {
                         Logger.getLogger(RegistrarEmpleado.class.getName()).log(Level.SEVERE, null, ex);
                     }
@@ -665,6 +668,9 @@ txt_primerApellido.addKeyListener(new java.awt.event.KeyAdapter() {
         dc_fechaIngreso.setCurrent(null);
         dc_fechaNac.setCurrent(null);
         cb_banco.setSelectedItem(null);
+        cb_estados.setSelectedIndex(0);
+        cb_municipios.removeAllItems();
+        cb_parroquias.removeAllItems();
         /*cb_estados.setSelectedItem(null);
         cb_municipios.setSelectedItem(null);
         cb_parroquias.setSelectedItem(null);*/
