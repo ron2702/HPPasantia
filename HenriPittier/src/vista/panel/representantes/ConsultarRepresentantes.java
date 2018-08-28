@@ -10,14 +10,18 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Vector;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
 import modelo.ComunicacionREST;
+import modelo.Registry;
 
 /**
  *
  * @author LuisAlejandro
  */
 public class ConsultarRepresentantes extends javax.swing.JPanel {
+    private Representante representanteConsultar;
     DefaultTableModel model;
     
     /**
@@ -51,8 +55,12 @@ public class ConsultarRepresentantes extends javax.swing.JPanel {
     private void initComponents() {
 
         pnl_datos = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
+        sp_representantes = new javax.swing.JScrollPane();
         tb_consultarRepresentantes = new javax.swing.JTable();
+        txt_cedula = new javax.swing.JTextField();
+        lbl_cedula = new javax.swing.JLabel();
+        lbl_primerNombre = new javax.swing.JLabel();
+        txt_primerNombre1 = new javax.swing.JTextField();
         lbl_titulo = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(204, 204, 204));
@@ -84,7 +92,17 @@ public class ConsultarRepresentantes extends javax.swing.JPanel {
                 tb_consultarRepresentantesMousePressed(evt);
             }
         });
-        jScrollPane1.setViewportView(tb_consultarRepresentantes);
+        sp_representantes.setViewportView(tb_consultarRepresentantes);
+
+        txt_cedula.setEnabled(false);
+
+        lbl_cedula.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        lbl_cedula.setText("Cedula:");
+
+        lbl_primerNombre.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        lbl_primerNombre.setText("Primer Nombre:");
+
+        txt_primerNombre1.setEnabled(false);
 
         javax.swing.GroupLayout pnl_datosLayout = new javax.swing.GroupLayout(pnl_datos);
         pnl_datos.setLayout(pnl_datosLayout);
@@ -92,15 +110,32 @@ public class ConsultarRepresentantes extends javax.swing.JPanel {
             pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnl_datosLayout.createSequentialGroup()
                 .addGap(26, 26, 26)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 605, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(sp_representantes, javax.swing.GroupLayout.PREFERRED_SIZE, 605, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(pnl_datosLayout.createSequentialGroup()
+                        .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lbl_cedula, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lbl_primerNombre))
+                        .addGap(28, 28, 28)
+                        .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txt_primerNombre1, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txt_cedula, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(203, Short.MAX_VALUE))
         );
         pnl_datosLayout.setVerticalGroup(
             pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnl_datosLayout.createSequentialGroup()
                 .addGap(28, 28, 28)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(386, Short.MAX_VALUE))
+                .addComponent(sp_representantes, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(38, 38, 38)
+                .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txt_cedula, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbl_cedula))
+                .addGap(18, 18, 18)
+                .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbl_primerNombre)
+                    .addComponent(txt_primerNombre1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(270, Short.MAX_VALUE))
         );
 
         lbl_titulo.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -132,19 +167,31 @@ public class ConsultarRepresentantes extends javax.swing.JPanel {
         int index = tb_consultarRepresentantes.getSelectedRow();
         
         String cedula = model.getValueAt(index, 0).toString();
-        String primerNombre = model.getValueAt(index, 1).toString();
-        String primerApellido = model.getValueAt(index, 2).toString();
-        String segundoNombre = model.getValueAt(index, 3).toString();
-        String segundoApellido = model.getValueAt(index, 4).toString();
+        int cedulaRepresentante = Integer.parseInt(cedula);
+        ComunicacionREST comRest = new ComunicacionREST();
+        Representante _representante = new Representante(cedulaRepresentante);
         
-        System.out.println(cedula + " " + primerNombre + " " + primerApellido + " " + segundoNombre + " " + segundoApellido);
+        try {
+            representanteConsultar = comRest.consultarRepresentanteDetalle(_representante);
+        } catch (Exception ex) {
+            Logger.getLogger(ConsultarRepresentantes.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        if (representanteConsultar.getError() == Registry.RESULTADO_CODIGO_BIEN){
+            txt_cedula.setText(representanteConsultar.getPrimerNombre());
+        }
+        
     }//GEN-LAST:event_tb_consultarRepresentantesMousePressed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lbl_cedula;
+    private javax.swing.JLabel lbl_primerNombre;
     private javax.swing.JLabel lbl_titulo;
     private javax.swing.JPanel pnl_datos;
+    private javax.swing.JScrollPane sp_representantes;
     private javax.swing.JTable tb_consultarRepresentantes;
+    private javax.swing.JTextField txt_cedula;
+    private javax.swing.JTextField txt_primerNombre1;
     // End of variables declaration//GEN-END:variables
 }
