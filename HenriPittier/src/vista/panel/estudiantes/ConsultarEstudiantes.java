@@ -8,8 +8,12 @@ package vista.panel.estudiantes;
 import comun.Estudiante;
 import comun.Representante;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
 import modelo.ComunicacionREST;
+import modelo.Registry;
 
 
 public class ConsultarEstudiantes extends javax.swing.JPanel {
@@ -227,7 +231,25 @@ public class ConsultarEstudiantes extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void tb_consultarEstudiantesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tb_consultarEstudiantesMouseClicked
+        int index = tb_consultarEstudiantes.getSelectedRow();
         
+        String cedula = model.getValueAt(index, 0).toString();
+        int cedulaEstudiante = Integer.parseInt(cedula);
+        ComunicacionREST comRest = new ComunicacionREST();
+        Estudiante _estudiante = new Estudiante(cedulaEstudiante);
+        
+        try {
+            estudianteConsultar = comRest.consultarEstudianteDetalle(_estudiante);
+        } catch (Exception ex) {
+            Logger.getLogger(ConsultarEstudiantes.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        if (estudianteConsultar.getError() == Registry.RESULTADO_CODIGO_BIEN){
+            
+            Calendar calNac = Calendar.getInstance();
+            calNac.setTime(estudianteConsultar.getFechaNac());
+            dc_fechaNac.setSelectedDate(calNac);
+        }
     }//GEN-LAST:event_tb_consultarEstudiantesMouseClicked
 
 
