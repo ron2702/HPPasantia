@@ -98,9 +98,10 @@ public class ConsultarRepresentantes extends javax.swing.JPanel {
                 return types [columnIndex];
             }
         });
+        tb_consultarRepresentantes.setUpdateSelectionOnSort(false);
         tb_consultarRepresentantes.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                tb_consultarRepresentantesMousePressed(evt);
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tb_consultarRepresentantesMouseClicked(evt);
             }
         });
         sp_representantes.setViewportView(tb_consultarRepresentantes);
@@ -292,7 +293,7 @@ public class ConsultarRepresentantes extends javax.swing.JPanel {
     );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void tb_consultarRepresentantesMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tb_consultarRepresentantesMousePressed
+    private void tb_consultarRepresentantesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tb_consultarRepresentantesMouseClicked
         int index = tb_consultarRepresentantes.getSelectedRow();
         
         String cedula = model.getValueAt(index, 0).toString();
@@ -318,8 +319,7 @@ public class ConsultarRepresentantes extends javax.swing.JPanel {
             txt_Municipio.setText(representanteConsultar.getMunicipio());
             txt_Parroquia.setText(representanteConsultar.getParroquia());
         }
-        
-    }//GEN-LAST:event_tb_consultarRepresentantesMousePressed
+    }//GEN-LAST:event_tb_consultarRepresentantesMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
