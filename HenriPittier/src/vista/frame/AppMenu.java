@@ -114,6 +114,7 @@ public class AppMenu extends javax.swing.JFrame {
         consultarEmpleado = new javax.swing.JMenuItem();
         modificarEmpleado = new javax.swing.JMenuItem();
         eliminarEmpleado = new javax.swing.JMenuItem();
+        jMenuItem1 = new javax.swing.JMenuItem();
         menuConfiguracion = new javax.swing.JMenu();
         inicio = new javax.swing.JMenuItem();
         menuSalir = new javax.swing.JMenu();
@@ -231,6 +232,9 @@ public class AppMenu extends javax.swing.JFrame {
             }
         });
         menuEmpleados.add(eliminarEmpleado);
+
+        jMenuItem1.setText("jMenuItem1");
+        menuEmpleados.add(jMenuItem1);
 
         barraMenu.add(menuEmpleados);
 
@@ -404,6 +408,7 @@ public class AppMenu extends javax.swing.JFrame {
     private javax.swing.JMenuItem eliminarEstudiante;
     private javax.swing.JMenuItem eliminarRepresentante;
     private javax.swing.JMenuItem inicio;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenu menuConfiguracion;
     private javax.swing.JMenu menuEmpleados;
     private javax.swing.JMenu menuEstudiantes;
