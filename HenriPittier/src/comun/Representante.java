@@ -165,4 +165,9 @@ public class Representante {
         this.error = error;
     }
     
+    @Override
+    public String toString() {
+        return this.cedula + " - " + this.primerNombre + " " + this.primerApellido;
+    }
+    
 }
