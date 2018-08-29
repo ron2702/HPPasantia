@@ -374,6 +374,24 @@ public class ComunicacionREST {
         }
     }
     
+    public Estudiante consultarEstudianteDetalle(Estudiante e) throws Exception {
+        try {
+            conn = null;
+            Gson gson = new GsonBuilder().registerTypeAdapter(Date.class, new JsonDateDeserializer()).create();
+            BufferedReader br = comunicar("GET", "consultarEstudianteDetalle?estudiante=" + URLEncoder.encode(gson.toJson(e).toString(), "UTF-8"));
+            String output;
+            Estudiante _estudiante = new Estudiante();
+            while ((output = br.readLine()) != null) {
+                _estudiante = gson.fromJson(output, Estudiante.class);
+            }
+            conn.disconnect();
+            return _estudiante;
+        }
+        catch (Exception ex){
+            throw ex;
+        }
+    }
+    
     public Estudiante borrarEstudiante(Estudiante e) throws Exception {
         try {
             conn = null;
