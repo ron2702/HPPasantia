@@ -14,6 +14,7 @@ import java.awt.CardLayout;
 import vista.panel.empleados.BorrarEmpleado;
 import vista.panel.empleados.ConsultarEmpleados;
 import vista.panel.estudiantes.BorrarEstudiante;
+import vista.panel.estudiantes.ConsultarEstudiantes;
 import vista.panel.estudiantes.ModificarEstudiante;
 import vista.panel.estudiantes.RegistrarEstudiante;
 import vista.panel.representantes.BorrarRepresentante;
@@ -41,10 +42,12 @@ public class AppMenu extends javax.swing.JFrame {
     final static String REGISTRARESTUDIANTE = "REGISTRARESTUDIANTE";
     final static String MODIFICARESTUDIANTE = "MODIFICARESTUDIANTE";
     final static String BORRARESTUDIANTE = "BORRARESTUDIANTE";
+    final static String CONSULTARESTUDIANTES = "CONSULTARESTUDIANTES";
     
     RegistrarEstudiante registrarEstudiantePanel = new RegistrarEstudiante();
     ModificarEstudiante modificarEstudiantePanel = new ModificarEstudiante();
     BorrarEstudiante borrarEstudiantePanel = new BorrarEstudiante();
+    ConsultarEstudiantes consultarEstudiantesPanel = new ConsultarEstudiantes();
     
     //REPRESENTANTES
     final static String REGISTRARREPRESENTANTE = "REGISTRARREPRESENTANTE";
@@ -75,6 +78,7 @@ public class AppMenu extends javax.swing.JFrame {
         contentPane.add(registrarEstudiantePanel, REGISTRARESTUDIANTE);
         contentPane.add(modificarEstudiantePanel, MODIFICARESTUDIANTE);
         contentPane.add(borrarEstudiantePanel, BORRARESTUDIANTE);
+        contentPane.add(consultarEstudiantesPanel, CONSULTARESTUDIANTES);
         
         //REPRESENTANTES
         contentPane.add(registrarRepresentantePanel, REGISTRARREPRESENTANTE);
@@ -284,7 +288,8 @@ public class AppMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_registrarEstudianteActionPerformed
 
     private void consultarEstudianteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultarEstudianteActionPerformed
-        
+        CardLayout cardPanel = (CardLayout)(contentPane.getLayout());
+        cardPanel.show(contentPane, CONSULTARESTUDIANTES);
     }//GEN-LAST:event_consultarEstudianteActionPerformed
 
     private void modificarEstudianteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarEstudianteActionPerformed
