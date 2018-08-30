@@ -44,7 +44,11 @@ public class ConsultarEmpleados extends javax.swing.JPanel {
 
         pnl_datos = new javax.swing.JPanel();
         sp_empleados = new javax.swing.JScrollPane();
-        tb_consultarEmpleados = new javax.swing.JTable();
+        tb_consultarEmpleados = new javax.swing.JTable(){
+            public boolean isCellEditable(int rowIndex, int colIndex) {
+                return false; //Disallow the editing of any cell
+            }
+        };
         lbl_telefonoCasa = new javax.swing.JLabel();
         lbl_telefonoMovil = new javax.swing.JLabel();
         txt_telefonoCasa = new javax.swing.JTextField();
@@ -94,7 +98,6 @@ public class ConsultarEmpleados extends javax.swing.JPanel {
                 return types [columnIndex];
             }
         });
-        tb_consultarEmpleados.setCellSelectionEnabled(true);
         tb_consultarEmpleados.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tb_consultarEmpleadosMouseClicked(evt);
@@ -409,36 +412,36 @@ pnl_datosLayout.setHorizontalGroup(
         int index = tb_consultarEmpleados.getSelectedRow();
         
         String cedula = model.getValueAt(index, 0).toString();
-        int cedulaEmpleado = Integer.parseInt(cedula);
-        ComunicacionREST comRest = new ComunicacionREST();
-        Empleado _empleado = new Empleado(cedulaEmpleado);
-        
-        try {
+        try{
+            int cedulaEmpleado = Integer.parseInt(cedula);
+            ComunicacionREST comRest = new ComunicacionREST();
+            Empleado _empleado = new Empleado(cedulaEmpleado);
+
             empleadoConsultar = comRest.consultarEmpleadoDetalle(_empleado);
-        } catch (Exception ex) {
-            Logger.getLogger(ConsultarRepresentantes.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
-        if (empleadoConsultar.getError() == Registry.RESULTADO_CODIGO_BIEN){
-            
-            String sueldomen = String.valueOf(empleadoConsultar.getSueldoMensual());
-            txt_telefonoCasa.setText(empleadoConsultar.getTelefonoCasa());
-            txt_telefonoMovil.setText(empleadoConsultar.getTelefonoMovil());
-            txt_sueldoMensual.setText(sueldomen);
-            
-            Calendar calNac = Calendar.getInstance();
-            Calendar calIngreso = Calendar.getInstance();
-            
-            calNac.setTime(empleadoConsultar.getFechaNac());
-            calIngreso.setTime(empleadoConsultar.getFechaNac());
-            
-            dc_fechaNac.setSelectedDate(calNac);
-            dc_fechaIngreso.setSelectedDate(calNac);
-            txt_cargo.setText(empleadoConsultar.getCargo());
-            txt_banco.setText(empleadoConsultar.getBanco());
-            txt_estado.setText(empleadoConsultar.getEstado());
-            txt_municipio.setText(empleadoConsultar.getMunicipio());
-            txt_parroquia.setText(empleadoConsultar.getParroquia());
+
+            if (empleadoConsultar.getError() == Registry.RESULTADO_CODIGO_BIEN){
+
+                String sueldomen = String.valueOf(empleadoConsultar.getSueldoMensual());
+                txt_telefonoCasa.setText(empleadoConsultar.getTelefonoCasa());
+                txt_telefonoMovil.setText(empleadoConsultar.getTelefonoMovil());
+                txt_sueldoMensual.setText(sueldomen);
+
+                Calendar calNac = Calendar.getInstance();
+                Calendar calIngreso = Calendar.getInstance();
+
+                calNac.setTime(empleadoConsultar.getFechaNac());
+                calIngreso.setTime(empleadoConsultar.getFechaNac());
+
+                dc_fechaNac.setSelectedDate(calNac);
+                dc_fechaIngreso.setSelectedDate(calNac);
+                txt_cargo.setText(empleadoConsultar.getCargo());
+                txt_banco.setText(empleadoConsultar.getBanco());
+                txt_estado.setText(empleadoConsultar.getEstado());
+                txt_municipio.setText(empleadoConsultar.getMunicipio());
+                txt_parroquia.setText(empleadoConsultar.getParroquia());
+            }
+        }catch(Exception ex){
+            ex.printStackTrace();
         }
     }//GEN-LAST:event_tb_consultarEmpleadosMouseClicked
 

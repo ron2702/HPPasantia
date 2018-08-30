@@ -118,7 +118,7 @@ public class ComunicacionREST {
     public Empleado consultarEmpleadoDetalle(Empleado e) throws Exception {
         try {
             conn = null;
-            Gson gson = new GsonBuilder().create();
+            Gson gson = new GsonBuilder().registerTypeAdapter(Date.class, new JsonDateDeserializer()).create();
             BufferedReader br = comunicar("GET", "consultarEmpleadoDetalle?empleado=" + URLEncoder.encode(gson.toJson(e).toString(), "UTF-8"));
             String output;
             Empleado _empleado = new Empleado();

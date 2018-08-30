@@ -34,15 +34,27 @@ import vista.panel.empleados.*;
 public class ModificarEmpleado extends javax.swing.JPanel {
     private File archivoSeleccionado;
     private Empleado empleadoModificar;
+    private ArrayList<Lugar> listaEstados;
+    private ArrayList<Lugar> listaMunicipios;
+    private ArrayList<Lugar> listaParroquias;
+    
+    private Lugar buscarLugarPorNombre(ArrayList<Lugar> lugares, String nombreLugar){
+        for (Lugar lugar : lugares) {
+            if (lugar.getNombre().equals(nombreLugar)){
+                return lugar;
+            }
+        }
+        return null;
+    }
     public ModificarEmpleado() {
         try {
             initComponents();
             ComunicacionREST comRest = new ComunicacionREST();
             
-            ArrayList<Lugar> listaLugares = comRest.consultarEstados();
+            listaEstados = comRest.consultarEstados();
             ArrayList<Empleado> listaEmpleados = comRest.consultarEmpleados();
             
-            for (Lugar lugar : listaLugares) {
+            for (Lugar lugar : listaEstados) {
                 cb_estados.addItem(lugar);
             }
             cb_estados.addActionListener(new ActionListener() {
@@ -51,8 +63,8 @@ public class ModificarEmpleado extends javax.swing.JPanel {
                     try {
                         cb_municipios.removeAllItems();
                         Lugar estadoSeleccionado = (Lugar) cb_estados.getSelectedItem();
-                        ArrayList<Lugar> listaLugares = comRest.consultarMunicipios(estadoSeleccionado);
-                        for (Lugar lugar : listaLugares) {
+                        listaMunicipios = comRest.consultarMunicipios(estadoSeleccionado);
+                        for (Lugar lugar : listaMunicipios) {
                             cb_municipios.addItem(lugar);
                         }
                     } catch (Exception ex) {
@@ -67,8 +79,8 @@ public class ModificarEmpleado extends javax.swing.JPanel {
                         cb_parroquias.removeAllItems();
                         Lugar municipioSeleccionado = (Lugar) cb_municipios.getSelectedItem();
                         if (municipioSeleccionado != null){
-                            ArrayList<Lugar> listaLugares = comRest.consultarParroquias(municipioSeleccionado);
-                            for (Lugar lugar : listaLugares) {
+                            listaParroquias = comRest.consultarParroquias(municipioSeleccionado);
+                            for (Lugar lugar : listaParroquias) {
                                 cb_parroquias.addItem(lugar);
                             }
                         }
@@ -104,6 +116,13 @@ public class ModificarEmpleado extends javax.swing.JPanel {
                         calIngreso.setTime(empleadoSeleccionado.getFechaIngreso());
                         dc_fechaIngreso.setSelectedDate(calIngreso);
                         cb_banco.setSelectedItem(empleadoSeleccionado.getBanco());
+                        Lugar estadoEmpleado = buscarLugarPorNombre(listaEstados, empleadoSeleccionado.getEstado());
+                        cb_estados.setSelectedItem(estadoEmpleado);
+                        Lugar municipioEmpleado = buscarLugarPorNombre(listaMunicipios, empleadoSeleccionado.getMunicipio());
+                        cb_municipios.setSelectedItem(municipioEmpleado);
+                        Lugar parroquiaEmpleado = buscarLugarPorNombre(listaParroquias, empleadoSeleccionado.getParroquia());
+                        cb_parroquias.setSelectedItem(parroquiaEmpleado);
+                        
                     } catch (Exception ex) {
                         Logger.getLogger(RegistrarEmpleado.class.getName()).log(Level.SEVERE, null, ex);
                     }
@@ -641,9 +660,6 @@ try {
         cb_estados.setSelectedIndex(0);
         cb_municipios.removeAllItems();
         cb_parroquias.removeAllItems();
-        /*cb_estados.setSelectedItem(null);
-        cb_municipios.setSelectedItem(null);
-        cb_parroquias.setSelectedItem(null);*/
     }//GEN-LAST:event_btn_limnpiarActionPerformed
 
     private void btn_modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_modificarActionPerformed

@@ -285,7 +285,7 @@ public class DAOEmpleado extends DAO{
                 
                 /*File imagenEmpleado = new File(rs.getString("foto"));
                 ManejadorImagen img = new ManejadorImagen();*/
-                Empleado empleado = new Empleado(rs.getInt("cedula"), 
+                empleadoConsultar = new Empleado(rs.getInt("cedula"), 
                                   rs.getString("primernombre"),
                                   rs.getString("segundonombre"),
                                   rs.getString("primerapellido"),
@@ -303,7 +303,7 @@ public class DAOEmpleado extends DAO{
                                   rs.getString("estado"),
                                   rs.getString("municipio"),
                                   rs.getString("parroquia"));
-                empleado.setError(RESULTADO_CODIGO_BIEN);
+                empleadoConsultar.setError(RESULTADO_CODIGO_BIEN);
                 
             }
             return empleadoConsultar;
