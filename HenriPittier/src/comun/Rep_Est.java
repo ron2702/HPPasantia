@@ -5,7 +5,7 @@ package comun;
  *
  * @author Ronald
  */
-public class REPEST {
+public class Rep_Est {
     
     private int cedula;
     private String primerNombre_Rep;
@@ -15,22 +15,22 @@ public class REPEST {
     private String primerApellido_Est;
     private int error;
     
-    public REPEST(){
+    public Rep_Est(){
         
     }
     
-    public REPEST(int cedula){
+    public Rep_Est(int cedula){
         this.cedula = cedula;
     }
 
-    public REPEST(int cedula, int cedulaEscolar) {
+    public Rep_Est(int cedula, int cedulaEscolar) {
         this.cedula = cedula;
         this.cedulaEscolar = cedulaEscolar;
     }
     
     
 
-    public REPEST(int cedula, String primerNombre_Rep, String primerApellido_Rep, int cedulaEscolar, String primerNombre_Est, String primerApellido_est) {
+    public Rep_Est(int cedula, String primerNombre_Rep, String primerApellido_Rep, int cedulaEscolar, String primerNombre_Est, String primerApellido_est) {
         this.cedula = cedula;
         this.primerNombre_Rep = primerNombre_Rep;
         this.primerApellido_Rep = primerApellido_Rep;
