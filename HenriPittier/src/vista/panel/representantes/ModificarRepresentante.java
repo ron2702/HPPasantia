@@ -33,17 +33,29 @@ import modelo.Registry;
 public class ModificarRepresentante extends javax.swing.JPanel {
     private File archivoSeleccionado;
     private Representante representanteModificar;
+    private ArrayList<Lugar> listaEstados;
+    private ArrayList<Lugar> listaMunicipios;
+    private ArrayList<Lugar> listaParroquias;
+    
+    private Lugar buscarLugarPorNombre(ArrayList<Lugar> lugares, String nombreLugar){
+        for (Lugar lugar : lugares) {
+            if (lugar.getNombre().equals(nombreLugar)){
+                return lugar;
+            }
+        }
+        return null;
+    }
 
     
     public ModificarRepresentante() {
         try {
             initComponents();
             ComunicacionREST comRest = new ComunicacionREST();
-            
-            ArrayList<Lugar> listaLugares = comRest.consultarEstados();
+           
+            listaEstados = comRest.consultarEstados();
             ArrayList<Representante> listaRepresentantes = comRest.consultarRepresentantes();
             
-            for (Lugar lugar : listaLugares) {
+            for (Lugar lugar : listaEstados) {
                 cb_estados.addItem(lugar);
             }
             cb_estados.addActionListener(new ActionListener() {
@@ -52,8 +64,8 @@ public class ModificarRepresentante extends javax.swing.JPanel {
                     try {
                         cb_municipios.removeAllItems();
                         Lugar estadoSeleccionado = (Lugar) cb_estados.getSelectedItem();
-                        ArrayList<Lugar> listaLugares = comRest.consultarMunicipios(estadoSeleccionado);
-                        for (Lugar lugar : listaLugares) {
+                        listaMunicipios = comRest.consultarMunicipios(estadoSeleccionado);
+                        for (Lugar lugar : listaMunicipios) {
                             cb_municipios.addItem(lugar);
                         }
                     } catch (Exception ex) {
@@ -68,8 +80,8 @@ public class ModificarRepresentante extends javax.swing.JPanel {
                         cb_parroquias.removeAllItems();
                         Lugar municipioSeleccionado = (Lugar) cb_municipios.getSelectedItem();
                         if (municipioSeleccionado != null){
-                            ArrayList<Lugar> listaLugares = comRest.consultarParroquias(municipioSeleccionado);
-                            for (Lugar lugar : listaLugares) {
+                            listaParroquias = comRest.consultarParroquias(municipioSeleccionado);
+                            for (Lugar lugar : listaParroquias) {
                                 cb_parroquias.addItem(lugar);
                             }
                         }
@@ -99,6 +111,12 @@ public class ModificarRepresentante extends javax.swing.JPanel {
                         calNac.setTime(representanteModificar.getFechaNac());
                         dc_fechaNac.setSelectedDate(calNac);
                         cb_tipo.setSelectedItem(representanteModificar.getTipo());
+                        Lugar estadoEmpleado = buscarLugarPorNombre(listaEstados, representanteModificar.getEstado());
+                        cb_estados.setSelectedItem(estadoEmpleado);
+                        Lugar municipioEmpleado = buscarLugarPorNombre(listaMunicipios, representanteModificar.getMunicipio());
+                        cb_municipios.setSelectedItem(municipioEmpleado);
+                        Lugar parroquiaEmpleado = buscarLugarPorNombre(listaParroquias, representanteModificar.getParroquia());
+                        cb_parroquias.setSelectedItem(parroquiaEmpleado);
                     } catch (Exception ex) {
                         Logger.getLogger(ModificarRepresentante.class.getName()).log(Level.SEVERE, null, ex);
                     }
