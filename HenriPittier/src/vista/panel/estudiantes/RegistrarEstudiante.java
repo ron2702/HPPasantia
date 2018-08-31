@@ -66,9 +66,9 @@ public class RegistrarEstudiante extends javax.swing.JPanel {
         btn_limpiar = new javax.swing.JButton();
         btn_registrar = new javax.swing.JButton();
         lbl_cedulaRepresentante = new javax.swing.JLabel();
-        txt_cedulaRepresentante = new javax.swing.JTextField();
         lbl_cedulaEscolar = new javax.swing.JLabel();
         txt_cedulaEscolar = new javax.swing.JTextField();
+        txt_cedulaRepresentante = new javax.swing.JTextField();
         lbl_tituloRegistroEstudiantes = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(204, 204, 204));
@@ -203,13 +203,6 @@ public class RegistrarEstudiante extends javax.swing.JPanel {
     lbl_cedulaRepresentante.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
     lbl_cedulaRepresentante.setText("Cédula del Representante:");
 
-    txt_cedulaRepresentante.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-    txt_cedulaRepresentante.addKeyListener(new java.awt.event.KeyAdapter() {
-        public void keyTyped(java.awt.event.KeyEvent evt) {
-            txt_cedulaRepresentanteKeyTyped(evt);
-        }
-    });
-
     lbl_cedulaEscolar.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
     lbl_cedulaEscolar.setText("Cédula Escolar:");
 
@@ -218,6 +211,15 @@ public class RegistrarEstudiante extends javax.swing.JPanel {
     txt_cedulaEscolar.addKeyListener(new java.awt.event.KeyAdapter() {
         public void keyTyped(java.awt.event.KeyEvent evt) {
             txt_cedulaEscolarKeyTyped(evt);
+        }
+    });
+
+    txt_cedulaRepresentante.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+    txt_cedulaRepresentante.setToolTipText("");
+    txt_cedulaRepresentante.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+    txt_cedulaRepresentante.addKeyListener(new java.awt.event.KeyAdapter() {
+        public void keyTyped(java.awt.event.KeyEvent evt) {
+            txt_cedulaRepresentanteKeyTyped(evt);
         }
     });
 
@@ -260,14 +262,14 @@ public class RegistrarEstudiante extends javax.swing.JPanel {
                                 .addComponent(txt_segundoNombre)
                                 .addComponent(txt_primerApellido, javax.swing.GroupLayout.DEFAULT_SIZE, 156, Short.MAX_VALUE))
                             .addGap(56, 56, 56)
-                            .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(pnl_datosLayout.createSequentialGroup()
                                     .addComponent(lbl_cedulaRepresentante)
                                     .addGap(46, 46, 46)
-                                    .addComponent(txt_cedulaRepresentante, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(txt_cedulaRepresentante))
                                 .addGroup(pnl_datosLayout.createSequentialGroup()
                                     .addComponent(lbl_cedulaEscolar)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addGap(110, 110, 110)
                                     .addComponent(txt_cedulaEscolar, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGap(51, 51, 51))))))
     );
@@ -377,7 +379,23 @@ public class RegistrarEstudiante extends javax.swing.JPanel {
             
             SimpleDateFormat parseFecha = new SimpleDateFormat("dd/MM/yy");
             Date fechaNacimiento = parseFecha.parse(dc_fechaNac.getText());
-            Estudiante estudianteRegistrar = new Estudiante(1, txt_primerNombre.getText(), txt_primerApellido.getText(), txt_segundoNombre.getText(),
+            
+            String ci = txt_cedulaRepresentante.getText();
+            String ciPartida = ci.substring(0, 4);
+            
+            Calendar calNac = Calendar.getInstance();
+            calNac.setTime(fechaNacimiento);
+            int diadelmes = calNac.get(Calendar.DAY_OF_MONTH);
+            int mes = calNac.get(Calendar.MONTH) + 1;
+            
+            String diadelmesAString = String.valueOf(diadelmes);
+            String mesAString = String.valueOf(mes);
+            
+            String cedulaConcat = ciPartida + diadelmesAString + mesAString;
+            
+            int cedulaEscolar = Integer.parseInt(cedulaConcat);
+            
+            Estudiante estudianteRegistrar = new Estudiante(cedulaEscolar, txt_primerNombre.getText(), txt_primerApellido.getText(), txt_segundoNombre.getText(),
                                         txt_segundoApellido.getText(), fechaNacimiento, "");
             ComunicacionREST comRest = new ComunicacionREST();
             Estudiante estudianteRegistrado = comRest.registrarEstudiante(estudianteRegistrar);
@@ -397,10 +415,6 @@ public class RegistrarEstudiante extends javax.swing.JPanel {
     }
     }//GEN-LAST:event_btn_registrarActionPerformed
 
-    private void txt_cedulaRepresentanteKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_cedulaRepresentanteKeyTyped
-        keyTypedSoloNumeros(evt, txt_cedulaRepresentante, 5);
-    }//GEN-LAST:event_txt_cedulaRepresentanteKeyTyped
-
     private void txt_cedulaEscolarKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_cedulaEscolarKeyTyped
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_cedulaEscolarKeyTyped
@@ -414,6 +428,10 @@ public class RegistrarEstudiante extends javax.swing.JPanel {
         txt_segundoApellido.setText("");
         dc_fechaNac.setCurrent(null);
     }//GEN-LAST:event_btn_limpiarActionPerformed
+
+    private void txt_cedulaRepresentanteKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_cedulaRepresentanteKeyTyped
+        keyTypedSoloNumeros(evt, txt_cedulaRepresentante, 8);
+    }//GEN-LAST:event_txt_cedulaRepresentanteKeyTyped
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
