@@ -131,32 +131,40 @@
         </Menu>
         <Menu class="javax.swing.JMenu" name="menuGrupos">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Grupos"/>
+            <Property name="text" type="java.lang.String" value="Grupo"/>
           </Properties>
           <SubComponents>
-            <MenuItem class="javax.swing.JCheckBoxMenuItem" name="registrarGrupo">
+            <MenuItem class="javax.swing.JMenuItem" name="registrarGrupo">
               <Properties>
-                <Property name="selected" type="boolean" value="true"/>
                 <Property name="text" type="java.lang.String" value="Registrar"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="registrarGrupoActionPerformed"/>
+              </Events>
             </MenuItem>
-            <MenuItem class="javax.swing.JCheckBoxMenuItem" name="consultarGrupo">
+            <MenuItem class="javax.swing.JMenuItem" name="consultarGrupo">
               <Properties>
-                <Property name="selected" type="boolean" value="true"/>
                 <Property name="text" type="java.lang.String" value="Consultar"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="consultarGrupoActionPerformed"/>
+              </Events>
             </MenuItem>
-            <MenuItem class="javax.swing.JCheckBoxMenuItem" name="modificarGrupo">
+            <MenuItem class="javax.swing.JMenuItem" name="modificarGrupo">
               <Properties>
-                <Property name="selected" type="boolean" value="true"/>
                 <Property name="text" type="java.lang.String" value="Modificar"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="modificarGrupoActionPerformed"/>
+              </Events>
             </MenuItem>
-            <MenuItem class="javax.swing.JCheckBoxMenuItem" name="eliminarGrupo">
+            <MenuItem class="javax.swing.JMenuItem" name="eliminarGrupo">
               <Properties>
-                <Property name="selected" type="boolean" value="true"/>
                 <Property name="text" type="java.lang.String" value="Eliminar"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="eliminarGrupoActionPerformed"/>
+              </Events>
             </MenuItem>
           </SubComponents>
         </Menu>
