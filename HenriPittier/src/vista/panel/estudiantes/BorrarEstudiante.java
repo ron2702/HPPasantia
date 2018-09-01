@@ -83,6 +83,7 @@ public class BorrarEstudiante extends javax.swing.JPanel {
         lbl_fechaNac = new javax.swing.JLabel();
         cb_listaEstudiantes = new javax.swing.JComboBox();
         lbl_tituloEliminar = new javax.swing.JLabel();
+        lbl_tituloEstudiantes = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(204, 204, 204));
 
@@ -212,12 +213,11 @@ public class BorrarEstudiante extends javax.swing.JPanel {
                                 .addComponent(txt_primerNombre)
                                 .addComponent(txt_segundoNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(cb_listaEstudiantes, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(dc_fechaNac, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGap(418, 418, 418))
+                        .addComponent(dc_fechaNac, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGroup(pnl_datosLayout.createSequentialGroup()
                     .addGap(294, 294, 294)
                     .addComponent(btn_eliminar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-            .addGap(0, 38, Short.MAX_VALUE))
+            .addGap(0, 431, Short.MAX_VALUE))
     );
     pnl_datosLayout.setVerticalGroup(
         pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -251,11 +251,17 @@ public class BorrarEstudiante extends javax.swing.JPanel {
             .addContainerGap(132, Short.MAX_VALUE))
     );
 
+    lbl_tituloEstudiantes.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+    lbl_tituloEstudiantes.setText("Borrar Estudiante");
+
     javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
     this.setLayout(layout);
     layout.setHorizontalGroup(
         layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-        .addGap(0, 950, Short.MAX_VALUE)
+        .addGroup(layout.createSequentialGroup()
+            .addGap(56, 56, 56)
+            .addComponent(lbl_tituloEstudiantes)
+            .addContainerGap(771, Short.MAX_VALUE))
         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(56, 56, 56)
@@ -264,7 +270,10 @@ public class BorrarEstudiante extends javax.swing.JPanel {
     );
     layout.setVerticalGroup(
         layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-        .addGap(0, 640, Short.MAX_VALUE)
+        .addGroup(layout.createSequentialGroup()
+            .addGap(25, 25, 25)
+            .addComponent(lbl_tituloEstudiantes, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addContainerGap(593, Short.MAX_VALUE))
         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(63, 63, 63)
@@ -306,6 +315,7 @@ public class BorrarEstudiante extends javax.swing.JPanel {
     private javax.swing.JLabel lbl_segundoApellido;
     private javax.swing.JLabel lbl_segundoNombre;
     private javax.swing.JLabel lbl_tituloEliminar;
+    private javax.swing.JLabel lbl_tituloEstudiantes;
     private javax.swing.JPanel pnl_datos;
     private javax.swing.JTextField txt_primerApellido;
     private javax.swing.JTextField txt_primerNombre;

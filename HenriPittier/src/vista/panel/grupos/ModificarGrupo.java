@@ -228,12 +228,12 @@ public class ModificarGrupo extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(35, 35, 35)
                 .addComponent(lbl_tituloModificarGrupo)
-                .addContainerGap(588, Short.MAX_VALUE))
+                .addContainerGap(597, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(60, 60, 60)
                     .addComponent(pnl_datos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(60, Short.MAX_VALUE)))
+                    .addContainerGap(69, Short.MAX_VALUE)))
         );
     }// </editor-fold>//GEN-END:initComponents
 
