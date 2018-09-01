@@ -81,4 +81,8 @@ public class Grupo {
         this.error = error;
     }
     
+    @Override
+    public String toString() {
+        return this.codigo + "- " + this.nombre;
+    }
 }
