@@ -114,7 +114,15 @@ public class AppMenu extends javax.swing.JFrame {
         consultarEmpleado = new javax.swing.JMenuItem();
         modificarEmpleado = new javax.swing.JMenuItem();
         eliminarEmpleado = new javax.swing.JMenuItem();
-        inasistenciasEmpleado = new javax.swing.JMenuItem();
+        menuInasistencias = new javax.swing.JMenu();
+        registrarInasistencia = new javax.swing.JMenuItem();
+        jMenuItem1 = new javax.swing.JMenuItem();
+        modificarInasistencia = new javax.swing.JMenuItem();
+        borrarInasistencia = new javax.swing.JMenuItem();
+        menuSuplencias = new javax.swing.JMenu();
+        registrarSuplencia = new javax.swing.JMenuItem();
+        consultarSuplencia = new javax.swing.JMenuItem();
+        borrarSuplencia = new javax.swing.JMenuItem();
         menuConfiguracion = new javax.swing.JMenu();
         inicio = new javax.swing.JMenuItem();
         menuSalir = new javax.swing.JMenu();
@@ -233,15 +241,37 @@ public class AppMenu extends javax.swing.JFrame {
         });
         menuEmpleados.add(eliminarEmpleado);
 
-        inasistenciasEmpleado.setText("Inasistencias");
-        inasistenciasEmpleado.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                inasistenciasEmpleadoActionPerformed(evt);
-            }
-        });
-        menuEmpleados.add(inasistenciasEmpleado);
-
         barraMenu.add(menuEmpleados);
+
+        menuInasistencias.setText("Inasistencias");
+
+        registrarInasistencia.setText("Registrar");
+        menuInasistencias.add(registrarInasistencia);
+
+        jMenuItem1.setText("Consultar");
+        menuInasistencias.add(jMenuItem1);
+
+        modificarInasistencia.setText("Modificar");
+        modificarInasistencia.setToolTipText("");
+        menuInasistencias.add(modificarInasistencia);
+
+        borrarInasistencia.setText("Eliminar ");
+        menuInasistencias.add(borrarInasistencia);
+
+        barraMenu.add(menuInasistencias);
+
+        menuSuplencias.setText("Suplencias");
+
+        registrarSuplencia.setText("Registrar");
+        menuSuplencias.add(registrarSuplencia);
+
+        consultarSuplencia.setText("Consultar");
+        menuSuplencias.add(consultarSuplencia);
+
+        borrarSuplencia.setText("Eliminar");
+        menuSuplencias.add(borrarSuplencia);
+
+        barraMenu.add(menuSuplencias);
 
         menuConfiguracion.setText("Salir");
 
@@ -366,10 +396,6 @@ public class AppMenu extends javax.swing.JFrame {
         cardPanel.show(contentPane, PANELINICIO);
     }//GEN-LAST:event_inicioActionPerformed
 
-    private void inasistenciasEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inasistenciasEmpleadoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_inasistenciasEmpleadoActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -408,27 +434,35 @@ public class AppMenu extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuBar barraMenu;
+    private javax.swing.JMenuItem borrarInasistencia;
+    private javax.swing.JMenuItem borrarSuplencia;
     private javax.swing.JMenuItem cerrarSesion;
     private javax.swing.JMenuItem consultarEmpleado;
     private javax.swing.JMenuItem consultarEstudiante;
     private javax.swing.JMenuItem consultarRepresentante;
+    private javax.swing.JMenuItem consultarSuplencia;
     private javax.swing.JPanel contentPane;
     private javax.swing.JMenuItem eliminarEmpleado;
     private javax.swing.JMenuItem eliminarEstudiante;
     private javax.swing.JMenuItem eliminarRepresentante;
-    private javax.swing.JMenuItem inasistenciasEmpleado;
     private javax.swing.JMenuItem inicio;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenu menuConfiguracion;
     private javax.swing.JMenu menuEmpleados;
     private javax.swing.JMenu menuEstudiantes;
+    private javax.swing.JMenu menuInasistencias;
     private javax.swing.JMenu menuRepresentantes;
     private javax.swing.JMenu menuSalir;
+    private javax.swing.JMenu menuSuplencias;
     private javax.swing.JMenuItem modificarEmpleado;
     private javax.swing.JMenuItem modificarEstudiante;
+    private javax.swing.JMenuItem modificarInasistencia;
     private javax.swing.JMenuItem modificarRepresentante;
     private javax.swing.JMenuItem registrarEmpleado;
     private javax.swing.JMenuItem registrarEstudiante;
+    private javax.swing.JMenuItem registrarInasistencia;
     private javax.swing.JMenuItem registrarRepresentante;
+    private javax.swing.JMenuItem registrarSuplencia;
     private javax.swing.JMenuItem salirAplicacion;
     // End of variables declaration//GEN-END:variables
 }
