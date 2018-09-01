@@ -9,6 +9,7 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import comun.Empleado;
 import comun.Estudiante;
+import comun.Grupo;
 import comun.Lugar;
 import comun.Representante;
 import comun.Usuario;
@@ -404,6 +405,98 @@ public class ComunicacionREST {
             }
             conn.disconnect();
             return _estudiante;
+        }
+        catch (Exception ex){
+            throw ex;
+        }
+    }
+    
+    /*SERVICIOS WEB DE GRUPO*/
+    public Grupo registrarGrupo(Grupo e) throws Exception {
+        try {
+            conn = null;
+            Gson gson = new GsonBuilder().create();
+            BufferedReader br = comunicar("GET", "registrarGrupo?grupo=" + URLEncoder.encode(gson.toJson(e).toString(), "UTF-8"));
+            String output;
+            Grupo _grupo = new Grupo();
+            while ((output = br.readLine()) != null) {
+                _grupo = gson.fromJson(output, Grupo.class);
+            }
+            conn.disconnect();
+            return _grupo;
+        }
+        catch (Exception ex){
+            throw ex;
+        }
+    }
+    
+    public Grupo modificarGrupo(Grupo e) throws Exception {
+        try {
+            conn = null;
+            Gson gson = new GsonBuilder().create();
+            BufferedReader br = comunicar("GET", "modificarGrupo?grupo=" + URLEncoder.encode(gson.toJson(e).toString(), "UTF-8"));
+            String output;
+            Grupo _grupo = new Grupo();
+            while ((output = br.readLine()) != null) {
+                _grupo = gson.fromJson(output, Grupo.class);
+            }
+            conn.disconnect();
+            return _grupo;
+        }
+        catch (Exception ex){
+            throw ex;
+        }
+    }
+    
+    public Grupo borrarGrupo(Grupo e) throws Exception {
+        try {
+            conn = null;
+            Gson gson = new GsonBuilder().create();
+            BufferedReader br = comunicar("GET", "borrarGrupo?grupo=" + URLEncoder.encode(gson.toJson(e).toString(), "UTF-8"));
+            String output;
+            Grupo _grupo = new Grupo();
+            while ((output = br.readLine()) != null) {
+                _grupo = gson.fromJson(output, Grupo.class);
+            }
+            conn.disconnect();
+            return _grupo;
+        }
+        catch (Exception ex){
+            throw ex;
+        }
+    }
+    
+    public ArrayList<Grupo> consultarGrupos() throws Exception {
+        try {
+            conn = null;
+            Gson gson = new GsonBuilder().registerTypeAdapter(Date.class, new JsonDateDeserializer()).create();
+            BufferedReader br = comunicar("GET", "consultarGrupo");
+            String output;
+            ArrayList<Grupo> _grupo = new ArrayList<>();
+            Type listType = new TypeToken<ArrayList<Grupo>>() {}.getType();
+            while ((output = br.readLine()) != null) {
+                _grupo = gson.fromJson(output, listType);
+            }
+            conn.disconnect();
+            return _grupo;
+        }
+        catch (Exception ex){
+            throw ex;
+        }
+    }
+    
+    public Grupo consultarGrupoDetalle(Grupo e) throws Exception {
+        try {
+            conn = null;
+            Gson gson = new GsonBuilder().registerTypeAdapter(Date.class, new JsonDateDeserializer()).create();
+            BufferedReader br = comunicar("GET", "consultarGrupoDetalle?grupo=" + URLEncoder.encode(gson.toJson(e).toString(), "UTF-8"));
+            String output;
+            Grupo _grupo = new Grupo();
+            while ((output = br.readLine()) != null) {
+                _grupo = gson.fromJson(output, Grupo.class);
+            }
+            conn.disconnect();
+            return _grupo;
         }
         catch (Exception ex){
             throw ex;

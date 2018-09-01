@@ -115,6 +115,11 @@ public class AppMenu extends javax.swing.JFrame {
         modificarEmpleado = new javax.swing.JMenuItem();
         eliminarEmpleado = new javax.swing.JMenuItem();
         inasistenciasEmpleado = new javax.swing.JMenuItem();
+        menuGrupos = new javax.swing.JMenu();
+        registrarGrupo = new javax.swing.JCheckBoxMenuItem();
+        consultarGrupo = new javax.swing.JCheckBoxMenuItem();
+        modificarGrupo = new javax.swing.JCheckBoxMenuItem();
+        eliminarGrupo = new javax.swing.JCheckBoxMenuItem();
         menuConfiguracion = new javax.swing.JMenu();
         inicio = new javax.swing.JMenuItem();
         menuSalir = new javax.swing.JMenu();
@@ -243,6 +248,26 @@ public class AppMenu extends javax.swing.JFrame {
 
         barraMenu.add(menuEmpleados);
 
+        menuGrupos.setText("Grupos");
+
+        registrarGrupo.setSelected(true);
+        registrarGrupo.setText("Registrar");
+        menuGrupos.add(registrarGrupo);
+
+        consultarGrupo.setSelected(true);
+        consultarGrupo.setText("Consultar");
+        menuGrupos.add(consultarGrupo);
+
+        modificarGrupo.setSelected(true);
+        modificarGrupo.setText("Modificar");
+        menuGrupos.add(modificarGrupo);
+
+        eliminarGrupo.setSelected(true);
+        eliminarGrupo.setText("Eliminar");
+        menuGrupos.add(eliminarGrupo);
+
+        barraMenu.add(menuGrupos);
+
         menuConfiguracion.setText("Salir");
 
         inicio.setText("Inicio");
@@ -285,7 +310,7 @@ public class AppMenu extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(contentPane, javax.swing.GroupLayout.DEFAULT_SIZE, 619, Short.MAX_VALUE)
+            .addComponent(contentPane, javax.swing.GroupLayout.DEFAULT_SIZE, 621, Short.MAX_VALUE)
         );
 
         pack();
@@ -411,23 +436,28 @@ public class AppMenu extends javax.swing.JFrame {
     private javax.swing.JMenuItem cerrarSesion;
     private javax.swing.JMenuItem consultarEmpleado;
     private javax.swing.JMenuItem consultarEstudiante;
+    private javax.swing.JCheckBoxMenuItem consultarGrupo;
     private javax.swing.JMenuItem consultarRepresentante;
     private javax.swing.JPanel contentPane;
     private javax.swing.JMenuItem eliminarEmpleado;
     private javax.swing.JMenuItem eliminarEstudiante;
+    private javax.swing.JCheckBoxMenuItem eliminarGrupo;
     private javax.swing.JMenuItem eliminarRepresentante;
     private javax.swing.JMenuItem inasistenciasEmpleado;
     private javax.swing.JMenuItem inicio;
     private javax.swing.JMenu menuConfiguracion;
     private javax.swing.JMenu menuEmpleados;
     private javax.swing.JMenu menuEstudiantes;
+    private javax.swing.JMenu menuGrupos;
     private javax.swing.JMenu menuRepresentantes;
     private javax.swing.JMenu menuSalir;
     private javax.swing.JMenuItem modificarEmpleado;
     private javax.swing.JMenuItem modificarEstudiante;
+    private javax.swing.JCheckBoxMenuItem modificarGrupo;
     private javax.swing.JMenuItem modificarRepresentante;
     private javax.swing.JMenuItem registrarEmpleado;
     private javax.swing.JMenuItem registrarEstudiante;
+    private javax.swing.JCheckBoxMenuItem registrarGrupo;
     private javax.swing.JMenuItem registrarRepresentante;
     private javax.swing.JMenuItem salirAplicacion;
     // End of variables declaration//GEN-END:variables
