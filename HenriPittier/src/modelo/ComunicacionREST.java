@@ -40,7 +40,7 @@ public class ComunicacionREST {
 
     private BufferedReader comunicar(String _etiquetaHTTP, String _urlMetodo) throws IOException {
         try {
-            URL url = new URL("http://"+ip+":8084/HenriPittierWeb/webresources/WS/" + _urlMetodo);
+            URL url = new URL("http://"+ip+":8085/HenriPittierWeb/webresources/WS/" + _urlMetodo);
             conn = (HttpURLConnection) url.openConnection();
             conn.setRequestMethod(_etiquetaHTTP);
             conn.setRequestProperty("Accept", "application/json");
