@@ -5,8 +5,15 @@
  */
 package vista.panel.grupos;
 
+import comun.Grupo;
 import java.awt.event.KeyEvent;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.JTextField;
+import modelo.ComunicacionREST;
+import modelo.Registry;
 
 /**
  *
@@ -237,48 +244,29 @@ public class RegistrarGrupo extends javax.swing.JPanel {
     }//GEN-LAST:event_btn_limpiarActionPerformed
 
     private void btn_registrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_registrarActionPerformed
-        /*
+        
         if ((!txt_codigo.getText().equals("")) && (!txt_descripcion.getText().equals("")) && (!txt_nombre.getText().equals(""))
-            && (!txt_capacidad.getText().equals("")) &&(!dc_fechaNac.getText().equals(""))){
+            && (!txt_capacidad.getText().equals(""))){
 
             try {
-
-                SimpleDateFormat parseFecha = new SimpleDateFormat("dd/MM/yy");
-                Date fechaNacimiento = parseFecha.parse(dc_fechaNac.getText());
-
-                String ci = txt_periodo.getText();
-                String ciPartida = ci.substring(0, 4);
-
-                Calendar calNac = Calendar.getInstance();
-                calNac.setTime(fechaNacimiento);
-                int diadelmes = calNac.get(Calendar.DAY_OF_MONTH);
-                int mes = calNac.get(Calendar.MONTH) + 1;
-
-                String diadelmesAString = String.valueOf(diadelmes);
-                String mesAString = String.valueOf(mes);
-
-                String cedulaConcat = ciPartida + diadelmesAString + mesAString;
-
-                int cedulaEscolar = Integer.parseInt(cedulaConcat);
-
-                Estudiante estudianteRegistrar = new Estudiante(cedulaEscolar, txt_codigo.getText(), txt_descripcion.getText(), txt_nombre.getText(),
-                    txt_capacidad.getText(), fechaNacimiento, "");
+                Grupo grupoRegistrar = new Grupo(txt_codigo.getText(), txt_nombre.getText(), txt_descripcion.getText(), 
+                    (Integer.parseInt(txt_capacidad.getText())), txt_periodo.getText());
                 ComunicacionREST comRest = new ComunicacionREST();
-                Estudiante estudianteRegistrado = comRest.registrarEstudiante(estudianteRegistrar);
-                if (estudianteRegistrado.getError() == Registry.RESULTADO_CODIGO_RECURSO_CREADO){
+                Grupo grupoRegistrado = comRest.registrarGrupo(grupoRegistrar);
+                if (grupoRegistrado.getError() == Registry.RESULTADO_CODIGO_RECURSO_CREADO){
                     final JPanel panel = new JPanel();
-                    JOptionPane.showMessageDialog(panel, "Se registro existosamente el estudiante", "Información", JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(panel, "Se registro existosamente el grupo", "Información", JOptionPane.INFORMATION_MESSAGE);
                 }else{
                     final JPanel panel = new JPanel();
-                    JOptionPane.showMessageDialog(panel, "No se ha podido registrar el estudiante, intente nuevamente", "Error", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(panel, "No se ha podido registrar el grupo, intente nuevamente", "Error", JOptionPane.ERROR_MESSAGE);
                 }
             } catch (Exception ex) {
-                Logger.getLogger(RegistrarEstudiante.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(RegistrarGrupo.class.getName()).log(Level.SEVERE, null, ex);
             }
         }else{
             final JPanel panel = new JPanel();
-            JOptionPane.showMessageDialog(panel, "No se ha podido registrar el estudiante, intente nuevamente", "Error", JOptionPane.ERROR_MESSAGE);
-        }*/
+            JOptionPane.showMessageDialog(panel, "No se ha podido registrar el grupo, revise los campos", "Error", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_btn_registrarActionPerformed
 
     private void txt_periodoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_periodoKeyTyped
