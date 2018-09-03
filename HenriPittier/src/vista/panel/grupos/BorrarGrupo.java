@@ -5,20 +5,59 @@
  */
 package vista.panel.grupos;
 
+import comun.Grupo;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.JTextField;
+import modelo.ComunicacionREST;
+import modelo.Registry;
 
 /**
  *
  * @author Ronald
  */
 public class BorrarGrupo extends javax.swing.JPanel {
+    private Grupo grupoBorrar;
 
     /**
      * Creates new form BorrarGrupo
      */
     public BorrarGrupo() {
-        initComponents();
+        try {
+            initComponents();
+            ComunicacionREST comRest = new ComunicacionREST();
+            ArrayList<Grupo> listaGrupos = comRest.consultarGrupos();
+            
+            for (Grupo grupo : listaGrupos) {
+                cb_listaGrupos.addItem(grupo);
+            }
+            cb_listaGrupos.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    try {
+                        Grupo grupoSeleccionado = (Grupo) cb_listaGrupos.getSelectedItem();
+                        grupoBorrar = grupoSeleccionado;
+                        
+                        String capacidad = Integer.toString(grupoSeleccionado.getCapacidad());
+                        txt_codigo.setText(grupoSeleccionado.getCodigo());
+                        txt_nombre.setText(grupoSeleccionado.getNombre());
+                        txt_descripcion.setText(grupoSeleccionado.getDescripcion());
+                        txt_periodo.setText(grupoSeleccionado.getPeriodo());
+                        txt_capacidad.setText(capacidad);
+                    } catch (Exception ex) {
+                        Logger.getLogger(BorrarGrupo.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+            });
+        } catch (Exception ex) {
+            Logger.getLogger(BorrarGrupo.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     public void keyTypedSoloNumeros(java.awt.event.KeyEvent evt, JTextField campoEvaluar, int tamanoMax){
@@ -229,48 +268,24 @@ public class BorrarGrupo extends javax.swing.JPanel {
     }//GEN-LAST:event_txt_capacidadKeyTyped
 
     private void btn_borrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_borrarActionPerformed
-        /*
-        if ((!txt_codigo.getText().equals("")) && (!txt_descripcion.getText().equals("")) && (!txt_nombre.getText().equals(""))
-            && (!txt_capacidad.getText().equals("")) &&(!dc_fechaNac.getText().equals(""))){
-
+        if(grupoBorrar != null) {
             try {
-
-                SimpleDateFormat parseFecha = new SimpleDateFormat("dd/MM/yy");
-                Date fechaNacimiento = parseFecha.parse(dc_fechaNac.getText());
-
-                String ci = txt_periodo.getText();
-                String ciPartida = ci.substring(0, 4);
-
-                Calendar calNac = Calendar.getInstance();
-                calNac.setTime(fechaNacimiento);
-                int diadelmes = calNac.get(Calendar.DAY_OF_MONTH);
-                int mes = calNac.get(Calendar.MONTH) + 1;
-
-                String diadelmesAString = String.valueOf(diadelmes);
-                String mesAString = String.valueOf(mes);
-
-                String cedulaConcat = ciPartida + diadelmesAString + mesAString;
-
-                int cedulaEscolar = Integer.parseInt(cedulaConcat);
-
-                Estudiante estudianteRegistrar = new Estudiante(cedulaEscolar, txt_codigo.getText(), txt_descripcion.getText(), txt_nombre.getText(),
-                    txt_capacidad.getText(), fechaNacimiento, "");
                 ComunicacionREST comRest = new ComunicacionREST();
-                Estudiante estudianteRegistrado = comRest.registrarEstudiante(estudianteRegistrar);
-                if (estudianteRegistrado.getError() == Registry.RESULTADO_CODIGO_RECURSO_CREADO){
+                Grupo grupoEliminado = comRest.borrarGrupo(grupoBorrar);
+                if (grupoEliminado.getError() == Registry.RESULTADO_CODIGO_BIEN){
                     final JPanel panel = new JPanel();
-                    JOptionPane.showMessageDialog(panel, "Se registro existosamente el estudiante", "Información", JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(panel, "Se eliminó exitosamente el grupo", "Información", JOptionPane.INFORMATION_MESSAGE);
                 }else{
                     final JPanel panel = new JPanel();
-                    JOptionPane.showMessageDialog(panel, "No se ha podido registrar el estudiante, intente nuevamente", "Error", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(panel, "No se ha podido eliminar el grupo, intente nuevamente", "Error", JOptionPane.ERROR_MESSAGE);
                 }
             } catch (Exception ex) {
-                Logger.getLogger(RegistrarEstudiante.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(BorrarGrupo.class.getName()).log(Level.SEVERE, null, ex);
             }
-        }else{
+        }else {
             final JPanel panel = new JPanel();
-            JOptionPane.showMessageDialog(panel, "No se ha podido registrar el estudiante, intente nuevamente", "Error", JOptionPane.ERROR_MESSAGE);
-        }*/
+            JOptionPane.showMessageDialog(panel, "Debe seleccionar un grupo", "Error", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_btn_borrarActionPerformed
 
     private void txt_periodoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_periodoKeyTyped
