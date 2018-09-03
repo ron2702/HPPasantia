@@ -44,7 +44,7 @@ public class DAOEstudiante extends DAO {
             //Parametro de salida
             cstmt.registerOutParameter(1, Types.INTEGER);
             java.sql.Date sqlFecha = new java.sql.Date(_estudiante.getFechaNac().getTime());
-            cstmt.setInt(2, _estudiante.getCedulaEscolar());
+            cstmt.setLong(2, _estudiante.getCedulaEscolar());
             cstmt.setString(3, _estudiante.getPrimerNombre());
             cstmt.setString(4, _estudiante.getSegundoNombre());
             cstmt.setString(5, _estudiante.getPrimerApellido());
@@ -97,7 +97,7 @@ public class DAOEstudiante extends DAO {
             //Parametro de salida
             cstmt.registerOutParameter(1, Types.INTEGER);
             java.sql.Date sqlFecha = new java.sql.Date(_estudiante.getFechaNac().getTime());
-            cstmt.setInt(2, _estudiante.getCedulaEscolar());
+            cstmt.setLong(2, _estudiante.getCedulaEscolar());
             cstmt.setString(3, _estudiante.getPrimerNombre());
             cstmt.setString(4, _estudiante.getSegundoNombre());
             cstmt.setString(5, _estudiante.getPrimerApellido());
@@ -149,7 +149,7 @@ public class DAOEstudiante extends DAO {
             cstmt = _bdCon.prepareCall(_sqlEstudianteBorrar);
             //Parametro de salida
             cstmt.registerOutParameter(1, Types.INTEGER);
-            cstmt.setInt(2, _estudiante.getCedulaEscolar());
+            cstmt.setLong(2, _estudiante.getCedulaEscolar());
           
             cstmt.execute();
             
@@ -197,7 +197,7 @@ public class DAOEstudiante extends DAO {
             
             while(rs.next()){
                 
-                Estudiante estudiante = new Estudiante(rs.getInt("cedulaescolar"), 
+                Estudiante estudiante = new Estudiante(rs.getLong("cedulaescolar"), 
                                   rs.getString("primernombre"),
                                   rs.getString("segundonombre"),
                                   rs.getString("primerapellido"),
@@ -237,12 +237,12 @@ public class DAOEstudiante extends DAO {
             
             _bdCon = DAO.getBdConnect();
             cstmt = _bdCon.prepareCall(_sqlEstudianteDetalle);
-            cstmt.setInt(1, _estudiante.getCedulaEscolar());
+            cstmt.setLong(1, _estudiante.getCedulaEscolar());
             rs = cstmt.executeQuery();
             
             while(rs.next()){
                 
-                estudianteConsultado = new Estudiante(rs.getInt("cedulaescolar"), 
+                estudianteConsultado = new Estudiante(rs.getLong("cedulaescolar"), 
                                   rs.getString("primernombre"),
                                   rs.getString("segundonombre"),
                                   rs.getString("primerapellido"),
