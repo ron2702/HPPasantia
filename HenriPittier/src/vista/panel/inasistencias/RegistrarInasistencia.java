@@ -5,15 +5,13 @@
  */
 package vista.panel.inasistencias;
 
-/**
- *
- * @author LuisAlejandro
- */
-public class RegistrarInasistencia extends javax.swing.JPanel {
+import comun.Empleado;
 
-    /**
-     * Creates new form RegistrarInasistencia
-     */
+
+public class RegistrarInasistencia extends javax.swing.JPanel {
+    private Empleado empleadoRegistrarInasistencia;
+   
+    
     public RegistrarInasistencia() {
         initComponents();
     }
@@ -27,19 +25,169 @@ public class RegistrarInasistencia extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        pnl_datos = new javax.swing.JPanel();
+        lbl_empleadoSuplencia = new javax.swing.JLabel();
+        cb_listaEmpleados = new javax.swing.JComboBox();
+        lbl_cantSuplencias = new javax.swing.JLabel();
+        lbl_mesSuplencias = new javax.swing.JLabel();
+        cb_meses = new javax.swing.JComboBox();
+        cb_cantSuplencias = new javax.swing.JComboBox();
+        btn_modificar = new javax.swing.JButton();
+        btn_limpiar = new javax.swing.JButton();
+        lbl_anoSuplencias = new javax.swing.JLabel();
+        cb_anos = new javax.swing.JComboBox();
+        lbl_tituloRegistrarSuplencia = new javax.swing.JLabel();
+
+        setBackground(new java.awt.Color(204, 204, 204));
+
+        pnl_datos.setBackground(new java.awt.Color(204, 204, 204));
+        pnl_datos.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+        pnl_datos.setPreferredSize(new java.awt.Dimension(840, 520));
+
+        lbl_empleadoSuplencia.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        lbl_empleadoSuplencia.setText("Nombre del empleado:");
+
+        cb_listaEmpleados.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+
+        lbl_cantSuplencias.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        lbl_cantSuplencias.setText("Cantidad de inasistencias:");
+
+        lbl_mesSuplencias.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        lbl_mesSuplencias.setText("Mes de las inasistencias:");
+
+        cb_meses.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        cb_meses.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre" }));
+
+        cb_cantSuplencias.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        cb_cantSuplencias.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31" }));
+        cb_cantSuplencias.setPreferredSize(new java.awt.Dimension(40, 19));
+
+        btn_modificar.setBackground(new java.awt.Color(121, 213, 177));
+        btn_modificar.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        btn_modificar.setText("Modificar");
+        btn_modificar.setPreferredSize(new java.awt.Dimension(109, 25));
+        btn_modificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_modificarActionPerformed(evt);
+            }
+        });
+
+        btn_limpiar.setBackground(new java.awt.Color(218, 87, 54));
+        btn_limpiar.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        btn_limpiar.setText("Limpiar");
+        btn_limpiar.setPreferredSize(new java.awt.Dimension(109, 25));
+        btn_limpiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_limpiarActionPerformed(evt);
+            }
+        });
+
+        lbl_anoSuplencias.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        lbl_anoSuplencias.setText("Año de las inasistencias:");
+
+        cb_anos.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        cb_anos.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "2006", "2007", "2008", "2009", "2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025", "2026", "2027", "2028", "2029", "2030", "2031", "2032", "2033", "2034", "2035", "2036", "2037", "2038", "2039", "2040", "2041", "2042", "2043", "2044", "2045", "2046", "2047", "2048", "2049", "2050" }));
+
+        javax.swing.GroupLayout pnl_datosLayout = new javax.swing.GroupLayout(pnl_datos);
+        pnl_datos.setLayout(pnl_datosLayout);
+        pnl_datosLayout.setHorizontalGroup(
+            pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnl_datosLayout.createSequentialGroup()
+                .addContainerGap(310, Short.MAX_VALUE)
+                .addComponent(btn_limpiar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btn_modificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(302, 302, 302))
+            .addGroup(pnl_datosLayout.createSequentialGroup()
+                .addGap(40, 40, 40)
+                .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lbl_mesSuplencias)
+                    .addGroup(pnl_datosLayout.createSequentialGroup()
+                        .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lbl_empleadoSuplencia)
+                            .addComponent(lbl_cantSuplencias)
+                            .addComponent(lbl_anoSuplencias))
+                        .addGap(35, 35, 35)
+                        .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(cb_meses, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cb_listaEmpleados, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(cb_cantSuplencias, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(cb_anos, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        pnl_datosLayout.setVerticalGroup(
+            pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnl_datosLayout.createSequentialGroup()
+                .addGap(93, 93, 93)
+                .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbl_empleadoSuplencia)
+                    .addComponent(cb_listaEmpleados, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(43, 43, 43)
+                .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbl_mesSuplencias)
+                    .addComponent(cb_meses, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(43, 43, 43)
+                .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbl_anoSuplencias)
+                    .addComponent(cb_anos, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(43, 43, 43)
+                .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbl_cantSuplencias, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cb_cantSuplencias, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 117, Short.MAX_VALUE)
+                .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btn_modificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_limpiar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(31, 31, 31))
+        );
+
+        lbl_tituloRegistrarSuplencia.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lbl_tituloRegistrarSuplencia.setText("Registrar Inasistencia");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(55, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lbl_tituloRegistrarSuplencia)
+                    .addComponent(pnl_datos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(55, 55, 55))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(29, 29, 29)
+                .addComponent(lbl_tituloRegistrarSuplencia)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(pnl_datos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(82, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btn_modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_modificarActionPerformed
+
+    }//GEN-LAST:event_btn_modificarActionPerformed
+
+    private void btn_limpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_limpiarActionPerformed
+
+    }//GEN-LAST:event_btn_limpiarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btn_limpiar;
+    private javax.swing.JButton btn_modificar;
+    private javax.swing.JComboBox cb_anos;
+    private javax.swing.JComboBox cb_cantSuplencias;
+    private javax.swing.JComboBox cb_listaEmpleados;
+    private javax.swing.JComboBox cb_meses;
+    private javax.swing.JLabel lbl_anoSuplencias;
+    private javax.swing.JLabel lbl_cantSuplencias;
+    private javax.swing.JLabel lbl_empleadoSuplencia;
+    private javax.swing.JLabel lbl_mesSuplencias;
+    private javax.swing.JLabel lbl_tituloRegistrarSuplencia;
+    private javax.swing.JPanel pnl_datos;
     // End of variables declaration//GEN-END:variables
 }
