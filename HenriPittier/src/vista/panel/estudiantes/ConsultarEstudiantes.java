@@ -37,7 +37,8 @@ public class ConsultarEstudiantes extends javax.swing.JPanel {
                model.addRow(new Object[] {estudiante.getCedulaEscolar(), estudiante.getPrimerNombre(), estudiante.getSegundoNombre(), estudiante.getPrimerApellido(), estudiante.getSegundoApellido()});
             }
             
-        } catch (Exception e) {
+        } catch (Exception ex) {
+            Logger.getLogger(ConsultarEstudiantes.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

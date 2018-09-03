@@ -5,17 +5,39 @@
  */
 package vista.panel.grupos;
 
+import comun.Grupo;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.table.DefaultTableModel;
+import modelo.ComunicacionREST;
+
 /**
  *
  * @author Ronald
  */
 public class ConsultarGrupos extends javax.swing.JPanel {
+    DefaultTableModel model;
 
     /**
      * Creates new form ConsultarGrupos
      */
     public ConsultarGrupos() {
-        initComponents();
+        try {
+            initComponents();
+            ComunicacionREST comRest = new ComunicacionREST();
+            ArrayList<Grupo> listaGrupos = comRest.consultarGrupos();
+            
+            model = (DefaultTableModel) tb_consultarGrupo.getModel();
+            
+            
+            for (Grupo grupo : listaGrupos) {
+               model.addRow(new Object[] {grupo.getCodigo(), grupo.getNombre(), grupo.getDescripcion(), grupo.getCapacidad(), grupo.getPeriodo()});
+            }
+            
+        } catch (Exception ex) {
+            Logger.getLogger(ConsultarGrupos.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -27,19 +49,118 @@ public class ConsultarGrupos extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        lbl_tituloGrupos = new javax.swing.JLabel();
+        pnl_datos = new javax.swing.JPanel();
+        sp_representantes = new javax.swing.JScrollPane();
+        tb_consultarGrupo = new javax.swing.JTable();
+
+        setBackground(new java.awt.Color(204, 204, 204));
+
+        lbl_tituloGrupos.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lbl_tituloGrupos.setText("Consultar Grupos");
+
+        pnl_datos.setBackground(new java.awt.Color(204, 204, 204));
+        pnl_datos.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+        pnl_datos.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        pnl_datos.setPreferredSize(new java.awt.Dimension(840, 520));
+
+        tb_consultarGrupo.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        tb_consultarGrupo.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Codigo", "Nombre", "Descripcion", "Capacidad", "Periodo"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        tb_consultarGrupo.setUpdateSelectionOnSort(false);
+        tb_consultarGrupo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tb_consultarGrupoMouseClicked(evt);
+            }
+        });
+        sp_representantes.setViewportView(tb_consultarGrupo);
+
+        javax.swing.GroupLayout pnl_datosLayout = new javax.swing.GroupLayout(pnl_datos);
+        pnl_datos.setLayout(pnl_datosLayout);
+        pnl_datosLayout.setHorizontalGroup(
+            pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnl_datosLayout.createSequentialGroup()
+                .addContainerGap(42, Short.MAX_VALUE)
+                .addComponent(sp_representantes, javax.swing.GroupLayout.PREFERRED_SIZE, 731, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(61, 61, 61))
+        );
+        pnl_datosLayout.setVerticalGroup(
+            pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnl_datosLayout.createSequentialGroup()
+                .addGap(34, 34, 34)
+                .addComponent(sp_representantes, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(304, Short.MAX_VALUE))
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(53, 53, 53)
+                .addComponent(lbl_tituloGrupos)
+                .addContainerGap(776, Short.MAX_VALUE))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(56, 56, 56)
+                    .addComponent(pnl_datos, javax.swing.GroupLayout.PREFERRED_SIZE, 838, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(56, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(38, 38, 38)
+                .addComponent(lbl_tituloGrupos, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(590, Short.MAX_VALUE))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(68, 68, 68)
+                    .addComponent(pnl_datos, javax.swing.GroupLayout.PREFERRED_SIZE, 513, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(69, Short.MAX_VALUE)))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void tb_consultarGrupoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tb_consultarGrupoMouseClicked
+        /*int index = tb_consultarEstudiantes.getSelectedRow();
+
+        String cedula = model.getValueAt(index, 0).toString();
+        int cedulaEstudiante = Integer.parseInt(cedula);
+        ComunicacionREST comRest = new ComunicacionREST();
+        Estudiante _estudiante = new Estudiante(cedulaEstudiante);
+
+        try {
+            estudianteConsultar = comRest.consultarEstudianteDetalle(_estudiante);
+        } catch (Exception ex) {
+            Logger.getLogger(ConsultarEstudiantes.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        if (estudianteConsultar.getError() == Registry.RESULTADO_CODIGO_BIEN){
+
+            DateFormat dateFormat = new SimpleDateFormat("dd/MM/yy");
+            String nacimiento = dateFormat.format(estudianteConsultar.getFechaNac());
+            txt_fechaNac.setText(nacimiento);
+        }*/
+    }//GEN-LAST:event_tb_consultarGrupoMouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel lbl_tituloGrupos;
+    private javax.swing.JPanel pnl_datos;
+    private javax.swing.JScrollPane sp_representantes;
+    private javax.swing.JTable tb_consultarGrupo;
     // End of variables declaration//GEN-END:variables
 }
