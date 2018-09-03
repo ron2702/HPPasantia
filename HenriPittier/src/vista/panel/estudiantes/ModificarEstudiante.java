@@ -51,6 +51,8 @@ public class ModificarEstudiante extends javax.swing.JPanel {
                         Calendar calNac = Calendar.getInstance();
                         calNac.setTime(estudianteSeleccionado.getFechaNac());
                         dc_fechaNac.setSelectedDate(calNac);
+                        cb_sexo.setSelectedItem(estudianteSeleccionado.getSexo());
+                        txt_cedulaMAPFRE.setText(estudianteSeleccionado.getCedulaMAPFRE());
                     } catch (Exception ex) {
                         Logger.getLogger(ModificarEstudiante.class.getName()).log(Level.SEVERE, null, ex);
                     }
@@ -90,6 +92,10 @@ public class ModificarEstudiante extends javax.swing.JPanel {
         lbl_tituloModificar = new javax.swing.JLabel();
         lbl_cedulaEscolar = new javax.swing.JLabel();
         txt_cedulaEscolar = new javax.swing.JTextField();
+        lbl_sexo = new javax.swing.JLabel();
+        cb_sexo = new javax.swing.JComboBox();
+        lbl_cedulaMAPFRE = new javax.swing.JLabel();
+        txt_cedulaMAPFRE = new javax.swing.JTextField();
         lbl_tituloModificarEstudiantes = new javax.swing.JLabel();
 
         jPanel1.setBackground(new java.awt.Color(204, 204, 204));
@@ -224,11 +230,34 @@ public class ModificarEstudiante extends javax.swing.JPanel {
         }
     });
 
+    lbl_sexo.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+    lbl_sexo.setText("Sexo:");
+
+    cb_sexo.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+    cb_sexo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "F", "M" }));
+
+    lbl_cedulaMAPFRE.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+    lbl_cedulaMAPFRE.setText("Cédula MAPFRE:");
+
+    txt_cedulaMAPFRE.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+    txt_cedulaMAPFRE.setEnabled(false);
+    txt_cedulaMAPFRE.addKeyListener(new java.awt.event.KeyAdapter() {
+        public void keyTyped(java.awt.event.KeyEvent evt) {
+            txt_cedulaMAPFREKeyTyped(evt);
+        }
+    });
+
     javax.swing.GroupLayout pnl_datosLayout = new javax.swing.GroupLayout(pnl_datos);
     pnl_datos.setLayout(pnl_datosLayout);
     pnl_datosLayout.setHorizontalGroup(
         pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnl_datosLayout.createSequentialGroup()
+        .addGroup(pnl_datosLayout.createSequentialGroup()
+            .addGap(305, 305, 305)
+            .addComponent(btn_limpiar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+            .addComponent(btn_modificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        .addGroup(pnl_datosLayout.createSequentialGroup()
             .addGap(35, 35, 35)
             .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(lbl_segundoNombre)
@@ -236,36 +265,38 @@ public class ModificarEstudiante extends javax.swing.JPanel {
                 .addComponent(lbl_segundoApellido)
                 .addComponent(lbl_primerNombre)
                 .addComponent(lbl_tituloModificar)
-                .addComponent(lbl_fechaNac))
+                .addComponent(lbl_fechaNac)
+                .addComponent(lbl_sexo))
             .addGap(35, 35, 35)
             .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(txt_primerApellido, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txt_segundoApellido, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(txt_primerNombre)
-                    .addComponent(txt_segundoNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnl_datosLayout.createSequentialGroup()
-                    .addComponent(cb_listaEstudiantes, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(9, 9, 9))
-                .addComponent(dc_fechaNac, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGap(57, 57, 57)
-            .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(pnl_datosLayout.createSequentialGroup()
-                    .addComponent(lbl_foto, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                    .addComponent(btn_cargarImagen))
-                .addGroup(pnl_datosLayout.createSequentialGroup()
-                    .addComponent(lbl_cedulaEscolar)
-                    .addGap(39, 39, 39)
-                    .addComponent(txt_cedulaEscolar, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(txt_primerApellido, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txt_segundoApellido, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txt_primerNombre)
+                            .addComponent(txt_segundoNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnl_datosLayout.createSequentialGroup()
+                            .addComponent(cb_listaEstudiantes, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(9, 9, 9))
+                        .addComponent(dc_fechaNac, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGap(57, 57, 57)
+                    .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(pnl_datosLayout.createSequentialGroup()
+                            .addComponent(lbl_foto, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(btn_cargarImagen))
+                        .addGroup(pnl_datosLayout.createSequentialGroup()
+                            .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(lbl_cedulaEscolar)
+                                .addComponent(lbl_cedulaMAPFRE))
+                            .addGap(39, 39, 39)
+                            .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(txt_cedulaMAPFRE, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txt_cedulaEscolar, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addComponent(cb_sexo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGap(0, 87, Short.MAX_VALUE))
-        .addGroup(pnl_datosLayout.createSequentialGroup()
-            .addGap(305, 305, 305)
-            .addComponent(btn_limpiar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-            .addComponent(btn_modificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
     );
     pnl_datosLayout.setVerticalGroup(
         pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -279,32 +310,39 @@ public class ModificarEstudiante extends javax.swing.JPanel {
             .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(pnl_datosLayout.createSequentialGroup()
                     .addGap(41, 41, 41)
+                    .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txt_primerNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lbl_primerNombre))
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txt_segundoNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lbl_segundoNombre))
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txt_primerApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lbl_primerApellido))
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txt_segundoApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lbl_segundoApellido))
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                     .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(pnl_datosLayout.createSequentialGroup()
-                            .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(txt_primerNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(lbl_primerNombre))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(txt_segundoNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(lbl_segundoNombre))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(txt_primerApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(lbl_primerApellido))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(txt_segundoApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(lbl_segundoApellido))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(dc_fechaNac, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(lbl_fechaNac, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addComponent(lbl_foto, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(dc_fechaNac, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lbl_fechaNac, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGroup(pnl_datosLayout.createSequentialGroup()
-                    .addGap(62, 62, 62)
-                    .addComponent(btn_cargarImagen)))
-            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 173, Short.MAX_VALUE)
+                    .addGap(18, 18, 18)
+                    .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(lbl_cedulaMAPFRE)
+                        .addComponent(txt_cedulaMAPFRE, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGap(21, 21, 21)
+                    .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(lbl_foto, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btn_cargarImagen))))
+            .addGap(18, 18, 18)
+            .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(lbl_sexo)
+                .addComponent(cb_sexo, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 124, Short.MAX_VALUE)
             .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                 .addComponent(btn_modificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addComponent(btn_limpiar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -411,7 +449,7 @@ public class ModificarEstudiante extends javax.swing.JPanel {
                Date fechaNacimiento = parseFecha.parse(dc_fechaNac.getText());
                int ciEscolar = Integer.parseInt(txt_cedulaEscolar.getText());
                estudianteModificar = new Estudiante(ciEscolar, txt_primerNombre.getText(), txt_primerApellido.getText(), txt_segundoNombre.getText(),
-                                        txt_segundoApellido.getText(), fechaNacimiento, "");
+                                        txt_segundoApellido.getText(), fechaNacimiento, "", txt_cedulaMAPFRE.getText(), (String) cb_sexo.getSelectedItem());
                ComunicacionREST comRest = new ComunicacionREST();
                Estudiante estudianteModificado = comRest.modificarEstudiante(estudianteModificar);
                if (estudianteModificado.getError() == Registry.RESULTADO_CODIGO_RECURSO_CREADO){
@@ -441,26 +479,34 @@ public class ModificarEstudiante extends javax.swing.JPanel {
         dc_fechaNac.setCurrent(null);
     }//GEN-LAST:event_btn_limpiarActionPerformed
 
+    private void txt_cedulaMAPFREKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_cedulaMAPFREKeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_cedulaMAPFREKeyTyped
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_cargarImagen;
     private javax.swing.JButton btn_limpiar;
     private javax.swing.JButton btn_modificar;
     private javax.swing.JComboBox cb_listaEstudiantes;
+    private javax.swing.JComboBox cb_sexo;
     private datechooser.beans.DateChooserCombo dc_fechaNac;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JLabel lbl_cedulaEscolar;
+    private javax.swing.JLabel lbl_cedulaMAPFRE;
     private javax.swing.JLabel lbl_fechaNac;
     private javax.swing.JLabel lbl_foto;
     private javax.swing.JLabel lbl_primerApellido;
     private javax.swing.JLabel lbl_primerNombre;
     private javax.swing.JLabel lbl_segundoApellido;
     private javax.swing.JLabel lbl_segundoNombre;
+    private javax.swing.JLabel lbl_sexo;
     private javax.swing.JLabel lbl_tituloModificar;
     private javax.swing.JLabel lbl_tituloModificarEstudiantes;
     private javax.swing.JPanel pnl_datos;
     private javax.swing.JTextField txt_cedulaEscolar;
+    private javax.swing.JTextField txt_cedulaMAPFRE;
     private javax.swing.JTextField txt_primerApellido;
     private javax.swing.JTextField txt_primerNombre;
     private javax.swing.JTextField txt_segundoApellido;

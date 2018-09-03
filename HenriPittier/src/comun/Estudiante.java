@@ -20,6 +20,8 @@ public class Estudiante {
     private String segundoApellido;
     private Date fechaNac;
     private String foto;
+    private String cedulaMAPFRE;
+    private String sexo;
     private int error;
 
     public Estudiante(){
@@ -29,7 +31,7 @@ public class Estudiante {
         this.cedulaEscolar = _cedula;
     }
     
-    public Estudiante(int _cedula, String _primerNombre, String _segundoNombre, String _primerApellido, String _segundoApellido, Date _fechaNac, String _foto) {
+    public Estudiante(int _cedula, String _primerNombre, String _segundoNombre, String _primerApellido, String _segundoApellido, Date _fechaNac, String _foto, String _cedulaMAPFRE, String _sexo) {
         this.cedulaEscolar = _cedula;
         this.primerNombre = _primerNombre;
         this.segundoNombre = _segundoNombre;
@@ -37,6 +39,8 @@ public class Estudiante {
         this.segundoApellido = _segundoApellido;
         this.fechaNac = _fechaNac;
         this.foto = _foto;
+        this.cedulaMAPFRE = _cedulaMAPFRE;
+        this.sexo = _sexo;
     }
 
     
@@ -111,6 +115,22 @@ public class Estudiante {
 
     public void setError(int error) {
         this.error = error;
+    }
+
+    public String getCedulaMAPFRE() {
+        return cedulaMAPFRE;
+    }
+
+    public void setCedulaMAPFRE(String cedulaMAPFRE) {
+        this.cedulaMAPFRE = cedulaMAPFRE;
+    }
+
+    public String getSexo() {
+        return sexo;
+    }
+
+    public void setSexo(String sexo) {
+        this.sexo = sexo;
     }
     
     @Override
