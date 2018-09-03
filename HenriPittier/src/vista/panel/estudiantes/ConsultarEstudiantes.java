@@ -55,11 +55,13 @@ public class ConsultarEstudiantes extends javax.swing.JPanel {
         sp_representantes = new javax.swing.JScrollPane();
         tb_consultarEstudiantes = new javax.swing.JTable();
         lbl_fechaNac = new javax.swing.JLabel();
-        lbl_telefonoCasa = new javax.swing.JLabel();
-        txt_telefonoCasa = new javax.swing.JTextField();
+        lbl_cedulaRepresentante = new javax.swing.JLabel();
+        txt_cedulaRepresentante = new javax.swing.JTextField();
         lbl_foto = new javax.swing.JLabel();
         lbl_fotoEstudiante = new javax.swing.JLabel();
         txt_fechaNac = new javax.swing.JTextField();
+        lbl_cedulaMAPFRE = new javax.swing.JLabel();
+        txt_cedulaMAPFRE = new javax.swing.JTextField();
         lbl_tituloEstudiantes = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(204, 204, 204));
@@ -97,11 +99,11 @@ public class ConsultarEstudiantes extends javax.swing.JPanel {
         lbl_fechaNac.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         lbl_fechaNac.setText("Fecha de Nacimiento:");
 
-        lbl_telefonoCasa.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        lbl_telefonoCasa.setText("Cedula Representante:");
+        lbl_cedulaRepresentante.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        lbl_cedulaRepresentante.setText("Cedula Representante:");
 
-        txt_telefonoCasa.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        txt_telefonoCasa.setEnabled(false);
+        txt_cedulaRepresentante.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        txt_cedulaRepresentante.setEnabled(false);
 
         lbl_foto.setBackground(new java.awt.Color(255, 255, 255));
         lbl_foto.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
@@ -115,6 +117,13 @@ public class ConsultarEstudiantes extends javax.swing.JPanel {
         txt_fechaNac.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         txt_fechaNac.setEnabled(false);
 
+        lbl_cedulaMAPFRE.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        lbl_cedulaMAPFRE.setText("Cedula MAPFRE:");
+
+        txt_cedulaMAPFRE.setEditable(false);
+        txt_cedulaMAPFRE.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        txt_cedulaMAPFRE.setEnabled(false);
+
         javax.swing.GroupLayout pnl_datosLayout = new javax.swing.GroupLayout(pnl_datos);
         pnl_datos.setLayout(pnl_datosLayout);
         pnl_datosLayout.setHorizontalGroup(
@@ -124,12 +133,14 @@ public class ConsultarEstudiantes extends javax.swing.JPanel {
                 .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnl_datosLayout.createSequentialGroup()
                         .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lbl_telefonoCasa)
-                            .addComponent(lbl_fechaNac))
+                            .addComponent(lbl_cedulaRepresentante)
+                            .addComponent(lbl_fechaNac)
+                            .addComponent(lbl_cedulaMAPFRE))
                         .addGap(34, 34, 34)
                         .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txt_cedulaMAPFRE, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(pnl_datosLayout.createSequentialGroup()
-                                .addComponent(txt_telefonoCasa, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txt_cedulaRepresentante, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(57, 57, 57)
                                 .addComponent(lbl_fotoEstudiante))
                             .addComponent(txt_fechaNac, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -149,13 +160,17 @@ public class ConsultarEstudiantes extends javax.swing.JPanel {
                 .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnl_datosLayout.createSequentialGroup()
                         .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lbl_telefonoCasa)
-                            .addComponent(txt_telefonoCasa, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lbl_cedulaRepresentante)
+                            .addComponent(txt_cedulaRepresentante, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lbl_fotoEstudiante))
                         .addGap(18, 18, 18)
                         .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lbl_fechaNac, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txt_fechaNac, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(txt_fechaNac, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lbl_cedulaMAPFRE, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txt_cedulaMAPFRE, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(lbl_foto, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(115, Short.MAX_VALUE))
         );
@@ -204,20 +219,23 @@ public class ConsultarEstudiantes extends javax.swing.JPanel {
             DateFormat dateFormat = new SimpleDateFormat("dd/MM/yy");
             String nacimiento = dateFormat.format(estudianteConsultar.getFechaNac());
             txt_fechaNac.setText(nacimiento);
+            txt_cedulaMAPFRE.setText(estudianteConsultar.getCedulaMAPFRE());
         }
     }//GEN-LAST:event_tb_consultarEstudiantesMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel lbl_cedulaMAPFRE;
+    private javax.swing.JLabel lbl_cedulaRepresentante;
     private javax.swing.JLabel lbl_fechaNac;
     private javax.swing.JLabel lbl_foto;
     private javax.swing.JLabel lbl_fotoEstudiante;
-    private javax.swing.JLabel lbl_telefonoCasa;
     private javax.swing.JLabel lbl_tituloEstudiantes;
     private javax.swing.JPanel pnl_datos;
     private javax.swing.JScrollPane sp_representantes;
     private javax.swing.JTable tb_consultarEstudiantes;
+    private javax.swing.JTextField txt_cedulaMAPFRE;
+    private javax.swing.JTextField txt_cedulaRepresentante;
     private javax.swing.JTextField txt_fechaNac;
-    private javax.swing.JTextField txt_telefonoCasa;
     // End of variables declaration//GEN-END:variables
 }
