@@ -23,8 +23,8 @@ import static modelo.Registry.RESULTADO_CODIGO_RECURSO_CREADO;
 public class DAOEstudiante extends DAO {
     
     private Connection _bdCon;
-    private static String _sqlEstudianteRegistrar = "{?=call ESTUDIANTE_REGISTRAR(?,?,?,?,?,?,?)}";
-    private static String _sqlEstudianteModificar = "{?=call ESTUDIANTE_MODIFICAR(?,?,?,?,?,?,?)}";
+    private static String _sqlEstudianteRegistrar = "{?=call ESTUDIANTE_REGISTRAR(?,?,?,?,?,?,?,?,?)}";
+    private static String _sqlEstudianteModificar = "{?=call ESTUDIANTE_MODIFICAR(?,?,?,?,?,?,?,?,?)}";
     private static String _sqlEstudianteBorrar = "{?=call ESTUDIANTE_BORRAR(?)}";
     private static String _sqlEstudiantesConsultar = "{call ESTUDIANTE_CONSULTAR_TODOS()}";
     private static String _sqlEstudianteDetalle = "{call ESTUDIANTE_CONSULTAR_DETALLE(?)}";
@@ -51,6 +51,9 @@ public class DAOEstudiante extends DAO {
             cstmt.setString(6, _estudiante.getSegundoApellido());
             cstmt.setDate(7, sqlFecha);
             cstmt.setString(8, _estudiante.getFoto());
+            cstmt.setString(9, _estudiante.getCedulaMAPFRE());
+            cstmt.setString(10, _estudiante.getSexo());
+            
             cstmt.execute();
             
             respuesta = cstmt.getInt(1);
@@ -101,6 +104,8 @@ public class DAOEstudiante extends DAO {
             cstmt.setString(6, _estudiante.getSegundoApellido());
             cstmt.setDate(7, sqlFecha);
             cstmt.setString(8, _estudiante.getFoto());
+            cstmt.setString(9, _estudiante.getCedulaMAPFRE());
+            cstmt.setString(10, _estudiante.getSexo());
             cstmt.execute();
             
             respuesta = cstmt.getInt(1);
@@ -198,7 +203,9 @@ public class DAOEstudiante extends DAO {
                                   rs.getString("primerapellido"),
                                   rs.getString("segundoapellido"),
                                   rs.getDate("fechanac"),
-                                  rs.getString("foto"));
+                                  rs.getString("foto"),
+                                  rs.getString("cedulamapfre"),
+                                  rs.getString("sexo"));
                 estudiante.setError(RESULTADO_CODIGO_BIEN);
                 listaEstudiantes.add(estudiante);
                 
@@ -241,7 +248,9 @@ public class DAOEstudiante extends DAO {
                                   rs.getString("primerapellido"),
                                   rs.getString("segundoapellido"),
                                   rs.getDate("fechanac"),
-                                  rs.getString("foto"));
+                                  rs.getString("foto"),
+                                  rs.getString("cedulamapfre"),
+                                  rs.getString("sexo"));
                 estudianteConsultado.setError(RESULTADO_CODIGO_BIEN);
                 
             }
