@@ -27,7 +27,7 @@
                   <Component id="lbl_tituloBorrarGrupo" min="-2" max="-2" attributes="0"/>
                   <Component id="pnl_datos" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="57" max="32767" attributes="0"/>
+              <EmptySpace pref="53" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
