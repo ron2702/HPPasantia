@@ -13,7 +13,7 @@ import java.util.Date;
  */
 public class Estudiante {
     
-    private int cedulaEscolar;
+    private long cedulaEscolar;
     private String primerNombre;
     private String segundoNombre;
     private String primerApellido;
@@ -27,11 +27,11 @@ public class Estudiante {
     public Estudiante(){
     }
     
-    public Estudiante(int _cedula){
+    public Estudiante(long _cedula){
         this.cedulaEscolar = _cedula;
     }
     
-    public Estudiante(int _cedula, String _primerNombre, String _segundoNombre, String _primerApellido, String _segundoApellido, Date _fechaNac, String _foto, String _cedulaMAPFRE, String _sexo) {
+    public Estudiante(long _cedula, String _primerNombre, String _segundoNombre, String _primerApellido, String _segundoApellido, Date _fechaNac, String _foto, String _cedulaMAPFRE, String _sexo) {
         this.cedulaEscolar = _cedula;
         this.primerNombre = _primerNombre;
         this.segundoNombre = _segundoNombre;
@@ -44,7 +44,7 @@ public class Estudiante {
     }
 
     
-    public int getCedulaEscolar() {
+    public long getCedulaEscolar() {
         return cedulaEscolar;
     }
 

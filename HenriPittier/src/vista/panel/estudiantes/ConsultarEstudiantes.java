@@ -204,7 +204,7 @@ public class ConsultarEstudiantes extends javax.swing.JPanel {
         int index = tb_consultarEstudiantes.getSelectedRow();
         
         String cedula = model.getValueAt(index, 0).toString();
-        int cedulaEstudiante = Integer.parseInt(cedula);
+        long cedulaEstudiante = Long.parseLong(cedula);
         ComunicacionREST comRest = new ComunicacionREST();
         Estudiante _estudiante = new Estudiante(cedulaEstudiante);
         

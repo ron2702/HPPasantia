@@ -25,6 +25,7 @@ import modelo.Registry;
 public class RegistrarEstudiante extends javax.swing.JPanel {
     private File archivoSeleccionado;
     private Object cb_estados;
+    long cedulaEscolar;
    
     public RegistrarEstudiante() {
         initComponents();
@@ -71,6 +72,8 @@ public class RegistrarEstudiante extends javax.swing.JPanel {
         txt_cedulaRepresentante = new javax.swing.JTextField();
         lbl_sexo = new javax.swing.JLabel();
         cb_sexo = new javax.swing.JComboBox();
+        lbl_hijonumero = new javax.swing.JLabel();
+        cb_hijo = new javax.swing.JComboBox();
         lbl_tituloRegistroEstudiantes = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(204, 204, 204));
@@ -231,6 +234,12 @@ public class RegistrarEstudiante extends javax.swing.JPanel {
     cb_sexo.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
     cb_sexo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "F", "M" }));
 
+    lbl_hijonumero.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+    lbl_hijonumero.setText("Hijo nº:");
+
+    cb_hijo.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+    cb_hijo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", " " }));
+
     javax.swing.GroupLayout pnl_datosLayout = new javax.swing.GroupLayout(pnl_datos);
     pnl_datos.setLayout(pnl_datosLayout);
     pnl_datosLayout.setHorizontalGroup(
@@ -259,7 +268,7 @@ public class RegistrarEstudiante extends javax.swing.JPanel {
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                     .addComponent(btn_registrar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addContainerGap(305, Short.MAX_VALUE))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnl_datosLayout.createSequentialGroup()
+                        .addGroup(pnl_datosLayout.createSequentialGroup()
                             .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addComponent(txt_primerNombre)
                                 .addComponent(txt_segundoNombre)
@@ -271,21 +280,23 @@ public class RegistrarEstudiante extends javax.swing.JPanel {
                                     .addGap(46, 46, 46)
                                     .addComponent(txt_cedulaRepresentante))
                                 .addGroup(pnl_datosLayout.createSequentialGroup()
-                                    .addComponent(lbl_cedulaEscolar)
+                                    .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(lbl_cedulaEscolar)
+                                        .addComponent(lbl_hijonumero))
                                     .addGap(110, 110, 110)
-                                    .addComponent(txt_cedulaEscolar, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(cb_hijo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(txt_cedulaEscolar, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))))
                             .addGap(51, 51, 51))))
                 .addGroup(pnl_datosLayout.createSequentialGroup()
                     .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(pnl_datosLayout.createSequentialGroup()
-                            .addComponent(lbl_sexo)
-                            .addGap(136, 136, 136)
-                            .addComponent(cb_sexo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(pnl_datosLayout.createSequentialGroup()
-                            .addComponent(lbl_foto, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(18, 18, 18)
-                            .addComponent(btn_cargarImagen)))
-                    .addGap(0, 0, Short.MAX_VALUE))))
+                        .addComponent(lbl_sexo)
+                        .addComponent(lbl_foto, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGap(33, 33, 33)
+                    .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(btn_cargarImagen)
+                        .addComponent(cb_sexo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGap(0, 520, Short.MAX_VALUE))))
     );
     pnl_datosLayout.setVerticalGroup(
         pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -305,24 +316,26 @@ public class RegistrarEstudiante extends javax.swing.JPanel {
             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
             .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                 .addComponent(txt_primerApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(lbl_primerApellido))
+                .addComponent(lbl_primerApellido)
+                .addComponent(lbl_hijonumero)
+                .addComponent(cb_hijo, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
             .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                .addComponent(txt_segundoApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(lbl_segundoApellido))
+                .addComponent(lbl_segundoApellido)
+                .addComponent(txt_segundoApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
             .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                 .addComponent(dc_fechaNac, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
                 .addComponent(lbl_fechaNac, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGap(18, 18, 18)
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
             .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                 .addComponent(lbl_sexo)
                 .addComponent(cb_sexo, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
-            .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(lbl_foto, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(btn_cargarImagen))
             .addGap(18, 18, 18)
+            .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(btn_cargarImagen)
+                .addComponent(lbl_foto, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
             .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                 .addComponent(btn_limpiar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addComponent(btn_registrar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -396,19 +409,30 @@ public class RegistrarEstudiante extends javax.swing.JPanel {
             Date fechaNacimiento = parseFecha.parse(dc_fechaNac.getText());
             
             String ci = txt_cedulaRepresentante.getText();
-            String ciPartida = ci.substring(0, 4);
+            
+            long tamano = String.valueOf(ci).length();
+            
+            if (tamano < 8){
+                ci = "0" + ci;
+            }
             
             Calendar calNac = Calendar.getInstance();
             calNac.setTime(fechaNacimiento);
-            int diadelmes = calNac.get(Calendar.DAY_OF_MONTH);
-            int mes = calNac.get(Calendar.MONTH) + 1;
+            int anoNac = calNac.get(Calendar.YEAR) %100;
+            String anoNacString = String.valueOf(anoNac);
             
-            String diadelmesAString = String.valueOf(diadelmes);
-            String mesAString = String.valueOf(mes);
+            String hijonumero = (String) cb_hijo.getSelectedItem().toString();
             
-            String cedulaConcat = ciPartida + diadelmesAString + mesAString;
+            String cedulaConcat = new StringBuilder().append(hijonumero).append(anoNacString).append(ci).toString();
             
-            int cedulaEscolar = Integer.parseInt(cedulaConcat);
+            try {
+                cedulaEscolar = Long.parseLong(cedulaConcat.trim());
+                
+            } catch (NumberFormatException nfe) {
+                System.out.println("NumberFormatException: " + nfe.getMessage());
+            }
+            
+            
             /*Pasos para generar cedula escolar FIN*/
             
             /*Pasos para generar cedula MAPFRE INICIO*/
@@ -453,6 +477,8 @@ public class RegistrarEstudiante extends javax.swing.JPanel {
         txt_segundoNombre.setText("");
         txt_segundoApellido.setText("");
         dc_fechaNac.setCurrent(null);
+        cb_sexo.setSelectedItem(null);
+        cb_hijo.setSelectedItem(null);
     }//GEN-LAST:event_btn_limpiarActionPerformed
 
     private void txt_cedulaRepresentanteKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_cedulaRepresentanteKeyTyped
@@ -464,12 +490,14 @@ public class RegistrarEstudiante extends javax.swing.JPanel {
     private javax.swing.JButton btn_cargarImagen;
     private javax.swing.JButton btn_limpiar;
     private javax.swing.JButton btn_registrar;
+    private javax.swing.JComboBox cb_hijo;
     private javax.swing.JComboBox cb_sexo;
     private datechooser.beans.DateChooserCombo dc_fechaNac;
     private javax.swing.JLabel lbl_cedulaEscolar;
     private javax.swing.JLabel lbl_cedulaRepresentante;
     private javax.swing.JLabel lbl_fechaNac;
     private javax.swing.JLabel lbl_foto;
+    private javax.swing.JLabel lbl_hijonumero;
     private javax.swing.JLabel lbl_primerApellido;
     private javax.swing.JLabel lbl_primerNombre;
     private javax.swing.JLabel lbl_segundoApellido;

@@ -42,7 +42,7 @@ public class ModificarEstudiante extends javax.swing.JPanel {
                 public void actionPerformed(ActionEvent e) {
                     try {
                         Estudiante estudianteSeleccionado = (Estudiante) cb_listaEstudiantes.getSelectedItem();
-                        String cedulaEscolar = Integer.toString(estudianteSeleccionado.getCedulaEscolar());
+                        String cedulaEscolar = Long.toString(estudianteSeleccionado.getCedulaEscolar());
                         txt_cedulaEscolar.setText(cedulaEscolar);
                         txt_primerNombre.setText(estudianteSeleccionado.getPrimerNombre());
                         txt_primerApellido.setText(estudianteSeleccionado.getPrimerApellido());
@@ -447,7 +447,7 @@ public class ModificarEstudiante extends javax.swing.JPanel {
                
                SimpleDateFormat parseFecha = new SimpleDateFormat("dd/MM/yy");
                Date fechaNacimiento = parseFecha.parse(dc_fechaNac.getText());
-               int ciEscolar = Integer.parseInt(txt_cedulaEscolar.getText());
+               long ciEscolar = Long.parseLong(txt_cedulaEscolar.getText());
                estudianteModificar = new Estudiante(ciEscolar, txt_primerNombre.getText(), txt_primerApellido.getText(), txt_segundoNombre.getText(),
                                         txt_segundoApellido.getText(), fechaNacimiento, "", txt_cedulaMAPFRE.getText(), (String) cb_sexo.getSelectedItem());
                ComunicacionREST comRest = new ComunicacionREST();
@@ -477,6 +477,7 @@ public class ModificarEstudiante extends javax.swing.JPanel {
         txt_segundoNombre.setText("");
         txt_segundoApellido.setText("");
         dc_fechaNac.setCurrent(null);
+        cb_sexo.setSelectedItem(null);
     }//GEN-LAST:event_btn_limpiarActionPerformed
 
     private void txt_cedulaMAPFREKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_cedulaMAPFREKeyTyped
