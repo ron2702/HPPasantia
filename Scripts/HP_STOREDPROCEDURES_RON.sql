@@ -92,7 +92,7 @@ $$ LANGUAGE plpgsql;
 
 
 /**************************************CRUD ESTUDIANTE****************************************/
-CREATE OR REPLACE FUNCTION ESTUDIANTE_REGISTRAR(integer, varchar(30), varchar(30), varchar(30), varchar(30), date, varchar(100), varchar(50), varchar(7)) RETURNS integer AS $$
+CREATE OR REPLACE FUNCTION ESTUDIANTE_REGISTRAR(bigint, varchar(30), varchar(30), varchar(30), varchar(30), date, varchar(100), varchar(50), varchar(7)) RETURNS integer AS $$
 DECLARE
  RESULT integer;
 
@@ -112,7 +112,7 @@ END;
 $$ LANGUAGE plpgsql;
 
 
-CREATE OR REPLACE FUNCTION ESTUDIANTE_MODIFICAR(integer, varchar(30), varchar(30), varchar(30), varchar(30), date, varchar(100), varchar(50), varchar(7)) RETURNS integer AS $$
+CREATE OR REPLACE FUNCTION ESTUDIANTE_MODIFICAR(bigint, varchar(30), varchar(30), varchar(30), varchar(30), date, varchar(100), varchar(50), varchar(7)) RETURNS integer AS $$
 DECLARE
  RESULT integer;
 
@@ -132,7 +132,7 @@ END;
 $$ LANGUAGE plpgsql;
 
 
-CREATE OR REPLACE FUNCTION ESTUDIANTE_BORRAR(integer) RETURNS integer AS $$
+CREATE OR REPLACE FUNCTION ESTUDIANTE_BORRAR(bigint) RETURNS integer AS $$
 DECLARE
  RESULT integer;
 
@@ -152,7 +152,7 @@ END;
 $$ LANGUAGE plpgsql;
 
 
-CREATE OR REPLACE FUNCTION ESTUDIANTE_CONSULTAR_TODOS() RETURNS TABLE (CEDULAESCOLAR integer, PRIMERNOMBRE varchar(30), SEGUNDONOMBRE varchar(30), PRIMERAPELLIDO varchar(30), SEGUNDOAPELLIDO varchar(30), FECHANAC date, FOTO varchar(100), CEDULAMAPFRE varchar(50), SEXO varchar(7)) as $$
+CREATE OR REPLACE FUNCTION ESTUDIANTE_CONSULTAR_TODOS() RETURNS TABLE (CEDULAESCOLAR bigint, PRIMERNOMBRE varchar(30), SEGUNDONOMBRE varchar(30), PRIMERAPELLIDO varchar(30), SEGUNDOAPELLIDO varchar(30), FECHANAC date, FOTO varchar(100), CEDULAMAPFRE varchar(50), SEXO varchar(7)) as $$
 DECLARE
 
 BEGIN
@@ -164,7 +164,7 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
-CREATE OR REPLACE FUNCTION ESTUDIANTE_CONSULTAR_DETALLE(integer) RETURNS TABLE (CEDULAESCOLAR integer, PRIMERNOMBRE varchar(30), SEGUNDONOMBRE varchar(30), PRIMERAPELLIDO varchar(30), SEGUNDOAPELLIDO varchar(30), FECHANAC date, FOTO varchar(100), CEDULAMAPFRE varchar(50), SEXO varchar(7)) as $$
+CREATE OR REPLACE FUNCTION ESTUDIANTE_CONSULTAR_DETALLE(bigint) RETURNS TABLE (CEDULAESCOLAR bigint, PRIMERNOMBRE varchar(30), SEGUNDONOMBRE varchar(30), PRIMERAPELLIDO varchar(30), SEGUNDOAPELLIDO varchar(30), FECHANAC date, FOTO varchar(100), CEDULAMAPFRE varchar(50), SEXO varchar(7)) as $$
 DECLARE
 
 BEGIN
@@ -178,11 +178,11 @@ END;
 $$ LANGUAGE plpgsql;
 
 /**************************************CRUD REP_EST****************************************/
-CREATE OR REPLACE FUNCTION REPEST_REGISTRAR(integer, integer) RETURNS integer AS $$
+CREATE OR REPLACE FUNCTION REPEST_REGISTRAR(integer, bigint) RETURNS integer AS $$
 DECLARE
  RESULT integer;
  FK_REPRESENTANTE integer;
- FK_ESTUDIANTE integer;
+ FK_ESTUDIANTE bigint;
 
 
 BEGIN
@@ -201,7 +201,7 @@ END;
 $$ LANGUAGE plpgsql;
 
 
-CREATE OR REPLACE FUNCTION REPEST_BORRAR(integer, integer) RETURNS integer AS $$
+CREATE OR REPLACE FUNCTION REPEST_BORRAR(integer, bigint) RETURNS integer AS $$
 DECLARE
  RESULT integer;
 
@@ -220,7 +220,7 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
-CREATE OR REPLACE FUNCTION REPEST_CONSULTAR_TODOS() RETURNS TABLE (CEDULARep integer, PRIMERNOMBRERep varchar(30), PRIMERAPELLIDORep varchar(30), CEDULAESCOLAREs integer, PRIMERNOMBREEs varchar(30), PRIMERAPELLIDOEs varchar(30)) as $$
+CREATE OR REPLACE FUNCTION REPEST_CONSULTAR_TODOS() RETURNS TABLE (CEDULARep integer, PRIMERNOMBRERep varchar(30), PRIMERAPELLIDORep varchar(30), CEDULAESCOLAREs bigint, PRIMERNOMBREEs varchar(30), PRIMERAPELLIDOEs varchar(30)) as $$
 DECLARE
 
 BEGIN
@@ -332,7 +332,7 @@ END;
 $$ LANGUAGE plpgsql;
 
 /**************************************CRUD EMPGRUEST****************************************/
-CREATE OR REPLACE FUNCTION EMPGRUEST_REGISTRAR(integer, integer, varchar(30)) RETURNS integer AS $$
+CREATE OR REPLACE FUNCTION EMPGRUEST_REGISTRAR(integer, bigint, varchar(30)) RETURNS integer AS $$
 DECLARE
  RESULT integer;
  FK_EMPLEADO integer;
@@ -357,7 +357,7 @@ END;
 $$ LANGUAGE plpgsql;
 
 
-CREATE OR REPLACE FUNCTION EMPGRUEST_BORRAR(integer, integer, varchar(30)) RETURNS integer AS $$
+CREATE OR REPLACE FUNCTION EMPGRUEST_BORRAR(integer, bigint, varchar(30)) RETURNS integer AS $$
 DECLARE
  RESULT integer;
 
@@ -377,7 +377,7 @@ END;
 $$ LANGUAGE plpgsql;
 
 
-CREATE OR REPLACE FUNCTION EMPGRUEST_CONSULTAR_TODOS() RETURNS TABLE (CEDULAemp integer, PRIMERNOMBREemp varchar(30), PRIMERAPELLIDOemp varchar(30), CEDULAESCOLARest integer, PRIMERNOMBREest varchar(30), PRIMERAPELLIDOest varchar(30), CODIGO varchar(30), NOMBRE varchar(30)) as $$
+CREATE OR REPLACE FUNCTION EMPGRUEST_CONSULTAR_TODOS() RETURNS TABLE (CEDULAemp integer, PRIMERNOMBREemp varchar(30), PRIMERAPELLIDOemp varchar(30), CEDULAESCOLARest bigint, PRIMERNOMBREest varchar(30), PRIMERAPELLIDOest varchar(30), CODIGO varchar(30), NOMBRE varchar(30)) as $$
 DECLARE
 BEGIN
 
@@ -390,7 +390,7 @@ END;
 $$ LANGUAGE plpgsql;
 
 
-CREATE OR REPLACE FUNCTION EMPGRUEST_CONSULTAR_DETALLE(integer, integer, varchar(30)) RETURNS TABLE (CEDULAemp integer, PRIMERNOMBREemp varchar(30), PRIMERAPELLIDOemp varchar(30), CEDULAESCOLARest integer, PRIMERNOMBREest varchar(30), PRIMERAPELLIDOest varchar(30), CODIGO varchar(30), NOMBRE varchar(30)) as $$
+CREATE OR REPLACE FUNCTION EMPGRUEST_CONSULTAR_DETALLE(integer, bigint, varchar(30)) RETURNS TABLE (CEDULAemp integer, PRIMERNOMBREemp varchar(30), PRIMERAPELLIDOemp varchar(30), CEDULAESCOLARest bigint, PRIMERNOMBREest varchar(30), PRIMERAPELLIDOest varchar(30), CODIGO varchar(30), NOMBRE varchar(30)) as $$
 DECLARE
 BEGIN
 
