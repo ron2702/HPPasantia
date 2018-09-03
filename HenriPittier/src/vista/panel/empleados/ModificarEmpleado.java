@@ -176,7 +176,7 @@ public class ModificarEmpleado extends javax.swing.JPanel {
         lbl_estado = new javax.swing.JLabel();
         lbl_municipio = new javax.swing.JLabel();
         lbl_parroquia = new javax.swing.JLabel();
-        btn_limnpiar = new javax.swing.JButton();
+        btn_limpiar = new javax.swing.JButton();
         btn_modificar = new javax.swing.JButton();
         dc_fechaNac = new datechooser.beans.DateChooserCombo();
         dc_fechaIngreso = new datechooser.beans.DateChooserCombo();
@@ -294,13 +294,13 @@ public class ModificarEmpleado extends javax.swing.JPanel {
         lbl_parroquia.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         lbl_parroquia.setText("Parroquia:");
 
-        btn_limnpiar.setBackground(new java.awt.Color(218, 87, 54));
-        btn_limnpiar.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        btn_limnpiar.setText("Limpiar");
-        btn_limnpiar.setPreferredSize(new java.awt.Dimension(109, 25));
-        btn_limnpiar.addActionListener(new java.awt.event.ActionListener() {
+        btn_limpiar.setBackground(new java.awt.Color(218, 87, 54));
+        btn_limpiar.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        btn_limpiar.setText("Limpiar");
+        btn_limpiar.setPreferredSize(new java.awt.Dimension(109, 25));
+        btn_limpiar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_limnpiarActionPerformed(evt);
+                btn_limpiarActionPerformed(evt);
             }
         });
 
@@ -515,7 +515,7 @@ try {
             .addGap(0, 35, Short.MAX_VALUE))
         .addGroup(pnl_datosLayout.createSequentialGroup()
             .addGap(305, 305, 305)
-            .addComponent(btn_limnpiar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(btn_limpiar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
             .addComponent(btn_modificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -601,7 +601,7 @@ try {
                             .addGap(39, 39, 39)))))
             .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                 .addComponent(btn_modificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(btn_limnpiar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(btn_limpiar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGap(31, 31, 31))
     );
 
@@ -645,7 +645,7 @@ try {
         }
     }//GEN-LAST:event_btn_cargarImagenActionPerformed
 
-    private void btn_limnpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_limnpiarActionPerformed
+    private void btn_limpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_limpiarActionPerformed
         txt_primerNombre.setText("");
         txt_primerApellido.setText("");
         txt_segundoNombre.setText("");
@@ -660,7 +660,7 @@ try {
         cb_estados.setSelectedIndex(0);
         cb_municipios.removeAllItems();
         cb_parroquias.removeAllItems();
-    }//GEN-LAST:event_btn_limnpiarActionPerformed
+    }//GEN-LAST:event_btn_limpiarActionPerformed
 
     private void btn_modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_modificarActionPerformed
         Object objeto = cb_estados.getSelectedItem();
@@ -739,7 +739,7 @@ try {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_cargarImagen;
-    private javax.swing.JButton btn_limnpiar;
+    private javax.swing.JButton btn_limpiar;
     private javax.swing.JButton btn_modificar;
     private javax.swing.JComboBox cb_banco;
     private javax.swing.JComboBox cb_estados;
