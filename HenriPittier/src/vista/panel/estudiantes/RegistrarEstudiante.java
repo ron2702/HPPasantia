@@ -431,7 +431,6 @@ public class RegistrarEstudiante extends javax.swing.JPanel {
                     if(estudianteConsultar.getCedulaEscolar() == cedulaEscolar){
                         String ciEscolarString = Long.toString(cedulaEscolar);
                         String digitoString = Character.toString(ciEscolarString.charAt(0));
-                        System.out.println(digitoString);
                         int digito = Integer.parseInt(digitoString);
 
                         digito = digito + 1;
