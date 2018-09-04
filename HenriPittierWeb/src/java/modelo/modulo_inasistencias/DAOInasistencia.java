@@ -24,7 +24,7 @@ public class DAOInasistencia extends DAO {
     private Connection _bdCon;
     private static String _sqlInasistenciaRegistrar = "{?=call INASISTENCIA_REGISTRAR(?,?,?,?)}";
     private static String _sqlInasistenciaModificar = "{?=call INASISTENCIA_MODIFICAR(?,?,?,?)}";
-    private static String _sqlInasistenciaBorrar = "{?=call INASISTENCIA_BORRAR(?,?,?,?)}";
+    private static String _sqlInasistenciaBorrar = "{?=call INASISTENCIA_BORRAR(?,?,?)}";
     private static String _sqlInasistenciaDetalle = "{call INASISTENCIA_CONSULTAR_DETALLE(?)}";
     private ResultSet rs;
     
@@ -135,10 +135,9 @@ public class DAOInasistencia extends DAO {
             cstmt = _bdCon.prepareCall(_sqlInasistenciaBorrar);
             //Parametro de salida
             cstmt.registerOutParameter(1, Types.INTEGER);
-            cstmt.setInt(2, _inasistencia.getDiasFaltados());
-            cstmt.setString(3, _inasistencia.getMes());
-            cstmt.setInt(4, _inasistencia.getAno());
-            cstmt.setInt(5, _inasistencia.getCedulaEmpleado());
+            cstmt.setString(2, _inasistencia.getMes());
+            cstmt.setInt(3, _inasistencia.getAno());
+            cstmt.setInt(4, _inasistencia.getCedulaEmpleado());
           
             cstmt.execute();
             
