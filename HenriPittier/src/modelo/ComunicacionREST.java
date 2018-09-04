@@ -525,6 +525,24 @@ public class ComunicacionREST {
         }
     }
     
+    public Suplencia modificarInasistencia(Suplencia s) throws Exception {
+        try {
+            conn = null;
+            Gson gson = new GsonBuilder().create();
+            BufferedReader br = comunicar("GET", "modificarSuplencia?suplencia=" + URLEncoder.encode(gson.toJson(s).toString(), "UTF-8"));
+            String output;
+            Suplencia _suplencia = new Suplencia();
+            while ((output = br.readLine()) != null) {
+                _suplencia = gson.fromJson(output, Suplencia.class);
+            }
+            conn.disconnect();
+            return _suplencia;
+        }
+        catch (Exception ex){
+            throw ex;
+        }
+    }
+    
     /*SERVICIOS WEB DE INASISTENCIAS*/
     
     public Inasistencia registrarInasistencia(Inasistencia i) throws Exception {
