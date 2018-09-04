@@ -10,6 +10,7 @@ import com.google.gson.reflect.TypeToken;
 import comun.Empleado;
 import comun.Estudiante;
 import comun.Grupo;
+import comun.Inasistencia;
 import comun.Lugar;
 import comun.Representante;
 import comun.Suplencia;
@@ -518,6 +519,26 @@ public class ComunicacionREST {
             }
             conn.disconnect();
             return _suplencia;
+        }
+        catch (Exception ex){
+            throw ex;
+        }
+    }
+    
+    /*SERVICIOS WEB DE INASISTENCIAS*/
+    
+    public Inasistencia registrarInasistencia(Inasistencia i) throws Exception {
+        try {
+            conn = null;
+            Gson gson = new GsonBuilder().create();
+            BufferedReader br = comunicar("GET", "registrarInasistencia?inasistencia=" + URLEncoder.encode(gson.toJson(i).toString(), "UTF-8"));
+            String output;
+            Inasistencia _inasistencia = new Inasistencia();
+            while ((output = br.readLine()) != null) {
+                _inasistencia = gson.fromJson(output, Inasistencia.class);
+            }
+            conn.disconnect();
+            return _inasistencia;
         }
         catch (Exception ex){
             throw ex;

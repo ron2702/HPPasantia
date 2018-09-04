@@ -6,7 +6,19 @@
 package vista.panel.inasistencias;
 
 import comun.Empleado;
+import comun.Inasistencia;
 import comun.Suplencia;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import modelo.ComunicacionREST;
+import modelo.Registry;
+import vista.panel.empleados.RegistrarEmpleado;
+import vista.panel.suplencias.RegistrarSuplencia;
 
 
 public class RegistrarInasistencia extends javax.swing.JPanel {
@@ -14,7 +26,31 @@ public class RegistrarInasistencia extends javax.swing.JPanel {
    
     
     public RegistrarInasistencia() {
-        initComponents();
+        try {
+            initComponents();
+            ComunicacionREST comRest = new ComunicacionREST();
+            
+
+            ArrayList<Empleado> listaEmpleados = comRest.consultarEmpleados();
+            for (Empleado empleado : listaEmpleados) {
+                cb_listaEmpleados.addItem(empleado);
+            }
+            cb_listaEmpleados.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    try {
+                        Empleado empleadoSeleccionado = (Empleado) cb_listaEmpleados.getSelectedItem();
+                        empleadoRegistrarInasistencia = empleadoSeleccionado;
+                        
+                    } catch (Exception ex) {
+                        Logger.getLogger(RegistrarEmpleado.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+            });
+            
+        } catch (Exception ex) {
+            Logger.getLogger(RegistrarEmpleado.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -29,10 +65,10 @@ public class RegistrarInasistencia extends javax.swing.JPanel {
         pnl_datos = new javax.swing.JPanel();
         lbl_empleadoSuplencia = new javax.swing.JLabel();
         cb_listaEmpleados = new javax.swing.JComboBox();
-        lbl_cantSuplencias = new javax.swing.JLabel();
+        lbl_cantInasistencias = new javax.swing.JLabel();
         lbl_mesSuplencias = new javax.swing.JLabel();
         cb_meses = new javax.swing.JComboBox();
-        cb_cantSuplencias = new javax.swing.JComboBox();
+        cb_cantInasistencias = new javax.swing.JComboBox();
         btn_registrar = new javax.swing.JButton();
         btn_limpiar = new javax.swing.JButton();
         lbl_anoSuplencias = new javax.swing.JLabel();
@@ -50,8 +86,8 @@ public class RegistrarInasistencia extends javax.swing.JPanel {
 
         cb_listaEmpleados.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
 
-        lbl_cantSuplencias.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        lbl_cantSuplencias.setText("Cantidad de inasistencias:");
+        lbl_cantInasistencias.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        lbl_cantInasistencias.setText("Cantidad de inasistencias:");
 
         lbl_mesSuplencias.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         lbl_mesSuplencias.setText("Mes de las inasistencias:");
@@ -59,9 +95,9 @@ public class RegistrarInasistencia extends javax.swing.JPanel {
         cb_meses.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         cb_meses.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre" }));
 
-        cb_cantSuplencias.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        cb_cantSuplencias.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31" }));
-        cb_cantSuplencias.setPreferredSize(new java.awt.Dimension(40, 19));
+        cb_cantInasistencias.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        cb_cantInasistencias.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31" }));
+        cb_cantInasistencias.setPreferredSize(new java.awt.Dimension(40, 19));
 
         btn_registrar.setBackground(new java.awt.Color(121, 213, 177));
         btn_registrar.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
@@ -106,14 +142,14 @@ public class RegistrarInasistencia extends javax.swing.JPanel {
                     .addGroup(pnl_datosLayout.createSequentialGroup()
                         .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lbl_empleadoSuplencia)
-                            .addComponent(lbl_cantSuplencias)
+                            .addComponent(lbl_cantInasistencias)
                             .addComponent(lbl_anoSuplencias))
                         .addGap(35, 35, 35)
                         .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(cb_meses, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(cb_listaEmpleados, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(cb_cantSuplencias, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(cb_cantInasistencias, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(cb_anos, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -134,8 +170,8 @@ public class RegistrarInasistencia extends javax.swing.JPanel {
                     .addComponent(cb_anos, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(43, 43, 43)
                 .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbl_cantSuplencias, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cb_cantSuplencias, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lbl_cantInasistencias, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cb_cantInasistencias, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 117, Short.MAX_VALUE)
                 .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn_registrar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -169,11 +205,31 @@ public class RegistrarInasistencia extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_registrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_registrarActionPerformed
-        
+        try {
+            Empleado empleadoSeleccionado = (Empleado) cb_listaEmpleados.getSelectedItem();
+            String anoSeleccionado = (String) cb_anos.getSelectedItem();
+            String diasSeleccionados = (String) cb_cantInasistencias.getSelectedItem();
+            String mesSeleccionado = (String) cb_meses.getSelectedItem();
+            Inasistencia nuevaInasistencia = new Inasistencia(empleadoSeleccionado.getCedula(), Integer.parseInt(diasSeleccionados), mesSeleccionado, Integer.parseInt(anoSeleccionado));
+            ComunicacionREST com = new ComunicacionREST();
+            Inasistencia inasistenciaRegistrada = com.registrarInasistencia(nuevaInasistencia);
+            if (inasistenciaRegistrada.getError() == Registry.RESULTADO_CODIGO_RECURSO_CREADO){
+                final JPanel panel = new JPanel();
+                JOptionPane.showMessageDialog(panel, "Se registró exitosamente la inasistencia", "Información", JOptionPane.INFORMATION_MESSAGE);
+            }else{
+                final JPanel panel = new JPanel();
+                JOptionPane.showMessageDialog(panel, "No se ha podido registrar la inasistencia, intente nuevamente", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(RegistrarInasistencia.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btn_registrarActionPerformed
 
     private void btn_limpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_limpiarActionPerformed
-
+        cb_listaEmpleados.setSelectedIndex(0);  
+        cb_meses.setSelectedIndex(0);
+        cb_anos.setSelectedIndex(0);
+        cb_cantInasistencias.setSelectedIndex(0);
     }//GEN-LAST:event_btn_limpiarActionPerformed
 
 
@@ -181,11 +237,11 @@ public class RegistrarInasistencia extends javax.swing.JPanel {
     private javax.swing.JButton btn_limpiar;
     private javax.swing.JButton btn_registrar;
     private javax.swing.JComboBox cb_anos;
-    private javax.swing.JComboBox cb_cantSuplencias;
+    private javax.swing.JComboBox cb_cantInasistencias;
     private javax.swing.JComboBox cb_listaEmpleados;
     private javax.swing.JComboBox cb_meses;
     private javax.swing.JLabel lbl_anoSuplencias;
-    private javax.swing.JLabel lbl_cantSuplencias;
+    private javax.swing.JLabel lbl_cantInasistencias;
     private javax.swing.JLabel lbl_empleadoSuplencia;
     private javax.swing.JLabel lbl_mesSuplencias;
     private javax.swing.JLabel lbl_tituloRegistrarSuplencia;

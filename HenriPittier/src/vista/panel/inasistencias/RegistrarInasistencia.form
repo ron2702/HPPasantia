@@ -76,7 +76,7 @@
                       <Group type="102" alignment="0" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="lbl_empleadoSuplencia" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="lbl_cantSuplencias" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="lbl_cantInasistencias" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="lbl_anoSuplencias" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
@@ -84,7 +84,7 @@
                               <Component id="cb_meses" alignment="0" min="-2" pref="104" max="-2" attributes="0"/>
                               <Component id="cb_listaEmpleados" alignment="0" min="-2" pref="192" max="-2" attributes="0"/>
                               <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                                  <Component id="cb_cantSuplencias" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="cb_cantInasistencias" alignment="0" max="32767" attributes="0"/>
                                   <Component id="cb_anos" alignment="0" max="32767" attributes="0"/>
                               </Group>
                           </Group>
@@ -114,8 +114,8 @@
                   </Group>
                   <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="lbl_cantSuplencias" alignment="3" min="-2" pref="26" max="-2" attributes="0"/>
-                      <Component id="cb_cantSuplencias" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                      <Component id="lbl_cantInasistencias" alignment="3" min="-2" pref="26" max="-2" attributes="0"/>
+                      <Component id="cb_cantInasistencias" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace pref="117" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -146,7 +146,7 @@
             </Property>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="lbl_cantSuplencias">
+        <Component class="javax.swing.JLabel" name="lbl_cantInasistencias">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="12" style="0"/>
@@ -185,7 +185,7 @@
             </Property>
           </Properties>
         </Component>
-        <Component class="javax.swing.JComboBox" name="cb_cantSuplencias">
+        <Component class="javax.swing.JComboBox" name="cb_cantInasistencias">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="12" style="0"/>
