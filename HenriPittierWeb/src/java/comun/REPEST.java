@@ -10,7 +10,7 @@ public class REPEST {
     private int cedula;
     private String primerNombre_Rep;
     private String primerApellido_Rep;
-    private int cedulaEscolar;
+    private long cedulaEscolar;
     private String primerNombre_Est;
     private String primerApellido_Est;
     private int error;
@@ -23,14 +23,14 @@ public class REPEST {
         this.cedula = cedula;
     }
 
-    public REPEST(int cedula, int cedulaEscolar) {
+    public REPEST(int cedula, long cedulaEscolar) {
         this.cedula = cedula;
         this.cedulaEscolar = cedulaEscolar;
     }
     
     
 
-    public REPEST(int cedula, String primerNombre_Rep, String primerApellido_Rep, int cedulaEscolar, String primerNombre_Est, String primerApellido_est) {
+    public REPEST(int cedula, String primerNombre_Rep, String primerApellido_Rep, long cedulaEscolar, String primerNombre_Est, String primerApellido_est) {
         this.cedula = cedula;
         this.primerNombre_Rep = primerNombre_Rep;
         this.primerApellido_Rep = primerApellido_Rep;
@@ -63,11 +63,11 @@ public class REPEST {
         this.primerApellido_Rep = primerApellido_Rep;
     }
 
-    public int getCedulaEscolar() {
+    public long getCedulaEscolar() {
         return cedulaEscolar;
     }
 
-    public void setCedulaEscolar(int cedulaEscolar) {
+    public void setCedulaEscolar(long cedulaEscolar) {
         this.cedulaEscolar = cedulaEscolar;
     }
 

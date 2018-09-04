@@ -43,7 +43,7 @@ public class DAOEmp_Gru_Est extends DAO {
             //Parametro de salida
             cstmt.registerOutParameter(1, Types.INTEGER);
             cstmt.setInt(2, _empgruest.getCedula_emp());
-            cstmt.setInt(3, _empgruest.getCedulaEscolar_est());
+            cstmt.setLong(3, _empgruest.getCedulaEscolar_est());
             cstmt.setString(4, _empgruest.getCodigo_gr());
             
             cstmt.execute();
@@ -95,7 +95,7 @@ public class DAOEmp_Gru_Est extends DAO {
                 Emp_Gru_Est empgruest = new Emp_Gru_Est(rs.getInt("cedulaemp"), 
                                   rs.getString("primernombreemp"),
                                   rs.getString("primerapellidoemp"),
-                                  rs.getInt("cedulaescolarest"),
+                                  rs.getLong("cedulaescolarest"),
                                   rs.getString("primernombreest"),
                                   rs.getString("primerapellidoest"),
                                   rs.getString("codigo"),
@@ -132,7 +132,7 @@ public class DAOEmp_Gru_Est extends DAO {
             _bdCon = DAO.getBdConnect();
             cstmt = _bdCon.prepareCall(_sqlEmpGruEstDetalle);
             cstmt.setInt(1, _empgruest.getCedula_emp());
-            cstmt.setInt(2, _empgruest.getCedulaEscolar_est());
+            cstmt.setLong(2, _empgruest.getCedulaEscolar_est());
             cstmt.setString(3, _empgruest.getCodigo_gr());
             rs = cstmt.executeQuery();
             
@@ -141,7 +141,7 @@ public class DAOEmp_Gru_Est extends DAO {
                 empgruestConsultado = new Emp_Gru_Est(rs.getInt("cedulaemp"), 
                                   rs.getString("primernombreemp"),
                                   rs.getString("primerapellidoemp"),
-                                  rs.getInt("cedulaescolarest"),
+                                  rs.getLong("cedulaescolarest"),
                                   rs.getString("primernombreest"),
                                   rs.getString("primerapellidoest"),
                                   rs.getString("codigo"),

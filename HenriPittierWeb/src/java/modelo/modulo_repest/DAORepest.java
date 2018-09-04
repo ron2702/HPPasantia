@@ -43,7 +43,7 @@ public class DAORepest extends DAO {
             //Parametro de salida
             cstmt.registerOutParameter(1, Types.INTEGER);
             cstmt.setInt(2, _repest.getCedula());
-            cstmt.setInt(3, _repest.getCedulaEscolar());
+            cstmt.setLong(3, _repest.getCedulaEscolar());
             
             cstmt.execute();
             
@@ -90,7 +90,7 @@ public class DAORepest extends DAO {
             //Parametro de salida
             cstmt.registerOutParameter(1, Types.INTEGER);
             cstmt.setInt(2, _repest.getCedula());
-            cstmt.setInt(3, _repest.getCedulaEscolar());
+            cstmt.setLong(3, _repest.getCedulaEscolar());
           
             cstmt.execute();
             
@@ -142,7 +142,7 @@ public class DAORepest extends DAO {
                 REPEST repest = new REPEST(rs.getInt("cedularep"), 
                                   rs.getString("primernombrerep"),
                                   rs.getString("primerapellidorep"),
-                                  rs.getInt("cedulaescolares"),
+                                  rs.getLong("cedulaescolares"),
                                   rs.getString("primernombrees"),
                                   rs.getString("primerapellidoes"));
                 repest.setError(RESULTADO_CODIGO_BIEN);
@@ -184,7 +184,7 @@ public class DAORepest extends DAO {
                 repestConsultado = new REPEST(rs.getInt("cedularep"), 
                                   rs.getString("primernombrerep"),
                                   rs.getString("primerapellidorep"),
-                                  rs.getInt("cedulaescolares"),
+                                  rs.getLong("cedulaescolares"),
                                   rs.getString("primernombrees"),
                                   rs.getString("primerapellidoes"));
                 repestConsultado.setError(RESULTADO_CODIGO_BIEN);

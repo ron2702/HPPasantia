@@ -14,7 +14,7 @@ public class Emp_Gru_Est {
     private int cedula_emp;
     private String primerNombre_emp;
     private String primerApellido_emp;
-    private int cedulaEscolar_est;
+    private long cedulaEscolar_est;
     private String primerNombre_est;
     private String primerApellido_est;
     private String codigo_gr;
@@ -24,13 +24,13 @@ public class Emp_Gru_Est {
     public Emp_Gru_Est() {
     }
 
-    public Emp_Gru_Est(int cedula_emp, int cedulaEscolar_est, String codigo_gr) {
+    public Emp_Gru_Est(int cedula_emp, long cedulaEscolar_est, String codigo_gr) {
         this.cedula_emp = cedula_emp;
         this.cedulaEscolar_est = cedulaEscolar_est;
         this.codigo_gr = codigo_gr;
     }
 
-    public Emp_Gru_Est(int cedula_emp, String primerNombre_emp, String primerApellido_emp, int cedulaEscolar_est, String primerNombre_est, String primerApellido_est, String codigo_gr, String nombre_gr) {
+    public Emp_Gru_Est(int cedula_emp, String primerNombre_emp, String primerApellido_emp, long cedulaEscolar_est, String primerNombre_est, String primerApellido_est, String codigo_gr, String nombre_gr) {
         this.cedula_emp = cedula_emp;
         this.primerNombre_emp = primerNombre_emp;
         this.primerApellido_emp = primerApellido_emp;
@@ -65,11 +65,11 @@ public class Emp_Gru_Est {
         this.primerApellido_emp = primerApellido_emp;
     }
 
-    public int getCedulaEscolar_est() {
+    public long getCedulaEscolar_est() {
         return cedulaEscolar_est;
     }
 
-    public void setCedulaEscolar_est(int cedulaEscolar_est) {
+    public void setCedulaEscolar_est(long cedulaEscolar_est) {
         this.cedulaEscolar_est = cedulaEscolar_est;
     }
 
