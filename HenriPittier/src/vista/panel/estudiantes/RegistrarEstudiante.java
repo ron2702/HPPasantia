@@ -23,9 +23,11 @@ import modelo.Registry;
 
 
 public class RegistrarEstudiante extends javax.swing.JPanel {
+    private Estudiante estudianteConsultar;
     private File archivoSeleccionado;
     private Object cb_estados;
     long cedulaEscolar;
+    int flag = 0;
    
     public RegistrarEstudiante() {
         initComponents();
@@ -72,8 +74,6 @@ public class RegistrarEstudiante extends javax.swing.JPanel {
         txt_cedulaRepresentante = new javax.swing.JTextField();
         lbl_sexo = new javax.swing.JLabel();
         cb_sexo = new javax.swing.JComboBox();
-        lbl_hijonumero = new javax.swing.JLabel();
-        cb_hijo = new javax.swing.JComboBox();
         lbl_tituloRegistroEstudiantes = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(204, 204, 204));
@@ -234,12 +234,6 @@ public class RegistrarEstudiante extends javax.swing.JPanel {
     cb_sexo.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
     cb_sexo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "F", "M" }));
 
-    lbl_hijonumero.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-    lbl_hijonumero.setText("Hijo nº:");
-
-    cb_hijo.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-    cb_hijo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", " " }));
-
     javax.swing.GroupLayout pnl_datosLayout = new javax.swing.GroupLayout(pnl_datos);
     pnl_datos.setLayout(pnl_datosLayout);
     pnl_datosLayout.setHorizontalGroup(
@@ -280,13 +274,9 @@ public class RegistrarEstudiante extends javax.swing.JPanel {
                                     .addGap(46, 46, 46)
                                     .addComponent(txt_cedulaRepresentante))
                                 .addGroup(pnl_datosLayout.createSequentialGroup()
-                                    .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(lbl_cedulaEscolar)
-                                        .addComponent(lbl_hijonumero))
+                                    .addComponent(lbl_cedulaEscolar)
                                     .addGap(110, 110, 110)
-                                    .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(cb_hijo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(txt_cedulaEscolar, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addComponent(txt_cedulaEscolar, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGap(51, 51, 51))))
                 .addGroup(pnl_datosLayout.createSequentialGroup()
                     .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -316,9 +306,7 @@ public class RegistrarEstudiante extends javax.swing.JPanel {
             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
             .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                 .addComponent(txt_primerApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(lbl_primerApellido)
-                .addComponent(lbl_hijonumero)
-                .addComponent(cb_hijo, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(lbl_primerApellido))
             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
             .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                 .addComponent(lbl_segundoApellido)
@@ -335,7 +323,7 @@ public class RegistrarEstudiante extends javax.swing.JPanel {
             .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(btn_cargarImagen)
                 .addComponent(lbl_foto, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
             .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                 .addComponent(btn_limpiar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addComponent(btn_registrar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -407,32 +395,60 @@ public class RegistrarEstudiante extends javax.swing.JPanel {
             /*Pasos para generar cedula escolar INICIO*/
             SimpleDateFormat parseFecha = new SimpleDateFormat("dd/MM/yy");
             Date fechaNacimiento = parseFecha.parse(dc_fechaNac.getText());
+            Calendar calNac = Calendar.getInstance();
+            calNac.setTime(fechaNacimiento);
             
             String ci = txt_cedulaRepresentante.getText();
             
             long tamano = String.valueOf(ci).length();
-            
             if (tamano < 8){
                 ci = "0" + ci;
             }
             
-            Calendar calNac = Calendar.getInstance();
-            calNac.setTime(fechaNacimiento);
             int anoNac = calNac.get(Calendar.YEAR) %100;
-            String anoNacString = String.valueOf(anoNac);
+            String anoNacString = String.valueOf(anoNac);       
             
-            String hijonumero = (String) cb_hijo.getSelectedItem().toString();
+            String hijonumero = "1";
             
             String cedulaConcat = new StringBuilder().append(hijonumero).append(anoNacString).append(ci).toString();
             
             try {
-                cedulaEscolar = Long.parseLong(cedulaConcat.trim());
-                
+                cedulaEscolar = Long.parseLong(cedulaConcat.trim());    
             } catch (NumberFormatException nfe) {
                 System.out.println("NumberFormatException: " + nfe.getMessage());
             }
             
-            
+            while(flag == 0){
+                ComunicacionREST comRest2 = new ComunicacionREST();
+                Estudiante _estudiante = new Estudiante(cedulaEscolar);
+                
+                try {
+                    estudianteConsultar = comRest2.consultarEstudianteDetalle(_estudiante);
+                } catch (Exception ex) {
+                    Logger.getLogger(RegistrarEstudiante.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                
+                    if(estudianteConsultar.getCedulaEscolar() == cedulaEscolar){
+                        String ciEscolarString = Long.toString(cedulaEscolar);
+                        String digitoString = Character.toString(ciEscolarString.charAt(0));
+                        System.out.println(digitoString);
+                        int digito = Integer.parseInt(digitoString);
+
+                        digito = digito + 1;
+                        String digitoAString = String.valueOf(digito);
+                        char c = digitoAString.charAt(0);
+                        
+                        StringBuilder test = new StringBuilder(ciEscolarString);
+                        test.setCharAt(0, c);
+                        
+                        ciEscolarString = test.toString();
+                        
+                        cedulaEscolar = Long.parseLong(ciEscolarString);
+                    }
+                    else{
+                        flag = 1;
+                    }
+            }
             /*Pasos para generar cedula escolar FIN*/
             
             /*Pasos para generar cedula MAPFRE INICIO*/
@@ -442,7 +458,6 @@ public class RegistrarEstudiante extends javax.swing.JPanel {
             String anoAString = String.valueOf(ano);
             
             String cedulaMAPFRE = ciRep + "-" + anoAString;
-            
             /*Pasos para generar cedula MAPFRE FIN*/
             
             Estudiante estudianteRegistrar = new Estudiante(cedulaEscolar, txt_primerNombre.getText(), txt_primerApellido.getText(), txt_segundoNombre.getText(),
@@ -478,7 +493,6 @@ public class RegistrarEstudiante extends javax.swing.JPanel {
         txt_segundoApellido.setText("");
         dc_fechaNac.setCurrent(null);
         cb_sexo.setSelectedItem(null);
-        cb_hijo.setSelectedItem(null);
     }//GEN-LAST:event_btn_limpiarActionPerformed
 
     private void txt_cedulaRepresentanteKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_cedulaRepresentanteKeyTyped
@@ -490,14 +504,12 @@ public class RegistrarEstudiante extends javax.swing.JPanel {
     private javax.swing.JButton btn_cargarImagen;
     private javax.swing.JButton btn_limpiar;
     private javax.swing.JButton btn_registrar;
-    private javax.swing.JComboBox cb_hijo;
     private javax.swing.JComboBox cb_sexo;
     private datechooser.beans.DateChooserCombo dc_fechaNac;
     private javax.swing.JLabel lbl_cedulaEscolar;
     private javax.swing.JLabel lbl_cedulaRepresentante;
     private javax.swing.JLabel lbl_fechaNac;
     private javax.swing.JLabel lbl_foto;
-    private javax.swing.JLabel lbl_hijonumero;
     private javax.swing.JLabel lbl_primerApellido;
     private javax.swing.JLabel lbl_primerNombre;
     private javax.swing.JLabel lbl_segundoApellido;
