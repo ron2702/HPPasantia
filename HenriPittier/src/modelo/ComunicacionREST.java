@@ -525,7 +525,7 @@ public class ComunicacionREST {
         }
     }
     
-    public Suplencia modificarInasistencia(Suplencia s) throws Exception {
+    public Suplencia modificarSuplencia(Suplencia s) throws Exception {
         try {
             conn = null;
             Gson gson = new GsonBuilder().create();
@@ -568,6 +568,24 @@ public class ComunicacionREST {
             conn = null;
             Gson gson = new GsonBuilder().create();
             BufferedReader br = comunicar("GET", "modificarInasistencia?inasistencia=" + URLEncoder.encode(gson.toJson(i).toString(), "UTF-8"));
+            String output;
+            Inasistencia _inasistencia = new Inasistencia();
+            while ((output = br.readLine()) != null) {
+                _inasistencia = gson.fromJson(output, Inasistencia.class);
+            }
+            conn.disconnect();
+            return _inasistencia;
+        }
+        catch (Exception ex){
+            throw ex;
+        }
+    }
+    
+    public Inasistencia borrarInasistencia(Inasistencia i) throws Exception {
+        try {
+            conn = null;
+            Gson gson = new GsonBuilder().create();
+            BufferedReader br = comunicar("GET", "borrarInasistencia?inasistencia=" + URLEncoder.encode(gson.toJson(i).toString(), "UTF-8"));
             String output;
             Inasistencia _inasistencia = new Inasistencia();
             while ((output = br.readLine()) != null) {

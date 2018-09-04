@@ -188,7 +188,7 @@ public class ModificarSuplencia extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(63, 63, 63)
+                .addGap(55, 55, 55)
                 .addComponent(lbl_tituloModificarSuplencia)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -223,7 +223,7 @@ public class ModificarSuplencia extends javax.swing.JPanel {
             Suplencia nuevaSuplencia = new Suplencia(empleadoSeleccionado.getCedula(), Integer.parseInt(diasSeleccionados), mesSeleccionado, Integer.parseInt(anoSeleccionado));
             ComunicacionREST com = new ComunicacionREST();
 
-            Suplencia suplenciaModificada = com.modificarInasistencia(nuevaSuplencia);
+            Suplencia suplenciaModificada = com.modificarSuplencia(nuevaSuplencia);
             if (suplenciaModificada.getError() == Registry.RESULTADO_CODIGO_RECURSO_CREADO){
                 final JPanel panel = new JPanel();
                 JOptionPane.showMessageDialog(panel, "Se modificó exitosamente la suplencia", "Información", JOptionPane.INFORMATION_MESSAGE);
