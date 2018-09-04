@@ -544,6 +544,24 @@ public class ComunicacionREST {
             throw ex;
         }
     }
+    
+    public Inasistencia modificarInasistencia(Inasistencia i) throws Exception {
+        try {
+            conn = null;
+            Gson gson = new GsonBuilder().create();
+            BufferedReader br = comunicar("GET", "modificarInasistencia?inasistencia=" + URLEncoder.encode(gson.toJson(i).toString(), "UTF-8"));
+            String output;
+            Inasistencia _inasistencia = new Inasistencia();
+            while ((output = br.readLine()) != null) {
+                _inasistencia = gson.fromJson(output, Inasistencia.class);
+            }
+            conn.disconnect();
+            return _inasistencia;
+        }
+        catch (Exception ex){
+            throw ex;
+        }
+    }
 }
     
 

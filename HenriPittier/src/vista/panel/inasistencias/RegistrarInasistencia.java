@@ -7,7 +7,6 @@ package vista.panel.inasistencias;
 
 import comun.Empleado;
 import comun.Inasistencia;
-import comun.Suplencia;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -18,7 +17,6 @@ import javax.swing.JPanel;
 import modelo.ComunicacionREST;
 import modelo.Registry;
 import vista.panel.empleados.RegistrarEmpleado;
-import vista.panel.suplencias.RegistrarSuplencia;
 
 
 public class RegistrarInasistencia extends javax.swing.JPanel {
