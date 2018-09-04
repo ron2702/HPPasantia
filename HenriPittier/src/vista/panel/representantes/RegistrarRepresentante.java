@@ -131,6 +131,7 @@ public class RegistrarRepresentante extends javax.swing.JPanel {
         btn_registrar = new javax.swing.JButton();
         btn_limpiar = new javax.swing.JButton();
         cb_tipo = new javax.swing.JComboBox();
+        jLabel1 = new javax.swing.JLabel();
         lbl_tituloRepresentante = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(204, 204, 204));
@@ -312,7 +313,10 @@ public class RegistrarRepresentante extends javax.swing.JPanel {
     });
 
     cb_tipo.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-    cb_tipo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Representante", "Autorizado" }));
+    cb_tipo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Representante I", "Representante II", "Autorizado" }));
+
+    jLabel1.setFont(new java.awt.Font("Tahoma", 2, 11)); // NOI18N
+    jLabel1.setText("Representante I se usara para la cedula escolar");
 
     javax.swing.GroupLayout pnl_datosLayout = new javax.swing.GroupLayout(pnl_datos);
     pnl_datos.setLayout(pnl_datosLayout);
@@ -348,24 +352,29 @@ public class RegistrarRepresentante extends javax.swing.JPanel {
                             .addComponent(btn_cargarImagen)))
                     .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(pnl_datosLayout.createSequentialGroup()
+                            .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(pnl_datosLayout.createSequentialGroup()
+                                    .addGap(61, 61, 61)
+                                    .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(lbl_fechaNac)
+                                        .addComponent(lbl_direccion, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnl_datosLayout.createSequentialGroup()
+                                    .addGap(96, 96, 96)
+                                    .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(lbl_estado, javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(lbl_municipio, javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(lbl_parroquia, javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(lbl_tipo, javax.swing.GroupLayout.Alignment.TRAILING))))
+                            .addGap(45, 45, 45)
+                            .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(dc_fechaNac, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(cb_tipo, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(cb_estados, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(cb_municipios, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(cb_parroquias, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(pnl_datosLayout.createSequentialGroup()
                             .addGap(61, 61, 61)
-                            .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(lbl_fechaNac)
-                                .addComponent(lbl_direccion)))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnl_datosLayout.createSequentialGroup()
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(lbl_estado, javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(lbl_municipio, javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(lbl_parroquia, javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(lbl_tipo, javax.swing.GroupLayout.Alignment.TRAILING))))
-                    .addGap(45, 45, 45)
-                    .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(dc_fechaNac, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(cb_tipo, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(cb_estados, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(cb_municipios, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(cb_parroquias, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGroup(pnl_datosLayout.createSequentialGroup()
                     .addGap(307, 307, 307)
                     .addComponent(btn_limpiar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -400,7 +409,9 @@ public class RegistrarRepresentante extends javax.swing.JPanel {
                             .addGap(21, 21, 21)
                             .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(lbl_tipo)
-                                .addComponent(cb_tipo, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(cb_tipo, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(jLabel1)))
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                     .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(txt_primerApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -529,7 +540,7 @@ public class RegistrarRepresentante extends javax.swing.JPanel {
                 Lugar parroquiaSeleccionada = (Lugar) cb_parroquias.getSelectedItem();
                 SimpleDateFormat parseFecha = new SimpleDateFormat("dd/MM/yy");
                 Date fechaNacimiento = parseFecha.parse(dc_fechaNac.getText());
-                ManejadorImagen img = new ManejadorImagen();
+                ManejadorImagen img = new ManejadorImagen();  
                 Representante representanteRegistrar = new Representante(Integer.parseInt(txt_cedula.getText()), txt_primerNombre.getText(), txt_segundoNombre.getText(),
                     txt_primerApellido.getText(), txt_segundoApellido.getText(), fechaNacimiento, txt_telefonoCasa.getText(), txt_telefonoMovil.getText(),
                     (String) cb_tipo.getSelectedItem(), "fotico", estadoSeleccionado.getNombre(), municipioSeleccionado.getNombre(), parroquiaSeleccionada.getNombre());
@@ -577,6 +588,7 @@ public class RegistrarRepresentante extends javax.swing.JPanel {
     private javax.swing.JComboBox cb_parroquias;
     private javax.swing.JComboBox cb_tipo;
     private datechooser.beans.DateChooserCombo dc_fechaNac;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel lbl_cedula;
     private javax.swing.JLabel lbl_direccion;
     private javax.swing.JLabel lbl_estado;
