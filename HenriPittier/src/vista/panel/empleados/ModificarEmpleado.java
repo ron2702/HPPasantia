@@ -656,8 +656,7 @@ try {
         txt_sueldoMensual.setText("");
         dc_fechaIngreso.setCurrent(null);
         dc_fechaNac.setCurrent(null);
-        cb_banco.setSelectedItem(null);
-        cb_estados.setSelectedIndex(0);
+        cb_banco.setSelectedItem(null);  
         cb_municipios.removeAllItems();
         cb_parroquias.removeAllItems();
     }//GEN-LAST:event_btn_limpiarActionPerformed

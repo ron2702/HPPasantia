@@ -6,6 +6,7 @@
 package vista.panel.inasistencias;
 
 import comun.Empleado;
+import comun.Suplencia;
 
 
 public class RegistrarInasistencia extends javax.swing.JPanel {
@@ -32,7 +33,7 @@ public class RegistrarInasistencia extends javax.swing.JPanel {
         lbl_mesSuplencias = new javax.swing.JLabel();
         cb_meses = new javax.swing.JComboBox();
         cb_cantSuplencias = new javax.swing.JComboBox();
-        btn_modificar = new javax.swing.JButton();
+        btn_registrar = new javax.swing.JButton();
         btn_limpiar = new javax.swing.JButton();
         lbl_anoSuplencias = new javax.swing.JLabel();
         cb_anos = new javax.swing.JComboBox();
@@ -62,13 +63,13 @@ public class RegistrarInasistencia extends javax.swing.JPanel {
         cb_cantSuplencias.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31" }));
         cb_cantSuplencias.setPreferredSize(new java.awt.Dimension(40, 19));
 
-        btn_modificar.setBackground(new java.awt.Color(121, 213, 177));
-        btn_modificar.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        btn_modificar.setText("Modificar");
-        btn_modificar.setPreferredSize(new java.awt.Dimension(109, 25));
-        btn_modificar.addActionListener(new java.awt.event.ActionListener() {
+        btn_registrar.setBackground(new java.awt.Color(121, 213, 177));
+        btn_registrar.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        btn_registrar.setText("Registrar");
+        btn_registrar.setPreferredSize(new java.awt.Dimension(109, 25));
+        btn_registrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_modificarActionPerformed(evt);
+                btn_registrarActionPerformed(evt);
             }
         });
 
@@ -96,7 +97,7 @@ public class RegistrarInasistencia extends javax.swing.JPanel {
                 .addContainerGap(310, Short.MAX_VALUE)
                 .addComponent(btn_limpiar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btn_modificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btn_registrar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(302, 302, 302))
             .addGroup(pnl_datosLayout.createSequentialGroup()
                 .addGap(40, 40, 40)
@@ -137,7 +138,7 @@ public class RegistrarInasistencia extends javax.swing.JPanel {
                     .addComponent(cb_cantSuplencias, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 117, Short.MAX_VALUE)
                 .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btn_modificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_registrar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_limpiar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(31, 31, 31))
         );
@@ -167,9 +168,9 @@ public class RegistrarInasistencia extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btn_modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_modificarActionPerformed
-
-    }//GEN-LAST:event_btn_modificarActionPerformed
+    private void btn_registrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_registrarActionPerformed
+        
+    }//GEN-LAST:event_btn_registrarActionPerformed
 
     private void btn_limpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_limpiarActionPerformed
 
@@ -178,7 +179,7 @@ public class RegistrarInasistencia extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_limpiar;
-    private javax.swing.JButton btn_modificar;
+    private javax.swing.JButton btn_registrar;
     private javax.swing.JComboBox cb_anos;
     private javax.swing.JComboBox cb_cantSuplencias;
     private javax.swing.JComboBox cb_listaEmpleados;

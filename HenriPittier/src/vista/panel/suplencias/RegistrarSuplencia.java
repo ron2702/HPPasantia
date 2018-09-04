@@ -6,12 +6,16 @@
 package vista.panel.suplencias;
 
 import comun.Empleado;
+import comun.Suplencia;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import modelo.ComunicacionREST;
+import modelo.Registry;
 import vista.panel.empleados.RegistrarEmpleado;
 
 
@@ -58,7 +62,7 @@ public class RegistrarSuplencia extends javax.swing.JPanel {
         lbl_mesSuplencias = new javax.swing.JLabel();
         cb_meses = new javax.swing.JComboBox();
         cb_cantSuplencias = new javax.swing.JComboBox();
-        btn_modificar = new javax.swing.JButton();
+        btn_registrar = new javax.swing.JButton();
         btn_limpiar = new javax.swing.JButton();
         lbl_anoSuplencias = new javax.swing.JLabel();
         cb_anos = new javax.swing.JComboBox();
@@ -88,13 +92,13 @@ public class RegistrarSuplencia extends javax.swing.JPanel {
         cb_cantSuplencias.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31" }));
         cb_cantSuplencias.setPreferredSize(new java.awt.Dimension(40, 19));
 
-        btn_modificar.setBackground(new java.awt.Color(121, 213, 177));
-        btn_modificar.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        btn_modificar.setText("Modificar");
-        btn_modificar.setPreferredSize(new java.awt.Dimension(109, 25));
-        btn_modificar.addActionListener(new java.awt.event.ActionListener() {
+        btn_registrar.setBackground(new java.awt.Color(121, 213, 177));
+        btn_registrar.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        btn_registrar.setText("Registrar");
+        btn_registrar.setPreferredSize(new java.awt.Dimension(109, 25));
+        btn_registrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_modificarActionPerformed(evt);
+                btn_registrarActionPerformed(evt);
             }
         });
 
@@ -122,7 +126,7 @@ public class RegistrarSuplencia extends javax.swing.JPanel {
                 .addContainerGap(310, Short.MAX_VALUE)
                 .addComponent(btn_limpiar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btn_modificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btn_registrar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(302, 302, 302))
             .addGroup(pnl_datosLayout.createSequentialGroup()
                 .addGap(40, 40, 40)
@@ -136,11 +140,11 @@ public class RegistrarSuplencia extends javax.swing.JPanel {
                         .addGap(35, 35, 35)
                         .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(cb_meses, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cb_listaEmpleados, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addComponent(cb_cantSuplencias, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(cb_anos, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addComponent(cb_anos, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(cb_listaEmpleados, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(434, Short.MAX_VALUE))
         );
         pnl_datosLayout.setVerticalGroup(
             pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -163,7 +167,7 @@ public class RegistrarSuplencia extends javax.swing.JPanel {
                     .addComponent(cb_cantSuplencias, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 117, Short.MAX_VALUE)
                 .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btn_modificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_registrar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_limpiar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(31, 31, 31))
         );
@@ -193,18 +197,38 @@ public class RegistrarSuplencia extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btn_modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_modificarActionPerformed
-    
-    }//GEN-LAST:event_btn_modificarActionPerformed
+    private void btn_registrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_registrarActionPerformed
+        try {
+            Empleado empleadoSeleccionado = (Empleado) cb_listaEmpleados.getSelectedItem();
+            String anoSeleccionado = (String) cb_anos.getSelectedItem();
+            String diasSeleccionados = (String) cb_cantSuplencias.getSelectedItem();
+            String mesSeleccionado = (String) cb_meses.getSelectedItem();
+            Suplencia nuevaSuplencia = new Suplencia(empleadoSeleccionado.getCedula(), Integer.parseInt(diasSeleccionados), mesSeleccionado, Integer.parseInt(anoSeleccionado));
+            ComunicacionREST com = new ComunicacionREST();
+            Suplencia suplenciaRegistrada = com.registrarSuplencia(nuevaSuplencia);
+            if (suplenciaRegistrada.getError() == Registry.RESULTADO_CODIGO_RECURSO_CREADO){
+                final JPanel panel = new JPanel();
+                JOptionPane.showMessageDialog(panel, "Se registró exitosamente la suplencia", "Información", JOptionPane.INFORMATION_MESSAGE);
+            }else{
+                final JPanel panel = new JPanel();
+                JOptionPane.showMessageDialog(panel, "No se ha podido registrar la suplencia, intente nuevamente", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(RegistrarSuplencia.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btn_registrarActionPerformed
 
     private void btn_limpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_limpiarActionPerformed
-        
+        cb_listaEmpleados.setSelectedIndex(0);  
+        cb_meses.setSelectedIndex(0);
+        cb_anos.setSelectedIndex(0);
+        cb_cantSuplencias.setSelectedIndex(0);
     }//GEN-LAST:event_btn_limpiarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_limpiar;
-    private javax.swing.JButton btn_modificar;
+    private javax.swing.JButton btn_registrar;
     private javax.swing.JComboBox cb_anos;
     private javax.swing.JComboBox cb_cantSuplencias;
     private javax.swing.JComboBox cb_listaEmpleados;

@@ -16,13 +16,6 @@ public class Suplencia {
     public Suplencia(int cedulaEmpleado) {
         this.cedulaEmpleado = cedulaEmpleado;
     }
-
-    public Suplencia(int diasAdicionales, String mes, int ano, int cedulaEmpleado) {
-        this.diasAdicionales = diasAdicionales;
-        this.mes = mes;
-        this.ano = ano;
-        this.cedulaEmpleado = cedulaEmpleado;
-    }
     
     public Suplencia(int _cedulaEmpleado, int _diasAdicionales, String _mes, int _ano) {
         this.cedulaEmpleado = _cedulaEmpleado;
