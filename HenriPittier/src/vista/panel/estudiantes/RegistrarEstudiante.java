@@ -3,6 +3,8 @@
 package vista.panel.estudiantes;
 
 import comun.Estudiante;
+import comun.Rep_Est;
+import comun.Representante;
 import java.awt.event.KeyEvent;
 import java.io.File;
 import java.text.SimpleDateFormat;
@@ -24,9 +26,11 @@ import modelo.Registry;
 
 public class RegistrarEstudiante extends javax.swing.JPanel {
     private Estudiante estudianteConsultar;
+    private Representante representanteConsultar;
     private File archivoSeleccionado;
     private Object cb_estados;
     long cedulaEscolar;
+    int cedulaRepresentante;
     int flag = 0;
    
     public RegistrarEstudiante() {
@@ -392,91 +396,111 @@ public class RegistrarEstudiante extends javax.swing.JPanel {
             && (!txt_segundoApellido.getText().equals("")) &&(!dc_fechaNac.getText().equals(""))){
         
         try {
-            /*Pasos para generar cedula escolar INICIO*/
-            SimpleDateFormat parseFecha = new SimpleDateFormat("dd/MM/yy");
-            Date fechaNacimiento = parseFecha.parse(dc_fechaNac.getText());
-            Calendar calNac = Calendar.getInstance();
-            calNac.setTime(fechaNacimiento);
             
-            String ci = txt_cedulaRepresentante.getText();
-            
-            long tamano = String.valueOf(ci).length();
-            if (tamano < 8){
-                ci = "0" + ci;
-            }
-            
-            int anoNac = calNac.get(Calendar.YEAR) %100;
-            String anoNacString = String.valueOf(anoNac);       
-            
-            String hijonumero = "1";
-            
-            String cedulaConcat = new StringBuilder().append(hijonumero).append(anoNacString).append(ci).toString();
+            cedulaRepresentante = Integer.parseInt(txt_cedulaRepresentante.getText());
+            ComunicacionREST comRestRep = new ComunicacionREST();
+            Representante _representante = new Representante(cedulaRepresentante);
             
             try {
-                cedulaEscolar = Long.parseLong(cedulaConcat.trim());    
-            } catch (NumberFormatException nfe) {
-                System.out.println("NumberFormatException: " + nfe.getMessage());
-            }
-            
-            while(flag == 0){
-                ComunicacionREST comRest2 = new ComunicacionREST();
-                Estudiante _estudiante = new Estudiante(cedulaEscolar);
-                
-                try {
-                    estudianteConsultar = comRest2.consultarEstudianteDetalle(_estudiante);
-                } catch (Exception ex) {
+                    representanteConsultar = comRestRep.consultarRepresentanteDetalle(_representante);
+            } catch (Exception ex) {
                     Logger.getLogger(RegistrarEstudiante.class.getName()).log(Level.SEVERE, null, ex);
-                }
-                
-                    if(estudianteConsultar.getCedulaEscolar() == cedulaEscolar){
-                        String ciEscolarString = Long.toString(cedulaEscolar);
-                        String digitoString = Character.toString(ciEscolarString.charAt(0));
-                        int digito = Integer.parseInt(digitoString);
-
-                        digito = digito + 1;
-                        String digitoAString = String.valueOf(digito);
-                        char c = digitoAString.charAt(0);
-                        
-                        StringBuilder test = new StringBuilder(ciEscolarString);
-                        test.setCharAt(0, c);
-                        
-                        ciEscolarString = test.toString();
-                        
-                        cedulaEscolar = Long.parseLong(ciEscolarString);
-                    }
-                    else{
-                        flag = 1;
-                    }
             }
-            /*Pasos para generar cedula escolar FIN*/
             
-            /*Pasos para generar cedula MAPFRE INICIO*/
-            String ciRep = txt_cedulaRepresentante.getText();
-            int ano = calNac.get(Calendar.YEAR) %100;
-            
-            String anoAString = String.valueOf(ano);
-            
-            String cedulaMAPFRE = ciRep + "-" + anoAString;
-            /*Pasos para generar cedula MAPFRE FIN*/
-            
-            Estudiante estudianteRegistrar = new Estudiante(cedulaEscolar, txt_primerNombre.getText(), txt_primerApellido.getText(), txt_segundoNombre.getText(),
-                                        txt_segundoApellido.getText(), fechaNacimiento, "fotico", cedulaMAPFRE, (String) cb_sexo.getSelectedItem());
-            ComunicacionREST comRest = new ComunicacionREST();
-            Estudiante estudianteRegistrado = comRest.registrarEstudiante(estudianteRegistrar);
-            if (estudianteRegistrado.getError() == Registry.RESULTADO_CODIGO_RECURSO_CREADO){
+            if (representanteConsultar.getTipo().equals("Representante I")){
+                
+                /*Pasos para generar cedula escolar INICIO*/
+                SimpleDateFormat parseFecha = new SimpleDateFormat("dd/MM/yy");
+                Date fechaNacimiento = parseFecha.parse(dc_fechaNac.getText());
+                Calendar calNac = Calendar.getInstance();
+                calNac.setTime(fechaNacimiento);
+
+                String ci = txt_cedulaRepresentante.getText();
+
+                long tamano = String.valueOf(ci).length();
+                if (tamano < 8){
+                    ci = "0" + ci;
+                }
+
+                int anoNac = calNac.get(Calendar.YEAR) %100;
+                String anoNacString = String.valueOf(anoNac);       
+
+                String hijonumero = "1";
+
+                String cedulaConcat = new StringBuilder().append(hijonumero).append(anoNacString).append(ci).toString();
+
+                try {
+                    cedulaEscolar = Long.parseLong(cedulaConcat.trim());    
+                } catch (NumberFormatException nfe) {
+                    System.out.println("NumberFormatException: " + nfe.getMessage());
+                }
+
+                while(flag == 0){
+                    ComunicacionREST comRestEst = new ComunicacionREST();
+                    Estudiante _estudiante = new Estudiante(cedulaEscolar);
+
+                    try {
+                        estudianteConsultar = comRestEst.consultarEstudianteDetalle(_estudiante);
+                    } catch (Exception ex) {
+                        Logger.getLogger(RegistrarEstudiante.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+
+                        if(estudianteConsultar.getCedulaEscolar() == cedulaEscolar){
+                            String ciEscolarString = Long.toString(cedulaEscolar);
+                            String digitoString = Character.toString(ciEscolarString.charAt(0));
+                            int digito = Integer.parseInt(digitoString);
+
+                            digito = digito + 1;
+                            String digitoAString = String.valueOf(digito);
+                            char c = digitoAString.charAt(0);
+
+                            StringBuilder test = new StringBuilder(ciEscolarString);
+                            test.setCharAt(0, c);
+
+                            ciEscolarString = test.toString();
+
+                            cedulaEscolar = Long.parseLong(ciEscolarString);
+                        }
+                        else{
+                            flag = 1;
+                        }
+                }
+                /*Pasos para generar cedula escolar FIN*/
+                
+                /*Pasos para generar cedula MAPFRE INICIO*/
+                String ciRep = txt_cedulaRepresentante.getText();
+                int ano = calNac.get(Calendar.YEAR) %100;
+
+                String anoAString = String.valueOf(ano);
+
+                String cedulaMAPFRE = ciRep + "-" + anoAString;
+                /*Pasos para generar cedula MAPFRE FIN*/
+                
+                Estudiante estudianteRegistrar = new Estudiante(cedulaEscolar, txt_primerNombre.getText(), txt_primerApellido.getText(), txt_segundoNombre.getText(),
+                                            txt_segundoApellido.getText(), fechaNacimiento, "fotico", cedulaMAPFRE, (String) cb_sexo.getSelectedItem());
+                Rep_Est repestRegistar = new Rep_Est(cedulaRepresentante, cedulaEscolar);
+                ComunicacionREST comRest = new ComunicacionREST();
+                ComunicacionREST comRest2 = new ComunicacionREST();
+                Estudiante estudianteRegistrado = comRest.registrarEstudiante(estudianteRegistrar);
+                Rep_Est repestRegistrado = comRest2.registrarRepEst(repestRegistar);
+                if ((estudianteRegistrado.getError() == Registry.RESULTADO_CODIGO_RECURSO_CREADO) && (repestRegistrado.getError() == Registry.RESULTADO_CODIGO_BIEN)){
                     final JPanel panel = new JPanel();
                     JOptionPane.showMessageDialog(panel, "Se registro existosamente el estudiante", "Información", JOptionPane.INFORMATION_MESSAGE);
                 }else{
                     final JPanel panel = new JPanel();
                     JOptionPane.showMessageDialog(panel, "No se ha podido registrar el estudiante, intente nuevamente", "Error", JOptionPane.ERROR_MESSAGE);
                 }
+            }else{
+                final JPanel panel = new JPanel();
+                JOptionPane.showMessageDialog(panel, "Este representante no esta autorizado ya que no cumple con el tipo", "Información", JOptionPane.INFORMATION_MESSAGE);
+            }
         } catch (Exception ex) {
              Logger.getLogger(RegistrarEstudiante.class.getName()).log(Level.SEVERE, null, ex);
         }
     }else{
         final JPanel panel = new JPanel();
         JOptionPane.showMessageDialog(panel, "No se ha podido registrar el estudiante, intente nuevamente", "Error", JOptionPane.ERROR_MESSAGE);
-    }
+    } 
     }//GEN-LAST:event_btn_registrarActionPerformed
 
     private void txt_cedulaEscolarKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_cedulaEscolarKeyTyped

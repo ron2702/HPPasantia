@@ -12,6 +12,7 @@ import comun.Estudiante;
 import comun.Grupo;
 import comun.Inasistencia;
 import comun.Lugar;
+import comun.Rep_Est;
 import comun.Representante;
 import comun.Suplencia;
 import comun.Usuario;
@@ -580,6 +581,81 @@ public class ComunicacionREST {
             throw ex;
         }
     }
+    
+    /*SERVICIOS WEB DE Rep_Est*/
+    public Rep_Est registrarRepEst(Rep_Est e) throws Exception {
+        try {
+            conn = null;
+            Gson gson = new GsonBuilder().create();
+            BufferedReader br = comunicar("GET", "registrarREPEST?repest=" + URLEncoder.encode(gson.toJson(e).toString(), "UTF-8"));
+            String output;
+            Rep_Est _repest = new Rep_Est();
+            while ((output = br.readLine()) != null) {
+                _repest = gson.fromJson(output, Rep_Est.class);
+            }
+            conn.disconnect();
+            return _repest;
+        }
+        catch (Exception ex){
+            throw ex;
+        }
+    }
+    
+    public Rep_Est borrarRepEst(Rep_Est e) throws Exception {
+        try {
+            conn = null;
+            Gson gson = new GsonBuilder().create();
+            BufferedReader br = comunicar("GET", "borrarREPEST?repest=" + URLEncoder.encode(gson.toJson(e).toString(), "UTF-8"));
+            String output;
+            Rep_Est _repest = new Rep_Est();
+            while ((output = br.readLine()) != null) {
+                _repest = gson.fromJson(output, Rep_Est.class);
+            }
+            conn.disconnect();
+            return _repest;
+        }
+        catch (Exception ex){
+            throw ex;
+        }
+    }
+    
+    public ArrayList<Rep_Est> consultarRepEst() throws Exception {
+        try {
+            conn = null;
+            Gson gson = new GsonBuilder().create();
+            BufferedReader br = comunicar("GET", "consultarREPEST");
+            String output;
+            ArrayList<Rep_Est> _repest = new ArrayList<>();
+            Type listType = new TypeToken<ArrayList<Rep_Est>>() {}.getType();
+            while ((output = br.readLine()) != null) {
+                _repest = gson.fromJson(output, listType);
+            }
+            conn.disconnect();
+            return _repest;
+        }
+        catch (Exception ex){
+            throw ex;
+        }
+    }
+    
+    public Rep_Est consultarRep_EstDetalle(Rep_Est e) throws Exception {
+        try {
+            conn = null;
+            Gson gson = new GsonBuilder().create();
+            BufferedReader br = comunicar("GET", "consultarREPESTDetalle?repest=" + URLEncoder.encode(gson.toJson(e).toString(), "UTF-8"));
+            String output;
+            Rep_Est _repest = new Rep_Est();
+            while ((output = br.readLine()) != null) {
+                _repest = gson.fromJson(output, Rep_Est.class);
+            }
+            conn.disconnect();
+            return _repest;
+        }
+        catch (Exception ex){
+            throw ex;
+        }
+    }
+    
 }
     
 
