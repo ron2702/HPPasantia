@@ -341,7 +341,7 @@ public class ModificarRepresentante extends javax.swing.JPanel {
     lbl_fechaNac.setText("Fecha de Nacimiento: ");
 
     cb_tipo.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-    cb_tipo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Representante", "Autorizado" }));
+    cb_tipo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Representante I", "Representante II", "Autorizado" }));
 
     lbl_tipo.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
     lbl_tipo.setText("Tipo:");
