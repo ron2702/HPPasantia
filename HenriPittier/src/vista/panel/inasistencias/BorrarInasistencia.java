@@ -78,6 +78,7 @@ public class BorrarInasistencia extends javax.swing.JPanel {
 
         pnl_modificarInasistencia.setBackground(new java.awt.Color(204, 204, 204));
         pnl_modificarInasistencia.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+        pnl_modificarInasistencia.setPreferredSize(new java.awt.Dimension(840, 520));
 
         lbl_empleadoSuplencia.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         lbl_empleadoSuplencia.setText("Nombre del empleado:");
@@ -129,7 +130,7 @@ public class BorrarInasistencia extends javax.swing.JPanel {
                 .addGap(34, 34, 34)
                 .addGroup(pnl_modificarInasistenciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnl_modificarInasistenciaLayout.createSequentialGroup()
-                        .addComponent(cb_anos, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(cb_anos, 0, 68, Short.MAX_VALUE)
                         .addGap(564, 564, 564))
                     .addGroup(pnl_modificarInasistenciaLayout.createSequentialGroup()
                         .addGroup(pnl_modificarInasistenciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -158,7 +159,7 @@ public class BorrarInasistencia extends javax.swing.JPanel {
                 .addGroup(pnl_modificarInasistenciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbl_anoSuplencias)
                     .addComponent(cb_anos, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 179, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 198, Short.MAX_VALUE)
                 .addGroup(pnl_modificarInasistenciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn_limpiar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_eliminar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -177,7 +178,7 @@ public class BorrarInasistencia extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(pnl_modificarInasistencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lbl_tituloBorrarInasistencia))
-                .addContainerGap(69, Short.MAX_VALUE))
+                .addContainerGap(55, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -186,7 +187,7 @@ public class BorrarInasistencia extends javax.swing.JPanel {
                 .addComponent(lbl_tituloBorrarInasistencia)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(pnl_modificarInasistencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(82, Short.MAX_VALUE))
+                .addContainerGap(63, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
