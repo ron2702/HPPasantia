@@ -657,15 +657,16 @@ public class ComunicacionREST {
         }
     }
     
-    public Rep_Est consultarRep_EstDetalle(Rep_Est e) throws Exception {
+    public ArrayList<Rep_Est> consultarRep_EstDetalle(Rep_Est e) throws Exception {
         try {
             conn = null;
             Gson gson = new GsonBuilder().create();
+            ArrayList<Rep_Est> _repest = new ArrayList<>();
             BufferedReader br = comunicar("GET", "consultarREPESTDetalle?repest=" + URLEncoder.encode(gson.toJson(e).toString(), "UTF-8"));
             String output;
-            Rep_Est _repest = new Rep_Est();
+            Type listType = new TypeToken<ArrayList<Rep_Est>>() {}.getType();
             while ((output = br.readLine()) != null) {
-                _repest = gson.fromJson(output, Rep_Est.class);
+                _repest = gson.fromJson(output, listType);
             }
             conn.disconnect();
             return _repest;
@@ -674,7 +675,26 @@ public class ComunicacionREST {
             throw ex;
         }
     }
- 
+        
+    public ArrayList<Rep_Est> consultarRep_EstDetalle_Escolar(Rep_Est e) throws Exception {
+        try {
+            conn = null;
+            Gson gson = new GsonBuilder().create();
+            ArrayList<Rep_Est> _repest = new ArrayList<>();
+            BufferedReader br = comunicar("GET", "consultarREPESTDetalleEscolar?repest=" + URLEncoder.encode(gson.toJson(e).toString(), "UTF-8"));
+            String output;
+            Type listType = new TypeToken<ArrayList<Rep_Est>>() {}.getType();
+            while ((output = br.readLine()) != null) {
+                _repest = gson.fromJson(output, listType);
+            }
+            conn.disconnect();
+            return _repest;
+        }
+        catch (Exception ex){
+            throw ex;
+        }
+    }
+    
 }
     
 

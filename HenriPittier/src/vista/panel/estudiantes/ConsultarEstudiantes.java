@@ -6,6 +6,7 @@
 package vista.panel.estudiantes;
 
 import comun.Estudiante;
+import comun.Rep_Est;
 import comun.Representante;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -20,6 +21,9 @@ import modelo.Registry;
 
 public class ConsultarEstudiantes extends javax.swing.JPanel {
     private Estudiante estudianteConsultar;
+    private ArrayList<Rep_Est> representanteConsultar;
+    Representante representanteConsultado;
+    int cedulaRepConsultada;
     DefaultTableModel model;
     
     
@@ -201,25 +205,49 @@ public class ConsultarEstudiantes extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void tb_consultarEstudiantesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tb_consultarEstudiantesMouseClicked
-        int index = tb_consultarEstudiantes.getSelectedRow();
-        
-        String cedula = model.getValueAt(index, 0).toString();
-        long cedulaEstudiante = Long.parseLong(cedula);
-        ComunicacionREST comRest = new ComunicacionREST();
-        Estudiante _estudiante = new Estudiante(cedulaEstudiante);
-        
-        try {
+        try {                                                     
+            int index = tb_consultarEstudiantes.getSelectedRow();
+            
+            String cedula = model.getValueAt(index, 0).toString();
+            long cedulaEstudiante = Long.parseLong(cedula);
+            
+            ComunicacionREST comRest = new ComunicacionREST();
+            Rep_Est _repest = new Rep_Est(cedulaEstudiante);
+            
+            representanteConsultar = comRest.consultarRep_EstDetalle_Escolar(_repest);
+            
+            
+            for (Rep_Est repest : representanteConsultar){
+                
+                int ci = repest.getCedula();
+                ComunicacionREST comRest3 = new ComunicacionREST();
+                Representante representante = new Representante(ci);
+                
+                try {
+                    representanteConsultado = comRest3.consultarRepresentanteDetalle(representante);
+                } catch (Exception ex) {
+                    Logger.getLogger(ConsultarEstudiantes.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                
+                if(representanteConsultado.getTipo().equals("Representante I")){
+                    cedulaRepConsultada = representanteConsultado.getCedula();
+                }
+            }           
+            Estudiante _estudiante = new Estudiante(cedulaEstudiante);
             estudianteConsultar = comRest.consultarEstudianteDetalle(_estudiante);
+            
+            
+            if (estudianteConsultar.getError() == Registry.RESULTADO_CODIGO_BIEN){
+                
+                String cedulaRep = String.valueOf(cedulaRepConsultada);
+                txt_cedulaRepresentante.setText(cedulaRep);
+                DateFormat dateFormat = new SimpleDateFormat("dd/MM/yy");
+                String nacimiento = dateFormat.format(estudianteConsultar.getFechaNac());
+                txt_fechaNac.setText(nacimiento);
+                txt_cedulaMAPFRE.setText(estudianteConsultar.getCedulaMAPFRE());
+            }
         } catch (Exception ex) {
             Logger.getLogger(ConsultarEstudiantes.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
-        if (estudianteConsultar.getError() == Registry.RESULTADO_CODIGO_BIEN){
-            
-            DateFormat dateFormat = new SimpleDateFormat("dd/MM/yy");
-            String nacimiento = dateFormat.format(estudianteConsultar.getFechaNac());
-            txt_fechaNac.setText(nacimiento);
-            txt_cedulaMAPFRE.setText(estudianteConsultar.getCedulaMAPFRE());
         }
     }//GEN-LAST:event_tb_consultarEstudiantesMouseClicked
 

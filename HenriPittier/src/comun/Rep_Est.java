@@ -22,6 +22,10 @@ public class Rep_Est {
     public Rep_Est(int cedula){
         this.cedula = cedula;
     }
+    
+    public Rep_Est(long _cedulaEscolar){
+        this.cedulaEscolar = _cedulaEscolar;
+    }
 
     public Rep_Est(int cedula, long cedulaEscolar) {
         this.cedula = cedula;
