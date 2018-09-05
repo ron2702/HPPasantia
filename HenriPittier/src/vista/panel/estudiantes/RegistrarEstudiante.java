@@ -31,7 +31,7 @@ public class RegistrarEstudiante extends javax.swing.JPanel {
     private Object cb_estados;
     long cedulaEscolar;
     int cedulaRepresentante;
-    int flag = 0;
+    int flag;
    
     public RegistrarEstudiante() {
         initComponents();
@@ -392,6 +392,7 @@ public class RegistrarEstudiante extends javax.swing.JPanel {
 
     private void btn_registrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_registrarActionPerformed
 
+    flag = 0;
     if ((!txt_primerNombre.getText().equals("")) && (!txt_primerApellido.getText().equals("")) && (!txt_segundoNombre.getText().equals(""))
             && (!txt_segundoApellido.getText().equals("")) &&(!dc_fechaNac.getText().equals(""))){
         
