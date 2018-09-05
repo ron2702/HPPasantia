@@ -5,7 +5,7 @@
  */
 package controlador.modulo_repest;
 
-import comun.REPEST;
+import comun.Rep_Est;
 import controlador.Comando;
 import modelo.modulo_repest.DAORepest;
 
@@ -15,10 +15,10 @@ import modelo.modulo_repest.DAORepest;
  */
 public class RegistrarRepEstComando extends Comando {
     
-    private REPEST registrarREPEST;
-    private REPEST respuesta;
+    private Rep_Est registrarREPEST;
+    private Rep_Est respuesta;
     
-    public RegistrarRepEstComando (REPEST _registrarREPEST){
+    public RegistrarRepEstComando (Rep_Est _registrarREPEST){
         this.registrarREPEST = _registrarREPEST;
     }
 
@@ -28,7 +28,7 @@ public class RegistrarRepEstComando extends Comando {
         respuesta = daorep.registrarREPEST(registrarREPEST);
     }
     
-    public REPEST obtenerRespuesta(){
+    public Rep_Est obtenerRespuesta(){
         return respuesta;
     }
 }

@@ -5,7 +5,7 @@
  */
 package modelo.modulo_repest;
 
-import comun.REPEST;
+import comun.Rep_Est;
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -27,11 +27,12 @@ public class DAORepest extends DAO {
     private static String _sqlRepestBorrar = "{?=call REPEST_BORRAR(?,?)}";
     private static String _sqlRepestConsultar = "{call REPEST_CONSULTAR_TODOS()}";
     private static String _sqlRepestDetalle = "{call REPEST_CONSULTAR_DETALLE(?)}";
+    private static String _sqlRepestDetalleEscolar = "{call REPEST_CONSULTAR_DETALLE_ESCOLAR(?)}";
     private ResultSet rs;
     
-    public REPEST registrarREPEST (REPEST _repest) throws SQLException, Exception{
+    public Rep_Est registrarREPEST (Rep_Est _repest) throws SQLException, Exception{
         
-        REPEST _repestFallido = new REPEST();
+        Rep_Est _repestFallido = new Rep_Est();
         CallableStatement cstmt;
         
         int respuesta = 0;
@@ -76,9 +77,9 @@ public class DAORepest extends DAO {
         
     }
     
-    public REPEST borrarREPEST (REPEST _repest) throws SQLException, Exception{
+    public Rep_Est borrarREPEST (Rep_Est _repest) throws SQLException, Exception{
         
-        REPEST _repestFallido = new REPEST();
+        Rep_Est _repestFallido = new Rep_Est();
         CallableStatement cstmt;
         
         int respuesta = 0;
@@ -124,9 +125,9 @@ public class DAORepest extends DAO {
     }
     
     
-    public ArrayList<REPEST> consultarREPEST() throws Exception {
+    public ArrayList<Rep_Est> consultarREPEST() throws Exception {
 
-        ArrayList<REPEST> listaREPEST = new ArrayList<REPEST>();
+        ArrayList<Rep_Est> listaREPEST = new ArrayList<Rep_Est>();
         CallableStatement cstmt;
 
         int response = 0;
@@ -139,7 +140,7 @@ public class DAORepest extends DAO {
             
             while(rs.next()){
                 
-                REPEST repest = new REPEST(rs.getInt("cedularep"), 
+                Rep_Est repest = new Rep_Est(rs.getInt("cedularep"), 
                                   rs.getString("primernombrerep"),
                                   rs.getString("primerapellidorep"),
                                   rs.getLong("cedulaescolares"),
@@ -165,9 +166,9 @@ public class DAORepest extends DAO {
         }
     }
     
-    public REPEST consultarREPESTDetalle(REPEST _repest) throws Exception {
+    public ArrayList<Rep_Est> consultarREPESTDetalle(Rep_Est _repest) throws Exception {
         
-        REPEST repestConsultado = new REPEST();
+        ArrayList<Rep_Est> listaREPEST = new ArrayList<Rep_Est>();
         CallableStatement cstmt;
 
         int response = 0;
@@ -181,16 +182,59 @@ public class DAORepest extends DAO {
             
             while(rs.next()){
                 
-                repestConsultado = new REPEST(rs.getInt("cedularep"), 
+                Rep_Est repest = new Rep_Est(rs.getInt("cedularep"), 
                                   rs.getString("primernombrerep"),
                                   rs.getString("primerapellidorep"),
                                   rs.getLong("cedulaescolares"),
                                   rs.getString("primernombrees"),
                                   rs.getString("primerapellidoes"));
-                repestConsultado.setError(RESULTADO_CODIGO_BIEN);
+                repest.setError(RESULTADO_CODIGO_BIEN);
+                listaREPEST.add(repest);
                 
             }
-            return repestConsultado;
+            return listaREPEST;
+
+
+        } catch (SQLException ex) {
+
+            throw ex;
+
+        } catch (Exception ex) {
+            
+            throw ex;
+
+        } finally {
+            _bdCon.close();
+        }
+    }
+    
+    public ArrayList<Rep_Est> consultarREPESTDetalleEscolar(Rep_Est _repest) throws Exception {
+        
+        ArrayList<Rep_Est> listaREPEST = new ArrayList<Rep_Est>();
+        CallableStatement cstmt;
+
+        int response = 0;
+
+        try {
+            
+            _bdCon = DAO.getBdConnect();
+            cstmt = _bdCon.prepareCall(_sqlRepestDetalleEscolar);
+            cstmt.setLong(1, _repest.getCedulaEscolar());
+            rs = cstmt.executeQuery();
+            
+            while(rs.next()){
+                
+                Rep_Est repest = new Rep_Est(rs.getInt("cedularep"), 
+                                  rs.getString("primernombrerep"),
+                                  rs.getString("primerapellidorep"),
+                                  rs.getLong("cedulaescolares"),
+                                  rs.getString("primernombrees"),
+                                  rs.getString("primerapellidoes"));
+                repest.setError(RESULTADO_CODIGO_BIEN);
+                listaREPEST.add(repest);
+                
+            }
+            return listaREPEST;
 
 
         } catch (SQLException ex) {

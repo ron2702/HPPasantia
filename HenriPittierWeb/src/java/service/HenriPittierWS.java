@@ -13,7 +13,7 @@ import comun.Estudiante;
 import comun.Grupo;
 import comun.Inasistencia;
 import comun.Lugar;
-import comun.REPEST;
+import comun.Rep_Est;
 import comun.Representante;
 import comun.Suplencia;
 import comun.Usuario;
@@ -45,6 +45,7 @@ import controlador.modulo_lugares.ConsultarParroquiasComando;
 import controlador.modulo_repest.BorrarRepEstComando;
 import controlador.modulo_repest.ConsultarRepEstComando;
 import controlador.modulo_repest.ConsultarRepEstDetalleComando;
+import controlador.modulo_repest.ConsultarRepEstDetalleEscolarComando;
 import controlador.modulo_repest.RegistrarRepEstComando;
 import controlador.modulo_representantes.BorrarRepresentanteComando;
 import controlador.modulo_representantes.ConsultarRepresentanteDetalleComando;
@@ -463,14 +464,14 @@ public class HenriPittierWS {
         }
     }
     
-    /*WS DE REPEST*/
+    /*WS DE Rep_Est*/
     @GET
     @Path("registrarREPEST")
     @Produces("application/json")
     public String registrarREPEST (@QueryParam("repest") String _repest){
         
         Gson gson = new GsonBuilder().create();
-        REPEST registrarRepest = gson.fromJson(_repest, REPEST.class);
+        Rep_Est registrarRepest = gson.fromJson(_repest, Rep_Est.class);
         RegistrarRepEstComando cmd = new RegistrarRepEstComando(registrarRepest);
         
         try {
@@ -480,7 +481,7 @@ public class HenriPittierWS {
             
         } catch (Exception ex) {
             
-            REPEST error = new REPEST();
+            Rep_Est error = new Rep_Est();
             error.setError(RESULTADO_CODIGO_FALLIDO);
             return gson.toJson(error);
             
@@ -493,7 +494,7 @@ public class HenriPittierWS {
     public String borrarREPEST (@QueryParam("repest") String _repest){
         
         Gson gson = new GsonBuilder().create();
-        REPEST repestBorrar = gson.fromJson(_repest, REPEST.class);
+        Rep_Est repestBorrar = gson.fromJson(_repest, Rep_Est.class);
         BorrarRepEstComando cmd = new BorrarRepEstComando(repestBorrar);
         
         try {
@@ -503,7 +504,7 @@ public class HenriPittierWS {
             
         } catch (Exception ex) {
             
-            REPEST error = new REPEST();
+            Rep_Est error = new Rep_Est();
             error.setError(RESULTADO_CODIGO_FALLIDO);
             return gson.toJson(error);
             
@@ -524,7 +525,7 @@ public class HenriPittierWS {
             
         } catch (Exception ex) {
             
-            ArrayList<REPEST> error = null;
+            ArrayList<Rep_Est> error = null;
             return gson.toJson(error);
             
         }
@@ -536,7 +537,7 @@ public class HenriPittierWS {
     public String consultarREPESTDetalle (@QueryParam("repest") String _repest){
         
         Gson gson = new GsonBuilder().create();
-        REPEST repestConsultar = gson.fromJson(_repest, REPEST.class);
+        Rep_Est repestConsultar = gson.fromJson(_repest, Rep_Est.class);
         ConsultarRepEstDetalleComando cmd = new ConsultarRepEstDetalleComando(repestConsultar);
         
         try {
@@ -546,7 +547,30 @@ public class HenriPittierWS {
             
         } catch (Exception ex) {
             
-            REPEST error = new REPEST();
+            Rep_Est error = new Rep_Est();
+            error.setError(RESULTADO_CODIGO_FALLIDO);
+            return gson.toJson(error);
+            
+        }
+    }
+    
+    @GET
+    @Path("consultarREPESTDetalleEscolar")
+    @Produces("application/json")
+    public String consultarREPESTDetalleEscolar (@QueryParam("repest") String _repest){
+        
+        Gson gson = new GsonBuilder().create();
+        Rep_Est repestConsultar = gson.fromJson(_repest, Rep_Est.class);
+        ConsultarRepEstDetalleEscolarComando cmd = new ConsultarRepEstDetalleEscolarComando(repestConsultar);
+        
+        try {
+            
+            cmd.execute();
+            return gson.toJson(cmd.obtenerRespuesta());
+            
+        } catch (Exception ex) {
+            
+            Rep_Est error = new Rep_Est();
             error.setError(RESULTADO_CODIGO_FALLIDO);
             return gson.toJson(error);
             

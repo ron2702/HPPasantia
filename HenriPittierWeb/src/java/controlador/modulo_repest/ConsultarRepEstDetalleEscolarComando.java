@@ -14,21 +14,23 @@ import modelo.modulo_repest.DAORepest;
  *
  * @author Ronald
  */
-public class ConsultarRepEstComando extends Comando {
+public class ConsultarRepEstDetalleEscolarComando extends Comando {
     
+    private Rep_Est repestConsultar;
     private ArrayList<Rep_Est> respuesta;
-    
-    public ConsultarRepEstComando(){
-        
-    }
 
+    public ConsultarRepEstDetalleEscolarComando(Rep_Est _repestConsultar) {
+        this.repestConsultar = _repestConsultar;
+    }
+    
     @Override
     public void execute() throws Exception {
         DAORepest daorepest = new DAORepest();
-        respuesta = daorepest.consultarREPEST();
+        respuesta = daorepest.consultarREPESTDetalleEscolar(repestConsultar);
     }
     
     public ArrayList<Rep_Est> obtenerRespuesta(){
         return this.respuesta;
     }
+    
 }

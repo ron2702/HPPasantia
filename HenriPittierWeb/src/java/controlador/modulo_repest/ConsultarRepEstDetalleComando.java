@@ -5,8 +5,9 @@
  */
 package controlador.modulo_repest;
 
-import comun.REPEST;
+import comun.Rep_Est;
 import controlador.Comando;
+import java.util.ArrayList;
 import modelo.modulo_repest.DAORepest;
 
 /**
@@ -15,10 +16,10 @@ import modelo.modulo_repest.DAORepest;
  */
 public class ConsultarRepEstDetalleComando extends Comando {
     
-    private REPEST repestConsultar;
-    private REPEST respuesta;
+    private Rep_Est repestConsultar;
+    private ArrayList<Rep_Est> respuesta;
 
-    public ConsultarRepEstDetalleComando(REPEST _repestConsultar){
+    public ConsultarRepEstDetalleComando(Rep_Est _repestConsultar){
         this.repestConsultar = _repestConsultar;
     }
     
@@ -28,7 +29,7 @@ public class ConsultarRepEstDetalleComando extends Comando {
         respuesta = daorepest.consultarREPESTDetalle(repestConsultar);
     }
     
-    public REPEST obtenerRespuesta(){
+    public ArrayList<Rep_Est> obtenerRespuesta(){
         return this.respuesta;
     }
 }
