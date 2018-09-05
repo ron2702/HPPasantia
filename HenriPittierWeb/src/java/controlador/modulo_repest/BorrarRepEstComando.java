@@ -5,7 +5,7 @@
  */
 package controlador.modulo_repest;
 
-import comun.REPEST;
+import comun.Rep_Est;
 import controlador.Comando;
 import modelo.modulo_repest.DAORepest;
 
@@ -15,10 +15,10 @@ import modelo.modulo_repest.DAORepest;
  */
 public class BorrarRepEstComando extends Comando {
     
-    private REPEST borrarREPEST;
-    private REPEST respuesta;
+    private Rep_Est borrarREPEST;
+    private Rep_Est respuesta;
     
-    public BorrarRepEstComando(REPEST _borrarREPEST){
+    public BorrarRepEstComando(Rep_Est _borrarREPEST){
         this.borrarREPEST = _borrarREPEST;
     }
 
@@ -28,7 +28,7 @@ public class BorrarRepEstComando extends Comando {
         respuesta = daorep.borrarREPEST(borrarREPEST);
     }
     
-    public REPEST obtenerRespuesta(){
+    public Rep_Est obtenerRespuesta(){
         return respuesta;
     }
 }
