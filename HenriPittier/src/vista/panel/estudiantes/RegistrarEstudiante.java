@@ -414,8 +414,11 @@ public class RegistrarEstudiante extends javax.swing.JPanel {
                 String ci = txt_cedulaRepresentante.getText();
 
                 long tamano = String.valueOf(ci).length();
-                if (tamano < 8){
+                if (tamano  == 7){
                     ci = "0" + ci;
+                }
+                if (tamano == 6){
+                    ci = "00" + ci;
                 }
 
                 int anoNac = calNac.get(Calendar.YEAR) %100;
