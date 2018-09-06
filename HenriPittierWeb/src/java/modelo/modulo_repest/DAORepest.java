@@ -23,7 +23,7 @@ import static modelo.Registry.*;
 public class DAORepest extends DAO {
     
     private Connection _bdCon;
-    private static String _sqlRepestRegistrar = "{?=call REPEST_REGISTRAR(?,?)}";
+    private static String _sqlRepestRegistrar = "{?=call REPEST_REGISTRAR(?,?,?)}";
     private static String _sqlRepestBorrar = "{?=call REPEST_BORRAR(?,?)}";
     private static String _sqlRepestConsultar = "{call REPEST_CONSULTAR_TODOS()}";
     private static String _sqlRepestDetalle = "{call REPEST_CONSULTAR_DETALLE(?)}";
@@ -45,6 +45,7 @@ public class DAORepest extends DAO {
             cstmt.registerOutParameter(1, Types.INTEGER);
             cstmt.setInt(2, _repest.getCedula());
             cstmt.setLong(3, _repest.getCedulaEscolar());
+            cstmt.setString(4, _repest.getParentezco());
             
             cstmt.execute();
             
@@ -145,7 +146,8 @@ public class DAORepest extends DAO {
                                   rs.getString("primerapellidorep"),
                                   rs.getLong("cedulaescolares"),
                                   rs.getString("primernombrees"),
-                                  rs.getString("primerapellidoes"));
+                                  rs.getString("primerapellidoes"),
+                                  rs.getString("parentezco"));
                 repest.setError(RESULTADO_CODIGO_BIEN);
                 listaREPEST.add(repest);
                 
@@ -187,7 +189,8 @@ public class DAORepest extends DAO {
                                   rs.getString("primerapellidorep"),
                                   rs.getLong("cedulaescolares"),
                                   rs.getString("primernombrees"),
-                                  rs.getString("primerapellidoes"));
+                                  rs.getString("primerapellidoes"),
+                                  rs.getString("parentezco"));
                 repest.setError(RESULTADO_CODIGO_BIEN);
                 listaREPEST.add(repest);
                 
@@ -229,7 +232,8 @@ public class DAORepest extends DAO {
                                   rs.getString("primerapellidorep"),
                                   rs.getLong("cedulaescolares"),
                                   rs.getString("primernombrees"),
-                                  rs.getString("primerapellidoes"));
+                                  rs.getString("primerapellidoes"),
+                                  rs.getString("parentezco"));
                 repest.setError(RESULTADO_CODIGO_BIEN);
                 listaREPEST.add(repest);
                 
