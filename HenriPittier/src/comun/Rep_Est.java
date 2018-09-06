@@ -13,6 +13,7 @@ public class Rep_Est {
     private long cedulaEscolar;
     private String primerNombre_Est;
     private String primerApellido_Est;
+    private String parentezco;
     private int error;
     
     public Rep_Est(){
@@ -27,20 +28,22 @@ public class Rep_Est {
         this.cedulaEscolar = _cedulaEscolar;
     }
 
-    public Rep_Est(int cedula, long cedulaEscolar) {
+    public Rep_Est(int cedula, long cedulaEscolar, String _parentezco) {
         this.cedula = cedula;
         this.cedulaEscolar = cedulaEscolar;
+        this.parentezco = _parentezco;
     }
     
     
 
-    public Rep_Est(int cedula, String primerNombre_Rep, String primerApellido_Rep, long cedulaEscolar, String primerNombre_Est, String primerApellido_est) {
+    public Rep_Est(int cedula, String primerNombre_Rep, String primerApellido_Rep, long cedulaEscolar, String primerNombre_Est, String primerApellido_est, String _parentezco) {
         this.cedula = cedula;
         this.primerNombre_Rep = primerNombre_Rep;
         this.primerApellido_Rep = primerApellido_Rep;
         this.cedulaEscolar = cedulaEscolar;
         this.primerNombre_Est = primerNombre_Est;
         this.primerApellido_Est = primerApellido_est;
+        this.parentezco = _parentezco;
     }
 
     public int getCedula() {
@@ -91,6 +94,14 @@ public class Rep_Est {
         this.primerApellido_Est = primerApellido_Est;
     }
 
+    public String getParentezco() {
+        return parentezco;
+    }
+
+    public void setParentezco(String parentezco) {
+        this.parentezco = parentezco;
+    }
+   
     public int getError() {
         return error;
     }
