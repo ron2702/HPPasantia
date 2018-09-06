@@ -15,8 +15,7 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import modelo.ComunicacionREST;
-import modelo.Registry;
-import vista.panel.empleados.RegistrarEmpleado;
+import modelo.Registry; 
 
 /**
  *
@@ -44,13 +43,13 @@ public class BorrarInasistencia extends javax.swing.JPanel {
                         empleadoSeleccionado = (Empleado) cb_listaEmpleados.getSelectedItem();
                         
                     } catch (Exception ex) {
-                        Logger.getLogger(RegistrarEmpleado.class.getName()).log(Level.SEVERE, null, ex);
+                        Logger.getLogger(BorrarInasistencia.class.getName()).log(Level.SEVERE, null, ex);
                     }
                 }
             });
             
         } catch (Exception ex) {
-            Logger.getLogger(RegistrarEmpleado.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(BorrarInasistencia.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -216,7 +215,7 @@ public class BorrarInasistencia extends javax.swing.JPanel {
                     JOptionPane.showMessageDialog(panel, "No se han podido eliminar las inasistencias, intente nuevamente", "Error", JOptionPane.ERROR_MESSAGE);
                 }
             } catch (Exception ex) {
-                Logger.getLogger(RegistrarInasistencia.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(BorrarInasistencia.class.getName()).log(Level.SEVERE, null, ex);
             }
             
         }else {

@@ -6,7 +6,6 @@
 package vista.panel.suplencias;
 
 import comun.Empleado;
-import comun.Inasistencia;
 import comun.Suplencia;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -43,13 +42,13 @@ public class ModificarSuplencia extends javax.swing.JPanel {
                         Empleado empleadoSeleccionado = (Empleado) cb_listaEmpleados.getSelectedItem();
                         
                     } catch (Exception ex) {
-                        Logger.getLogger(RegistrarEmpleado.class.getName()).log(Level.SEVERE, null, ex);
+                        Logger.getLogger(ModificarSuplencia.class.getName()).log(Level.SEVERE, null, ex);
                     }
                 }
             });
             
         } catch (Exception ex) {
-            Logger.getLogger(RegistrarEmpleado.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ModificarSuplencia.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

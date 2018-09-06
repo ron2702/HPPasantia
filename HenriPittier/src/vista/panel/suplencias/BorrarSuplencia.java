@@ -6,13 +6,18 @@
 package vista.panel.suplencias;
 
 import comun.Empleado;
+import comun.Inasistencia;
 import comun.Suplencia;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import modelo.ComunicacionREST;
 import modelo.Registry;
+import vista.panel.empleados.RegistrarEmpleado;
 
 
 
@@ -23,7 +28,31 @@ public class BorrarSuplencia extends javax.swing.JPanel {
      * Creates new form BorrarSuplencia
      */
     public BorrarSuplencia() {
-        initComponents();
+        try {
+            initComponents();
+            ComunicacionREST comRest = new ComunicacionREST();
+            
+
+            ArrayList<Empleado> listaEmpleados = comRest.consultarEmpleados();
+            for (Empleado empleado : listaEmpleados) {
+                cb_listaEmpleados.addItem(empleado);
+            }
+            cb_listaEmpleados.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    try {
+                        Suplencia suplenciaEmpleado = new Suplencia();
+                        empleadoSeleccionado = (Empleado) cb_listaEmpleados.getSelectedItem();
+                        
+                    } catch (Exception ex) {
+                        Logger.getLogger(BorrarSuplencia.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+            });
+            
+        } catch (Exception ex) {
+            Logger.getLogger(BorrarSuplencia.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -58,7 +87,7 @@ public class BorrarSuplencia extends javax.swing.JPanel {
         cb_listaEmpleados.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
 
         lbl_mesSuplencias.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        lbl_mesSuplencias.setText("Mes de las inasistencias:");
+        lbl_mesSuplencias.setText("Mes de las suplencias:");
 
         cb_meses.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         cb_meses.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre" }));
@@ -186,7 +215,7 @@ public class BorrarSuplencia extends javax.swing.JPanel {
                     JOptionPane.showMessageDialog(panel, "No se han podido eliminar las suplencias, intente nuevamente", "Error", JOptionPane.ERROR_MESSAGE);
                 }
             } catch (Exception ex) {
-                Logger.getLogger(RegistrarSuplencia.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(BorrarSuplencia.class.getName()).log(Level.SEVERE, null, ex);
             }
 
         }else {

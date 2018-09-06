@@ -64,13 +64,13 @@ public class BorrarEmpleado extends javax.swing.JPanel {
                         dc_fechaIngreso.setSelectedDate(calIngreso);
                         cb_banco.setSelectedItem(empleadoSeleccionado.getBanco());
                     } catch (Exception ex) {
-                        Logger.getLogger(RegistrarEmpleado.class.getName()).log(Level.SEVERE, null, ex);
+                        Logger.getLogger(BorrarEmpleado.class.getName()).log(Level.SEVERE, null, ex);
                     }
                 }
             });
             
         } catch (Exception ex) {
-            Logger.getLogger(RegistrarEmpleado.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(BorrarEmpleado.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
    

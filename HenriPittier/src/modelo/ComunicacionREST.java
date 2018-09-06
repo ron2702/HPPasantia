@@ -562,6 +562,24 @@ public class ComunicacionREST {
         }
     }
     
+    public Suplencia consultarSuplencias(Suplencia s) throws Exception {
+        try {
+            conn = null;
+            Gson gson = new GsonBuilder().create();
+            BufferedReader br = comunicar("GET", "consultarSuplencias?suplencia=" + URLEncoder.encode(gson.toJson(s).toString(), "UTF-8"));
+            String output;
+            Suplencia _suplencia = new Suplencia();
+            while ((output = br.readLine()) != null) {
+                _suplencia = gson.fromJson(output, Suplencia.class);
+            }
+            conn.disconnect();
+            return _suplencia;
+        }
+        catch (Exception ex){
+            throw ex;
+        }
+    }
+    
     /*SERVICIOS WEB DE INASISTENCIAS*/
     
     public Inasistencia registrarInasistencia(Inasistencia i) throws Exception {
@@ -606,6 +624,24 @@ public class ComunicacionREST {
             conn = null;
             Gson gson = new GsonBuilder().create();
             BufferedReader br = comunicar("GET", "modificarInasistencia?inasistencia=" + URLEncoder.encode(gson.toJson(i).toString(), "UTF-8"));
+            String output;
+            Inasistencia _inasistencia = new Inasistencia();
+            while ((output = br.readLine()) != null) {
+                _inasistencia = gson.fromJson(output, Inasistencia.class);
+            }
+            conn.disconnect();
+            return _inasistencia;
+        }
+        catch (Exception ex){
+            throw ex;
+        }
+    }
+    
+    public Inasistencia consultarInasistencias(Inasistencia i) throws Exception {
+        try {
+            conn = null;
+            Gson gson = new GsonBuilder().create();
+            BufferedReader br = comunicar("GET", "consultarInasistencias?inasistencia=" + URLEncoder.encode(gson.toJson(i).toString(), "UTF-8"));
             String output;
             Inasistencia _inasistencia = new Inasistencia();
             while ((output = br.readLine()) != null) {

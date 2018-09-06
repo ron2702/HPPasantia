@@ -41,13 +41,13 @@ public class RegistrarInasistencia extends javax.swing.JPanel {
                         empleadoRegistrarInasistencia = empleadoSeleccionado;
                         
                     } catch (Exception ex) {
-                        Logger.getLogger(RegistrarEmpleado.class.getName()).log(Level.SEVERE, null, ex);
+                        Logger.getLogger(RegistrarInasistencia.class.getName()).log(Level.SEVERE, null, ex);
                     }
                 }
             });
             
         } catch (Exception ex) {
-            Logger.getLogger(RegistrarEmpleado.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(RegistrarInasistencia.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

@@ -42,13 +42,13 @@ public class ModificarInasistencia extends javax.swing.JPanel {
                         Empleado empleadoSeleccionado = (Empleado) cb_listaEmpleados.getSelectedItem();
                         
                     } catch (Exception ex) {
-                        Logger.getLogger(RegistrarEmpleado.class.getName()).log(Level.SEVERE, null, ex);
+                        Logger.getLogger(ModificarInasistencia.class.getName()).log(Level.SEVERE, null, ex);
                     }
                 }
             });
             
         } catch (Exception ex) {
-            Logger.getLogger(RegistrarEmpleado.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ModificarInasistencia.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -230,7 +230,7 @@ public class ModificarInasistencia extends javax.swing.JPanel {
                 JOptionPane.showMessageDialog(panel, "No se ha podido modificar la inasistencia, intente nuevamente", "Error", JOptionPane.ERROR_MESSAGE);
             }
         } catch (Exception ex) {
-            Logger.getLogger(RegistrarInasistencia.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ModificarInasistencia.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btn_modificarActionPerformed
 

@@ -185,7 +185,7 @@ public class AppMenu extends javax.swing.JFrame {
         borrarInasistencia = new javax.swing.JMenuItem();
         menuSuplencias = new javax.swing.JMenu();
         registrarSuplencia = new javax.swing.JMenuItem();
-        consultarSuplencia = new javax.swing.JMenuItem();
+        consultarSuplencias = new javax.swing.JMenuItem();
         modificarSuplencia = new javax.swing.JMenuItem();
         borrarSuplencia = new javax.swing.JMenuItem();
         menuGrupos = new javax.swing.JMenu();
@@ -360,13 +360,13 @@ public class AppMenu extends javax.swing.JFrame {
         });
         menuSuplencias.add(registrarSuplencia);
 
-        consultarSuplencia.setText("Consultar");
-        consultarSuplencia.addActionListener(new java.awt.event.ActionListener() {
+        consultarSuplencias.setText("Consultar");
+        consultarSuplencias.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                consultarSuplenciaActionPerformed(evt);
+                consultarSuplenciasActionPerformed(evt);
             }
         });
-        menuSuplencias.add(consultarSuplencia);
+        menuSuplencias.add(consultarSuplencias);
 
         modificarSuplencia.setText("Modificar");
         modificarSuplencia.addActionListener(new java.awt.event.ActionListener() {
@@ -590,10 +590,10 @@ public class AppMenu extends javax.swing.JFrame {
         cardPanel.show(contentPane, REGISTRARSUPLENCIA);
     }//GEN-LAST:event_registrarSuplenciaActionPerformed
 
-    private void consultarSuplenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultarSuplenciaActionPerformed
+    private void consultarSuplenciasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultarSuplenciasActionPerformed
         CardLayout cardPanel = (CardLayout)(contentPane.getLayout());
         cardPanel.show(contentPane, CONSULTARSUPLENCIAS);
-    }//GEN-LAST:event_consultarSuplenciaActionPerformed
+    }//GEN-LAST:event_consultarSuplenciasActionPerformed
 
     private void modificarSuplenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarSuplenciaActionPerformed
         CardLayout cardPanel = (CardLayout)(contentPane.getLayout());
@@ -652,7 +652,7 @@ public class AppMenu extends javax.swing.JFrame {
     private javax.swing.JMenuItem consultarGrupo;
     private javax.swing.JMenuItem consultarInasistencias;
     private javax.swing.JMenuItem consultarRepresentante;
-    private javax.swing.JMenuItem consultarSuplencia;
+    private javax.swing.JMenuItem consultarSuplencias;
     private javax.swing.JPanel contentPane;
     private javax.swing.JMenuItem eliminarEmpleado;
     private javax.swing.JMenuItem eliminarEstudiante;

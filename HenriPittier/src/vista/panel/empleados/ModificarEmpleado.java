@@ -68,7 +68,7 @@ public class ModificarEmpleado extends javax.swing.JPanel {
                             cb_municipios.addItem(lugar);
                         }
                     } catch (Exception ex) {
-                        Logger.getLogger(RegistrarEmpleado.class.getName()).log(Level.SEVERE, null, ex);
+                        Logger.getLogger(ModificarEmpleado.class.getName()).log(Level.SEVERE, null, ex);
                     }
                 }
             });
@@ -86,7 +86,7 @@ public class ModificarEmpleado extends javax.swing.JPanel {
                         }
 
                     } catch (Exception ex) {
-                        Logger.getLogger(RegistrarEmpleado.class.getName()).log(Level.SEVERE, null, ex);
+                        Logger.getLogger(ModificarEmpleado.class.getName()).log(Level.SEVERE, null, ex);
                     }
                 }
             });
@@ -124,7 +124,7 @@ public class ModificarEmpleado extends javax.swing.JPanel {
                         cb_parroquias.setSelectedItem(parroquiaEmpleado);
                         
                     } catch (Exception ex) {
-                        Logger.getLogger(RegistrarEmpleado.class.getName()).log(Level.SEVERE, null, ex);
+                        Logger.getLogger(ModificarEmpleado.class.getName()).log(Level.SEVERE, null, ex);
                     }
                 }
             });
@@ -694,7 +694,7 @@ try {
                     JOptionPane.showMessageDialog(panel, "No se ha podido modificar el empleado, intente nuevamente", "Error", JOptionPane.ERROR_MESSAGE);
                 }
             } catch (Exception ex) {
-                Logger.getLogger(RegistrarEmpleado.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(ModificarEmpleado.class.getName()).log(Level.SEVERE, null, ex);
             }
         }else{
             final JPanel panel = new JPanel();
