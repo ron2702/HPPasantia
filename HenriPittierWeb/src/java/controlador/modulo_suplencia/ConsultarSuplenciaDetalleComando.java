@@ -7,6 +7,7 @@ package controlador.modulo_suplencia;
 
 import comun.Suplencia;
 import controlador.Comando;
+import java.util.ArrayList;
 import modelo.modulo_suplencias.DAOSuplencia;
 
 /**
@@ -16,7 +17,7 @@ import modelo.modulo_suplencias.DAOSuplencia;
 public class ConsultarSuplenciaDetalleComando extends Comando {
     
     private Suplencia consultarSuplencia;
-    private Suplencia respuesta;
+    private ArrayList<Suplencia> respuesta;
 
     public ConsultarSuplenciaDetalleComando(Suplencia _consultarSuplencia) {
         this.consultarSuplencia = _consultarSuplencia;
@@ -28,7 +29,7 @@ public class ConsultarSuplenciaDetalleComando extends Comando {
         respuesta = daosup.consultarSuplenciaDetalle(consultarSuplencia);
     }
     
-    public Suplencia obtenerRespuesta(){
+     public ArrayList<Suplencia> obtenerRespuesta(){
         return respuesta;
     }
     

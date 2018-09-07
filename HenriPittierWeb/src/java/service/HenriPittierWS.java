@@ -943,8 +943,7 @@ public class HenriPittierWS {
             
         } catch (Exception ex) {
             
-            Suplencia error = new Suplencia();
-            error.setError(RESULTADO_CODIGO_FALLIDO);
+            ArrayList<Suplencia> error = null;
             return gson.toJson(error);
             
         }

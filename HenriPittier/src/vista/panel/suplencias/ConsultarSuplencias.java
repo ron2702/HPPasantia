@@ -15,6 +15,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
 import modelo.ComunicacionREST;
 import modelo.Registry;
 import vista.panel.inasistencias.BorrarInasistencia;
@@ -23,6 +24,7 @@ import vista.panel.inasistencias.BorrarInasistencia;
 
 public class ConsultarSuplencias extends javax.swing.JPanel {
     private Empleado empleadoSeleccionado;
+    DefaultTableModel model;
     
     /**
      * Creates new form ConsultarSuplencias
@@ -207,10 +209,20 @@ public class ConsultarSuplencias extends javax.swing.JPanel {
                 Suplencia consultarSuplencia = new Suplencia(empleadoSeleccionado.getCedula(), 0, "", Integer.parseInt(anoSeleccionado));
                 ComunicacionREST com = new ComunicacionREST();
 
-                Suplencia suplenciaConsultada = com.consultarSuplencias(consultarSuplencia);
-                if (suplenciaConsultada.getError() == Registry.RESULTADO_CODIGO_BIEN){
-                    final JPanel panel = new JPanel();
-                    JOptionPane.showMessageDialog(panel, "Se eliminaron exitosamente las inasistencias", "Información", JOptionPane.INFORMATION_MESSAGE);
+                ArrayList<Suplencia> listaSuplencias = com.consultarSuplencias(consultarSuplencia);
+                ArrayList<Suplencia> suplenciasConsultadas = new ArrayList<>();
+                if (listaSuplencias != null){
+                    model = (DefaultTableModel) tb_consultarSuplencias.getModel();
+                    for(Suplencia suplencia : listaSuplencias){
+                        if (suplencia.getAno() == Integer.parseInt(anoSeleccionado)){
+                            suplenciasConsultadas.add(suplencia);
+                            model.addRow(new Object[] {suplencia.getMes(), suplencia.getDiasAdicionales()});
+                        }
+                    }
+                    if (suplenciasConsultadas.size() == 0){
+                        final JPanel panel = new JPanel();
+                        JOptionPane.showMessageDialog(panel, "No existen suplencias registradas para ese empleado en dicho período", "Información", JOptionPane.INFORMATION_MESSAGE);
+                    }
                 }else{
                     final JPanel panel = new JPanel();
                     JOptionPane.showMessageDialog(panel, "No se han podido eliminar las inasistencias, intente nuevamente", "Error", JOptionPane.ERROR_MESSAGE);

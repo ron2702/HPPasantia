@@ -562,18 +562,19 @@ public class ComunicacionREST {
         }
     }
     
-    public Suplencia consultarSuplencias(Suplencia s) throws Exception {
+    public ArrayList<Suplencia> consultarSuplencias(Suplencia s) throws Exception {
         try {
             conn = null;
             Gson gson = new GsonBuilder().create();
-            BufferedReader br = comunicar("GET", "consultarSuplencias?suplencia=" + URLEncoder.encode(gson.toJson(s).toString(), "UTF-8"));
+            BufferedReader br = comunicar("GET", "consultarSuplenciaDetalle?suplencia=" + URLEncoder.encode(gson.toJson(s).toString(), "UTF-8"));
             String output;
-            Suplencia _suplencia = new Suplencia();
+            ArrayList<Suplencia> _suplencias = new ArrayList<>();
+            Type listType = new TypeToken<ArrayList<Suplencia>>() {}.getType();
             while ((output = br.readLine()) != null) {
-                _suplencia = gson.fromJson(output, Suplencia.class);
+                _suplencias = gson.fromJson(output, listType);
             }
             conn.disconnect();
-            return _suplencia;
+            return _suplencias;
         }
         catch (Exception ex){
             throw ex;

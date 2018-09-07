@@ -11,6 +11,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Types;
+import java.util.ArrayList;
 import modelo.DAO;
 import modelo.Registry;
 import static modelo.Registry.*;
@@ -172,11 +173,11 @@ public class DAOSuplencia extends DAO {
         
     }
     
-    public Suplencia consultarSuplenciaDetalle(Suplencia _suplencia) throws Exception {
+    public ArrayList<Suplencia> consultarSuplenciaDetalle(Suplencia _suplencia) throws Exception {
         
         Suplencia suplenciaConsultado = new Suplencia();
         CallableStatement cstmt;
-
+        ArrayList<Suplencia> listaSuplencias = new ArrayList<>();
         int response = 0;
 
         try {
@@ -193,9 +194,10 @@ public class DAOSuplencia extends DAO {
                                   rs.getString("mes"),
                                   rs.getInt("ano"));
                 suplenciaConsultado.setError(RESULTADO_CODIGO_BIEN);
+                listaSuplencias.add(suplenciaConsultado);
                 
             }
-            return suplenciaConsultado;
+            return listaSuplencias;
 
 
         } catch (SQLException ex) {
