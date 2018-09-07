@@ -748,6 +748,24 @@ public class ComunicacionREST {
             throw ex;
         }
     }
+    
+    public Rep_Est consultarRep_EstDetalle_Representante_Estudiante(Rep_Est e) throws Exception {
+        try {
+            conn = null;
+            Gson gson = new GsonBuilder().create();
+            BufferedReader br = comunicar("GET", "consultarREPESTDetalleRepresentanteEstudiante?repest=" + URLEncoder.encode(gson.toJson(e).toString(), "UTF-8"));
+            String output;
+            Rep_Est _repest = new Rep_Est();
+            while ((output = br.readLine()) != null) {
+                _repest = gson.fromJson(output, Rep_Est.class);
+            }
+            conn.disconnect();
+            return _repest;
+        }
+        catch (Exception ex){
+            throw ex;
+        }
+    }
 }
     
 
