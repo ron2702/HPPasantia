@@ -28,6 +28,7 @@ public class DAORepest extends DAO {
     private static String _sqlRepestConsultar = "{call REPEST_CONSULTAR_TODOS()}";
     private static String _sqlRepestDetalle = "{call REPEST_CONSULTAR_DETALLE(?)}";
     private static String _sqlRepestDetalleEscolar = "{call REPEST_CONSULTAR_DETALLE_ESCOLAR(?)}";
+    private static String _sqlRepestDetalleRepresentanteEstudiante = "{call REPEST_CONSULTAR_DETALLE_REPRESENTANTE_ESTUDIANTE(?,?)}";
     private ResultSet rs;
     
     public Rep_Est registrarREPEST (Rep_Est _repest) throws SQLException, Exception{
@@ -254,4 +255,47 @@ public class DAORepest extends DAO {
         }
     }
     
+    public Rep_Est consultarREPESTDetalleRepresentanteEstudiante(Rep_Est _repest) throws Exception {
+        
+        Rep_Est repestConsultado = new Rep_Est();
+        CallableStatement cstmt;
+
+        int response = 0;
+
+        try {
+            
+            _bdCon = DAO.getBdConnect();
+            cstmt = _bdCon.prepareCall(_sqlRepestDetalleRepresentanteEstudiante);
+            cstmt.setInt(1, _repest.getCedula());
+            cstmt.setLong(2, _repest.getCedulaEscolar());   
+            
+            rs = cstmt.executeQuery();
+            
+            while(rs.next()){
+                
+                repestConsultado = new Rep_Est(rs.getInt("cedularep"), 
+                                  rs.getString("primernombrerep"),
+                                  rs.getString("primerapellidorep"),
+                                  rs.getLong("cedulaescolares"),
+                                  rs.getString("primernombrees"),
+                                  rs.getString("primerapellidoes"),
+                                  rs.getString("parentezco"));
+                repestConsultado.setError(RESULTADO_CODIGO_BIEN);
+                
+            }
+            return repestConsultado;
+
+
+        } catch (SQLException ex) {
+
+            throw ex;
+
+        } catch (Exception ex) {
+            
+            throw ex;
+
+        } finally {
+            _bdCon.close();
+        }
+    }
 }
