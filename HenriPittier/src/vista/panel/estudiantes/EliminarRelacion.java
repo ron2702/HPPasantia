@@ -41,7 +41,7 @@ public class EliminarRelacion extends javax.swing.JPanel {
                     try {
                         Estudiante estudianteSeleccionado = (Estudiante) cb_listaEstudiantes.getSelectedItem();
                         String cedulaEscolar = Long.toString(estudianteSeleccionado.getCedulaEscolar());
-                        txt_CedulaEstudiante.setText(cedulaEscolar);
+                        txt_cedulaEstudiante.setText(cedulaEscolar);
                         cedulaEstudiante = estudianteSeleccionado.getCedulaEscolar();
                     } catch (Exception ex) {
                         Logger.getLogger(AsignarRelacion.class.getName()).log(Level.SEVERE, null, ex);
@@ -65,13 +65,15 @@ public class EliminarRelacion extends javax.swing.JPanel {
 
         lbl_tituloEstudiantes = new javax.swing.JLabel();
         pnl_datos = new javax.swing.JPanel();
-        txt_CedulaEstudiante = new javax.swing.JTextField();
+        txt_cedulaEstudiante = new javax.swing.JTextField();
         lbl_cedulaEstudiante = new javax.swing.JLabel();
         btn_borrar = new javax.swing.JButton();
         cb_listaEstudiantes = new javax.swing.JComboBox();
         lbl_estudiante = new javax.swing.JLabel();
-        txt_CedulaRepresentante = new javax.swing.JTextField();
+        txt_cedulaRepresentante = new javax.swing.JTextField();
         lbl_cedulaRepresentante = new javax.swing.JLabel();
+
+        setBackground(new java.awt.Color(204, 204, 204));
 
         lbl_tituloEstudiantes.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lbl_tituloEstudiantes.setText("Borrar Relacion Estudiante - Representante");
@@ -81,12 +83,12 @@ public class EliminarRelacion extends javax.swing.JPanel {
         pnl_datos.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         pnl_datos.setPreferredSize(new java.awt.Dimension(840, 520));
 
-        txt_CedulaEstudiante.setBackground(new java.awt.Color(240, 240, 240));
-        txt_CedulaEstudiante.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        txt_CedulaEstudiante.setEnabled(false);
+        txt_cedulaEstudiante.setBackground(new java.awt.Color(240, 240, 240));
+        txt_cedulaEstudiante.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        txt_cedulaEstudiante.setEnabled(false);
 
         lbl_cedulaEstudiante.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        lbl_cedulaEstudiante.setText("CI Estudiante:");
+        lbl_cedulaEstudiante.setText("Cédula Escolar Estudiante:");
 
         btn_borrar.setBackground(new java.awt.Color(121, 213, 177));
         btn_borrar.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
@@ -104,11 +106,11 @@ public class EliminarRelacion extends javax.swing.JPanel {
         lbl_estudiante.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         lbl_estudiante.setText("Estudiante:");
 
-        txt_CedulaRepresentante.setBackground(new java.awt.Color(240, 240, 240));
-        txt_CedulaRepresentante.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        txt_cedulaRepresentante.setBackground(new java.awt.Color(240, 240, 240));
+        txt_cedulaRepresentante.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
 
         lbl_cedulaRepresentante.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        lbl_cedulaRepresentante.setText("CI Representante:");
+        lbl_cedulaRepresentante.setText("Cédula de Identidad del Representante:");
 
         javax.swing.GroupLayout pnl_datosLayout = new javax.swing.GroupLayout(pnl_datos);
         pnl_datos.setLayout(pnl_datosLayout);
@@ -125,29 +127,29 @@ public class EliminarRelacion extends javax.swing.JPanel {
                         .addGap(35, 35, 35)
                         .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(cb_listaEstudiantes, 0, 192, Short.MAX_VALUE)
-                            .addComponent(txt_CedulaEstudiante)
-                            .addComponent(txt_CedulaRepresentante)))
+                            .addComponent(txt_cedulaEstudiante)
+                            .addComponent(txt_cedulaRepresentante)))
                     .addGroup(pnl_datosLayout.createSequentialGroup()
-                        .addGap(343, 343, 343)
+                        .addGap(363, 363, 363)
                         .addComponent(btn_borrar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 382, Short.MAX_VALUE))
+                .addGap(0, 353, Short.MAX_VALUE))
         );
         pnl_datosLayout.setVerticalGroup(
             pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnl_datosLayout.createSequentialGroup()
-                .addGap(31, 31, 31)
+                .addGap(55, 55, 55)
                 .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cb_listaEstudiantes, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lbl_estudiante))
-                .addGap(42, 42, 42)
+                .addGap(35, 35, 35)
                 .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txt_CedulaEstudiante, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txt_cedulaEstudiante, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lbl_cedulaEstudiante))
-                .addGap(33, 33, 33)
+                .addGap(35, 35, 35)
                 .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txt_CedulaRepresentante, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txt_cedulaRepresentante, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lbl_cedulaRepresentante))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 195, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 178, Short.MAX_VALUE)
                 .addComponent(btn_borrar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(91, 91, 91))
         );
@@ -157,28 +159,28 @@ public class EliminarRelacion extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(45, 45, 45)
+                .addGap(56, 56, 56)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(pnl_datos, javax.swing.GroupLayout.PREFERRED_SIZE, 838, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lbl_tituloEstudiantes, javax.swing.GroupLayout.PREFERRED_SIZE, 317, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(67, Short.MAX_VALUE))
+                .addContainerGap(56, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(34, 34, 34)
+                .addGap(29, 29, 29)
                 .addComponent(lbl_tituloEstudiantes, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(pnl_datos, javax.swing.GroupLayout.PREFERRED_SIZE, 513, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(65, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(pnl_datos, javax.swing.GroupLayout.PREFERRED_SIZE, 515, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(63, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_borrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_borrarActionPerformed
-        if((!txt_CedulaEstudiante.getText().equals("")) && (!txt_CedulaRepresentante.getText().equals(""))) {
+        if((!txt_cedulaEstudiante.getText().equals("")) && (!txt_cedulaRepresentante.getText().equals(""))) {
             try {
 
-                cedulaRepresentante = Integer.parseInt(txt_CedulaRepresentante.getText());
+                cedulaRepresentante = Integer.parseInt(txt_cedulaRepresentante.getText());
                 Rep_Est repestBorrar = new Rep_Est(cedulaRepresentante, cedulaEstudiante);
                 ComunicacionREST comRest = new ComunicacionREST();
                 Rep_Est repestBorrado = comRest.borrarRepEst(repestBorrar);
@@ -209,7 +211,7 @@ public class EliminarRelacion extends javax.swing.JPanel {
     private javax.swing.JLabel lbl_estudiante;
     private javax.swing.JLabel lbl_tituloEstudiantes;
     private javax.swing.JPanel pnl_datos;
-    private javax.swing.JTextField txt_CedulaEstudiante;
-    private javax.swing.JTextField txt_CedulaRepresentante;
+    private javax.swing.JTextField txt_cedulaEstudiante;
+    private javax.swing.JTextField txt_cedulaRepresentante;
     // End of variables declaration//GEN-END:variables
 }

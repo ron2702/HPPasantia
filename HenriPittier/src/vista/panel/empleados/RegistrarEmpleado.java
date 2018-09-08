@@ -143,12 +143,10 @@ public class RegistrarEmpleado extends javax.swing.JPanel {
         cb_banco = new javax.swing.JComboBox();
         lbl_tituloRegistroEmpleados = new javax.swing.JLabel();
 
-        setBackground(new java.awt.Color(204, 204, 204));
         setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         setPreferredSize(new java.awt.Dimension(950, 640));
 
-        pnl_datos.setBackground(new java.awt.Color(204, 204, 204));
-        pnl_datos.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 14))); // NOI18N
+        pnl_datos.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         pnl_datos.setPreferredSize(new java.awt.Dimension(840, 520));
 
         lbl_primerNombre.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
@@ -177,6 +175,8 @@ public class RegistrarEmpleado extends javax.swing.JPanel {
             }
         });
 
+        lbl_foto.setBackground(new java.awt.Color(255, 255, 255));
+        lbl_foto.setIcon(new javax.swing.ImageIcon("C:\\Users\\LuisAlejandro\\Pictures\\Blanco.PNG")); // NOI18N
         lbl_foto.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         btn_cargarImagen.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
@@ -374,8 +374,9 @@ txt_primerApellido.addKeyListener(new java.awt.event.KeyAdapter() {
 
     cb_parroquias.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
 
-    btn_registrar.setBackground(new java.awt.Color(121, 213, 177));
-    btn_registrar.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+    btn_registrar.setBackground(new java.awt.Color(0, 153, 102));
+    btn_registrar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+    btn_registrar.setForeground(new java.awt.Color(255, 255, 255));
     btn_registrar.setText("Registrar");
     btn_registrar.setPreferredSize(new java.awt.Dimension(109, 25));
     btn_registrar.addActionListener(new java.awt.event.ActionListener() {
@@ -384,8 +385,9 @@ txt_primerApellido.addKeyListener(new java.awt.event.KeyAdapter() {
         }
     });
 
-    btn_limpiar.setBackground(new java.awt.Color(218, 87, 54));
-    btn_limpiar.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+    btn_limpiar.setBackground(new java.awt.Color(153, 0, 0));
+    btn_limpiar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+    btn_limpiar.setForeground(new java.awt.Color(255, 255, 255));
     btn_limpiar.setText("Limpiar");
     btn_limpiar.setPreferredSize(new java.awt.Dimension(109, 25));
     btn_limpiar.addActionListener(new java.awt.event.ActionListener() {
@@ -522,7 +524,7 @@ txt_primerApellido.addKeyListener(new java.awt.event.KeyAdapter() {
                         .addGroup(pnl_datosLayout.createSequentialGroup()
                             .addGap(29, 29, 29)
                             .addComponent(btn_cargarImagen)))
-                    .addGap(23, 83, Short.MAX_VALUE))
+                    .addGap(23, 84, Short.MAX_VALUE))
                 .addGroup(pnl_datosLayout.createSequentialGroup()
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                     .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)

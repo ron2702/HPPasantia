@@ -218,8 +218,9 @@ public class AppMenu extends javax.swing.JFrame {
         jMenu1.setText("jMenu1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setAutoRequestFocus(false);
 
-        contentPane.setBackground(new java.awt.Color(204, 204, 204));
+        contentPane.setForeground(new java.awt.Color(240, 240, 240));
         contentPane.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         contentPane.setLayout(new java.awt.CardLayout());
 
@@ -502,7 +503,7 @@ public class AppMenu extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(contentPane, javax.swing.GroupLayout.DEFAULT_SIZE, 621, Short.MAX_VALUE)
+            .addComponent(contentPane, javax.swing.GroupLayout.DEFAULT_SIZE, 619, Short.MAX_VALUE)
         );
 
         pack();

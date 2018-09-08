@@ -107,33 +107,30 @@ public class BorrarEmpleado extends javax.swing.JPanel {
         lbl_tituloEliminar = new javax.swing.JLabel();
         lbl_tituloEmpleado = new javax.swing.JLabel();
 
-        setBackground(new java.awt.Color(204, 204, 204));
-
-        pnl_datos.setBackground(new java.awt.Color(204, 204, 204));
-        pnl_datos.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+        pnl_datos.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         pnl_datos.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         pnl_datos.setPreferredSize(new java.awt.Dimension(840, 520));
 
         lbl_segundoApellido.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         lbl_segundoApellido.setText("Segundo Apellido:");
 
-        txt_segundoApellido.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        txt_segundoApellido.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         txt_segundoApellido.setEnabled(false);
 
-        txt_primerApellido.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        txt_primerApellido.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         txt_primerApellido.setEnabled(false);
 
         lbl_telefonoCasa.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         lbl_telefonoCasa.setText("Telefono Casa:");
 
-        txt_segundoNombre.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        txt_segundoNombre.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         txt_segundoNombre.setEnabled(false);
 
         lbl_telefonoMovil.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         lbl_telefonoMovil.setText("Teléfono Móvil:");
 
         txt_primerNombre.setBackground(new java.awt.Color(240, 240, 240));
-        txt_primerNombre.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        txt_primerNombre.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         txt_primerNombre.setEnabled(false);
 
         lbl_cargo.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
@@ -142,29 +139,30 @@ public class BorrarEmpleado extends javax.swing.JPanel {
         lbl_sueldoMensual.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         lbl_sueldoMensual.setText("Sueldo Mensual:");
 
-        txt_sueldoMensual.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        txt_sueldoMensual.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         txt_sueldoMensual.setEnabled(false);
 
-        txt_cargo.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        txt_cargo.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         txt_cargo.setEnabled(false);
 
         lbl_primerNombre.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         lbl_primerNombre.setText("Primer Nombre:");
 
-        txt_telefonoMovil.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        txt_telefonoMovil.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         txt_telefonoMovil.setEnabled(false);
 
         lbl_segundoNombre.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         lbl_segundoNombre.setText("Segundo Nombre:");
 
-        txt_telefonoCasa.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        txt_telefonoCasa.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         txt_telefonoCasa.setEnabled(false);
 
         lbl_primerApellido.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         lbl_primerApellido.setText("Primer Apellido:");
 
-        btn_limpiar.setBackground(new java.awt.Color(218, 87, 54));
-        btn_limpiar.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        btn_limpiar.setBackground(new java.awt.Color(153, 0, 0));
+        btn_limpiar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        btn_limpiar.setForeground(new java.awt.Color(255, 255, 255));
         btn_limpiar.setText("Limpiar");
         btn_limpiar.setPreferredSize(new java.awt.Dimension(109, 25));
         btn_limpiar.addActionListener(new java.awt.event.ActionListener() {
@@ -173,8 +171,9 @@ public class BorrarEmpleado extends javax.swing.JPanel {
             }
         });
 
-        btn_eliminar.setBackground(new java.awt.Color(121, 213, 177));
-        btn_eliminar.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        btn_eliminar.setBackground(new java.awt.Color(0, 153, 102));
+        btn_eliminar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        btn_eliminar.setForeground(new java.awt.Color(255, 255, 255));
         btn_eliminar.setText("Borrar");
         btn_eliminar.setActionCommand("Eliminar");
         btn_eliminar.setPreferredSize(new java.awt.Dimension(109, 25));
@@ -410,7 +409,7 @@ try {
                     .addComponent(lbl_fechaIngreso)
                     .addGap(18, 18, 18)
                     .addComponent(lbl_banco)))
-            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 67, Short.MAX_VALUE)
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 68, Short.MAX_VALUE)
             .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                 .addComponent(btn_eliminar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addComponent(btn_limpiar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -426,25 +425,19 @@ try {
         layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
         .addGroup(layout.createSequentialGroup()
             .addGap(57, 57, 57)
-            .addComponent(lbl_tituloEmpleado)
-            .addContainerGap(767, Short.MAX_VALUE))
-        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(56, 56, 56)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(pnl_datos, javax.swing.GroupLayout.PREFERRED_SIZE, 838, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(56, Short.MAX_VALUE)))
+                .addComponent(lbl_tituloEmpleado))
+            .addContainerGap(55, Short.MAX_VALUE))
     );
     layout.setVerticalGroup(
         layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
         .addGroup(layout.createSequentialGroup()
-            .addGap(31, 31, 31)
+            .addGap(26, 26, 26)
             .addComponent(lbl_tituloEmpleado)
-            .addContainerGap(592, Short.MAX_VALUE))
-        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(63, 63, 63)
-                .addComponent(pnl_datos, javax.swing.GroupLayout.PREFERRED_SIZE, 513, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(64, Short.MAX_VALUE)))
+            .addGap(18, 18, 18)
+            .addComponent(pnl_datos, javax.swing.GroupLayout.PREFERRED_SIZE, 513, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addContainerGap(66, Short.MAX_VALUE))
     );
     }// </editor-fold>//GEN-END:initComponents
 

@@ -76,10 +76,7 @@ public class ConsultarEmpleados extends javax.swing.JPanel {
         txt_fechaNac = new javax.swing.JTextField();
         lbl_titulo = new javax.swing.JLabel();
 
-        setBackground(new java.awt.Color(204, 204, 204));
-
-        pnl_datos.setBackground(new java.awt.Color(204, 204, 204));
-        pnl_datos.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+        pnl_datos.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         pnl_datos.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         pnl_datos.setPreferredSize(new java.awt.Dimension(840, 520));
 
@@ -175,6 +172,7 @@ public class ConsultarEmpleados extends javax.swing.JPanel {
         lbl_foto.setBackground(new java.awt.Color(255, 255, 255));
         lbl_foto.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         lbl_foto.setForeground(new java.awt.Color(255, 255, 255));
+        lbl_foto.setIcon(new javax.swing.ImageIcon("C:\\Users\\LuisAlejandro\\Pictures\\Blanco.PNG")); // NOI18N
         lbl_foto.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         lbl_fotoEmpleado.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
@@ -314,11 +312,11 @@ public class ConsultarEmpleados extends javax.swing.JPanel {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(31, 31, 31)
-                .addComponent(lbl_titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(26, 26, 26)
+                .addComponent(lbl_titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(pnl_datos, javax.swing.GroupLayout.PREFERRED_SIZE, 513, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(59, Short.MAX_VALUE))
+                .addContainerGap(64, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
