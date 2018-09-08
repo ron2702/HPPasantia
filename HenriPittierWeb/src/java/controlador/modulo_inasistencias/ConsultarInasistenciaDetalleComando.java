@@ -7,6 +7,7 @@ package controlador.modulo_inasistencias;
 
 import comun.Inasistencia;
 import controlador.Comando;
+import java.util.ArrayList;
 import modelo.modulo_inasistencias.DAOInasistencia;
 
 /**
@@ -16,7 +17,7 @@ import modelo.modulo_inasistencias.DAOInasistencia;
 public class ConsultarInasistenciaDetalleComando extends Comando {
     
     private Inasistencia consultarInasistencia;
-    private Inasistencia respuesta;
+    private ArrayList<Inasistencia> respuesta;
     
     public ConsultarInasistenciaDetalleComando(Inasistencia _consultarInasistencia){
         this.consultarInasistencia = _consultarInasistencia;
@@ -28,7 +29,7 @@ public class ConsultarInasistenciaDetalleComando extends Comando {
         respuesta = daoin.consultarInasistenciaDetalle(consultarInasistencia);
     }
     
-    public Inasistencia obtenerRespuesta(){
+    public ArrayList<Inasistencia> obtenerRespuesta(){
         return respuesta;
     }
     

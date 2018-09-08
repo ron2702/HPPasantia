@@ -638,18 +638,19 @@ public class ComunicacionREST {
         }
     }
     
-    public Inasistencia consultarInasistencias(Inasistencia i) throws Exception {
+    public ArrayList<Inasistencia> consultarInasistencias(Inasistencia i) throws Exception {
         try {
             conn = null;
             Gson gson = new GsonBuilder().create();
-            BufferedReader br = comunicar("GET", "consultarInasistencias?inasistencia=" + URLEncoder.encode(gson.toJson(i).toString(), "UTF-8"));
+            BufferedReader br = comunicar("GET", "consultarInasistenciaDetalle?inasistencia=" + URLEncoder.encode(gson.toJson(i).toString(), "UTF-8"));
             String output;
-            Inasistencia _inasistencia = new Inasistencia();
+            ArrayList<Inasistencia> _inasistencias = new ArrayList<>();
+            Type listType = new TypeToken<ArrayList<Inasistencia>>() {}.getType();
             while ((output = br.readLine()) != null) {
-                _inasistencia = gson.fromJson(output, Inasistencia.class);
+                _inasistencias = gson.fromJson(output, listType);
             }
             conn.disconnect();
-            return _inasistencia;
+            return _inasistencias;
         }
         catch (Exception ex){
             throw ex;

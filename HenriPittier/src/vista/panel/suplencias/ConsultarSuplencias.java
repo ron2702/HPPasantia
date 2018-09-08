@@ -6,7 +6,6 @@
 package vista.panel.suplencias;
 
 import comun.Empleado;
-import comun.Inasistencia;
 import comun.Suplencia;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -17,18 +16,16 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 import modelo.ComunicacionREST;
-import modelo.Registry;
 import vista.panel.inasistencias.BorrarInasistencia;
 
 
 
 public class ConsultarSuplencias extends javax.swing.JPanel {
     private Empleado empleadoSeleccionado;
+    private int filasTabla;
     DefaultTableModel model;
     
-    /**
-     * Creates new form ConsultarSuplencias
-     */
+   
     public ConsultarSuplencias() {
       try {
             initComponents();
@@ -66,7 +63,7 @@ public class ConsultarSuplencias extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
+        pnl_datosConsultarSuplencia = new javax.swing.JPanel();
         lbl_empleadoSuplencia = new javax.swing.JLabel();
         cb_listaEmpleados = new javax.swing.JComboBox();
         lbl_anoSuplencias = new javax.swing.JLabel();
@@ -79,9 +76,9 @@ public class ConsultarSuplencias extends javax.swing.JPanel {
 
         setBackground(new java.awt.Color(204, 204, 204));
 
-        jPanel1.setBackground(new java.awt.Color(204, 204, 204));
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
-        jPanel1.setPreferredSize(new java.awt.Dimension(840, 520));
+        pnl_datosConsultarSuplencia.setBackground(new java.awt.Color(204, 204, 204));
+        pnl_datosConsultarSuplencia.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+        pnl_datosConsultarSuplencia.setPreferredSize(new java.awt.Dimension(840, 520));
 
         lbl_empleadoSuplencia.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         lbl_empleadoSuplencia.setText("Nombre del empleado:");
@@ -126,17 +123,17 @@ public class ConsultarSuplencias extends javax.swing.JPanel {
             }
         });
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+        javax.swing.GroupLayout pnl_datosConsultarSuplenciaLayout = new javax.swing.GroupLayout(pnl_datosConsultarSuplencia);
+        pnl_datosConsultarSuplencia.setLayout(pnl_datosConsultarSuplenciaLayout);
+        pnl_datosConsultarSuplenciaLayout.setHorizontalGroup(
+            pnl_datosConsultarSuplenciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnl_datosConsultarSuplenciaLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 528, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(154, 154, 154))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+            .addGroup(pnl_datosConsultarSuplenciaLayout.createSequentialGroup()
+                .addGroup(pnl_datosConsultarSuplenciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnl_datosConsultarSuplenciaLayout.createSequentialGroup()
                         .addGap(55, 55, 55)
                         .addComponent(lbl_empleadoSuplencia)
                         .addGap(45, 45, 45)
@@ -145,18 +142,18 @@ public class ConsultarSuplencias extends javax.swing.JPanel {
                         .addComponent(lbl_anoSuplencias)
                         .addGap(45, 45, 45)
                         .addComponent(cb_anos, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGroup(pnl_datosConsultarSuplenciaLayout.createSequentialGroup()
                         .addGap(303, 303, 303)
                         .addComponent(btn_limpiar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btn_consultar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(67, Short.MAX_VALUE))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        pnl_datosConsultarSuplenciaLayout.setVerticalGroup(
+            pnl_datosConsultarSuplenciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnl_datosConsultarSuplenciaLayout.createSequentialGroup()
                 .addGap(77, 77, 77)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(pnl_datosConsultarSuplenciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbl_empleadoSuplencia)
                     .addComponent(cb_listaEmpleados, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lbl_anoSuplencias)
@@ -164,7 +161,7 @@ public class ConsultarSuplencias extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 311, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(pnl_datosConsultarSuplenciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn_limpiar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_consultar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(36, 36, 36))
@@ -180,7 +177,7 @@ public class ConsultarSuplencias extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(55, 55, 55)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pnl_datosConsultarSuplencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lbl_tituloConsultarSuplencias))
                 .addContainerGap(55, Short.MAX_VALUE))
         );
@@ -190,7 +187,7 @@ public class ConsultarSuplencias extends javax.swing.JPanel {
                 .addGap(37, 37, 37)
                 .addComponent(lbl_tituloConsultarSuplencias)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(pnl_datosConsultarSuplencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(55, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -198,10 +195,22 @@ public class ConsultarSuplencias extends javax.swing.JPanel {
     private void btn_limpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_limpiarActionPerformed
         cb_listaEmpleados.setSelectedIndex(0);
         cb_anos.setSelectedIndex(0);
+        model = (DefaultTableModel) tb_consultarSuplencias.getModel();
+        filasTabla = model.getRowCount();
+        //Elimina los datos de la tabla
+        for (int i = filasTabla - 1; i >= 0; i--) {
+            model.removeRow(i);
+        }
     }//GEN-LAST:event_btn_limpiarActionPerformed
 
     private void btn_consultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_consultarActionPerformed
-
+        model = (DefaultTableModel) tb_consultarSuplencias.getModel();
+        filasTabla = model.getRowCount();
+        //Elimina los datos de la tabla
+        for (int i = filasTabla - 1; i >= 0; i--) {
+            model.removeRow(i);
+        }    
+            
         if(empleadoSeleccionado != null) {
             try {
                 Empleado empleadoSeleccionado = (Empleado) cb_listaEmpleados.getSelectedItem();
@@ -225,7 +234,7 @@ public class ConsultarSuplencias extends javax.swing.JPanel {
                     }
                 }else{
                     final JPanel panel = new JPanel();
-                    JOptionPane.showMessageDialog(panel, "No se han podido eliminar las inasistencias, intente nuevamente", "Error", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(panel, "No se han podido eliminar las suplencias, intente nuevamente", "Error", JOptionPane.ERROR_MESSAGE);
                 }
             } catch (Exception ex) {
                 Logger.getLogger(BorrarInasistencia.class.getName()).log(Level.SEVERE, null, ex);
@@ -243,11 +252,11 @@ public class ConsultarSuplencias extends javax.swing.JPanel {
     private javax.swing.JButton btn_limpiar;
     private javax.swing.JComboBox cb_anos;
     private javax.swing.JComboBox cb_listaEmpleados;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lbl_anoSuplencias;
     private javax.swing.JLabel lbl_empleadoSuplencia;
     private javax.swing.JLabel lbl_tituloConsultarSuplencias;
+    private javax.swing.JPanel pnl_datosConsultarSuplencia;
     private javax.swing.JTable tb_consultarSuplencias;
     // End of variables declaration//GEN-END:variables
 }

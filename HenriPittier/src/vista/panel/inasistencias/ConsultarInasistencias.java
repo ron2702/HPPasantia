@@ -5,17 +5,52 @@
  */
 package vista.panel.inasistencias;
 
-/**
- *
- * @author LuisAlejandro
- */
-public class ConsultarInasistencias extends javax.swing.JPanel {
+import comun.Empleado;
+import comun.Inasistencia;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
+import modelo.ComunicacionREST;
 
-    /**
-     * Creates new form ConsultarInasistencias
-     */
+
+
+public class ConsultarInasistencias extends javax.swing.JPanel {
+    private Empleado empleadoSeleccionado;
+    private int filasTabla;
+    DefaultTableModel model;
+
+    
     public ConsultarInasistencias() {
-        initComponents();
+        try {
+            initComponents();
+            ComunicacionREST comRest = new ComunicacionREST();
+            
+
+            ArrayList<Empleado> listaEmpleados = comRest.consultarEmpleados();
+            for (Empleado empleado : listaEmpleados) {
+                cb_listaEmpleados.addItem(empleado);
+            }
+            cb_listaEmpleados.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    try {
+                        Inasistencia inasistenciaEmpleado = new Inasistencia();
+                        empleadoSeleccionado = (Empleado) cb_listaEmpleados.getSelectedItem();
+                        
+                    } catch (Exception ex) {
+                        Logger.getLogger(ConsultarInasistencias.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+            });
+            
+        } catch (Exception ex) {
+            Logger.getLogger(ConsultarInasistencias.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -27,19 +62,223 @@ public class ConsultarInasistencias extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        fondo = new javax.swing.JPanel();
+        pnl_DatosConsultarInasistencia = new javax.swing.JPanel();
+        lbl_empleadoSuplencia = new javax.swing.JLabel();
+        cb_listaEmpleados = new javax.swing.JComboBox();
+        lbl_anoSuplencias = new javax.swing.JLabel();
+        cb_anos = new javax.swing.JComboBox();
+        btn_limpiar = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tb_consultarInasistencias = new javax.swing.JTable();
+        btn_consultar = new javax.swing.JButton();
+        lbl_tituloConsultarInasistencias = new javax.swing.JLabel();
+
+        fondo.setBackground(new java.awt.Color(204, 204, 204));
+
+        pnl_DatosConsultarInasistencia.setBackground(new java.awt.Color(204, 204, 204));
+        pnl_DatosConsultarInasistencia.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+        pnl_DatosConsultarInasistencia.setPreferredSize(new java.awt.Dimension(840, 520));
+
+        lbl_empleadoSuplencia.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        lbl_empleadoSuplencia.setText("Nombre del empleado:");
+
+        cb_listaEmpleados.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+
+        lbl_anoSuplencias.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        lbl_anoSuplencias.setText("Año de las inasistencias:");
+
+        cb_anos.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        cb_anos.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "2006", "2007", "2008", "2009", "2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025", "2026", "2027", "2028", "2029", "2030", "2031", "2032", "2033", "2034", "2035", "2036", "2037", "2038", "2039", "2040", "2041", "2042", "2043", "2044", "2045", "2046", "2047", "2048", "2049", "2050" }));
+
+        btn_limpiar.setBackground(new java.awt.Color(218, 87, 54));
+        btn_limpiar.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        btn_limpiar.setText("Limpiar");
+        btn_limpiar.setPreferredSize(new java.awt.Dimension(109, 25));
+        btn_limpiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_limpiarActionPerformed(evt);
+            }
+        });
+
+        tb_consultarInasistencias.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        tb_consultarInasistencias.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Meses", "Días"
+            }
+        ));
+        tb_consultarInasistencias.setVerifyInputWhenFocusTarget(false);
+        jScrollPane1.setViewportView(tb_consultarInasistencias);
+
+        btn_consultar.setBackground(new java.awt.Color(121, 213, 177));
+        btn_consultar.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        btn_consultar.setText("Consultar");
+        btn_consultar.setPreferredSize(new java.awt.Dimension(109, 25));
+        btn_consultar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_consultarActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout pnl_DatosConsultarInasistenciaLayout = new javax.swing.GroupLayout(pnl_DatosConsultarInasistencia);
+        pnl_DatosConsultarInasistencia.setLayout(pnl_DatosConsultarInasistenciaLayout);
+        pnl_DatosConsultarInasistenciaLayout.setHorizontalGroup(
+            pnl_DatosConsultarInasistenciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnl_DatosConsultarInasistenciaLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 528, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(154, 154, 154))
+            .addGroup(pnl_DatosConsultarInasistenciaLayout.createSequentialGroup()
+                .addGroup(pnl_DatosConsultarInasistenciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnl_DatosConsultarInasistenciaLayout.createSequentialGroup()
+                        .addGap(55, 55, 55)
+                        .addComponent(lbl_empleadoSuplencia)
+                        .addGap(45, 45, 45)
+                        .addComponent(cb_listaEmpleados, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(85, 85, 85)
+                        .addComponent(lbl_anoSuplencias)
+                        .addGap(45, 45, 45)
+                        .addComponent(cb_anos, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(pnl_DatosConsultarInasistenciaLayout.createSequentialGroup()
+                        .addGap(303, 303, 303)
+                        .addComponent(btn_limpiar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btn_consultar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(56, Short.MAX_VALUE))
+        );
+        pnl_DatosConsultarInasistenciaLayout.setVerticalGroup(
+            pnl_DatosConsultarInasistenciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnl_DatosConsultarInasistenciaLayout.createSequentialGroup()
+                .addGap(77, 77, 77)
+                .addGroup(pnl_DatosConsultarInasistenciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbl_empleadoSuplencia)
+                    .addComponent(cb_listaEmpleados, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbl_anoSuplencias)
+                    .addComponent(cb_anos, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 311, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addGroup(pnl_DatosConsultarInasistenciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btn_limpiar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_consultar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(36, 36, 36))
+        );
+
+        lbl_tituloConsultarInasistencias.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lbl_tituloConsultarInasistencias.setText("Consultar Inasistencias");
+
+        javax.swing.GroupLayout fondoLayout = new javax.swing.GroupLayout(fondo);
+        fondo.setLayout(fondoLayout);
+        fondoLayout.setHorizontalGroup(
+            fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(fondoLayout.createSequentialGroup()
+                .addGap(55, 55, 55)
+                .addGroup(fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(pnl_DatosConsultarInasistencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbl_tituloConsultarInasistencias))
+                .addContainerGap(55, Short.MAX_VALUE))
+        );
+        fondoLayout.setVerticalGroup(
+            fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(fondoLayout.createSequentialGroup()
+                .addGap(37, 37, 37)
+                .addComponent(lbl_tituloConsultarInasistencias)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(pnl_DatosConsultarInasistencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(55, Short.MAX_VALUE))
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGap(0, 950, Short.MAX_VALUE)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(fondo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGap(0, 640, Short.MAX_VALUE)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(fondo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btn_limpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_limpiarActionPerformed
+        cb_listaEmpleados.setSelectedIndex(0);
+        cb_anos.setSelectedIndex(0);
+        model = (DefaultTableModel) tb_consultarInasistencias.getModel();
+        filasTabla = model.getRowCount();
+        //Elimina los datos de la tabla
+        for (int i = filasTabla - 1; i >= 0; i--) {
+            model.removeRow(i);
+        }
+    }//GEN-LAST:event_btn_limpiarActionPerformed
+
+    private void btn_consultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_consultarActionPerformed
+        model = (DefaultTableModel) tb_consultarInasistencias.getModel();
+        filasTabla = model.getRowCount();
+        //Elimina los datos de la tabla
+        for (int i = filasTabla - 1; i >= 0; i--) {
+            model.removeRow(i);
+        }
+
+        if(empleadoSeleccionado != null) {
+            try {
+                Empleado empleadoSeleccionado = (Empleado) cb_listaEmpleados.getSelectedItem();
+                String anoSeleccionado = (String) cb_anos.getSelectedItem();
+                Inasistencia consultarInasistencia = new Inasistencia(empleadoSeleccionado.getCedula(), 0, "", Integer.parseInt(anoSeleccionado));
+                ComunicacionREST com = new ComunicacionREST();
+
+                ArrayList<Inasistencia> listaInasistencias = com.consultarInasistencias(consultarInasistencia);
+                ArrayList<Inasistencia> inasistenciasConsultadas = new ArrayList<>();
+                if (listaInasistencias != null){
+                    model = (DefaultTableModel) tb_consultarInasistencias.getModel();
+                    for(Inasistencia suplencia : listaInasistencias){
+                        if (suplencia.getAno() == Integer.parseInt(anoSeleccionado)){
+                            inasistenciasConsultadas.add(suplencia);
+                            model.addRow(new Object[] {suplencia.getMes(), suplencia.getDiasFaltados()});
+                        }
+                    }
+                    if (inasistenciasConsultadas.size() == 0){
+                        final JPanel panel = new JPanel();
+                        JOptionPane.showMessageDialog(panel, "No existen inasistencias registradas para ese empleado en dicho período", "Información", JOptionPane.INFORMATION_MESSAGE);
+                    }
+                }else{
+                    final JPanel panel = new JPanel();
+                    JOptionPane.showMessageDialog(panel, "No se han podido eliminar las inasistencias, intente nuevamente", "Error", JOptionPane.ERROR_MESSAGE);
+                }
+            } catch (Exception ex) {
+                Logger.getLogger(BorrarInasistencia.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+        }else {
+            final JPanel panel = new JPanel();
+            JOptionPane.showMessageDialog(panel, "Debe seleccionar un empleado", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_btn_consultarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btn_consultar;
+    private javax.swing.JButton btn_limpiar;
+    private javax.swing.JComboBox cb_anos;
+    private javax.swing.JComboBox cb_listaEmpleados;
+    private javax.swing.JPanel fondo;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lbl_anoSuplencias;
+    private javax.swing.JLabel lbl_empleadoSuplencia;
+    private javax.swing.JLabel lbl_tituloConsultarInasistencias;
+    private javax.swing.JPanel pnl_DatosConsultarInasistencia;
+    private javax.swing.JTable tb_consultarInasistencias;
     // End of variables declaration//GEN-END:variables
 }

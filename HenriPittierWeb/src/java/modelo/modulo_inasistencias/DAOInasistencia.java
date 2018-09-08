@@ -11,6 +11,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Types;
+import java.util.ArrayList;
 import modelo.DAO;
 import modelo.Registry;
 import static modelo.Registry.*;
@@ -171,10 +172,11 @@ public class DAOInasistencia extends DAO {
         
     }
     
-    public Inasistencia consultarInasistenciaDetalle(Inasistencia _inasistencia) throws Exception {
+    public ArrayList<Inasistencia> consultarInasistenciaDetalle(Inasistencia _inasistencia) throws Exception {
         
-        Inasistencia inasistenciaConsultado = new Inasistencia();
+        Inasistencia inasistenciaConsultada = new Inasistencia();
         CallableStatement cstmt;
+        ArrayList<Inasistencia> listaInasistencias = new ArrayList<>();
 
         int response = 0;
 
@@ -187,14 +189,15 @@ public class DAOInasistencia extends DAO {
             
             while(rs.next()){
                 
-                inasistenciaConsultado = new Inasistencia(rs.getInt("cedula"), 
+                inasistenciaConsultada = new Inasistencia(rs.getInt("cedula"), 
                                   rs.getInt("diasfaltados"),
                                   rs.getString("mes"),
                                   rs.getInt("ano"));
-                inasistenciaConsultado.setError(RESULTADO_CODIGO_BIEN);
+                inasistenciaConsultada.setError(RESULTADO_CODIGO_BIEN);
+                listaInasistencias.add(inasistenciaConsultada);
                 
             }
-            return inasistenciaConsultado;
+            return listaInasistencias;
 
 
         } catch (SQLException ex) {

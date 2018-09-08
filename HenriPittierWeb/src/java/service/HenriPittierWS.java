@@ -872,8 +872,7 @@ public class HenriPittierWS {
             
         } catch (Exception ex) {
             
-            Inasistencia error = new Inasistencia();
-            error.setError(RESULTADO_CODIGO_FALLIDO);
+            ArrayList<Inasistencia> error = null;
             return gson.toJson(error);
             
         }
