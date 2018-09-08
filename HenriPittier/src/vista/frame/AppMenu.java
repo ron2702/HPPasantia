@@ -16,6 +16,7 @@ import vista.panel.empleados.ConsultarEmpleados;
 import vista.panel.estudiantes.AsignarRelacion;
 import vista.panel.estudiantes.BorrarEstudiante;
 import vista.panel.estudiantes.ConsultarEstudiantes;
+import vista.panel.estudiantes.ConsultarRelacion;
 import vista.panel.estudiantes.EliminarRelacion;
 import vista.panel.estudiantes.ModificarEstudiante;
 import vista.panel.estudiantes.RegistrarEstudiante;
@@ -110,9 +111,11 @@ public class AppMenu extends javax.swing.JFrame {
     //RELACION ESTUDIANTE-REPRESENTANTE
     final static String ASIGNARRELACION = "ASIGNARRELACION";
     final static String ELIMINARRELACION = "ELIMINARRELACION";
+    final static String CONSULTARRELACION = "CONSULTARRELACION";
     
     AsignarRelacion asignarRelacionPanel = new AsignarRelacion();
     EliminarRelacion eliminarRelacionPanel = new EliminarRelacion();
+    ConsultarRelacion consultarRelacionPanel = new ConsultarRelacion();
 
     /**
      * Creates new form AppMenu
@@ -161,6 +164,7 @@ public class AppMenu extends javax.swing.JFrame {
         //RELACION ESTUDIANTE-REPRESENTANTE
         contentPane.add(asignarRelacionPanel, ASIGNARRELACION);
         contentPane.add(eliminarRelacionPanel, ELIMINARRELACION);
+        contentPane.add(consultarRelacionPanel, CONSULTARRELACION);
 
     }
 
@@ -183,6 +187,7 @@ public class AppMenu extends javax.swing.JFrame {
         eliminarEstudiante = new javax.swing.JMenuItem();
         menuRelacion = new javax.swing.JMenu();
         asignarRelacion = new javax.swing.JMenuItem();
+        consultarRelacion = new javax.swing.JMenuItem();
         eliminarRelacion = new javax.swing.JMenuItem();
         menuRepresentantes = new javax.swing.JMenu();
         registrarRepresentante = new javax.swing.JMenuItem();
@@ -267,6 +272,14 @@ public class AppMenu extends javax.swing.JFrame {
             }
         });
         menuRelacion.add(asignarRelacion);
+
+        consultarRelacion.setText("Consultar");
+        consultarRelacion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                consultarRelacionActionPerformed(evt);
+            }
+        });
+        menuRelacion.add(consultarRelacion);
 
         eliminarRelacion.setText("Eliminar");
         eliminarRelacion.addActionListener(new java.awt.event.ActionListener() {
@@ -654,6 +667,11 @@ public class AppMenu extends javax.swing.JFrame {
         cardPanel.show(contentPane, ASIGNARRELACION);
     }//GEN-LAST:event_asignarRelacionActionPerformed
 
+    private void consultarRelacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultarRelacionActionPerformed
+        CardLayout cardPanel = (CardLayout)(contentPane.getLayout());
+        cardPanel.show(contentPane, CONSULTARRELACION);
+    }//GEN-LAST:event_consultarRelacionActionPerformed
+
 
     /**
      * @param args the command line arguments
@@ -701,6 +719,7 @@ public class AppMenu extends javax.swing.JFrame {
     private javax.swing.JMenuItem consultarEstudiante;
     private javax.swing.JMenuItem consultarGrupo;
     private javax.swing.JMenuItem consultarInasistencias;
+    private javax.swing.JMenuItem consultarRelacion;
     private javax.swing.JMenuItem consultarRepresentante;
     private javax.swing.JMenuItem consultarSuplencias;
     private javax.swing.JPanel contentPane;
