@@ -698,9 +698,9 @@ public class ComunicacionREST {
         try {
             conn = null;
             Gson gson = new GsonBuilder().create();
+            ArrayList<Rep_Est> _repest = new ArrayList<>();
             BufferedReader br = comunicar("GET", "consultarREPEST");
             String output;
-            ArrayList<Rep_Est> _repest = new ArrayList<>();
             Type listType = new TypeToken<ArrayList<Rep_Est>>() {}.getType();
             while ((output = br.readLine()) != null) {
                 _repest = gson.fromJson(output, listType);
