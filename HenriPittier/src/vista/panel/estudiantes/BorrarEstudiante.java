@@ -85,9 +85,6 @@ public class BorrarEstudiante extends javax.swing.JPanel {
         lbl_tituloEliminar = new javax.swing.JLabel();
         lbl_tituloEstudiantes = new javax.swing.JLabel();
 
-        setBackground(new java.awt.Color(204, 204, 204));
-
-        pnl_datos.setBackground(new java.awt.Color(204, 204, 204));
         pnl_datos.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
         pnl_datos.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         pnl_datos.setPreferredSize(new java.awt.Dimension(840, 520));
@@ -117,8 +114,9 @@ public class BorrarEstudiante extends javax.swing.JPanel {
         lbl_primerApellido.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         lbl_primerApellido.setText("Primer Apellido:");
 
-        btn_eliminar.setBackground(new java.awt.Color(121, 213, 177));
-        btn_eliminar.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        btn_eliminar.setBackground(new java.awt.Color(0, 153, 102));
+        btn_eliminar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        btn_eliminar.setForeground(new java.awt.Color(255, 255, 255));
         btn_eliminar.setText("Borrar");
         btn_eliminar.setActionCommand("Eliminar");
         btn_eliminar.setPreferredSize(new java.awt.Dimension(109, 25));
@@ -193,40 +191,42 @@ public class BorrarEstudiante extends javax.swing.JPanel {
     pnl_datosLayout.setHorizontalGroup(
         pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
         .addGroup(pnl_datosLayout.createSequentialGroup()
-            .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(35, 35, 35)
+            .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                 .addGroup(pnl_datosLayout.createSequentialGroup()
-                    .addGap(35, 35, 35)
                     .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(lbl_segundoNombre)
                         .addComponent(lbl_primerApellido)
                         .addComponent(lbl_segundoApellido)
                         .addComponent(lbl_primerNombre)
-                        .addComponent(lbl_tituloEliminar)
                         .addComponent(lbl_fechaNac))
                     .addGap(29, 29, 29)
                     .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(txt_primerApellido, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(txt_segundoApellido, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(txt_primerNombre)
-                                .addComponent(txt_segundoNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(cb_listaEstudiantes, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(txt_primerApellido, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txt_segundoApellido, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txt_primerNombre)
+                            .addComponent(txt_segundoNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addComponent(dc_fechaNac, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGroup(pnl_datosLayout.createSequentialGroup()
-                    .addGap(294, 294, 294)
-                    .addComponent(btn_eliminar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-            .addGap(0, 431, Short.MAX_VALUE))
+                    .addComponent(lbl_tituloEliminar)
+                    .addGap(35, 35, 35)
+                    .addComponent(cb_listaEstudiantes, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)))
+            .addGap(0, 0, Short.MAX_VALUE))
+        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnl_datosLayout.createSequentialGroup()
+            .addContainerGap(370, Short.MAX_VALUE)
+            .addComponent(btn_eliminar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGap(355, 355, 355))
     );
     pnl_datosLayout.setVerticalGroup(
         pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnl_datosLayout.createSequentialGroup()
-            .addGap(31, 31, 31)
+            .addGap(62, 62, 62)
             .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                .addComponent(cb_listaEstudiantes, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(lbl_tituloEliminar))
-            .addGap(42, 42, 42)
+                .addComponent(lbl_tituloEliminar)
+                .addComponent(cb_listaEstudiantes, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGap(45, 45, 45)
             .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                 .addComponent(txt_primerNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addComponent(lbl_primerNombre))
@@ -242,13 +242,13 @@ public class BorrarEstudiante extends javax.swing.JPanel {
             .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                 .addComponent(txt_segundoApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addComponent(lbl_segundoApellido))
-            .addGap(18, 18, 18)
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
             .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(lbl_fechaNac)
-                .addComponent(dc_fechaNac, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGap(62, 62, 62)
+                .addComponent(dc_fechaNac, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lbl_fechaNac, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 134, Short.MAX_VALUE)
             .addComponent(btn_eliminar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addContainerGap(132, Short.MAX_VALUE))
+            .addGap(38, 38, 38))
     );
 
     lbl_tituloEstudiantes.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -271,9 +271,9 @@ public class BorrarEstudiante extends javax.swing.JPanel {
     layout.setVerticalGroup(
         layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
         .addGroup(layout.createSequentialGroup()
-            .addGap(25, 25, 25)
+            .addGap(26, 26, 26)
             .addComponent(lbl_tituloEstudiantes, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addContainerGap(593, Short.MAX_VALUE))
+            .addContainerGap(592, Short.MAX_VALUE))
         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(63, 63, 63)

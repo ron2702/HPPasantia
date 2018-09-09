@@ -57,19 +57,16 @@ public class ConsultarRelacion extends javax.swing.JPanel {
         tb_consultarRepEst = new javax.swing.JTable();
         lbl_telfCasa = new javax.swing.JLabel();
         lbl_fotoEst = new javax.swing.JLabel();
-        lbl_fotoEstudiante = new javax.swing.JLabel();
-        txt_telfCasa = new javax.swing.JTextField();
+        txt_telfonoCasa = new javax.swing.JTextField();
         lbl_telfCasa1 = new javax.swing.JLabel();
         txt_telefonoMovil = new javax.swing.JTextField();
-        lbl_fotoRepresentante = new javax.swing.JLabel();
         lbl_fotoRep = new javax.swing.JLabel();
-
-        setBackground(new java.awt.Color(204, 204, 204));
+        lbl_fotoEstudiante = new javax.swing.JLabel();
+        lbl_fotoRepresentante = new javax.swing.JLabel();
 
         lbl_tituloConsultar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lbl_tituloConsultar.setText("Consultar Relacion Estudiante - Representante");
 
-        pnl_datos.setBackground(new java.awt.Color(204, 204, 204));
         pnl_datos.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
         pnl_datos.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         pnl_datos.setPreferredSize(new java.awt.Dimension(840, 520));
@@ -102,17 +99,12 @@ public class ConsultarRelacion extends javax.swing.JPanel {
         lbl_telfCasa.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         lbl_telfCasa.setText("Telefono Casa:");
 
-        lbl_fotoEst.setBackground(new java.awt.Color(255, 255, 255));
         lbl_fotoEst.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        lbl_fotoEst.setForeground(new java.awt.Color(255, 255, 255));
-        lbl_fotoEst.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        lbl_fotoEst.setText("Foto del Estudiante:");
 
-        lbl_fotoEstudiante.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        lbl_fotoEstudiante.setText("Foto del Estudiante:");
-
-        txt_telfCasa.setEditable(false);
-        txt_telfCasa.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        txt_telfCasa.setEnabled(false);
+        txt_telfonoCasa.setEditable(false);
+        txt_telfonoCasa.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        txt_telfonoCasa.setEnabled(false);
 
         lbl_telfCasa1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         lbl_telfCasa1.setText("Telefono Movil:");
@@ -121,72 +113,75 @@ public class ConsultarRelacion extends javax.swing.JPanel {
         txt_telefonoMovil.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         txt_telefonoMovil.setEnabled(false);
 
-        lbl_fotoRepresentante.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        lbl_fotoRepresentante.setText("Foto del Representante:");
-
-        lbl_fotoRep.setBackground(new java.awt.Color(255, 255, 255));
         lbl_fotoRep.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        lbl_fotoRep.setForeground(new java.awt.Color(255, 255, 255));
-        lbl_fotoRep.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        lbl_fotoRep.setText("Foto del Representante:");
+
+        lbl_fotoEstudiante.setBackground(new java.awt.Color(255, 255, 255));
+        lbl_fotoEstudiante.setIcon(new javax.swing.ImageIcon("C:\\Users\\LuisAlejandro\\Pictures\\Blanco.PNG")); // NOI18N
+        lbl_fotoEstudiante.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
+        lbl_fotoRepresentante.setBackground(new java.awt.Color(255, 255, 255));
+        lbl_fotoRepresentante.setIcon(new javax.swing.ImageIcon("C:\\Users\\LuisAlejandro\\Pictures\\Blanco.PNG")); // NOI18N
+        lbl_fotoRepresentante.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         javax.swing.GroupLayout pnl_datosLayout = new javax.swing.GroupLayout(pnl_datos);
         pnl_datos.setLayout(pnl_datosLayout);
         pnl_datosLayout.setHorizontalGroup(
             pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnl_datosLayout.createSequentialGroup()
-                .addContainerGap(24, Short.MAX_VALUE)
-                .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnl_datosLayout.createSequentialGroup()
+                .addGap(40, 40, 40)
+                .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnl_datosLayout.createSequentialGroup()
+                        .addGap(22, 22, 22)
                         .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnl_datosLayout.createSequentialGroup()
-                                .addComponent(lbl_telfCasa)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txt_telfCasa, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(lbl_fotoEstudiante))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnl_datosLayout.createSequentialGroup()
-                                .addGap(392, 392, 392)
-                                .addComponent(lbl_fotoRepresentante))
+                            .addComponent(lbl_telfCasa)
+                            .addComponent(lbl_fotoEst))
+                        .addGap(40, 40, 40)
+                        .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(pnl_datosLayout.createSequentialGroup()
-                                .addComponent(lbl_telfCasa1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txt_telefonoMovil, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(314, 314, 314)))
-                        .addGap(18, 18, 18)
+                                .addGap(21, 21, 21)
+                                .addComponent(lbl_fotoEstudiante, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txt_telfonoCasa, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(69, 69, 69)
                         .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lbl_fotoEst, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lbl_fotoRep, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(144, 144, 144))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnl_datosLayout.createSequentialGroup()
-                        .addComponent(sp_representantes, javax.swing.GroupLayout.PREFERRED_SIZE, 755, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(37, 37, 37))))
+                            .addComponent(lbl_telfCasa1)
+                            .addComponent(lbl_fotoRep))
+                        .addGap(40, 40, 40)
+                        .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lbl_fotoRepresentante, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txt_telefonoMovil, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(sp_representantes, javax.swing.GroupLayout.PREFERRED_SIZE, 755, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(39, Short.MAX_VALUE))
         );
         pnl_datosLayout.setVerticalGroup(
             pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnl_datosLayout.createSequentialGroup()
-                .addGap(35, 35, 35)
+                .addGap(32, 32, 32)
                 .addComponent(sp_representantes, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30)
+                .addGap(33, 33, 33)
                 .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(lbl_fotoRepresentante, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(pnl_datosLayout.createSequentialGroup()
+                            .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(lbl_telfCasa1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txt_telefonoMovil, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGap(131, 131, 131)
+                            .addComponent(lbl_fotoRep)
+                            .addGap(53, 53, 53)))
                     .addGroup(pnl_datosLayout.createSequentialGroup()
                         .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lbl_fotoEstudiante)
                             .addComponent(lbl_telfCasa, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txt_telfCasa, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lbl_telfCasa1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txt_telefonoMovil, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(lbl_fotoEst, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnl_datosLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(lbl_fotoRepresentante)
-                        .addGap(80, 80, 80))
-                    .addGroup(pnl_datosLayout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(lbl_fotoRep, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(21, Short.MAX_VALUE))))
+                            .addComponent(txt_telfonoCasa, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(pnl_datosLayout.createSequentialGroup()
+                                .addGap(65, 65, 65)
+                                .addComponent(lbl_fotoEstudiante, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnl_datosLayout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(lbl_fotoEst)
+                                .addGap(57, 57, 57)))))
+                .addContainerGap(27, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -195,25 +190,19 @@ public class ConsultarRelacion extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(57, 57, 57)
-                .addComponent(lbl_tituloConsultar)
-                .addContainerGap(571, Short.MAX_VALUE))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(56, 56, 56)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(pnl_datos, javax.swing.GroupLayout.PREFERRED_SIZE, 838, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(56, Short.MAX_VALUE)))
+                    .addComponent(lbl_tituloConsultar))
+                .addContainerGap(55, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(29, 29, 29)
+                .addGap(26, 26, 26)
                 .addComponent(lbl_tituloConsultar, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(589, Short.MAX_VALUE))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(63, 63, 63)
-                    .addComponent(pnl_datos, javax.swing.GroupLayout.PREFERRED_SIZE, 513, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(64, Short.MAX_VALUE)))
+                .addGap(18, 18, 18)
+                .addComponent(pnl_datos, javax.swing.GroupLayout.PREFERRED_SIZE, 513, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(61, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -233,7 +222,7 @@ public class ConsultarRelacion extends javax.swing.JPanel {
 
             if (representanteConsultar.getError() == Registry.RESULTADO_CODIGO_BIEN){
 
-                txt_telfCasa.setText(representanteConsultar.getTelefonoCasa());
+                txt_telfonoCasa.setText(representanteConsultar.getTelefonoCasa());
                 txt_telefonoMovil.setText(representanteConsultar.getTelefonoMovil());
                 
             }
@@ -255,6 +244,6 @@ public class ConsultarRelacion extends javax.swing.JPanel {
     private javax.swing.JScrollPane sp_representantes;
     private javax.swing.JTable tb_consultarRepEst;
     private javax.swing.JTextField txt_telefonoMovil;
-    private javax.swing.JTextField txt_telfCasa;
+    private javax.swing.JTextField txt_telfonoCasa;
     // End of variables declaration//GEN-END:variables
 }

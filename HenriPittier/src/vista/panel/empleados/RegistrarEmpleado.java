@@ -559,8 +559,8 @@ txt_primerApellido.addKeyListener(new java.awt.event.KeyAdapter() {
         layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
         .addGroup(layout.createSequentialGroup()
             .addGap(26, 26, 26)
-            .addComponent(lbl_tituloRegistroEmpleados)
-            .addGap(18, 18, 18)
+            .addComponent(lbl_tituloRegistroEmpleados, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
             .addComponent(pnl_datos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addContainerGap(59, Short.MAX_VALUE))
     );

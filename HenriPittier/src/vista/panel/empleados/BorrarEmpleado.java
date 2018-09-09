@@ -435,9 +435,9 @@ try {
         .addGroup(layout.createSequentialGroup()
             .addGap(26, 26, 26)
             .addComponent(lbl_tituloEmpleado)
-            .addGap(18, 18, 18)
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
             .addComponent(pnl_datos, javax.swing.GroupLayout.PREFERRED_SIZE, 513, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addContainerGap(66, Short.MAX_VALUE))
+            .addContainerGap(73, Short.MAX_VALUE))
     );
     }// </editor-fold>//GEN-END:initComponents
 

@@ -75,12 +75,9 @@ public class AsignarRelacion extends javax.swing.JPanel {
         txt_CedulaRepresentante = new javax.swing.JTextField();
         lbl_cedulaRepresentante = new javax.swing.JLabel();
 
-        setBackground(new java.awt.Color(204, 204, 204));
-
         lbl_tituloEstudiantes.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lbl_tituloEstudiantes.setText("Asignar Relacion Estudiante - Representante");
 
-        pnl_datos.setBackground(new java.awt.Color(204, 204, 204));
         pnl_datos.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
         pnl_datos.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         pnl_datos.setPreferredSize(new java.awt.Dimension(840, 520));
@@ -90,10 +87,11 @@ public class AsignarRelacion extends javax.swing.JPanel {
         txt_CedulaEstudiante.setEnabled(false);
 
         lbl_cedulaEstudiante.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        lbl_cedulaEstudiante.setText("CI Estudiante:");
+        lbl_cedulaEstudiante.setText("Cedula Escolar del Estudiante:");
 
-        btn_asignar.setBackground(new java.awt.Color(121, 213, 177));
-        btn_asignar.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        btn_asignar.setBackground(new java.awt.Color(0, 153, 102));
+        btn_asignar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        btn_asignar.setForeground(new java.awt.Color(255, 255, 255));
         btn_asignar.setText("Asignar");
         btn_asignar.setActionCommand("Eliminar");
         btn_asignar.setPreferredSize(new java.awt.Dimension(109, 25));
@@ -108,6 +106,7 @@ public class AsignarRelacion extends javax.swing.JPanel {
         lbl_estudiante.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         lbl_estudiante.setText("Estudiante:");
 
+        cb_parentezco.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         cb_parentezco.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Madre", "Padre", "Autorizado", "Otro" }));
 
         lbl_parentezco.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
@@ -117,16 +116,17 @@ public class AsignarRelacion extends javax.swing.JPanel {
         txt_CedulaRepresentante.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
 
         lbl_cedulaRepresentante.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        lbl_cedulaRepresentante.setText("CI Representante:");
+        lbl_cedulaRepresentante.setText("Cédula de Identidad del Representante:");
 
         javax.swing.GroupLayout pnl_datosLayout = new javax.swing.GroupLayout(pnl_datos);
         pnl_datos.setLayout(pnl_datosLayout);
         pnl_datosLayout.setHorizontalGroup(
             pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnl_datosLayout.createSequentialGroup()
-                .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(35, 35, 35)
+                .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btn_asignar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(pnl_datosLayout.createSequentialGroup()
-                        .addGap(35, 35, 35)
                         .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lbl_cedulaEstudiante)
                             .addComponent(lbl_estudiante)
@@ -137,16 +137,13 @@ public class AsignarRelacion extends javax.swing.JPanel {
                             .addComponent(cb_listaEstudiantes, 0, 192, Short.MAX_VALUE)
                             .addComponent(cb_parentezco, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(txt_CedulaEstudiante)
-                            .addComponent(txt_CedulaRepresentante)))
-                    .addGroup(pnl_datosLayout.createSequentialGroup()
-                        .addGap(363, 363, 363)
-                        .addComponent(btn_asignar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 364, Short.MAX_VALUE))
+                            .addComponent(txt_CedulaRepresentante))))
+                .addGap(0, 355, Short.MAX_VALUE))
         );
         pnl_datosLayout.setVerticalGroup(
             pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnl_datosLayout.createSequentialGroup()
-                .addGap(45, 45, 45)
+                .addGap(90, 90, 90)
                 .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbl_estudiante)
                     .addComponent(cb_listaEstudiantes, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -162,9 +159,9 @@ public class AsignarRelacion extends javax.swing.JPanel {
                 .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbl_parentezco)
                     .addComponent(cb_parentezco, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 128, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 136, Short.MAX_VALUE)
                 .addComponent(btn_asignar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(91, 91, 91))
+                .addGap(38, 38, 38))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -181,11 +178,11 @@ public class AsignarRelacion extends javax.swing.JPanel {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(29, 29, 29)
+                .addGap(26, 26, 26)
                 .addComponent(lbl_tituloEstudiantes, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(pnl_datos, javax.swing.GroupLayout.PREFERRED_SIZE, 515, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(63, Short.MAX_VALUE))
+                .addContainerGap(66, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
