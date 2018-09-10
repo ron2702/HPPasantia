@@ -268,7 +268,7 @@ $$ LANGUAGE plpgsql;
 
 /**************************************CRUD EMP_GRU_EST******************************************/
 /*------------------REGISTRAR EMP_GRU_EST--------------------*/
-CREATE OR REPLACE FUNCTION EMPGRUEST_REGISTRAR(integer, varchar(30), varchar(30)) RETURNS integer AS $$
+CREATE OR REPLACE FUNCTION EMPGRU_REGISTRAR(integer, varchar(30), varchar(30)) RETURNS integer AS $$
 DECLARE
  RESULT integer; 
  CANTDOCENTES integer;
@@ -301,7 +301,7 @@ $$ LANGUAGE plpgsql;
 /*------------------REGISTRAR EMP_GRU_EST--------------------*/
 
 /*--------------BORRAR EMP_GRU_EST----------------*/
-CREATE OR REPLACE FUNCTION EMPGRUEST_BORRAR(integer, varchar(30)) RETURNS integer AS $$
+CREATE OR REPLACE FUNCTION EMPGRU_BORRAR(integer, varchar(30)) RETURNS integer AS $$
 DECLARE
  RESULT integer;
 
@@ -321,3 +321,17 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 /*--------------BORRAR EMP_GRU_EST----------------*/
+
+/*------------CONSULTAR EMP_GRU_EST---------------*/
+CREATE OR REPLACE FUNCTION EMPGRU_CONSULTAR() RETURNS TABLE(FK_CEDULA integer, PRIMERNOMBRE varchar(30), PRIMERAPELLIDO varchar(30), CARGO varchar(30), NOMBRE varchar(30)) AS $$
+DECLARE
+
+BEGIN
+	 RETURN QUERY
+	 SELECT EMP.FK_CEDULA, E.PRIMERNOMBRE, E.PRIMERAPELLIDO, E.CARGO, G.NOMBRE
+	 FROM EMP_GRU_EST EMP, EMPLEADO E, GRUPO G
+	 WHERE EMP.FK_CEDULA = E.CEDULA AND EMP.FK_GRUPO = G.CODIGO	
+	 ;
+END;
+$$ LANGUAGE plpgsql;
+/*------------CONSULTAR EMP_GRU_EST---------------*/
