@@ -199,6 +199,10 @@ public class AppMenu extends javax.swing.JFrame {
         consultarEmpleado = new javax.swing.JMenuItem();
         modificarEmpleado = new javax.swing.JMenuItem();
         eliminarEmpleado = new javax.swing.JMenuItem();
+        asignarDocentes = new javax.swing.JMenu();
+        asignarGrupo = new javax.swing.JMenuItem();
+        removerGrupo = new javax.swing.JMenuItem();
+        consultarAsignaciones = new javax.swing.JMenuItem();
         menuInasistencias = new javax.swing.JMenu();
         registrarInasistencia = new javax.swing.JMenuItem();
         consultarInasistencias = new javax.swing.JMenuItem();
@@ -362,6 +366,19 @@ public class AppMenu extends javax.swing.JFrame {
             }
         });
         menuEmpleados.add(eliminarEmpleado);
+
+        asignarDocentes.setText("Asignación de Docentes");
+
+        asignarGrupo.setText("Asignar al Grupo");
+        asignarDocentes.add(asignarGrupo);
+
+        removerGrupo.setText("Remover del Grupo");
+        asignarDocentes.add(removerGrupo);
+
+        consultarAsignaciones.setText("Consultar Asignaciones");
+        asignarDocentes.add(consultarAsignaciones);
+
+        menuEmpleados.add(asignarDocentes);
 
         barraMenu.add(menuEmpleados);
 
@@ -710,11 +727,14 @@ public class AppMenu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenu asignarDocentes;
+    private javax.swing.JMenuItem asignarGrupo;
     private javax.swing.JMenuItem asignarRelacion;
     private javax.swing.JMenuBar barraMenu;
     private javax.swing.JMenuItem borrarInasistencia;
     private javax.swing.JMenuItem borrarSuplencia;
     private javax.swing.JMenuItem cerrarSesion;
+    private javax.swing.JMenuItem consultarAsignaciones;
     private javax.swing.JMenuItem consultarEmpleado;
     private javax.swing.JMenuItem consultarEstudiante;
     private javax.swing.JMenuItem consultarGrupo;
@@ -751,6 +771,7 @@ public class AppMenu extends javax.swing.JFrame {
     private javax.swing.JMenuItem registrarInasistencia;
     private javax.swing.JMenuItem registrarRepresentante;
     private javax.swing.JMenuItem registrarSuplencia;
+    private javax.swing.JMenuItem removerGrupo;
     private javax.swing.JMenuItem salirAplicacion;
     // End of variables declaration//GEN-END:variables
 }

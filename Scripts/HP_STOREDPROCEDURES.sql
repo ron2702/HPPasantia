@@ -193,7 +193,7 @@ END;
 $$ LANGUAGE plpgsql;
 /*--------------BORRAR INASISTENCIAS X EMPLEADO----------------*/
 
-/****************************************CRUD SUPLENCIA ******************************************/
+/****************************************CRUD SUPLENCIA******************************************/
 /*------------------REGISTRAR SUPLENCIA--------------------*/
 CREATE OR REPLACE FUNCTION SUPLENCIA_REGISTRAR(integer, varchar(15), integer, integer) RETURNS integer AS $$
 DECLARE
@@ -265,3 +265,36 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 /*--------------BORRAR SUPLENCIA X EMPLEADO----------------*/
+
+/**************************************CRUD EMP_GRU_EST******************************************/
+/*------------------REGISTRAR EMP_GRU_EST--------------------*/
+CREATE OR REPLACE FUNCTION EMPGRUEST_REGISTRAR(integer, varchar(30), varchar(30)) RETURNS integer AS $$
+DECLARE
+ RESULT integer; 
+ CANTDOCENTES integer;
+ CANTAUXILIARES integer;
+
+
+BEGIN
+	CANTDOCENTES := (SELECT COUNT(EMP.ID) FROM EMP_GRU_EST EMP, EMPLEADO E WHERE (E.CEDULA = EMP.FK_CEDULA) AND (EMP.FK_GRUPO = $2) AND (E.CARGO = 'Docente'));
+	CANTAUXILIARES := (SELECT COUNT(EMP.ID) FROM EMP_GRU_EST EMP, EMPLEADO E WHERE (E.CEDULA = EMP.FK_CEDULA) AND (EMP.FK_GRUPO = $2) AND (E.CARGO = 'Auxiliar'));
+	IF (CANTDOCENTES = 0 AND ($3 = 'Docente')) THEN
+
+		INSERT INTO EMP_GRU_EST (FK_CEDULA, FK_CEDULAESCOLAR, FK_GRUPO) VALUES ($1, NULL, $2);
+		
+		RESULT := 201;
+  	
+  	ELSIF (CANTAUXILIARES < 2 AND ($3 = 'Auxiliar')) THEN
+	
+		INSERT INTO EMP_GRU_EST (FK_CEDULA, FK_CEDULAESCOLAR, FK_GRUPO) VALUES ($1, NULL, $2);
+		
+		RESULT := 201;
+
+	ELSE
+
+		RESULT := 500;
+
+	END IF;
+ 	RETURN RESULT;
+END;
+$$ LANGUAGE plpgsql;
