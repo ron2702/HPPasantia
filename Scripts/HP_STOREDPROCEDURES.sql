@@ -298,3 +298,26 @@ BEGIN
  	RETURN RESULT;
 END;
 $$ LANGUAGE plpgsql;
+/*------------------REGISTRAR EMP_GRU_EST--------------------*/
+
+/*--------------BORRAR EMP_GRU_EST----------------*/
+CREATE OR REPLACE FUNCTION EMPGRUEST_BORRAR(integer, varchar(30)) RETURNS integer AS $$
+DECLARE
+ RESULT integer;
+
+BEGIN
+	IF ((SELECT COUNT(*) FROM EMP_GRU_EST WHERE FK_CEDULA = $1 AND FK_GRUPO = $2) = 1) THEN
+
+		DELETE FROM EMP_GRU_EST WHERE ID = (SELECT ID FROM EMP_GRU_EST WHERE FK_CEDULA = $1 AND FK_GRUPO = $2);
+		
+		RESULT := 200;
+
+	ELSE
+
+		RESULT := 204;
+
+	END IF;
+	RETURN RESULT;
+END;
+$$ LANGUAGE plpgsql;
+/*--------------BORRAR EMP_GRU_EST----------------*/
