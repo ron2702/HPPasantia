@@ -30,7 +30,11 @@ import vista.panel.inasistencias.ModificarInasistencia;
 import vista.panel.inasistencias.RegistrarInasistencia;
 import vista.panel.representantes.BorrarRepresentante;
 import vista.panel.representantes.ConsultarRepresentantes;
+import vista.panel.representantes.ModificarMensualidad;
 import vista.panel.representantes.ModificarRepresentante;
+import vista.panel.representantes.RegistrarMensualidad;
+import vista.panel.representantes.BorrarMensualidad;
+import vista.panel.representantes.ConsultarMensualidad;
 import vista.panel.representantes.RegistrarRepresentante;
 import vista.panel.suplencias.BorrarSuplencia;
 import vista.panel.suplencias.ConsultarSuplencias;
@@ -116,7 +120,19 @@ public class AppMenu extends javax.swing.JFrame {
     AsignarRelacion asignarRelacionPanel = new AsignarRelacion();
     EliminarRelacion eliminarRelacionPanel = new EliminarRelacion();
     ConsultarRelacion consultarRelacionPanel = new ConsultarRelacion();
-
+    
+    //RELACION MENSUALIDAD-REPRESENTANTE
+    final static String REGISTRARMENSUALIDAD = "REGISTRARMENSUALIDAD";
+    final static String MODIFICARMENSUALIDAD = "MODIFICARMENSUALIDAD";
+    final static String BORRARMENSUALIDAD = "BORRARMENSUALIDAD";
+    final static String CONSULTARMENSUALIDAD = "CONSULTARMENSUALIDAD";
+    
+    RegistrarMensualidad registrarMensualidadPanel = new RegistrarMensualidad();
+    ModificarMensualidad modificarMensualidadPanel = new ModificarMensualidad();
+    BorrarMensualidad borrarMensualidadPanel = new BorrarMensualidad();
+    ConsultarMensualidad consultarMensualidadPanel = new ConsultarMensualidad();
+    
+    
     /**
      * Creates new form AppMenu
      */
@@ -165,7 +181,13 @@ public class AppMenu extends javax.swing.JFrame {
         contentPane.add(asignarRelacionPanel, ASIGNARRELACION);
         contentPane.add(eliminarRelacionPanel, ELIMINARRELACION);
         contentPane.add(consultarRelacionPanel, CONSULTARRELACION);
-
+        
+        //MENSUALIDAD-REPRESENTANTE
+        contentPane.add(registrarMensualidadPanel, REGISTRARMENSUALIDAD);
+        contentPane.add(modificarMensualidadPanel, MODIFICARMENSUALIDAD);
+        contentPane.add(borrarMensualidadPanel, BORRARMENSUALIDAD);
+        contentPane.add(consultarMensualidadPanel, CONSULTARMENSUALIDAD);
+        
     }
 
     /**
@@ -194,6 +216,11 @@ public class AppMenu extends javax.swing.JFrame {
         consultarRepresentante = new javax.swing.JMenuItem();
         modificarRepresentante = new javax.swing.JMenuItem();
         eliminarRepresentante = new javax.swing.JMenuItem();
+        menuPagoMensualidad = new javax.swing.JMenu();
+        registrarMensualidad = new javax.swing.JMenuItem();
+        modificarMensualidad = new javax.swing.JMenuItem();
+        borrarMensualidad = new javax.swing.JMenuItem();
+        consultarMensualidad = new javax.swing.JMenuItem();
         menuEmpleados = new javax.swing.JMenu();
         registrarEmpleado = new javax.swing.JMenuItem();
         consultarEmpleado = new javax.swing.JMenuItem();
@@ -326,6 +353,42 @@ public class AppMenu extends javax.swing.JFrame {
             }
         });
         menuRepresentantes.add(eliminarRepresentante);
+
+        menuPagoMensualidad.setText("Mensualidad");
+
+        registrarMensualidad.setText("Registrar");
+        registrarMensualidad.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                registrarMensualidadActionPerformed(evt);
+            }
+        });
+        menuPagoMensualidad.add(registrarMensualidad);
+
+        modificarMensualidad.setText("Modificar");
+        modificarMensualidad.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                modificarMensualidadActionPerformed(evt);
+            }
+        });
+        menuPagoMensualidad.add(modificarMensualidad);
+
+        borrarMensualidad.setText("Borrar");
+        borrarMensualidad.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                borrarMensualidadActionPerformed(evt);
+            }
+        });
+        menuPagoMensualidad.add(borrarMensualidad);
+
+        consultarMensualidad.setText("Consultar");
+        consultarMensualidad.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                consultarMensualidadActionPerformed(evt);
+            }
+        });
+        menuPagoMensualidad.add(consultarMensualidad);
+
+        menuRepresentantes.add(menuPagoMensualidad);
 
         barraMenu.add(menuRepresentantes);
 
@@ -672,6 +735,26 @@ public class AppMenu extends javax.swing.JFrame {
         cardPanel.show(contentPane, CONSULTARRELACION);
     }//GEN-LAST:event_consultarRelacionActionPerformed
 
+    private void registrarMensualidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrarMensualidadActionPerformed
+       CardLayout cardPanel = (CardLayout)(contentPane.getLayout());
+       cardPanel.show(contentPane, REGISTRARMENSUALIDAD);
+    }//GEN-LAST:event_registrarMensualidadActionPerformed
+
+    private void modificarMensualidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarMensualidadActionPerformed
+        CardLayout cardPanel = (CardLayout)(contentPane.getLayout());
+        cardPanel.show(contentPane, MODIFICARMENSUALIDAD);
+    }//GEN-LAST:event_modificarMensualidadActionPerformed
+
+    private void borrarMensualidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_borrarMensualidadActionPerformed
+        CardLayout cardPanel = (CardLayout)(contentPane.getLayout());
+        cardPanel.show(contentPane, BORRARMENSUALIDAD);
+    }//GEN-LAST:event_borrarMensualidadActionPerformed
+
+    private void consultarMensualidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultarMensualidadActionPerformed
+        CardLayout cardPanel = (CardLayout)(contentPane.getLayout());
+        cardPanel.show(contentPane, CONSULTARMENSUALIDAD);
+    }//GEN-LAST:event_consultarMensualidadActionPerformed
+
 
     /**
      * @param args the command line arguments
@@ -713,12 +796,14 @@ public class AppMenu extends javax.swing.JFrame {
     private javax.swing.JMenuItem asignarRelacion;
     private javax.swing.JMenuBar barraMenu;
     private javax.swing.JMenuItem borrarInasistencia;
+    private javax.swing.JMenuItem borrarMensualidad;
     private javax.swing.JMenuItem borrarSuplencia;
     private javax.swing.JMenuItem cerrarSesion;
     private javax.swing.JMenuItem consultarEmpleado;
     private javax.swing.JMenuItem consultarEstudiante;
     private javax.swing.JMenuItem consultarGrupo;
     private javax.swing.JMenuItem consultarInasistencias;
+    private javax.swing.JMenuItem consultarMensualidad;
     private javax.swing.JMenuItem consultarRelacion;
     private javax.swing.JMenuItem consultarRepresentante;
     private javax.swing.JMenuItem consultarSuplencias;
@@ -735,6 +820,7 @@ public class AppMenu extends javax.swing.JFrame {
     private javax.swing.JMenu menuEstudiantes;
     private javax.swing.JMenu menuGrupos;
     private javax.swing.JMenu menuInasistencias;
+    private javax.swing.JMenu menuPagoMensualidad;
     private javax.swing.JMenu menuRelacion;
     private javax.swing.JMenu menuRepresentantes;
     private javax.swing.JMenu menuSalir;
@@ -743,12 +829,14 @@ public class AppMenu extends javax.swing.JFrame {
     private javax.swing.JMenuItem modificarEstudiante;
     private javax.swing.JMenuItem modificarGrupo;
     private javax.swing.JMenuItem modificarInasistencia;
+    private javax.swing.JMenuItem modificarMensualidad;
     private javax.swing.JMenuItem modificarRepresentante;
     private javax.swing.JMenuItem modificarSuplencia;
     private javax.swing.JMenuItem registrarEmpleado;
     private javax.swing.JMenuItem registrarEstudiante;
     private javax.swing.JMenuItem registrarGrupo;
     private javax.swing.JMenuItem registrarInasistencia;
+    private javax.swing.JMenuItem registrarMensualidad;
     private javax.swing.JMenuItem registrarRepresentante;
     private javax.swing.JMenuItem registrarSuplencia;
     private javax.swing.JMenuItem salirAplicacion;
