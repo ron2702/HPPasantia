@@ -13,6 +13,7 @@ import comun.Estudiante;
 import comun.Grupo;
 import comun.Inasistencia;
 import comun.Lugar;
+import comun.Mensualidad_Representante;
 import comun.Rep_Est;
 import comun.Representante;
 import comun.Suplencia;
@@ -42,6 +43,11 @@ import controlador.modulo_inasistencias.RegistrarInasistenciaComando;
 import controlador.modulo_lugares.ConsultarEstadosComando;
 import controlador.modulo_lugares.ConsultarMunicipiosComando;
 import controlador.modulo_lugares.ConsultarParroquiasComando;
+import controlador.modulo_mensualidad_representante.BorrarMensualidadComando;
+import controlador.modulo_mensualidad_representante.ConsultarMensualidadComando;
+import controlador.modulo_mensualidad_representante.ConsultarMensualidadDetalleComando;
+import controlador.modulo_mensualidad_representante.ModificarMensualidadComando;
+import controlador.modulo_mensualidad_representante.RegistrarMensualidadComando;
 import controlador.modulo_repest.BorrarRepEstComando;
 import controlador.modulo_repest.ConsultarRepEstComando;
 import controlador.modulo_repest.ConsultarRepEstDetalleComando;
@@ -1032,6 +1038,119 @@ public class HenriPittierWS {
         } catch (Exception ex) {
             
             ArrayList<Lugar> error = null;
+            return gson.toJson(error);
+            
+        }
+    }
+    
+    /*WS DE Mensualidad_Representante*/
+    @GET
+    @Path("registrarMensualidadRepresentante")
+    @Produces("application/json")
+    public String registrarMensualidadRepresentante (@QueryParam("registrarMensualidad") String _registrarMensualidad){
+        
+        Gson gson = new GsonBuilder().create();
+        Mensualidad_Representante registrarMensualidad = gson.fromJson(_registrarMensualidad, Mensualidad_Representante.class);
+        RegistrarMensualidadComando cmd = new RegistrarMensualidadComando(registrarMensualidad);
+        
+        try {
+        
+            cmd.execute();
+            return gson.toJson(cmd.obtenerRespuesta());
+            
+        } catch (Exception ex) {
+            
+            Mensualidad_Representante error = new Mensualidad_Representante();
+            error.setError(RESULTADO_CODIGO_FALLIDO);
+            return gson.toJson(error);
+            
+        }
+    }
+    
+    @GET
+    @Path("modificarMensualidadRepresentante")
+    @Produces("application/json")
+    public String modificarMensualidadRepresentante (@QueryParam("modificarMensualidad") String _modificarMensualidad){
+        
+        Gson gson = new GsonBuilder().create();
+        Mensualidad_Representante modificarMensualidad = gson.fromJson(_modificarMensualidad, Mensualidad_Representante.class);
+        ModificarMensualidadComando cmd = new ModificarMensualidadComando(modificarMensualidad);
+        
+        try {
+        
+            cmd.execute();
+            return gson.toJson(cmd.obtenerRespuesta());
+            
+        } catch (Exception ex) {
+            
+            Mensualidad_Representante error = new Mensualidad_Representante();
+            error.setError(RESULTADO_CODIGO_FALLIDO);
+            return gson.toJson(error);
+            
+        }
+    }
+    
+    @GET
+    @Path("borrarMensualidadRepresentante")
+    @Produces("application/json")
+    public String borrarMensualidadRepresentante (@QueryParam("borrarMensualidad") String _borrarMensualidad){
+        
+        Gson gson = new GsonBuilder().create();
+        Mensualidad_Representante borrarMensualidad = gson.fromJson(_borrarMensualidad, Mensualidad_Representante.class);
+        BorrarMensualidadComando cmd = new BorrarMensualidadComando(borrarMensualidad);
+        
+        try {
+        
+            cmd.execute();
+            return gson.toJson(cmd.obtenerRespuesta());
+            
+        } catch (Exception ex) {
+            
+            Mensualidad_Representante error = new Mensualidad_Representante();
+            error.setError(RESULTADO_CODIGO_FALLIDO);
+            return gson.toJson(error);
+            
+        }
+    }
+    
+    @GET
+    @Path("consultarMensualidadRepresentante")
+    @Produces("application/json")
+    public String consultarMensualidadRepresentante (){
+        
+        ConsultarMensualidadComando cmd = new ConsultarMensualidadComando();
+        
+        try {
+            
+            cmd.execute();
+            return gson.toJson(cmd.obtenerRespuesta());
+            
+        } catch (Exception ex) {
+            
+            ArrayList<Mensualidad_Representante> error = null;
+            return gson.toJson(error);
+            
+        }
+    }
+    
+    @GET
+    @Path("consultarMensualidadRepresentanteDetalle")
+    @Produces("application/json")
+    public String consultarMensualidadRepresentanteDetalle (@QueryParam("consultarMensualidad") String _consultarMensualidad){
+        
+        Gson gson = new GsonBuilder().create();
+        Mensualidad_Representante mensualidadConsultar = gson.fromJson(_consultarMensualidad, Mensualidad_Representante.class);
+        ConsultarMensualidadDetalleComando cmd = new ConsultarMensualidadDetalleComando(mensualidadConsultar);
+        
+        try {
+            
+            cmd.execute();
+            return gson.toJson(cmd.obtenerRespuesta());
+            
+        } catch (Exception ex) {
+            
+            Mensualidad_Representante error = new Mensualidad_Representante();
+            error.setError(RESULTADO_CODIGO_FALLIDO);
             return gson.toJson(error);
             
         }
