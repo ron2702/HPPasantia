@@ -24,8 +24,8 @@ public class DAOMensualidad_Representante extends DAO {
     
     private Connection _bdCon;
     private static String _sqlMensualidadRegistrar = "{?=call MENSUALIDAD_REPRESENTANTE_REGISTRAR(?,?,?,?,?,?,?,?)}";
-    private static String _sqlMensualidadModificar = "{?=call REPRESENTANTE_MODIFICAR(?,?,?,?,?,?,?,?)}";
-    private static String _sqlMensualidadBorrar = "{?=call REPRESENTANTE_BORRAR(?)}";
+    private static String _sqlMensualidadModificar = "{?=call MENSUALIDAD_REPRESENTANTE_MODIFICAR(?,?,?,?,?,?,?,?)}";
+    private static String _sqlMensualidadBorrar = "{?=call MENSUALIDAD_REPRESENTANTE_BORRAR(?)}";
      private static String _sqlMensualidadConsultarTodos = "{call MENSUALIDAD_REPRESENTANTE_CONSULTAR_TODOS()}";
     private static String _sqlMensualidadDetalle = "{call MENSUALIDAD_REPRESENTANTE_CONSULTAR_DETALLE(?)}";
     private ResultSet rs;

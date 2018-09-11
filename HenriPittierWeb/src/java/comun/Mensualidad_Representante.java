@@ -164,6 +164,9 @@ public class Mensualidad_Representante {
         this.error = error;
     }
     
-    
+    @Override
+    public String toString() {
+        return this.codigo + " - " + this.primerNombre_rep + " " + this.primerApellido_rep;
+    }
     
 }
