@@ -12,6 +12,7 @@ import comun.Estudiante;
 import comun.Grupo;
 import comun.Inasistencia;
 import comun.Lugar;
+import comun.Mensualidad_Representante;
 import comun.Rep_Est;
 import comun.Representante;
 import comun.Suplencia;
@@ -768,6 +769,98 @@ public class ComunicacionREST {
             throw ex;
         }
     }
+    
+    public Mensualidad_Representante registrarMensualidad(Mensualidad_Representante e) throws Exception {
+        try {
+            conn = null;
+            Gson gson = new GsonBuilder().create();
+            BufferedReader br = comunicar("GET", "registrarMensualidadRepresentante?registrarMensualidad=" + URLEncoder.encode(gson.toJson(e).toString(), "UTF-8"));
+            String output;
+            Mensualidad_Representante _mensualidad = new Mensualidad_Representante();
+            while ((output = br.readLine()) != null) {
+                _mensualidad = gson.fromJson(output, Mensualidad_Representante.class);
+            }
+            conn.disconnect();
+            return _mensualidad;
+        }
+        catch (Exception ex){
+            throw ex;
+        }
+    }
+    
+    public Mensualidad_Representante modificarMensualidad(Mensualidad_Representante e) throws Exception {
+        try {
+            conn = null;
+            Gson gson = new GsonBuilder().create();
+            BufferedReader br = comunicar("GET", "modificarMensualidadRepresentante?modificarMensualidad=" + URLEncoder.encode(gson.toJson(e).toString(), "UTF-8"));
+            String output;
+            Mensualidad_Representante _mensualidad = new Mensualidad_Representante();
+            while ((output = br.readLine()) != null) {
+                _mensualidad = gson.fromJson(output, Mensualidad_Representante.class);
+            }
+            conn.disconnect();
+            return _mensualidad;
+        }
+        catch (Exception ex){
+            throw ex;
+        }
+    }
+    
+    public Mensualidad_Representante borrarMensualidad(Mensualidad_Representante e) throws Exception {
+        try {
+            conn = null;
+            Gson gson = new GsonBuilder().create();
+            BufferedReader br = comunicar("GET", "borrarMensualidadRepresentante?borrarMensualidad=" + URLEncoder.encode(gson.toJson(e).toString(), "UTF-8"));
+            String output;
+            Mensualidad_Representante _mensualidad = new Mensualidad_Representante();
+            while ((output = br.readLine()) != null) {
+                _mensualidad = gson.fromJson(output, Mensualidad_Representante.class);
+            }
+            conn.disconnect();
+            return _mensualidad;
+        }
+        catch (Exception ex){
+            throw ex;
+        }
+    }
+    
+    public ArrayList<Mensualidad_Representante> consultarMensualidad() throws Exception {
+        try {
+            conn = null;
+            Gson gson = new GsonBuilder().registerTypeAdapter(Date.class, new JsonDateDeserializer()).create();
+            BufferedReader br = comunicar("GET", "consultarMensualidadRepresentante");
+            String output;
+            ArrayList<Mensualidad_Representante> _mensualidad = new ArrayList<>();
+            Type listType = new TypeToken<ArrayList<Mensualidad_Representante>>() {}.getType();
+            while ((output = br.readLine()) != null) {
+                _mensualidad = gson.fromJson(output, listType);
+            }
+            conn.disconnect();
+            return _mensualidad;
+        }
+        catch (Exception ex){
+            throw ex;
+        }
+    }
+    
+    public Mensualidad_Representante consultarMensualidadDetalle(Mensualidad_Representante e) throws Exception {
+        try {
+            conn = null;
+            Gson gson = new GsonBuilder().registerTypeAdapter(Date.class, new JsonDateDeserializer()).create();
+            BufferedReader br = comunicar("GET", "consultarMensualidadRepresentanteDetalle?consultarMensualidad=" + URLEncoder.encode(gson.toJson(e).toString(), "UTF-8"));
+            String output;
+            Mensualidad_Representante _mensualidad = new Mensualidad_Representante();
+            while ((output = br.readLine()) != null) {
+                _mensualidad = gson.fromJson(output, Mensualidad_Representante.class);
+            }
+            conn.disconnect();
+            return _mensualidad;
+        }
+        catch (Exception ex){
+            throw ex;
+        }
+    }
+    
 }
     
 
