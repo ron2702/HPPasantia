@@ -679,7 +679,7 @@ public class HenriPittierWS {
     }
     
     @GET
-    @Path("consultarGrupo")
+    @Path("consultarGrupos")
     @Produces("application/json")
     public String consultarGrupo (){
         
