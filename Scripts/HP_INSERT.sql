@@ -1879,3 +1879,5 @@ INSERT INTO EMPLEADO VALUES (8421185, 'Marleny', null, 'Rueda', 'H', 'Banco Merc
 INSERT INTO EMPLEADO VALUES (14409682, 'Eglee', 'Milagros', 'Fernandez', null, 'Banesco', 3000000, '14/09/2009', '26/08/2018', null, null, 'Auxiliar', 'abc', null, null, 690);
 INSERT INTO EMPLEADO VALUES (17078153, 'Nikarilis', 'E', 'Madrid', 'Fonseca', 'Banco Mercantil', 3000000, '15/09/2014', '26/08/2018', null, null, 'Auxiliar', 'abc', null, null, 690);
 INSERT INTO EMPLEADO VALUES (25281481, 'Rosanna', null, 'Rodriguez', null, 'Banesco', 3000000, '15/10/2015', '26/08/2018', null, null, 'Obrera', 'abc', null, null, 690);
+
+INSERT INTO EMP_GRU_EST VALUES (nextval('emp_gru_est_id_seq'), 26217421, null, '1A');

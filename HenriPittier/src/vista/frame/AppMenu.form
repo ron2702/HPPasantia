@@ -198,6 +198,28 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="eliminarEmpleadoActionPerformed"/>
               </Events>
             </MenuItem>
+            <Menu class="javax.swing.JMenu" name="asignarDocentes">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Asignaci&#xf3;n de Docentes"/>
+              </Properties>
+              <SubComponents>
+                <MenuItem class="javax.swing.JMenuItem" name="asignarGrupo">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Asignar al Grupo"/>
+                  </Properties>
+                </MenuItem>
+                <MenuItem class="javax.swing.JMenuItem" name="removerGrupo">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Remover del Grupo"/>
+                  </Properties>
+                </MenuItem>
+                <MenuItem class="javax.swing.JMenuItem" name="consultarAsignaciones">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Consultar Asignaciones"/>
+                  </Properties>
+                </MenuItem>
+              </SubComponents>
+            </Menu>
           </SubComponents>
         </Menu>
         <Menu class="javax.swing.JMenu" name="menuInasistencias">
