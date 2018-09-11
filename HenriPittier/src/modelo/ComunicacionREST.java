@@ -474,7 +474,7 @@ public class ComunicacionREST {
         try {
             conn = null;
             Gson gson = new GsonBuilder().registerTypeAdapter(Date.class, new JsonDateDeserializer()).create();
-            BufferedReader br = comunicar("GET", "consultarGrupo");
+            BufferedReader br = comunicar("GET", "consultarGrupos");
             String output;
             ArrayList<Grupo> _grupo = new ArrayList<>();
             Type listType = new TypeToken<ArrayList<Grupo>>() {}.getType();

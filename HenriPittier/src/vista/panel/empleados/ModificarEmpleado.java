@@ -130,7 +130,7 @@ public class ModificarEmpleado extends javax.swing.JPanel {
             });
             
         } catch (Exception ex) {
-            Logger.getLogger(RegistrarEmpleado.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ModificarEmpleado.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
