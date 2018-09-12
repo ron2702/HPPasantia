@@ -122,9 +122,9 @@ public class AsignarEstGrupo extends javax.swing.JPanel {
                 .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbl_tituloGrupoAlumnos)
                     .addComponent(cb_listaGrupos, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 285, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 196, Short.MAX_VALUE)
                 .addComponent(btn_asignar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(36, 36, 36))
+                .addGap(89, 89, 89))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -144,8 +144,8 @@ public class AsignarEstGrupo extends javax.swing.JPanel {
                 .addGap(45, 45, 45)
                 .addComponent(lbl_titulo)
                 .addGap(18, 18, 18)
-                .addComponent(pnl_datos, javax.swing.GroupLayout.PREFERRED_SIZE, 523, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(37, Short.MAX_VALUE))
+                .addComponent(pnl_datos, javax.swing.GroupLayout.PREFERRED_SIZE, 487, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(73, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -161,7 +161,7 @@ public class AsignarEstGrupo extends javax.swing.JPanel {
                 JOptionPane.showMessageDialog(panel, "Se realizo exitosamente la asignacion", "Información", JOptionPane.INFORMATION_MESSAGE);
             } else{
                 final JPanel panel = new JPanel();
-                JOptionPane.showMessageDialog(panel, "No se pudo realizar la asignacion, intente nuevamente", "Error", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(panel, "No se pudo realizar la asignacion, verifique si el alumno esta asignado o si la seccion esta llena", "Error", JOptionPane.ERROR_MESSAGE);
             }
         } catch (Exception ex) {
             Logger.getLogger(AsignarEstGrupo.class.getName()).log(Level.SEVERE, null, ex);

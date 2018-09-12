@@ -30,7 +30,13 @@ public class Estudiante {
     public Estudiante(long _cedula){
         this.cedulaEscolar = _cedula;
     }
-    
+
+    public Estudiante(long cedulaEscolar, String primerNombre, String primerApellido) {
+        this.cedulaEscolar = cedulaEscolar;
+        this.primerNombre = primerNombre;
+        this.primerApellido = primerApellido;
+    }
+
     public Estudiante(long _cedula, String _primerNombre, String _segundoNombre, String _primerApellido, String _segundoApellido, Date _fechaNac, String _foto, String _cedulaMAPFRE, String _sexo) {
         this.cedulaEscolar = _cedula;
         this.primerNombre = _primerNombre;
