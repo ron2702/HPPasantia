@@ -83,6 +83,6 @@ public class Grupo {
     
     @Override
     public String toString() {
-        return this.codigo + "- " + this.nombre;
+        return this.codigo + " - " + this.nombre;
     }
 }

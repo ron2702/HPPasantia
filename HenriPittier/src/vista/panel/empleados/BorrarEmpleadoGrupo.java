@@ -9,12 +9,12 @@ package vista.panel.empleados;
  *
  * @author LuisAlejandro
  */
-public class BorrarGrupo extends javax.swing.JPanel {
+public class BorrarEmpleadoGrupo extends javax.swing.JPanel {
 
     /**
      * Creates new form BorrarGrupo
      */
-    public BorrarGrupo() {
+    public BorrarEmpleadoGrupo() {
         initComponents();
     }
 

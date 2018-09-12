@@ -18,6 +18,7 @@ import comun.Rep_Est;
 import comun.Representante;
 import comun.Suplencia;
 import comun.Usuario;
+import controlador.modulo_emp_gru.AsignarGrupoComando;
 import controlador.modulo_emp_gru_est.ConsultarEmpGruEstComando;
 import controlador.modulo_emp_gru_est.ConsultarEmpGruEstDetalleComando;
 import controlador.modulo_emp_gru_est.RegistrarEmpGruEstComando;
@@ -32,7 +33,7 @@ import controlador.modulo_estudiantes.ConsultarEstudiantesComando;
 import controlador.modulo_estudiantes.ModificarEstudianteComando;
 import controlador.modulo_estudiantes.RegistrarEstudianteComando;
 import controlador.modulo_grupos.BorrarGrupoComando;
-import controlador.modulo_grupos.ConsultarGrupoComando;
+import controlador.modulo_grupos.ConsultarGruposComando;
 import controlador.modulo_grupos.ConsultarGrupoDetalleComando;
 import controlador.modulo_grupos.ModificarGrupoComando;
 import controlador.modulo_grupos.RegistrarGrupoComando;
@@ -359,7 +360,6 @@ public class HenriPittierWS {
     }
     
     /*WS DE REPRESENTANTE*/
-    
     @GET
     @Path("registrarRepresentante")
     @Produces("application/json")
@@ -679,11 +679,11 @@ public class HenriPittierWS {
     }
     
     @GET
-    @Path("consultarGrupo")
+    @Path("consultarGrupos")
     @Produces("application/json")
-    public String consultarGrupo (){
+    public String consultarGrupos (){
         
-        ConsultarGrupoComando cmd = new ConsultarGrupoComando();
+        ConsultarGruposComando cmd = new ConsultarGruposComando();
         
         try {
             
@@ -1150,6 +1150,31 @@ public class HenriPittierWS {
         } catch (Exception ex) {
             
             Mensualidad_Representante error = new Mensualidad_Representante();
+            error.setError(RESULTADO_CODIGO_FALLIDO);
+            return gson.toJson(error);
+            
+        }
+    }
+    
+    /*WS de Emp_Gru*/
+    @GET
+    @Path("asignarGrupo")
+    @Produces("application/json")
+    //@QueryParam("suplencia") String _suplencia
+    public String asignarGrupo (@QueryParam("emp_gru") String _emp_gru){
+        
+        Gson gson = new GsonBuilder().create();
+        Emp_Gru_Est asignarGrupo = gson.fromJson(_emp_gru, Emp_Gru_Est.class);
+        AsignarGrupoComando cmd = new AsignarGrupoComando(asignarGrupo);
+        
+        try {
+        
+            cmd.execute();
+            return gson.toJson(cmd.obtenerRespuesta());
+            
+        } catch (Exception ex) {
+            
+            Emp_Gru_Est error = new Emp_Gru_Est();
             error.setError(RESULTADO_CODIGO_FALLIDO);
             return gson.toJson(error);
             

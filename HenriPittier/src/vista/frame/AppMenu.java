@@ -11,7 +11,10 @@ import vista.panel.empleados.ModificarEmpleado;
 import vista.panel.Inicio;
 import vista.panel.empleados.RegistrarEmpleado;
 import java.awt.CardLayout;
+import vista.panel.empleados.AsignarEmpleadoGrupo;
 import vista.panel.empleados.BorrarEmpleado;
+import vista.panel.empleados.BorrarEmpleadoGrupo;
+import vista.panel.empleados.ConsultarAsignacion;
 import vista.panel.empleados.ConsultarEmpleados;
 import vista.panel.estudiantes.AsignarRelacion;
 import vista.panel.estudiantes.BorrarEstudiante;
@@ -132,10 +135,17 @@ public class AppMenu extends javax.swing.JFrame {
     BorrarMensualidad borrarMensualidadPanel = new BorrarMensualidad();
     ConsultarMensualidad consultarMensualidadPanel = new ConsultarMensualidad();
     
+    //RELACION EMPLEADO-GRUPO
+    final static String ASIGNAREMPLEADOGRUPO = "ASIGNAREMPLEADOGRUPO";
+    final static String REMOVEREMPLEADOGRUPO = "REMOVEREMPLEADOGRUPO";
+    final static String CONSULTARASIGNACION = "CONSULTARASIGNACION";
     
-    /**
-     * Creates new form AppMenu
-     */
+    AsignarEmpleadoGrupo asignarGrupoPanel = new AsignarEmpleadoGrupo();
+    BorrarEmpleadoGrupo removerGrupoPanel = new BorrarEmpleadoGrupo();
+    ConsultarAsignacion consultarAsignacionPanel = new ConsultarAsignacion();
+    
+    
+    
     public AppMenu() {
         initComponents();
         this.setLocationRelativeTo(null);
@@ -188,6 +198,10 @@ public class AppMenu extends javax.swing.JFrame {
         contentPane.add(borrarMensualidadPanel, BORRARMENSUALIDAD);
         contentPane.add(consultarMensualidadPanel, CONSULTARMENSUALIDAD);
         
+        //RELACION EMPLEADO-GRUPO
+        contentPane.add(asignarGrupoPanel, ASIGNAREMPLEADOGRUPO);
+        contentPane.add(removerGrupoPanel, REMOVEREMPLEADOGRUPO);
+        contentPane.add(consultarAsignacionPanel, CONSULTARASIGNACION);
     }
 
     /**
@@ -433,12 +447,27 @@ public class AppMenu extends javax.swing.JFrame {
         asignarDocentes.setText("Asignación de Docentes");
 
         asignarGrupo.setText("Asignar al Grupo");
+        asignarGrupo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                asignarGrupoActionPerformed(evt);
+            }
+        });
         asignarDocentes.add(asignarGrupo);
 
         removerGrupo.setText("Remover del Grupo");
+        removerGrupo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                removerGrupoActionPerformed(evt);
+            }
+        });
         asignarDocentes.add(removerGrupo);
 
         consultarAsignaciones.setText("Consultar Asignaciones");
+        consultarAsignaciones.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                consultarAsignacionesActionPerformed(evt);
+            }
+        });
         asignarDocentes.add(consultarAsignaciones);
 
         menuEmpleados.add(asignarDocentes);
@@ -771,6 +800,21 @@ public class AppMenu extends javax.swing.JFrame {
         CardLayout cardPanel = (CardLayout)(contentPane.getLayout());
         cardPanel.show(contentPane, CONSULTARMENSUALIDAD);
     }//GEN-LAST:event_consultarMensualidadActionPerformed
+
+    private void asignarGrupoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_asignarGrupoActionPerformed
+        CardLayout cardPanel = (CardLayout)(contentPane.getLayout());
+        cardPanel.show(contentPane, ASIGNAREMPLEADOGRUPO);
+    }//GEN-LAST:event_asignarGrupoActionPerformed
+
+    private void removerGrupoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removerGrupoActionPerformed
+        CardLayout cardPanel = (CardLayout)(contentPane.getLayout());
+        cardPanel.show(contentPane, REMOVEREMPLEADOGRUPO);
+    }//GEN-LAST:event_removerGrupoActionPerformed
+
+    private void consultarAsignacionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultarAsignacionesActionPerformed
+        CardLayout cardPanel = (CardLayout)(contentPane.getLayout());
+        cardPanel.show(contentPane, CONSULTARASIGNACION);
+    }//GEN-LAST:event_consultarAsignacionesActionPerformed
 
 
     /**

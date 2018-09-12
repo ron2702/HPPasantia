@@ -14,11 +14,11 @@ import modelo.modulo_grupo.DAOGrupo;
  *
  * @author Ronald
  */
-public class ConsultarGrupoComando extends Comando {
+public class ConsultarGruposComando extends Comando {
     
     private ArrayList<Grupo> respuesta;
 
-    public ConsultarGrupoComando() {
+    public ConsultarGruposComando() {
     }
     
     

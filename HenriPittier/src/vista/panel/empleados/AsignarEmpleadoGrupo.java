@@ -8,7 +8,6 @@ package vista.panel.empleados;
 import comun.Emp_Gru_Est;
 import comun.Empleado;
 import comun.Grupo;
-import comun.Lugar;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -16,14 +15,15 @@ import java.util.Calendar;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import modelo.ComunicacionREST;
+import modelo.Registry;
 
 
-public class AsignarGrupo extends javax.swing.JPanel {
+public class AsignarEmpleadoGrupo extends javax.swing.JPanel {
     private Empleado empleadoAsignar;
     private Grupo grupoAsignar;
     
     
-    public AsignarGrupo() {
+    public AsignarEmpleadoGrupo() {
         try {
             initComponents();
             ComunicacionREST comRest = new ComunicacionREST();
@@ -40,7 +40,7 @@ public class AsignarGrupo extends javax.swing.JPanel {
             }
             
         } catch (Exception ex) {
-            Logger.getLogger(AsignarGrupo.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(AsignarEmpleadoGrupo.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -146,11 +146,20 @@ public class AsignarGrupo extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_asignarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_asignarActionPerformed
-        empleadoAsignar = (Empleado) cb_listaEmpleados.getSelectedItem();
-        grupoAsignar = (Grupo) cb_listaGrupos.getSelectedItem();
-        ComunicacionREST comRest = new ComunicacionREST();
-        Emp_Gru_Est asignarPersonal = new Emp_Gru_Est(empleadoAsignar.getCedula(), 0, grupoAsignar.getCodigo());
-        //asignarPersonal = comRest.asignarPersonal(asignarPersonal);
+        try {
+            empleadoAsignar = (Empleado) cb_listaEmpleados.getSelectedItem();
+            grupoAsignar = (Grupo) cb_listaGrupos.getSelectedItem();
+            ComunicacionREST comRest = new ComunicacionREST();
+            Emp_Gru_Est asignarPersonal = new Emp_Gru_Est(empleadoAsignar, grupoAsignar);
+            asignarPersonal = comRest.asignarPersonal(asignarPersonal);
+            if (asignarPersonal.getError() == Registry.RESULTADO_CODIGO_RECURSO_CREADO){
+                System.out.println("bien");
+            } else{
+                System.out.println("mal");
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(AsignarEmpleadoGrupo.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btn_asignarActionPerformed
 
 

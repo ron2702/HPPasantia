@@ -22,7 +22,7 @@ import static modelo.Registry.*;
  */
 public class DAOEmp_Gru_Est extends DAO {
     
-    private Connection _bdCon;
+    /*private Connection _bdCon;
     private static String _sqlEmpGruEstRegistrar = "{?=call EMPGRUEST_REGISTRAR(?,?,?)}";
     private static String _sqlEmpGruEstBorrar = "{?=call EMPGRUEST_BORRAR(?,?,?)}";
     private static String _sqlEmpGruEstConsultar = "{call EMPGRUEST_CONSULTAR_TODOS()}";
@@ -163,5 +163,5 @@ public class DAOEmp_Gru_Est extends DAO {
         } finally {
             _bdCon.close();
         }
-    }
+    }*/
 }
