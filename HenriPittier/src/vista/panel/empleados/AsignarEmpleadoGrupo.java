@@ -14,6 +14,8 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import modelo.ComunicacionREST;
 import modelo.Registry;
 
@@ -152,11 +154,16 @@ public class AsignarEmpleadoGrupo extends javax.swing.JPanel {
             ComunicacionREST comRest = new ComunicacionREST();
             Emp_Gru_Est asignarPersonal = new Emp_Gru_Est(empleadoAsignar, grupoAsignar);
             asignarPersonal = comRest.asignarPersonal(asignarPersonal);
+            
             if (asignarPersonal.getError() == Registry.RESULTADO_CODIGO_RECURSO_CREADO){
-                System.out.println("bien");
-            } else{
-                System.out.println("mal");
+                final JPanel panel = new JPanel();
+                JOptionPane.showMessageDialog(panel, "Se asignó exitosamente el empleado al grupo", "Información", JOptionPane.INFORMATION_MESSAGE);
+            
+            }else{
+                final JPanel panel = new JPanel();
+                JOptionPane.showMessageDialog(panel, "No se ha podido asignar el empleado al grupo, ha ocurrido un error", "Error", JOptionPane.ERROR_MESSAGE);
             }
+            
         } catch (Exception ex) {
             Logger.getLogger(AsignarEmpleadoGrupo.class.getName()).log(Level.SEVERE, null, ex);
         }

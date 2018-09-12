@@ -1864,10 +1864,10 @@ INSERT INTO LUGAR VALUES (nextval('lugar_codigo_seq'),'Parroquia','Rafael Urdane
 INSERT INTO LUGAR VALUES (nextval('lugar_codigo_seq'),'Parroquia','Raul Cuenca',(SELECT CODIGO FROM LUGAR WHERE TIPO = 'Municipio' and NOMBRE = 'Valmore Rodriguez'));
 
 /*EMPLEADOS*/
-INSERT INTO EMPLEADO VALUES (648949, 'Lucila', 'Crisolia', 'De Gonzalez', 'Aranguren', 'Banco Mercantil', 20000000, '02/05/2006', '31/10/1948', null, null, 'Directora', 'abc', null, null, 693);
-INSERT INTO EMPLEADO VALUES (2110338, 'Jose', 'Felix', 'Gonzalez', 'Perez', 'Banesco', 20000000, '01/09/2006', '25/02/1944', null, null, 'Administrador', 'abc', null, null, 693);
-INSERT INTO EMPLEADO VALUES (10332708, 'Roxana', 'Maria', 'Gonzalez', 'Aranguren', 'Banesco', 6000000, '01/09/2006', '06/11/1969', null, null, 'Secretaria Adm', 'abc', null, null, 693);
-INSERT INTO EMPLEADO VALUES (18329356, 'Yalitza', 'C', 'Insua', 'Santoyo', 'Banesco', 4500000, '13/09/2012', '26/08/2018', null, null, 'Coordinadora', 'abc', null, null, 690);
+INSERT INTO EMPLEADO VALUES (648949, 'Lucila', 'Crisolia', 'De Gonzalez', 'Aranguren', 'Banco Mercantil', 20000000, '02/05/2006', '31/10/1948', null, null, 'Director/a', 'abc', null, null, 693);
+INSERT INTO EMPLEADO VALUES (2110338, 'Jose', 'Felix', 'Gonzalez', 'Perez', 'Banesco', 20000000, '01/09/2006', '25/02/1944', null, null, 'Administrador/a', 'abc', null, null, 693);
+INSERT INTO EMPLEADO VALUES (10332708, 'Roxana', 'Maria', 'Gonzalez', 'Aranguren', 'Banesco', 6000000, '01/09/2006', '06/11/1969', null, null, 'Secretario/a', 'abc', null, null, 693);
+INSERT INTO EMPLEADO VALUES (18329356, 'Yalitza', 'C', 'Insua', 'Santoyo', 'Banesco', 4500000, '13/09/2012', '26/08/2018', null, null, 'Coordinador/a', 'abc', null, null, 690);
 INSERT INTO EMPLEADO VALUES (16438861, 'Andreina', null, 'Mundo', null, 'Banesco', 3200000, '16/01/2014', '26/08/2018', null, null, 'Docente', 'abc', null, null, 690);
 INSERT INTO EMPLEADO VALUES (26217421, 'Skarleth', 'A', 'Almeida', 'N', 'BBVA Banco Provincial', 3200000, '05/03/2018', '26/08/2018', null, null, 'Docente', 'abc', null, null, 690);
 INSERT INTO EMPLEADO VALUES (15166540, 'Elizabeth', 'J', 'Cayonez', 'R', 'Banesco', 3200000, '12/09/2013', '26/08/2018', null, null, 'Docente', 'abc', null, null, 690);
@@ -1878,6 +1878,7 @@ INSERT INTO EMPLEADO VALUES (5223483, 'Noris', null, 'Rivas', null, 'Banco Merca
 INSERT INTO EMPLEADO VALUES (8421185, 'Marleny', null, 'Rueda', 'H', 'Banco Mercantil', 3000000, '16/09/2008', '26/08/2018', null, null, 'Auxiliar', 'abc', null, null, 690);
 INSERT INTO EMPLEADO VALUES (14409682, 'Eglee', 'Milagros', 'Fernandez', null, 'Banesco', 3000000, '14/09/2009', '26/08/2018', null, null, 'Auxiliar', 'abc', null, null, 690);
 INSERT INTO EMPLEADO VALUES (17078153, 'Nikarilis', 'E', 'Madrid', 'Fonseca', 'Banco Mercantil', 3000000, '15/09/2014', '26/08/2018', null, null, 'Auxiliar', 'abc', null, null, 690);
-INSERT INTO EMPLEADO VALUES (25281481, 'Rosanna', null, 'Rodriguez', null, 'Banesco', 3000000, '15/10/2015', '26/08/2018', null, null, 'Obrera', 'abc', null, null, 690);
+INSERT INTO EMPLEADO VALUES (25281481, 'Rosanna', null, 'Rodriguez', null, 'Banesco', 3000000, '15/10/2015', '26/08/2018', null, null, 'Obrero/a', 'abc', null, null, 690);
 
+INSERT INTO GRUPO VALUES ('1A', 'GRUPO 1 A', 'Maternal 1 A', 20, '2018-2019');
 INSERT INTO EMP_GRU_EST VALUES (nextval('emp_gru_est_id_seq'), 26217421, null, '1A');
