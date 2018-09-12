@@ -3,29 +3,29 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package controlador.modulo_emp_gru_est;
+package controlador.modulo_gru_est;
 
 import comun.Emp_Gru_Est;
 import controlador.Comando;
-import modelo.modulo_emp_gru_est.DAOEmp_Gru_Est;
+import modelo.modulo_gru_est.DAOGru_Est;
 
 /**
  *
  * @author Ronald
  */
-public class RegistrarEmpGruEstComando extends Comando{
+public class AsignarEstudianteGrupoComando extends Comando{
     
-    private Emp_Gru_Est registrarEmpGruEst;
+    private Emp_Gru_Est asignarEstudianteGrupo;
     private Emp_Gru_Est respuesta;
     
-    public RegistrarEmpGruEstComando(Emp_Gru_Est _registrarEmpGruEst){
-        this.registrarEmpGruEst = _registrarEmpGruEst;
+    public AsignarEstudianteGrupoComando(Emp_Gru_Est _asignarEstudianteGrupo){
+        this.asignarEstudianteGrupo = _asignarEstudianteGrupo;
     }
 
     @Override
     public void execute() throws Exception {
-        DAOEmp_Gru_Est daoempgruest = new DAOEmp_Gru_Est();
-        respuesta = daoempgruest.registrarEmpGruEst(registrarEmpGruEst);
+        DAOGru_Est daogruest = new DAOGru_Est();
+        respuesta = daogruest.asignarGruEst(asignarEstudianteGrupo);
     }
     
     public Emp_Gru_Est obtenerRespuesta(){

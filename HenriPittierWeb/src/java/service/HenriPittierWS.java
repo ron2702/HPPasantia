@@ -19,9 +19,9 @@ import comun.Representante;
 import comun.Suplencia;
 import comun.Usuario;
 import controlador.modulo_emp_gru.AsignarGrupoComando;
-import controlador.modulo_emp_gru_est.ConsultarEmpGruEstComando;
-import controlador.modulo_emp_gru_est.ConsultarEmpGruEstDetalleComando;
-import controlador.modulo_emp_gru_est.RegistrarEmpGruEstComando;
+import controlador.modulo_gru_est.BorrarEstudianteGrupoComando;
+import controlador.modulo_gru_est.ConsultarEstudianteGrupoComando;
+import controlador.modulo_gru_est.AsignarEstudianteGrupoComando;
 import controlador.modulo_empleados.BorrarEmpleadoComando;
 import controlador.modulo_empleados.ConsultarEmpleadoDetalleComando;
 import controlador.modulo_empleados.ConsultarEmpleadosComando;
@@ -721,16 +721,17 @@ public class HenriPittierWS {
         }
     }
     
-    /*WS DE Emp_Gru_Est*/
+    /*WS de Gru_Est*/
     //@QueryParam("empgruest") String _empgruest
     @GET
-    @Path("registrarEmpGruEst")
+    @Path("asignarEstudianteGrupo")
     @Produces("application/json")
-    public String registrarEmpGruEst (@QueryParam("empgruest") String _empgruest){
+    //@QueryParam("suplencia") String _suplencia
+    public String asignarEstudianteGrupo (@QueryParam("est_gru") String _est_gru){
         
         Gson gson = new GsonBuilder().create();
-        Emp_Gru_Est registrarEmpGruEst = gson.fromJson(_empgruest, Emp_Gru_Est.class);
-        RegistrarEmpGruEstComando cmd = new RegistrarEmpGruEstComando(registrarEmpGruEst);
+        Emp_Gru_Est asignarEstudianteGrupo = gson.fromJson(_est_gru, Emp_Gru_Est.class);
+        AsignarEstudianteGrupoComando cmd = new AsignarEstudianteGrupoComando(asignarEstudianteGrupo);
         
         try {
         
@@ -751,7 +752,7 @@ public class HenriPittierWS {
     @Produces("application/json")
     public String consultarEmpGruEst (){
         
-        ConsultarEmpGruEstComando cmd = new ConsultarEmpGruEstComando();
+        BorrarEstudianteGrupoComando cmd = new BorrarEstudianteGrupoComando();
         
         try {
             
@@ -773,7 +774,7 @@ public class HenriPittierWS {
         
         Gson gson = new GsonBuilder().create();
         Emp_Gru_Est empgruestConsultar = gson.fromJson(_empgruest, Emp_Gru_Est.class);
-        ConsultarEmpGruEstDetalleComando cmd = new ConsultarEmpGruEstDetalleComando(empgruestConsultar);
+        ConsultarEstudianteGrupoComando cmd = new ConsultarEstudianteGrupoComando(empgruestConsultar);
         
         try {
             
