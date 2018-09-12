@@ -16,18 +16,20 @@ import modelo.modulo_gru_est.DAOGru_Est;
  */
 public class BorrarEstudianteGrupoComando extends Comando{
     
-    private ArrayList<Emp_Gru_Est> respuesta;
-    
-    public BorrarEstudianteGrupoComando(){
+    private Emp_Gru_Est borrarEstudianteGrupo;
+    private Emp_Gru_Est respuesta;
+
+    public BorrarEstudianteGrupoComando(Emp_Gru_Est borrarEstudianteGrupo) {
+        this.borrarEstudianteGrupo = borrarEstudianteGrupo;
     }
 
     @Override
     public void execute() throws Exception {
-        DAOGru_Est daoege = new DAOGru_Est();
-        //respuesta = daoege.consultarREPEST();
+        DAOGru_Est daogruest = new DAOGru_Est();
+        respuesta = daogruest.borrarGruEst(borrarEstudianteGrupo);
     }
     
-    public ArrayList<Emp_Gru_Est> obtenerRespuesta(){
-        return this.respuesta;
+    public Emp_Gru_Est obtenerRespuesta(){
+        return respuesta;
     }
 }

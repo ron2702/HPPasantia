@@ -748,6 +748,29 @@ public class HenriPittierWS {
     }
     
     @GET
+    @Path("borrarEstudianteGrupo")
+    @Produces("application/json")
+    public String borrarEstudianteGrupo (@QueryParam("est_gru") String _est_gru){
+        
+        Gson gson = new GsonBuilder().create();
+        Emp_Gru_Est borrarEstudianteGrupo = gson.fromJson(_est_gru, Emp_Gru_Est.class);
+        BorrarEstudianteGrupoComando cmd = new BorrarEstudianteGrupoComando(borrarEstudianteGrupo);
+        
+        try {
+        
+            cmd.execute();
+            return gson.toJson(cmd.obtenerRespuesta());
+            
+        } catch (Exception ex) {
+            
+            Emp_Gru_Est error = new Emp_Gru_Est();
+            error.setError(RESULTADO_CODIGO_FALLIDO);
+            return gson.toJson(error);
+            
+        }
+    }
+    /*
+    @GET
     @Path("consultarEmpGruEst")
     @Produces("application/json")
     public String consultarEmpGruEst (){
@@ -765,7 +788,7 @@ public class HenriPittierWS {
             return gson.toJson(error);
             
         }
-    }
+    }*/
     
     @GET
     @Path("consultarEmpGruEstDetalle")
