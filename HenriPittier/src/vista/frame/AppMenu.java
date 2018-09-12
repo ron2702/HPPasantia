@@ -16,8 +16,11 @@ import vista.panel.empleados.BorrarEmpleado;
 import vista.panel.empleados.BorrarEmpleadoGrupo;
 import vista.panel.empleados.ConsultarAsignacion;
 import vista.panel.empleados.ConsultarEmpleados;
+import vista.panel.estudiantes.AsignarEstGrupo;
 import vista.panel.estudiantes.AsignarRelacion;
+import vista.panel.estudiantes.BorrarEstGrupo;
 import vista.panel.estudiantes.BorrarEstudiante;
+import vista.panel.estudiantes.ConsultarEstGrupo;
 import vista.panel.estudiantes.ConsultarEstudiantes;
 import vista.panel.estudiantes.ConsultarRelacion;
 import vista.panel.estudiantes.EliminarRelacion;
@@ -144,6 +147,15 @@ public class AppMenu extends javax.swing.JFrame {
     BorrarEmpleadoGrupo removerGrupoPanel = new BorrarEmpleadoGrupo();
     ConsultarAsignacion consultarAsignacionPanel = new ConsultarAsignacion();
     
+    //RELACION ESTUDIANTE-GRUPO
+    final static String ASIGNARESTUDIANTEGRUPO = "ASIGNARESTUDIANTEGRUPO";
+    final static String BORRARESTUDIANTEGRUPO = "BORRARESTUDIANTEGRUPO";
+    final static String CONSULTARESTUDIANTEGRUPO = "BORRARESTUDIANTEGRUPO";
+    
+    AsignarEstGrupo asignarEstGrupoPanel = new AsignarEstGrupo();
+    BorrarEstGrupo borrarEstGrupoPanel = new BorrarEstGrupo();
+    ConsultarEstGrupo consultarEstGrupoPanel = new ConsultarEstGrupo();
+
     
     
     public AppMenu() {
@@ -202,6 +214,13 @@ public class AppMenu extends javax.swing.JFrame {
         contentPane.add(asignarGrupoPanel, ASIGNAREMPLEADOGRUPO);
         contentPane.add(removerGrupoPanel, REMOVEREMPLEADOGRUPO);
         contentPane.add(consultarAsignacionPanel, CONSULTARASIGNACION);
+
+        //RELACION ESTUDIANTE-GRUPO
+        contentPane.add(asignarEstGrupoPanel, ASIGNARESTUDIANTEGRUPO);
+        contentPane.add(borrarEstGrupoPanel, BORRARESTUDIANTEGRUPO);
+        contentPane.add(consultarEstGrupoPanel, CONSULTARESTUDIANTEGRUPO);
+        
+
     }
 
     /**
@@ -259,6 +278,10 @@ public class AppMenu extends javax.swing.JFrame {
         consultarGrupo = new javax.swing.JMenuItem();
         modificarGrupo = new javax.swing.JMenuItem();
         eliminarGrupo = new javax.swing.JMenuItem();
+        menuAsignarEstudiantes = new javax.swing.JMenu();
+        asignarEstudianteGrupo = new javax.swing.JMenuItem();
+        borrarEstudianteGrupo = new javax.swing.JMenuItem();
+        consultarEstudianteGrupo = new javax.swing.JMenuItem();
         menuConfiguracion = new javax.swing.JMenu();
         inicio = new javax.swing.JMenuItem();
         menuSalir = new javax.swing.JMenu();
@@ -581,6 +604,34 @@ public class AppMenu extends javax.swing.JFrame {
         });
         menuGrupos.add(eliminarGrupo);
 
+        menuAsignarEstudiantes.setText("Asignar Estudiantes");
+
+        asignarEstudianteGrupo.setText("Asignar");
+        asignarEstudianteGrupo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                asignarEstudianteGrupoActionPerformed(evt);
+            }
+        });
+        menuAsignarEstudiantes.add(asignarEstudianteGrupo);
+
+        borrarEstudianteGrupo.setText("Borrar");
+        borrarEstudianteGrupo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                borrarEstudianteGrupoActionPerformed(evt);
+            }
+        });
+        menuAsignarEstudiantes.add(borrarEstudianteGrupo);
+
+        consultarEstudianteGrupo.setText("Consultar");
+        consultarEstudianteGrupo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                consultarEstudianteGrupoActionPerformed(evt);
+            }
+        });
+        menuAsignarEstudiantes.add(consultarEstudianteGrupo);
+
+        menuGrupos.add(menuAsignarEstudiantes);
+
         barraMenu.add(menuGrupos);
 
         menuConfiguracion.setText("Salir");
@@ -816,6 +867,22 @@ public class AppMenu extends javax.swing.JFrame {
         cardPanel.show(contentPane, CONSULTARASIGNACION);
     }//GEN-LAST:event_consultarAsignacionesActionPerformed
 
+    private void asignarEstudianteGrupoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_asignarEstudianteGrupoActionPerformed
+        CardLayout cardPanel = (CardLayout)(contentPane.getLayout());
+        cardPanel.show(contentPane, ASIGNARESTUDIANTEGRUPO);
+    }//GEN-LAST:event_asignarEstudianteGrupoActionPerformed
+
+    private void borrarEstudianteGrupoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_borrarEstudianteGrupoActionPerformed
+        CardLayout cardPanel = (CardLayout)(contentPane.getLayout());
+        cardPanel.show(contentPane, BORRARESTUDIANTEGRUPO);
+    }//GEN-LAST:event_borrarEstudianteGrupoActionPerformed
+
+    private void consultarEstudianteGrupoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultarEstudianteGrupoActionPerformed
+        CardLayout cardPanel = (CardLayout)(contentPane.getLayout());
+        cardPanel.show(contentPane, CONSULTARESTUDIANTEGRUPO);
+    }//GEN-LAST:event_consultarEstudianteGrupoActionPerformed
+
+
 
     /**
      * @param args the command line arguments
@@ -855,9 +922,11 @@ public class AppMenu extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu asignarDocentes;
+    private javax.swing.JMenuItem asignarEstudianteGrupo;
     private javax.swing.JMenuItem asignarGrupo;
     private javax.swing.JMenuItem asignarRelacion;
     private javax.swing.JMenuBar barraMenu;
+    private javax.swing.JMenuItem borrarEstudianteGrupo;
     private javax.swing.JMenuItem borrarInasistencia;
     private javax.swing.JMenuItem borrarMensualidad;
     private javax.swing.JMenuItem borrarSuplencia;
@@ -865,6 +934,7 @@ public class AppMenu extends javax.swing.JFrame {
     private javax.swing.JMenuItem consultarAsignaciones;
     private javax.swing.JMenuItem consultarEmpleado;
     private javax.swing.JMenuItem consultarEstudiante;
+    private javax.swing.JMenuItem consultarEstudianteGrupo;
     private javax.swing.JMenuItem consultarGrupo;
     private javax.swing.JMenuItem consultarInasistencias;
     private javax.swing.JMenuItem consultarMensualidad;
@@ -879,6 +949,7 @@ public class AppMenu extends javax.swing.JFrame {
     private javax.swing.JMenuItem eliminarRepresentante;
     private javax.swing.JMenuItem inicio;
     private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu menuAsignarEstudiantes;
     private javax.swing.JMenu menuConfiguracion;
     private javax.swing.JMenu menuEmpleados;
     private javax.swing.JMenu menuEstudiantes;

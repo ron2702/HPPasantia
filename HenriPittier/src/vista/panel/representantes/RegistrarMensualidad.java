@@ -99,7 +99,7 @@ public class RegistrarMensualidad extends javax.swing.JPanel {
         txt_cedulaRepresentante = new javax.swing.JTextField();
         lbl_banco = new javax.swing.JLabel();
         cb_banco = new javax.swing.JComboBox();
-        lbl_Monto1 = new javax.swing.JLabel();
+        lbl_numeroTransferencia = new javax.swing.JLabel();
         txt_codigoTransferencia = new javax.swing.JTextField();
         txt_datosPago = new javax.swing.JTextField();
         lbl_datosPago = new javax.swing.JLabel();
@@ -213,8 +213,8 @@ public class RegistrarMensualidad extends javax.swing.JPanel {
 
     cb_banco.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "100% Banco", "BBVA Banco Provincial", "Bancamiga", "Bancaribe", "Banco Activo", "Banco Agricola de Venezuela", "Banco Bicentenario del Pueblo", "Banco Caroni", "Banco del Tesoro", "Banco de Venezuela", "Banco Exterior", "Banco Mercantil", "Banco Plaza", "Banco Sofitasa", "Banco Venezolano de Credito", "Banesco", "Banfanb", "Banplus", "BFC Banco Fondo Comun", "BNC Banco Nacional de Credito", "BOD Banco Occidental de Descuento", "CitiBank", "DELSUR", "Mi Banco" }));
 
-    lbl_Monto1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-    lbl_Monto1.setText("Codigo Transferencia:");
+    lbl_numeroTransferencia.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+    lbl_numeroTransferencia.setText("Numero Transferencia:");
 
     txt_codigoTransferencia.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
     txt_codigoTransferencia.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -259,7 +259,7 @@ public class RegistrarMensualidad extends javax.swing.JPanel {
                 .addComponent(lbl_Monto)
                 .addComponent(lbl_fechaNac)
                 .addComponent(lbl_banco)
-                .addComponent(lbl_Monto1)
+                .addComponent(lbl_numeroTransferencia)
                 .addComponent(lbl_datosPago))
             .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(pnl_datosLayout.createSequentialGroup()
@@ -287,7 +287,7 @@ public class RegistrarMensualidad extends javax.swing.JPanel {
                                 .addComponent(lbl_cedulaEstudiante))
                             .addComponent(txt_monto, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txt_codigoTransferencia, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
                     .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(cb_estudiante, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(txt_cedulaEstudiante, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE))))
@@ -301,7 +301,7 @@ public class RegistrarMensualidad extends javax.swing.JPanel {
                     .addGap(54, 54, 54)
                     .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addGroup(pnl_datosLayout.createSequentialGroup()
-                            .addComponent(lbl_Monto1)
+                            .addComponent(lbl_numeroTransferencia)
                             .addGap(17, 17, 17))
                         .addGroup(pnl_datosLayout.createSequentialGroup()
                             .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -439,13 +439,13 @@ public class RegistrarMensualidad extends javax.swing.JPanel {
     private javax.swing.JComboBox cb_estudiante;
     private datechooser.beans.DateChooserCombo dc_fechaPago;
     private javax.swing.JLabel lbl_Monto;
-    private javax.swing.JLabel lbl_Monto1;
     private javax.swing.JLabel lbl_banco;
     private javax.swing.JLabel lbl_cedulaEstudiante;
     private javax.swing.JLabel lbl_cedulaEstudiante1;
     private javax.swing.JLabel lbl_cedulaRepresentante;
     private javax.swing.JLabel lbl_datosPago;
     private javax.swing.JLabel lbl_fechaNac;
+    private javax.swing.JLabel lbl_numeroTransferencia;
     private javax.swing.JLabel lbl_tituloRegistroMensualidad;
     private javax.swing.JPanel pnl_datos;
     private javax.swing.JTextField txt_cedulaEstudiante;
