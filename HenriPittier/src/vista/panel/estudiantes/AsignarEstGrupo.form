@@ -37,8 +37,8 @@
               <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
               <Component id="lbl_titulo" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="pnl_datos" min="-2" pref="523" max="-2" attributes="0"/>
-              <EmptySpace pref="37" max="32767" attributes="0"/>
+              <Component id="pnl_datos" min="-2" pref="487" max="-2" attributes="0"/>
+              <EmptySpace pref="73" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -100,9 +100,9 @@
                       <Component id="lbl_tituloGrupoAlumnos" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="cb_listaGrupos" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="285" max="32767" attributes="0"/>
+                  <EmptySpace pref="196" max="32767" attributes="0"/>
                   <Component id="btn_asignar" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="89" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>

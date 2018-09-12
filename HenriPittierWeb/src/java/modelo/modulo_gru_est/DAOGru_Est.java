@@ -6,6 +6,8 @@
 package modelo.modulo_gru_est;
 
 import comun.Emp_Gru_Est;
+import comun.Estudiante;
+import comun.Grupo;
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -120,6 +122,53 @@ public class DAOGru_Est extends DAO {
             
         }
         
+    }
+    
+    public ArrayList<Emp_Gru_Est> consultarGruEst() throws Exception {
+
+        ArrayList<Emp_Gru_Est> listaGruEst = new ArrayList<Emp_Gru_Est>();
+        Emp_Gru_Est empgru;
+        CallableStatement cstmt;
+
+        int response = 0;
+
+        try {
+            _bdCon = DAO.getBdConnect();
+            cstmt = _bdCon.prepareCall(_sqlGruEstConsultar);
+            
+            rs = cstmt.executeQuery();
+            
+            while(rs.next()){
+                
+                Estudiante estudiante = new Estudiante(rs.getLong("cedulaescolar"), 
+                                  rs.getString("primernombre"),
+                                  rs.getString("primerapellido"));
+                
+                Grupo grupo = new Grupo(rs.getString("gr_codigo"),
+                                    rs.getString("gr_nombre"));
+                
+                grupo.setError(RESULTADO_CODIGO_BIEN);
+                estudiante.setError(RESULTADO_CODIGO_BIEN);
+                
+                empgru = new Emp_Gru_Est(estudiante, grupo);
+                
+                listaGruEst.add(empgru);
+                
+            }
+            return listaGruEst;
+
+
+        } catch (SQLException ex) {
+
+            throw ex;
+
+        } catch (Exception ex) {
+            
+            throw ex;
+
+        } finally {
+            _bdCon.close();
+        }
     }
     
 }

@@ -150,7 +150,7 @@ public class AppMenu extends javax.swing.JFrame {
     //RELACION ESTUDIANTE-GRUPO
     final static String ASIGNARESTUDIANTEGRUPO = "ASIGNARESTUDIANTEGRUPO";
     final static String BORRARESTUDIANTEGRUPO = "BORRARESTUDIANTEGRUPO";
-    final static String CONSULTARESTUDIANTEGRUPO = "BORRARESTUDIANTEGRUPO";
+    final static String CONSULTARESTUDIANTEGRUPO = "CONSULTARESTUDIANTEGRUPO";
     
     AsignarEstGrupo asignarEstGrupoPanel = new AsignarEstGrupo();
     BorrarEstGrupo borrarEstGrupoPanel = new BorrarEstGrupo();

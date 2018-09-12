@@ -7,6 +7,7 @@ package controlador.modulo_gru_est;
 
 import comun.Emp_Gru_Est;
 import controlador.Comando;
+import java.util.ArrayList;
 import modelo.modulo_gru_est.DAOGru_Est;
 
 /**
@@ -15,21 +16,19 @@ import modelo.modulo_gru_est.DAOGru_Est;
  */
 public class ConsultarEstudianteGrupoComando extends Comando {
     
-    private Emp_Gru_Est consultarEmpGruEst;
-    private Emp_Gru_Est respuesta;
-    
-    public ConsultarEstudianteGrupoComando(Emp_Gru_Est _consultarEmpGruEst){
-        this.consultarEmpGruEst = _consultarEmpGruEst;
-    }
+    private ArrayList<Emp_Gru_Est> respuesta;
 
+    public ConsultarEstudianteGrupoComando() {
+    }
+    
     @Override
     public void execute() throws Exception {
-        DAOGru_Est daoempgruest = new DAOGru_Est();
-        //respuesta = daoempgruest.consultarEmpGruEstDetalle(consultarEmpGruEst);
+        DAOGru_Est daogruest = new DAOGru_Est();
+        respuesta = daogruest.consultarGruEst();
     }
     
-    public Emp_Gru_Est obtenerRespuesta(){
-        return respuesta;
+    public ArrayList<Emp_Gru_Est> obtenerRespuesta(){
+        return this.respuesta;
     }
     
 }

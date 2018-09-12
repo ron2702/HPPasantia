@@ -25,6 +25,11 @@ public class Grupo {
         this.codigo = codigo;
     }
 
+    public Grupo(String codigo, String nombre) {
+        this.codigo = codigo;
+        this.nombre = nombre;
+    }
+
     public Grupo(String codigo, String nombre, String descripcion, int capacidad, String periodo) {
         this.codigo = codigo;
         this.nombre = nombre;

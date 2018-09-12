@@ -5,17 +5,46 @@
  */
 package vista.panel.estudiantes;
 
+import comun.Emp_Gru_Est;
+import comun.Estudiante;
+import comun.Grupo;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import modelo.ComunicacionREST;
+import modelo.Registry;
+
 /**
  *
  * @author Ronald
  */
 public class BorrarEstGrupo extends javax.swing.JPanel {
 
-    /**
-     * Creates new form BorrarGrupo
-     */
+    private Estudiante estudianteBorrar;
+    private Grupo grupoAsignar;
+    
     public BorrarEstGrupo() {
-        initComponents();
+        try {
+            initComponents();
+            
+            ComunicacionREST comRest = new ComunicacionREST();
+            
+            ArrayList<Estudiante> listaEstudiantes = comRest.consultarEstudiantes();
+            ArrayList<Grupo> listaGrupos = comRest.consultarGrupos();
+            
+            for (Estudiante empleado : listaEstudiantes) {
+                cb_listaEstudiantes.addItem(empleado);
+            }
+            
+            for (Grupo grupo : listaGrupos) {
+                cb_listaGrupos.addItem(grupo);
+            }
+            
+        } catch (Exception ex) {
+            Logger.getLogger(BorrarEstGrupo.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -27,19 +56,132 @@ public class BorrarEstGrupo extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        pnl_datos = new javax.swing.JPanel();
+        lbl_tituloEmpleadoAsignar = new javax.swing.JLabel();
+        cb_listaGrupos = new javax.swing.JComboBox();
+        lbl_tituloGrupoAlumnos = new javax.swing.JLabel();
+        cb_listaEstudiantes = new javax.swing.JComboBox();
+        btn_borrar = new javax.swing.JButton();
+        lbl_titulo = new javax.swing.JLabel();
+
+        setBackground(new java.awt.Color(204, 204, 204));
+
+        pnl_datos.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        pnl_datos.setPreferredSize(new java.awt.Dimension(840, 520));
+
+        lbl_tituloEmpleadoAsignar.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        lbl_tituloEmpleadoAsignar.setText("Estudiante a borrar:");
+
+        cb_listaGrupos.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+
+        lbl_tituloGrupoAlumnos.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        lbl_tituloGrupoAlumnos.setText("Grupo de alumnos:");
+
+        cb_listaEstudiantes.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+
+        btn_borrar.setBackground(new java.awt.Color(0, 153, 102));
+        btn_borrar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        btn_borrar.setText("Borrar");
+        btn_borrar.setPreferredSize(new java.awt.Dimension(109, 25));
+        btn_borrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_borrarActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout pnl_datosLayout = new javax.swing.GroupLayout(pnl_datos);
+        pnl_datos.setLayout(pnl_datosLayout);
+        pnl_datosLayout.setHorizontalGroup(
+            pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnl_datosLayout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lbl_tituloEmpleadoAsignar)
+                    .addComponent(lbl_tituloGrupoAlumnos))
+                .addGap(38, 38, 38)
+                .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(cb_listaGrupos, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cb_listaEstudiantes, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnl_datosLayout.createSequentialGroup()
+                .addContainerGap(364, Short.MAX_VALUE)
+                .addComponent(btn_borrar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(361, 361, 361))
+        );
+        pnl_datosLayout.setVerticalGroup(
+            pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnl_datosLayout.createSequentialGroup()
+                .addGap(78, 78, 78)
+                .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(cb_listaEstudiantes, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
+                    .addComponent(lbl_tituloEmpleadoAsignar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(35, 35, 35)
+                .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbl_tituloGrupoAlumnos)
+                    .addComponent(cb_listaGrupos, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 196, Short.MAX_VALUE)
+                .addComponent(btn_borrar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(89, 89, 89))
+        );
+
+        lbl_titulo.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lbl_titulo.setText("Borrar Estudiante de un Grupo");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(57, 57, 57)
+                .addComponent(lbl_titulo)
+                .addContainerGap(680, Short.MAX_VALUE))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(56, 56, 56)
+                    .addComponent(pnl_datos, javax.swing.GroupLayout.PREFERRED_SIZE, 838, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(56, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(42, 42, 42)
+                .addComponent(lbl_titulo)
+                .addContainerGap(581, Short.MAX_VALUE))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(76, 76, 76)
+                    .addComponent(pnl_datos, javax.swing.GroupLayout.PREFERRED_SIZE, 487, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(77, Short.MAX_VALUE)))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btn_borrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_borrarActionPerformed
+        try {
+            estudianteBorrar = (Estudiante) cb_listaEstudiantes.getSelectedItem();
+            grupoAsignar = (Grupo) cb_listaGrupos.getSelectedItem();
+            ComunicacionREST comRest = new ComunicacionREST();
+            Emp_Gru_Est borrarEstudiante = new Emp_Gru_Est(estudianteBorrar, grupoAsignar);
+            borrarEstudiante = comRest.borrarEstudianteGrupo(borrarEstudiante);
+            if (borrarEstudiante.getError() == Registry.RESULTADO_CODIGO_BIEN){
+                final JPanel panel = new JPanel();
+                JOptionPane.showMessageDialog(panel, "Se borro al estudiante del grupo", "Información", JOptionPane.INFORMATION_MESSAGE);
+            } else{
+                final JPanel panel = new JPanel();
+                JOptionPane.showMessageDialog(panel, "No se pudo borrar al estudiante, compruebe que no haya sido borrado anteriormente", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(AsignarEstGrupo.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btn_borrarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btn_borrar;
+    private javax.swing.JComboBox cb_listaEstudiantes;
+    private javax.swing.JComboBox cb_listaGrupos;
+    private javax.swing.JLabel lbl_titulo;
+    private javax.swing.JLabel lbl_tituloEmpleadoAsignar;
+    private javax.swing.JLabel lbl_tituloGrupoAlumnos;
+    private javax.swing.JPanel pnl_datos;
     // End of variables declaration//GEN-END:variables
 }
