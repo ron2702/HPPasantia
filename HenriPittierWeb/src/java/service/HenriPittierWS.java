@@ -18,7 +18,8 @@ import comun.Rep_Est;
 import comun.Representante;
 import comun.Suplencia;
 import comun.Usuario;
-import controlador.modulo_emp_gru.AsignarGrupoComando;
+import controlador.modulo_emp_gru.AsignarPersonalComando;
+import controlador.modulo_emp_gru.RemoverPersonalComando;
 import controlador.modulo_gru_est.BorrarEstudianteGrupoComando;
 import controlador.modulo_gru_est.ConsultarEstudianteGrupoComando;
 import controlador.modulo_gru_est.AsignarEstudianteGrupoComando;
@@ -1182,14 +1183,38 @@ public class HenriPittierWS {
     
     /*WS de Emp_Gru*/
     @GET
-    @Path("asignarGrupo")
+    @Path("asignarPersonal")
     @Produces("application/json")
     //@QueryParam("suplencia") String _suplencia
-    public String asignarGrupo (@QueryParam("emp_gru") String _emp_gru){
+    public String asignarPersonal (@QueryParam("emp_gru") String _emp_gru){
         
         Gson gson = new GsonBuilder().create();
         Emp_Gru_Est asignarGrupo = gson.fromJson(_emp_gru, Emp_Gru_Est.class);
-        AsignarGrupoComando cmd = new AsignarGrupoComando(asignarGrupo);
+        AsignarPersonalComando cmd = new AsignarPersonalComando(asignarGrupo);
+        
+        try {
+        
+            cmd.execute();
+            return gson.toJson(cmd.obtenerRespuesta());
+            
+        } catch (Exception ex) {
+            
+            Emp_Gru_Est error = new Emp_Gru_Est();
+            error.setError(RESULTADO_CODIGO_FALLIDO);
+            return gson.toJson(error);
+            
+        }
+    }
+    
+    @GET
+    @Path("removerPersonal")
+    @Produces("application/json")
+    //@QueryParam("suplencia") String _suplencia
+    public String removerPersonal (@QueryParam("emp_gru") String _emp_gru){
+        
+        Gson gson = new GsonBuilder().create();
+        Emp_Gru_Est removerGrupo = gson.fromJson(_emp_gru, Emp_Gru_Est.class);
+        RemoverPersonalComando cmd = new RemoverPersonalComando(removerGrupo);
         
         try {
         

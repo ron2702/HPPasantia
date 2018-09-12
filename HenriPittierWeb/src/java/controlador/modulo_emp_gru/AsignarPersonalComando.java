@@ -10,15 +10,15 @@ import controlador.Comando;
 import modelo.modulo_emp_gru.DAOEmp_Gru;
 
 
-public class AsignarGrupoComando extends Comando{
+public class AsignarPersonalComando extends Comando{
     private Emp_Gru_Est asignarGrupo;
     private Emp_Gru_Est respuesta;
     
-    public AsignarGrupoComando(Emp_Gru_Est _asignarGrupo){
+    public AsignarPersonalComando(Emp_Gru_Est _asignarGrupo){
         this.asignarGrupo = _asignarGrupo;
     }
     
-@Override
+    @Override
     public void execute() throws Exception {
         DAOEmp_Gru daoempgru = new DAOEmp_Gru();
         respuesta = daoempgru.registrarEmpGru(asignarGrupo);

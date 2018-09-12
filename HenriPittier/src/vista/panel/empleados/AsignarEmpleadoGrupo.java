@@ -32,8 +32,14 @@ public class AsignarEmpleadoGrupo extends javax.swing.JPanel {
             
             ArrayList<Empleado> listaEmpleados = comRest.consultarEmpleados();
             ArrayList<Grupo> listaGrupos = comRest.consultarGrupos();
+            ArrayList<Empleado> listaCargoEmpleados = new ArrayList<Empleado>();
             
             for (Empleado empleado : listaEmpleados) {
+                if ((empleado.getCargo().equals("Docente")) || (empleado.getCargo().equals("Auxiliar"))){
+                    listaCargoEmpleados.add(empleado);
+                }
+            }
+            for (Empleado empleado : listaCargoEmpleados) {
                 cb_listaEmpleados.addItem(empleado);
             }
             

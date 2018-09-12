@@ -905,7 +905,25 @@ public class ComunicacionREST {
         try {
             conn = null;
             Gson gson = new GsonBuilder().registerTypeAdapter(Date.class, new JsonDateDeserializer()).create();
-            BufferedReader br = comunicar("GET", "asignarGrupo?emp_gru=" + URLEncoder.encode(gson.toJson(e).toString(), "UTF-8"));
+            BufferedReader br = comunicar("GET", "asignarPersonal?emp_gru=" + URLEncoder.encode(gson.toJson(e).toString(), "UTF-8"));
+            String output;
+            Emp_Gru_Est emp_gru = new Emp_Gru_Est();
+            while ((output = br.readLine()) != null) {
+                emp_gru = gson.fromJson(output, Emp_Gru_Est.class);
+            }
+            conn.disconnect();
+            return emp_gru;
+        }
+        catch (Exception ex){
+            throw ex;
+        }
+    }
+    
+    public Emp_Gru_Est removerPersonal(Emp_Gru_Est e) throws Exception {
+        try {
+            conn = null;
+            Gson gson = new GsonBuilder().registerTypeAdapter(Date.class, new JsonDateDeserializer()).create();
+            BufferedReader br = comunicar("GET", "removerPersonal?emp_gru=" + URLEncoder.encode(gson.toJson(e).toString(), "UTF-8"));
             String output;
             Emp_Gru_Est emp_gru = new Emp_Gru_Est();
             while ((output = br.readLine()) != null) {
