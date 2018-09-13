@@ -18,6 +18,10 @@ public class Emp_Gru_Est {
 
     public Emp_Gru_Est() {   
     }
+    
+    public Emp_Gru_Est(Grupo grupo) {
+        this.grupo = grupo;
+    }
 
     public Emp_Gru_Est(Empleado empleado, Estudiante estudiante, Grupo grupo) {
         this.empleado = empleado;

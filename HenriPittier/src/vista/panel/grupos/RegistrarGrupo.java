@@ -84,21 +84,11 @@ public class RegistrarGrupo extends javax.swing.JPanel {
         lbl_nombre.setText("Nombre:");
 
         txt_nombre.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        txt_nombre.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txt_nombreKeyTyped(evt);
-            }
-        });
 
         lbl_descripcion.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         lbl_descripcion.setText("Descripcion:");
 
         txt_descripcion.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        txt_descripcion.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txt_descripcionKeyTyped(evt);
-            }
-        });
 
         lbl_capacidad.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         lbl_capacidad.setText("Capacidad:");
@@ -136,11 +126,6 @@ public class RegistrarGrupo extends javax.swing.JPanel {
         txt_periodo.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         txt_periodo.setToolTipText("");
         txt_periodo.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        txt_periodo.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txt_periodoKeyTyped(evt);
-            }
-        });
 
         javax.swing.GroupLayout pnl_datosLayout = new javax.swing.GroupLayout(pnl_datos);
         pnl_datos.setLayout(pnl_datosLayout);
@@ -223,14 +208,6 @@ public class RegistrarGrupo extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txt_nombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_nombreKeyTyped
-        keyTypedSoloLetras(evt, txt_nombre, 30);
-    }//GEN-LAST:event_txt_nombreKeyTyped
-
-    private void txt_descripcionKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_descripcionKeyTyped
-        keyTypedSoloLetras(evt, txt_descripcion, 30);
-    }//GEN-LAST:event_txt_descripcionKeyTyped
-
     private void txt_capacidadKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_capacidadKeyTyped
         keyTypedSoloNumeros(evt, txt_capacidad, 100);
     }//GEN-LAST:event_txt_capacidadKeyTyped
@@ -268,10 +245,6 @@ public class RegistrarGrupo extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(panel, "No se ha podido registrar el grupo, revise los campos", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btn_registrarActionPerformed
-
-    private void txt_periodoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_periodoKeyTyped
-        keyTypedSoloLetras(evt, txt_periodo, 50);
-    }//GEN-LAST:event_txt_periodoKeyTyped
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

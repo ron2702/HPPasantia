@@ -244,6 +244,10 @@ public class AppMenu extends javax.swing.JFrame {
         asignarRelacion = new javax.swing.JMenuItem();
         consultarRelacion = new javax.swing.JMenuItem();
         eliminarRelacion = new javax.swing.JMenuItem();
+        menuAsignarGrupo = new javax.swing.JMenu();
+        asignarEstudianteGrupo = new javax.swing.JMenuItem();
+        borrarEstudianteGrupo = new javax.swing.JMenuItem();
+        consultarEstudianteGrupo = new javax.swing.JMenuItem();
         menuRepresentantes = new javax.swing.JMenu();
         registrarRepresentante = new javax.swing.JMenuItem();
         consultarRepresentante = new javax.swing.JMenuItem();
@@ -278,10 +282,6 @@ public class AppMenu extends javax.swing.JFrame {
         consultarGrupo = new javax.swing.JMenuItem();
         modificarGrupo = new javax.swing.JMenuItem();
         eliminarGrupo = new javax.swing.JMenuItem();
-        menuAsignarEstudiantes = new javax.swing.JMenu();
-        asignarEstudianteGrupo = new javax.swing.JMenuItem();
-        borrarEstudianteGrupo = new javax.swing.JMenuItem();
-        consultarEstudianteGrupo = new javax.swing.JMenuItem();
         menuConfiguracion = new javax.swing.JMenu();
         inicio = new javax.swing.JMenuItem();
         menuSalir = new javax.swing.JMenu();
@@ -358,6 +358,34 @@ public class AppMenu extends javax.swing.JFrame {
         menuRelacion.add(eliminarRelacion);
 
         menuEstudiantes.add(menuRelacion);
+
+        menuAsignarGrupo.setText("Asignar Estudiante a Grupo");
+
+        asignarEstudianteGrupo.setText("Asignar");
+        asignarEstudianteGrupo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                asignarEstudianteGrupoActionPerformed(evt);
+            }
+        });
+        menuAsignarGrupo.add(asignarEstudianteGrupo);
+
+        borrarEstudianteGrupo.setText("Borrar");
+        borrarEstudianteGrupo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                borrarEstudianteGrupoActionPerformed(evt);
+            }
+        });
+        menuAsignarGrupo.add(borrarEstudianteGrupo);
+
+        consultarEstudianteGrupo.setText("Consultar");
+        consultarEstudianteGrupo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                consultarEstudianteGrupoActionPerformed(evt);
+            }
+        });
+        menuAsignarGrupo.add(consultarEstudianteGrupo);
+
+        menuEstudiantes.add(menuAsignarGrupo);
 
         barraMenu.add(menuEstudiantes);
 
@@ -603,34 +631,6 @@ public class AppMenu extends javax.swing.JFrame {
             }
         });
         menuGrupos.add(eliminarGrupo);
-
-        menuAsignarEstudiantes.setText("Asignar Estudiantes");
-
-        asignarEstudianteGrupo.setText("Asignar");
-        asignarEstudianteGrupo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                asignarEstudianteGrupoActionPerformed(evt);
-            }
-        });
-        menuAsignarEstudiantes.add(asignarEstudianteGrupo);
-
-        borrarEstudianteGrupo.setText("Borrar");
-        borrarEstudianteGrupo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                borrarEstudianteGrupoActionPerformed(evt);
-            }
-        });
-        menuAsignarEstudiantes.add(borrarEstudianteGrupo);
-
-        consultarEstudianteGrupo.setText("Consultar");
-        consultarEstudianteGrupo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                consultarEstudianteGrupoActionPerformed(evt);
-            }
-        });
-        menuAsignarEstudiantes.add(consultarEstudianteGrupo);
-
-        menuGrupos.add(menuAsignarEstudiantes);
 
         barraMenu.add(menuGrupos);
 
@@ -949,7 +949,7 @@ public class AppMenu extends javax.swing.JFrame {
     private javax.swing.JMenuItem eliminarRepresentante;
     private javax.swing.JMenuItem inicio;
     private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu menuAsignarEstudiantes;
+    private javax.swing.JMenu menuAsignarGrupo;
     private javax.swing.JMenu menuConfiguracion;
     private javax.swing.JMenu menuEmpleados;
     private javax.swing.JMenu menuEstudiantes;

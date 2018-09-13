@@ -28,6 +28,8 @@ public class DAOGru_Est extends DAO {
     private static String _sqlGruEstRegistrar = "{?=call GRUEST_REGISTRAR(?,?)}";
     private static String _sqlGruEstBorrar = "{?=call GRUEST_BORRAR(?,?)}";
     private static String _sqlGruEstConsultar = "{call GRUEST_CONSULTAR()}";
+    private static String _sqlGruEstConsultarParametro = "{call GRUEST_CONSULTAR_PARAMETRO(?)}";
+    private static String _sqlEmpGruConsultarParametro = "{call EMPGRU_CONSULTAR_PARAMETRO(?)}";
     private ResultSet rs;
     
     public Emp_Gru_Est asignarGruEst (Emp_Gru_Est _gruest) throws SQLException, Exception{
@@ -136,6 +138,100 @@ public class DAOGru_Est extends DAO {
             _bdCon = DAO.getBdConnect();
             cstmt = _bdCon.prepareCall(_sqlGruEstConsultar);
             
+            rs = cstmt.executeQuery();
+            
+            while(rs.next()){
+                
+                Estudiante estudiante = new Estudiante(rs.getLong("cedulaescolar"), 
+                                  rs.getString("primernombre"),
+                                  rs.getString("primerapellido"));
+                
+                Grupo grupo = new Grupo(rs.getString("gr_codigo"),
+                                    rs.getString("gr_nombre"));
+                
+                grupo.setError(RESULTADO_CODIGO_BIEN);
+                estudiante.setError(RESULTADO_CODIGO_BIEN);
+                
+                empgru = new Emp_Gru_Est(estudiante, grupo);
+                
+                listaGruEst.add(empgru);
+                
+            }
+            return listaGruEst;
+
+
+        } catch (SQLException ex) {
+
+            throw ex;
+
+        } catch (Exception ex) {
+            
+            throw ex;
+
+        } finally {
+            _bdCon.close();
+        }
+    }
+    
+    public ArrayList<Emp_Gru_Est> consultarGruEstParametro(Emp_Gru_Est _gruest) throws Exception {
+
+        ArrayList<Emp_Gru_Est> listaGruEst = new ArrayList<Emp_Gru_Est>();
+        Emp_Gru_Est empgru;
+        CallableStatement cstmt;
+
+        int response = 0;
+
+        try {
+            _bdCon = DAO.getBdConnect();
+            cstmt = _bdCon.prepareCall(_sqlGruEstConsultarParametro);
+            cstmt.setString(1, _gruest.getGrupo().getCodigo());
+            rs = cstmt.executeQuery();
+            
+            while(rs.next()){
+                
+                Estudiante estudiante = new Estudiante(rs.getLong("cedulaescolar"), 
+                                  rs.getString("primernombre"),
+                                  rs.getString("primerapellido"));
+                
+                Grupo grupo = new Grupo(rs.getString("gr_codigo"),
+                                    rs.getString("gr_nombre"));
+                
+                grupo.setError(RESULTADO_CODIGO_BIEN);
+                estudiante.setError(RESULTADO_CODIGO_BIEN);
+                
+                empgru = new Emp_Gru_Est(estudiante, grupo);
+                
+                listaGruEst.add(empgru);
+                
+            }
+            return listaGruEst;
+
+
+        } catch (SQLException ex) {
+
+            throw ex;
+
+        } catch (Exception ex) {
+            
+            throw ex;
+
+        } finally {
+            _bdCon.close();
+        }
+    }
+    
+    public ArrayList<Emp_Gru_Est> consultarEmpGrutParametro(Emp_Gru_Est _gruest) throws Exception {
+
+        ArrayList<Emp_Gru_Est> listaGruEst = new ArrayList<Emp_Gru_Est>();
+        Emp_Gru_Est empgru;
+        CallableStatement cstmt;
+
+        int response = 0;
+
+        try {
+            _bdCon = DAO.getBdConnect();
+            cstmt = _bdCon.prepareCall(_sqlGruEstConsultarParametro);
+            cstmt.setString(1, _gruest.getGrupo().getCodigo());
             rs = cstmt.executeQuery();
             
             while(rs.next()){

@@ -33,6 +33,7 @@ import controlador.modulo_estudiantes.ConsultarEstudianteDetalleComando;
 import controlador.modulo_estudiantes.ConsultarEstudiantesComando;
 import controlador.modulo_estudiantes.ModificarEstudianteComando;
 import controlador.modulo_estudiantes.RegistrarEstudianteComando;
+import controlador.modulo_gru_est.ConsultarParametroEstudianteGrupoComando;
 import controlador.modulo_grupos.BorrarGrupoComando;
 import controlador.modulo_grupos.ConsultarGruposComando;
 import controlador.modulo_grupos.ConsultarGrupoDetalleComando;
@@ -777,6 +778,29 @@ public class HenriPittierWS {
     public String consultarEstudianteGrupo (){
         
         ConsultarEstudianteGrupoComando cmd = new ConsultarEstudianteGrupoComando();
+        
+        try {
+            
+            cmd.execute();
+            return gson.toJson(cmd.obtenerRespuesta());
+            
+        } catch (Exception ex) {
+            
+            ArrayList<Emp_Gru_Est> error = null;
+            return gson.toJson(error);
+            
+        }
+    }
+    
+    @GET
+    @Path("consultarParametroEstudianteGrupo")
+    @Produces("application/json")
+    public String consultarParametroEstudianteGrupo (@QueryParam("est_gru") String _est_gru){
+        
+        
+        Gson gson = new GsonBuilder().create();
+        Emp_Gru_Est consultarEstudianteGrupo = gson.fromJson(_est_gru, Emp_Gru_Est.class);
+        ConsultarParametroEstudianteGrupoComando cmd = new ConsultarParametroEstudianteGrupoComando(consultarEstudianteGrupo);
         
         try {
             
