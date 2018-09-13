@@ -73,13 +73,13 @@ public class UrlTester extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         try {
             
-            Representante representante = new Representante(123456, "Aqui", "Probando", "Esto", "SiFunciona", new Date(),
-                    "04242846494", "04242846494", "Autorizado", "foto", "Trujillo", "Sucre", "El Paraiso");
+            /*Representante representante = new Representante(123456, "Aqui", "Probando", "Esto", "SiFunciona", new Date(),
+                    "04242846494", "04242846494", "Autorizado", "foto", "Trujillo", "Sucre", "El Paraiso");*/
             
             ComunicacionREST com = new ComunicacionREST();
-            Representante resp = com.modificarRepresentante(representante);
+            //Representante resp = com.modificarRepresentante(representante);
             
-            System.out.println(resp.toString());
+            //System.out.println(resp.toString());
             /*Empleado empleado = new Empleado(24773340, "Luis", "Alejandro", "Pérez", "González", "Mercantil", 60000000, new Date(), 
                                              new Date(), "04242846494", "04242846494", "Desarrollador", "foto", "", "", "Trujillo", "Sucre", "El Paraiso");
             ComunicacionREST com = new ComunicacionREST();

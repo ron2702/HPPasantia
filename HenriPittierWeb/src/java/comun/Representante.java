@@ -19,6 +19,7 @@ public class Representante {
     private String primerApellido;
     private String segundoApellido;
     private Date fechaNac; 
+    private String email;
     private String telefonoCasa;
     private String telefonoMovil;
     private String tipo;
@@ -35,13 +36,14 @@ public class Representante {
         this.cedula = _cedula;
     }
 
-    public Representante(int _cedula, String _primerNombre, String _segundoNombre, String _primerApellido, String _segundoApellido, Date _fechaNac, String _telefonoCasa, String _telefonoMovil, String _tipo, String _foto, String _estado, String _municipio, String _parroquia) {
+    public Representante(int _cedula, String _primerNombre, String _segundoNombre, String _primerApellido, String _segundoApellido, Date _fechaNac, String _email, String _telefonoCasa, String _telefonoMovil, String _tipo, String _foto, String _estado, String _municipio, String _parroquia) {
         this.cedula = _cedula;
         this.primerNombre = _primerNombre;
         this.segundoNombre = _segundoNombre;
         this.primerApellido = _primerApellido;
         this.segundoApellido = _segundoApellido;
         this.fechaNac = _fechaNac;
+        this.email = _email;
         this.telefonoCasa = _telefonoCasa;
         this.telefonoMovil = _telefonoMovil;
         this.tipo = _tipo;
@@ -97,6 +99,14 @@ public class Representante {
 
     public void setFechaNac(Date fechaNac) {
         this.fechaNac = fechaNac;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getTelefonoCasa() {
