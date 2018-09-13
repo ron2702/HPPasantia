@@ -936,6 +936,25 @@ public class ComunicacionREST {
             throw ex;
         }
     }
+    
+    public ArrayList<Emp_Gru_Est> consultarAsignacion() throws Exception {
+        try {
+            conn = null;
+            Gson gson = new GsonBuilder().registerTypeAdapter(Date.class, new JsonDateDeserializer()).create();
+            BufferedReader br = comunicar("GET", "consultarAsignacion");
+            String output;
+            ArrayList<Emp_Gru_Est> _empgru = new ArrayList<>();
+            Type listType = new TypeToken<ArrayList<Emp_Gru_Est>>() {}.getType();
+            while ((output = br.readLine()) != null) {
+                _empgru = gson.fromJson(output, listType);
+            }
+            conn.disconnect();
+            return _empgru;
+        }
+        catch (Exception ex){
+            throw ex;
+        }
+    }
 }
     
 
