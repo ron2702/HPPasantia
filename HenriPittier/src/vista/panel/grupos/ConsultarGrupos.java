@@ -22,6 +22,7 @@ public class ConsultarGrupos extends javax.swing.JPanel {
     DefaultTableModel model2;
     private Emp_Gru_Est gruestConsultar;
     private ArrayList<Emp_Gru_Est> listaGrupos;
+    private ArrayList<Emp_Gru_Est> listaGruposEmp;
 
     /**
      * Creates new form ConsultarGrupos
@@ -60,6 +61,10 @@ public class ConsultarGrupos extends javax.swing.JPanel {
         tb_consultarEstudianteGrupo = new javax.swing.JTable();
         sp_representantes1 = new javax.swing.JScrollPane();
         tb_consultarGrupo = new javax.swing.JTable();
+        lbl_nombreDocente = new javax.swing.JLabel();
+        txt_nombreDocente = new javax.swing.JTextField();
+        lbl_apellidoDocente = new javax.swing.JLabel();
+        txt_apellidoDocente = new javax.swing.JTextField();
 
         setBackground(new java.awt.Color(204, 204, 204));
 
@@ -116,31 +121,52 @@ public class ConsultarGrupos extends javax.swing.JPanel {
         });
         sp_representantes1.setViewportView(tb_consultarGrupo);
 
+        lbl_nombreDocente.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        lbl_nombreDocente.setText("Nombre Docente:");
+
+        txt_nombreDocente.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        txt_nombreDocente.setEnabled(false);
+
+        lbl_apellidoDocente.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        lbl_apellidoDocente.setText("Apellido Docente:");
+
+        txt_apellidoDocente.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        txt_apellidoDocente.setEnabled(false);
+
         javax.swing.GroupLayout pnl_datosLayout = new javax.swing.GroupLayout(pnl_datos);
         pnl_datos.setLayout(pnl_datosLayout);
         pnl_datosLayout.setHorizontalGroup(
             pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnl_datosLayout.createSequentialGroup()
                 .addGap(51, 51, 51)
-                .addComponent(sp_representantes, javax.swing.GroupLayout.PREFERRED_SIZE, 731, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(52, Short.MAX_VALUE))
-            .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(pnl_datosLayout.createSequentialGroup()
-                    .addGap(52, 52, 52)
+                .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(sp_representantes1, javax.swing.GroupLayout.PREFERRED_SIZE, 731, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(51, Short.MAX_VALUE)))
+                    .addComponent(sp_representantes, javax.swing.GroupLayout.PREFERRED_SIZE, 731, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(pnl_datosLayout.createSequentialGroup()
+                        .addGap(27, 27, 27)
+                        .addComponent(lbl_nombreDocente)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txt_nombreDocente, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(67, 67, 67)
+                        .addComponent(lbl_apellidoDocente)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txt_apellidoDocente, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(52, Short.MAX_VALUE))
         );
         pnl_datosLayout.setVerticalGroup(
             pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnl_datosLayout.createSequentialGroup()
-                .addContainerGap(258, Short.MAX_VALUE)
-                .addComponent(sp_representantes, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-            .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(pnl_datosLayout.createSequentialGroup()
-                    .addGap(44, 44, 44)
-                    .addComponent(sp_representantes1, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(338, Short.MAX_VALUE)))
+                .addContainerGap()
+                .addComponent(sp_representantes1, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(25, 25, 25)
+                .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbl_nombreDocente)
+                    .addComponent(txt_nombreDocente, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txt_apellidoDocente, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbl_apellidoDocente))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
+                .addComponent(sp_representantes, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(54, 54, 54))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -149,25 +175,19 @@ public class ConsultarGrupos extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(53, 53, 53)
-                .addComponent(lbl_tituloGrupos)
-                .addContainerGap(776, Short.MAX_VALUE))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(56, 56, 56)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(pnl_datos, javax.swing.GroupLayout.PREFERRED_SIZE, 838, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(56, Short.MAX_VALUE)))
+                    .addComponent(lbl_tituloGrupos))
+                .addContainerGap(59, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(38, 38, 38)
+                .addGap(31, 31, 31)
                 .addComponent(lbl_tituloGrupos, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(590, Short.MAX_VALUE))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(68, 68, 68)
-                    .addComponent(pnl_datos, javax.swing.GroupLayout.PREFERRED_SIZE, 513, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(69, Short.MAX_VALUE)))
+                .addGap(18, 18, 18)
+                .addComponent(pnl_datos, javax.swing.GroupLayout.PREFERRED_SIZE, 507, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(72, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -187,9 +207,19 @@ public class ConsultarGrupos extends javax.swing.JPanel {
             ComunicacionREST comRest = new ComunicacionREST();
             
             listaGrupos = comRest.consultarParametroEstudiantesGrupo(gruestConsultar);
+            listaGruposEmp = comRest.consultarParametroEmpleadoGrupo(gruestConsultar);
             
             for (Emp_Gru_Est gruest : listaGrupos) {
                model2.addRow(new Object[] {gruest.getEstudiante().getCedulaEscolar(), gruest.getEstudiante().getPrimerNombre(), gruest.getEstudiante().getPrimerApellido()});
+            }
+            
+            for (Emp_Gru_Est gruest : listaGruposEmp){
+                
+                if(gruest.getEmpleado().getCargo().equals("Docente")){
+                    txt_nombreDocente.setText(gruest.getEmpleado().getPrimerNombre());
+                    txt_apellidoDocente.setText(gruest.getEmpleado().getPrimerApellido());
+                }
+                
             }
             
         } catch (Exception ex) {
@@ -199,11 +229,15 @@ public class ConsultarGrupos extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel lbl_apellidoDocente;
+    private javax.swing.JLabel lbl_nombreDocente;
     private javax.swing.JLabel lbl_tituloGrupos;
     private javax.swing.JPanel pnl_datos;
     private javax.swing.JScrollPane sp_representantes;
     private javax.swing.JScrollPane sp_representantes1;
     private javax.swing.JTable tb_consultarEstudianteGrupo;
     private javax.swing.JTable tb_consultarGrupo;
+    private javax.swing.JTextField txt_apellidoDocente;
+    private javax.swing.JTextField txt_nombreDocente;
     // End of variables declaration//GEN-END:variables
 }

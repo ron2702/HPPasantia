@@ -6,6 +6,7 @@
 package modelo.modulo_gru_est;
 
 import comun.Emp_Gru_Est;
+import comun.Empleado;
 import comun.Estudiante;
 import comun.Grupo;
 import java.sql.CallableStatement;
@@ -14,6 +15,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Types;
 import java.util.ArrayList;
+import java.util.Date;
 import modelo.DAO;
 import modelo.Registry;
 import static modelo.Registry.*;
@@ -230,23 +232,37 @@ public class DAOGru_Est extends DAO {
 
         try {
             _bdCon = DAO.getBdConnect();
-            cstmt = _bdCon.prepareCall(_sqlGruEstConsultarParametro);
+            cstmt = _bdCon.prepareCall(_sqlEmpGruConsultarParametro);
             cstmt.setString(1, _gruest.getGrupo().getCodigo());
             rs = cstmt.executeQuery();
             
             while(rs.next()){
                 
-                Estudiante estudiante = new Estudiante(rs.getLong("cedulaescolar"), 
-                                  rs.getString("primernombre"),
-                                  rs.getString("primerapellido"));
+                Empleado empleado = new Empleado(rs.getInt("FK_CEDULA"), 
+                                  rs.getString("PRIMERNOMBRE"),
+                                  "",
+                                  rs.getString("PRIMERAPELLIDO"),
+                                  "",
+                                  "",
+                                  0,
+                                  new Date(),
+                                  new Date(),
+                                  "",
+                                  "",
+                                  rs.getString("CARGO"),
+                                  "",
+                                  "",
+                                  "",
+                                  "",
+                                  "",
+                                  "");
                 
-                Grupo grupo = new Grupo(rs.getString("gr_codigo"),
-                                    rs.getString("gr_nombre"));
+                Grupo grupo = new Grupo("", rs.getString("NOMBRE"));
                 
                 grupo.setError(RESULTADO_CODIGO_BIEN);
-                estudiante.setError(RESULTADO_CODIGO_BIEN);
+                empleado.setError(RESULTADO_CODIGO_BIEN);
                 
-                empgru = new Emp_Gru_Est(estudiante, grupo);
+                empgru = new Emp_Gru_Est(empleado, grupo);
                 
                 listaGruEst.add(empgru);
                 
