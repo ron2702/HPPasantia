@@ -5,8 +5,12 @@
  */
 package vista.panel.estudiantes;
 
+import comun.Emp_Gru_Est;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.table.DefaultTableModel;
+import modelo.ComunicacionREST;
 
 /**
  *
@@ -14,10 +18,22 @@ import java.util.logging.Logger;
  */
 public class ConsultarEstGrupo extends javax.swing.JPanel {
 
+    DefaultTableModel model;
     
     public ConsultarEstGrupo() {
         try {
             initComponents();
+            
+            ComunicacionREST comRest = new ComunicacionREST();
+            
+            ArrayList<Emp_Gru_Est> listaGrupos = comRest.consultarEstudiantesGrupo();
+            
+            model = (DefaultTableModel) tb_consultarEstudiantesGrupo.getModel();
+            
+            for (Emp_Gru_Est gruest : listaGrupos) {
+               model.addRow(new Object[] {gruest.getEstudiante().getCedulaEscolar(), gruest.getEstudiante().getPrimerNombre(), gruest.getEstudiante().getPrimerApellido(), gruest.getGrupo().getNombre()});
+            }
+            
         } catch (Exception ex) {
             Logger.getLogger(ConsultarEstGrupo.class.getName()).log(Level.SEVERE, null, ex);
         }
