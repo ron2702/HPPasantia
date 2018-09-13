@@ -6,12 +6,15 @@
 package modelo.modulo_emp_gru;
 
 import comun.Emp_Gru_Est;
+import comun.Empleado;
+import comun.Grupo;
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Types;
 import java.util.ArrayList;
+import java.util.Date;
 import modelo.DAO;
 import modelo.Registry;
 import static modelo.Registry.*;
@@ -119,6 +122,63 @@ public class DAOEmp_Gru extends DAO {
             
             _bdCon.close();
             
+        }
+        
+    }
+    
+    public ArrayList<Emp_Gru_Est> consultarEmpGru () throws SQLException, Exception{
+        
+        ArrayList<Emp_Gru_Est> listaAsignaciones = new ArrayList<>();
+        CallableStatement cstmt;
+
+        int response = 0;
+
+        try {
+            _bdCon = DAO.getBdConnect();
+            cstmt = _bdCon.prepareCall(_sqlEmpGruConsultar);
+            
+            rs = cstmt.executeQuery();
+            
+            while(rs.next()){
+                
+                Empleado empleado = new Empleado(rs.getInt("FK_CEDULA"), 
+                                  rs.getString("PRIMERNOMBRE"),
+                                  "",
+                                  rs.getString("PRIMERAPELLIDO"),
+                                  "",
+                                  "",
+                                  0,
+                                  new Date(),
+                                  new Date(),
+                                  "",
+                                  "",
+                                  rs.getString("CARGO"),
+                                  "",
+                                  "",
+                                  "",
+                                  "",
+                                  "",
+                                  "");
+                Grupo grupo = new Grupo("", rs.getString("NOMBRE"));
+                empleado.setError(RESULTADO_CODIGO_BIEN);
+                grupo.setError(RESULTADO_CODIGO_BIEN);
+                Emp_Gru_Est empgru = new Emp_Gru_Est(empleado, grupo);
+                listaAsignaciones.add(empgru);
+                
+            }
+            return listaAsignaciones;
+
+
+        } catch (SQLException ex) {
+
+            throw ex;
+
+        } catch (Exception ex) {
+            
+            throw ex;
+
+        } finally {
+            _bdCon.close();
         }
         
     }

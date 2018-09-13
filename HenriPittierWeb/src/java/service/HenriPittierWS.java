@@ -19,6 +19,7 @@ import comun.Representante;
 import comun.Suplencia;
 import comun.Usuario;
 import controlador.modulo_emp_gru.AsignarPersonalComando;
+import controlador.modulo_emp_gru.ConsultarAsignacionComando;
 import controlador.modulo_emp_gru.RemoverPersonalComando;
 import controlador.modulo_gru_est.BorrarEstudianteGrupoComando;
 import controlador.modulo_gru_est.ConsultarEstudianteGrupoComando;
@@ -1216,6 +1217,29 @@ public class HenriPittierWS {
         Gson gson = new GsonBuilder().create();
         Emp_Gru_Est removerGrupo = gson.fromJson(_emp_gru, Emp_Gru_Est.class);
         RemoverPersonalComando cmd = new RemoverPersonalComando(removerGrupo);
+        
+        try {
+        
+            cmd.execute();
+            return gson.toJson(cmd.obtenerRespuesta());
+            
+        } catch (Exception ex) {
+            
+            Emp_Gru_Est error = new Emp_Gru_Est();
+            error.setError(RESULTADO_CODIGO_FALLIDO);
+            return gson.toJson(error);
+            
+        }
+    }
+    
+    @GET
+    @Path("consultarAsignacion")
+    @Produces("application/json")
+    //@QueryParam("suplencia") String _suplencia
+    public String consultarAsignacion (){
+        
+        Gson gson = new GsonBuilder().create();
+        ConsultarAsignacionComando cmd = new ConsultarAsignacionComando();
         
         try {
         

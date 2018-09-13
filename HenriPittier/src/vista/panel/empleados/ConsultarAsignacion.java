@@ -5,17 +5,32 @@
  */
 package vista.panel.empleados;
 
-/**
- *
- * @author LuisAlejandro
- */
-public class ConsultarAsignacion extends javax.swing.JPanel {
+import comun.Emp_Gru_Est;
+import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
+import modelo.ComunicacionREST;
 
-    /**
-     * Creates new form ConsultarAsignacion
-     */
+
+
+public class ConsultarAsignacion extends javax.swing.JPanel {
+    private Emp_Gru_Est empgruConsultar;
+    DefaultTableModel model;
+  
     public ConsultarAsignacion() {
-        initComponents();
+        try {
+            initComponents();
+            ComunicacionREST comRest = new ComunicacionREST();
+            ArrayList<Emp_Gru_Est> listaEmpGru = comRest.consultarAsignacion();
+            
+            model = (DefaultTableModel) tb_consultarEmpleados.getModel();
+            
+            
+            for (Emp_Gru_Est empgru : listaEmpGru) {
+               model.addRow(new Object[] {empgru.getEmpleado().getCedula(), empgru.getEmpleado().getPrimerNombre(), empgru.getEmpleado().getPrimerApellido(), empgru.getEmpleado().getCargo(), empgru.getGrupo().getNombre()});
+            }
+            
+        } catch (Exception e) {
+        }
     }
 
     /**
@@ -28,40 +43,56 @@ public class ConsultarAsignacion extends javax.swing.JPanel {
     private void initComponents() {
 
         pnl_datos = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        sp_empleados = new javax.swing.JScrollPane();
+        tb_consultarEmpleados = new javax.swing.JTable(){
+            public boolean isCellEditable(int rowIndex, int colIndex) {
+                return false; //Disallow the editing of any cell
+            }
+        };
         lbl_tituloConsultarAsignacion = new javax.swing.JLabel();
 
+        pnl_datos.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         pnl_datos.setPreferredSize(new java.awt.Dimension(840, 520));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tb_consultarEmpleados.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        tb_consultarEmpleados.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+
             },
             new String [] {
-                "Cedula Empleado", "Title 2", "Title 3", "Title 4", "Title 5"
+                "Cedula", "Primer Nombre", "Primer Apellido", "Cargo", "Grupo"
             }
-        ));
-        jScrollPane1.setViewportView(jTable1);
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        tb_consultarEmpleados.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tb_consultarEmpleadosMouseClicked(evt);
+            }
+        });
+        sp_empleados.setViewportView(tb_consultarEmpleados);
 
         javax.swing.GroupLayout pnl_datosLayout = new javax.swing.GroupLayout(pnl_datos);
         pnl_datos.setLayout(pnl_datosLayout);
         pnl_datosLayout.setHorizontalGroup(
             pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnl_datosLayout.createSequentialGroup()
-                .addContainerGap(49, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 740, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(49, 49, 49))
+            .addGroup(pnl_datosLayout.createSequentialGroup()
+                .addGap(73, 73, 73)
+                .addComponent(sp_empleados, javax.swing.GroupLayout.PREFERRED_SIZE, 688, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(73, Short.MAX_VALUE))
         );
         pnl_datosLayout.setVerticalGroup(
             pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnl_datosLayout.createSequentialGroup()
-                .addGap(63, 63, 63)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(201, Short.MAX_VALUE))
+                .addGap(49, 49, 49)
+                .addComponent(sp_empleados, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(253, Short.MAX_VALUE))
         );
 
         lbl_tituloConsultarAsignacion.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -89,11 +120,18 @@ public class ConsultarAsignacion extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void tb_consultarEmpleadosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tb_consultarEmpleadosMouseClicked
+        int index = tb_consultarEmpleados.getSelectedRow();
+
+        String cedula = model.getValueAt(index, 0).toString();
+        
+    }//GEN-LAST:event_tb_consultarEmpleadosMouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JLabel lbl_tituloConsultarAsignacion;
     private javax.swing.JPanel pnl_datos;
+    private javax.swing.JScrollPane sp_empleados;
+    private javax.swing.JTable tb_consultarEmpleados;
     // End of variables declaration//GEN-END:variables
 }
