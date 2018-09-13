@@ -122,6 +122,7 @@ public class ModificarEmpleado extends javax.swing.JPanel {
                         cb_municipios.setSelectedItem(municipioEmpleado);
                         Lugar parroquiaEmpleado = buscarLugarPorNombre(listaParroquias, empleadoSeleccionado.getParroquia());
                         cb_parroquias.setSelectedItem(parroquiaEmpleado);
+                        cb_tareasDirigidas.setSelectedItem(empleadoSeleccionado.getTareasDirigidas());
                         
                     } catch (Exception ex) {
                         Logger.getLogger(ModificarEmpleado.class.getName()).log(Level.SEVERE, null, ex);
@@ -191,6 +192,8 @@ public class ModificarEmpleado extends javax.swing.JPanel {
         btn_cargarImagen = new javax.swing.JButton();
         cb_listaEmpleados = new javax.swing.JComboBox();
         lbl_tituloModificar = new javax.swing.JLabel();
+        lbl_tareasDirigidas = new javax.swing.JLabel();
+        cb_tareasDirigidas = new javax.swing.JComboBox();
         lbl_tituloModificarEmpleados = new javax.swing.JLabel();
 
         setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
@@ -452,6 +455,17 @@ try {
     lbl_tituloModificar.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
     lbl_tituloModificar.setText("Empleado a modificar:");
 
+    lbl_tareasDirigidas.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+    lbl_tareasDirigidas.setText("Docente de Tareas Dirigidas:");
+
+    cb_tareasDirigidas.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+    cb_tareasDirigidas.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "No", "Si" }));
+    cb_tareasDirigidas.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            cb_tareasDirigidasActionPerformed(evt);
+        }
+    });
+
     javax.swing.GroupLayout pnl_datosLayout = new javax.swing.GroupLayout(pnl_datos);
     pnl_datos.setLayout(pnl_datosLayout);
     pnl_datosLayout.setHorizontalGroup(
@@ -483,7 +497,11 @@ try {
                         .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(txt_primerNombre)
                             .addComponent(txt_segundoNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(cb_listaEmpleados, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addComponent(cb_listaEmpleados, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(pnl_datosLayout.createSequentialGroup()
+                    .addComponent(lbl_tareasDirigidas)
+                    .addGap(18, 18, 18)
+                    .addComponent(cb_tareasDirigidas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
             .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(pnl_datosLayout.createSequentialGroup()
                     .addGap(94, 94, 94)
@@ -583,7 +601,11 @@ try {
                             .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(txt_sueldoMensual, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(lbl_sueldoMensual))
-                            .addGap(55, 55, 55))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(lbl_tareasDirigidas)
+                                .addComponent(cb_tareasDirigidas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGroup(pnl_datosLayout.createSequentialGroup()
                             .addComponent(cb_banco, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -657,9 +679,10 @@ try {
         txt_sueldoMensual.setText("");
         dc_fechaIngreso.setCurrent(null);
         dc_fechaNac.setCurrent(null);
-        cb_banco.setSelectedItem(null);  
+        cb_banco.setSelectedIndex(0);  
         cb_municipios.removeAllItems();
         cb_parroquias.removeAllItems();
+        cb_tareasDirigidas.setSelectedIndex(0);
     }//GEN-LAST:event_btn_limpiarActionPerformed
 
     private void btn_modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_modificarActionPerformed
@@ -669,8 +692,9 @@ try {
         if((!txt_primerNombre.getText().equals("")) && (!txt_segundoNombre.getText().equals("")) 
                 && (!txt_primerApellido.getText().equals("")) && (!txt_segundoApellido.getText().equals("")) && (!txt_sueldoMensual.getText().equals("")) 
                 && (!dc_fechaIngreso.getText().equals("")) && (!dc_fechaNac.getText().equals("")) && (!txt_telefonoCasa.getText().equals("")) 
-                && (!txt_telefonoMovil.getText().equals("")) && (!txt_cargo.getText().equals("")) && (cb_estados.getSelectedItem() != null) 
-                && (cb_municipios.getSelectedItem() != null) && (cb_parroquias.getSelectedItem() != null) && (archivoSeleccionado != null)) {
+                && (!txt_telefonoMovil.getText().equals("")) && (!txt_cargo.getText().equals("")) && (cb_tareasDirigidas.getSelectedItem() != null) 
+                && (cb_estados.getSelectedItem() != null) && (cb_municipios.getSelectedItem() != null) && (cb_parroquias.getSelectedItem() != null) 
+                && (archivoSeleccionado != null)) {
             
             try {
                 Lugar estadoSeleccionado = (Lugar) cb_estados.getSelectedItem();
@@ -684,7 +708,8 @@ try {
                                                           txt_primerApellido.getText(), txt_segundoApellido.getText(), (String) cb_banco.getSelectedItem(),  
                                                           (Integer.parseInt(txt_sueldoMensual.getText())), fechaIngreso, fechaNacimiento,
                                                           txt_telefonoCasa.getText(), txt_telefonoMovil.getText(), txt_cargo.getText(), null, 
-                                                          "", "", estadoSeleccionado.getNombre(), municipioSeleccionado.getNombre(), parroquiaSeleccionada.getNombre());
+                                                          "", "", (String) cb_tareasDirigidas.getSelectedItem(), estadoSeleccionado.getNombre(), 
+                                                          municipioSeleccionado.getNombre(), parroquiaSeleccionada.getNombre());
                 ComunicacionREST comRest = new ComunicacionREST();
                 Empleado empleadoRegistrado = comRest.modificarEmpleado(empleadoModificar);
                 if (empleadoRegistrado.getError() == Registry.RESULTADO_CODIGO_RECURSO_CREADO){
@@ -735,6 +760,10 @@ try {
         keyTypedSoloLetras(evt, txt_segundoApellido, 30); 
     }//GEN-LAST:event_txt_segundoApellidoKeyTyped
 
+    private void cb_tareasDirigidasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_tareasDirigidasActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cb_tareasDirigidasActionPerformed
+
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -746,6 +775,7 @@ try {
     private javax.swing.JComboBox cb_listaEmpleados;
     private javax.swing.JComboBox cb_municipios;
     private javax.swing.JComboBox cb_parroquias;
+    private javax.swing.JComboBox cb_tareasDirigidas;
     private datechooser.beans.DateChooserCombo dc_fechaIngreso;
     private datechooser.beans.DateChooserCombo dc_fechaNac;
     private javax.swing.JLabel lbl_banco;
@@ -762,6 +792,7 @@ try {
     private javax.swing.JLabel lbl_segundoApellido;
     private javax.swing.JLabel lbl_segundoNombre;
     private javax.swing.JLabel lbl_sueldoMensual;
+    private javax.swing.JLabel lbl_tareasDirigidas;
     private javax.swing.JLabel lbl_telefonoCasa;
     private javax.swing.JLabel lbl_telefonoMovil;
     private javax.swing.JLabel lbl_tituloModificar;

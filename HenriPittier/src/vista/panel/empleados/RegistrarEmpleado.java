@@ -141,6 +141,8 @@ public class RegistrarEmpleado extends javax.swing.JPanel {
         btn_registrar = new javax.swing.JButton();
         btn_limpiar = new javax.swing.JButton();
         cb_banco = new javax.swing.JComboBox();
+        lbl_tareasDirigidas = new javax.swing.JLabel();
+        cb_tareasDirigidas = new javax.swing.JComboBox();
         lbl_tituloRegistroEmpleados = new javax.swing.JLabel();
 
         setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
@@ -399,6 +401,17 @@ txt_primerApellido.addKeyListener(new java.awt.event.KeyAdapter() {
     cb_banco.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
     cb_banco.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "100% Banco", "BBVA Banco Provincial", "Bancamiga", "Bancaribe", "Banco Activo", "Banco Agricola de Venezuela", "Banco Bicentenario del Pueblo", "Banco Caroni", "Banco del Tesoro", "Banco de Venezuela", "Banco Exterior", "Banco Mercantil", "Banco Plaza", "Banco Sofitasa", "Banco Venezolano de Credito", "Banesco", "Banfanb", "Banplus", "BFC Banco Fondo Comun", "BNC Banco Nacional de Credito", "BOD Banco Occidental de Descuento", "CitiBank", "DELSUR", "Mi Banco" }));
 
+    lbl_tareasDirigidas.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+    lbl_tareasDirigidas.setText("Docente de Tareas Dirigidas:");
+
+    cb_tareasDirigidas.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+    cb_tareasDirigidas.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "No", "Si" }));
+    cb_tareasDirigidas.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            cb_tareasDirigidasActionPerformed(evt);
+        }
+    });
+
     javax.swing.GroupLayout pnl_datosLayout = new javax.swing.GroupLayout(pnl_datos);
     pnl_datos.setLayout(pnl_datosLayout);
     pnl_datosLayout.setHorizontalGroup(
@@ -416,23 +429,29 @@ txt_primerApellido.addKeyListener(new java.awt.event.KeyAdapter() {
                         .addComponent(lbl_cedula)
                         .addComponent(lbl_telefonoCasa)
                         .addComponent(lbl_telefonoMovil)
-                        .addComponent(lbl_cargo))
-                    .addGap(45, 45, 45)
-                    .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(txt_primerApellido, javax.swing.GroupLayout.DEFAULT_SIZE, 175, Short.MAX_VALUE)
-                        .addComponent(txt_primerNombre)
-                        .addComponent(txt_segundoNombre)
-                        .addComponent(txt_telefonoCasa)
-                        .addComponent(txt_cargo)
-                        .addComponent(txt_sueldoMensual)
-                        .addComponent(txt_telefonoMovil)
-                        .addComponent(txt_segundoApellido)
-                        .addComponent(txt_cedula))
+                        .addComponent(lbl_cargo)
+                        .addComponent(lbl_tareasDirigidas))
+                    .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(pnl_datosLayout.createSequentialGroup()
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(txt_primerApellido, javax.swing.GroupLayout.DEFAULT_SIZE, 175, Short.MAX_VALUE)
+                                .addComponent(txt_primerNombre)
+                                .addComponent(txt_segundoNombre)
+                                .addComponent(txt_telefonoCasa)
+                                .addComponent(txt_cargo)
+                                .addComponent(txt_sueldoMensual)
+                                .addComponent(txt_telefonoMovil)
+                                .addComponent(txt_segundoApellido)
+                                .addComponent(txt_cedula)))
+                        .addGroup(pnl_datosLayout.createSequentialGroup()
+                            .addGap(31, 31, 31)
+                            .addComponent(cb_tareasDirigidas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(pnl_datosLayout.createSequentialGroup()
                             .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(pnl_datosLayout.createSequentialGroup()
-                                    .addGap(61, 61, 61)
+                                    .addGap(52, 52, 52)
                                     .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(lbl_fechaIngreso)
                                         .addComponent(lbl_fechaNac)
@@ -444,7 +463,7 @@ txt_primerApellido.addKeyListener(new java.awt.event.KeyAdapter() {
                                         .addComponent(lbl_estado, javax.swing.GroupLayout.Alignment.TRAILING)
                                         .addComponent(lbl_municipio, javax.swing.GroupLayout.Alignment.TRAILING)
                                         .addComponent(lbl_parroquia, javax.swing.GroupLayout.Alignment.TRAILING))))
-                            .addGap(45, 45, 45)
+                            .addGap(41, 41, 41)
                             .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(dc_fechaIngreso, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(dc_fechaNac, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -462,7 +481,7 @@ txt_primerApellido.addKeyListener(new java.awt.event.KeyAdapter() {
                     .addComponent(btn_limpiar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                     .addComponent(btn_registrar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-            .addContainerGap(42, Short.MAX_VALUE))
+            .addContainerGap(48, Short.MAX_VALUE))
     );
     pnl_datosLayout.setVerticalGroup(
         pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -534,6 +553,10 @@ txt_primerApellido.addKeyListener(new java.awt.event.KeyAdapter() {
                     .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(txt_sueldoMensual, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(lbl_sueldoMensual))
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(lbl_tareasDirigidas)
+                        .addComponent(cb_tareasDirigidas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(btn_limpiar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -624,8 +647,9 @@ txt_primerApellido.addKeyListener(new java.awt.event.KeyAdapter() {
         if((!txt_cedula.getText().equals("")) && (!txt_primerNombre.getText().equals("")) && (!txt_segundoNombre.getText().equals("")) 
                 && (!txt_primerApellido.getText().equals("")) && (!txt_segundoApellido.getText().equals("")) && (!txt_sueldoMensual.getText().equals("")) 
                 && (!dc_fechaIngreso.getText().equals("")) && (!dc_fechaNac.getText().equals("")) && (!txt_telefonoCasa.getText().equals("")) 
-                && (!txt_telefonoMovil.getText().equals("")) && (!txt_cargo.getText().equals("")) && (cb_estados.getSelectedItem() != null) 
-                && (cb_municipios.getSelectedItem() != null) && (cb_parroquias.getSelectedItem() != null) && (archivoSeleccionado != null)) {
+                && (!txt_telefonoMovil.getText().equals("")) && (!txt_cargo.getText().equals("")) && (cb_tareasDirigidas.getSelectedItem() != null) 
+                && (cb_estados.getSelectedItem() != null) && (cb_municipios.getSelectedItem() != null) && (cb_parroquias.getSelectedItem() != null) 
+                && (archivoSeleccionado != null)) {
             
             try {
                 Lugar estadoSeleccionado = (Lugar) cb_estados.getSelectedItem();
@@ -639,7 +663,8 @@ txt_primerApellido.addKeyListener(new java.awt.event.KeyAdapter() {
                                                           txt_primerApellido.getText(), txt_segundoApellido.getText(), (String) cb_banco.getSelectedItem(),  
                                                           (Integer.parseInt(txt_sueldoMensual.getText())), fechaIngreso, fechaNacimiento,
                                                           txt_telefonoCasa.getText(), txt_telefonoMovil.getText(), txt_cargo.getText(), null, 
-                                                          "", "", estadoSeleccionado.getNombre(), municipioSeleccionado.getNombre(), parroquiaSeleccionada.getNombre());
+                                                          "", "", (String) cb_tareasDirigidas.getSelectedItem(), estadoSeleccionado.getNombre(), 
+                                                          municipioSeleccionado.getNombre(), parroquiaSeleccionada.getNombre());
                 ComunicacionREST comRest = new ComunicacionREST();
                 Empleado empleadoRegistrado = comRest.registrarEmpleado(empleadoRegistrar);
                 if (empleadoRegistrado.getError() == Registry.RESULTADO_CODIGO_RECURSO_CREADO){
@@ -675,10 +700,12 @@ txt_primerApellido.addKeyListener(new java.awt.event.KeyAdapter() {
         cb_estados.setSelectedIndex(0);
         cb_municipios.removeAllItems();
         cb_parroquias.removeAllItems();
-        /*cb_estados.setSelectedItem(null);
-        cb_municipios.setSelectedItem(null);
-        cb_parroquias.setSelectedItem(null);*/
+        cb_tareasDirigidas.setSelectedIndex(0);
     }//GEN-LAST:event_btn_limpiarActionPerformed
+
+    private void cb_tareasDirigidasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_tareasDirigidasActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cb_tareasDirigidasActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -689,6 +716,7 @@ txt_primerApellido.addKeyListener(new java.awt.event.KeyAdapter() {
     private javax.swing.JComboBox cb_estados;
     private javax.swing.JComboBox cb_municipios;
     private javax.swing.JComboBox cb_parroquias;
+    private javax.swing.JComboBox cb_tareasDirigidas;
     private datechooser.beans.DateChooserCombo dc_fechaIngreso;
     private datechooser.beans.DateChooserCombo dc_fechaNac;
     private javax.swing.JLabel lbl_banco;
@@ -706,6 +734,7 @@ txt_primerApellido.addKeyListener(new java.awt.event.KeyAdapter() {
     private javax.swing.JLabel lbl_segundoApellido;
     private javax.swing.JLabel lbl_segundoNombre;
     private javax.swing.JLabel lbl_sueldoMensual;
+    private javax.swing.JLabel lbl_tareasDirigidas;
     private javax.swing.JLabel lbl_telefonoCasa;
     private javax.swing.JLabel lbl_telefonoMovil;
     private javax.swing.JLabel lbl_tituloRegistroEmpleados;

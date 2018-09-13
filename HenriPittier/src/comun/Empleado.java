@@ -33,6 +33,7 @@ public class Empleado {
     private String foto;
     private String usuario;
     private String clave;
+    private String tareasdirigidas;
     private String estado;
     private String municipio;
     private String parroquia;
@@ -45,7 +46,7 @@ public class Empleado {
         this.cedula = _cedula;
     }
     
-    public Empleado(int _cedula, String _primerNombre, String _segundoNombre, String _primerApellido, String _segundoApellido, String _banco, int _sueldoMensual, Date _fechaIngreso, Date _fechaNac, String _telefonoCasa, String _telefonoMovil, String _cargo, String _foto, String _usuario, String _clave, String _estado, String _municipio, String _parroquia) {
+    public Empleado(int _cedula, String _primerNombre, String _segundoNombre, String _primerApellido, String _segundoApellido, String _banco, int _sueldoMensual, Date _fechaIngreso, Date _fechaNac, String _telefonoCasa, String _telefonoMovil, String _cargo, String _foto, String _usuario, String _clave, String _tareasdirigidas, String _estado, String _municipio, String _parroquia) {
         this.cedula = _cedula;
         this.primerNombre = _primerNombre;
         this.segundoNombre = _segundoNombre;
@@ -61,6 +62,7 @@ public class Empleado {
         this.foto = _foto;
         this.usuario = _usuario;
         this.clave = _clave;
+        this.tareasdirigidas = _tareasdirigidas;
         this.estado = _estado;
         this.municipio = _municipio;
         this.parroquia = _parroquia;
@@ -186,6 +188,14 @@ public class Empleado {
         this.clave = clave;
     }
 
+    public String getTareasDirigidas() {
+        return tareasdirigidas;
+    }
+
+    public void setTareasDirigidas(String clave) {
+        this.tareasdirigidas = tareasdirigidas;
+    }
+    
     public String getEstado() {
         return estado;
     }

@@ -33,7 +33,8 @@ public class ConsultarEmpleados extends javax.swing.JPanel {
             
             
             for (Empleado empleado : listaEmpleados) {
-               model.addRow(new Object[] {empleado.getCedula(), empleado.getPrimerNombre(), empleado.getSegundoNombre(), empleado.getPrimerApellido(), empleado.getSegundoApellido()});
+               model.addRow(new Object[] {empleado.getCedula(), empleado.getPrimerNombre(), empleado.getSegundoNombre(), 
+                                          empleado.getPrimerApellido(), empleado.getSegundoApellido()});
             }
             
         } catch (Exception e) {
@@ -74,6 +75,8 @@ public class ConsultarEmpleados extends javax.swing.JPanel {
         lbl_fotoEmpleado = new javax.swing.JLabel();
         txt_fechaIngreso = new javax.swing.JTextField();
         txt_fechaNac = new javax.swing.JTextField();
+        lbl_tareasDirigidas = new javax.swing.JLabel();
+        txt_tareasDirigidas = new javax.swing.JTextField();
         lbl_titulo = new javax.swing.JLabel();
 
         pnl_datos.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -186,6 +189,13 @@ public class ConsultarEmpleados extends javax.swing.JPanel {
         txt_fechaNac.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         txt_fechaNac.setEnabled(false);
 
+        lbl_tareasDirigidas.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        lbl_tareasDirigidas.setText("Docente de Tareas Dirigidas:");
+
+        txt_tareasDirigidas.setEditable(false);
+        txt_tareasDirigidas.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        txt_tareasDirigidas.setEnabled(false);
+
         javax.swing.GroupLayout pnl_datosLayout = new javax.swing.GroupLayout(pnl_datos);
         pnl_datos.setLayout(pnl_datosLayout);
         pnl_datosLayout.setHorizontalGroup(
@@ -202,42 +212,48 @@ public class ConsultarEmpleados extends javax.swing.JPanel {
                             .addGroup(pnl_datosLayout.createSequentialGroup()
                                 .addGap(48, 48, 48)
                                 .addComponent(lbl_fotoEmpleado)))
-                        .addGap(0, 36, Short.MAX_VALUE))
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(pnl_datosLayout.createSequentialGroup()
                         .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lbl_telefonoCasa)
-                            .addComponent(lbl_telefonoMovil)
-                            .addComponent(lbl_sueldoMensual)
-                            .addComponent(lbl_fechaNacimiento)
-                            .addComponent(lbl_fechaIngreso))
-                        .addGap(41, 41, 41)
-                        .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txt_telefonoCasa, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txt_telefonoMovil, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txt_sueldoMensual, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txt_fechaIngreso, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txt_fechaNac, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(76, 76, 76)
-                        .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lbl_direccion)
-                            .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(lbl_cargo)
-                                .addComponent(lbl_banco))
                             .addGroup(pnl_datosLayout.createSequentialGroup()
-                                .addGap(58, 58, 58)
-                                .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(lbl_parroquia)
-                                    .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(lbl_estado)
-                                        .addComponent(lbl_municipio)))))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lbl_telefonoCasa)
+                                    .addComponent(lbl_telefonoMovil)
+                                    .addComponent(lbl_sueldoMensual)
+                                    .addComponent(lbl_fechaNacimiento)
+                                    .addComponent(lbl_fechaIngreso))
+                                .addGap(56, 56, 56)
+                                .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txt_fechaIngreso, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txt_fechaNac, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txt_sueldoMensual, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txt_telefonoMovil, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txt_telefonoCasa, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(54, 54, 54)
+                                .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lbl_direccion)
+                                    .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(lbl_cargo)
+                                        .addComponent(lbl_banco))
+                                    .addGroup(pnl_datosLayout.createSequentialGroup()
+                                        .addGap(58, 58, 58)
+                                        .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(lbl_parroquia)
+                                            .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(lbl_estado)
+                                                .addComponent(lbl_municipio))))))
+                            .addGroup(pnl_datosLayout.createSequentialGroup()
+                                .addComponent(lbl_tareasDirigidas)
+                                .addGap(18, 18, 18)
+                                .addComponent(txt_tareasDirigidas, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
                         .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txt_banco, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txt_estado, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txt_municipio, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txt_parroquia, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txt_cargo, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(45, 45, 45))))
+                        .addGap(47, 47, 47))))
         );
         pnl_datosLayout.setVerticalGroup(
             pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -258,26 +274,31 @@ public class ConsultarEmpleados extends javax.swing.JPanel {
                     .addComponent(txt_telefonoCasa, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lbl_cargo)
                     .addComponent(txt_cargo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbl_telefonoMovil)
                     .addComponent(txt_telefonoMovil, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lbl_banco)
                     .addComponent(txt_banco, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnl_datosLayout.createSequentialGroup()
                         .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txt_sueldoMensual, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lbl_sueldoMensual))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lbl_fechaIngreso, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txt_fechaIngreso, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lbl_fechaNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txt_fechaNac, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(txt_fechaNac, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(9, 9, 9)
+                        .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lbl_tareasDirigidas)
+                            .addComponent(txt_tareasDirigidas, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 31, Short.MAX_VALUE))
                     .addGroup(pnl_datosLayout.createSequentialGroup()
                         .addComponent(lbl_direccion)
                         .addGap(10, 10, 10)
@@ -291,8 +312,8 @@ public class ConsultarEmpleados extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lbl_parroquia, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txt_parroquia, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(42, 42, 42))
+                            .addComponent(txt_parroquia, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(42, 42, 42))))
         );
 
         lbl_titulo.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -346,6 +367,7 @@ public class ConsultarEmpleados extends javax.swing.JPanel {
                 
                 txt_fechaIngreso.setText(ingreso);
                 txt_fechaNac.setText(nacimiento);
+                txt_tareasDirigidas.setText(empleadoConsultar.getTareasDirigidas());
                 txt_cargo.setText(empleadoConsultar.getCargo());
                 txt_banco.setText(empleadoConsultar.getBanco());
                 txt_estado.setText(empleadoConsultar.getEstado());
@@ -370,6 +392,7 @@ public class ConsultarEmpleados extends javax.swing.JPanel {
     private javax.swing.JLabel lbl_municipio;
     private javax.swing.JLabel lbl_parroquia;
     private javax.swing.JLabel lbl_sueldoMensual;
+    private javax.swing.JLabel lbl_tareasDirigidas;
     private javax.swing.JLabel lbl_telefonoCasa;
     private javax.swing.JLabel lbl_telefonoMovil;
     private javax.swing.JLabel lbl_titulo;
@@ -384,6 +407,7 @@ public class ConsultarEmpleados extends javax.swing.JPanel {
     private javax.swing.JTextField txt_municipio;
     private javax.swing.JTextField txt_parroquia;
     private javax.swing.JTextField txt_sueldoMensual;
+    private javax.swing.JTextField txt_tareasDirigidas;
     private javax.swing.JTextField txt_telefonoCasa;
     private javax.swing.JTextField txt_telefonoMovil;
     // End of variables declaration//GEN-END:variables
