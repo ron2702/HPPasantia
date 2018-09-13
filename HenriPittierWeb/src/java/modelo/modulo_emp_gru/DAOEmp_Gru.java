@@ -158,6 +158,7 @@ public class DAOEmp_Gru extends DAO {
                                   "",
                                   "",
                                   "",
+                                  "",
                                   "");
                 Grupo grupo = new Grupo("", rs.getString("NOMBRE"));
                 empleado.setError(RESULTADO_CODIGO_BIEN);

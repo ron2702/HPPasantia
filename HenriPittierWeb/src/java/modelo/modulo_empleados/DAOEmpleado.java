@@ -25,8 +25,8 @@ import static modelo.Registry.*;
 public class DAOEmpleado extends DAO{
     
     private Connection _bdCon;
-    private static String _sqlEmpleadoRegistrar = "{?=call EMPLEADO_REGISTRAR(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)}";
-    private static String _sqlEmpleadoModificar = "{?=call EMPLEADO_MODIFICAR(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)}";
+    private static String _sqlEmpleadoRegistrar = "{?=call EMPLEADO_REGISTRAR(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)}";
+    private static String _sqlEmpleadoModificar = "{?=call EMPLEADO_MODIFICAR(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)}";
     private static String _sqlEmpleadoBorrar = "{?=call EMPLEADO_BORRAR(?)}";
     private static String _sqlEmpleadosConsultar = "{call EMPLEADO_CONSULTAR_TODOS()}";
     private static String _sqlEmpleadoDetalle = "{call EMPLEADO_CONSULTAR_DETALLE(?)}";
@@ -62,9 +62,10 @@ public class DAOEmpleado extends DAO{
             cstmt.setString(14, "test");
             cstmt.setString(15, _empleado.getUsuario());
             cstmt.setString(16, _empleado.getClave());
-            cstmt.setString(17, _empleado.getEstado());
-            cstmt.setString(18, _empleado.getMunicipio());
-            cstmt.setString(19, _empleado.getParroquia());
+            cstmt.setString(17, _empleado.getTareasDirigidas());
+            cstmt.setString(18, _empleado.getEstado());
+            cstmt.setString(19, _empleado.getMunicipio());
+            cstmt.setString(20, _empleado.getParroquia());
             cstmt.execute();
             
             respuesta = cstmt.getInt(1);
@@ -126,9 +127,10 @@ public class DAOEmpleado extends DAO{
             cstmt.setString(14, "test");
             cstmt.setString(15, _empleado.getUsuario());
             cstmt.setString(16, _empleado.getClave());
-            cstmt.setString(17, _empleado.getEstado());
-            cstmt.setString(18, _empleado.getMunicipio());
-            cstmt.setString(19, _empleado.getParroquia());
+            cstmt.setString(17, _empleado.getTareasDirigidas());
+            cstmt.setString(18, _empleado.getEstado());
+            cstmt.setString(19, _empleado.getMunicipio());
+            cstmt.setString(20, _empleado.getParroquia());
             cstmt.execute();
             
             respuesta = cstmt.getInt(1);
@@ -239,6 +241,7 @@ public class DAOEmpleado extends DAO{
                                   rs.getString("foto"),
                                   rs.getString("usuario"),
                                   rs.getString("clave"),
+                                  rs.getString("tareasdirigidas"),
                                   rs.getString("estado"),
                                   rs.getString("municipio"),
                                   rs.getString("parroquia"));
@@ -300,6 +303,7 @@ public class DAOEmpleado extends DAO{
                                   rs.getString("foto"),
                                   rs.getString("usuario"),
                                   rs.getString("clave"),
+                                  rs.getString("tareasdirigidas"),
                                   rs.getString("estado"),
                                   rs.getString("municipio"),
                                   rs.getString("parroquia"));

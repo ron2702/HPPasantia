@@ -255,6 +255,7 @@ public class DAOGru_Est extends DAO {
                                   "",
                                   "",
                                   "",
+                                  "",
                                   "");
                 
                 Grupo grupo = new Grupo("", rs.getString("NOMBRE"));
