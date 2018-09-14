@@ -28,6 +28,10 @@ public class Rep_Est {
         this.cedulaEscolar = _cedulaEscolar;
     }
     
+    public Rep_Est(String parentezco) {
+        this.parentezco = parentezco;
+    }
+    
     public Rep_Est(int _cedula, long _cedulaEscolar){
         this.cedula = _cedula;
         this.cedulaEscolar = _cedulaEscolar;

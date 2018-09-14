@@ -35,6 +35,12 @@ public class Representante {
     public Representante(int _cedula){
         this.cedula = _cedula;
     }
+    
+    public Representante(int cedula, String primerNombre, String primerApellido) {
+        this.cedula = cedula;
+        this.primerNombre = primerNombre;
+        this.primerApellido = primerApellido;
+    }
 
     public Representante(int _cedula, String _primerNombre, String _segundoNombre, String _primerApellido, String _segundoApellido, Date _fechaNac, String _email, String _telefonoCasa, String _telefonoMovil, String _tipo, String _foto, String _estado, String _municipio, String _parroquia) {
         this.cedula = _cedula;

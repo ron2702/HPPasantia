@@ -7,6 +7,7 @@ package service;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import comun.Control_Salida;
 import comun.Emp_Gru_Est;
 import comun.Empleado;
 import comun.Estudiante;
@@ -19,6 +20,9 @@ import comun.Rep_Est;
 import comun.Representante;
 import comun.Suplencia;
 import comun.Usuario;
+import controlador.modulo_control_salida.BorrarSalidaComando;
+import controlador.modulo_control_salida.ConsultarSalidaComando;
+import controlador.modulo_control_salida.RegistrarSalidaComando;
 import controlador.modulo_emp_gru.AsignarPersonalComando;
 import controlador.modulo_emp_gru.ConsultarAsignacionComando;
 import controlador.modulo_emp_gru.RemoverPersonalComando;
@@ -1311,7 +1315,7 @@ public class HenriPittierWS {
         Gson gson = new GsonBuilder().create();
         Prestamo consultarPrestamo = gson.fromJson(_prestamo, Prestamo.class);
         ConsultarPrestamoDetalleComando cmd = new ConsultarPrestamoDetalleComando(consultarPrestamo);
-        
+
         try {
         
             cmd.execute();
@@ -1320,6 +1324,74 @@ public class HenriPittierWS {
         } catch (Exception ex) {
             
             ArrayList<Prestamo> error = null;
+            return gson.toJson(error);
+            
+        }
+    }
+    
+    @GET
+    @Path("borrarSalida")
+    @Produces("application/json")
+    //@QueryParam("suplencia") String _suplencia
+    public String borrarSalida (@QueryParam("salida") String _salida){
+        
+        Gson gson = new GsonBuilder().create();
+        Control_Salida borrarSalida = gson.fromJson(_salida, Control_Salida.class);
+        BorrarSalidaComando cmd = new BorrarSalidaComando(borrarSalida);
+        
+        try {
+        
+            cmd.execute();
+            return gson.toJson(cmd.obtenerRespuesta());
+            
+        } catch (Exception ex) {
+            
+            Control_Salida error = new Control_Salida();
+            error.setError(RESULTADO_CODIGO_FALLIDO);
+            return gson.toJson(error);
+            
+        }
+    }
+    
+    @GET
+    @Path("consultarSalida")
+    @Produces("application/json")
+    public String consultarSalida (){
+        
+        ConsultarSalidaComando cmd = new ConsultarSalidaComando();
+        
+        try {
+            
+            cmd.execute();
+            return gson.toJson(cmd.obtenerRespuesta());
+            
+        } catch (Exception ex) {
+            
+            ArrayList<Control_Salida> error = null;
+            return gson.toJson(error);
+            
+        }
+    }
+    
+    /*WS CONTROL SALIDA*/
+    @GET
+    @Path("registrarSalida")
+    @Produces("application/json")
+    //@QueryParam("suplencia") String _suplencia
+    public String registrarSalida (@QueryParam("salida") String _salida){
+        
+        Gson gson = new GsonBuilder().create();
+        Control_Salida registrarSalida = gson.fromJson(_salida, Control_Salida.class);
+        RegistrarSalidaComando cmd = new RegistrarSalidaComando(registrarSalida);
+        try {
+        
+            cmd.execute();
+            return gson.toJson(cmd.obtenerRespuesta());
+            
+        } catch (Exception ex) {
+            
+            Control_Salida error = new Control_Salida();
+            error.setError(RESULTADO_CODIGO_FALLIDO);
             return gson.toJson(error);
             
         }
