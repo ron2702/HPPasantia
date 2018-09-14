@@ -9,6 +9,8 @@ import comun.Empleado;
 import comun.Prestamo;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -39,8 +41,7 @@ public class ActualizarPrestamos extends javax.swing.JPanel {
                         Empleado empleadoSeleccionado = (Empleado) cb_listaEmpleados.getSelectedItem();
                         ComunicacionREST con = new ComunicacionREST();
                         Prestamo p = new Prestamo(empleadoSeleccionado.getCedula());
-                        //ArrayList<Prestamo> listaPrestamos = con.consultarPrestamo(p);
-                        ArrayList<Prestamo> listaPrestamos = new ArrayList<>();
+                        ArrayList<Prestamo> listaPrestamos = con.consultarPrestamoDetalle(p);
                         int montoPrestamos = 0;
                         DefaultTableModel model = (DefaultTableModel) tb_historicoPrestamos.getModel();
                         int filasTabla = model.getRowCount();
@@ -50,7 +51,11 @@ public class ActualizarPrestamos extends javax.swing.JPanel {
                         }
                         for(Prestamo prestamo : listaPrestamos){
                             montoPrestamos += prestamo.getMonto();
-                            model.addRow(new Object[] {prestamo.getFechaPrestamo(), prestamo.getMonto()});
+                            DateFormat dateFormat = new SimpleDateFormat("dd/MM/yy");
+ 
+                            //to convert Date to String, use format method of SimpleDateFormat class.
+                            String fecPrestamo = dateFormat.format(prestamo.getFechaPrestamo());
+                            model.addRow(new Object[] {fecPrestamo, prestamo.getMonto()});
                         }
                         txt_montoActual.setText(String.valueOf(montoPrestamos));
                     } catch (Exception ex) {

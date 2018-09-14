@@ -55,6 +55,7 @@ import controlador.modulo_mensualidad_representante.ConsultarMensualidadDetalleC
 import controlador.modulo_mensualidad_representante.ModificarMensualidadComando;
 import controlador.modulo_mensualidad_representante.RegistrarMensualidadComando;
 import controlador.modulo_prestamo.ActualizarPrestamoComando;
+import controlador.modulo_prestamo.ConsultarPrestamoDetalleComando;
 import controlador.modulo_repest.BorrarRepEstComando;
 import controlador.modulo_repest.ConsultarRepEstComando;
 import controlador.modulo_repest.ConsultarRepEstDetalleComando;
@@ -1213,7 +1214,6 @@ public class HenriPittierWS {
     @GET
     @Path("asignarPersonal")
     @Produces("application/json")
-    //@QueryParam("suplencia") String _suplencia
     public String asignarPersonal (@QueryParam("emp_gru") String _emp_gru){
         
         Gson gson = new GsonBuilder().create();
@@ -1237,7 +1237,6 @@ public class HenriPittierWS {
     @GET
     @Path("removerPersonal")
     @Produces("application/json")
-    //@QueryParam("suplencia") String _suplencia
     public String removerPersonal (@QueryParam("emp_gru") String _emp_gru){
         
         Gson gson = new GsonBuilder().create();
@@ -1261,7 +1260,6 @@ public class HenriPittierWS {
     @GET
     @Path("consultarAsignacion")
     @Produces("application/json")
-    //@QueryParam("suplencia") String _suplencia
     public String consultarAsignacion (){
         
         Gson gson = new GsonBuilder().create();
@@ -1285,7 +1283,6 @@ public class HenriPittierWS {
     @GET
     @Path("registrarPrestamo")
     @Produces("application/json")
-    //@QueryParam("suplencia") String _suplencia
     public String registrarPrestamo (@QueryParam("prestamo") String _prestamo){
         
         Gson gson = new GsonBuilder().create();
@@ -1301,6 +1298,28 @@ public class HenriPittierWS {
             
             Prestamo error = new Prestamo();
             error.setError(RESULTADO_CODIGO_FALLIDO);
+            return gson.toJson(error);
+            
+        }
+    }
+    
+    @GET
+    @Path("consultarPrestamoDetalle")
+    @Produces("application/json")
+    public String consultarPrestamoDetalle (@QueryParam("prestamo") String _prestamo){
+        
+        Gson gson = new GsonBuilder().create();
+        Prestamo consultarPrestamo = gson.fromJson(_prestamo, Prestamo.class);
+        ConsultarPrestamoDetalleComando cmd = new ConsultarPrestamoDetalleComando(consultarPrestamo);
+        
+        try {
+        
+            cmd.execute();
+            return gson.toJson(cmd.obtenerRespuesta());
+            
+        } catch (Exception ex) {
+            
+            ArrayList<Prestamo> error = null;
             return gson.toJson(error);
             
         }

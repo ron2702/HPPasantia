@@ -29,7 +29,7 @@ public class DAOInasistencia extends DAO {
     private static String _sqlInasistenciaDetalle = "{call INASISTENCIA_CONSULTAR_DETALLE(?)}";
     private ResultSet rs;
     
-    public Inasistencia registrarEstudiante (Inasistencia _inasistencia) throws Exception{
+    public Inasistencia registrarInasistencia (Inasistencia _inasistencia) throws Exception{
         
         Inasistencia _inasistenciaFallido = new Inasistencia();
         CallableStatement cstmt;

@@ -25,7 +25,7 @@ public class RegistrarInasistenciaComando extends Comando {
     @Override
     public void execute() throws Exception {
         DAOInasistencia daoin = new DAOInasistencia();
-        respuesta = daoin.registrarEstudiante(registrarInasistencia);
+        respuesta = daoin.registrarInasistencia  (registrarInasistencia);
     }
     
     public Inasistencia obtenerRespuesta(){
