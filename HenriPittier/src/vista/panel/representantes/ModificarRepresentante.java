@@ -187,6 +187,8 @@ public class ModificarRepresentante extends javax.swing.JPanel {
         btn_cargarImagen = new javax.swing.JButton();
         cb_listaRepresentantes = new javax.swing.JComboBox();
         lbl_tituloModificar = new javax.swing.JLabel();
+        lbl_email = new javax.swing.JLabel();
+        txt_email = new javax.swing.JTextField();
         lbl_tituloModificarRepresentantes = new javax.swing.JLabel();
 
         pnl_datos.setBackground(new java.awt.Color(204, 204, 204));
@@ -342,6 +344,7 @@ public class ModificarRepresentante extends javax.swing.JPanel {
 
     cb_tipo.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
     cb_tipo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Representante I", "Representante II", "Autorizado" }));
+    cb_tipo.setEnabled(false);
 
     lbl_tipo.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
     lbl_tipo.setText("Tipo:");
@@ -367,6 +370,16 @@ public class ModificarRepresentante extends javax.swing.JPanel {
     lbl_tituloModificar.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
     lbl_tituloModificar.setText("Representante a modificar:");
 
+    lbl_email.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+    lbl_email.setText("Email:");
+
+    txt_email.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+    txt_email.addKeyListener(new java.awt.event.KeyAdapter() {
+        public void keyTyped(java.awt.event.KeyEvent evt) {
+            txt_emailKeyTyped(evt);
+        }
+    });
+
     javax.swing.GroupLayout pnl_datosLayout = new javax.swing.GroupLayout(pnl_datos);
     pnl_datos.setLayout(pnl_datosLayout);
     pnl_datosLayout.setHorizontalGroup(
@@ -374,25 +387,31 @@ public class ModificarRepresentante extends javax.swing.JPanel {
         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnl_datosLayout.createSequentialGroup()
             .addGap(35, 35, 35)
             .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(lbl_segundoNombre)
-                .addComponent(lbl_primerApellido)
-                .addComponent(lbl_segundoApellido)
-                .addComponent(lbl_primerNombre)
-                .addComponent(lbl_telefonoCasa)
-                .addComponent(lbl_tituloModificar)
-                .addComponent(lbl_telefonoMovil))
-            .addGap(35, 35, 35)
-            .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(txt_telefonoCasa, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(txt_primerApellido, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(txt_segundoApellido, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(txt_telefonoMovil, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(txt_primerNombre)
-                    .addComponent(txt_segundoNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addComponent(cb_listaRepresentantes, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(pnl_datosLayout.createSequentialGroup()
+                    .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(lbl_segundoNombre)
+                        .addComponent(lbl_primerApellido)
+                        .addComponent(lbl_segundoApellido)
+                        .addComponent(lbl_primerNombre)
+                        .addComponent(lbl_telefonoCasa)
+                        .addComponent(lbl_tituloModificar)
+                        .addComponent(lbl_telefonoMovil))
+                    .addGap(35, 35, 35)
+                    .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(txt_telefonoCasa, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(txt_primerApellido, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(txt_segundoApellido, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txt_telefonoMovil, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txt_primerNombre)
+                            .addComponent(txt_segundoNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(cb_listaRepresentantes, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(pnl_datosLayout.createSequentialGroup()
+                    .addComponent(lbl_email)
+                    .addGap(151, 151, 151)
+                    .addComponent(txt_email)))
             .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(pnl_datosLayout.createSequentialGroup()
                     .addGap(111, 111, 111)
@@ -476,6 +495,10 @@ public class ModificarRepresentante extends javax.swing.JPanel {
                             .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(txt_telefonoMovil, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(lbl_telefonoMovil))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(txt_email, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(lbl_email))
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGroup(pnl_datosLayout.createSequentialGroup()
                             .addComponent(cb_tipo, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -576,7 +599,7 @@ public class ModificarRepresentante extends javax.swing.JPanel {
         Object objeto1 = cb_municipios.getSelectedItem();
         Object objeto2 = cb_parroquias.getSelectedItem();
         if((!txt_primerNombre.getText().equals("")) && (!txt_segundoNombre.getText().equals(""))
-            && (!txt_primerApellido.getText().equals("")) && (!txt_segundoApellido.getText().equals(""))
+            && (!txt_primerApellido.getText().equals("")) && (!txt_segundoApellido.getText().equals("")) && (!txt_email.getText().equals(""))
             && (!dc_fechaNac.getText().equals("")) && (!txt_telefonoCasa.getText().equals(""))
             && (!txt_telefonoMovil.getText().equals("")) && (cb_estados.getSelectedItem() != null) && (cb_tipo.getSelectedItem() != null)
             && (cb_municipios.getSelectedItem() != null) && (cb_parroquias.getSelectedItem() != null) && (archivoSeleccionado != null)) {
@@ -590,7 +613,7 @@ public class ModificarRepresentante extends javax.swing.JPanel {
                 ManejadorImagen img = new ManejadorImagen();
                 
                 representanteModificar = new Representante(representanteModificar.getCedula(), txt_primerNombre.getText(),
-                    txt_segundoNombre.getText(), txt_primerApellido.getText(), txt_segundoApellido.getText(), fechaNacimiento,
+                    txt_segundoNombre.getText(), txt_primerApellido.getText(), txt_segundoApellido.getText(), fechaNacimiento, txt_email.getText(),
                     txt_telefonoCasa.getText(), txt_telefonoMovil.getText(), (String) cb_tipo.getSelectedItem(), "Foto",
                     estadoSeleccionado.getNombre(), municipioSeleccionado.getNombre(), parroquiaSeleccionada.getNombre());
                 
@@ -627,6 +650,10 @@ public class ModificarRepresentante extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_btn_cargarImagenActionPerformed
 
+    private void txt_emailKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_emailKeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_emailKeyTyped
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_cargarImagen;
@@ -639,6 +666,7 @@ public class ModificarRepresentante extends javax.swing.JPanel {
     private javax.swing.JComboBox cb_tipo;
     private datechooser.beans.DateChooserCombo dc_fechaNac;
     private javax.swing.JLabel lbl_direccion;
+    private javax.swing.JLabel lbl_email;
     private javax.swing.JLabel lbl_estado;
     private javax.swing.JLabel lbl_fechaNac;
     private javax.swing.JLabel lbl_foto;
@@ -654,6 +682,7 @@ public class ModificarRepresentante extends javax.swing.JPanel {
     private javax.swing.JLabel lbl_tituloModificar;
     private javax.swing.JLabel lbl_tituloModificarRepresentantes;
     private javax.swing.JPanel pnl_datos;
+    private javax.swing.JTextField txt_email;
     private javax.swing.JTextField txt_primerApellido;
     private javax.swing.JTextField txt_primerNombre;
     private javax.swing.JTextField txt_segundoApellido;

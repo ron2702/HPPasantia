@@ -19,8 +19,8 @@ import static modelo.Registry.*;
 public class DAORepresentante extends DAO {
     
     private Connection _bdCon;
-    private static String _sqlRepresentanteRegistrar = "{?=call REPRESENTANTE_REGISTRAR(?,?,?,?,?,?,?,?,?,?,?,?,?)}";
-    private static String _sqlRepresentanteModificar = "{?=call REPRESENTANTE_MODIFICAR(?,?,?,?,?,?,?,?,?,?,?,?,?)}";
+    private static String _sqlRepresentanteRegistrar = "{?=call REPRESENTANTE_REGISTRAR(?,?,?,?,?,?,?,?,?,?,?,?,?,?)}";
+    private static String _sqlRepresentanteModificar = "{?=call REPRESENTANTE_MODIFICAR(?,?,?,?,?,?,?,?,?,?,?,?,?,?)}";
     private static String _sqlRepresentanteBorrar = "{?=call REPRESENTANTE_BORRAR(?)}";
     private static String _sqlRepresentantesConsultar = "{call REPRESENTANTE_CONSULTAR_TODOS()}";
     private static String _sqlRepresentantesDetalle = "{call REPRESENTANTE_CONSULTAR_DETALLE(?)}";
@@ -47,13 +47,14 @@ public class DAORepresentante extends DAO {
             cstmt.setString(5, _representante.getPrimerApellido());
             cstmt.setString(6, _representante.getSegundoApellido());
             cstmt.setDate(7, sqlFecha);
-            cstmt.setString(8, _representante.getTelefonoCasa());
-            cstmt.setString(9, _representante.getTelefonoMovil());
-            cstmt.setString(10, _representante.getTipo());
-            cstmt.setString(11, _representante.getFoto());
-            cstmt.setString(12, _representante.getEstado());
-            cstmt.setString(13, _representante.getMunicipio());
-            cstmt.setString(14, _representante.getParroquia());
+            cstmt.setString(8, _representante.getEmail());
+            cstmt.setString(9, _representante.getTelefonoCasa());
+            cstmt.setString(10, _representante.getTelefonoMovil());
+            cstmt.setString(11, _representante.getTipo());
+            cstmt.setString(12, _representante.getFoto());
+            cstmt.setString(13, _representante.getEstado());
+            cstmt.setString(14, _representante.getMunicipio());
+            cstmt.setString(15, _representante.getParroquia());
             cstmt.execute();
             
             respuesta = cstmt.getInt(1);
@@ -105,13 +106,14 @@ public class DAORepresentante extends DAO {
             cstmt.setString(5, _representante.getPrimerApellido());
             cstmt.setString(6, _representante.getSegundoApellido());
             cstmt.setDate(7, sqlFecha);
-            cstmt.setString(8, _representante.getTelefonoCasa());
-            cstmt.setString(9, _representante.getTelefonoMovil());
-            cstmt.setString(10, _representante.getTipo());
-            cstmt.setString(11, _representante.getFoto());
-            cstmt.setString(12, _representante.getEstado());
-            cstmt.setString(13, _representante.getMunicipio());
-            cstmt.setString(14, _representante.getParroquia());
+            cstmt.setString(8, _representante.getEmail());
+            cstmt.setString(9, _representante.getTelefonoCasa());
+            cstmt.setString(10, _representante.getTelefonoMovil());
+            cstmt.setString(11, _representante.getTipo());
+            cstmt.setString(12, _representante.getFoto());
+            cstmt.setString(13, _representante.getEstado());
+            cstmt.setString(14, _representante.getMunicipio());
+            cstmt.setString(15, _representante.getParroquia());
             cstmt.execute();
             
             respuesta = cstmt.getInt(1);
@@ -212,6 +214,7 @@ public class DAORepresentante extends DAO {
                                   rs.getString("primerapellido"),
                                   rs.getString("segundoapellido"),
                                   rs.getDate("fechanac"),
+                                  rs.getString("email"),
                                   rs.getString("telefonocasa"),
                                   rs.getString("telefonomovil"),
                                   rs.getString("tipo"),
@@ -262,6 +265,7 @@ public class DAORepresentante extends DAO {
                                   rs.getString("primerapellido"),
                                   rs.getString("segundoapellido"),
                                   rs.getDate("fechanac"),
+                                  rs.getString("email"),
                                   rs.getString("telefonocasa"),
                                   rs.getString("telefonomovil"),
                                   rs.getString("tipo"),
