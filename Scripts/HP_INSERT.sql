@@ -1882,3 +1882,4 @@ INSERT INTO EMPLEADO VALUES (25281481, 'Rosanna', null, 'Rodriguez', null, 'Bane
 
 INSERT INTO GRUPO VALUES ('1A', 'GRUPO 1 A', 'Maternal 1 A', 20, '2018-2019');
 INSERT INTO EMP_GRU_EST VALUES (nextval('emp_gru_est_id_seq'), 26217421, null, '1A');
+INSERT INTO PRESTAMO VALUES (nextval('prestamo_id_seq'), '01/04/2018', 200, 24220210);

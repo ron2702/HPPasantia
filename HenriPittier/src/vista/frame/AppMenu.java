@@ -736,21 +736,33 @@ public class AppMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_eliminarRepresentanteActionPerformed
 
     private void registrarEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrarEmpleadoActionPerformed
+        contentPane.remove(registrarEmpleadoPanel);
+        registrarEmpleadoPanel = new RegistrarEmpleado();
+        contentPane.add(registrarEmpleadoPanel, REGISTRAREMPLEADO);
         CardLayout cardPanel = (CardLayout)(contentPane.getLayout());
         cardPanel.show(contentPane, REGISTRAREMPLEADO);
     }//GEN-LAST:event_registrarEmpleadoActionPerformed
 
     private void consultarEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultarEmpleadoActionPerformed
+        contentPane.remove(consultarEmpleadosPanel); 
+        consultarEmpleadosPanel = new ConsultarEmpleados();
+        contentPane.add(consultarEmpleadosPanel, CONSULTAREMPLEADOS); 
         CardLayout cardPanel = (CardLayout)(contentPane.getLayout());
         cardPanel.show(contentPane, CONSULTAREMPLEADOS);
     }//GEN-LAST:event_consultarEmpleadoActionPerformed
 
     private void modificarEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarEmpleadoActionPerformed
+        contentPane.remove(modificarEmpleadoPanel);
+        modificarEmpleadoPanel = new ModificarEmpleado();
+        contentPane.add(modificarEmpleadoPanel, MODIFICAREMPLEADO);
         CardLayout cardPanel = (CardLayout)(contentPane.getLayout());
         cardPanel.show(contentPane, MODIFICAREMPLEADO);
     }//GEN-LAST:event_modificarEmpleadoActionPerformed
 
     private void eliminarEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarEmpleadoActionPerformed
+        contentPane.remove(borrarEmpleadoPanel);
+        borrarEmpleadoPanel = new BorrarEmpleado();
+        contentPane.add(borrarEmpleadoPanel, BORRAREMPLEADO);
         CardLayout cardPanel = (CardLayout)(contentPane.getLayout());
         cardPanel.show(contentPane, BORRAREMPLEADO);
     }//GEN-LAST:event_eliminarEmpleadoActionPerformed
@@ -896,6 +908,9 @@ public class AppMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_consultarEstudianteGrupoActionPerformed
 
     private void actualizarPrestamosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actualizarPrestamosActionPerformed
+        contentPane.remove(actualizarPrestamosPanel);
+        actualizarPrestamosPanel = new ActualizarPrestamos();
+        contentPane.add(actualizarPrestamosPanel, ACTUALIZARPRESTAMOS);
         CardLayout cardPanel = (CardLayout)(contentPane.getLayout());
         cardPanel.show(contentPane, ACTUALIZARPRESTAMOS);
     }//GEN-LAST:event_actualizarPrestamosActionPerformed

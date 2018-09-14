@@ -93,7 +93,7 @@ public class ModificarEmpleado extends javax.swing.JPanel {
             
             for (Empleado empleado : listaEmpleados) {
                 cb_listaEmpleados.addItem(empleado);
-            }
+            }  
             cb_listaEmpleados.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {

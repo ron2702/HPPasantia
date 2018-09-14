@@ -337,3 +337,45 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 /*------------CONSULTAR EMP_GRU_EST---------------*/
+
+
+/**************************************CRUD PRESTAMO******************************************/
+/*------------REGISTRAR PRESTAMO---------------*/
+CREATE OR REPLACE FUNCTION PRESTAMO_REGISTRAR(date, date, integer) RETURNS integer AS $$
+DECLARE
+ RESULT integer;
+
+BEGIN
+
+	INSERT INTO PRESTAMO (FECHAPRESTAMO, MONTO, FK_EMPLEADO) VALUES ($1, $2, $3);
+	RESULT := 200;
+	RETURN RESULT;
+END;
+$$ LANGUAGE plpgsql;
+/*------------REGISTRAR PRESTAMO---------------*/
+
+/*------------CONSULTAR PRESTAMO DETALLE---------------*/
+CREATE OR REPLACE FUNCTION PRESTAMO_CONSULTAR(integer) RETURNS TABLE(FECHAPRESTAMO date, MONTO integer, FK_EMPLEADO integer) AS $$
+DECLARE
+
+BEGIN
+	 RETURN QUERY
+	 SELECT P.FECHAPRESTAMO, P.MONTO
+	 FROM PRESTAMO P
+	 WHERE P.FK_EMPLEADO = $1
+	 ;
+END;
+$$ LANGUAGE plpgsql;
+/*------------CONSULTAR PRESTAMO DETALLE---------------*/
+CREATE OR REPLACE FUNCTION PRESTAMO_CONSULTAR(integer) RETURNS TABLE(FECHAPRESTAMO date, MONTO integer, FK_EMPLEADO integer) AS $$
+DECLARE
+
+BEGIN
+	 RETURN QUERY
+	 SELECT SUM(P.MONTO)
+	 FROM PRESTAMO P
+	 WHERE P.FK_EMPLEADO = $1
+	 ;
+END;
+$$ LANGUAGE plpgsql;
+/*------------CONSULTAR MONTO PRESTAMO ACTUAL---------------*/

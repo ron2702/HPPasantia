@@ -14,6 +14,7 @@ import comun.Grupo;
 import comun.Inasistencia;
 import comun.Lugar;
 import comun.Mensualidad_Representante;
+import comun.Prestamo;
 import comun.Rep_Est;
 import comun.Representante;
 import comun.Suplencia;
@@ -53,6 +54,7 @@ import controlador.modulo_mensualidad_representante.ConsultarMensualidadComando;
 import controlador.modulo_mensualidad_representante.ConsultarMensualidadDetalleComando;
 import controlador.modulo_mensualidad_representante.ModificarMensualidadComando;
 import controlador.modulo_mensualidad_representante.RegistrarMensualidadComando;
+import controlador.modulo_prestamo.ActualizarPrestamoComando;
 import controlador.modulo_repest.BorrarRepEstComando;
 import controlador.modulo_repest.ConsultarRepEstComando;
 import controlador.modulo_repest.ConsultarRepEstDetalleComando;
@@ -1273,6 +1275,31 @@ public class HenriPittierWS {
         } catch (Exception ex) {
             
             Emp_Gru_Est error = new Emp_Gru_Est();
+            error.setError(RESULTADO_CODIGO_FALLIDO);
+            return gson.toJson(error);
+            
+        }
+    }
+    
+    /*WS DE PRESTAMO*/
+    @GET
+    @Path("registrarPrestamo")
+    @Produces("application/json")
+    //@QueryParam("suplencia") String _suplencia
+    public String registrarPrestamo (@QueryParam("prestamo") String _prestamo){
+        
+        Gson gson = new GsonBuilder().create();
+        Prestamo registrarPrestamo = gson.fromJson(_prestamo, Prestamo.class);
+        ActualizarPrestamoComando cmd = new ActualizarPrestamoComando(registrarPrestamo);
+        
+        try {
+        
+            cmd.execute();
+            return gson.toJson(cmd.obtenerRespuesta());
+            
+        } catch (Exception ex) {
+            
+            Prestamo error = new Prestamo();
             error.setError(RESULTADO_CODIGO_FALLIDO);
             return gson.toJson(error);
             

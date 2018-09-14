@@ -6,15 +6,16 @@
 package vista.panel.empleados;
 
 import comun.Empleado;
+import comun.Prestamo;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.table.DefaultTableModel;
 import modelo.ComunicacionREST;
 
-/**
- *
- * @author LuisAlejandro
- */
+
 public class ActualizarPrestamos extends javax.swing.JPanel {
      private Empleado empleadoSeleccionado;
     
@@ -30,6 +31,35 @@ public class ActualizarPrestamos extends javax.swing.JPanel {
             for (Empleado empleado : listaEmpleados) {
                     cb_listaEmpleados.addItem(empleado);
                 }
+            
+            cb_listaEmpleados.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    try {
+                        Empleado empleadoSeleccionado = (Empleado) cb_listaEmpleados.getSelectedItem();
+                        ComunicacionREST con = new ComunicacionREST();
+                        Prestamo p = new Prestamo(empleadoSeleccionado.getCedula());
+                        //ArrayList<Prestamo> listaPrestamos = con.consultarPrestamo(p);
+                        ArrayList<Prestamo> listaPrestamos = new ArrayList<>();
+                        int montoPrestamos = 0;
+                        DefaultTableModel model = (DefaultTableModel) tb_historicoPrestamos.getModel();
+                        int filasTabla = model.getRowCount();
+                        //Elimina los datos de la tabla
+                        for (int i = filasTabla - 1; i >= 0; i--) {
+                            model.removeRow(i);
+                        }
+                        for(Prestamo prestamo : listaPrestamos){
+                            montoPrestamos += prestamo.getMonto();
+                            model.addRow(new Object[] {prestamo.getFechaPrestamo(), prestamo.getMonto()});
+                        }
+                        txt_montoActual.setText(String.valueOf(montoPrestamos));
+                    } catch (Exception ex) {
+                        Logger.getLogger(ActualizarPrestamos.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                   
+                }
+               
+            });
             
         } catch (Exception ex) {
             Logger.getLogger(ActualizarPrestamos.class.getName()).log(Level.SEVERE, null, ex);

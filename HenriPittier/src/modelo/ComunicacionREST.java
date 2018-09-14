@@ -14,6 +14,7 @@ import comun.Grupo;
 import comun.Inasistencia;
 import comun.Lugar;
 import comun.Mensualidad_Representante;
+import comun.Prestamo;
 import comun.Rep_Est;
 import comun.Representante;
 import comun.Suplencia;
@@ -1012,11 +1013,25 @@ public class ComunicacionREST {
             throw ex;
         }
     }
-}
     
-
-
-
-
-
-
+    /*SERVICIOS WEB DE PRESTAMO*/
+    public ArrayList<Prestamo> registrarPrestamo(Prestamo p) throws Exception {
+        try {
+            conn = null;
+            Gson gson = new GsonBuilder().registerTypeAdapter(Date.class, new JsonDateDeserializer()).create();
+            BufferedReader br = comunicar("GET", "registrarPrestamo?prestamo=" + URLEncoder.encode(gson.toJson(p).toString(), "UTF-8"));
+            String output;
+            ArrayList<Prestamo> listaPrestamos = new ArrayList<>();
+            Type listType = new TypeToken<ArrayList<Prestamo>>() {}.getType();
+            while ((output = br.readLine()) != null) {
+                listaPrestamos = gson.fromJson(output, listType);
+            }
+            conn.disconnect();
+            return listaPrestamos;
+        }
+        catch (Exception ex){
+            throw ex;
+        }
+    }
+    
+}
