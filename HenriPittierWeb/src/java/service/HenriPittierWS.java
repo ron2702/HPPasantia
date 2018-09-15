@@ -1329,10 +1329,32 @@ public class HenriPittierWS {
         }
     }
     
+    /*WS CONTROL SALIDA*/
+    @GET
+    @Path("registrarSalida")
+    @Produces("application/json")
+    public String registrarSalida (@QueryParam("salida") String _salida){
+        
+        Gson gson = new GsonBuilder().create();
+        Control_Salida registrarSalida = gson.fromJson(_salida, Control_Salida.class);
+        RegistrarSalidaComando cmd = new RegistrarSalidaComando(registrarSalida);
+        try {
+        
+            cmd.execute();
+            return gson.toJson(cmd.obtenerRespuesta());
+            
+        } catch (Exception ex) {
+            
+            Control_Salida error = new Control_Salida();
+            error.setError(RESULTADO_CODIGO_FALLIDO);
+            return gson.toJson(error);
+            
+        }
+    }
+    
     @GET
     @Path("borrarSalida")
     @Produces("application/json")
-    //@QueryParam("suplencia") String _suplencia
     public String borrarSalida (@QueryParam("salida") String _salida){
         
         Gson gson = new GsonBuilder().create();
@@ -1373,27 +1395,4 @@ public class HenriPittierWS {
         }
     }
     
-    /*WS CONTROL SALIDA*/
-    @GET
-    @Path("registrarSalida")
-    @Produces("application/json")
-    //@QueryParam("suplencia") String _suplencia
-    public String registrarSalida (@QueryParam("salida") String _salida){
-        
-        Gson gson = new GsonBuilder().create();
-        Control_Salida registrarSalida = gson.fromJson(_salida, Control_Salida.class);
-        RegistrarSalidaComando cmd = new RegistrarSalidaComando(registrarSalida);
-        try {
-        
-            cmd.execute();
-            return gson.toJson(cmd.obtenerRespuesta());
-            
-        } catch (Exception ex) {
-            
-            Control_Salida error = new Control_Salida();
-            error.setError(RESULTADO_CODIGO_FALLIDO);
-            return gson.toJson(error);
-            
-        }
-    }
 }
