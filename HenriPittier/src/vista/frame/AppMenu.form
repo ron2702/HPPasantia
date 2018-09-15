@@ -228,6 +228,14 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="actualizarPrestamosActionPerformed"/>
               </Events>
             </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="nominaEmpleados">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="N&#xf3;minas"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="nominaEmpleadosActionPerformed"/>
+              </Events>
+            </MenuItem>
             <Menu class="javax.swing.JMenu" name="asignarDocentes">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Asignaci&#xf3;n de Docentes"/>

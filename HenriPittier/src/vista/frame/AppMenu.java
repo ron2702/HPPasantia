@@ -17,6 +17,7 @@ import vista.panel.empleados.BorrarEmpleado;
 import vista.panel.empleados.BorrarEmpleadoGrupo;
 import vista.panel.empleados.ConsultarAsignacion;
 import vista.panel.empleados.ConsultarEmpleados;
+import vista.panel.empleados.Nominas;
 import vista.panel.estudiantes.AsignarEstGrupo;
 import vista.panel.estudiantes.AsignarRelacion;
 import vista.panel.estudiantes.BorrarEstGrupo;
@@ -84,12 +85,14 @@ public class AppMenu extends javax.swing.JFrame {
     final static String BORRAREMPLEADO = "BORRAREMPLEADO";
     final static String CONSULTAREMPLEADOS = "CONSULTAREMPLEADOS";
     final static String ACTUALIZARPRESTAMOS = "ACTUALIZARPRESTAMOS";
+    final static String NOMINAS = "NOMINAS";
     
     RegistrarEmpleado registrarEmpleadoPanel = new RegistrarEmpleado();
     ModificarEmpleado modificarEmpleadoPanel = new ModificarEmpleado();
     BorrarEmpleado borrarEmpleadoPanel = new BorrarEmpleado();
     ConsultarEmpleados consultarEmpleadosPanel = new ConsultarEmpleados();
     ActualizarPrestamos actualizarPrestamosPanel = new ActualizarPrestamos();
+    Nominas nominasPanel = new Nominas();
     
     //INASISTENCIAS
     final static String REGISTRARINASISTENCIA = "REGISTRARINASISTENCIA";
@@ -195,6 +198,7 @@ public class AppMenu extends javax.swing.JFrame {
         contentPane.add(borrarEmpleadoPanel, BORRAREMPLEADO);
         contentPane.add(consultarEmpleadosPanel, CONSULTAREMPLEADOS); 
         contentPane.add(actualizarPrestamosPanel, ACTUALIZARPRESTAMOS);
+        contentPane.add(nominasPanel, NOMINAS);
         
         //INASISTENCIAS
         contentPane.add(registrarInasistenciaPanel, REGISTRARINASISTENCIA);
@@ -282,6 +286,7 @@ public class AppMenu extends javax.swing.JFrame {
         modificarEmpleado = new javax.swing.JMenuItem();
         eliminarEmpleado = new javax.swing.JMenuItem();
         actualizarPrestamos = new javax.swing.JMenuItem();
+        nominaEmpleados = new javax.swing.JMenuItem();
         asignarDocentes = new javax.swing.JMenu();
         asignarGrupo = new javax.swing.JMenuItem();
         removerGrupo = new javax.swing.JMenuItem();
@@ -523,6 +528,14 @@ public class AppMenu extends javax.swing.JFrame {
             }
         });
         menuEmpleados.add(actualizarPrestamos);
+
+        nominaEmpleados.setText("Nóminas");
+        nominaEmpleados.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nominaEmpleadosActionPerformed(evt);
+            }
+        });
+        menuEmpleados.add(nominaEmpleados);
 
         asignarDocentes.setText("Asignación de Docentes");
 
@@ -1082,6 +1095,14 @@ public class AppMenu extends javax.swing.JFrame {
         cardPanel.show(contentPane, CONSULTARSALIDA);
     }//GEN-LAST:event_consultarSalidaActionPerformed
 
+    private void nominaEmpleadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nominaEmpleadosActionPerformed
+        contentPane.remove(nominasPanel);
+        Nominas nominasPanel = new Nominas();
+        contentPane.add(nominasPanel, NOMINAS);
+        CardLayout cardPanel = (CardLayout)(contentPane.getLayout());
+        cardPanel.show(contentPane, NOMINAS);
+    }//GEN-LAST:event_nominaEmpleadosActionPerformed
+
 
 
     /**
@@ -1170,6 +1191,7 @@ public class AppMenu extends javax.swing.JFrame {
     private javax.swing.JMenuItem modificarMensualidad;
     private javax.swing.JMenuItem modificarRepresentante;
     private javax.swing.JMenuItem modificarSuplencia;
+    private javax.swing.JMenuItem nominaEmpleados;
     private javax.swing.JMenuItem registrarEmpleado;
     private javax.swing.JMenuItem registrarEstudiante;
     private javax.swing.JMenuItem registrarGrupo;
