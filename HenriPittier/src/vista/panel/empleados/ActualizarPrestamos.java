@@ -290,13 +290,18 @@ public class ActualizarPrestamos extends javax.swing.JPanel {
 
     private void btn_sumarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_sumarActionPerformed
         try {
-            Prestamo prestamoRegistrar = registrarPrestamo(1);
-            if (prestamoRegistrar.getError() == Registry.RESULTADO_CODIGO_RECURSO_CREADO){
+            if ((empleadoSeleccionado != null) && (txt_montoNuevo.getText().equals(""))){
+                Prestamo prestamoRegistrar = registrarPrestamo(1);
+                if (prestamoRegistrar.getError() == Registry.RESULTADO_CODIGO_RECURSO_CREADO){
+                        final JPanel panel = new JPanel();
+                        JOptionPane.showMessageDialog(panel, "Se registró exitosamente el préstamo", "Información", JOptionPane.INFORMATION_MESSAGE);
+                }else{
                     final JPanel panel = new JPanel();
-                    JOptionPane.showMessageDialog(panel, "Se registró exitosamente el préstamo", "Información", JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(panel, "No se ha podido registrar el préstamo, intente nuevamente", "Error", JOptionPane.ERROR_MESSAGE);
+                }
             }else{
                 final JPanel panel = new JPanel();
-                JOptionPane.showMessageDialog(panel, "No se ha podido registrar el préstamo, intente nuevamente", "Error", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(panel, "Existen campos vacíos", "Error", JOptionPane.ERROR_MESSAGE);
             }
         } catch (Exception ex) {
             Logger.getLogger(ActualizarPrestamos.class.getName()).log(Level.SEVERE, null, ex);
