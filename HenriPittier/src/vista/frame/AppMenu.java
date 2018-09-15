@@ -740,41 +740,65 @@ public class AppMenu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void registrarEstudianteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrarEstudianteActionPerformed
+        contentPane.remove(registrarEstudiantePanel);
+        RegistrarEstudiante registrarEstudiantePanel = new RegistrarEstudiante();
+        contentPane.add(registrarEstudiantePanel, REGISTRARESTUDIANTE);
         CardLayout cardPanel = (CardLayout)(contentPane.getLayout());
         cardPanel.show(contentPane, REGISTRARESTUDIANTE);
     }//GEN-LAST:event_registrarEstudianteActionPerformed
 
     private void consultarEstudianteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultarEstudianteActionPerformed
+        contentPane.remove(consultarEstudiantesPanel);
+        ConsultarEstudiantes consultarEstudiantesPanel = new ConsultarEstudiantes();
+        contentPane.add(consultarEstudiantesPanel, CONSULTARESTUDIANTES);
         CardLayout cardPanel = (CardLayout)(contentPane.getLayout());
         cardPanel.show(contentPane, CONSULTARESTUDIANTES);
     }//GEN-LAST:event_consultarEstudianteActionPerformed
 
     private void modificarEstudianteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarEstudianteActionPerformed
+        contentPane.remove(modificarEstudiantePanel);
+        ModificarEstudiante modificarEstudiantePanel = new ModificarEstudiante();
+        contentPane.add(modificarEstudiantePanel, MODIFICARESTUDIANTE);
         CardLayout cardPanel = (CardLayout)(contentPane.getLayout());
         cardPanel.show(contentPane, MODIFICARESTUDIANTE);
     }//GEN-LAST:event_modificarEstudianteActionPerformed
 
     private void eliminarEstudianteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarEstudianteActionPerformed
+        contentPane.remove(borrarEstudiantePanel);
+        BorrarEstudiante borrarEstudiantePanel = new BorrarEstudiante();
+        contentPane.add(borrarEstudiantePanel, BORRARESTUDIANTE);
         CardLayout cardPanel = (CardLayout)(contentPane.getLayout());
         cardPanel.show(contentPane, BORRARESTUDIANTE);
     }//GEN-LAST:event_eliminarEstudianteActionPerformed
 
     private void registrarRepresentanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrarRepresentanteActionPerformed
+        contentPane.remove(registrarRepresentantePanel);
+        RegistrarRepresentante registrarRepresentantePanel = new RegistrarRepresentante();
+        contentPane.add(registrarRepresentantePanel, REGISTRARREPRESENTANTE);
         CardLayout cardPanel = (CardLayout)(contentPane.getLayout());
         cardPanel.show(contentPane, REGISTRARREPRESENTANTE);
     }//GEN-LAST:event_registrarRepresentanteActionPerformed
 
     private void consultarRepresentanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultarRepresentanteActionPerformed
+        contentPane.remove(consultarRepresentantesPanel);
+        ConsultarRepresentantes consultarRepresentantesPanel = new ConsultarRepresentantes();
+        contentPane.add(consultarRepresentantesPanel, CONSULTARREPRESENTANTES);
         CardLayout cardPanel = (CardLayout)(contentPane.getLayout());
         cardPanel.show(contentPane, CONSULTARREPRESENTANTES);
     }//GEN-LAST:event_consultarRepresentanteActionPerformed
 
     private void modificarRepresentanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarRepresentanteActionPerformed
+        contentPane.remove(modificarRepresentantePanel);
+        ModificarRepresentante modificarRepresentantePanel = new ModificarRepresentante();
+        contentPane.add(modificarRepresentantePanel, MODIFICARREPRESENTANTE);
         CardLayout cardPanel = (CardLayout)(contentPane.getLayout());
         cardPanel.show(contentPane, MODIFICARREPRESENTANTE);
     }//GEN-LAST:event_modificarRepresentanteActionPerformed
 
     private void eliminarRepresentanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarRepresentanteActionPerformed
+        contentPane.remove(borrarRepresentantePanel);
+        BorrarRepresentante borrarRepresentantePanel = new BorrarRepresentante();
+        contentPane.add(borrarRepresentantePanel, BORRARREPRESENTANTE);
         CardLayout cardPanel = (CardLayout)(contentPane.getLayout());
         cardPanel.show(contentPane, BORRARREPRESENTANTE);
     }//GEN-LAST:event_eliminarRepresentanteActionPerformed
@@ -827,126 +851,201 @@ public class AppMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_inicioActionPerformed
 
     private void eliminarGrupoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarGrupoActionPerformed
+        contentPane.remove(borrarGrupoPanel);
+        BorrarGrupo borrarGrupoPanel = new BorrarGrupo();
+        contentPane.add(borrarGrupoPanel, BORRARGRUPO);
         CardLayout cardPanel = (CardLayout)(contentPane.getLayout());
         cardPanel.show(contentPane, BORRARGRUPO);
     }//GEN-LAST:event_eliminarGrupoActionPerformed
 
     private void registrarGrupoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrarGrupoActionPerformed
+        contentPane.remove(registrarGrupoPanel);
+        RegistrarGrupo registrarGrupoPanel = new RegistrarGrupo();
+        contentPane.add(registrarGrupoPanel, REGISTRARGRUPO);
         CardLayout cardPanel = (CardLayout)(contentPane.getLayout());
         cardPanel.show(contentPane, REGISTRARGRUPO);
     }//GEN-LAST:event_registrarGrupoActionPerformed
 
     private void consultarGrupoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultarGrupoActionPerformed
+        contentPane.remove(consultarGruposPanel);
+        ConsultarGrupos consultarGruposPanel = new ConsultarGrupos();
+        contentPane.add(consultarGruposPanel, CONSULTARGRUPOS);
         CardLayout cardPanel = (CardLayout)(contentPane.getLayout());
         cardPanel.show(contentPane, CONSULTARGRUPOS);
     }//GEN-LAST:event_consultarGrupoActionPerformed
 
     private void modificarGrupoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarGrupoActionPerformed
+        contentPane.remove(modificarGrupoPanel);
+        ModificarGrupo modificarGrupoPanel = new ModificarGrupo();
+        contentPane.add(modificarGrupoPanel, MODIFICARGRUPO);
         CardLayout cardPanel = (CardLayout)(contentPane.getLayout());
         cardPanel.show(contentPane, MODIFICARGRUPO);
     }//GEN-LAST:event_modificarGrupoActionPerformed
 
     private void registrarInasistenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrarInasistenciaActionPerformed
+        contentPane.remove(registrarInasistenciaPanel);
+        RegistrarInasistencia registrarInasistenciaPanel = new RegistrarInasistencia();
+        contentPane.add(registrarInasistenciaPanel, REGISTRARINASISTENCIA);
         CardLayout cardPanel = (CardLayout)(contentPane.getLayout());
         cardPanel.show(contentPane, REGISTRARINASISTENCIA);
     }//GEN-LAST:event_registrarInasistenciaActionPerformed
 
     private void consultarInasistenciasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultarInasistenciasActionPerformed
+        contentPane.remove(consultarInasistenciasPanel);
+        ConsultarInasistencias consultarInasistenciasPanel = new ConsultarInasistencias();
+        contentPane.add(consultarInasistenciasPanel, CONSULTARINASISTENCIAS);
         CardLayout cardPanel = (CardLayout)(contentPane.getLayout());
         cardPanel.show(contentPane, CONSULTARINASISTENCIAS);
     }//GEN-LAST:event_consultarInasistenciasActionPerformed
 
     private void modificarInasistenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarInasistenciaActionPerformed
+        contentPane.remove(modificarInasistenciaPanel);
+        ModificarInasistencia modificarInasistenciaPanel = new ModificarInasistencia();
+        contentPane.add(modificarInasistenciaPanel, MODIFICARINASISTENCIA);
         CardLayout cardPanel = (CardLayout)(contentPane.getLayout());
         cardPanel.show(contentPane, MODIFICARINASISTENCIA);
     }//GEN-LAST:event_modificarInasistenciaActionPerformed
 
     private void borrarInasistenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_borrarInasistenciaActionPerformed
+        contentPane.remove(borrarInasistenciaPanel);
+        BorrarInasistencia borrarInasistenciaPanel = new BorrarInasistencia();
+        contentPane.add(borrarInasistenciaPanel, BORRARINASISTENCIA);
         CardLayout cardPanel = (CardLayout)(contentPane.getLayout());
         cardPanel.show(contentPane, BORRARINASISTENCIA);
     }//GEN-LAST:event_borrarInasistenciaActionPerformed
 
     private void registrarSuplenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrarSuplenciaActionPerformed
+        contentPane.remove(registrarSuplenciaPanel);
+        RegistrarSuplencia registrarSuplenciaPanel = new RegistrarSuplencia();
+        contentPane.add(registrarSuplenciaPanel, REGISTRARSUPLENCIA);
         CardLayout cardPanel = (CardLayout)(contentPane.getLayout());
         cardPanel.show(contentPane, REGISTRARSUPLENCIA);
     }//GEN-LAST:event_registrarSuplenciaActionPerformed
 
     private void consultarSuplenciasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultarSuplenciasActionPerformed
+        contentPane.remove(consultarSuplenciasPanel);
+        ConsultarSuplencias consultarSuplenciasPanel = new ConsultarSuplencias();
+        contentPane.add(consultarSuplenciasPanel, CONSULTARSUPLENCIAS);
         CardLayout cardPanel = (CardLayout)(contentPane.getLayout());
         cardPanel.show(contentPane, CONSULTARSUPLENCIAS);
     }//GEN-LAST:event_consultarSuplenciasActionPerformed
 
     private void modificarSuplenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarSuplenciaActionPerformed
+        contentPane.remove(modificarSuplenciaPanel);
+        ModificarSuplencia modificarSuplenciaPanel = new ModificarSuplencia();
+        contentPane.add(modificarSuplenciaPanel, MODIFICARSUPLENCIA);
         CardLayout cardPanel = (CardLayout)(contentPane.getLayout());
         cardPanel.show(contentPane, MODIFICARSUPLENCIA);
     }//GEN-LAST:event_modificarSuplenciaActionPerformed
 
     private void borrarSuplenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_borrarSuplenciaActionPerformed
+        contentPane.remove(borrarSuplenciaPanel);
+        BorrarSuplencia borrarSuplenciaPanel = new BorrarSuplencia();
+        contentPane.add(borrarSuplenciaPanel, BORRARSUPLENCIA);
         CardLayout cardPanel = (CardLayout)(contentPane.getLayout());
         cardPanel.show(contentPane, BORRARSUPLENCIA);
     }//GEN-LAST:event_borrarSuplenciaActionPerformed
 
     private void eliminarRelacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarRelacionActionPerformed
+        contentPane.remove(eliminarRelacionPanel);
+        EliminarRelacion eliminarRelacionPanel = new EliminarRelacion();
+        contentPane.add(eliminarRelacionPanel, ELIMINARRELACION);
         CardLayout cardPanel = (CardLayout)(contentPane.getLayout());
         cardPanel.show(contentPane, ELIMINARRELACION);
     }//GEN-LAST:event_eliminarRelacionActionPerformed
 
     private void asignarRelacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_asignarRelacionActionPerformed
+        contentPane.remove(asignarRelacionPanel);
+        AsignarRelacion asignarRelacionPanel = new AsignarRelacion();
+        contentPane.add(asignarRelacionPanel, ASIGNARRELACION);
         CardLayout cardPanel = (CardLayout)(contentPane.getLayout());
         cardPanel.show(contentPane, ASIGNARRELACION);
     }//GEN-LAST:event_asignarRelacionActionPerformed
 
     private void consultarRelacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultarRelacionActionPerformed
+        contentPane.remove(consultarRelacionPanel);
+        ConsultarRelacion consultarRelacionPanel = new ConsultarRelacion();
+        contentPane.add(consultarRelacionPanel, CONSULTARRELACION);
         CardLayout cardPanel = (CardLayout)(contentPane.getLayout());
         cardPanel.show(contentPane, CONSULTARRELACION);
     }//GEN-LAST:event_consultarRelacionActionPerformed
 
     private void registrarMensualidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrarMensualidadActionPerformed
-       CardLayout cardPanel = (CardLayout)(contentPane.getLayout());
-       cardPanel.show(contentPane, REGISTRARMENSUALIDAD);
+        contentPane.remove(registrarMensualidadPanel);
+        RegistrarMensualidad registrarMensualidadPanel = new RegistrarMensualidad();
+        contentPane.add(registrarMensualidadPanel, REGISTRARMENSUALIDAD);
+        CardLayout cardPanel = (CardLayout)(contentPane.getLayout());
+        cardPanel.show(contentPane, REGISTRARMENSUALIDAD);
     }//GEN-LAST:event_registrarMensualidadActionPerformed
 
     private void modificarMensualidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarMensualidadActionPerformed
+        contentPane.remove(modificarMensualidadPanel);
+        ModificarMensualidad modificarMensualidadPanel = new ModificarMensualidad();
+        contentPane.add(modificarMensualidadPanel, MODIFICARMENSUALIDAD);
         CardLayout cardPanel = (CardLayout)(contentPane.getLayout());
         cardPanel.show(contentPane, MODIFICARMENSUALIDAD);
     }//GEN-LAST:event_modificarMensualidadActionPerformed
 
     private void borrarMensualidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_borrarMensualidadActionPerformed
+        contentPane.remove(borrarMensualidadPanel);
+        BorrarMensualidad borrarMensualidadPanel = new BorrarMensualidad();
+        contentPane.add(borrarMensualidadPanel, BORRARMENSUALIDAD);
         CardLayout cardPanel = (CardLayout)(contentPane.getLayout());
         cardPanel.show(contentPane, BORRARMENSUALIDAD);
     }//GEN-LAST:event_borrarMensualidadActionPerformed
 
     private void consultarMensualidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultarMensualidadActionPerformed
+        contentPane.remove(consultarMensualidadPanel);
+        ConsultarMensualidad consultarMensualidadPanel = new ConsultarMensualidad();
+        contentPane.add(consultarMensualidadPanel, CONSULTARMENSUALIDAD);
         CardLayout cardPanel = (CardLayout)(contentPane.getLayout());
         cardPanel.show(contentPane, CONSULTARMENSUALIDAD);
     }//GEN-LAST:event_consultarMensualidadActionPerformed
 
     private void asignarGrupoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_asignarGrupoActionPerformed
+        contentPane.remove(asignarGrupoPanel);
+        AsignarEmpleadoGrupo asignarGrupoPanel = new AsignarEmpleadoGrupo();
+        contentPane.add(asignarGrupoPanel, ASIGNAREMPLEADOGRUPO);
         CardLayout cardPanel = (CardLayout)(contentPane.getLayout());
         cardPanel.show(contentPane, ASIGNAREMPLEADOGRUPO);
     }//GEN-LAST:event_asignarGrupoActionPerformed
 
     private void removerGrupoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removerGrupoActionPerformed
+        contentPane.remove(removerGrupoPanel);
+        BorrarEmpleadoGrupo removerGrupoPanel = new BorrarEmpleadoGrupo();
+        contentPane.add(removerGrupoPanel, REMOVEREMPLEADOGRUPO);
         CardLayout cardPanel = (CardLayout)(contentPane.getLayout());
         cardPanel.show(contentPane, REMOVEREMPLEADOGRUPO);
     }//GEN-LAST:event_removerGrupoActionPerformed
 
     private void consultarAsignacionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultarAsignacionesActionPerformed
+        contentPane.remove(consultarAsignacionPanel);
+        ConsultarAsignacion consultarAsignacionPanel = new ConsultarAsignacion();
+        contentPane.add(consultarAsignacionPanel, CONSULTARASIGNACION);
         CardLayout cardPanel = (CardLayout)(contentPane.getLayout());
         cardPanel.show(contentPane, CONSULTARASIGNACION);
     }//GEN-LAST:event_consultarAsignacionesActionPerformed
 
     private void asignarEstudianteGrupoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_asignarEstudianteGrupoActionPerformed
+        contentPane.remove(asignarEstGrupoPanel);
+        AsignarEstGrupo asignarEstGrupoPanel = new AsignarEstGrupo();
+        contentPane.add(asignarEstGrupoPanel, ASIGNARESTUDIANTEGRUPO);
         CardLayout cardPanel = (CardLayout)(contentPane.getLayout());
         cardPanel.show(contentPane, ASIGNARESTUDIANTEGRUPO);
     }//GEN-LAST:event_asignarEstudianteGrupoActionPerformed
 
     private void borrarEstudianteGrupoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_borrarEstudianteGrupoActionPerformed
+        contentPane.remove(borrarEstGrupoPanel);
+        BorrarEstGrupo borrarEstGrupoPanel = new BorrarEstGrupo();
+        contentPane.add(borrarEstGrupoPanel, BORRARESTUDIANTEGRUPO);
         CardLayout cardPanel = (CardLayout)(contentPane.getLayout());
         cardPanel.show(contentPane, BORRARESTUDIANTEGRUPO);
     }//GEN-LAST:event_borrarEstudianteGrupoActionPerformed
 
     private void consultarEstudianteGrupoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultarEstudianteGrupoActionPerformed
+        contentPane.remove(consultarEstGrupoPanel);
+        ConsultarEstGrupo consultarEstGrupoPanel = new ConsultarEstGrupo();
+        contentPane.add(consultarEstGrupoPanel, CONSULTARESTUDIANTEGRUPO);
         CardLayout cardPanel = (CardLayout)(contentPane.getLayout());
         cardPanel.show(contentPane, CONSULTARESTUDIANTEGRUPO);
     }//GEN-LAST:event_consultarEstudianteGrupoActionPerformed
@@ -960,16 +1059,25 @@ public class AppMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_actualizarPrestamosActionPerformed
 
     private void registrarSalidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrarSalidaActionPerformed
+        contentPane.remove(registrarSalidaPanel);
+        RegistrarSalida registrarSalidaPanel = new RegistrarSalida();
+        contentPane.add(registrarSalidaPanel, REGISTRARSALIDA);
         CardLayout cardPanel = (CardLayout)(contentPane.getLayout());
         cardPanel.show(contentPane, REGISTRARSALIDA);
     }//GEN-LAST:event_registrarSalidaActionPerformed
 
     private void borrarSalidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_borrarSalidaActionPerformed
+        contentPane.remove(borrarSalidaPanel);
+        BorrarSalida borrarSalidaPanel = new BorrarSalida();
+        contentPane.add(borrarSalidaPanel, BORRARSALIDA);
         CardLayout cardPanel = (CardLayout)(contentPane.getLayout());
         cardPanel.show(contentPane, BORRARSALIDA);
     }//GEN-LAST:event_borrarSalidaActionPerformed
 
     private void consultarSalidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultarSalidaActionPerformed
+        contentPane.remove(consultarSalidaPanel);
+        ConsultarSalida consultarSalidaPanel = new ConsultarSalida();
+        contentPane.add(consultarSalidaPanel, CONSULTARSALIDA);
         CardLayout cardPanel = (CardLayout)(contentPane.getLayout());
         cardPanel.show(contentPane, CONSULTARSALIDA);
     }//GEN-LAST:event_consultarSalidaActionPerformed
