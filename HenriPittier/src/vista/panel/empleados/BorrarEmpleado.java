@@ -467,6 +467,18 @@ try {
                 if (empleadoEliminado.getError() == Registry.RESULTADO_CODIGO_BIEN){
                     final JPanel panel = new JPanel();
                     JOptionPane.showMessageDialog(panel, "Se eliminó exitosamente el empleado", "Información", JOptionPane.INFORMATION_MESSAGE);
+                    cb_listaEmpleados.removeItem(empleadoBorrar);
+                    txt_primerNombre.setText("");
+                    txt_primerApellido.setText("");
+                    txt_segundoNombre.setText("");
+                    txt_segundoApellido.setText("");
+                    txt_telefonoCasa.setText("");
+                    txt_telefonoMovil.setText("");
+                    txt_cargo.setText("");
+                    txt_sueldoMensual.setText("");
+                    dc_fechaIngreso.setCurrent(null);
+                    dc_fechaNac.setCurrent(null);
+                    cb_banco.setSelectedItem(null);
                 }else{
                     final JPanel panel = new JPanel();
                     JOptionPane.showMessageDialog(panel, "No se ha podido eliminar el empleado, intente nuevamente", "Error", JOptionPane.ERROR_MESSAGE);
