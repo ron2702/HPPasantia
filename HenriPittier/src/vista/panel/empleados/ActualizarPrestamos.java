@@ -275,13 +275,26 @@ public class ActualizarPrestamos extends javax.swing.JPanel {
 
     private void btn_restarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_restarActionPerformed
         try {
-            Prestamo prestamoRegistrar = registrarPrestamo(-1);
-            if (prestamoRegistrar.getError() == Registry.RESULTADO_CODIGO_RECURSO_CREADO){
+            if ((empleadoSeleccionado != null) && (txt_montoNuevo.getText().equals(""))){
+                int montoActual = Integer.parseInt(txt_montoActual.getText());
+                int montoRestar = Integer.parseInt(txt_montoNuevo.getText());
+                int resta = montoActual - montoRestar;
+                if (resta >= 0){
+                    Prestamo prestamoRegistrar = registrarPrestamo(1);
+                    if (prestamoRegistrar.getError() == Registry.RESULTADO_CODIGO_RECURSO_CREADO){
+                            final JPanel panel = new JPanel();
+                            JOptionPane.showMessageDialog(panel, "Se registró exitosamente el préstamo", "Información", JOptionPane.INFORMATION_MESSAGE);
+                    }else{
+                        final JPanel panel = new JPanel();
+                        JOptionPane.showMessageDialog(panel, "No se ha podido registrar el préstamo, intente nuevamente", "Error", JOptionPane.ERROR_MESSAGE);
+                    }
+                }else{
                     final JPanel panel = new JPanel();
-                    JOptionPane.showMessageDialog(panel, "Se registró exitosamente el préstamo", "Información", JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(panel, "No se puede tener un saldo a favor del empleado", "Error", JOptionPane.ERROR_MESSAGE);
+                }
             }else{
                 final JPanel panel = new JPanel();
-                JOptionPane.showMessageDialog(panel, "No se ha podido registrar el préstamo, intente nuevamente", "Error", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(panel, "Existen campos vacíos", "Error", JOptionPane.ERROR_MESSAGE);
             }
         } catch (Exception ex) {
             Logger.getLogger(ActualizarPrestamos.class.getName()).log(Level.SEVERE, null, ex);
