@@ -251,7 +251,6 @@ public class AppMenu extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jMenu1 = new javax.swing.JMenu();
         contentPane = new javax.swing.JPanel();
         barraMenu = new javax.swing.JMenuBar();
         menuEstudiantes = new javax.swing.JMenu();
@@ -311,8 +310,6 @@ public class AppMenu extends javax.swing.JFrame {
         menuSalir = new javax.swing.JMenu();
         cerrarSesion = new javax.swing.JMenuItem();
         salirAplicacion = new javax.swing.JMenuItem();
-
-        jMenu1.setText("jMenu1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setAutoRequestFocus(false);
@@ -1046,7 +1043,6 @@ public class AppMenu extends javax.swing.JFrame {
     private javax.swing.JMenuItem eliminarRelacion;
     private javax.swing.JMenuItem eliminarRepresentante;
     private javax.swing.JMenuItem inicio;
-    private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu menuAsignarGrupo;
     private javax.swing.JMenu menuConfiguracion;
     private javax.swing.JMenu menuEmpleados;

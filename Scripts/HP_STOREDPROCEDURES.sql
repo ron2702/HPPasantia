@@ -341,7 +341,7 @@ $$ LANGUAGE plpgsql;
 
 /**************************************CRUD PRESTAMO******************************************/
 /*------------REGISTRAR PRESTAMO---------------*/
-CREATE OR REPLACE FUNCTION PRESTAMO_REGISTRAR(date, date, integer) RETURNS integer AS $$
+CREATE OR REPLACE FUNCTION PRESTAMO_REGISTRAR(date, integer, integer) RETURNS integer AS $$
 DECLARE
  RESULT integer;
 

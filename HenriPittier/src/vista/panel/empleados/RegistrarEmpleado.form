@@ -239,9 +239,9 @@
                               <Component id="lbl_sueldoMensual" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="lbl_tareasDirigidas" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="cb_tareasDirigidas" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="cb_tareasDirigidas" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
