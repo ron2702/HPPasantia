@@ -5,6 +5,19 @@
  */
 package vista.panel.estudiantes;
 
+import comun.Estudiante;
+import comun.Grupo;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Locale;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import modelo.ComunicacionREST;
+
 /**
  *
  * @author Ronald
@@ -15,7 +28,61 @@ public class ConstanciaEstudio extends javax.swing.JPanel {
      * Creates new form ConstanciaEstudio
      */
     public ConstanciaEstudio() {
-        initComponents();
+        try {
+            initComponents();
+            lbl_Titulo.setVisible(false);
+            lbl_Atentamente.setVisible(false);
+            lbl_Directora.setVisible(false);
+            lbl_Cargo.setVisible(false);
+            lbl_Direccion.setVisible(false);
+            lbl_Email.setVisible(false);
+            ComunicacionREST comRest = new ComunicacionREST();
+            ArrayList<Estudiante> listaEstudiantes = comRest.consultarEstudiantes();
+            ArrayList<Grupo> listaGrupos = comRest.consultarGrupos();
+            
+            for (Estudiante estudiante : listaEstudiantes) {
+                cb_listaEstudiantes.addItem(estudiante);
+            }
+            for (Grupo grupo : listaGrupos) {
+                cb_listaGrupo.addItem(grupo);
+            }
+            
+            btn_Generar.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    try {
+                        Estudiante estudianteSeleccionado = (Estudiante) cb_listaEstudiantes.getSelectedItem();
+                        Grupo grupoSeleccionado = (Grupo) cb_listaGrupo.getSelectedItem();
+                        
+                        SimpleDateFormat parseFecha = new SimpleDateFormat("dd/MM/yy");
+                        Date fechaDoc = parseFecha.parse(dc_fechaDoc.getText());
+                        Calendar calDoc = Calendar.getInstance();
+                        calDoc.setTime(fechaDoc);
+                        String mes = calDoc.getDisplayName(Calendar.MONTH, Calendar.LONG, new Locale("es","ES"));
+                        int dia = calDoc.get(Calendar.DAY_OF_MONTH);
+                        int ano = calDoc.get(Calendar.YEAR);
+                        
+                        lbl_NombreEstudiante.setText("<html>Por medio de la presente hacemos constar que el alumno(a) " + estudianteSeleccionado.getPrimerNombre().toUpperCase() + " " + estudianteSeleccionado.getPrimerApellido().toUpperCase()
+                                + " " + estudianteSeleccionado.getSegundoNombre().toUpperCase() + " " + estudianteSeleccionado.getSegundoApellido().toUpperCase() + ", esta cursando el " +
+                                 grupoSeleccionado.getNombre() + " en el periodo " + grupoSeleccionado.getPeriodo() + "," + " en C.E.I HENRI PITTIER.<br>" 
+                        + "<br>Constancia que se expide a solicitud de la parte interesada a los " + dia + " dias del mes de " + mes + " de " + ano + " </html>");
+                        
+                        lbl_Titulo.setVisible(true);
+                        lbl_Atentamente.setVisible(true);
+                        lbl_Directora.setVisible(true);
+                        lbl_Cargo.setVisible(true);
+                        lbl_Direccion.setVisible(true);
+                        lbl_Email.setVisible(true);
+                        
+                    } catch (Exception ex) {
+                        Logger.getLogger(ConstanciaEstudio.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+            });
+            
+        } catch (Exception ex) {
+            Logger.getLogger(ConstanciaEstudio.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -27,21 +94,282 @@ public class ConstanciaEstudio extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        lbl_tituloModificarEstudiantes = new javax.swing.JLabel();
+        pnl_datos = new javax.swing.JPanel();
+        btn_imprimir = new javax.swing.JButton();
+        cb_listaEstudiantes = new javax.swing.JComboBox();
+        lbl_tituloEstudiante = new javax.swing.JLabel();
+        lbl_tituloGrupo = new javax.swing.JLabel();
+        cb_listaGrupo = new javax.swing.JComboBox();
+        btn_Generar = new javax.swing.JButton();
+        dc_fechaDoc = new datechooser.beans.DateChooserCombo();
+        lbl_fecha = new javax.swing.JLabel();
+        textoPanel = new javax.swing.JPanel();
+        lbl_NombreEstudiante = new javax.swing.JLabel();
+        lbl_Titulo = new javax.swing.JLabel();
+        lbl_Atentamente = new javax.swing.JLabel();
+        lbl_Directora = new javax.swing.JLabel();
+        lbl_Cargo = new javax.swing.JLabel();
+        lbl_Direccion = new javax.swing.JLabel();
+        lbl_Email = new javax.swing.JLabel();
+
         setBackground(new java.awt.Color(204, 204, 204));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 950, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 640, Short.MAX_VALUE)
-        );
+        lbl_tituloModificarEstudiantes.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lbl_tituloModificarEstudiantes.setText("Constancia de Estudio");
+
+        pnl_datos.setBackground(new java.awt.Color(204, 204, 204));
+        pnl_datos.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+        pnl_datos.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        pnl_datos.setPreferredSize(new java.awt.Dimension(840, 520));
+
+        btn_imprimir.setBackground(new java.awt.Color(121, 213, 177));
+        btn_imprimir.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        btn_imprimir.setText("Imprimir");
+        btn_imprimir.setPreferredSize(new java.awt.Dimension(109, 25));
+        btn_imprimir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_imprimirActionPerformed(evt);
+            }
+        });
+
+        cb_listaEstudiantes.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+
+        lbl_tituloEstudiante.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        lbl_tituloEstudiante.setText("Estudiante:");
+
+        lbl_tituloGrupo.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        lbl_tituloGrupo.setText("Grupo:");
+
+        cb_listaGrupo.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+
+        btn_Generar.setText("Generar");
+
+        dc_fechaDoc.setCurrentView(new datechooser.view.appearance.AppearancesList("Swing",
+            new datechooser.view.appearance.ViewAppearance("custom",
+                new datechooser.view.appearance.swing.SwingCellAppearance(new java.awt.Font("Tahoma", java.awt.Font.PLAIN, 11),
+                    new java.awt.Color(0, 0, 0),
+                    new java.awt.Color(0, 0, 255),
+                    false,
+                    true,
+                    new datechooser.view.appearance.swing.ButtonPainter()),
+                new datechooser.view.appearance.swing.SwingCellAppearance(new java.awt.Font("Tahoma", java.awt.Font.PLAIN, 11),
+                    new java.awt.Color(0, 0, 0),
+                    new java.awt.Color(0, 0, 255),
+                    true,
+                    true,
+                    new datechooser.view.appearance.swing.ButtonPainter()),
+                new datechooser.view.appearance.swing.SwingCellAppearance(new java.awt.Font("Tahoma", java.awt.Font.PLAIN, 11),
+                    new java.awt.Color(0, 0, 255),
+                    new java.awt.Color(0, 0, 255),
+                    false,
+                    true,
+                    new datechooser.view.appearance.swing.ButtonPainter()),
+                new datechooser.view.appearance.swing.SwingCellAppearance(new java.awt.Font("Tahoma", java.awt.Font.PLAIN, 11),
+                    new java.awt.Color(128, 128, 128),
+                    new java.awt.Color(0, 0, 255),
+                    false,
+                    true,
+                    new datechooser.view.appearance.swing.LabelPainter()),
+                new datechooser.view.appearance.swing.SwingCellAppearance(new java.awt.Font("Tahoma", java.awt.Font.PLAIN, 11),
+                    new java.awt.Color(0, 0, 0),
+                    new java.awt.Color(0, 0, 255),
+                    false,
+                    true,
+                    new datechooser.view.appearance.swing.LabelPainter()),
+                new datechooser.view.appearance.swing.SwingCellAppearance(new java.awt.Font("Tahoma", java.awt.Font.PLAIN, 11),
+                    new java.awt.Color(0, 0, 0),
+                    new java.awt.Color(255, 0, 0),
+                    false,
+                    false,
+                    new datechooser.view.appearance.swing.ButtonPainter()),
+                (datechooser.view.BackRenderer)null,
+                false,
+                true)));
+    dc_fechaDoc.setCalendarBackground(new java.awt.Color(255, 255, 255));
+    dc_fechaDoc.setCalendarPreferredSize(new java.awt.Dimension(400, 250));
+    dc_fechaDoc.setFieldFont(new java.awt.Font("Tahoma", java.awt.Font.PLAIN, 12));
+    dc_fechaDoc.setNavigateFont(new java.awt.Font("Serif", java.awt.Font.PLAIN, 8));
+
+    lbl_fecha.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+    lbl_fecha.setText("Fecha:");
+
+    textoPanel.setBackground(new java.awt.Color(255, 255, 255));
+    textoPanel.setPreferredSize(new java.awt.Dimension(700, 365));
+
+    lbl_NombreEstudiante.setBackground(new java.awt.Color(255, 255, 255));
+    lbl_NombreEstudiante.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+
+    lbl_Titulo.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+    lbl_Titulo.setText("CONSTANCIA DE ESTUDIO");
+
+    lbl_Atentamente.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+    lbl_Atentamente.setText("Atentamente");
+
+    lbl_Directora.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+    lbl_Directora.setText("Lic. Lucila de Gonzales");
+    lbl_Directora.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+
+    lbl_Cargo.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+    lbl_Cargo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+    lbl_Cargo.setText("Directora");
+
+    lbl_Direccion.setText("Direccion: Montalban 1, 3era avenida entre calles 1 y 2, Qta. San Miguel A. Telf. 442-41-54 / 471-45-14");
+
+    lbl_Email.setText("Correo: u_e_henripittier@hotmail.com");
+
+    javax.swing.GroupLayout textoPanelLayout = new javax.swing.GroupLayout(textoPanel);
+    textoPanel.setLayout(textoPanelLayout);
+    textoPanelLayout.setHorizontalGroup(
+        textoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addGroup(textoPanelLayout.createSequentialGroup()
+            .addGap(45, 45, 45)
+            .addComponent(lbl_NombreEstudiante, javax.swing.GroupLayout.PREFERRED_SIZE, 639, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addContainerGap(66, Short.MAX_VALUE))
+        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, textoPanelLayout.createSequentialGroup()
+            .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(textoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, textoPanelLayout.createSequentialGroup()
+                    .addComponent(lbl_Atentamente)
+                    .addGap(322, 322, 322))
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, textoPanelLayout.createSequentialGroup()
+                    .addComponent(lbl_Cargo)
+                    .addGap(334, 334, 334))
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, textoPanelLayout.createSequentialGroup()
+                    .addComponent(lbl_Direccion)
+                    .addGap(105, 105, 105))
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, textoPanelLayout.createSequentialGroup()
+                    .addComponent(lbl_Directora)
+                    .addGap(292, 292, 292))
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, textoPanelLayout.createSequentialGroup()
+                    .addComponent(lbl_Email)
+                    .addGap(268, 268, 268))
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, textoPanelLayout.createSequentialGroup()
+                    .addComponent(lbl_Titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(238, 238, 238))))
+    );
+    textoPanelLayout.setVerticalGroup(
+        textoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addGroup(textoPanelLayout.createSequentialGroup()
+            .addGap(44, 44, 44)
+            .addComponent(lbl_Titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGap(18, 18, 18)
+            .addComponent(lbl_NombreEstudiante, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+            .addComponent(lbl_Atentamente, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGap(23, 23, 23)
+            .addComponent(lbl_Directora, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+            .addComponent(lbl_Cargo)
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+            .addComponent(lbl_Direccion)
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+            .addComponent(lbl_Email)
+            .addContainerGap(41, Short.MAX_VALUE))
+    );
+
+    javax.swing.GroupLayout pnl_datosLayout = new javax.swing.GroupLayout(pnl_datos);
+    pnl_datos.setLayout(pnl_datosLayout);
+    pnl_datosLayout.setHorizontalGroup(
+        pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnl_datosLayout.createSequentialGroup()
+            .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(btn_imprimir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGap(351, 351, 351))
+        .addGroup(pnl_datosLayout.createSequentialGroup()
+            .addGap(35, 35, 35)
+            .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(textoPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 750, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(pnl_datosLayout.createSequentialGroup()
+                    .addComponent(lbl_tituloEstudiante)
+                    .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(pnl_datosLayout.createSequentialGroup()
+                            .addGap(35, 35, 35)
+                            .addComponent(cb_listaEstudiantes, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(55, 55, 55)
+                            .addComponent(lbl_tituloGrupo)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(cb_listaGrupo, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(37, 37, 37))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnl_datosLayout.createSequentialGroup()
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(lbl_fecha, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(18, 18, 18)
+                            .addComponent(dc_fechaDoc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(189, 189, 189)))
+                    .addComponent(btn_Generar, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)))
+            .addContainerGap(49, Short.MAX_VALUE))
+    );
+    pnl_datosLayout.setVerticalGroup(
+        pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnl_datosLayout.createSequentialGroup()
+            .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(pnl_datosLayout.createSequentialGroup()
+                    .addGap(19, 19, 19)
+                    .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(lbl_tituloEstudiante)
+                        .addComponent(cb_listaEstudiantes, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lbl_tituloGrupo)
+                        .addComponent(cb_listaGrupo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGap(19, 19, 19)
+                    .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(lbl_fecha, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(dc_fechaDoc, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)))
+                .addGroup(pnl_datosLayout.createSequentialGroup()
+                    .addGap(44, 44, 44)
+                    .addComponent(btn_Generar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
+            .addComponent(textoPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+            .addComponent(btn_imprimir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGap(18, 18, 18))
+    );
+
+    javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+    this.setLayout(layout);
+    layout.setHorizontalGroup(
+        layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addGroup(layout.createSequentialGroup()
+            .addGap(48, 48, 48)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(pnl_datos, javax.swing.GroupLayout.PREFERRED_SIZE, 838, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lbl_tituloModificarEstudiantes))
+            .addContainerGap(64, Short.MAX_VALUE))
+    );
+    layout.setVerticalGroup(
+        layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addGroup(layout.createSequentialGroup()
+            .addGap(33, 33, 33)
+            .addComponent(lbl_tituloModificarEstudiantes)
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+            .addComponent(pnl_datos, javax.swing.GroupLayout.PREFERRED_SIZE, 545, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addContainerGap(34, Short.MAX_VALUE))
+    );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btn_imprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_imprimirActionPerformed
+       
+    }//GEN-LAST:event_btn_imprimirActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btn_Generar;
+    private javax.swing.JButton btn_imprimir;
+    private javax.swing.JComboBox cb_listaEstudiantes;
+    private javax.swing.JComboBox cb_listaGrupo;
+    private datechooser.beans.DateChooserCombo dc_fechaDoc;
+    private javax.swing.JLabel lbl_Atentamente;
+    private javax.swing.JLabel lbl_Cargo;
+    private javax.swing.JLabel lbl_Direccion;
+    private javax.swing.JLabel lbl_Directora;
+    private javax.swing.JLabel lbl_Email;
+    private javax.swing.JLabel lbl_NombreEstudiante;
+    private javax.swing.JLabel lbl_Titulo;
+    private javax.swing.JLabel lbl_fecha;
+    private javax.swing.JLabel lbl_tituloEstudiante;
+    private javax.swing.JLabel lbl_tituloGrupo;
+    private javax.swing.JLabel lbl_tituloModificarEstudiantes;
+    private javax.swing.JPanel pnl_datos;
+    private javax.swing.JPanel textoPanel;
     // End of variables declaration//GEN-END:variables
 }
