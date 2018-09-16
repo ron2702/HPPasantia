@@ -7,6 +7,7 @@ package modelo;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
+import comun.Control_Salida;
 import comun.Emp_Gru_Est;
 import comun.Empleado;
 import comun.Estudiante;
@@ -1052,4 +1053,59 @@ public class ComunicacionREST {
         }
     }
     
+    /*CONTROL SALIDA*/
+    public Control_Salida registrarSalida (Control_Salida e) throws Exception {
+        try {
+            conn = null;
+            Gson gson = new GsonBuilder().registerTypeAdapter(Date.class, new JsonDateDeserializer()).create();
+            BufferedReader br = comunicar("GET", "registrarSalida?salida=" + URLEncoder.encode(gson.toJson(e).toString(), "UTF-8"));
+            String output;
+            Control_Salida registrarSalida = new Control_Salida();
+            while ((output = br.readLine()) != null) {
+                registrarSalida = gson.fromJson(output, Control_Salida.class);
+            }
+            conn.disconnect();
+            return registrarSalida;
+        }
+        catch (Exception ex){
+            throw ex;
+        }
+    }
+    
+    public Control_Salida borrarSalida (Control_Salida e) throws Exception {
+        try {
+            conn = null;
+            Gson gson = new GsonBuilder().registerTypeAdapter(Date.class, new JsonDateDeserializer()).create();
+            BufferedReader br = comunicar("GET", "borrarSalida?salida=" + URLEncoder.encode(gson.toJson(e).toString(), "UTF-8"));
+            String output;
+            Control_Salida borrarSalida = new Control_Salida();
+            while ((output = br.readLine()) != null) {
+                borrarSalida = gson.fromJson(output, Control_Salida.class);
+            }
+            conn.disconnect();
+            return borrarSalida;
+        }
+        catch (Exception ex){
+            throw ex;
+        }
+    }
+    
+    public ArrayList<Control_Salida> consultarSalidas() throws Exception {
+        try {
+            conn = null;
+            Gson gson = new GsonBuilder().registerTypeAdapter(Date.class, new JsonDateDeserializer()).create();
+            BufferedReader br = comunicar("GET", "consultarSalida");
+            String output;
+            ArrayList<Control_Salida> _salida = new ArrayList<>();
+            Type listType = new TypeToken<ArrayList<Control_Salida>>() {}.getType();
+            while ((output = br.readLine()) != null) {
+                _salida = gson.fromJson(output, listType);
+            }
+            conn.disconnect();
+            return _salida;
+        }
+        catch (Exception ex){
+            throw ex;
+        }
+    }
 }

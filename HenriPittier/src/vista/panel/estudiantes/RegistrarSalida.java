@@ -5,17 +5,68 @@
  */
 package vista.panel.estudiantes;
 
+import comun.Control_Salida;
+import comun.Estudiante;
+import comun.Representante;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+import modelo.ComunicacionREST;
+import modelo.Registry;
+
 /**
  *
  * @author Ronald
  */
 public class RegistrarSalida extends javax.swing.JPanel {
 
-    /**
-     * Creates new form RegistrarSalida
-     */
+    private Estudiante estudiante;
+    private Representante representante;
+    long cedulaEscolar;
+    int cedulaRepresentante;
+    
     public RegistrarSalida() {
-        initComponents();
+        try {
+            initComponents();
+            ComunicacionREST comRest = new ComunicacionREST();
+            ArrayList<Estudiante> listaEstudiantes = comRest.consultarEstudiantes();
+            
+            for (Estudiante estudiante : listaEstudiantes) {
+                cb_listaEstudiantes.addItem(estudiante);
+            }
+            cb_listaEstudiantes.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    try {
+                        Estudiante estudianteSeleccionado = (Estudiante) cb_listaEstudiantes.getSelectedItem();
+                        String cedulaEscolar = Long.toString(estudianteSeleccionado.getCedulaEscolar());
+                        txt_cedulaEstudiante.setText(cedulaEscolar);
+                    } catch (Exception ex) {
+                        Logger.getLogger(ModificarEstudiante.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+            });
+        } catch (Exception ex) {
+            Logger.getLogger(RegistrarSalida.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public void keyTypedSoloNumeros(java.awt.event.KeyEvent evt, JTextField campoEvaluar, int tamanoMax){
+        char vChar = evt.getKeyChar();
+        if (!(Character.isDigit(vChar)) || (vChar == KeyEvent.VK_BACK_SPACE) || (vChar == KeyEvent.VK_DELETE) || (campoEvaluar.getText().length() == tamanoMax)) {
+            evt.consume();
+        }
     }
 
     /**
@@ -27,19 +78,259 @@ public class RegistrarSalida extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
+        lbl_tituloEstudiantes = new javax.swing.JLabel();
+        pnl_datos = new javax.swing.JPanel();
+        btn_registrar = new javax.swing.JButton();
+        dc_fechaSalida = new datechooser.beans.DateChooserCombo();
+        lbl_fechaSalida = new javax.swing.JLabel();
+        txt_cedulaRepresentante = new javax.swing.JTextField();
+        lbl_listaEstudiantes = new javax.swing.JLabel();
+        lbl_cedulaRepresentane1 = new javax.swing.JLabel();
+        cb_listaEstudiantes = new javax.swing.JComboBox();
+        lbl_cedulaRepresentane2 = new javax.swing.JLabel();
+        txt_cedulaEstudiante = new javax.swing.JTextField();
+
+        setBackground(new java.awt.Color(204, 204, 204));
+
+        lbl_tituloEstudiantes.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lbl_tituloEstudiantes.setText("Registrar salida de estudiante");
+
+        pnl_datos.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+        pnl_datos.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        pnl_datos.setPreferredSize(new java.awt.Dimension(840, 520));
+
+        btn_registrar.setBackground(new java.awt.Color(0, 153, 102));
+        btn_registrar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        btn_registrar.setText("Registrar");
+        btn_registrar.setActionCommand("Eliminar");
+        btn_registrar.setPreferredSize(new java.awt.Dimension(109, 25));
+        btn_registrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_registrarActionPerformed(evt);
+            }
+        });
+
+        dc_fechaSalida.setCurrentView(new datechooser.view.appearance.AppearancesList("Swing",
+            new datechooser.view.appearance.ViewAppearance("custom",
+                new datechooser.view.appearance.swing.SwingCellAppearance(new java.awt.Font("Tahoma", java.awt.Font.PLAIN, 11),
+                    new java.awt.Color(0, 0, 0),
+                    new java.awt.Color(0, 0, 255),
+                    false,
+                    true,
+                    new datechooser.view.appearance.swing.ButtonPainter()),
+                new datechooser.view.appearance.swing.SwingCellAppearance(new java.awt.Font("Tahoma", java.awt.Font.PLAIN, 11),
+                    new java.awt.Color(0, 0, 0),
+                    new java.awt.Color(0, 0, 255),
+                    true,
+                    true,
+                    new datechooser.view.appearance.swing.ButtonPainter()),
+                new datechooser.view.appearance.swing.SwingCellAppearance(new java.awt.Font("Tahoma", java.awt.Font.PLAIN, 11),
+                    new java.awt.Color(0, 0, 255),
+                    new java.awt.Color(0, 0, 255),
+                    false,
+                    true,
+                    new datechooser.view.appearance.swing.ButtonPainter()),
+                new datechooser.view.appearance.swing.SwingCellAppearance(new java.awt.Font("Tahoma", java.awt.Font.PLAIN, 11),
+                    new java.awt.Color(128, 128, 128),
+                    new java.awt.Color(0, 0, 255),
+                    false,
+                    true,
+                    new datechooser.view.appearance.swing.LabelPainter()),
+                new datechooser.view.appearance.swing.SwingCellAppearance(new java.awt.Font("Tahoma", java.awt.Font.PLAIN, 11),
+                    new java.awt.Color(0, 0, 0),
+                    new java.awt.Color(0, 0, 255),
+                    false,
+                    true,
+                    new datechooser.view.appearance.swing.LabelPainter()),
+                new datechooser.view.appearance.swing.SwingCellAppearance(new java.awt.Font("Tahoma", java.awt.Font.PLAIN, 11),
+                    new java.awt.Color(0, 0, 0),
+                    new java.awt.Color(255, 0, 0),
+                    false,
+                    false,
+                    new datechooser.view.appearance.swing.ButtonPainter()),
+                (datechooser.view.BackRenderer)null,
+                false,
+                true)));
+    dc_fechaSalida.setCalendarBackground(new java.awt.Color(255, 255, 255));
+    dc_fechaSalida.setCalendarPreferredSize(new java.awt.Dimension(400, 250));
+    dc_fechaSalida.setFieldFont(new java.awt.Font("Tahoma", java.awt.Font.PLAIN, 12));
+    dc_fechaSalida.setLocale(new java.util.Locale("es", "VE", ""));
+    dc_fechaSalida.setNavigateFont(new java.awt.Font("Serif", java.awt.Font.PLAIN, 8));
+
+    lbl_fechaSalida.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+    lbl_fechaSalida.setText("Fecha de salida:");
+
+    txt_cedulaRepresentante.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+    txt_cedulaRepresentante.setToolTipText("");
+    txt_cedulaRepresentante.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+    txt_cedulaRepresentante.addKeyListener(new java.awt.event.KeyAdapter() {
+        public void keyTyped(java.awt.event.KeyEvent evt) {
+            txt_cedulaRepresentanteKeyTyped(evt);
+        }
+    });
+
+    lbl_listaEstudiantes.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+    lbl_listaEstudiantes.setText("Lista de Estudiantes:");
+
+    lbl_cedulaRepresentane1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+    lbl_cedulaRepresentane1.setText("Cedula Representante:");
+
+    cb_listaEstudiantes.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+
+    lbl_cedulaRepresentane2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+    lbl_cedulaRepresentane2.setText("Cedula Estudiante:");
+
+    txt_cedulaEstudiante.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+    txt_cedulaEstudiante.setToolTipText("");
+    txt_cedulaEstudiante.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+    txt_cedulaEstudiante.setEnabled(false);
+    txt_cedulaEstudiante.addKeyListener(new java.awt.event.KeyAdapter() {
+        public void keyTyped(java.awt.event.KeyEvent evt) {
+            txt_cedulaEstudianteKeyTyped(evt);
+        }
+    });
+
+    javax.swing.GroupLayout pnl_datosLayout = new javax.swing.GroupLayout(pnl_datos);
+    pnl_datos.setLayout(pnl_datosLayout);
+    pnl_datosLayout.setHorizontalGroup(
+        pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addGroup(pnl_datosLayout.createSequentialGroup()
+            .addGap(45, 45, 45)
+            .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(lbl_cedulaRepresentane1)
+                .addComponent(lbl_listaEstudiantes)
+                .addComponent(lbl_fechaSalida)
+                .addComponent(lbl_cedulaRepresentane2))
+            .addGap(59, 59, 59)
+            .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addComponent(dc_fechaSalida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txt_cedulaRepresentante)
+                .addComponent(cb_listaEstudiantes, 0, 210, Short.MAX_VALUE)
+                .addComponent(txt_cedulaEstudiante))
+            .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnl_datosLayout.createSequentialGroup()
+            .addContainerGap(390, Short.MAX_VALUE)
+            .addComponent(btn_registrar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGap(337, 337, 337))
+    );
+    pnl_datosLayout.setVerticalGroup(
+        pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnl_datosLayout.createSequentialGroup()
+            .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(btn_registrar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGap(35, 35, 35))
+        .addGroup(pnl_datosLayout.createSequentialGroup()
+            .addGap(75, 75, 75)
+            .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(txt_cedulaRepresentante, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lbl_cedulaRepresentane1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGap(57, 57, 57)
+            .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(cb_listaEstudiantes, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lbl_listaEstudiantes, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 67, Short.MAX_VALUE)
+            .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(lbl_cedulaRepresentane2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txt_cedulaEstudiante, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGap(43, 43, 43)
+            .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(lbl_fechaSalida, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(dc_fechaSalida, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGap(146, 146, 146))
+    );
+
+    javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+    this.setLayout(layout);
+    layout.setHorizontalGroup(
+        layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addGroup(layout.createSequentialGroup()
+            .addGap(48, 48, 48)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(pnl_datos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lbl_tituloEstudiantes, javax.swing.GroupLayout.PREFERRED_SIZE, 317, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addContainerGap(62, Short.MAX_VALUE))
+    );
+    layout.setVerticalGroup(
+        layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addGroup(layout.createSequentialGroup()
+            .addGap(42, 42, 42)
+            .addComponent(lbl_tituloEstudiantes, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+            .addComponent(pnl_datos, javax.swing.GroupLayout.PREFERRED_SIZE, 515, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addContainerGap(50, Short.MAX_VALUE))
+    );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btn_registrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_registrarActionPerformed
+        String horaSalida = null;
+        
+        if((!txt_cedulaEstudiante.getText().equals("")) && (!txt_cedulaRepresentante.getText().equals(""))) {
+            try {
+
+                cedulaRepresentante = Integer.parseInt(txt_cedulaRepresentante.getText());
+                cedulaEscolar = Long.parseLong(txt_cedulaEstudiante.getText());
+                
+                SimpleDateFormat parseFecha = new SimpleDateFormat("dd/MM/yy");
+                Date fechaSalida = parseFecha.parse(dc_fechaSalida.getText());
+                Calendar calNac = Calendar.getInstance();
+                calNac.setTime(fechaSalida);
+                
+                Calendar now = Calendar.getInstance();
+                
+                int hora = now.get(Calendar.HOUR_OF_DAY);
+                int minuto = now.get(Calendar.MINUTE);
+                
+                
+                System.out.println(hora + " " + minuto);
+                
+                String horaString = String.valueOf(hora);
+                String minutoString = String.valueOf(minuto);
+                
+                horaSalida = horaString + ":" + minutoString;
+                
+                estudiante = new Estudiante(cedulaEscolar);
+                representante = new Representante(cedulaRepresentante);
+                
+                Control_Salida controlSalida = new Control_Salida(fechaSalida, horaSalida, estudiante, representante);
+                ComunicacionREST comRest = new ComunicacionREST();
+                Control_Salida controlRegistrado = comRest.registrarSalida(controlSalida);
+                if (controlRegistrado.getError() == Registry.RESULTADO_CODIGO_RECURSO_CREADO){
+                    final JPanel panel = new JPanel();
+                    JOptionPane.showMessageDialog(panel, "Se registro la salida del estudiante", "Información", JOptionPane.INFORMATION_MESSAGE);
+                }else{
+                    final JPanel panel = new JPanel();
+                    JOptionPane.showMessageDialog(panel, "El representante no tiene relacion con el estudiante o ya se registro la salida del estudiante", "Error", JOptionPane.ERROR_MESSAGE);
+                }
+            } catch (Exception ex) {
+                Logger.getLogger(BorrarEstudiante.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }else {
+            final JPanel panel = new JPanel();
+            JOptionPane.showMessageDialog(panel, "No debe dejar los campos vacios, intente nuevamente", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+               
+    }//GEN-LAST:event_btn_registrarActionPerformed
+
+    private void txt_cedulaRepresentanteKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_cedulaRepresentanteKeyTyped
+        keyTypedSoloNumeros(evt, txt_cedulaRepresentante, 8);
+    }//GEN-LAST:event_txt_cedulaRepresentanteKeyTyped
+
+    private void txt_cedulaEstudianteKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_cedulaEstudianteKeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_cedulaEstudianteKeyTyped
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btn_registrar;
+    private javax.swing.JComboBox cb_listaEstudiantes;
+    private datechooser.beans.DateChooserCombo dc_fechaSalida;
+    private javax.swing.JLabel lbl_cedulaRepresentane1;
+    private javax.swing.JLabel lbl_cedulaRepresentane2;
+    private javax.swing.JLabel lbl_fechaSalida;
+    private javax.swing.JLabel lbl_listaEstudiantes;
+    private javax.swing.JLabel lbl_tituloEstudiantes;
+    private javax.swing.JPanel pnl_datos;
+    private javax.swing.JTextField txt_cedulaEstudiante;
+    private javax.swing.JTextField txt_cedulaRepresentante;
     // End of variables declaration//GEN-END:variables
 }

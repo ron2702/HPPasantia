@@ -23,6 +23,19 @@ public class Control_Salida {
     public Control_Salida() {
     }
 
+    public Control_Salida(Date fechaSalida, Estudiante estudiante, Representante representante) {
+        this.fechaSalida = fechaSalida;
+        this.estudiante = estudiante;
+        this.representante = representante;
+    }
+    
+    public Control_Salida(Date fechaSalida, String horaSalida, Estudiante estudiante, Representante representante) {
+        this.fechaSalida = fechaSalida;
+        this.horaSalida = horaSalida;
+        this.estudiante = estudiante;
+        this.representante = representante;
+    }
+    
     public Control_Salida(Date fechaSalida, String horaSalida, Estudiante estudiante, Representante representante, Rep_Est repest) {
         this.fechaSalida = fechaSalida;
         this.horaSalida = horaSalida;
@@ -79,5 +92,9 @@ public class Control_Salida {
         this.error = error;
     }
  
+    @Override
+    public String toString() {
+        return this.estudiante.getCedulaEscolar() + " - " + this.representante.getCedula();
+    }
     
 }

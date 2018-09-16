@@ -26,8 +26,8 @@ import static modelo.Registry.*;
 public class DAOControl_Salida extends DAO {
     
     private Connection _bdCon;
-    private static String _sqlControlSalidaRegistrar = "{?=CONTROL_SALIDA_REGISTRAR(?,?,?,?)}";
-    private static String _sqlControlSalidaBorrar = "{?=call CONTROL_SALIDA_BORRAR(?,?,?,?)}";
+    private static String _sqlControlSalidaRegistrar = "{?=call CONTROL_SALIDA_REGISTRAR(?,?,?,?)}";
+    private static String _sqlControlSalidaBorrar = "{?=call CONTROL_SALIDA_BORRAR(?,?,?)}";
     private static String _sqlControlSalidaConsultar = "{call CONTROL_SALIDA_CONSULTAR()}";
     private ResultSet rs;
     
@@ -50,7 +50,7 @@ public class DAOControl_Salida extends DAO {
             cstmt.setDate(2, sqlFecha);
             cstmt.setString(3, _control.getHoraSalida());
             cstmt.setInt(4, _control.getRepresentante().getCedula());
-            cstmt.setLong(4, _control.getEstudiante().getCedulaEscolar());
+            cstmt.setLong(5, _control.getEstudiante().getCedulaEscolar());
             
             cstmt.execute();
             
@@ -99,8 +99,7 @@ public class DAOControl_Salida extends DAO {
             java.sql.Date sqlFecha = new java.sql.Date(_control.getFechaSalida().getTime());
             
             cstmt.setDate(2, sqlFecha);
-            cstmt.setString(3, _control.getHoraSalida());
-            cstmt.setInt(4, _control.getRepresentante().getCedula());
+            cstmt.setInt(3, _control.getRepresentante().getCedula());
             cstmt.setLong(4, _control.getEstudiante().getCedulaEscolar());
             
             cstmt.execute();
