@@ -1016,19 +1016,18 @@ public class ComunicacionREST {
     }
     
     /*SERVICIOS WEB DE PRESTAMO*/
-    public ArrayList<Prestamo> registrarPrestamo(Prestamo p) throws Exception {
+    public Prestamo registrarPrestamo(Prestamo p) throws Exception {
         try {
             conn = null;
             Gson gson = new GsonBuilder().registerTypeAdapter(Date.class, new JsonDateDeserializer()).create();
             BufferedReader br = comunicar("GET", "registrarPrestamo?prestamo=" + URLEncoder.encode(gson.toJson(p).toString(), "UTF-8"));
             String output;
-            ArrayList<Prestamo> listaPrestamos = new ArrayList<>();
-            Type listType = new TypeToken<ArrayList<Prestamo>>() {}.getType();
+            Prestamo prestamo = new Prestamo();
             while ((output = br.readLine()) != null) {
-                listaPrestamos = gson.fromJson(output, listType);
+                prestamo = gson.fromJson(output, Prestamo.class);
             }
             conn.disconnect();
-            return listaPrestamos;
+            return prestamo;
         }
         catch (Exception ex){
             throw ex;
