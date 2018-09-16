@@ -5,17 +5,42 @@
  */
 package vista.panel.estudiantes;
 
+import comun.Control_Salida;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.table.DefaultTableModel;
+import modelo.ComunicacionREST;
+
 /**
  *
  * @author Ronald
  */
 public class ConsultarSalida extends javax.swing.JPanel {
 
-    /**
-     * Creates new form ConsultarSalida
-     */
+    DefaultTableModel model;
+    
     public ConsultarSalida() {
-        initComponents();
+        try {
+            initComponents();
+            ComunicacionREST comRest = new ComunicacionREST();
+            
+            ArrayList<Control_Salida> listaSalidas = comRest.consultarSalidas();
+            
+            model = (DefaultTableModel) tb_consultarListaSalida.getModel();
+            
+            for (Control_Salida salida : listaSalidas) {
+                
+               SimpleDateFormat parseFecha = new SimpleDateFormat("dd/MM/yy");
+               String fechaSalida = parseFecha.format(salida.getFechaSalida());
+               model.addRow(new Object[] {fechaSalida, salida.getHoraSalida(), salida.getEstudiante().getCedulaEscolar(), salida.getEstudiante().getPrimerNombre(), salida.getEstudiante().getPrimerApellido(), salida.getRepresentante().getCedula(), salida.getRepresentante().getPrimerNombre(), salida.getRepresentante().getPrimerApellido(), salida.getRepest().getParentezco()});
+            }
+            
+        } catch (Exception ex) {
+            Logger.getLogger(ConsultarSalida.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -27,19 +52,84 @@ public class ConsultarSalida extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        lbl_titulo = new javax.swing.JLabel();
+        pnl_datos = new javax.swing.JPanel();
+        sp_representantes = new javax.swing.JScrollPane();
+        tb_consultarListaSalida = new javax.swing.JTable();
+
+        setBackground(new java.awt.Color(204, 204, 204));
+
+        lbl_titulo.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lbl_titulo.setText("Consultar registro de salida de los estudiantes");
+
+        pnl_datos.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+        pnl_datos.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        pnl_datos.setPreferredSize(new java.awt.Dimension(840, 520));
+
+        tb_consultarListaSalida.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        tb_consultarListaSalida.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Fecha ", "Hora de Salida", "Cedula Representante", "Nombre", "Apellido", "Cedula Escolar", "Nombre", "Apellido", "Parentezco"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        tb_consultarListaSalida.setUpdateSelectionOnSort(false);
+        sp_representantes.setViewportView(tb_consultarListaSalida);
+
+        javax.swing.GroupLayout pnl_datosLayout = new javax.swing.GroupLayout(pnl_datos);
+        pnl_datos.setLayout(pnl_datosLayout);
+        pnl_datosLayout.setHorizontalGroup(
+            pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnl_datosLayout.createSequentialGroup()
+                .addContainerGap(25, Short.MAX_VALUE)
+                .addComponent(sp_representantes, javax.swing.GroupLayout.PREFERRED_SIZE, 810, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(27, 27, 27))
+        );
+        pnl_datosLayout.setVerticalGroup(
+            pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnl_datosLayout.createSequentialGroup()
+                .addContainerGap(69, Short.MAX_VALUE)
+                .addComponent(sp_representantes, javax.swing.GroupLayout.PREFERRED_SIZE, 377, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(62, 62, 62))
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(48, 48, 48)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(pnl_datos, javax.swing.GroupLayout.PREFERRED_SIZE, 866, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbl_titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 325, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(36, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(34, 34, 34)
+                .addComponent(lbl_titulo)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(pnl_datos, javax.swing.GroupLayout.PREFERRED_SIZE, 513, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(65, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel lbl_titulo;
+    private javax.swing.JPanel pnl_datos;
+    private javax.swing.JScrollPane sp_representantes;
+    private javax.swing.JTable tb_consultarListaSalida;
     // End of variables declaration//GEN-END:variables
 }
