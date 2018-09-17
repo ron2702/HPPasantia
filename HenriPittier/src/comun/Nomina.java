@@ -6,7 +6,7 @@
 package comun;
 
 
-public class Nomina {
+public class Nomina implements Comparable {
     private int cedula;
     private String nombreCompleto;
     private int sueldoMensual;
@@ -303,6 +303,16 @@ public class Nomina {
      */
     public void setFecIngreso(String fecIngreso) {
         this.fecIngreso = fecIngreso;
+    }
+    
+    @Override
+    public int compareTo(Object compararNom) {
+        int compararSueldo=((Nomina)compararNom).getSueldoMensual();
+        /* For Ascending order*/
+        return this.sueldoMensual - compararSueldo;
+
+        /* For Descending order do like this */
+        //return compararSueldo - this.sueldoMensual;
     }
 }
 
