@@ -9,6 +9,9 @@ import comun.Estudiante;
 import comun.Grupo;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -16,17 +19,32 @@ import java.util.Date;
 import java.util.Locale;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import modelo.ComunicacionREST;
+import org.apache.poi.util.Units;
+import org.apache.poi.xwpf.usermodel.ParagraphAlignment;
+import org.apache.poi.xwpf.usermodel.XWPFDocument;
+import org.apache.poi.xwpf.usermodel.XWPFParagraph;
+import org.apache.poi.xwpf.usermodel.XWPFRun;
 
 /**
  *
  * @author Ronald
  */
 public class ConstanciaEstudio extends javax.swing.JPanel {
-
-    /**
-     * Creates new form ConstanciaEstudio
-     */
+    
+    String PrimerNombre;
+    String PrimerApellido;
+    String DiaConstancia;
+    String MesConstancia;
+    String AnoConstancia;
+    String Parrafo1;
+    String Parrafo2;
+    
+    
     public ConstanciaEstudio() {
         try {
             initComponents();
@@ -51,6 +69,10 @@ public class ConstanciaEstudio extends javax.swing.JPanel {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     try {
+                        
+                        Parrafo1 = "";
+                        Parrafo2 = "";
+                        
                         Estudiante estudianteSeleccionado = (Estudiante) cb_listaEstudiantes.getSelectedItem();
                         Grupo grupoSeleccionado = (Grupo) cb_listaGrupo.getSelectedItem();
                         
@@ -62,11 +84,21 @@ public class ConstanciaEstudio extends javax.swing.JPanel {
                         int dia = calDoc.get(Calendar.DAY_OF_MONTH);
                         int ano = calDoc.get(Calendar.YEAR);
                         
-                        lbl_NombreEstudiante.setText("<html>Por medio de la presente hacemos constar que el alumno(a) " + estudianteSeleccionado.getPrimerNombre().toUpperCase() + " " + estudianteSeleccionado.getPrimerApellido().toUpperCase()
-                                + " " + estudianteSeleccionado.getSegundoNombre().toUpperCase() + " " + estudianteSeleccionado.getSegundoApellido().toUpperCase() + ", esta cursando el " +
-                                 grupoSeleccionado.getNombre() + " en el periodo " + grupoSeleccionado.getPeriodo() + "," + " en C.E.I HENRI PITTIER.<br>" 
-                        + "<br>Constancia que se expide a solicitud de la parte interesada a los " + dia + " dias del mes de " + mes + " de " + ano + " </html>");
+                        PrimerNombre = estudianteSeleccionado.getPrimerNombre();
+                        PrimerApellido = estudianteSeleccionado.getPrimerApellido();
+                        DiaConstancia = String.valueOf(dia);
+                        MesConstancia = mes;
+                        AnoConstancia = String.valueOf(ano);
                         
+                        lbl_NombreEstudiante.setText("Por medio de la presente hacemos constar que el alumno(a) " + estudianteSeleccionado.getPrimerNombre().toUpperCase() + " " + estudianteSeleccionado.getPrimerApellido().toUpperCase()
+                                + " " + estudianteSeleccionado.getSegundoNombre().toUpperCase() + " " + estudianteSeleccionado.getSegundoApellido().toUpperCase() + ", está cursando el " +
+                                 grupoSeleccionado.getNombre() + " en el periodo " + grupoSeleccionado.getPeriodo() + "," + " en C.E.I HENRI PITTIER.");
+   
+                        lbl_Parrafo2.setText("Constancia que se expide a solicitud de la parte interesada a los " + dia + " dias del mes de " + mes + " de " + ano + ".");
+                        
+                        Parrafo1 = lbl_NombreEstudiante.getText();
+                        Parrafo2 = lbl_Parrafo2.getText();
+                              
                         lbl_Titulo.setVisible(true);
                         lbl_Atentamente.setVisible(true);
                         lbl_Directora.setVisible(true);
@@ -112,6 +144,7 @@ public class ConstanciaEstudio extends javax.swing.JPanel {
         lbl_Cargo = new javax.swing.JLabel();
         lbl_Direccion = new javax.swing.JLabel();
         lbl_Email = new javax.swing.JLabel();
+        lbl_Parrafo2 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(204, 204, 204));
 
@@ -214,18 +247,17 @@ public class ConstanciaEstudio extends javax.swing.JPanel {
     lbl_Cargo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
     lbl_Cargo.setText("Directora");
 
-    lbl_Direccion.setText("Direccion: Montalban 1, 3era avenida entre calles 1 y 2, Qta. San Miguel A. Telf. 442-41-54 / 471-45-14");
+    lbl_Direccion.setText("Dirección: Montalbán 1, 3era avenida entre calles 1 y 2, Qta. San Miguel A. Telf. 442-41-54 / 471-45-14");
 
     lbl_Email.setText("Correo: u_e_henripittier@hotmail.com");
+
+    lbl_Parrafo2.setBackground(new java.awt.Color(255, 255, 255));
+    lbl_Parrafo2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
     javax.swing.GroupLayout textoPanelLayout = new javax.swing.GroupLayout(textoPanel);
     textoPanel.setLayout(textoPanelLayout);
     textoPanelLayout.setHorizontalGroup(
         textoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-        .addGroup(textoPanelLayout.createSequentialGroup()
-            .addGap(45, 45, 45)
-            .addComponent(lbl_NombreEstudiante, javax.swing.GroupLayout.PREFERRED_SIZE, 639, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addContainerGap(66, Short.MAX_VALUE))
         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, textoPanelLayout.createSequentialGroup()
             .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(textoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -247,6 +279,12 @@ public class ConstanciaEstudio extends javax.swing.JPanel {
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, textoPanelLayout.createSequentialGroup()
                     .addComponent(lbl_Titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(238, 238, 238))))
+        .addGroup(textoPanelLayout.createSequentialGroup()
+            .addGap(55, 55, 55)
+            .addGroup(textoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addComponent(lbl_NombreEstudiante, javax.swing.GroupLayout.PREFERRED_SIZE, 639, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lbl_Parrafo2, javax.swing.GroupLayout.PREFERRED_SIZE, 639, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addContainerGap(56, Short.MAX_VALUE))
     );
     textoPanelLayout.setVerticalGroup(
         textoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -254,8 +292,10 @@ public class ConstanciaEstudio extends javax.swing.JPanel {
             .addGap(44, 44, 44)
             .addComponent(lbl_Titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addGap(18, 18, 18)
-            .addComponent(lbl_NombreEstudiante, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(lbl_NombreEstudiante, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+            .addComponent(lbl_Parrafo2, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGap(10, 10, 10)
             .addComponent(lbl_Atentamente, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addGap(23, 23, 23)
             .addComponent(lbl_Directora, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -348,7 +388,137 @@ public class ConstanciaEstudio extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_imprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_imprimirActionPerformed
-       
+
+            FileNameExtensionFilter filtroWord = new FileNameExtensionFilter("Microsoft Word", "docx");
+            final JFileChooser miConstancia = new JFileChooser();
+            miConstancia.setFileFilter(filtroWord);
+            int aceptar = miConstancia.showSaveDialog(null);
+            miConstancia.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+            
+            if(aceptar == JFileChooser.APPROVE_OPTION){
+                File archivoWord = miConstancia.getSelectedFile();
+                String nombreArchivo = archivoWord.getName();
+                if(nombreArchivo.indexOf('.') == -1){
+                    nombreArchivo+=".docx";
+                    archivoWord = new File(archivoWord.getParentFile(), nombreArchivo);
+                }
+                try {
+            
+                    FileOutputStream output = new FileOutputStream(archivoWord);
+                    //FileOutputStream output = new FileOutputStream("C:\\Users\\Ronald\\Documents\\Pasantia\\" + PrimerNombre + PrimerApellido + DiaConstancia + MesConstancia + AnoConstancia + "-Constancia.docx");
+
+                    XWPFDocument document = new XWPFDocument();
+
+                    XWPFParagraph logo = document.createParagraph();
+                    XWPFParagraph blankspace = document.createParagraph();
+                    XWPFParagraph paragraphTitulo = document.createParagraph();
+                    XWPFParagraph paragraphParrafo = document.createParagraph();
+                    XWPFParagraph paragraphParrafo2 = document.createParagraph();
+                    XWPFParagraph paragraphAtentamente = document.createParagraph();
+                    XWPFParagraph paragraphDirectora = document.createParagraph();
+                    XWPFParagraph paragraphCargo = document.createParagraph();
+                    XWPFParagraph paragraphDireccion = document.createParagraph();
+                    XWPFParagraph paragraphEmail = document.createParagraph();
+
+                    XWPFRun runLogo = logo.createRun();
+                    XWPFRun runBlank = blankspace.createRun();
+                    XWPFRun runTitulo = paragraphTitulo.createRun();
+                    XWPFRun runParrafo = paragraphParrafo.createRun();
+                    XWPFRun runParrafo2 = paragraphParrafo2.createRun();
+                    XWPFRun runAtentamente = paragraphAtentamente.createRun();
+                    XWPFRun runDirectora = paragraphDirectora.createRun();
+                    XWPFRun runCargo = paragraphCargo.createRun();
+                    XWPFRun runDireccion = paragraphDireccion.createRun();
+                    XWPFRun runEmail = paragraphEmail.createRun();
+
+                    runTitulo.setText("");
+                    runParrafo.setText("");
+                    runParrafo2.setText("");
+                    runAtentamente.setText("");
+                    runDirectora.setText("");
+                    runCargo.setText("");
+                    runDireccion.setText("");
+                    runEmail.setText("");
+
+                    String imgFile = "..\\HenriPittier\\img\\LogoHPSinFondo.png";
+                    FileInputStream is = new FileInputStream(imgFile);
+                    runLogo.addPicture(is, XWPFDocument.PICTURE_TYPE_PNG, imgFile, Units.toEMU(120), Units.toEMU(100));
+                    is.close();
+
+                    runBlank.addBreak();
+                    runBlank.addBreak();
+                    runBlank.addBreak();
+                    runBlank.addBreak();
+                    runBlank.addBreak();
+
+                    runTitulo.setText(lbl_Titulo.getText());
+                    paragraphTitulo.setAlignment(ParagraphAlignment.CENTER);
+                    runTitulo.setBold(true);
+                    runTitulo.setFontSize(14);
+                    runTitulo.setFontFamily("Arial");
+                    runTitulo.addBreak();
+
+
+                    runParrafo.setText(Parrafo1);
+                    runParrafo.addBreak();
+                    runParrafo.setFontSize(12);
+                    runParrafo.setFontFamily("Arial");
+                    runParrafo2.setText(Parrafo2);
+                    runParrafo2.setFontSize(12);
+                    runParrafo2.setFontFamily("Arial");
+                    runParrafo2.addBreak();
+                    runParrafo2.addBreak();
+                    runParrafo2.addBreak();
+                    runParrafo2.addBreak();
+                    runParrafo2.addBreak();
+                    runParrafo2.addBreak();
+
+
+                    runAtentamente.setText(lbl_Atentamente.getText());
+                    paragraphAtentamente.setAlignment(ParagraphAlignment.CENTER);
+                    runAtentamente.setFontSize(12);
+                    runAtentamente.setFontFamily("Arial");
+                    runAtentamente.addBreak();
+                    runAtentamente.addBreak();
+                    runAtentamente.addBreak();
+                    runAtentamente.addBreak();
+                    runAtentamente.addBreak();
+
+                    runDirectora.setText(lbl_Directora.getText());
+                    paragraphDirectora.setAlignment(ParagraphAlignment.CENTER);
+                    runDirectora.setFontSize(12);
+                    runDirectora.setFontFamily("Arial");
+
+
+                    runCargo.setText(lbl_Cargo.getText());
+                    paragraphCargo.setAlignment(ParagraphAlignment.CENTER);
+                    runCargo.setFontSize(12);
+                    runCargo.setFontFamily("Arial");
+                    runCargo.addBreak();
+                    runCargo.addBreak();
+
+                    runDireccion.setText(lbl_Direccion.getText());
+                    paragraphDireccion.setAlignment(ParagraphAlignment.CENTER);
+                    runDireccion.setFontSize(11);
+                    runDireccion.setFontFamily("Arial");
+
+                    runEmail.setText(lbl_Email.getText());
+                    paragraphEmail.setAlignment(ParagraphAlignment.CENTER);
+                    runEmail.setFontSize(11);
+                    runEmail.setFontFamily("Arial");
+
+                    document.write(output);
+                    output.close();
+                    
+                    final JPanel panel = new JPanel();
+                    JOptionPane.showMessageDialog(panel, "Se genero exitosamente el documento", "Información", JOptionPane.INFORMATION_MESSAGE);
+                    
+                
+                } catch (Exception e) {
+                    JOptionPane.showMessageDialog(null, e.getMessage().toString());
+                }
+
+            }
     }//GEN-LAST:event_btn_imprimirActionPerformed
 
 
@@ -364,6 +534,7 @@ public class ConstanciaEstudio extends javax.swing.JPanel {
     private javax.swing.JLabel lbl_Directora;
     private javax.swing.JLabel lbl_Email;
     private javax.swing.JLabel lbl_NombreEstudiante;
+    private javax.swing.JLabel lbl_Parrafo2;
     private javax.swing.JLabel lbl_Titulo;
     private javax.swing.JLabel lbl_fecha;
     private javax.swing.JLabel lbl_tituloEstudiante;
