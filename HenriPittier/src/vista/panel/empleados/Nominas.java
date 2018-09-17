@@ -8,8 +8,11 @@ package vista.panel.empleados;
 
 import comun.Empleado;
 import comun.Inasistencia;
+import comun.Nomina;
 import comun.Prestamo;
 import comun.Suplencia;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -22,6 +25,7 @@ import modelo.ComunicacionREST;
 
 public class Nominas extends javax.swing.JPanel {
     DefaultTableModel model;
+    ArrayList<Nomina> nominaEmpleados;
    
     private String nombreCompleto(Empleado empleado) {
         String segundoNombre = "";
@@ -122,9 +126,14 @@ public class Nominas extends javax.swing.JPanel {
         return finCal.getTime();
     }
     
+    public Boolean validarFechaRango(Date inicio, Date fin, Date fechaEvaluar){
+        return (inicio.compareTo(fechaEvaluar) * fechaEvaluar.compareTo(fin)) >= 0;
+    }
+    
     public Nominas() {
         try {
             initComponents();
+            nominaEmpleados = new ArrayList<Nomina>();
             ComunicacionREST comRest = new ComunicacionREST();
             ArrayList<Empleado> listaEmpleados = comRest.consultarEmpleados();
             model = (DefaultTableModel) tb_nominaFija.getModel();
@@ -163,15 +172,26 @@ public class Nominas extends javax.swing.JPanel {
                     }
                 }
                 
-                Prestamo p = new Prestamo();
+                Prestamo p = new Prestamo(empleado.getCedula());
                 ArrayList <Prestamo> listaPrestamo = comRest.consultarPrestamoDetalle(p);
                 
                 Prestamo prestamoQuincena = new Prestamo();
+                Date fechaFinQuincena = obtenerFechaFinQuincena(new Date());
+                Date fechaInicioQuincena = obtenerFechaInicioQuincena(fechaFinQuincena);
+                int montoPrestamos = 0;
                 for (Prestamo prestamo : listaPrestamo) {
-                    
+                    Boolean fechaDentroRango = validarFechaRango(fechaInicioQuincena, fechaFinQuincena, prestamo.getFechaPrestamo());
+                    if (fechaDentroRango){
+                        montoPrestamos += prestamo.getMonto();
+                    }
                 }
                 
-                int sueldoQuincenal = empleado.getSueldoMensual()/2;
+                DateFormat dateFormat = new SimpleDateFormat("dd/MM/yy");
+ 
+                String fecIngreso = dateFormat.format(empleado.getFechaIngreso());
+                
+                double sueldoQuincenal = empleado.getSueldoMensual()/2;
+                sueldoQuincenal = Math.floor(sueldoQuincenal * 100) / 100;
                 int diasTrabajados = 15 - inasistenciaQuincena.getDiasFaltados();
                 double SSO = (((((empleado.getSueldoMensual() * 12) / 52) * 0.04) / 2) * (cantidadLunesMes(new Date())));
                 SSO = Math.floor(SSO * 100) / 100;
@@ -183,11 +203,20 @@ public class Nominas extends javax.swing.JPanel {
                 precioInasistencia = Math.floor(precioInasistencia * 100) / 100;
                 double precioSuplencia = ((suplenciaQuincena.getDiasAdicionales() * empleado.getSueldoMensual()) / 30);
                 precioSuplencia = Math.floor(precioSuplencia * 100) / 100;
+                double totalDeducido = montoPrestamos + SSO + LPH + paroForzoso + precioInasistencia;
+                totalDeducido = Math.floor(totalDeducido * 100) / 100;
+                double pagoNeto = sueldoQuincenal - totalDeducido + precioSuplencia; 
+                pagoNeto = Math.floor(pagoNeto * 100) / 100;
                 String nombreCompleto = nombreCompleto(empleado);
                 model.addRow(new Object[] {empleado.getCedula(), nombreCompleto, empleado.getSueldoMensual(), sueldoQuincenal,empleado.getBanco(),
                                            diasTrabajados, SSO, paroForzoso, LPH, inasistenciaQuincena.getDiasFaltados(), 
-                                           precioInasistencia, suplenciaQuincena.getDiasAdicionales(), precioSuplencia, "", "", "", 
-                                           empleado.getCargo(), empleado.getFechaIngreso()});
+                                           precioInasistencia, suplenciaQuincena.getDiasAdicionales(), precioSuplencia, montoPrestamos, 
+                                           totalDeducido, pagoNeto, empleado.getCargo(), fecIngreso});
+                Nomina tuplaEmpleado = new Nomina(empleado.getCedula(), nombreCompleto, empleado.getSueldoMensual(), sueldoQuincenal,empleado.getBanco(),
+                                                  diasTrabajados, SSO, paroForzoso, LPH, inasistenciaQuincena.getDiasFaltados(), 
+                                                  precioInasistencia, suplenciaQuincena.getDiasAdicionales(), precioSuplencia, montoPrestamos, 
+                                                  totalDeducido, pagoNeto, empleado.getCargo(), fecIngreso);
+                nominaEmpleados.add(tuplaEmpleado);
             }
         } catch (Exception e) {
         }
@@ -209,6 +238,7 @@ public class Nominas extends javax.swing.JPanel {
                 return false; //Disallow the editing of any cell
             }
         };
+        btn_registrar = new javax.swing.JButton();
         lbl_tituloNomina = new javax.swing.JLabel();
 
         pnl_datos.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -278,21 +308,33 @@ public class Nominas extends javax.swing.JPanel {
             tb_nominaFija.getColumnModel().getColumn(17).setPreferredWidth(120);
         }
 
+        btn_registrar.setBackground(new java.awt.Color(121, 213, 177));
+        btn_registrar.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        btn_registrar.setText("Generar Documento");
+        btn_registrar.setPreferredSize(new java.awt.Dimension(109, 25));
+
         javax.swing.GroupLayout pnl_datosLayout = new javax.swing.GroupLayout(pnl_datos);
         pnl_datos.setLayout(pnl_datosLayout);
         pnl_datosLayout.setHorizontalGroup(
             pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnl_datosLayout.createSequentialGroup()
-                .addContainerGap(32, Short.MAX_VALUE)
-                .addComponent(sp_empleados, javax.swing.GroupLayout.PREFERRED_SIZE, 770, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(32, 32, 32))
+            .addGroup(pnl_datosLayout.createSequentialGroup()
+                .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnl_datosLayout.createSequentialGroup()
+                        .addGap(32, 32, 32)
+                        .addComponent(sp_empleados, javax.swing.GroupLayout.PREFERRED_SIZE, 779, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(pnl_datosLayout.createSequentialGroup()
+                        .addGap(345, 345, 345)
+                        .addComponent(btn_registrar, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(32, Short.MAX_VALUE))
         );
         pnl_datosLayout.setVerticalGroup(
             pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnl_datosLayout.createSequentialGroup()
-                .addGap(43, 43, 43)
-                .addComponent(sp_empleados, javax.swing.GroupLayout.PREFERRED_SIZE, 304, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(173, Short.MAX_VALUE))
+                .addGap(32, 32, 32)
+                .addComponent(sp_empleados, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 249, Short.MAX_VALUE)
+                .addComponent(btn_registrar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(19, 19, 19))
         );
 
         lbl_tituloNomina.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -322,6 +364,7 @@ public class Nominas extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btn_registrar;
     private javax.swing.JLabel lbl_tituloNomina;
     private javax.swing.JPanel pnl_datos;
     private javax.swing.JScrollPane sp_empleados;

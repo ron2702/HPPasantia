@@ -308,6 +308,12 @@ public class ActualizarPrestamos extends javax.swing.JPanel {
                 if (prestamoRegistrar.getError() == Registry.RESULTADO_CODIGO_RECURSO_CREADO){
                         final JPanel panel = new JPanel();
                         JOptionPane.showMessageDialog(panel, "Se registró exitosamente el préstamo", "Información", JOptionPane.INFORMATION_MESSAGE);
+                        DefaultTableModel model = (DefaultTableModel) tb_historicoPrestamos.getModel();
+                        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yy");
+ 
+                        //to convert Date to String, use format method of SimpleDateFormat class.
+                        String fecPrestamo = dateFormat.format(prestamoRegistrar.getFechaPrestamo());
+                        model.addRow(new Object[] {fecPrestamo, prestamoRegistrar.getMonto()});
                 }else{
                     final JPanel panel = new JPanel();
                     JOptionPane.showMessageDialog(panel, "No se ha podido registrar el préstamo, intente nuevamente", "Error", JOptionPane.ERROR_MESSAGE);
