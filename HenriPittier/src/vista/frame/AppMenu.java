@@ -20,9 +20,11 @@ import vista.panel.empleados.ConsultarEmpleados;
 import vista.panel.empleados.Nominas;
 import vista.panel.estudiantes.AsignarEstGrupo;
 import vista.panel.estudiantes.AsignarRelacion;
+import vista.panel.estudiantes.BoletinInformativo;
 import vista.panel.estudiantes.BorrarEstGrupo;
 import vista.panel.estudiantes.BorrarEstudiante;
 import vista.panel.estudiantes.BorrarSalida;
+import vista.panel.estudiantes.ConstanciaEstudio;
 import vista.panel.estudiantes.ConsultarEstGrupo;
 import vista.panel.estudiantes.ConsultarEstudiantes;
 import vista.panel.estudiantes.ConsultarRelacion;
@@ -174,6 +176,13 @@ public class AppMenu extends javax.swing.JFrame {
     BorrarSalida borrarSalidaPanel = new BorrarSalida();
     ConsultarSalida consultarSalidaPanel = new ConsultarSalida();
     
+    //DOCUMENTOS
+    final static String CONSTANCIAESTUDIO = "CONSTANCIAESTUDIO";
+    final static String BOLETININFORMATIVO = "BOLETININFORMATIVO";
+    
+    ConstanciaEstudio constanciaEstudioPanel = new ConstanciaEstudio();
+    BoletinInformativo boletinInformativoPanel = new BoletinInformativo();
+    
     
     public AppMenu() {
         initComponents();
@@ -243,7 +252,11 @@ public class AppMenu extends javax.swing.JFrame {
         contentPane.add(registrarSalidaPanel, REGISTRARSALIDA);
         contentPane.add(borrarSalidaPanel, BORRARSALIDA);
         contentPane.add(consultarSalidaPanel, CONSULTARSALIDA);
-
+        
+        //DOCUMENTOS
+        contentPane.add(constanciaEstudioPanel, CONSTANCIAESTUDIO);
+        contentPane.add(boletinInformativoPanel, BOLETININFORMATIVO);
+        
     }
 
     /**
@@ -310,6 +323,11 @@ public class AppMenu extends javax.swing.JFrame {
         registrarSalida = new javax.swing.JMenuItem();
         borrarSalida = new javax.swing.JMenuItem();
         consultarSalida = new javax.swing.JMenuItem();
+        menuDocumentos = new javax.swing.JMenu();
+        jMenu1 = new javax.swing.JMenu();
+        constanciaEstudio = new javax.swing.JMenuItem();
+        boletinInformativo = new javax.swing.JMenuItem();
+        jMenu2 = new javax.swing.JMenu();
         menuConfiguracion = new javax.swing.JMenu();
         inicio = new javax.swing.JMenuItem();
         menuSalir = new javax.swing.JMenu();
@@ -703,6 +721,33 @@ public class AppMenu extends javax.swing.JFrame {
         menuSalida.add(consultarSalida);
 
         barraMenu.add(menuSalida);
+
+        menuDocumentos.setText("Documentos");
+
+        jMenu1.setText("Estudiantes");
+
+        constanciaEstudio.setText("Constancia de Estudio");
+        constanciaEstudio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                constanciaEstudioActionPerformed(evt);
+            }
+        });
+        jMenu1.add(constanciaEstudio);
+
+        boletinInformativo.setText("Boletin Informativo");
+        boletinInformativo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                boletinInformativoActionPerformed(evt);
+            }
+        });
+        jMenu1.add(boletinInformativo);
+
+        menuDocumentos.add(jMenu1);
+
+        jMenu2.setText("Contabilidad");
+        menuDocumentos.add(jMenu2);
+
+        barraMenu.add(menuDocumentos);
 
         menuConfiguracion.setText("Salir");
 
@@ -1102,6 +1147,22 @@ public class AppMenu extends javax.swing.JFrame {
         CardLayout cardPanel = (CardLayout)(contentPane.getLayout());
         cardPanel.show(contentPane, NOMINAS);
     }//GEN-LAST:event_nominaEmpleadosActionPerformed
+        
+    private void constanciaEstudioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_constanciaEstudioActionPerformed
+        contentPane.remove(constanciaEstudioPanel);
+        ConstanciaEstudio constanciaEstudioPanel = new ConstanciaEstudio();
+        contentPane.add(constanciaEstudioPanel, CONSTANCIAESTUDIO);
+        CardLayout cardPanel = (CardLayout)(contentPane.getLayout());
+        cardPanel.show(contentPane, CONSTANCIAESTUDIO);
+    }//GEN-LAST:event_constanciaEstudioActionPerformed
+
+    private void boletinInformativoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boletinInformativoActionPerformed
+        contentPane.remove(boletinInformativoPanel);
+        BoletinInformativo boletinInformativoPanel = new BoletinInformativo();
+        contentPane.add(boletinInformativoPanel, BOLETININFORMATIVO);
+        CardLayout cardPanel = (CardLayout)(contentPane.getLayout());
+        cardPanel.show(contentPane, BOLETININFORMATIVO);
+    }//GEN-LAST:event_boletinInformativoActionPerformed
 
 
 
@@ -1148,12 +1209,14 @@ public class AppMenu extends javax.swing.JFrame {
     private javax.swing.JMenuItem asignarGrupo;
     private javax.swing.JMenuItem asignarRelacion;
     private javax.swing.JMenuBar barraMenu;
+    private javax.swing.JMenuItem boletinInformativo;
     private javax.swing.JMenuItem borrarEstudianteGrupo;
     private javax.swing.JMenuItem borrarInasistencia;
     private javax.swing.JMenuItem borrarMensualidad;
     private javax.swing.JMenuItem borrarSalida;
     private javax.swing.JMenuItem borrarSuplencia;
     private javax.swing.JMenuItem cerrarSesion;
+    private javax.swing.JMenuItem constanciaEstudio;
     private javax.swing.JMenuItem consultarAsignaciones;
     private javax.swing.JMenuItem consultarEmpleado;
     private javax.swing.JMenuItem consultarEstudiante;
@@ -1172,8 +1235,11 @@ public class AppMenu extends javax.swing.JFrame {
     private javax.swing.JMenuItem eliminarRelacion;
     private javax.swing.JMenuItem eliminarRepresentante;
     private javax.swing.JMenuItem inicio;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu menuAsignarGrupo;
     private javax.swing.JMenu menuConfiguracion;
+    private javax.swing.JMenu menuDocumentos;
     private javax.swing.JMenu menuEmpleados;
     private javax.swing.JMenu menuEstudiantes;
     private javax.swing.JMenu menuGrupos;

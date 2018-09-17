@@ -299,7 +299,7 @@ public class RegistrarSalida extends javax.swing.JPanel {
                     JOptionPane.showMessageDialog(panel, "Se registro la salida del estudiante", "Información", JOptionPane.INFORMATION_MESSAGE);
                 }else{
                     final JPanel panel = new JPanel();
-                    JOptionPane.showMessageDialog(panel, "El representante no tiene relacion con el estudiante o ya se registro la salida del estudiante", "Error", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(panel, "Ya se registro la salida del estudiante o el representante no esta autorizado para retirar al estudiante", "Error", JOptionPane.ERROR_MESSAGE);
                 }
             } catch (Exception ex) {
                 Logger.getLogger(BorrarEstudiante.class.getName()).log(Level.SEVERE, null, ex);
