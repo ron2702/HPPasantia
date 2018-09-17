@@ -11,21 +11,29 @@ import comun.Inasistencia;
 import comun.Nomina;
 import comun.Prestamo;
 import comun.Suplencia;
+import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import modelo.ComunicacionREST;
+import modelo.DocumentosExcel;
 
 
 public class Nominas extends javax.swing.JPanel {
     DefaultTableModel model;
     ArrayList<Nomina> nominaEmpleados;
+    int cantLunes = cantidadLunesMes(new Date());
+    DateFormat dateFormato = new SimpleDateFormat("dd/MM/yy");
+    String rangoInicio = dateFormato.format(obtenerFechaFinQuincena(new Date()));
+    String rangoFin = dateFormato.format(obtenerFechaInicioQuincena(obtenerFechaFinQuincena(new Date())));
    
     private String nombreCompleto(Empleado empleado) {
         String segundoNombre = "";
@@ -312,6 +320,11 @@ public class Nominas extends javax.swing.JPanel {
         btn_registrar.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         btn_registrar.setText("Generar Documento");
         btn_registrar.setPreferredSize(new java.awt.Dimension(109, 25));
+        btn_registrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_registrarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout pnl_datosLayout = new javax.swing.GroupLayout(pnl_datos);
         pnl_datos.setLayout(pnl_datosLayout);
@@ -361,6 +374,15 @@ public class Nominas extends javax.swing.JPanel {
                 .addGap(67, 67, 67))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btn_registrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_registrarActionPerformed
+        try {
+            DocumentosExcel doc = new DocumentosExcel();
+            doc.modificarNomina(nominaEmpleados, cantLunes, rangoInicio, rangoFin);
+        } catch (IOException ex) {
+            Logger.getLogger(Nominas.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btn_registrarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

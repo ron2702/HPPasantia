@@ -309,10 +309,10 @@ public class Nomina implements Comparable {
     public int compareTo(Object compararNom) {
         int compararSueldo=((Nomina)compararNom).getSueldoMensual();
         /* For Ascending order*/
-        return this.sueldoMensual - compararSueldo;
+        //return this.sueldoMensual - compararSueldo;
 
         /* For Descending order do like this */
-        //return compararSueldo - this.sueldoMensual;
+        return compararSueldo - this.sueldoMensual;
     }
 }
 
