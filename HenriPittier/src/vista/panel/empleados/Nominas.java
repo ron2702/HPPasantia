@@ -233,7 +233,8 @@ public class Nominas extends javax.swing.JPanel {
         lbl_tituloNomina = new javax.swing.JLabel();
 
         pnl_datos.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-
+        new JScrollPane(tb_nominaFija, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+        tb_nominaFija.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
         tb_nominaFija.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         tb_nominaFija.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
