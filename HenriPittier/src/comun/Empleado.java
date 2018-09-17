@@ -230,7 +230,7 @@ public class Empleado {
 
     @Override
     public String toString() {
-        return this.cedula + "- " + this.primerNombre + " " + this.primerApellido;
+        return this.cedula + " - " + this.primerNombre + " " + this.primerApellido;
     }
     
 }

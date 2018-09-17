@@ -10,6 +10,8 @@ import comun.Empleado;
 import comun.Inasistencia;
 import comun.Prestamo;
 import comun.Suplencia;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -122,6 +124,10 @@ public class Nominas extends javax.swing.JPanel {
         return finCal.getTime();
     }
     
+    public Boolean validarFechaRango(Date inicio, Date fin, Date fechaEvaluar){
+        return (inicio.compareTo(fechaEvaluar) * fechaEvaluar.compareTo(fin)) >= 0;
+    }
+    
     public Nominas() {
         try {
             initComponents();
@@ -163,15 +169,26 @@ public class Nominas extends javax.swing.JPanel {
                     }
                 }
                 
-                Prestamo p = new Prestamo();
+                Prestamo p = new Prestamo(empleado.getCedula());
                 ArrayList <Prestamo> listaPrestamo = comRest.consultarPrestamoDetalle(p);
                 
                 Prestamo prestamoQuincena = new Prestamo();
+                Date fechaFinQuincena = obtenerFechaFinQuincena(new Date());
+                Date fechaInicioQuincena = obtenerFechaInicioQuincena(fechaFinQuincena);
+                int montoPrestamos = 0;
                 for (Prestamo prestamo : listaPrestamo) {
-                    
+                    Boolean fechaDentroRango = validarFechaRango(fechaInicioQuincena, fechaFinQuincena, prestamo.getFechaPrestamo());
+                    if (fechaDentroRango){
+                        montoPrestamos += prestamo.getMonto();
+                    }
                 }
                 
-                int sueldoQuincenal = empleado.getSueldoMensual()/2;
+                DateFormat dateFormat = new SimpleDateFormat("dd/MM/yy");
+ 
+                String fecIngreso = dateFormat.format(empleado.getFechaIngreso());
+                
+                double sueldoQuincenal = empleado.getSueldoMensual()/2;
+                sueldoQuincenal = Math.floor(sueldoQuincenal * 100) / 100;
                 int diasTrabajados = 15 - inasistenciaQuincena.getDiasFaltados();
                 double SSO = (((((empleado.getSueldoMensual() * 12) / 52) * 0.04) / 2) * (cantidadLunesMes(new Date())));
                 SSO = Math.floor(SSO * 100) / 100;
@@ -183,11 +200,15 @@ public class Nominas extends javax.swing.JPanel {
                 precioInasistencia = Math.floor(precioInasistencia * 100) / 100;
                 double precioSuplencia = ((suplenciaQuincena.getDiasAdicionales() * empleado.getSueldoMensual()) / 30);
                 precioSuplencia = Math.floor(precioSuplencia * 100) / 100;
+                double totalDeducido = montoPrestamos + SSO + LPH + paroForzoso + precioInasistencia;
+                totalDeducido = Math.floor(totalDeducido * 100) / 100;
+                double pagoNeto = sueldoQuincenal - totalDeducido + precioSuplencia; 
+                pagoNeto = Math.floor(pagoNeto * 100) / 100;
                 String nombreCompleto = nombreCompleto(empleado);
                 model.addRow(new Object[] {empleado.getCedula(), nombreCompleto, empleado.getSueldoMensual(), sueldoQuincenal,empleado.getBanco(),
                                            diasTrabajados, SSO, paroForzoso, LPH, inasistenciaQuincena.getDiasFaltados(), 
-                                           precioInasistencia, suplenciaQuincena.getDiasAdicionales(), precioSuplencia, "", "", "", 
-                                           empleado.getCargo(), empleado.getFechaIngreso()});
+                                           precioInasistencia, suplenciaQuincena.getDiasAdicionales(), precioSuplencia, montoPrestamos, 
+                                           totalDeducido, pagoNeto, empleado.getCargo(), fecIngreso});
             }
         } catch (Exception e) {
         }
@@ -212,8 +233,7 @@ public class Nominas extends javax.swing.JPanel {
         lbl_tituloNomina = new javax.swing.JLabel();
 
         pnl_datos.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        new JScrollPane(tb_nominaFija, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
-        tb_nominaFija.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+
         tb_nominaFija.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         tb_nominaFija.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
