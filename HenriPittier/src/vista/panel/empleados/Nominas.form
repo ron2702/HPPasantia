@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
-<Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JPanelFormInfo">
+<Form version="1.5" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JPanelFormInfo">
   <AuxValues>
     <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
     <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
@@ -16,25 +16,24 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <EmptySpace min="0" pref="895" max="32767" attributes="0"/>
-          <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
-              <Group type="102" attributes="0">
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Component id="pnl_datos" max="32767" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="lbl_tituloNomina" min="-2" max="-2" attributes="0"/>
+                  <Component id="pnl_datos" min="-2" max="-2" attributes="0"/>
               </Group>
+              <EmptySpace pref="55" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <EmptySpace min="0" pref="546" max="32767" attributes="0"/>
-          <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Component id="pnl_datos" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="32767" attributes="0"/>
-              </Group>
+          <Group type="102" alignment="1" attributes="0">
+              <EmptySpace pref="26" max="32767" attributes="0"/>
+              <Component id="lbl_tituloNomina" min="-2" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="pnl_datos" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="67" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -52,19 +51,19 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
-                  <Component id="sp_empleados" min="-2" pref="822" max="-2" attributes="0"/>
-                  <EmptySpace max="32767" attributes="0"/>
+              <Group type="102" alignment="1" attributes="0">
+                  <EmptySpace pref="32" max="32767" attributes="0"/>
+                  <Component id="sp_empleados" min="-2" pref="770" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
-                  <Component id="sp_empleados" min="-2" pref="186" max="-2" attributes="0"/>
-                  <EmptySpace pref="280" max="32767" attributes="0"/>
+                  <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
+                  <Component id="sp_empleados" min="-2" pref="304" max="-2" attributes="0"/>
+                  <EmptySpace pref="173" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -77,7 +76,7 @@
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
           <SubComponents>
-            <Component class="javax.swing.JTable" name="tb_consultarEmpleados">
+            <Component class="javax.swing.JTable" name="tb_nominaFija">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="12" style="0"/>
@@ -85,32 +84,123 @@
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                   <Table columnCount="18" rowCount="0">
                     <Column editable="false" title="Cedula" type="java.lang.String"/>
-                    <Column editable="true" title="Nombre del Empleado" type="java.lang.String"/>
-                    <Column editable="true" title="Sueldo B&#xe1;sico (Mensual)" type="java.lang.String"/>
-                    <Column editable="true" title="Sueldo B&#xe1;sico (Quincenal)" type="java.lang.String"/>
-                    <Column editable="true" title="Banco" type="java.lang.String"/>
-                    <Column editable="true" title="D&#xed;as Trabajados (Quincenal)" type="java.lang.Object"/>
-                    <Column editable="true" title="S.S.O (Quincenal)" type="java.lang.Object"/>
-                    <Column editable="true" title="Paro Forzoso (Quincenal)" type="java.lang.Object"/>
-                    <Column editable="true" title="L.P.H (Quincenal)" type="java.lang.Object"/>
-                    <Column editable="true" title="D&#xed;as (Inasistentes)" type="java.lang.Object"/>
-                    <Column editable="true" title="Bs. S (Inasistencias)" type="java.lang.Object"/>
-                    <Column editable="true" title="D&#xed;as (Suplencias)" type="java.lang.Object"/>
-                    <Column editable="true" title="Bs. S (Suplencias)" type="java.lang.Object"/>
-                    <Column editable="true" title="Reposos/Pr&#xe9;stamos" type="java.lang.Object"/>
-                    <Column editable="true" title="Total Deducido" type="java.lang.Object"/>
-                    <Column editable="true" title="Neto Pagado (Bs. S)" type="java.lang.Object"/>
-                    <Column editable="true" title="Cargo" type="java.lang.Object"/>
-                    <Column editable="true" title="Fecha de Ingreso" type="java.lang.Object"/>
+                    <Column editable="false" title="Nombre del Empleado" type="java.lang.String"/>
+                    <Column editable="false" title="Sueldo (Mensual)" type="java.lang.String"/>
+                    <Column editable="false" title="Sueldo (Quincenal)" type="java.lang.String"/>
+                    <Column editable="false" title="Banco" type="java.lang.String"/>
+                    <Column editable="false" title="D&#xed;as Trabajados (Quincenal)" type="java.lang.Object"/>
+                    <Column editable="false" title="S.S.O (Quincenal)" type="java.lang.Object"/>
+                    <Column editable="false" title="Paro Forzoso (Quincenal)" type="java.lang.Object"/>
+                    <Column editable="false" title="L.P.H (Quincenal)" type="java.lang.Object"/>
+                    <Column editable="false" title="D&#xed;as (Inasistentes)" type="java.lang.Object"/>
+                    <Column editable="false" title="Bs. S (Inasistencias)" type="java.lang.Object"/>
+                    <Column editable="false" title="D&#xed;as (Suplencias)" type="java.lang.Object"/>
+                    <Column editable="false" title="Bs. S (Suplencias)" type="java.lang.Object"/>
+                    <Column editable="false" title="Reposos/Pr&#xe9;stamos" type="java.lang.Object"/>
+                    <Column editable="false" title="Total Deducido" type="java.lang.Object"/>
+                    <Column editable="false" title="Neto Pagado (Bs. S)" type="java.lang.Object"/>
+                    <Column editable="false" title="Cargo" type="java.lang.Object"/>
+                    <Column editable="false" title="Fecha de Ingreso" type="java.lang.Object"/>
                   </Table>
+                </Property>
+                <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
+                  <TableColumnModel selectionModel="0">
+                    <Column maxWidth="-1" minWidth="-1" prefWidth="80" resizable="false">
+                      <Title/>
+                      <Editor/>
+                      <Renderer/>
+                    </Column>
+                    <Column maxWidth="-1" minWidth="-1" prefWidth="230" resizable="false">
+                      <Title/>
+                      <Editor/>
+                      <Renderer/>
+                    </Column>
+                    <Column maxWidth="-1" minWidth="-1" prefWidth="110" resizable="false">
+                      <Title/>
+                      <Editor/>
+                      <Renderer/>
+                    </Column>
+                    <Column maxWidth="-1" minWidth="-1" prefWidth="120" resizable="false">
+                      <Title/>
+                      <Editor/>
+                      <Renderer/>
+                    </Column>
+                    <Column maxWidth="-1" minWidth="-1" prefWidth="130" resizable="false">
+                      <Title/>
+                      <Editor/>
+                      <Renderer/>
+                    </Column>
+                    <Column maxWidth="-1" minWidth="-1" prefWidth="180" resizable="false">
+                      <Title/>
+                      <Editor/>
+                      <Renderer/>
+                    </Column>
+                    <Column maxWidth="-1" minWidth="-1" prefWidth="140" resizable="false">
+                      <Title/>
+                      <Editor/>
+                      <Renderer/>
+                    </Column>
+                    <Column maxWidth="-1" minWidth="-1" prefWidth="160" resizable="false">
+                      <Title/>
+                      <Editor/>
+                      <Renderer/>
+                    </Column>
+                    <Column maxWidth="-1" minWidth="-1" prefWidth="120" resizable="false">
+                      <Title/>
+                      <Editor/>
+                      <Renderer/>
+                    </Column>
+                    <Column maxWidth="-1" minWidth="-1" prefWidth="120" resizable="false">
+                      <Title/>
+                      <Editor/>
+                      <Renderer/>
+                    </Column>
+                    <Column maxWidth="-1" minWidth="-1" prefWidth="140" resizable="false">
+                      <Title/>
+                      <Editor/>
+                      <Renderer/>
+                    </Column>
+                    <Column maxWidth="-1" minWidth="-1" prefWidth="120" resizable="false">
+                      <Title/>
+                      <Editor/>
+                      <Renderer/>
+                    </Column>
+                    <Column maxWidth="-1" minWidth="-1" prefWidth="120" resizable="false">
+                      <Title/>
+                      <Editor/>
+                      <Renderer/>
+                    </Column>
+                    <Column maxWidth="-1" minWidth="-1" prefWidth="140" resizable="false">
+                      <Title/>
+                      <Editor/>
+                      <Renderer/>
+                    </Column>
+                    <Column maxWidth="-1" minWidth="-1" prefWidth="130" resizable="false">
+                      <Title/>
+                      <Editor/>
+                      <Renderer/>
+                    </Column>
+                    <Column maxWidth="-1" minWidth="-1" prefWidth="140" resizable="false">
+                      <Title/>
+                      <Editor/>
+                      <Renderer/>
+                    </Column>
+                    <Column maxWidth="-1" minWidth="-1" prefWidth="120" resizable="false">
+                      <Title/>
+                      <Editor/>
+                      <Renderer/>
+                    </Column>
+                    <Column maxWidth="-1" minWidth="-1" prefWidth="120" resizable="false">
+                      <Title/>
+                      <Editor/>
+                      <Renderer/>
+                    </Column>
+                  </TableColumnModel>
                 </Property>
                 <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
                   <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
                 </Property>
               </Properties>
-              <Events>
-                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tb_consultarEmpleadosMouseClicked"/>
-              </Events>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JTable(){&#xa;    public boolean isCellEditable(int rowIndex, int colIndex) {&#xa;        return false; //Disallow the editing of any cell&#xa;    }&#xa;}"/>
               </AuxValues>
@@ -119,5 +209,13 @@
         </Container>
       </SubComponents>
     </Container>
+    <Component class="javax.swing.JLabel" name="lbl_tituloNomina">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Tahoma" size="14" style="1"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="N&#xf3;minas de Empleados"/>
+      </Properties>
+    </Component>
   </SubComponents>
 </Form>
