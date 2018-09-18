@@ -52,7 +52,7 @@ public class ModificarEstudiante extends javax.swing.JPanel {
                         calNac.setTime(estudianteSeleccionado.getFechaNac());
                         dc_fechaNac.setSelectedDate(calNac);
                         cb_sexo.setSelectedItem(estudianteSeleccionado.getSexo());
-                        txt_cedulaMAPFRE.setText(estudianteSeleccionado.getCedulaMAPFRE());
+                        txt_cedulaMapfre.setText(estudianteSeleccionado.getCedulaMAPFRE());
                     } catch (Exception ex) {
                         Logger.getLogger(ModificarEstudiante.class.getName()).log(Level.SEVERE, null, ex);
                     }
@@ -71,8 +71,8 @@ public class ModificarEstudiante extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        jPanel2 = new javax.swing.JPanel();
+        modificarEstudiantes = new javax.swing.JPanel();
+        lbl_tituloModificarEstudiantes = new javax.swing.JLabel();
         pnl_datos = new javax.swing.JPanel();
         lbl_segundoApellido = new javax.swing.JLabel();
         txt_segundoApellido = new javax.swing.JTextField();
@@ -95,18 +95,15 @@ public class ModificarEstudiante extends javax.swing.JPanel {
         lbl_sexo = new javax.swing.JLabel();
         cb_sexo = new javax.swing.JComboBox();
         lbl_cedulaMAPFRE = new javax.swing.JLabel();
-        txt_cedulaMAPFRE = new javax.swing.JTextField();
-        lbl_tituloModificarEstudiantes = new javax.swing.JLabel();
+        txt_cedulaMapfre = new javax.swing.JTextField();
 
-        jPanel1.setBackground(new java.awt.Color(204, 204, 204));
-        jPanel1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jPanel1.setPreferredSize(new java.awt.Dimension(950, 640));
+        modificarEstudiantes.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        modificarEstudiantes.setPreferredSize(new java.awt.Dimension(950, 640));
 
-        jPanel2.setBackground(new java.awt.Color(204, 204, 204));
-        jPanel2.setPreferredSize(new java.awt.Dimension(840, 520));
+        lbl_tituloModificarEstudiantes.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lbl_tituloModificarEstudiantes.setText("Modificar Estudiantes");
 
-        pnl_datos.setBackground(new java.awt.Color(204, 204, 204));
-        pnl_datos.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+        pnl_datos.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         pnl_datos.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         pnl_datos.setPreferredSize(new java.awt.Dimension(840, 520));
 
@@ -135,8 +132,9 @@ public class ModificarEstudiante extends javax.swing.JPanel {
         lbl_primerApellido.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         lbl_primerApellido.setText("Primer Apellido:");
 
-        btn_limpiar.setBackground(new java.awt.Color(218, 87, 54));
-        btn_limpiar.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        btn_limpiar.setBackground(new java.awt.Color(153, 0, 0));
+        btn_limpiar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        btn_limpiar.setForeground(new java.awt.Color(255, 255, 255));
         btn_limpiar.setText("Limpiar");
         btn_limpiar.setPreferredSize(new java.awt.Dimension(109, 25));
         btn_limpiar.addActionListener(new java.awt.event.ActionListener() {
@@ -145,8 +143,9 @@ public class ModificarEstudiante extends javax.swing.JPanel {
             }
         });
 
-        btn_modificar.setBackground(new java.awt.Color(121, 213, 177));
-        btn_modificar.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        btn_modificar.setBackground(new java.awt.Color(0, 153, 102));
+        btn_modificar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        btn_modificar.setForeground(new java.awt.Color(255, 255, 255));
         btn_modificar.setText("Modificar");
         btn_modificar.setPreferredSize(new java.awt.Dimension(109, 25));
         btn_modificar.addActionListener(new java.awt.event.ActionListener() {
@@ -239,11 +238,11 @@ public class ModificarEstudiante extends javax.swing.JPanel {
     lbl_cedulaMAPFRE.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
     lbl_cedulaMAPFRE.setText("Cédula MAPFRE:");
 
-    txt_cedulaMAPFRE.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-    txt_cedulaMAPFRE.setEnabled(false);
-    txt_cedulaMAPFRE.addKeyListener(new java.awt.event.KeyAdapter() {
+    txt_cedulaMapfre.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+    txt_cedulaMapfre.setEnabled(false);
+    txt_cedulaMapfre.addKeyListener(new java.awt.event.KeyAdapter() {
         public void keyTyped(java.awt.event.KeyEvent evt) {
-            txt_cedulaMAPFREKeyTyped(evt);
+            txt_cedulaMapfreKeyTyped(evt);
         }
     });
 
@@ -293,10 +292,10 @@ public class ModificarEstudiante extends javax.swing.JPanel {
                                 .addComponent(lbl_cedulaMAPFRE))
                             .addGap(39, 39, 39)
                             .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(txt_cedulaMAPFRE, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txt_cedulaMapfre, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(txt_cedulaEscolar, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addComponent(cb_sexo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGap(0, 87, Short.MAX_VALUE))
+            .addGap(0, 80, Short.MAX_VALUE))
     );
     pnl_datosLayout.setVerticalGroup(
         pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -307,9 +306,22 @@ public class ModificarEstudiante extends javax.swing.JPanel {
                 .addComponent(lbl_tituloModificar)
                 .addComponent(lbl_cedulaEscolar)
                 .addComponent(txt_cedulaEscolar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
             .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(pnl_datosLayout.createSequentialGroup()
-                    .addGap(41, 41, 41)
+                    .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(lbl_cedulaMAPFRE)
+                        .addComponent(txt_cedulaMapfre, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGap(21, 21, 21)
+                    .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(lbl_foto, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btn_cargarImagen))
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 198, Short.MAX_VALUE)
+                    .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btn_modificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btn_limpiar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGap(33, 33, 33))
+                .addGroup(pnl_datosLayout.createSequentialGroup()
                     .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(txt_primerNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(lbl_primerNombre))
@@ -328,70 +340,33 @@ public class ModificarEstudiante extends javax.swing.JPanel {
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                     .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(dc_fechaNac, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(lbl_fechaNac, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGroup(pnl_datosLayout.createSequentialGroup()
-                    .addGap(18, 18, 18)
+                        .addComponent(lbl_fechaNac, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                     .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(lbl_cedulaMAPFRE)
-                        .addComponent(txt_cedulaMAPFRE, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGap(21, 21, 21)
-                    .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(lbl_foto, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btn_cargarImagen))))
-            .addGap(18, 18, 18)
-            .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                .addComponent(lbl_sexo)
-                .addComponent(cb_sexo, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 124, Short.MAX_VALUE)
-            .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                .addComponent(btn_modificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(btn_limpiar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGap(33, 33, 33))
+                        .addComponent(lbl_sexo)
+                        .addComponent(cb_sexo, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
     );
 
-    javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-    jPanel2.setLayout(jPanel2Layout);
-    jPanel2Layout.setHorizontalGroup(
-        jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-        .addGap(0, 0, Short.MAX_VALUE)
-        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(1, 1, 1)
-                .addComponent(pnl_datos, javax.swing.GroupLayout.PREFERRED_SIZE, 838, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-    );
-    jPanel2Layout.setVerticalGroup(
-        jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-        .addGap(0, 0, Short.MAX_VALUE)
-        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(3, 3, 3)
-                .addComponent(pnl_datos, javax.swing.GroupLayout.PREFERRED_SIZE, 513, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-    );
-
-    lbl_tituloModificarEstudiantes.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-    lbl_tituloModificarEstudiantes.setText("Modificar Estudiantes");
-
-    javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-    jPanel1.setLayout(jPanel1Layout);
-    jPanel1Layout.setHorizontalGroup(
-        jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-        .addGroup(jPanel1Layout.createSequentialGroup()
+    javax.swing.GroupLayout modificarEstudiantesLayout = new javax.swing.GroupLayout(modificarEstudiantes);
+    modificarEstudiantes.setLayout(modificarEstudiantesLayout);
+    modificarEstudiantesLayout.setHorizontalGroup(
+        modificarEstudiantesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addGroup(modificarEstudiantesLayout.createSequentialGroup()
             .addGap(56, 56, 56)
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(modificarEstudiantesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(lbl_tituloModificarEstudiantes)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addContainerGap(54, Short.MAX_VALUE))
+                .addComponent(pnl_datos, javax.swing.GroupLayout.PREFERRED_SIZE, 838, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addContainerGap(56, Short.MAX_VALUE))
     );
-    jPanel1Layout.setVerticalGroup(
-        jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+    modificarEstudiantesLayout.setVerticalGroup(
+        modificarEstudiantesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addGroup(modificarEstudiantesLayout.createSequentialGroup()
             .addGap(26, 26, 26)
             .addComponent(lbl_tituloModificarEstudiantes)
             .addGap(18, 18, 18)
-            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addContainerGap(59, Short.MAX_VALUE))
+            .addComponent(pnl_datos, javax.swing.GroupLayout.PREFERRED_SIZE, 513, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addContainerGap(66, Short.MAX_VALUE))
     );
 
     javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -402,7 +377,7 @@ public class ModificarEstudiante extends javax.swing.JPanel {
         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(modificarEstudiantes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE)))
     );
     layout.setVerticalGroup(
@@ -411,7 +386,7 @@ public class ModificarEstudiante extends javax.swing.JPanel {
         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(modificarEstudiantes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE)))
     );
     }// </editor-fold>//GEN-END:initComponents
@@ -449,7 +424,7 @@ public class ModificarEstudiante extends javax.swing.JPanel {
                Date fechaNacimiento = parseFecha.parse(dc_fechaNac.getText());
                long ciEscolar = Long.parseLong(txt_cedulaEscolar.getText());
                estudianteModificar = new Estudiante(ciEscolar, txt_primerNombre.getText(), txt_primerApellido.getText(), txt_segundoNombre.getText(),
-                                        txt_segundoApellido.getText(), fechaNacimiento, "", txt_cedulaMAPFRE.getText(), (String) cb_sexo.getSelectedItem());
+                                        txt_segundoApellido.getText(), fechaNacimiento, "", txt_cedulaMapfre.getText(), (String) cb_sexo.getSelectedItem());
                ComunicacionREST comRest = new ComunicacionREST();
                Estudiante estudianteModificado = comRest.modificarEstudiante(estudianteModificar);
                if (estudianteModificado.getError() == Registry.RESULTADO_CODIGO_RECURSO_CREADO){
@@ -480,9 +455,9 @@ public class ModificarEstudiante extends javax.swing.JPanel {
         cb_sexo.setSelectedItem(null);
     }//GEN-LAST:event_btn_limpiarActionPerformed
 
-    private void txt_cedulaMAPFREKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_cedulaMAPFREKeyTyped
+    private void txt_cedulaMapfreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_cedulaMapfreKeyTyped
         // TODO add your handling code here:
-    }//GEN-LAST:event_txt_cedulaMAPFREKeyTyped
+    }//GEN-LAST:event_txt_cedulaMapfreKeyTyped
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -492,8 +467,6 @@ public class ModificarEstudiante extends javax.swing.JPanel {
     private javax.swing.JComboBox cb_listaEstudiantes;
     private javax.swing.JComboBox cb_sexo;
     private datechooser.beans.DateChooserCombo dc_fechaNac;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JLabel lbl_cedulaEscolar;
     private javax.swing.JLabel lbl_cedulaMAPFRE;
     private javax.swing.JLabel lbl_fechaNac;
@@ -505,9 +478,10 @@ public class ModificarEstudiante extends javax.swing.JPanel {
     private javax.swing.JLabel lbl_sexo;
     private javax.swing.JLabel lbl_tituloModificar;
     private javax.swing.JLabel lbl_tituloModificarEstudiantes;
+    private javax.swing.JPanel modificarEstudiantes;
     private javax.swing.JPanel pnl_datos;
     private javax.swing.JTextField txt_cedulaEscolar;
-    private javax.swing.JTextField txt_cedulaMAPFRE;
+    private javax.swing.JTextField txt_cedulaMapfre;
     private javax.swing.JTextField txt_primerApellido;
     private javax.swing.JTextField txt_primerNombre;
     private javax.swing.JTextField txt_segundoApellido;

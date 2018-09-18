@@ -108,12 +108,9 @@ public class RegistrarMensualidad extends javax.swing.JPanel {
         lbl_cedulaEstudiante1 = new javax.swing.JLabel();
         txt_cedulaEstudiante = new javax.swing.JTextField();
 
-        setBackground(new java.awt.Color(204, 204, 204));
-
         lbl_tituloRegistroMensualidad.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lbl_tituloRegistroMensualidad.setText("Registro de Mensualidad");
 
-        pnl_datos.setBackground(new java.awt.Color(204, 204, 204));
         pnl_datos.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
         pnl_datos.setPreferredSize(new java.awt.Dimension(840, 520));
 
@@ -176,8 +173,9 @@ public class RegistrarMensualidad extends javax.swing.JPanel {
     dc_fechaPago.setFieldFont(new java.awt.Font("Tahoma", java.awt.Font.PLAIN, 12));
     dc_fechaPago.setNavigateFont(new java.awt.Font("Serif", java.awt.Font.PLAIN, 8));
 
-    btn_limpiar.setBackground(new java.awt.Color(218, 87, 54));
-    btn_limpiar.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+    btn_limpiar.setBackground(new java.awt.Color(153, 0, 0));
+    btn_limpiar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+    btn_limpiar.setForeground(new java.awt.Color(255, 255, 255));
     btn_limpiar.setText("Limpiar");
     btn_limpiar.setPreferredSize(new java.awt.Dimension(109, 25));
     btn_limpiar.addActionListener(new java.awt.event.ActionListener() {
@@ -186,8 +184,9 @@ public class RegistrarMensualidad extends javax.swing.JPanel {
         }
     });
 
-    btn_registrar.setBackground(new java.awt.Color(121, 213, 177));
-    btn_registrar.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+    btn_registrar.setBackground(new java.awt.Color(0, 153, 102));
+    btn_registrar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+    btn_registrar.setForeground(new java.awt.Color(255, 255, 255));
     btn_registrar.setText("Registrar");
     btn_registrar.setPreferredSize(new java.awt.Dimension(109, 25));
     btn_registrar.addActionListener(new java.awt.event.ActionListener() {
@@ -211,6 +210,7 @@ public class RegistrarMensualidad extends javax.swing.JPanel {
     lbl_banco.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
     lbl_banco.setText("Banco:");
 
+    cb_banco.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
     cb_banco.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "100% Banco", "BBVA Banco Provincial", "Bancamiga", "Bancaribe", "Banco Activo", "Banco Agricola de Venezuela", "Banco Bicentenario del Pueblo", "Banco Caroni", "Banco del Tesoro", "Banco de Venezuela", "Banco Exterior", "Banco Mercantil", "Banco Plaza", "Banco Sofitasa", "Banco Venezolano de Credito", "Banesco", "Banfanb", "Banplus", "BFC Banco Fondo Comun", "BNC Banco Nacional de Credito", "BOD Banco Occidental de Descuento", "CitiBank", "DELSUR", "Mi Banco" }));
 
     lbl_numeroTransferencia.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
@@ -235,6 +235,8 @@ public class RegistrarMensualidad extends javax.swing.JPanel {
 
     lbl_cedulaEstudiante.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
     lbl_cedulaEstudiante.setText("Lista de Estudiantes:");
+
+    cb_estudiante.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
 
     lbl_cedulaEstudiante1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
     lbl_cedulaEstudiante1.setText("Cedula del Estudiante:");

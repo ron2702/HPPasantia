@@ -64,9 +64,9 @@ public class ConsultarEstudiantes extends javax.swing.JPanel {
         txt_cedulaMAPFRE = new javax.swing.JTextField();
         lbl_tituloEstudiantes = new javax.swing.JLabel();
 
-        pnl_datos.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+        pnl_datos.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         pnl_datos.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        pnl_datos.setPreferredSize(new java.awt.Dimension(840, 520));
+        pnl_datos.setPreferredSize(new java.awt.Dimension(838, 520));
 
         tb_consultarEstudiantes.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         tb_consultarEstudiantes.setModel(new javax.swing.table.DefaultTableModel(
@@ -157,7 +157,7 @@ public class ConsultarEstudiantes extends javax.swing.JPanel {
                             .addComponent(txt_cedulaMAPFRE, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lbl_cedulaMAPFRE, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(lbl_foto, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(123, Short.MAX_VALUE))
+                .addContainerGap(131, Short.MAX_VALUE))
         );
 
         lbl_tituloEstudiantes.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -170,7 +170,7 @@ public class ConsultarEstudiantes extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(56, 56, 56)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(pnl_datos, javax.swing.GroupLayout.PREFERRED_SIZE, 838, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pnl_datos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lbl_tituloEstudiantes))
                 .addContainerGap(56, Short.MAX_VALUE))
         );
@@ -179,9 +179,9 @@ public class ConsultarEstudiantes extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(26, 26, 26)
                 .addComponent(lbl_tituloEstudiantes, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(pnl_datos, javax.swing.GroupLayout.PREFERRED_SIZE, 513, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(68, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(pnl_datos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(54, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

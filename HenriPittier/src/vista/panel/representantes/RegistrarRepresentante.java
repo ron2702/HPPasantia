@@ -136,10 +136,7 @@ public class RegistrarRepresentante extends javax.swing.JPanel {
         txt_email = new javax.swing.JTextField();
         lbl_tituloRepresentante = new javax.swing.JLabel();
 
-        setBackground(new java.awt.Color(204, 204, 204));
-
-        pnl_datos.setBackground(new java.awt.Color(204, 204, 204));
-        pnl_datos.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 14))); // NOI18N
+        pnl_datos.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         pnl_datos.setPreferredSize(new java.awt.Dimension(840, 520));
 
         lbl_primerNombre.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
@@ -294,8 +291,9 @@ public class RegistrarRepresentante extends javax.swing.JPanel {
 
     cb_parroquias.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
 
-    btn_registrar.setBackground(new java.awt.Color(121, 213, 177));
-    btn_registrar.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+    btn_registrar.setBackground(new java.awt.Color(0, 153, 102));
+    btn_registrar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+    btn_registrar.setForeground(new java.awt.Color(255, 255, 255));
     btn_registrar.setText("Registrar");
     btn_registrar.setPreferredSize(new java.awt.Dimension(109, 25));
     btn_registrar.addActionListener(new java.awt.event.ActionListener() {
@@ -304,8 +302,9 @@ public class RegistrarRepresentante extends javax.swing.JPanel {
         }
     });
 
-    btn_limpiar.setBackground(new java.awt.Color(218, 87, 54));
-    btn_limpiar.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+    btn_limpiar.setBackground(new java.awt.Color(153, 0, 0));
+    btn_limpiar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+    btn_limpiar.setForeground(new java.awt.Color(255, 255, 255));
     btn_limpiar.setText("Limpiar");
     btn_limpiar.setPreferredSize(new java.awt.Dimension(109, 25));
     btn_limpiar.addActionListener(new java.awt.event.ActionListener() {
@@ -348,7 +347,7 @@ public class RegistrarRepresentante extends javax.swing.JPanel {
                         .addComponent(lbl_telefonoMovil)
                         .addComponent(lbl_foto, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(lbl_email))
-                    .addGap(25, 25, 25)
+                    .addGap(32, 32, 32)
                     .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(btn_cargarImagen)
                         .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -375,7 +374,7 @@ public class RegistrarRepresentante extends javax.swing.JPanel {
                                         .addComponent(lbl_municipio, javax.swing.GroupLayout.Alignment.TRAILING)
                                         .addComponent(lbl_parroquia, javax.swing.GroupLayout.Alignment.TRAILING)
                                         .addComponent(lbl_tipo, javax.swing.GroupLayout.Alignment.TRAILING))))
-                            .addGap(45, 45, 45)
+                            .addGap(38, 38, 38)
                             .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(dc_fechaNac, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(cb_tipo, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -390,7 +389,7 @@ public class RegistrarRepresentante extends javax.swing.JPanel {
                     .addComponent(btn_limpiar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                     .addComponent(btn_registrar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-            .addContainerGap(42, Short.MAX_VALUE))
+            .addContainerGap(40, Short.MAX_VALUE))
     );
     pnl_datosLayout.setVerticalGroup(
         pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -452,7 +451,7 @@ public class RegistrarRepresentante extends javax.swing.JPanel {
             .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                 .addComponent(lbl_email)
                 .addComponent(txt_email, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
             .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(lbl_foto, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(pnl_datosLayout.createSequentialGroup()
@@ -473,26 +472,20 @@ public class RegistrarRepresentante extends javax.swing.JPanel {
     layout.setHorizontalGroup(
         layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
         .addGroup(layout.createSequentialGroup()
-            .addGap(54, 54, 54)
-            .addComponent(lbl_tituloRepresentante)
-            .addContainerGap(711, Short.MAX_VALUE))
-        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(55, 55, 55)
-                .addComponent(pnl_datos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(55, Short.MAX_VALUE)))
+            .addGap(56, 56, 56)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(lbl_tituloRepresentante)
+                .addComponent(pnl_datos, javax.swing.GroupLayout.PREFERRED_SIZE, 838, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addContainerGap(56, Short.MAX_VALUE))
     );
     layout.setVerticalGroup(
         layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
         .addGroup(layout.createSequentialGroup()
-            .addGap(32, 32, 32)
+            .addGap(26, 26, 26)
             .addComponent(lbl_tituloRepresentante)
-            .addContainerGap(591, Short.MAX_VALUE))
-        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(60, 60, 60)
-                .addComponent(pnl_datos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(60, Short.MAX_VALUE)))
+            .addGap(18, 18, 18)
+            .addComponent(pnl_datos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addContainerGap(59, Short.MAX_VALUE))
     );
     }// </editor-fold>//GEN-END:initComponents
 

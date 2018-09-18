@@ -95,12 +95,9 @@ public class BorrarGrupo extends javax.swing.JPanel {
         lbl_tituloModificar = new javax.swing.JLabel();
         cb_listaGrupos = new javax.swing.JComboBox();
 
-        setBackground(new java.awt.Color(204, 204, 204));
-
         lbl_tituloBorrarGrupo.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lbl_tituloBorrarGrupo.setText("Borrar Grupo");
 
-        pnl_datos.setBackground(new java.awt.Color(204, 204, 204));
         pnl_datos.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
         pnl_datos.setPreferredSize(new java.awt.Dimension(840, 520));
 
@@ -140,8 +137,9 @@ public class BorrarGrupo extends javax.swing.JPanel {
             }
         });
 
-        btn_borrar.setBackground(new java.awt.Color(121, 213, 177));
-        btn_borrar.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        btn_borrar.setBackground(new java.awt.Color(0, 153, 102));
+        btn_borrar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        btn_borrar.setForeground(new java.awt.Color(255, 255, 255));
         btn_borrar.setText("Borrar");
         btn_borrar.setPreferredSize(new java.awt.Dimension(109, 25));
         btn_borrar.addActionListener(new java.awt.event.ActionListener() {
@@ -175,13 +173,13 @@ public class BorrarGrupo extends javax.swing.JPanel {
         pnl_datosLayout.setHorizontalGroup(
             pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnl_datosLayout.createSequentialGroup()
-                .addGap(40, 40, 40)
+                .addGap(58, 58, 58)
                 .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lbl_codigo)
                     .addComponent(lbl_nombre)
                     .addComponent(lbl_descripcion)
                     .addComponent(lbl_tituloModificar))
-                .addGap(68, 68, 68)
+                .addGap(59, 59, 59)
                 .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnl_datosLayout.createSequentialGroup()
                         .addComponent(cb_listaGrupos, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -195,24 +193,24 @@ public class BorrarGrupo extends javax.swing.JPanel {
                         .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lbl_periodo)
                             .addComponent(lbl_capacidad))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 77, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 68, Short.MAX_VALUE)
                         .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txt_periodo, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txt_capacidad, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(69, 69, 69))))
             .addGroup(pnl_datosLayout.createSequentialGroup()
-                .addGap(343, 343, 343)
+                .addGap(363, 363, 363)
                 .addComponent(btn_borrar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         pnl_datosLayout.setVerticalGroup(
             pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnl_datosLayout.createSequentialGroup()
-                .addGap(23, 23, 23)
+                .addGap(75, 75, 75)
                 .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbl_tituloModificar)
                     .addComponent(cb_listaGrupos, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(57, 57, 57)
+                .addGap(56, 56, 56)
                 .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbl_codigo)
                     .addComponent(txt_codigo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -228,7 +226,7 @@ public class BorrarGrupo extends javax.swing.JPanel {
                 .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbl_descripcion)
                     .addComponent(txt_descripcion, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 224, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 173, Short.MAX_VALUE)
                 .addComponent(btn_borrar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(37, 37, 37))
         );
@@ -247,9 +245,9 @@ public class BorrarGrupo extends javax.swing.JPanel {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(33, 33, 33)
+                .addGap(26, 26, 26)
                 .addComponent(lbl_tituloBorrarGrupo)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addComponent(pnl_datos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(59, Short.MAX_VALUE))
         );

@@ -73,13 +73,10 @@ public class EliminarRelacion extends javax.swing.JPanel {
         txt_cedulaRepresentante = new javax.swing.JTextField();
         lbl_cedulaRepresentante = new javax.swing.JLabel();
 
-        setBackground(new java.awt.Color(204, 204, 204));
-
         lbl_tituloEstudiantes.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lbl_tituloEstudiantes.setText("Borrar Relacion Estudiante - Representante");
 
-        pnl_datos.setBackground(new java.awt.Color(204, 204, 204));
-        pnl_datos.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+        pnl_datos.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         pnl_datos.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         pnl_datos.setPreferredSize(new java.awt.Dimension(840, 520));
 
@@ -90,8 +87,9 @@ public class EliminarRelacion extends javax.swing.JPanel {
         lbl_cedulaEstudiante.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         lbl_cedulaEstudiante.setText("Cédula Escolar Estudiante:");
 
-        btn_borrar.setBackground(new java.awt.Color(121, 213, 177));
-        btn_borrar.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        btn_borrar.setBackground(new java.awt.Color(0, 153, 102));
+        btn_borrar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        btn_borrar.setForeground(new java.awt.Color(255, 255, 255));
         btn_borrar.setText("Borrar");
         btn_borrar.setActionCommand("Eliminar");
         btn_borrar.setPreferredSize(new java.awt.Dimension(109, 25));
@@ -117,9 +115,10 @@ public class EliminarRelacion extends javax.swing.JPanel {
         pnl_datosLayout.setHorizontalGroup(
             pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnl_datosLayout.createSequentialGroup()
-                .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(40, 40, 40)
+                .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btn_borrar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(pnl_datosLayout.createSequentialGroup()
-                        .addGap(35, 35, 35)
                         .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lbl_cedulaEstudiante)
                             .addComponent(lbl_estudiante)
@@ -128,11 +127,8 @@ public class EliminarRelacion extends javax.swing.JPanel {
                         .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(cb_listaEstudiantes, 0, 192, Short.MAX_VALUE)
                             .addComponent(txt_cedulaEstudiante)
-                            .addComponent(txt_cedulaRepresentante)))
-                    .addGroup(pnl_datosLayout.createSequentialGroup()
-                        .addGap(363, 363, 363)
-                        .addComponent(btn_borrar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 353, Short.MAX_VALUE))
+                            .addComponent(txt_cedulaRepresentante))))
+                .addGap(0, 348, Short.MAX_VALUE))
         );
         pnl_datosLayout.setVerticalGroup(
             pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -149,9 +145,9 @@ public class EliminarRelacion extends javax.swing.JPanel {
                 .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txt_cedulaRepresentante, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lbl_cedulaRepresentante))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 178, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 238, Short.MAX_VALUE)
                 .addComponent(btn_borrar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(91, 91, 91))
+                .addGap(32, 32, 32))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -168,11 +164,11 @@ public class EliminarRelacion extends javax.swing.JPanel {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(29, 29, 29)
+                .addGap(26, 26, 26)
                 .addComponent(lbl_tituloEstudiantes, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(pnl_datos, javax.swing.GroupLayout.PREFERRED_SIZE, 515, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(63, Short.MAX_VALUE))
+                .addContainerGap(66, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
