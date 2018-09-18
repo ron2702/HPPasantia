@@ -335,7 +335,7 @@ public class ConstanciaEstudio extends javax.swing.JPanel {
             .addContainerGap(43, Short.MAX_VALUE))
         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnl_datosLayout.createSequentialGroup()
             .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(btn_crearDoc, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(btn_crearDoc, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addGap(324, 324, 324))
     );
     pnl_datosLayout.setVerticalGroup(
