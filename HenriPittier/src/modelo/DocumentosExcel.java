@@ -21,10 +21,13 @@ import java.util.Date;
 import java.util.Locale;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import org.apache.poi.hssf.usermodel.HSSFCellStyle;
+import org.apache.poi.hssf.usermodel.HSSFDataFormat;
 
 import org.apache.poi.hssf.usermodel.HSSFFont;
 import org.apache.poi.xssf.usermodel.XSSFCell;
 import org.apache.poi.xssf.usermodel.XSSFCellStyle;
+import org.apache.poi.xssf.usermodel.XSSFDataFormat;
 import org.apache.poi.xssf.usermodel.XSSFFont;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
@@ -32,7 +35,7 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 
 public class DocumentosExcel {
-    public void modificarNomina(ArrayList<Nomina> nominaEmpleados, int lunesMes, String inicioPeriodo, String finPeriodo) throws IOException {
+    public void crearNomina(ArrayList<Nomina> nominaEmpleados, int lunesMes, String inicioPeriodo, String finPeriodo) throws IOException {
         try {
             Collections.sort(nominaEmpleados); 
             FileInputStream file = new FileInputStream(new File("PlantillasExcel\\NominaPlantilla.xlsx"));
@@ -48,7 +51,13 @@ public class DocumentosExcel {
             my_font.setFontName("Arial");
             /* attach the font to the style created earlier */
             my_style.setFont(my_font);
+            my_style.setBorderBottom(HSSFCellStyle.BORDER_THIN);
+            my_style.setBorderTop(HSSFCellStyle.BORDER_THIN);
+            my_style.setBorderRight(HSSFCellStyle.BORDER_THIN);
+            my_style.setBorderLeft(HSSFCellStyle.BORDER_THIN);
             
+            XSSFCellStyle my_styleNoBorder = wb.createCellStyle();
+            my_styleNoBorder.setFont(my_font);
             
             XSSFSheet sheet = wb.getSheetAt(0);
             int filaInicio = 9;
@@ -60,8 +69,8 @@ public class DocumentosExcel {
             XSSFCell celdaLunesMes = filaLunesMes.createCell(6);
             XSSFCell celdaPeriodo = filaPeriodo.createCell(12);
             
-            celdaLunesMes.setCellStyle(my_style);
-            celdaPeriodo.setCellStyle(my_style);
+            celdaLunesMes.setCellStyle(my_styleNoBorder);
+            celdaPeriodo.setCellStyle(my_styleNoBorder);
             
             celdaLunesMes.setCellValue(lunesMes);
             celdaPeriodo.setCellValue(periodo);
@@ -144,10 +153,186 @@ public class DocumentosExcel {
             }
             
             file.close();
-            String fechaFin = finPeriodo.replace('/', '_');
+            String fechaFin = finPeriodo.replace('/', '-');
             FileOutputStream output = new FileOutputStream("Documentos\\Nominas\\Nomina_" + fechaFin + ".xlsx");
             wb.write(output);
             output.close();
+            
+
+        } catch (Exception ex) {
+            Logger.getLogger(DocumentosExcel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public void crearComprobantes(ArrayList<Nomina> nominaEmpleados, int lunesMes, String inicioPeriodo, String finPeriodo){
+        try {
+            Collections.sort(nominaEmpleados); 
+            FileInputStream file = new FileInputStream(new File("PlantillasExcel\\ComprabantePagoPlantilla.xlsx"));
+            
+            String fechaFin = finPeriodo.replace('/', '-');
+            File folder = new File("Documentos\\ComprobantesPago\\" + fechaFin);
+            folder.mkdirs();
+            
+            String periodo = "Periodo: " + inicioPeriodo + " hasta el " + finPeriodo;
+            XSSFWorkbook wb = new XSSFWorkbook(file);
+            
+            
+            XSSFCellStyle my_style = wb.createCellStyle();
+            XSSFFont my_font = wb.createFont();
+            /* set the weight of the font */
+            my_font.setBoldweight(HSSFFont.BOLDWEIGHT_BOLD);
+            my_font.setFontName("Century");
+            /* attach the font to the style created earlier */
+            my_style.setFont(my_font);
+            my_style.setAlignment(XSSFCellStyle.ALIGN_RIGHT);
+            
+            XSSFCellStyle styleBordeAbajoDerecha = wb.createCellStyle();
+            XSSFCellStyle styleBordeArribaDerecha = wb.createCellStyle();
+            XSSFCellStyle styleBordeDerecha = wb.createCellStyle();
+            
+            styleBordeAbajoDerecha.setFont(my_font);
+            styleBordeAbajoDerecha.setAlignment(XSSFCellStyle.ALIGN_RIGHT);
+            styleBordeArribaDerecha.setFont(my_font);
+            styleBordeArribaDerecha.setAlignment(XSSFCellStyle.ALIGN_RIGHT);
+            styleBordeDerecha.setFont(my_font);
+            styleBordeDerecha.setAlignment(XSSFCellStyle.ALIGN_RIGHT);
+            
+            styleBordeAbajoDerecha.setBorderBottom(HSSFCellStyle.BORDER_THIN);
+            styleBordeArribaDerecha.setBorderTop(HSSFCellStyle.BORDER_THIN);
+            styleBordeAbajoDerecha.setBorderRight(HSSFCellStyle.BORDER_THIN);
+            styleBordeArribaDerecha.setBorderRight(HSSFCellStyle.BORDER_THIN);
+            styleBordeDerecha.setBorderRight(HSSFCellStyle.BORDER_THIN);
+            
+            
+            /*XSSFCellStyle cs = wb.createCellStyle();
+            cs.setDataFormat((short)8);
+            cs.setFont(my_font);*/
+            
+            
+            
+            XSSFSheet sheet = wb.getSheetAt(0);
+            int filaInicio = 9;
+            int idFila = 1;
+            
+            
+            
+            for (Nomina empleado : nominaEmpleados){
+                XSSFRow filaLunesMes = sheet.getRow(12);
+                XSSFRow filaPeriodo = sheet.getRow(5);
+
+                XSSFCell celdaLunesMes = filaLunesMes.createCell(8);
+                XSSFCell celdaPeriodo = filaPeriodo.createCell(0);
+
+                celdaLunesMes.setCellStyle(styleBordeDerecha);
+                celdaPeriodo.setCellStyle(my_style);
+
+                celdaLunesMes.setCellValue(lunesMes);
+                celdaPeriodo.setCellValue(periodo);
+                
+                XSSFRow fila;
+                    
+                DateFormat format = new SimpleDateFormat("dd/MM/yy", Locale.ENGLISH);
+                Date ingreso = format.parse(empleado.getFecIngreso());
+                fila = sheet.getRow(6);
+                XSSFCell celdaId = fila.createCell(8);
+                celdaId.setCellStyle(styleBordeArribaDerecha);
+                celdaId.setCellValue(idFila);
+                
+                fila = sheet.getRow(8);
+                XSSFCell celdaNombreCompleto = fila.createCell(0);
+                celdaNombreCompleto.setCellStyle(my_style);
+                celdaNombreCompleto.setCellValue(empleado.getNombreCompleto());
+                
+                fila = sheet.getRow(8);
+                XSSFCell celdaCedula1 = fila.createCell(3);
+                celdaCedula1.setCellStyle(my_style);
+                celdaCedula1.setCellValue("V-" + empleado.getCedula());
+                
+                fila = sheet.getRow(8);
+                XSSFCell celdaCargo = fila.createCell(5);
+                celdaCargo.setCellStyle(my_style);
+                celdaCargo.setCellValue(empleado.getCargo());
+                
+                fila = sheet.getRow(10);
+                XSSFCell celdaFecIngreso = fila.createCell(8);
+                celdaFecIngreso.setCellStyle(styleBordeDerecha);
+                celdaFecIngreso.setCellValue(empleado.getFecIngreso());
+                
+                fila = sheet.getRow(11);
+                XSSFCell celdaSuedoQuincenal = fila.createCell(8);
+                celdaSuedoQuincenal.setCellStyle(styleBordeDerecha);
+                celdaSuedoQuincenal.setCellValue("Bs.S. " + empleado.getSueldoQuincenal());
+                
+                fila = sheet.getRow(13);
+                XSSFCell celdaPrecioSuplencia = fila.createCell(8);
+                celdaPrecioSuplencia.setCellStyle(styleBordeDerecha);
+                celdaPrecioSuplencia.setCellValue("Bs.S. " + empleado.getPrecioSuplencia());
+                
+                fila = sheet.getRow(14);
+                XSSFCell celdaDiasTrabajados = fila.createCell(8);
+                celdaDiasTrabajados.setCellStyle(styleBordeDerecha);
+                celdaDiasTrabajados.setCellValue(empleado.getDiasTrabajados());
+                
+                fila = sheet.getRow(15);
+                double asignaciones = empleado.getSueldoQuincenal() + empleado.getPrecioSuplencia();
+                XSSFCell celdaBanco = fila.createCell(8);
+                celdaBanco.setCellStyle(styleBordeDerecha);
+                celdaBanco.setCellValue("Bs.S. " + asignaciones);
+                
+                fila = sheet.getRow(17);
+                XSSFCell celdaSSO = fila.createCell(8);
+                celdaSSO.setCellStyle(styleBordeDerecha);
+                celdaSSO.setCellValue("Bs.S. " + empleado.getSSO());
+                
+                fila = sheet.getRow(18);
+                XSSFCell celdaParoForzoso = fila.createCell(8);
+                celdaParoForzoso.setCellStyle(styleBordeDerecha);
+                celdaParoForzoso.setCellValue("Bs.S. " + empleado.getParoForzoso());
+                
+                fila = sheet.getRow(19);
+                XSSFCell celdaLPH = fila.createCell(8);
+                celdaLPH.setCellStyle(styleBordeDerecha);
+                celdaLPH.setCellValue("Bs.S. " + empleado.getLPH());
+                
+                fila = sheet.getRow(20);
+                XSSFCell celdaMontoPrestamos = fila.createCell(8);
+                celdaMontoPrestamos.setCellStyle(styleBordeDerecha);
+                celdaMontoPrestamos.setCellValue("Bs.S. " + empleado.getMontoPrestamos());
+                
+                fila = sheet.getRow(22);
+                XSSFCell celdaDiasFaltados = fila.createCell(7);
+                celdaDiasFaltados.setCellStyle(my_style);
+                celdaDiasFaltados.setCellValue(empleado.getDiasFaltados());
+                
+                fila = sheet.getRow(22);
+                XSSFCell celdaPrecioInasistencia = fila.createCell(8);
+                celdaPrecioInasistencia.setCellStyle(styleBordeDerecha);
+                celdaPrecioInasistencia.setCellValue("Bs.S. " + empleado.getPrecioInasistencia());
+                                
+                fila = sheet.getRow(23);
+                XSSFCell celdaTotalDeducido = fila.createCell(8);
+                celdaTotalDeducido.setCellStyle(styleBordeDerecha);
+                celdaTotalDeducido.setCellValue("Bs.S. " + empleado.getTotalDeducido());
+                
+                fila = sheet.getRow(24);
+                XSSFCell celdaPagoNeto = fila.createCell(8);
+                celdaPagoNeto.setCellStyle(styleBordeArribaDerecha);
+                celdaPagoNeto.setCellValue("Bs.S. " + empleado.getPagoNeto());
+                
+                fila = sheet.getRow(27);
+                XSSFCell celdaCedula2 = fila.createCell(8);
+                celdaCedula2.setCellStyle(styleBordeAbajoDerecha);
+                celdaCedula2.setCellValue("V-" + empleado.getCedula());
+
+                FileOutputStream output = new FileOutputStream("Documentos\\ComprobantesPago\\" + fechaFin + "\\ComprobantePago_" + empleado.getCedula() + "_" + fechaFin + ".xlsx");
+                wb.write(output);
+                output.close();
+                
+                filaInicio++;
+                idFila++;
+            }
+            
+            file.close();
             
 
         } catch (Exception ex) {
