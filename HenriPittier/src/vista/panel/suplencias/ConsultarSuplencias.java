@@ -74,10 +74,7 @@ public class ConsultarSuplencias extends javax.swing.JPanel {
         btn_consultar = new javax.swing.JButton();
         lbl_tituloConsultarSuplencias = new javax.swing.JLabel();
 
-        setBackground(new java.awt.Color(204, 204, 204));
-
-        pnl_datosConsultarSuplencia.setBackground(new java.awt.Color(204, 204, 204));
-        pnl_datosConsultarSuplencia.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+        pnl_datosConsultarSuplencia.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         pnl_datosConsultarSuplencia.setPreferredSize(new java.awt.Dimension(840, 520));
 
         lbl_empleadoSuplencia.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
@@ -91,8 +88,9 @@ public class ConsultarSuplencias extends javax.swing.JPanel {
         cb_anos.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         cb_anos.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "2006", "2007", "2008", "2009", "2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025", "2026", "2027", "2028", "2029", "2030", "2031", "2032", "2033", "2034", "2035", "2036", "2037", "2038", "2039", "2040", "2041", "2042", "2043", "2044", "2045", "2046", "2047", "2048", "2049", "2050" }));
 
-        btn_limpiar.setBackground(new java.awt.Color(218, 87, 54));
-        btn_limpiar.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        btn_limpiar.setBackground(new java.awt.Color(153, 0, 0));
+        btn_limpiar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        btn_limpiar.setForeground(new java.awt.Color(255, 255, 255));
         btn_limpiar.setText("Limpiar");
         btn_limpiar.setPreferredSize(new java.awt.Dimension(109, 25));
         btn_limpiar.addActionListener(new java.awt.event.ActionListener() {
@@ -113,8 +111,9 @@ public class ConsultarSuplencias extends javax.swing.JPanel {
         tb_consultarSuplencias.setVerifyInputWhenFocusTarget(false);
         jScrollPane1.setViewportView(tb_consultarSuplencias);
 
-        btn_consultar.setBackground(new java.awt.Color(121, 213, 177));
-        btn_consultar.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        btn_consultar.setBackground(new java.awt.Color(0, 153, 102));
+        btn_consultar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        btn_consultar.setForeground(new java.awt.Color(255, 255, 255));
         btn_consultar.setText("Consultar");
         btn_consultar.setPreferredSize(new java.awt.Dimension(109, 25));
         btn_consultar.addActionListener(new java.awt.event.ActionListener() {
@@ -159,7 +158,7 @@ public class ConsultarSuplencias extends javax.swing.JPanel {
                     .addComponent(lbl_anoSuplencias)
                     .addComponent(cb_anos, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 311, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 312, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addGroup(pnl_datosConsultarSuplenciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn_limpiar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -184,11 +183,11 @@ public class ConsultarSuplencias extends javax.swing.JPanel {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(37, 37, 37)
+                .addGap(26, 26, 26)
                 .addComponent(lbl_tituloConsultarSuplencias)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(pnl_datosConsultarSuplencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(55, Short.MAX_VALUE))
+                .addContainerGap(66, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

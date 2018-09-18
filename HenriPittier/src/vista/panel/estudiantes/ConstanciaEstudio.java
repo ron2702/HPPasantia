@@ -146,18 +146,16 @@ public class ConstanciaEstudio extends javax.swing.JPanel {
         lbl_Email = new javax.swing.JLabel();
         lbl_Parrafo2 = new javax.swing.JLabel();
 
-        setBackground(new java.awt.Color(204, 204, 204));
-
         lbl_tituloModificarEstudiantes.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lbl_tituloModificarEstudiantes.setText("Constancia de Estudio");
 
-        pnl_datos.setBackground(new java.awt.Color(204, 204, 204));
         pnl_datos.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
         pnl_datos.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         pnl_datos.setPreferredSize(new java.awt.Dimension(840, 520));
 
-        btn_imprimir.setBackground(new java.awt.Color(121, 213, 177));
-        btn_imprimir.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        btn_imprimir.setBackground(new java.awt.Color(0, 153, 102));
+        btn_imprimir.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        btn_imprimir.setForeground(new java.awt.Color(255, 255, 255));
         btn_imprimir.setText("Imprimir");
         btn_imprimir.setPreferredSize(new java.awt.Dimension(109, 25));
         btn_imprimir.addActionListener(new java.awt.event.ActionListener() {
@@ -305,7 +303,7 @@ public class ConstanciaEstudio extends javax.swing.JPanel {
             .addComponent(lbl_Direccion)
             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
             .addComponent(lbl_Email)
-            .addContainerGap(41, Short.MAX_VALUE))
+            .addContainerGap(21, Short.MAX_VALUE))
     );
 
     javax.swing.GroupLayout pnl_datosLayout = new javax.swing.GroupLayout(pnl_datos);
@@ -317,7 +315,7 @@ public class ConstanciaEstudio extends javax.swing.JPanel {
             .addComponent(btn_imprimir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addGap(351, 351, 351))
         .addGroup(pnl_datosLayout.createSequentialGroup()
-            .addGap(35, 35, 35)
+            .addGap(41, 41, 41)
             .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(textoPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 750, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(pnl_datosLayout.createSequentialGroup()
@@ -338,7 +336,7 @@ public class ConstanciaEstudio extends javax.swing.JPanel {
                             .addComponent(dc_fechaDoc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(189, 189, 189)))
                     .addComponent(btn_Generar, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)))
-            .addContainerGap(49, Short.MAX_VALUE))
+            .addContainerGap(43, Short.MAX_VALUE))
     );
     pnl_datosLayout.setVerticalGroup(
         pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -358,8 +356,8 @@ public class ConstanciaEstudio extends javax.swing.JPanel {
                 .addGroup(pnl_datosLayout.createSequentialGroup()
                     .addGap(44, 44, 44)
                     .addComponent(btn_Generar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
-            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
-            .addComponent(textoPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGap(18, 18, 18)
+            .addComponent(textoPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 345, Short.MAX_VALUE)
             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
             .addComponent(btn_imprimir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addGap(18, 18, 18))
@@ -370,20 +368,20 @@ public class ConstanciaEstudio extends javax.swing.JPanel {
     layout.setHorizontalGroup(
         layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
         .addGroup(layout.createSequentialGroup()
-            .addGap(48, 48, 48)
+            .addGap(56, 56, 56)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(pnl_datos, javax.swing.GroupLayout.PREFERRED_SIZE, 838, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addComponent(lbl_tituloModificarEstudiantes))
-            .addContainerGap(64, Short.MAX_VALUE))
+            .addContainerGap(56, Short.MAX_VALUE))
     );
     layout.setVerticalGroup(
         layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
         .addGroup(layout.createSequentialGroup()
-            .addGap(33, 33, 33)
+            .addGap(26, 26, 26)
             .addComponent(lbl_tituloModificarEstudiantes)
-            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-            .addComponent(pnl_datos, javax.swing.GroupLayout.PREFERRED_SIZE, 545, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addContainerGap(34, Short.MAX_VALUE))
+            .addGap(18, 18, 18)
+            .addComponent(pnl_datos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addContainerGap(59, Short.MAX_VALUE))
     );
     }// </editor-fold>//GEN-END:initComponents
 

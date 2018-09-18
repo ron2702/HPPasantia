@@ -74,10 +74,7 @@ public class ModificarInasistencia extends javax.swing.JPanel {
         btn_modificar = new javax.swing.JButton();
         lbl_tituloModificarSuplencia = new javax.swing.JLabel();
 
-        setBackground(new java.awt.Color(204, 204, 204));
-
-        pnl_modificarInasistencia.setBackground(new java.awt.Color(204, 204, 204));
-        pnl_modificarInasistencia.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+        pnl_modificarInasistencia.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         lbl_empleadoSuplencia.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         lbl_empleadoSuplencia.setText("Nombre del empleado:");
@@ -103,8 +100,9 @@ public class ModificarInasistencia extends javax.swing.JPanel {
         cb_cantInasistencias.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31" }));
         cb_cantInasistencias.setPreferredSize(new java.awt.Dimension(40, 19));
 
-        btn_limpiar.setBackground(new java.awt.Color(218, 87, 54));
-        btn_limpiar.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        btn_limpiar.setBackground(new java.awt.Color(153, 0, 0));
+        btn_limpiar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        btn_limpiar.setForeground(new java.awt.Color(255, 255, 255));
         btn_limpiar.setText("Limpiar");
         btn_limpiar.setPreferredSize(new java.awt.Dimension(109, 25));
         btn_limpiar.addActionListener(new java.awt.event.ActionListener() {
@@ -113,10 +111,10 @@ public class ModificarInasistencia extends javax.swing.JPanel {
             }
         });
 
-        btn_modificar.setBackground(new java.awt.Color(121, 213, 177));
-        btn_modificar.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        btn_modificar.setBackground(new java.awt.Color(0, 153, 102));
+        btn_modificar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        btn_modificar.setForeground(new java.awt.Color(255, 255, 255));
         btn_modificar.setText("Modificar");
-        btn_modificar.setActionCommand("Modificar");
         btn_modificar.setPreferredSize(new java.awt.Dimension(109, 25));
         btn_modificar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -201,7 +199,7 @@ public class ModificarInasistencia extends javax.swing.JPanel {
                 .addComponent(lbl_tituloModificarSuplencia)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(pnl_modificarInasistencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(63, Short.MAX_VALUE))
+                .addContainerGap(64, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

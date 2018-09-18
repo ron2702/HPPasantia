@@ -64,8 +64,6 @@ public class AsignarEstGrupo extends javax.swing.JPanel {
         cb_listaEstudiantes = new javax.swing.JComboBox();
         btn_asignar = new javax.swing.JButton();
 
-        setBackground(new java.awt.Color(204, 204, 204));
-
         lbl_titulo.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lbl_titulo.setText("Asignar Estudiante a un Grupo");
 
@@ -84,6 +82,7 @@ public class AsignarEstGrupo extends javax.swing.JPanel {
 
         btn_asignar.setBackground(new java.awt.Color(0, 153, 102));
         btn_asignar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        btn_asignar.setForeground(new java.awt.Color(255, 255, 255));
         btn_asignar.setText("Asignar");
         btn_asignar.setPreferredSize(new java.awt.Dimension(109, 25));
         btn_asignar.addActionListener(new java.awt.event.ActionListener() {
@@ -107,9 +106,9 @@ public class AsignarEstGrupo extends javax.swing.JPanel {
                     .addComponent(cb_listaEstudiantes, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnl_datosLayout.createSequentialGroup()
-                .addContainerGap(364, Short.MAX_VALUE)
+                .addContainerGap(366, Short.MAX_VALUE)
                 .addComponent(btn_asignar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(361, 361, 361))
+                .addGap(359, 359, 359))
         );
         pnl_datosLayout.setVerticalGroup(
             pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -122,9 +121,9 @@ public class AsignarEstGrupo extends javax.swing.JPanel {
                 .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbl_tituloGrupoAlumnos)
                     .addComponent(cb_listaGrupos, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 196, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 297, Short.MAX_VALUE)
                 .addComponent(btn_asignar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(89, 89, 89))
+                .addGap(21, 21, 21))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -141,11 +140,11 @@ public class AsignarEstGrupo extends javax.swing.JPanel {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(45, 45, 45)
+                .addGap(26, 26, 26)
                 .addComponent(lbl_titulo)
                 .addGap(18, 18, 18)
-                .addComponent(pnl_datos, javax.swing.GroupLayout.PREFERRED_SIZE, 487, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(73, Short.MAX_VALUE))
+                .addComponent(pnl_datos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(59, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

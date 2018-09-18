@@ -228,14 +228,6 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="nominaEmpleadosActionPerformed"/>
               </Events>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="contanciaPago">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Constancia de Pago"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="contanciaPagoActionPerformed"/>
-              </Events>
-            </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="actualizarPrestamos">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Actualizar Pr&#xe9;stamos"/>
