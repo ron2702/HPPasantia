@@ -90,13 +90,13 @@ public class ConstanciaEstudio extends javax.swing.JPanel {
                         MesConstancia = mes;
                         AnoConstancia = String.valueOf(ano);
                         
-                        lbl_NombreEstudiante.setText("Por medio de la presente hacemos constar que el alumno(a) " + estudianteSeleccionado.getPrimerNombre().toUpperCase() + " " + estudianteSeleccionado.getPrimerApellido().toUpperCase()
-                                + " " + estudianteSeleccionado.getSegundoNombre().toUpperCase() + " " + estudianteSeleccionado.getSegundoApellido().toUpperCase() + ", está cursando el " +
+                        lbl_parrafo1.setText("Por medio de la presente hacemos constar que el alumno(a) " + estudianteSeleccionado.getPrimerApellido().toUpperCase() + " " + estudianteSeleccionado.getSegundoApellido().toUpperCase()
+                                + " " + estudianteSeleccionado.getPrimerNombre().toUpperCase() + " " + estudianteSeleccionado.getSegundoNombre().toUpperCase() + ", está cursando el " +
                                  grupoSeleccionado.getNombre() + " en el periodo " + grupoSeleccionado.getPeriodo() + "," + " en C.E.I HENRI PITTIER.");
    
                         lbl_Parrafo2.setText("Constancia que se expide a solicitud de la parte interesada a los " + dia + " dias del mes de " + mes + " de " + ano + ".");
                         
-                        Parrafo1 = lbl_NombreEstudiante.getText();
+                        Parrafo1 = lbl_parrafo1.getText();
                         Parrafo2 = lbl_Parrafo2.getText();
                               
                         lbl_Titulo.setVisible(true);
@@ -128,7 +128,7 @@ public class ConstanciaEstudio extends javax.swing.JPanel {
 
         lbl_tituloModificarEstudiantes = new javax.swing.JLabel();
         pnl_datos = new javax.swing.JPanel();
-        btn_imprimir = new javax.swing.JButton();
+        btn_crearDoc = new javax.swing.JButton();
         cb_listaEstudiantes = new javax.swing.JComboBox();
         lbl_tituloEstudiante = new javax.swing.JLabel();
         lbl_tituloGrupo = new javax.swing.JLabel();
@@ -137,7 +137,7 @@ public class ConstanciaEstudio extends javax.swing.JPanel {
         dc_fechaDoc = new datechooser.beans.DateChooserCombo();
         lbl_fecha = new javax.swing.JLabel();
         textoPanel = new javax.swing.JPanel();
-        lbl_NombreEstudiante = new javax.swing.JLabel();
+        lbl_parrafo1 = new javax.swing.JLabel();
         lbl_Titulo = new javax.swing.JLabel();
         lbl_Atentamente = new javax.swing.JLabel();
         lbl_Directora = new javax.swing.JLabel();
@@ -153,14 +153,14 @@ public class ConstanciaEstudio extends javax.swing.JPanel {
         pnl_datos.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         pnl_datos.setPreferredSize(new java.awt.Dimension(840, 520));
 
-        btn_imprimir.setBackground(new java.awt.Color(0, 153, 102));
-        btn_imprimir.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        btn_imprimir.setForeground(new java.awt.Color(255, 255, 255));
-        btn_imprimir.setText("Imprimir");
-        btn_imprimir.setPreferredSize(new java.awt.Dimension(109, 25));
-        btn_imprimir.addActionListener(new java.awt.event.ActionListener() {
+        btn_crearDoc.setBackground(new java.awt.Color(0, 153, 102));
+        btn_crearDoc.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        btn_crearDoc.setForeground(new java.awt.Color(255, 255, 255));
+        btn_crearDoc.setText("Crear Documento");
+        btn_crearDoc.setPreferredSize(new java.awt.Dimension(109, 25));
+        btn_crearDoc.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_imprimirActionPerformed(evt);
+                btn_crearDocActionPerformed(evt);
             }
         });
 
@@ -228,8 +228,8 @@ public class ConstanciaEstudio extends javax.swing.JPanel {
     textoPanel.setBackground(new java.awt.Color(255, 255, 255));
     textoPanel.setPreferredSize(new java.awt.Dimension(700, 365));
 
-    lbl_NombreEstudiante.setBackground(new java.awt.Color(255, 255, 255));
-    lbl_NombreEstudiante.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+    lbl_parrafo1.setBackground(new java.awt.Color(255, 255, 255));
+    lbl_parrafo1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
     lbl_Titulo.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
     lbl_Titulo.setText("CONSTANCIA DE ESTUDIO");
@@ -280,7 +280,7 @@ public class ConstanciaEstudio extends javax.swing.JPanel {
         .addGroup(textoPanelLayout.createSequentialGroup()
             .addGap(55, 55, 55)
             .addGroup(textoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                .addComponent(lbl_NombreEstudiante, javax.swing.GroupLayout.PREFERRED_SIZE, 639, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lbl_parrafo1, javax.swing.GroupLayout.PREFERRED_SIZE, 639, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addComponent(lbl_Parrafo2, javax.swing.GroupLayout.PREFERRED_SIZE, 639, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addContainerGap(56, Short.MAX_VALUE))
     );
@@ -290,7 +290,7 @@ public class ConstanciaEstudio extends javax.swing.JPanel {
             .addGap(44, 44, 44)
             .addComponent(lbl_Titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addGap(18, 18, 18)
-            .addComponent(lbl_NombreEstudiante, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(lbl_parrafo1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
             .addComponent(lbl_Parrafo2, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addGap(10, 10, 10)
@@ -310,10 +310,6 @@ public class ConstanciaEstudio extends javax.swing.JPanel {
     pnl_datos.setLayout(pnl_datosLayout);
     pnl_datosLayout.setHorizontalGroup(
         pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnl_datosLayout.createSequentialGroup()
-            .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(btn_imprimir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addGap(351, 351, 351))
         .addGroup(pnl_datosLayout.createSequentialGroup()
             .addGap(41, 41, 41)
             .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -337,6 +333,10 @@ public class ConstanciaEstudio extends javax.swing.JPanel {
                             .addGap(189, 189, 189)))
                     .addComponent(btn_Generar, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)))
             .addContainerGap(43, Short.MAX_VALUE))
+        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnl_datosLayout.createSequentialGroup()
+            .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(btn_crearDoc, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGap(324, 324, 324))
     );
     pnl_datosLayout.setVerticalGroup(
         pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -359,7 +359,7 @@ public class ConstanciaEstudio extends javax.swing.JPanel {
             .addGap(18, 18, 18)
             .addComponent(textoPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 345, Short.MAX_VALUE)
             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-            .addComponent(btn_imprimir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(btn_crearDoc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addGap(18, 18, 18))
     );
 
@@ -385,7 +385,7 @@ public class ConstanciaEstudio extends javax.swing.JPanel {
     );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btn_imprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_imprimirActionPerformed
+    private void btn_crearDocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_crearDocActionPerformed
 
             FileNameExtensionFilter filtroWord = new FileNameExtensionFilter("Microsoft Word", "docx");
             final JFileChooser miConstancia = new JFileChooser();
@@ -517,12 +517,12 @@ public class ConstanciaEstudio extends javax.swing.JPanel {
                 }
 
             }
-    }//GEN-LAST:event_btn_imprimirActionPerformed
+    }//GEN-LAST:event_btn_crearDocActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_Generar;
-    private javax.swing.JButton btn_imprimir;
+    private javax.swing.JButton btn_crearDoc;
     private javax.swing.JComboBox cb_listaEstudiantes;
     private javax.swing.JComboBox cb_listaGrupo;
     private datechooser.beans.DateChooserCombo dc_fechaDoc;
@@ -531,10 +531,10 @@ public class ConstanciaEstudio extends javax.swing.JPanel {
     private javax.swing.JLabel lbl_Direccion;
     private javax.swing.JLabel lbl_Directora;
     private javax.swing.JLabel lbl_Email;
-    private javax.swing.JLabel lbl_NombreEstudiante;
     private javax.swing.JLabel lbl_Parrafo2;
     private javax.swing.JLabel lbl_Titulo;
     private javax.swing.JLabel lbl_fecha;
+    private javax.swing.JLabel lbl_parrafo1;
     private javax.swing.JLabel lbl_tituloEstudiante;
     private javax.swing.JLabel lbl_tituloGrupo;
     private javax.swing.JLabel lbl_tituloModificarEstudiantes;

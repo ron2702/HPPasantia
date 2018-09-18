@@ -5,17 +5,42 @@
  */
 package vista.panel.estudiantes;
 
+import comun.Estudiante;
+import comun.Grupo;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import modelo.ComunicacionREST;
+
 /**
  *
  * @author Ronald
  */
 public class BoletinInformativo extends javax.swing.JPanel {
 
-    /**
-     * Creates new form BoletinInformativo
-     */
+    String primerNombre;
+    String primerApellido;
+    String segundoApellido;
+    String nombreGrupo;
+    
     public BoletinInformativo() {
-        initComponents();
+        try {
+            initComponents();
+            ComunicacionREST comRest = new ComunicacionREST();
+            ArrayList<Estudiante> listaEstudiantes = comRest.consultarEstudiantes();
+            ArrayList<Grupo> listaGrupos = comRest.consultarGrupos();
+             
+            for (Estudiante estudiante : listaEstudiantes) {
+                cb_listaEstudiantes.addItem(estudiante);
+            }
+            for (Grupo grupo : listaGrupos) {
+                cb_listaGrupo.addItem(grupo);
+            }
+            
+            
+        } catch (Exception ex) {
+            Logger.getLogger(BoletinInformativo.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -27,21 +52,304 @@ public class BoletinInformativo extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        lbl_tituloBoletinInformativo = new javax.swing.JLabel();
+        pnl_datos = new javax.swing.JPanel();
+        cb_listaEstudiantes = new javax.swing.JComboBox();
+        lbl_tituloEstudiante = new javax.swing.JLabel();
+        lbl_tituloGrupo = new javax.swing.JLabel();
+        cb_listaGrupo = new javax.swing.JComboBox();
+        dc_fechaDoc = new datechooser.beans.DateChooserCombo();
+        lbl_fecha = new javax.swing.JLabel();
+        lbl_desde = new javax.swing.JLabel();
+        txt_desde = new javax.swing.JTextField();
+        lbl_hasta = new javax.swing.JLabel();
+        txt_hasta = new javax.swing.JTextField();
+        lbl_proyectos = new javax.swing.JLabel();
+        txt_proyectos = new javax.swing.JTextField();
+        lbl_formacion = new javax.swing.JLabel();
+        sp_formacion = new javax.swing.JScrollPane();
+        txt_formacion = new javax.swing.JTextArea();
+        sp_relacion = new javax.swing.JScrollPane();
+        txt_relacion = new javax.swing.JTextArea();
+        lbl_relacion = new javax.swing.JLabel();
+        lbl_observaciones = new javax.swing.JLabel();
+        sp_observaciones = new javax.swing.JScrollPane();
+        txt_formacion1 = new javax.swing.JTextArea();
+        btn_crearDoc = new javax.swing.JButton();
+
         setBackground(new java.awt.Color(204, 204, 204));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 950, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 640, Short.MAX_VALUE)
-        );
+        lbl_tituloBoletinInformativo.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lbl_tituloBoletinInformativo.setText("Boletin Informativo");
+
+        pnl_datos.setBackground(new java.awt.Color(204, 204, 204));
+        pnl_datos.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+        pnl_datos.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        pnl_datos.setPreferredSize(new java.awt.Dimension(840, 520));
+
+        cb_listaEstudiantes.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+
+        lbl_tituloEstudiante.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        lbl_tituloEstudiante.setText("Estudiante:");
+
+        lbl_tituloGrupo.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        lbl_tituloGrupo.setText("Grupo:");
+
+        cb_listaGrupo.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+
+        dc_fechaDoc.setCurrentView(new datechooser.view.appearance.AppearancesList("Swing",
+            new datechooser.view.appearance.ViewAppearance("custom",
+                new datechooser.view.appearance.swing.SwingCellAppearance(new java.awt.Font("Tahoma", java.awt.Font.PLAIN, 11),
+                    new java.awt.Color(0, 0, 0),
+                    new java.awt.Color(0, 0, 255),
+                    false,
+                    true,
+                    new datechooser.view.appearance.swing.ButtonPainter()),
+                new datechooser.view.appearance.swing.SwingCellAppearance(new java.awt.Font("Tahoma", java.awt.Font.PLAIN, 11),
+                    new java.awt.Color(0, 0, 0),
+                    new java.awt.Color(0, 0, 255),
+                    true,
+                    true,
+                    new datechooser.view.appearance.swing.ButtonPainter()),
+                new datechooser.view.appearance.swing.SwingCellAppearance(new java.awt.Font("Tahoma", java.awt.Font.PLAIN, 11),
+                    new java.awt.Color(0, 0, 255),
+                    new java.awt.Color(0, 0, 255),
+                    false,
+                    true,
+                    new datechooser.view.appearance.swing.ButtonPainter()),
+                new datechooser.view.appearance.swing.SwingCellAppearance(new java.awt.Font("Tahoma", java.awt.Font.PLAIN, 11),
+                    new java.awt.Color(128, 128, 128),
+                    new java.awt.Color(0, 0, 255),
+                    false,
+                    true,
+                    new datechooser.view.appearance.swing.LabelPainter()),
+                new datechooser.view.appearance.swing.SwingCellAppearance(new java.awt.Font("Tahoma", java.awt.Font.PLAIN, 11),
+                    new java.awt.Color(0, 0, 0),
+                    new java.awt.Color(0, 0, 255),
+                    false,
+                    true,
+                    new datechooser.view.appearance.swing.LabelPainter()),
+                new datechooser.view.appearance.swing.SwingCellAppearance(new java.awt.Font("Tahoma", java.awt.Font.PLAIN, 11),
+                    new java.awt.Color(0, 0, 0),
+                    new java.awt.Color(255, 0, 0),
+                    false,
+                    false,
+                    new datechooser.view.appearance.swing.ButtonPainter()),
+                (datechooser.view.BackRenderer)null,
+                false,
+                true)));
+    dc_fechaDoc.setCalendarBackground(new java.awt.Color(255, 255, 255));
+    dc_fechaDoc.setCalendarPreferredSize(new java.awt.Dimension(400, 250));
+    dc_fechaDoc.setFieldFont(new java.awt.Font("Tahoma", java.awt.Font.PLAIN, 12));
+    dc_fechaDoc.setNavigateFont(new java.awt.Font("Serif", java.awt.Font.PLAIN, 8));
+
+    lbl_fecha.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+    lbl_fecha.setText("Fecha:");
+
+    lbl_desde.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+    lbl_desde.setText("Desde:");
+
+    lbl_hasta.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+    lbl_hasta.setText("Hasta:");
+
+    lbl_proyectos.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+    lbl_proyectos.setText("Proyectos:");
+
+    lbl_formacion.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+    lbl_formacion.setText("Formacion personal, social y comunicación:");
+
+    txt_formacion.setColumns(20);
+    txt_formacion.setRows(5);
+    sp_formacion.setViewportView(txt_formacion);
+
+    txt_relacion.setColumns(20);
+    txt_relacion.setRows(5);
+    sp_relacion.setViewportView(txt_relacion);
+
+    lbl_relacion.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+    lbl_relacion.setText("Relación con otros componentes del ambiente");
+
+    lbl_observaciones.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+    lbl_observaciones.setText("Observaciones:");
+
+    txt_formacion1.setColumns(20);
+    txt_formacion1.setRows(5);
+    sp_observaciones.setViewportView(txt_formacion1);
+
+    btn_crearDoc.setBackground(new java.awt.Color(121, 213, 177));
+    btn_crearDoc.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+    btn_crearDoc.setText("Crear Documento");
+    btn_crearDoc.setPreferredSize(new java.awt.Dimension(109, 25));
+    btn_crearDoc.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            btn_crearDocActionPerformed(evt);
+        }
+    });
+
+    javax.swing.GroupLayout pnl_datosLayout = new javax.swing.GroupLayout(pnl_datos);
+    pnl_datos.setLayout(pnl_datosLayout);
+    pnl_datosLayout.setHorizontalGroup(
+        pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addGroup(pnl_datosLayout.createSequentialGroup()
+            .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(pnl_datosLayout.createSequentialGroup()
+                    .addGap(35, 35, 35)
+                    .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(pnl_datosLayout.createSequentialGroup()
+                            .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(pnl_datosLayout.createSequentialGroup()
+                                    .addComponent(lbl_tituloEstudiante, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(35, 35, 35)
+                                    .addComponent(cb_listaEstudiantes, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(pnl_datosLayout.createSequentialGroup()
+                                    .addComponent(lbl_desde, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(58, 58, 58)
+                                    .addComponent(txt_desde, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGap(139, 139, 139)
+                            .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnl_datosLayout.createSequentialGroup()
+                                    .addComponent(lbl_tituloGrupo)
+                                    .addGap(18, 18, 18))
+                                .addGroup(pnl_datosLayout.createSequentialGroup()
+                                    .addComponent(lbl_hasta)
+                                    .addGap(30, 30, 30)))
+                            .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(txt_hasta, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(cb_listaGrupo, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(pnl_datosLayout.createSequentialGroup()
+                            .addComponent(lbl_fecha, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(58, 58, 58)
+                            .addComponent(dc_fechaDoc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(pnl_datosLayout.createSequentialGroup()
+                            .addComponent(lbl_proyectos)
+                            .addGap(50, 50, 50)
+                            .addComponent(txt_proyectos, javax.swing.GroupLayout.PREFERRED_SIZE, 396, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(pnl_datosLayout.createSequentialGroup()
+                            .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(sp_formacion, javax.swing.GroupLayout.PREFERRED_SIZE, 356, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(lbl_formacion))
+                            .addGap(43, 43, 43)
+                            .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(lbl_relacion)
+                                .addComponent(sp_relacion, javax.swing.GroupLayout.PREFERRED_SIZE, 356, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addGroup(pnl_datosLayout.createSequentialGroup()
+                    .addGap(371, 371, 371)
+                    .addComponent(lbl_observaciones))
+                .addGroup(pnl_datosLayout.createSequentialGroup()
+                    .addGap(233, 233, 233)
+                    .addComponent(sp_observaciones, javax.swing.GroupLayout.PREFERRED_SIZE, 356, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(pnl_datosLayout.createSequentialGroup()
+                    .addGap(344, 344, 344)
+                    .addComponent(btn_crearDoc, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)))
+            .addContainerGap(44, Short.MAX_VALUE))
+    );
+    pnl_datosLayout.setVerticalGroup(
+        pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnl_datosLayout.createSequentialGroup()
+            .addGap(19, 19, 19)
+            .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(lbl_tituloEstudiante)
+                .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbl_tituloGrupo)
+                    .addComponent(cb_listaGrupo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cb_listaEstudiantes, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+            .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(lbl_fecha, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(dc_fechaDoc, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGap(18, 18, 18)
+            .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(pnl_datosLayout.createSequentialGroup()
+                    .addComponent(lbl_desde, javax.swing.GroupLayout.DEFAULT_SIZE, 27, Short.MAX_VALUE)
+                    .addGap(32, 32, 32)
+                    .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(lbl_proyectos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(txt_proyectos, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGap(28, 28, 28))
+                .addGroup(pnl_datosLayout.createSequentialGroup()
+                    .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txt_desde, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lbl_hasta)
+                        .addComponent(txt_hasta, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGap(82, 82, 82)))
+            .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(lbl_formacion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lbl_relacion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+            .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(sp_formacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(sp_relacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+            .addComponent(lbl_observaciones, javax.swing.GroupLayout.DEFAULT_SIZE, 22, Short.MAX_VALUE)
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+            .addComponent(sp_observaciones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+            .addComponent(btn_crearDoc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGap(27, 27, 27))
+    );
+
+    javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+    this.setLayout(layout);
+    layout.setHorizontalGroup(
+        layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addGroup(layout.createSequentialGroup()
+            .addGap(38, 38, 38)
+            .addComponent(lbl_tituloBoletinInformativo)
+            .addContainerGap(777, Short.MAX_VALUE))
+        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(56, 56, 56)
+                .addComponent(pnl_datos, javax.swing.GroupLayout.PREFERRED_SIZE, 838, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(56, Short.MAX_VALUE)))
+    );
+    layout.setVerticalGroup(
+        layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addGroup(layout.createSequentialGroup()
+            .addGap(21, 21, 21)
+            .addComponent(lbl_tituloBoletinInformativo)
+            .addContainerGap(602, Short.MAX_VALUE))
+        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(47, 47, 47)
+                .addComponent(pnl_datos, javax.swing.GroupLayout.PREFERRED_SIZE, 545, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(48, Short.MAX_VALUE)))
+    );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btn_crearDocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_crearDocActionPerformed
+        
+        try {
+            
+        } catch (Exception e) {
+        }
+        
+    }//GEN-LAST:event_btn_crearDocActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btn_crearDoc;
+    private javax.swing.JComboBox cb_listaEstudiantes;
+    private javax.swing.JComboBox cb_listaGrupo;
+    private datechooser.beans.DateChooserCombo dc_fechaDoc;
+    private javax.swing.JLabel lbl_desde;
+    private javax.swing.JLabel lbl_fecha;
+    private javax.swing.JLabel lbl_formacion;
+    private javax.swing.JLabel lbl_hasta;
+    private javax.swing.JLabel lbl_observaciones;
+    private javax.swing.JLabel lbl_proyectos;
+    private javax.swing.JLabel lbl_relacion;
+    private javax.swing.JLabel lbl_tituloBoletinInformativo;
+    private javax.swing.JLabel lbl_tituloEstudiante;
+    private javax.swing.JLabel lbl_tituloGrupo;
+    private javax.swing.JPanel pnl_datos;
+    private javax.swing.JScrollPane sp_formacion;
+    private javax.swing.JScrollPane sp_observaciones;
+    private javax.swing.JScrollPane sp_relacion;
+    private javax.swing.JTextField txt_desde;
+    private javax.swing.JTextArea txt_formacion;
+    private javax.swing.JTextArea txt_formacion1;
+    private javax.swing.JTextField txt_hasta;
+    private javax.swing.JTextField txt_proyectos;
+    private javax.swing.JTextArea txt_relacion;
     // End of variables declaration//GEN-END:variables
 }
