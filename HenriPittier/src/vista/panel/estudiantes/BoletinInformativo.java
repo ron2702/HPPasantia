@@ -7,10 +7,23 @@ package vista.panel.estudiantes;
 
 import comun.Estudiante;
 import comun.Grupo;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import modelo.ComunicacionREST;
+import org.apache.poi.xwpf.usermodel.ParagraphAlignment;
+import org.apache.poi.xwpf.usermodel.XWPFDocument;
+import org.apache.poi.xwpf.usermodel.XWPFParagraph;
+import org.apache.poi.xwpf.usermodel.XWPFRun;
 
 /**
  *
@@ -22,6 +35,7 @@ public class BoletinInformativo extends javax.swing.JPanel {
     String primerApellido;
     String segundoApellido;
     String nombreGrupo;
+    String lapso;
     
     public BoletinInformativo() {
         try {
@@ -74,8 +88,10 @@ public class BoletinInformativo extends javax.swing.JPanel {
         lbl_relacion = new javax.swing.JLabel();
         lbl_observaciones = new javax.swing.JLabel();
         sp_observaciones = new javax.swing.JScrollPane();
-        txt_formacion1 = new javax.swing.JTextArea();
+        txt_observaciones = new javax.swing.JTextArea();
         btn_crearDoc = new javax.swing.JButton();
+        cb_lapso = new javax.swing.JComboBox();
+        lbl_lapso = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(204, 204, 204));
 
@@ -159,10 +175,12 @@ public class BoletinInformativo extends javax.swing.JPanel {
     lbl_formacion.setText("Formacion personal, social y comunicación:");
 
     txt_formacion.setColumns(20);
+    txt_formacion.setLineWrap(true);
     txt_formacion.setRows(5);
     sp_formacion.setViewportView(txt_formacion);
 
     txt_relacion.setColumns(20);
+    txt_relacion.setLineWrap(true);
     txt_relacion.setRows(5);
     sp_relacion.setViewportView(txt_relacion);
 
@@ -172,9 +190,10 @@ public class BoletinInformativo extends javax.swing.JPanel {
     lbl_observaciones.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
     lbl_observaciones.setText("Observaciones:");
 
-    txt_formacion1.setColumns(20);
-    txt_formacion1.setRows(5);
-    sp_observaciones.setViewportView(txt_formacion1);
+    txt_observaciones.setColumns(20);
+    txt_observaciones.setLineWrap(true);
+    txt_observaciones.setRows(5);
+    sp_observaciones.setViewportView(txt_observaciones);
 
     btn_crearDoc.setBackground(new java.awt.Color(121, 213, 177));
     btn_crearDoc.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
@@ -186,6 +205,12 @@ public class BoletinInformativo extends javax.swing.JPanel {
         }
     });
 
+    cb_lapso.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+    cb_lapso.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Primer Lapso", "Segundo Lapso", "Tercer Lapso" }));
+
+    lbl_lapso.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+    lbl_lapso.setText("Lapso:");
+
     javax.swing.GroupLayout pnl_datosLayout = new javax.swing.GroupLayout(pnl_datos);
     pnl_datos.setLayout(pnl_datosLayout);
     pnl_datosLayout.setHorizontalGroup(
@@ -195,31 +220,6 @@ public class BoletinInformativo extends javax.swing.JPanel {
                 .addGroup(pnl_datosLayout.createSequentialGroup()
                     .addGap(35, 35, 35)
                     .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(pnl_datosLayout.createSequentialGroup()
-                            .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(pnl_datosLayout.createSequentialGroup()
-                                    .addComponent(lbl_tituloEstudiante, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(35, 35, 35)
-                                    .addComponent(cb_listaEstudiantes, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(pnl_datosLayout.createSequentialGroup()
-                                    .addComponent(lbl_desde, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(58, 58, 58)
-                                    .addComponent(txt_desde, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGap(139, 139, 139)
-                            .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnl_datosLayout.createSequentialGroup()
-                                    .addComponent(lbl_tituloGrupo)
-                                    .addGap(18, 18, 18))
-                                .addGroup(pnl_datosLayout.createSequentialGroup()
-                                    .addComponent(lbl_hasta)
-                                    .addGap(30, 30, 30)))
-                            .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(txt_hasta, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(cb_listaGrupo, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGroup(pnl_datosLayout.createSequentialGroup()
-                            .addComponent(lbl_fecha, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(58, 58, 58)
-                            .addComponent(dc_fechaDoc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(pnl_datosLayout.createSequentialGroup()
                             .addComponent(lbl_proyectos)
                             .addGap(50, 50, 50)
@@ -231,7 +231,31 @@ public class BoletinInformativo extends javax.swing.JPanel {
                             .addGap(43, 43, 43)
                             .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(lbl_relacion)
-                                .addComponent(sp_relacion, javax.swing.GroupLayout.PREFERRED_SIZE, 356, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(sp_relacion, javax.swing.GroupLayout.PREFERRED_SIZE, 356, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(pnl_datosLayout.createSequentialGroup()
+                            .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(pnl_datosLayout.createSequentialGroup()
+                                    .addComponent(lbl_tituloEstudiante, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(35, 35, 35)
+                                    .addComponent(cb_listaEstudiantes, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(pnl_datosLayout.createSequentialGroup()
+                                    .addComponent(lbl_desde, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(58, 58, 58)
+                                    .addComponent(txt_desde, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(pnl_datosLayout.createSequentialGroup()
+                                    .addComponent(lbl_fecha, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(58, 58, 58)
+                                    .addComponent(dc_fechaDoc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGap(148, 148, 148)
+                            .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(lbl_lapso)
+                                .addComponent(lbl_tituloGrupo)
+                                .addComponent(lbl_hasta))
+                            .addGap(18, 18, 18)
+                            .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(cb_lapso, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txt_hasta, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(cb_listaGrupo, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addGroup(pnl_datosLayout.createSequentialGroup()
                     .addGap(371, 371, 371)
                     .addComponent(lbl_observaciones))
@@ -256,7 +280,10 @@ public class BoletinInformativo extends javax.swing.JPanel {
             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
             .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(lbl_fecha, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(dc_fechaDoc, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(dc_fechaDoc, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cb_lapso, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbl_lapso)))
             .addGap(18, 18, 18)
             .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(pnl_datosLayout.createSequentialGroup()
@@ -280,7 +307,7 @@ public class BoletinInformativo extends javax.swing.JPanel {
                 .addComponent(sp_formacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addComponent(sp_relacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-            .addComponent(lbl_observaciones, javax.swing.GroupLayout.DEFAULT_SIZE, 22, Short.MAX_VALUE)
+            .addComponent(lbl_observaciones, javax.swing.GroupLayout.DEFAULT_SIZE, 21, Short.MAX_VALUE)
             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
             .addComponent(sp_observaciones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -320,7 +347,162 @@ public class BoletinInformativo extends javax.swing.JPanel {
         
         try {
             
-        } catch (Exception e) {
+             Estudiante estudianteSeleccionado = (Estudiante) cb_listaEstudiantes.getSelectedItem();
+             Grupo grupoSeleccionado = (Grupo) cb_listaGrupo.getSelectedItem();
+             
+             SimpleDateFormat parseFecha = new SimpleDateFormat("dd/MM/yy");
+             Date fechaDoc = parseFecha.parse(dc_fechaDoc.getText());
+             String fechaDocumento = parseFecha.format(fechaDoc);
+             
+             
+             primerNombre = estudianteSeleccionado.getPrimerNombre();
+             primerApellido = estudianteSeleccionado.getPrimerApellido();
+             segundoApellido = estudianteSeleccionado.getSegundoApellido();
+             nombreGrupo = grupoSeleccionado.getNombre();
+             lapso = (String) cb_lapso.getSelectedItem();
+             
+             FileNameExtensionFilter filtroWord = new FileNameExtensionFilter("Microsoft Word", "docx");
+             final JFileChooser miBoletin = new JFileChooser();
+             miBoletin.setFileFilter(filtroWord);
+             int aceptar = miBoletin.showSaveDialog(null);
+             miBoletin.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+             
+             if(aceptar == JFileChooser.APPROVE_OPTION){
+                File archivoWord = miBoletin.getSelectedFile();
+                String nombreArchivo = archivoWord.getName();
+                if(nombreArchivo.indexOf('.') == -1){
+                    nombreArchivo+=".docx";
+                    archivoWord = new File(archivoWord.getParentFile(), nombreArchivo);
+                }
+                try {
+                 
+                    FileOutputStream output = new FileOutputStream(archivoWord);
+                    
+                    XWPFDocument document = new XWPFDocument();
+                    
+                    XWPFParagraph paragraphTitulo = document.createParagraph();
+                    XWPFParagraph paragraphNombres = document.createParagraph();
+                    XWPFParagraph paragraphGrupo = document.createParagraph();
+                    XWPFParagraph paragraphDesdeHasta = document.createParagraph();
+                    XWPFParagraph paragraphProyectos = document.createParagraph();
+                    XWPFParagraph paragraphTituloFormacion = document.createParagraph();
+                    XWPFParagraph paragraphFormacion = document.createParagraph();
+                    XWPFParagraph paragraphTituloRelaciones = document.createParagraph();
+                    XWPFParagraph paragraphRelaciones = document.createParagraph();
+                    XWPFParagraph paragraphTituloObservaciones = document.createParagraph();
+                    XWPFParagraph paragraphObservaciones = document.createParagraph();
+                    XWPFParagraph paragraphFecha = document.createParagraph();
+                    XWPFParagraph paragraphFirma = document.createParagraph();
+                    
+                    
+                    
+                    XWPFRun runTitulo = paragraphTitulo.createRun();
+                    XWPFRun runNombres = paragraphNombres.createRun();
+                    XWPFRun runGrupo = paragraphGrupo.createRun();
+                    XWPFRun runDesdeHasta = paragraphDesdeHasta.createRun();
+                    XWPFRun runProyectos = paragraphProyectos.createRun();
+                    XWPFRun runTituloFormacion = paragraphTituloFormacion.createRun();
+                    XWPFRun runFormacion = paragraphFormacion.createRun();
+                    XWPFRun runTituloRelaciones = paragraphTituloRelaciones.createRun();
+                    XWPFRun runRelaciones = paragraphRelaciones.createRun();
+                    XWPFRun runTituloObservaciones = paragraphTituloObservaciones.createRun();
+                    XWPFRun runObservaciones = paragraphObservaciones.createRun();
+                    XWPFRun runFecha = paragraphFecha.createRun();
+                    XWPFRun runFirma = paragraphFirma.createRun();
+                   
+                    
+                    
+                    
+                    runTitulo.setText(lapso);
+                    paragraphTitulo.setAlignment(ParagraphAlignment.CENTER);
+                    runTitulo.setBold(true);
+                    runTitulo.setFontSize(12);
+                    runTitulo.setFontFamily("Arial");
+                    runTitulo.addBreak();
+                    
+                    runNombres.setText("Nombre y Apellidos: " +  primerNombre + " " + primerApellido + " " + segundoApellido);
+                    runNombres.setFontSize(12);
+                    runNombres.setFontFamily("Arial");
+                    
+                    runGrupo.setText("Grupo: " + nombreGrupo);
+                    runGrupo.setFontSize(12);
+                    runGrupo.setFontFamily("Arial");
+                    
+                    
+                    runDesdeHasta.setText("Desde: " + txt_desde.getText() + "                  " + "Hasta: " + txt_hasta.getText());
+                    runDesdeHasta.setFontSize(12);
+                    runDesdeHasta.setFontFamily("Arial");
+                    
+                    runProyectos.setText("Proyectos: " + txt_proyectos.getText());
+                    runProyectos.setFontSize(12);
+                    runProyectos.setFontFamily("Arial");
+                    runProyectos.addBreak();
+                    
+                    runTituloFormacion.setText(lbl_formacion.getText());
+                    runTituloFormacion.setBold(true);
+                    runTituloFormacion.setFontSize(12);
+                    runTituloFormacion.setFontFamily("Arial");
+                    
+                    runFormacion.setText(txt_formacion.getText());
+                    paragraphFormacion.setAlignment(ParagraphAlignment.BOTH);
+                    runFormacion.setFontSize(12);
+                    runFormacion.setFontFamily("Arial");
+                    runFormacion.addBreak();
+                    
+                    runTituloRelaciones.setText(lbl_relacion.getText());
+                    runTituloRelaciones.setBold(true);
+                    runTituloRelaciones.setFontSize(12);
+                    runTituloRelaciones.setFontFamily("Arial");
+                    
+                    runRelaciones.setText(txt_relacion.getText());
+                    paragraphRelaciones.setAlignment(ParagraphAlignment.BOTH);
+                    runRelaciones.setFontSize(12);
+                    runRelaciones.setFontFamily("Arial");
+                    runRelaciones.addBreak();
+                    
+                    runTituloObservaciones.setText(lbl_observaciones.getText());
+                    runTituloObservaciones.setBold(true);
+                    runTituloObservaciones.setFontSize(12);
+                    runTituloObservaciones.setFontFamily("Arial");
+                    
+                    runObservaciones.setText(txt_observaciones.getText());
+                    paragraphObservaciones.setAlignment(ParagraphAlignment.BOTH);
+                    runObservaciones.setFontSize(12);
+                    runObservaciones.setFontFamily("Arial");
+                    runObservaciones.addBreak();
+                    
+                    runFecha.setText("Fecha: " + fechaDocumento);
+                    runFecha.setFontSize(12);
+                    runFecha.setFontFamily("Arial");
+                    runFecha.addBreak();
+                    runFecha.addBreak();
+                    runFecha.addBreak();
+                    runFecha.addBreak();
+                    runFecha.addBreak();
+                    runFecha.addBreak();
+                    runFecha.addBreak();
+                    runFecha.addBreak();
+                    runFecha.addBreak();
+                    
+                    runFirma.setText("        Docente" + "                               " + "Directivo" + "                               " + "Representante");
+                    runFirma.setFontSize(12);
+                    runFirma.setFontFamily("Arial");
+                    
+                    document.write(output);
+                    output.close();
+                 
+                    final JPanel panel = new JPanel();
+                    JOptionPane.showMessageDialog(panel, "Se genero exitosamente el documento", "Información", JOptionPane.INFORMATION_MESSAGE);
+                
+                } catch (Exception e) {
+                    JOptionPane.showMessageDialog(null, e.getMessage().toString());
+                }
+                 
+            }
+             
+   
+        } catch (Exception ex) {
+            Logger.getLogger(BoletinInformativo.class.getName()).log(Level.SEVERE, null, ex);
         }
         
     }//GEN-LAST:event_btn_crearDocActionPerformed
@@ -328,6 +510,7 @@ public class BoletinInformativo extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_crearDoc;
+    private javax.swing.JComboBox cb_lapso;
     private javax.swing.JComboBox cb_listaEstudiantes;
     private javax.swing.JComboBox cb_listaGrupo;
     private datechooser.beans.DateChooserCombo dc_fechaDoc;
@@ -335,6 +518,7 @@ public class BoletinInformativo extends javax.swing.JPanel {
     private javax.swing.JLabel lbl_fecha;
     private javax.swing.JLabel lbl_formacion;
     private javax.swing.JLabel lbl_hasta;
+    private javax.swing.JLabel lbl_lapso;
     private javax.swing.JLabel lbl_observaciones;
     private javax.swing.JLabel lbl_proyectos;
     private javax.swing.JLabel lbl_relacion;
@@ -347,8 +531,8 @@ public class BoletinInformativo extends javax.swing.JPanel {
     private javax.swing.JScrollPane sp_relacion;
     private javax.swing.JTextField txt_desde;
     private javax.swing.JTextArea txt_formacion;
-    private javax.swing.JTextArea txt_formacion1;
     private javax.swing.JTextField txt_hasta;
+    private javax.swing.JTextArea txt_observaciones;
     private javax.swing.JTextField txt_proyectos;
     private javax.swing.JTextArea txt_relacion;
     // End of variables declaration//GEN-END:variables
