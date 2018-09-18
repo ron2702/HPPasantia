@@ -32,8 +32,8 @@ public class Nominas extends javax.swing.JPanel {
     ArrayList<Nomina> nominaEmpleados;
     int cantLunes = cantidadLunesMes(new Date());
     DateFormat dateFormato = new SimpleDateFormat("dd/MM/yy");
-    String rangoInicio = dateFormato.format(obtenerFechaFinQuincena(new Date()));
-    String rangoFin = dateFormato.format(obtenerFechaInicioQuincena(obtenerFechaFinQuincena(new Date())));
+    String rangoFin = dateFormato.format(obtenerFechaFinQuincena(new Date()));
+    String rangoInicio = dateFormato.format(obtenerFechaInicioQuincena(obtenerFechaFinQuincena(new Date())));
    
     private String nombreCompleto(Empleado empleado) {
         String segundoNombre = "";
@@ -378,7 +378,8 @@ public class Nominas extends javax.swing.JPanel {
     private void btn_registrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_registrarActionPerformed
         try {
             DocumentosExcel doc = new DocumentosExcel();
-            doc.modificarNomina(nominaEmpleados, cantLunes, rangoInicio, rangoFin);
+            doc.crearNomina(nominaEmpleados, cantLunes, rangoInicio, rangoFin);
+            doc.crearComprobantes(nominaEmpleados, cantLunes, rangoInicio, rangoFin);
         } catch (IOException ex) {
             Logger.getLogger(Nominas.class.getName()).log(Level.SEVERE, null, ex);
         }
