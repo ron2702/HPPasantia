@@ -101,13 +101,10 @@ public class ModificarGrupo extends javax.swing.JPanel {
         lbl_tituloModificar = new javax.swing.JLabel();
         cb_listaGrupos = new javax.swing.JComboBox();
 
-        setBackground(new java.awt.Color(204, 204, 204));
-
         lbl_tituloModificarGrupo.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lbl_tituloModificarGrupo.setText("Modificar Grupo");
 
-        pnl_datos.setBackground(new java.awt.Color(204, 204, 204));
-        pnl_datos.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+        pnl_datos.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         pnl_datos.setPreferredSize(new java.awt.Dimension(840, 520));
 
         lbl_codigo.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
@@ -143,8 +140,9 @@ public class ModificarGrupo extends javax.swing.JPanel {
             }
         });
 
-        btn_limpiar.setBackground(new java.awt.Color(218, 87, 54));
-        btn_limpiar.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        btn_limpiar.setBackground(new java.awt.Color(153, 0, 0));
+        btn_limpiar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        btn_limpiar.setForeground(new java.awt.Color(255, 255, 255));
         btn_limpiar.setText("Limpiar");
         btn_limpiar.setPreferredSize(new java.awt.Dimension(109, 25));
         btn_limpiar.addActionListener(new java.awt.event.ActionListener() {
@@ -153,8 +151,9 @@ public class ModificarGrupo extends javax.swing.JPanel {
             }
         });
 
-        btn_modificar.setBackground(new java.awt.Color(121, 213, 177));
-        btn_modificar.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        btn_modificar.setBackground(new java.awt.Color(0, 153, 102));
+        btn_modificar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        btn_modificar.setForeground(new java.awt.Color(255, 255, 255));
         btn_modificar.setText("Modificar");
         btn_modificar.setPreferredSize(new java.awt.Dimension(109, 25));
         btn_modificar.addActionListener(new java.awt.event.ActionListener() {
@@ -213,7 +212,7 @@ public class ModificarGrupo extends javax.swing.JPanel {
                         .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lbl_periodo)
                             .addComponent(lbl_capacidad))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 61, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
                         .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txt_periodo, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txt_capacidad, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -222,11 +221,11 @@ public class ModificarGrupo extends javax.swing.JPanel {
         pnl_datosLayout.setVerticalGroup(
             pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnl_datosLayout.createSequentialGroup()
-                .addGap(23, 23, 23)
+                .addGap(73, 73, 73)
                 .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbl_tituloModificar)
                     .addComponent(cb_listaGrupos, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(57, 57, 57)
+                .addGap(59, 59, 59)
                 .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbl_codigo)
                     .addComponent(txt_codigo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -242,11 +241,11 @@ public class ModificarGrupo extends javax.swing.JPanel {
                 .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbl_descripcion)
                     .addComponent(txt_descripcion, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 223, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 175, Short.MAX_VALUE)
                 .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn_limpiar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_modificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(38, 38, 38))
+                .addGap(35, 35, 35))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -254,26 +253,23 @@ public class ModificarGrupo extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(54, 54, 54)
-                .addComponent(lbl_tituloModificarGrupo)
-                .addContainerGap(787, Short.MAX_VALUE))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(55, 55, 55)
-                    .addComponent(pnl_datos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(55, Short.MAX_VALUE)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(54, 54, 54)
+                        .addComponent(lbl_tituloModificarGrupo))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(56, 56, 56)
+                        .addComponent(pnl_datos, javax.swing.GroupLayout.PREFERRED_SIZE, 832, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(56, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(35, 35, 35)
+                .addGap(26, 26, 26)
                 .addComponent(lbl_tituloModificarGrupo)
-                .addContainerGap(597, Short.MAX_VALUE))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(60, 60, 60)
-                    .addComponent(pnl_datos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(69, Short.MAX_VALUE)))
+                .addGap(18, 18, 18)
+                .addComponent(pnl_datos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(68, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

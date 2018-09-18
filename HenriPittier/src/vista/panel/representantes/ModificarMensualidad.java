@@ -117,13 +117,10 @@ public class ModificarMensualidad extends javax.swing.JPanel {
         lbl_cedulaEstudiante = new javax.swing.JLabel();
         txt_cedulaEstudiante = new javax.swing.JTextField();
 
-        setBackground(new java.awt.Color(204, 204, 204));
-
         lbl_tituloModificarMensualidad.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lbl_tituloModificarMensualidad.setText("Modificar Mensualidad");
 
-        pnl_datos.setBackground(new java.awt.Color(204, 204, 204));
-        pnl_datos.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+        pnl_datos.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         pnl_datos.setPreferredSize(new java.awt.Dimension(840, 520));
 
         lbl_Monto.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
@@ -185,8 +182,9 @@ public class ModificarMensualidad extends javax.swing.JPanel {
     dc_fechaPago.setFieldFont(new java.awt.Font("Tahoma", java.awt.Font.PLAIN, 12));
     dc_fechaPago.setNavigateFont(new java.awt.Font("Serif", java.awt.Font.PLAIN, 8));
 
-    btn_limpiar.setBackground(new java.awt.Color(218, 87, 54));
-    btn_limpiar.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+    btn_limpiar.setBackground(new java.awt.Color(153, 0, 0));
+    btn_limpiar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+    btn_limpiar.setForeground(new java.awt.Color(255, 255, 255));
     btn_limpiar.setText("Limpiar");
     btn_limpiar.setPreferredSize(new java.awt.Dimension(109, 25));
     btn_limpiar.addActionListener(new java.awt.event.ActionListener() {
@@ -195,8 +193,9 @@ public class ModificarMensualidad extends javax.swing.JPanel {
         }
     });
 
-    btn_modificar.setBackground(new java.awt.Color(121, 213, 177));
-    btn_modificar.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+    btn_modificar.setBackground(new java.awt.Color(0, 153, 102));
+    btn_modificar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+    btn_modificar.setForeground(new java.awt.Color(255, 255, 255));
     btn_modificar.setText("Modificar");
     btn_modificar.setPreferredSize(new java.awt.Dimension(109, 25));
     btn_modificar.addActionListener(new java.awt.event.ActionListener() {
@@ -304,7 +303,7 @@ public class ModificarMensualidad extends javax.swing.JPanel {
                         .addComponent(txt_cedulaRepresentante, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(txt_cedulaEstudiante, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addComponent(cb_listaPagos, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addContainerGap(31, Short.MAX_VALUE))
+            .addContainerGap(29, Short.MAX_VALUE))
     );
     pnl_datosLayout.setVerticalGroup(
         pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -356,20 +355,20 @@ public class ModificarMensualidad extends javax.swing.JPanel {
     layout.setHorizontalGroup(
         layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
         .addGroup(layout.createSequentialGroup()
-            .addGap(54, 54, 54)
+            .addGap(56, 56, 56)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(pnl_datos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(lbl_tituloModificarMensualidad))
+                .addComponent(lbl_tituloModificarMensualidad)
+                .addComponent(pnl_datos, javax.swing.GroupLayout.PREFERRED_SIZE, 838, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addContainerGap(56, Short.MAX_VALUE))
     );
     layout.setVerticalGroup(
         layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
         .addGroup(layout.createSequentialGroup()
-            .addGap(47, 47, 47)
+            .addGap(26, 26, 26)
             .addComponent(lbl_tituloModificarMensualidad)
             .addGap(18, 18, 18)
-            .addComponent(pnl_datos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addContainerGap(38, Short.MAX_VALUE))
+            .addComponent(pnl_datos, javax.swing.GroupLayout.PREFERRED_SIZE, 511, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addContainerGap(68, Short.MAX_VALUE))
     );
     }// </editor-fold>//GEN-END:initComponents
 

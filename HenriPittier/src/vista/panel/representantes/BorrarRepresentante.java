@@ -56,12 +56,9 @@ public class BorrarRepresentante extends javax.swing.JPanel {
         lbl_fechaNac = new javax.swing.JLabel();
         lbl_tituloEliminar = new javax.swing.JLabel();
         txt_cedulaRepresentante = new javax.swing.JTextField();
-        lbl_titulo = new javax.swing.JLabel();
         btn_buscar = new javax.swing.JButton();
+        lbl_titulo = new javax.swing.JLabel();
 
-        setBackground(new java.awt.Color(204, 204, 204));
-
-        pnl_datos.setBackground(new java.awt.Color(204, 204, 204));
         pnl_datos.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
         pnl_datos.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         pnl_datos.setPreferredSize(new java.awt.Dimension(840, 520));
@@ -103,8 +100,9 @@ public class BorrarRepresentante extends javax.swing.JPanel {
         lbl_primerApellido.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         lbl_primerApellido.setText("Primer Apellido:");
 
-        btn_eliminar.setBackground(new java.awt.Color(121, 213, 177));
-        btn_eliminar.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        btn_eliminar.setBackground(new java.awt.Color(0, 153, 102));
+        btn_eliminar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        btn_eliminar.setForeground(new java.awt.Color(255, 255, 255));
         btn_eliminar.setText("Borrar");
         btn_eliminar.setActionCommand("Eliminar");
         btn_eliminar.setPreferredSize(new java.awt.Dimension(109, 25));
@@ -180,6 +178,16 @@ public class BorrarRepresentante extends javax.swing.JPanel {
         }
     });
 
+    btn_buscar.setBackground(new java.awt.Color(0, 153, 204));
+    btn_buscar.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+    btn_buscar.setText("Buscar");
+    btn_buscar.setPreferredSize(new java.awt.Dimension(109, 25));
+    btn_buscar.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            btn_buscarActionPerformed(evt);
+        }
+    });
+
     javax.swing.GroupLayout pnl_datosLayout = new javax.swing.GroupLayout(pnl_datos);
     pnl_datos.setLayout(pnl_datosLayout);
     pnl_datosLayout.setHorizontalGroup(
@@ -205,15 +213,18 @@ public class BorrarRepresentante extends javax.swing.JPanel {
                                 .addComponent(txt_primerApellido, javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(txt_segundoApellido, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(txt_telefonoMovil, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txt_primerNombre)
-                            .addComponent(txt_segundoNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txt_cedulaRepresentante))
+                        .addGroup(pnl_datosLayout.createSequentialGroup()
+                            .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(txt_primerNombre)
+                                .addComponent(txt_segundoNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txt_cedulaRepresentante))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(btn_buscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addComponent(dc_fechaNac, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGroup(pnl_datosLayout.createSequentialGroup()
                     .addGap(362, 362, 362)
                     .addComponent(btn_eliminar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-            .addGap(0, 363, Short.MAX_VALUE))
+            .addGap(0, 303, Short.MAX_VALUE))
     );
     pnl_datosLayout.setVerticalGroup(
         pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -221,7 +232,8 @@ public class BorrarRepresentante extends javax.swing.JPanel {
             .addGap(31, 31, 31)
             .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                 .addComponent(lbl_tituloEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(txt_cedulaRepresentante, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(txt_cedulaRepresentante, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btn_buscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGap(42, 42, 42)
             .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                 .addComponent(txt_primerNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -258,47 +270,25 @@ public class BorrarRepresentante extends javax.swing.JPanel {
     lbl_titulo.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
     lbl_titulo.setText("Eliminar Representante");
 
-    btn_buscar.setBackground(new java.awt.Color(0, 153, 204));
-    btn_buscar.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-    btn_buscar.setText("Buscar");
-    btn_buscar.setPreferredSize(new java.awt.Dimension(109, 25));
-    btn_buscar.addActionListener(new java.awt.event.ActionListener() {
-        public void actionPerformed(java.awt.event.ActionEvent evt) {
-            btn_buscarActionPerformed(evt);
-        }
-    });
-
     javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
     this.setLayout(layout);
     layout.setHorizontalGroup(
         layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
         .addGroup(layout.createSequentialGroup()
             .addGap(56, 56, 56)
-            .addComponent(lbl_titulo)
-            .addContainerGap(734, Short.MAX_VALUE))
-        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-            .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(btn_buscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addGap(366, 366, 366))
-        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(56, 56, 56)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(pnl_datos, javax.swing.GroupLayout.PREFERRED_SIZE, 838, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(56, Short.MAX_VALUE)))
+                .addComponent(lbl_titulo))
+            .addContainerGap(56, Short.MAX_VALUE))
     );
     layout.setVerticalGroup(
         layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
         .addGroup(layout.createSequentialGroup()
-            .addGap(32, 32, 32)
+            .addGap(26, 26, 26)
             .addComponent(lbl_titulo)
-            .addGap(50, 50, 50)
-            .addComponent(btn_buscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addContainerGap(518, Short.MAX_VALUE))
-        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(63, 63, 63)
-                .addComponent(pnl_datos, javax.swing.GroupLayout.PREFERRED_SIZE, 513, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(66, Short.MAX_VALUE)))
+            .addGap(18, 18, 18)
+            .addComponent(pnl_datos, javax.swing.GroupLayout.PREFERRED_SIZE, 513, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addContainerGap(66, Short.MAX_VALUE))
     );
     }// </editor-fold>//GEN-END:initComponents
 

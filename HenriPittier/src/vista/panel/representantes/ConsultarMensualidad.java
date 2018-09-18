@@ -74,12 +74,9 @@ public class ConsultarMensualidad extends javax.swing.JPanel {
         txt_apellidoEstudiante = new javax.swing.JTextField();
         lbl_apellidoEstudiante = new javax.swing.JLabel();
 
-        setBackground(new java.awt.Color(204, 204, 204));
-
         lbl_tituloborrarMensualidad.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lbl_tituloborrarMensualidad.setText("Consultar Registros de Mensualidad");
 
-        pnl_datos.setBackground(new java.awt.Color(204, 204, 204));
         pnl_datos.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
         pnl_datos.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         pnl_datos.setPreferredSize(new java.awt.Dimension(840, 520));
@@ -243,11 +240,11 @@ public class ConsultarMensualidad extends javax.swing.JPanel {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(39, 39, 39)
+                .addGap(26, 26, 26)
                 .addComponent(lbl_tituloborrarMensualidad)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addComponent(pnl_datos, javax.swing.GroupLayout.PREFERRED_SIZE, 513, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(60, Short.MAX_VALUE))
+                .addContainerGap(66, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

@@ -66,13 +66,10 @@ public class ConsultarGrupos extends javax.swing.JPanel {
         lbl_apellidoDocente = new javax.swing.JLabel();
         txt_apellidoDocente = new javax.swing.JTextField();
 
-        setBackground(new java.awt.Color(204, 204, 204));
-
         lbl_tituloGrupos.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lbl_tituloGrupos.setText("Consultar Grupos");
 
-        pnl_datos.setBackground(new java.awt.Color(204, 204, 204));
-        pnl_datos.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+        pnl_datos.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         pnl_datos.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         pnl_datos.setPreferredSize(new java.awt.Dimension(840, 520));
 
@@ -164,7 +161,7 @@ public class ConsultarGrupos extends javax.swing.JPanel {
                     .addComponent(txt_nombreDocente, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txt_apellidoDocente, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lbl_apellidoDocente))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
                 .addComponent(sp_representantes, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(54, 54, 54))
         );
@@ -174,20 +171,20 @@ public class ConsultarGrupos extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(53, 53, 53)
+                .addGap(56, 56, 56)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(pnl_datos, javax.swing.GroupLayout.PREFERRED_SIZE, 838, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lbl_tituloGrupos))
-                .addContainerGap(59, Short.MAX_VALUE))
+                .addContainerGap(56, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(31, 31, 31)
+                .addGap(26, 26, 26)
                 .addComponent(lbl_tituloGrupos, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(pnl_datos, javax.swing.GroupLayout.PREFERRED_SIZE, 507, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(72, Short.MAX_VALUE))
+                .addComponent(pnl_datos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(54, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

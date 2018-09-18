@@ -90,17 +90,18 @@ public class RegistrarSalida extends javax.swing.JPanel {
         lbl_cedulaRepresentane2 = new javax.swing.JLabel();
         txt_cedulaEstudiante = new javax.swing.JTextField();
 
-        setBackground(new java.awt.Color(204, 204, 204));
+        setPreferredSize(new java.awt.Dimension(950, 640));
 
         lbl_tituloEstudiantes.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lbl_tituloEstudiantes.setText("Registrar salida de estudiante");
 
-        pnl_datos.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+        pnl_datos.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         pnl_datos.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         pnl_datos.setPreferredSize(new java.awt.Dimension(840, 520));
 
         btn_registrar.setBackground(new java.awt.Color(0, 153, 102));
         btn_registrar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        btn_registrar.setForeground(new java.awt.Color(255, 255, 255));
         btn_registrar.setText("Registrar");
         btn_registrar.setActionCommand("Eliminar");
         btn_registrar.setPreferredSize(new java.awt.Dimension(109, 25));
@@ -154,7 +155,6 @@ public class RegistrarSalida extends javax.swing.JPanel {
     dc_fechaSalida.setCalendarBackground(new java.awt.Color(255, 255, 255));
     dc_fechaSalida.setCalendarPreferredSize(new java.awt.Dimension(400, 250));
     dc_fechaSalida.setFieldFont(new java.awt.Font("Tahoma", java.awt.Font.PLAIN, 12));
-    dc_fechaSalida.setLocale(new java.util.Locale("es", "VE", ""));
     dc_fechaSalida.setNavigateFont(new java.awt.Font("Serif", java.awt.Font.PLAIN, 8));
 
     lbl_fechaSalida.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
@@ -204,39 +204,37 @@ public class RegistrarSalida extends javax.swing.JPanel {
             .addGap(59, 59, 59)
             .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                 .addComponent(dc_fechaSalida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(cb_listaEstudiantes, 0, 175, Short.MAX_VALUE)
                 .addComponent(txt_cedulaRepresentante)
-                .addComponent(cb_listaEstudiantes, 0, 210, Short.MAX_VALUE)
                 .addComponent(txt_cedulaEstudiante))
             .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnl_datosLayout.createSequentialGroup()
-            .addContainerGap(390, Short.MAX_VALUE)
+            .addContainerGap(386, Short.MAX_VALUE)
             .addComponent(btn_registrar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addGap(337, 337, 337))
     );
     pnl_datosLayout.setVerticalGroup(
         pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnl_datosLayout.createSequentialGroup()
-            .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(btn_registrar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addGap(35, 35, 35))
         .addGroup(pnl_datosLayout.createSequentialGroup()
             .addGap(75, 75, 75)
             .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                 .addComponent(txt_cedulaRepresentante, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addComponent(lbl_cedulaRepresentane1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGap(57, 57, 57)
+            .addGap(45, 45, 45)
             .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                 .addComponent(cb_listaEstudiantes, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addComponent(lbl_listaEstudiantes, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 67, Short.MAX_VALUE)
+            .addGap(45, 45, 45)
             .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                 .addComponent(lbl_cedulaRepresentane2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addComponent(txt_cedulaEstudiante, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGap(43, 43, 43)
+            .addGap(45, 45, 45)
             .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(lbl_fechaSalida, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(dc_fechaSalida, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGap(146, 146, 146))
+                .addComponent(lbl_fechaSalida, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(dc_fechaSalida, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 119, Short.MAX_VALUE)
+            .addComponent(btn_registrar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGap(40, 40, 40))
     );
 
     javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -244,20 +242,20 @@ public class RegistrarSalida extends javax.swing.JPanel {
     layout.setHorizontalGroup(
         layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
         .addGroup(layout.createSequentialGroup()
-            .addGap(48, 48, 48)
+            .addGap(56, 56, 56)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(pnl_datos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(lbl_tituloEstudiantes, javax.swing.GroupLayout.PREFERRED_SIZE, 317, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addContainerGap(62, Short.MAX_VALUE))
+                .addComponent(lbl_tituloEstudiantes, javax.swing.GroupLayout.PREFERRED_SIZE, 317, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(pnl_datos, javax.swing.GroupLayout.PREFERRED_SIZE, 836, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addContainerGap(56, Short.MAX_VALUE))
     );
     layout.setVerticalGroup(
         layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
         .addGroup(layout.createSequentialGroup()
-            .addGap(42, 42, 42)
+            .addGap(26, 26, 26)
             .addComponent(lbl_tituloEstudiantes, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-            .addComponent(pnl_datos, javax.swing.GroupLayout.PREFERRED_SIZE, 515, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addContainerGap(50, Short.MAX_VALUE))
+            .addGap(18, 18, 18)
+            .addComponent(pnl_datos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addContainerGap(54, Short.MAX_VALUE))
     );
     }// </editor-fold>//GEN-END:initComponents
 

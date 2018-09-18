@@ -80,12 +80,10 @@ public class RegistrarEstudiante extends javax.swing.JPanel {
         cb_parentezco = new javax.swing.JComboBox();
         lbl_tituloRegistroEstudiantes = new javax.swing.JLabel();
 
-        setBackground(new java.awt.Color(204, 204, 204));
         setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         setPreferredSize(new java.awt.Dimension(950, 640));
 
-        pnl_datos.setBackground(new java.awt.Color(204, 204, 204));
-        pnl_datos.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+        pnl_datos.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         pnl_datos.setPreferredSize(new java.awt.Dimension(840, 520));
 
         lbl_primerNombre.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
@@ -189,8 +187,9 @@ public class RegistrarEstudiante extends javax.swing.JPanel {
         }
     });
 
-    btn_limpiar.setBackground(new java.awt.Color(218, 87, 54));
-    btn_limpiar.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+    btn_limpiar.setBackground(new java.awt.Color(153, 0, 0));
+    btn_limpiar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+    btn_limpiar.setForeground(new java.awt.Color(255, 255, 255));
     btn_limpiar.setText("Limpiar");
     btn_limpiar.setPreferredSize(new java.awt.Dimension(109, 25));
     btn_limpiar.addActionListener(new java.awt.event.ActionListener() {
@@ -199,8 +198,9 @@ public class RegistrarEstudiante extends javax.swing.JPanel {
         }
     });
 
-    btn_registrar.setBackground(new java.awt.Color(121, 213, 177));
-    btn_registrar.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+    btn_registrar.setBackground(new java.awt.Color(0, 153, 102));
+    btn_registrar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+    btn_registrar.setForeground(new java.awt.Color(255, 255, 255));
     btn_registrar.setText("Registrar");
     btn_registrar.setPreferredSize(new java.awt.Dimension(109, 25));
     btn_registrar.addActionListener(new java.awt.event.ActionListener() {
@@ -262,8 +262,8 @@ public class RegistrarEstudiante extends javax.swing.JPanel {
                                 .addComponent(txt_segundoNombre, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 182, Short.MAX_VALUE)
                                 .addComponent(txt_primerApellido, javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(txt_segundoApellido)
-                                .addComponent(txt_primerNombre, javax.swing.GroupLayout.Alignment.LEADING))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 77, Short.MAX_VALUE)
+                                .addComponent(txt_primerNombre, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 175, Short.MAX_VALUE))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 75, Short.MAX_VALUE)
                             .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(lbl_cedulaRepresentante)
                                 .addComponent(lbl_parentezco))
@@ -322,7 +322,7 @@ public class RegistrarEstudiante extends javax.swing.JPanel {
             .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(btn_cargarImagen)
                 .addComponent(lbl_foto, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
             .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                 .addComponent(btn_limpiar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addComponent(btn_registrar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -340,8 +340,8 @@ public class RegistrarEstudiante extends javax.swing.JPanel {
             .addGap(56, 56, 56)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(lbl_tituloRegistroEstudiantes)
-                .addComponent(pnl_datos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addContainerGap(54, Short.MAX_VALUE))
+                .addComponent(pnl_datos, javax.swing.GroupLayout.PREFERRED_SIZE, 838, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addContainerGap(56, Short.MAX_VALUE))
     );
     layout.setVerticalGroup(
         layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

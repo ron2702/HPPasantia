@@ -64,8 +64,6 @@ public class BorrarEstGrupo extends javax.swing.JPanel {
         btn_borrar = new javax.swing.JButton();
         lbl_titulo = new javax.swing.JLabel();
 
-        setBackground(new java.awt.Color(204, 204, 204));
-
         pnl_datos.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         pnl_datos.setPreferredSize(new java.awt.Dimension(840, 520));
 
@@ -81,6 +79,7 @@ public class BorrarEstGrupo extends javax.swing.JPanel {
 
         btn_borrar.setBackground(new java.awt.Color(0, 153, 102));
         btn_borrar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        btn_borrar.setForeground(new java.awt.Color(255, 255, 255));
         btn_borrar.setText("Borrar");
         btn_borrar.setPreferredSize(new java.awt.Dimension(109, 25));
         btn_borrar.addActionListener(new java.awt.event.ActionListener() {
@@ -94,7 +93,7 @@ public class BorrarEstGrupo extends javax.swing.JPanel {
         pnl_datosLayout.setHorizontalGroup(
             pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnl_datosLayout.createSequentialGroup()
-                .addGap(25, 25, 25)
+                .addGap(46, 46, 46)
                 .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lbl_tituloEmpleadoAsignar)
                     .addComponent(lbl_tituloGrupoAlumnos))
@@ -111,17 +110,17 @@ public class BorrarEstGrupo extends javax.swing.JPanel {
         pnl_datosLayout.setVerticalGroup(
             pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnl_datosLayout.createSequentialGroup()
-                .addGap(78, 78, 78)
+                .addGap(70, 70, 70)
                 .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(cb_listaEstudiantes, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
                     .addComponent(lbl_tituloEmpleadoAsignar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(35, 35, 35)
+                .addGap(40, 40, 40)
                 .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbl_tituloGrupoAlumnos)
                     .addComponent(cb_listaGrupos, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 196, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 281, Short.MAX_VALUE)
                 .addComponent(btn_borrar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(89, 89, 89))
+                .addGap(40, 40, 40))
         );
 
         lbl_titulo.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -132,26 +131,20 @@ public class BorrarEstGrupo extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(57, 57, 57)
-                .addComponent(lbl_titulo)
-                .addContainerGap(680, Short.MAX_VALUE))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(56, 56, 56)
+                .addGap(56, 56, 56)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(pnl_datos, javax.swing.GroupLayout.PREFERRED_SIZE, 838, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(56, Short.MAX_VALUE)))
+                    .addComponent(lbl_titulo))
+                .addContainerGap(56, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(42, 42, 42)
+                .addGap(26, 26, 26)
                 .addComponent(lbl_titulo)
-                .addContainerGap(581, Short.MAX_VALUE))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(76, 76, 76)
-                    .addComponent(pnl_datos, javax.swing.GroupLayout.PREFERRED_SIZE, 487, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(77, Short.MAX_VALUE)))
+                .addGap(18, 18, 18)
+                .addComponent(pnl_datos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(59, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
