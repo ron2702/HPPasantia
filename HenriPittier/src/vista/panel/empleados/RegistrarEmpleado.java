@@ -644,12 +644,11 @@ txt_primerApellido.addKeyListener(new java.awt.event.KeyAdapter() {
         Object objeto = cb_estados.getSelectedItem();
         Object objeto1 = cb_municipios.getSelectedItem();
         Object objeto2 = cb_parroquias.getSelectedItem();
-        if((!txt_cedula.getText().equals("")) && (!txt_primerNombre.getText().equals("")) && (!txt_segundoNombre.getText().equals("")) 
-                && (!txt_primerApellido.getText().equals("")) && (!txt_segundoApellido.getText().equals("")) && (!txt_sueldoMensual.getText().equals("")) 
-                && (!dc_fechaIngreso.getText().equals("")) && (!dc_fechaNac.getText().equals("")) && (!txt_telefonoCasa.getText().equals("")) 
-                && (!txt_telefonoMovil.getText().equals("")) && (!txt_cargo.getText().equals("")) && (cb_tareasDirigidas.getSelectedItem() != null) 
-                && (cb_estados.getSelectedItem() != null) && (cb_municipios.getSelectedItem() != null) && (cb_parroquias.getSelectedItem() != null) 
-                && (archivoSeleccionado != null)) {
+        if((!txt_cedula.getText().equals("")) && (!txt_primerNombre.getText().equals("")) && (!txt_primerApellido.getText().equals("")) 
+                && (!txt_sueldoMensual.getText().equals("")) && (!dc_fechaIngreso.getText().equals("")) && (!dc_fechaNac.getText().equals("")) 
+                && (!txt_telefonoCasa.getText().equals("")) && (!txt_telefonoMovil.getText().equals("")) && (!txt_cargo.getText().equals("")) 
+                && (cb_tareasDirigidas.getSelectedItem() != null) && (cb_estados.getSelectedItem() != null) && (cb_municipios.getSelectedItem() != null) 
+                && (cb_parroquias.getSelectedItem() != null) && (archivoSeleccionado != null)) {
             
             try {
                 Lugar estadoSeleccionado = (Lugar) cb_estados.getSelectedItem();

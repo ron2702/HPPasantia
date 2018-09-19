@@ -250,8 +250,7 @@ public class Nominas extends javax.swing.JPanel {
         lbl_tituloNomina = new javax.swing.JLabel();
 
         pnl_datos.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        new JScrollPane(tb_nominaFija, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
-        tb_nominaFija.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+
         tb_nominaFija.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         tb_nominaFija.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -316,8 +315,9 @@ public class Nominas extends javax.swing.JPanel {
             tb_nominaFija.getColumnModel().getColumn(17).setPreferredWidth(120);
         }
 
-        btn_registrar.setBackground(new java.awt.Color(121, 213, 177));
-        btn_registrar.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        btn_registrar.setBackground(new java.awt.Color(0, 153, 102));
+        btn_registrar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        btn_registrar.setForeground(new java.awt.Color(255, 255, 255));
         btn_registrar.setText("Generar Documento");
         btn_registrar.setPreferredSize(new java.awt.Dimension(109, 25));
         btn_registrar.addActionListener(new java.awt.event.ActionListener() {
@@ -380,6 +380,7 @@ public class Nominas extends javax.swing.JPanel {
             DocumentosExcel doc = new DocumentosExcel();
             doc.crearNomina(nominaEmpleados, cantLunes, rangoInicio, rangoFin);
             doc.crearComprobantes(nominaEmpleados, cantLunes, rangoInicio, rangoFin);
+            doc.crearComprobantesEgreso(nominaEmpleados, rangoInicio, rangoFin);
         } catch (IOException ex) {
             Logger.getLogger(Nominas.class.getName()).log(Level.SEVERE, null, ex);
         }

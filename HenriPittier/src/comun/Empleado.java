@@ -20,16 +20,11 @@ public class Empleado {
     private String segundoApellido;
     private String banco;
     private int sueldoMensual;
-    private int sueldoMensualExtra;
-    private int sueldoQuincenal;
-    private int sueldoQuincenalExtra;
     private Date fechaIngreso;
     private Date fechaNac;
     private String telefonoCasa;
     private String telefonoMovil;
     private String cargo;
-    private int asistencia;
-    private int suplencia;
     private String foto;
     private String usuario;
     private String clave;
