@@ -1905,6 +1905,7 @@ INSERT INTO REP_EST (FK_CEDULA, FK_CEDULAESCOLAR, PARENTEZCO) VALUES (6321458, 1
 INSERT INTO REP_EST (FK_CEDULA, FK_CEDULAESCOLAR, PARENTEZCO) VALUES (6123654, 11606123654, 'Madre');
 
 
+INSERT INTO EMPLEADO VALUES(24220210, 'Barbara', 'Gilvania', 'Fernandez', 'Aristeigueta', 'Banco Mercantil', 5000, '2/02/2010', '26/01/1995', null, null, 'Auxiliar', 'abc', null, null, 'Si', 690);
 INSERT INTO GRUPO VALUES ('1A', 'GRUPO 1 A', 'Maternal 1 A', 20, '2018-2019');
 INSERT INTO EMP_GRU_EST VALUES (nextval('emp_gru_est_id_seq'), 26217421, null, '1A');
 INSERT INTO PRESTAMO VALUES (nextval('prestamo_id_seq'), '01/04/2018', 200, 24220210);
