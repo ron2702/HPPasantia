@@ -339,4 +339,123 @@ public class DocumentosExcel {
             Logger.getLogger(DocumentosExcel.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
+    public void crearComprobantesEgreso(ArrayList<Nomina> nominaEmpleados, String inicioPeriodo, String finPeriodo){
+        try {
+            Collections.sort(nominaEmpleados); 
+            FileInputStream file = new FileInputStream(new File("PlantillasExcel\\ComprabanteEgresoPlantilla.xlsx"));
+            
+            String fechaFin = finPeriodo.replace('/', '-');
+            File folder = new File("Documentos\\ComprobantesEgreso\\" + fechaFin);
+            folder.mkdirs();
+            
+            String periodo = "Periodo: " + inicioPeriodo + " hasta el " + finPeriodo;
+            XSSFWorkbook wb = new XSSFWorkbook(file);
+            
+            
+            XSSFCellStyle my_style = wb.createCellStyle();
+            XSSFFont my_font = wb.createFont();
+            /* set the weight of the font */
+            my_font.setBoldweight(HSSFFont.BOLDWEIGHT_BOLD);
+            my_font.setFontName("Century");
+            /* attach the font to the style created earlier */
+            my_style.setFont(my_font);
+            my_style.setAlignment(XSSFCellStyle.ALIGN_RIGHT);
+            
+            XSSFCellStyle styleBordeAbajoDerecha = wb.createCellStyle();
+            XSSFCellStyle styleBordeIzquierdaDerecha = wb.createCellStyle();
+            XSSFCellStyle styleBordeArribaDerecha = wb.createCellStyle();
+            XSSFCellStyle styleBordeDerecha = wb.createCellStyle();
+            
+            styleBordeAbajoDerecha.setFont(my_font);
+            styleBordeAbajoDerecha.setAlignment(XSSFCellStyle.ALIGN_RIGHT);
+            styleBordeIzquierdaDerecha.setFont(my_font);
+            styleBordeIzquierdaDerecha.setAlignment(XSSFCellStyle.ALIGN_RIGHT);
+            styleBordeDerecha.setFont(my_font);
+            styleBordeDerecha.setAlignment(XSSFCellStyle.ALIGN_RIGHT);
+            
+            styleBordeAbajoDerecha.setBorderBottom(HSSFCellStyle.BORDER_THIN);
+            styleBordeIzquierdaDerecha.setBorderLeft(HSSFCellStyle.BORDER_THIN);
+            styleBordeAbajoDerecha.setBorderRight(HSSFCellStyle.BORDER_THIN);
+            styleBordeIzquierdaDerecha.setBorderRight(HSSFCellStyle.BORDER_THIN);
+            styleBordeArribaDerecha.setBorderTop(HSSFCellStyle.BORDER_THIN);
+            styleBordeArribaDerecha.setBorderRight(HSSFCellStyle.BORDER_THIN);
+            styleBordeDerecha.setBorderRight(HSSFCellStyle.BORDER_THIN);
+            
+            
+            /*XSSFCellStyle cs = wb.createCellStyle();
+            cs.setDataFormat((short)8);
+            cs.setFont(my_font);*/
+            
+            
+            
+            XSSFSheet sheet = wb.getSheetAt(0);
+            int filaInicio = 9;
+            int idFila = 1;
+            
+            
+            
+            for (Nomina empleado : nominaEmpleados){
+                XSSFRow filaPeriodo = sheet.getRow(12);
+
+                XSSFCell celdaPeriodo = filaPeriodo.createCell(2);
+
+                celdaPeriodo.setCellStyle(my_style);
+
+                celdaPeriodo.setCellValue(periodo);
+                
+                XSSFRow fila;
+                    
+                DateFormat format = new SimpleDateFormat("dd/MM/yy", Locale.ENGLISH);
+                Date ingreso = format.parse(empleado.getFecIngreso());
+                fila = sheet.getRow(6);
+                XSSFCell celdaId = fila.createCell(8);
+                celdaId.setCellStyle(styleBordeArribaDerecha);
+                celdaId.setCellValue(idFila);
+                
+                fila = sheet.getRow(8);
+                XSSFCell celdaNombreCompleto = fila.createCell(0);
+                celdaNombreCompleto.setCellStyle(my_style);
+                celdaNombreCompleto.setCellValue(empleado.getNombreCompleto());
+                
+                fila = sheet.getRow(8);
+                XSSFCell celdaCedula1 = fila.createCell(3);
+                celdaCedula1.setCellStyle(my_style);
+                celdaCedula1.setCellValue("V-" + empleado.getCedula());
+                
+                fila = sheet.getRow(8);
+                XSSFCell celdaCargo = fila.createCell(5);
+                celdaCargo.setCellStyle(my_style);
+                celdaCargo.setCellValue(empleado.getCargo());
+                
+                fila = sheet.getRow(12);
+                XSSFCell celdaPagoNeto = fila.createCell(8);
+                celdaPagoNeto.setCellStyle(styleBordeIzquierdaDerecha);
+                celdaPagoNeto.setCellValue("Bs.S. " + empleado.getPagoNeto());
+                
+                fila = sheet.getRow(15);
+                XSSFCell celdaPagoTotal = fila.createCell(8);
+                celdaPagoTotal.setCellStyle(styleBordeIzquierdaDerecha);
+                celdaPagoTotal.setCellValue("Bs.S. " + empleado.getPagoNeto());
+                
+                fila = sheet.getRow(21);
+                XSSFCell celdaCedula2 = fila.createCell(7);
+                celdaCedula2.setCellStyle(styleBordeAbajoDerecha);
+                celdaCedula2.setCellValue("V-" + empleado.getCedula());
+
+                FileOutputStream output = new FileOutputStream("Documentos\\ComprobantesEgreso\\" + fechaFin + "\\ComprobanteEgreso_" + empleado.getCedula() + "_" + fechaFin + ".xlsx");
+                wb.write(output);
+                output.close();
+                
+                filaInicio++;
+                idFila++;
+            }
+            
+            file.close();
+            
+
+        } catch (Exception ex) {
+            Logger.getLogger(DocumentosExcel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 }
