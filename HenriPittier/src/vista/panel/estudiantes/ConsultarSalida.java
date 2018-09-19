@@ -70,7 +70,7 @@ public class ConsultarSalida extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Fecha ", "Hora de Salida", "Cedula Representante", "Nombre", "Apellido", "Cedula Escolar", "Nombre", "Apellido", "Parentezco"
+                "Fecha ", "Hora de Salida", "Cedula Escolar", "Nombre", "Apellido", "Cedula Representante", "Nombre", "Apellido", "Parentezco"
             }
         ) {
             Class[] types = new Class [] {
