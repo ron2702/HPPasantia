@@ -591,7 +591,7 @@ txt_primerApellido.addKeyListener(new java.awt.event.KeyAdapter() {
 
     private void btn_cargarImagenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cargarImagenActionPerformed
         FileFilter filtroImagenes = new FileNameExtensionFilter("Archivos de imagen", ImageIO.getReaderFileSuffixes());
-        JFileChooser exploradorArchivos = new JFileChooser();
+        JFileChooser exploradorArchivos = new JFileChooser("FotosEmpleados");
         exploradorArchivos.setAcceptAllFileFilterUsed(false);
         exploradorArchivos.addChoosableFileFilter(filtroImagenes);
         int opcionElegida = exploradorArchivos.showOpenDialog(null);
@@ -658,10 +658,11 @@ txt_primerApellido.addKeyListener(new java.awt.event.KeyAdapter() {
                 Date fechaIngreso = parseFecha.parse(dc_fechaIngreso.getText());
                 Date fechaNacimiento = parseFecha.parse(dc_fechaNac.getText());
                 ManejadorImagen img = new ManejadorImagen();
+                String file = "FotosEmpleados\\" + archivoSeleccionado.getName();
                 Empleado empleadoRegistrar = new Empleado(Integer.parseInt(txt_cedula.getText()), txt_primerNombre.getText(), txt_segundoNombre.getText(), 
                                                           txt_primerApellido.getText(), txt_segundoApellido.getText(), (String) cb_banco.getSelectedItem(),  
                                                           (Integer.parseInt(txt_sueldoMensual.getText())), fechaIngreso, fechaNacimiento,
-                                                          txt_telefonoCasa.getText(), txt_telefonoMovil.getText(), txt_cargo.getText(), null, 
+                                                          txt_telefonoCasa.getText(), txt_telefonoMovil.getText(), txt_cargo.getText(), file, 
                                                           "", "", (String) cb_tareasDirigidas.getSelectedItem(), estadoSeleccionado.getNombre(), 
                                                           municipioSeleccionado.getNombre(), parroquiaSeleccionada.getNombre());
                 ComunicacionREST comRest = new ComunicacionREST();

@@ -59,7 +59,7 @@ public class DAOEmpleado extends DAO{
             cstmt.setString(11, _empleado.getTelefonoCasa());
             cstmt.setString(12, _empleado.getTelefonoMovil());
             cstmt.setString(13, _empleado.getCargo());
-            cstmt.setString(14, "test");
+            cstmt.setString(14, _empleado.getFoto());
             cstmt.setString(15, _empleado.getUsuario());
             cstmt.setString(16, _empleado.getClave());
             cstmt.setString(17, _empleado.getTareasDirigidas());
@@ -124,7 +124,7 @@ public class DAOEmpleado extends DAO{
             cstmt.setString(11, _empleado.getTelefonoCasa());
             cstmt.setString(12, _empleado.getTelefonoMovil());
             cstmt.setString(13, _empleado.getCargo());
-            cstmt.setString(14, "test");
+            cstmt.setString(14, _empleado.getFoto());
             cstmt.setString(15, _empleado.getUsuario());
             cstmt.setString(16, _empleado.getClave());
             cstmt.setString(17, _empleado.getTareasDirigidas());

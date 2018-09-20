@@ -7,6 +7,7 @@ package vista;
 
 import vista.*;
 import vista.frame.AppMenu;
+import vista.frame.InicioSesion;
 
 /**
  *
@@ -18,7 +19,7 @@ public class HenriPittier {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        AppMenu window = new AppMenu();
+        InicioSesion window = new InicioSesion();
         window.show();
     }
     

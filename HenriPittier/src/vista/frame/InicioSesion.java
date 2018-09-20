@@ -220,10 +220,17 @@ public class InicioSesion extends javax.swing.JFrame {
             Usuario validar = com.iniciarSesion(usuarioLogin);
             
             if(validar.getError() == 200)
-            {          
-                AppMenu nuevaVentana = new AppMenu();
-                nuevaVentana.setVisible(true);
-                this.setVisible(false);
+            {        
+                if (validar.getUsuario().equals("jfgp")){
+                    AppMenu nuevaVentana = new AppMenu(1);
+                    nuevaVentana.setVisible(true);
+                    this.setVisible(false);
+                }
+                if (validar.getUsuario().equals("roxana1208")){
+                    AppMenu nuevaVentana = new AppMenu(2);
+                    nuevaVentana.setVisible(true);
+                    this.setVisible(false);
+                }
             }
             else
             {

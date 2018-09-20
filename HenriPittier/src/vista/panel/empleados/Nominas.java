@@ -20,6 +20,8 @@ import java.util.Date;
 import java.util.Locale;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
@@ -163,7 +165,7 @@ public class Nominas extends javax.swing.JPanel {
                         inasistenciaQuincena = inasistencia;
                     }
                 }
-                Suplencia s = new Suplencia();
+                Suplencia s = new Suplencia(empleado.getCedula());
                 ArrayList<Suplencia> listaSuplencias = comRest.consultarSuplencias(s);
                 
                 Suplencia suplenciaQuincena = new Suplencia();
@@ -227,6 +229,8 @@ public class Nominas extends javax.swing.JPanel {
                 nominaEmpleados.add(tuplaEmpleado);
             }
         } catch (Exception e) {
+            final JPanel panel = new JPanel();
+            JOptionPane.showMessageDialog(panel, "Se ha generado un error, por favor intente nuevamente", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
 
@@ -337,8 +341,8 @@ public class Nominas extends javax.swing.JPanel {
                         .addGap(32, 32, 32)
                         .addComponent(sp_empleados, javax.swing.GroupLayout.PREFERRED_SIZE, 779, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(pnl_datosLayout.createSequentialGroup()
-                        .addGap(339, 339, 339)
-                        .addComponent(btn_registrar, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(331, 331, 331)
+                        .addComponent(btn_registrar, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(32, Short.MAX_VALUE))
         );
         pnl_datosLayout.setVerticalGroup(
@@ -382,8 +386,13 @@ public class Nominas extends javax.swing.JPanel {
             doc.crearNomina(nominaEmpleados, cantLunes, rangoInicio, rangoFin);
             doc.crearComprobantes(nominaEmpleados, cantLunes, rangoInicio, rangoFin);
             doc.crearComprobantesEgreso(nominaEmpleados, rangoInicio, rangoFin);
+            
+            final JPanel panel = new JPanel();
+            JOptionPane.showMessageDialog(panel, "Se generaron los documentos correctamente", "Información", JOptionPane.INFORMATION_MESSAGE);
         } catch (IOException ex) {
             Logger.getLogger(Nominas.class.getName()).log(Level.SEVERE, null, ex);
+            final JPanel panel = new JPanel();
+            JOptionPane.showMessageDialog(panel, "No se pudieron crear los documentos, intente nuevamente", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btn_registrarActionPerformed
 

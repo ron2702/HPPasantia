@@ -5,7 +5,10 @@
  */
 package modelo;
 
+import comun.Inasistencia;
 import comun.Nomina;
+import comun.Prestamo;
+import comun.Suplencia;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -16,6 +19,7 @@ import java.time.LocalDate;
 import java.time.Period;
 import java.time.ZoneId;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Collections;
 import java.util.Date;
 import java.util.Locale;
@@ -35,6 +39,35 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 
 public class DocumentosExcel {
+    
+    private String mesString(int mes) {
+        if (mes == 1){
+            return "Enero";
+        }else if (mes == 2){
+            return "Febrero";
+        }else if (mes == 3){
+            return "Marzo";
+        }else if (mes == 4){
+            return "Abril";
+        }else if (mes == 5){
+            return "Mayo";
+        }else if (mes == 6){
+            return "Junio";
+        }else if (mes == 7){
+            return "Julio";
+        }else if (mes == 8){
+            return "Agosto";
+        }else if (mes == 9){
+            return "Septiembre";
+        }else if (mes == 10){
+            return "Octubre";
+        }else if (mes == 11){
+            return "Noviembre";
+        }else {
+            return "Diciembre";
+        }
+    }
+    
     public void crearNomina(ArrayList<Nomina> nominaEmpleados, int lunesMes, String inicioPeriodo, String finPeriodo) throws IOException {
         try {
             Collections.sort(nominaEmpleados); 
@@ -327,6 +360,20 @@ public class DocumentosExcel {
                 FileOutputStream output = new FileOutputStream("Documentos\\ComprobantesPago\\" + fechaFin + "\\ComprobantePago_" + empleado.getCedula() + "_" + fechaFin + ".xlsx");
                 wb.write(output);
                 output.close();
+                
+                DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+                Calendar cal = Calendar.getInstance();
+                
+                int mesInt = cal.get(Calendar.MONTH) + 1;
+                String mes = mesString(mesInt);
+                int ano = cal.get(Calendar.YEAR);
+                ComunicacionREST com = new ComunicacionREST();
+                Suplencia removerSup = new Suplencia(empleado.getCedula(), 0, mes, ano);
+                Inasistencia removerIna = new Inasistencia(empleado.getCedula(), 0, mes, ano);
+                Prestamo removerPrestamo = new Prestamo(new Date(), (empleado.getMontoPrestamos() * (-1)), empleado.getCedula());
+                removerIna = com.modificarInasistencia(removerIna);
+                removerSup = com.modificarSuplencia(removerSup);
+                removerPrestamo = com.registrarPrestamo(removerPrestamo);
                 
                 filaInicio++;
                 idFila++;

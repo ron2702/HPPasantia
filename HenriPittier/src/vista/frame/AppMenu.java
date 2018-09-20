@@ -11,6 +11,8 @@ import vista.panel.empleados.ModificarEmpleado;
 import vista.panel.Inicio;
 import vista.panel.empleados.RegistrarEmpleado;
 import java.awt.CardLayout;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import vista.panel.empleados.ActualizarPrestamos;
 import vista.panel.empleados.AsignarEmpleadoGrupo;
 import vista.panel.empleados.BorrarEmpleado;
@@ -58,6 +60,7 @@ import vista.panel.suplencias.RegistrarSuplencia;
 public class AppMenu extends javax.swing.JFrame {
     final static String PANELINICIO = "PANELINICIO";
     Inicio inicioPanel = new Inicio();
+    private int privilegios;
     
     //ESTUDIANTES
     final static String REGISTRARESTUDIANTE = "REGISTRARESTUDIANTE";
@@ -185,8 +188,9 @@ public class AppMenu extends javax.swing.JFrame {
     BoletinInformativo boletinInformativoPanel = new BoletinInformativo();
     
     
-    public AppMenu() {
+    public AppMenu(int _privilegios) {
         initComponents();
+        this.privilegios = _privilegios;
         this.setLocationRelativeTo(null);
         contentPane.add(inicioPanel, PANELINICIO);
         
@@ -863,35 +867,55 @@ public class AppMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_eliminarRepresentanteActionPerformed
 
     private void registrarEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrarEmpleadoActionPerformed
-        contentPane.remove(registrarEmpleadoPanel);
-        registrarEmpleadoPanel = new RegistrarEmpleado();
-        contentPane.add(registrarEmpleadoPanel, REGISTRAREMPLEADO);
-        CardLayout cardPanel = (CardLayout)(contentPane.getLayout());
-        cardPanel.show(contentPane, REGISTRAREMPLEADO);
+        if (privilegios == 1){
+            contentPane.remove(registrarEmpleadoPanel);
+            registrarEmpleadoPanel = new RegistrarEmpleado();
+            contentPane.add(registrarEmpleadoPanel, REGISTRAREMPLEADO);
+            CardLayout cardPanel = (CardLayout)(contentPane.getLayout());
+            cardPanel.show(contentPane, REGISTRAREMPLEADO);
+        } else{
+            final JPanel panel = new JPanel();
+            JOptionPane.showMessageDialog(panel, "No tiene los privilegios necesarios para esta zona", "Error", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_registrarEmpleadoActionPerformed
 
     private void consultarEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultarEmpleadoActionPerformed
-        contentPane.remove(consultarEmpleadosPanel); 
-        consultarEmpleadosPanel = new ConsultarEmpleados();
-        contentPane.add(consultarEmpleadosPanel, CONSULTAREMPLEADOS); 
-        CardLayout cardPanel = (CardLayout)(contentPane.getLayout());
-        cardPanel.show(contentPane, CONSULTAREMPLEADOS);
+        if (privilegios == 1){
+            contentPane.remove(consultarEmpleadosPanel); 
+            consultarEmpleadosPanel = new ConsultarEmpleados();
+            contentPane.add(consultarEmpleadosPanel, CONSULTAREMPLEADOS); 
+            CardLayout cardPanel = (CardLayout)(contentPane.getLayout());
+            cardPanel.show(contentPane, CONSULTAREMPLEADOS);    
+        } else{
+            final JPanel panel = new JPanel();
+            JOptionPane.showMessageDialog(panel, "No tiene los privilegios necesarios para esta zona", "Error", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_consultarEmpleadoActionPerformed
 
     private void modificarEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarEmpleadoActionPerformed
-        contentPane.remove(modificarEmpleadoPanel);
-        modificarEmpleadoPanel = new ModificarEmpleado();
-        contentPane.add(modificarEmpleadoPanel, MODIFICAREMPLEADO);
-        CardLayout cardPanel = (CardLayout)(contentPane.getLayout());
-        cardPanel.show(contentPane, MODIFICAREMPLEADO);
+        if (privilegios == 1){
+            contentPane.remove(modificarEmpleadoPanel);
+            modificarEmpleadoPanel = new ModificarEmpleado();
+            contentPane.add(modificarEmpleadoPanel, MODIFICAREMPLEADO);
+            CardLayout cardPanel = (CardLayout)(contentPane.getLayout());
+            cardPanel.show(contentPane, MODIFICAREMPLEADO);
+        } else{
+            final JPanel panel = new JPanel();
+            JOptionPane.showMessageDialog(panel, "No tiene los privilegios necesarios para esta zona", "Error", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_modificarEmpleadoActionPerformed
 
     private void eliminarEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarEmpleadoActionPerformed
-        contentPane.remove(borrarEmpleadoPanel);
-        borrarEmpleadoPanel = new BorrarEmpleado();
-        contentPane.add(borrarEmpleadoPanel, BORRAREMPLEADO);
-        CardLayout cardPanel = (CardLayout)(contentPane.getLayout());
-        cardPanel.show(contentPane, BORRAREMPLEADO);
+        if (privilegios == 1){
+            contentPane.remove(borrarEmpleadoPanel);
+            borrarEmpleadoPanel = new BorrarEmpleado();
+            contentPane.add(borrarEmpleadoPanel, BORRAREMPLEADO);
+            CardLayout cardPanel = (CardLayout)(contentPane.getLayout());
+            cardPanel.show(contentPane, BORRAREMPLEADO);    
+        } else{
+            final JPanel panel = new JPanel();
+            JOptionPane.showMessageDialog(panel, "No tiene los privilegios necesarios para esta zona", "Error", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_eliminarEmpleadoActionPerformed
 
     private void cerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cerrarSesionActionPerformed
@@ -942,67 +966,107 @@ public class AppMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_modificarGrupoActionPerformed
 
     private void registrarInasistenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrarInasistenciaActionPerformed
-        contentPane.remove(registrarInasistenciaPanel);
-        RegistrarInasistencia registrarInasistenciaPanel = new RegistrarInasistencia();
-        contentPane.add(registrarInasistenciaPanel, REGISTRARINASISTENCIA);
-        CardLayout cardPanel = (CardLayout)(contentPane.getLayout());
-        cardPanel.show(contentPane, REGISTRARINASISTENCIA);
+        if (privilegios == 1){
+            contentPane.remove(registrarInasistenciaPanel);
+            RegistrarInasistencia registrarInasistenciaPanel = new RegistrarInasistencia();
+            contentPane.add(registrarInasistenciaPanel, REGISTRARINASISTENCIA);
+            CardLayout cardPanel = (CardLayout)(contentPane.getLayout());
+            cardPanel.show(contentPane, REGISTRARINASISTENCIA);  
+        } else{
+            final JPanel panel = new JPanel();
+            JOptionPane.showMessageDialog(panel, "No tiene los privilegios necesarios para esta zona", "Error", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_registrarInasistenciaActionPerformed
 
     private void consultarInasistenciasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultarInasistenciasActionPerformed
-        contentPane.remove(consultarInasistenciasPanel);
-        ConsultarInasistencias consultarInasistenciasPanel = new ConsultarInasistencias();
-        contentPane.add(consultarInasistenciasPanel, CONSULTARINASISTENCIAS);
-        CardLayout cardPanel = (CardLayout)(contentPane.getLayout());
-        cardPanel.show(contentPane, CONSULTARINASISTENCIAS);
+        if (privilegios == 1){
+            contentPane.remove(consultarInasistenciasPanel);
+            ConsultarInasistencias consultarInasistenciasPanel = new ConsultarInasistencias();
+            contentPane.add(consultarInasistenciasPanel, CONSULTARINASISTENCIAS);
+            CardLayout cardPanel = (CardLayout)(contentPane.getLayout());
+            cardPanel.show(contentPane, CONSULTARINASISTENCIAS);  
+        } else{
+            final JPanel panel = new JPanel();
+            JOptionPane.showMessageDialog(panel, "No tiene los privilegios necesarios para esta zona", "Error", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_consultarInasistenciasActionPerformed
 
     private void modificarInasistenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarInasistenciaActionPerformed
-        contentPane.remove(modificarInasistenciaPanel);
-        ModificarInasistencia modificarInasistenciaPanel = new ModificarInasistencia();
-        contentPane.add(modificarInasistenciaPanel, MODIFICARINASISTENCIA);
-        CardLayout cardPanel = (CardLayout)(contentPane.getLayout());
-        cardPanel.show(contentPane, MODIFICARINASISTENCIA);
+        if (privilegios == 1){
+            contentPane.remove(modificarInasistenciaPanel);
+            ModificarInasistencia modificarInasistenciaPanel = new ModificarInasistencia();
+            contentPane.add(modificarInasistenciaPanel, MODIFICARINASISTENCIA);
+            CardLayout cardPanel = (CardLayout)(contentPane.getLayout());
+            cardPanel.show(contentPane, MODIFICARINASISTENCIA);  
+        } else{
+            final JPanel panel = new JPanel();
+            JOptionPane.showMessageDialog(panel, "No tiene los privilegios necesarios para esta zona", "Error", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_modificarInasistenciaActionPerformed
 
     private void borrarInasistenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_borrarInasistenciaActionPerformed
-        contentPane.remove(borrarInasistenciaPanel);
-        BorrarInasistencia borrarInasistenciaPanel = new BorrarInasistencia();
-        contentPane.add(borrarInasistenciaPanel, BORRARINASISTENCIA);
-        CardLayout cardPanel = (CardLayout)(contentPane.getLayout());
-        cardPanel.show(contentPane, BORRARINASISTENCIA);
+        if (privilegios == 1){
+            contentPane.remove(borrarInasistenciaPanel);
+            BorrarInasistencia borrarInasistenciaPanel = new BorrarInasistencia();
+            contentPane.add(borrarInasistenciaPanel, BORRARINASISTENCIA);
+            CardLayout cardPanel = (CardLayout)(contentPane.getLayout());
+            cardPanel.show(contentPane, BORRARINASISTENCIA);
+        } else{
+            final JPanel panel = new JPanel();
+            JOptionPane.showMessageDialog(panel, "No tiene los privilegios necesarios para esta zona", "Error", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_borrarInasistenciaActionPerformed
 
     private void registrarSuplenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrarSuplenciaActionPerformed
-        contentPane.remove(registrarSuplenciaPanel);
-        RegistrarSuplencia registrarSuplenciaPanel = new RegistrarSuplencia();
-        contentPane.add(registrarSuplenciaPanel, REGISTRARSUPLENCIA);
-        CardLayout cardPanel = (CardLayout)(contentPane.getLayout());
-        cardPanel.show(contentPane, REGISTRARSUPLENCIA);
+        if (privilegios == 1){
+            contentPane.remove(registrarSuplenciaPanel);
+            RegistrarSuplencia registrarSuplenciaPanel = new RegistrarSuplencia();
+            contentPane.add(registrarSuplenciaPanel, REGISTRARSUPLENCIA);
+            CardLayout cardPanel = (CardLayout)(contentPane.getLayout());
+            cardPanel.show(contentPane, REGISTRARSUPLENCIA);
+        } else{
+            final JPanel panel = new JPanel();
+            JOptionPane.showMessageDialog(panel, "No tiene los privilegios necesarios para esta zona", "Error", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_registrarSuplenciaActionPerformed
 
     private void consultarSuplenciasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultarSuplenciasActionPerformed
-        contentPane.remove(consultarSuplenciasPanel);
-        ConsultarSuplencias consultarSuplenciasPanel = new ConsultarSuplencias();
-        contentPane.add(consultarSuplenciasPanel, CONSULTARSUPLENCIAS);
-        CardLayout cardPanel = (CardLayout)(contentPane.getLayout());
-        cardPanel.show(contentPane, CONSULTARSUPLENCIAS);
+        if (privilegios == 1){
+            contentPane.remove(consultarSuplenciasPanel);
+            ConsultarSuplencias consultarSuplenciasPanel = new ConsultarSuplencias();
+            contentPane.add(consultarSuplenciasPanel, CONSULTARSUPLENCIAS);
+            CardLayout cardPanel = (CardLayout)(contentPane.getLayout());
+            cardPanel.show(contentPane, CONSULTARSUPLENCIAS);
+        } else{
+            final JPanel panel = new JPanel();
+            JOptionPane.showMessageDialog(panel, "No tiene los privilegios necesarios para esta zona", "Error", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_consultarSuplenciasActionPerformed
 
     private void modificarSuplenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarSuplenciaActionPerformed
-        contentPane.remove(modificarSuplenciaPanel);
-        ModificarSuplencia modificarSuplenciaPanel = new ModificarSuplencia();
-        contentPane.add(modificarSuplenciaPanel, MODIFICARSUPLENCIA);
-        CardLayout cardPanel = (CardLayout)(contentPane.getLayout());
-        cardPanel.show(contentPane, MODIFICARSUPLENCIA);
+        if (privilegios == 1){
+            contentPane.remove(modificarSuplenciaPanel);
+            ModificarSuplencia modificarSuplenciaPanel = new ModificarSuplencia();
+            contentPane.add(modificarSuplenciaPanel, MODIFICARSUPLENCIA);
+            CardLayout cardPanel = (CardLayout)(contentPane.getLayout());
+            cardPanel.show(contentPane, MODIFICARSUPLENCIA);  
+        } else{
+            final JPanel panel = new JPanel();
+            JOptionPane.showMessageDialog(panel, "No tiene los privilegios necesarios para esta zona", "Error", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_modificarSuplenciaActionPerformed
 
     private void borrarSuplenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_borrarSuplenciaActionPerformed
-        contentPane.remove(borrarSuplenciaPanel);
-        BorrarSuplencia borrarSuplenciaPanel = new BorrarSuplencia();
-        contentPane.add(borrarSuplenciaPanel, BORRARSUPLENCIA);
-        CardLayout cardPanel = (CardLayout)(contentPane.getLayout());
-        cardPanel.show(contentPane, BORRARSUPLENCIA);
+        if (privilegios == 1){
+            contentPane.remove(borrarSuplenciaPanel);
+            BorrarSuplencia borrarSuplenciaPanel = new BorrarSuplencia();
+            contentPane.add(borrarSuplenciaPanel, BORRARSUPLENCIA);
+            CardLayout cardPanel = (CardLayout)(contentPane.getLayout());
+            cardPanel.show(contentPane, BORRARSUPLENCIA);      
+        } else{
+            final JPanel panel = new JPanel();
+            JOptionPane.showMessageDialog(panel, "No tiene los privilegios necesarios para esta zona", "Error", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_borrarSuplenciaActionPerformed
 
     private void eliminarRelacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarRelacionActionPerformed
@@ -1110,11 +1174,16 @@ public class AppMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_consultarEstudianteGrupoActionPerformed
 
     private void actualizarPrestamosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actualizarPrestamosActionPerformed
-        contentPane.remove(actualizarPrestamosPanel);
-        actualizarPrestamosPanel = new ActualizarPrestamos();
-        contentPane.add(actualizarPrestamosPanel, ACTUALIZARPRESTAMOS);
-        CardLayout cardPanel = (CardLayout)(contentPane.getLayout());
-        cardPanel.show(contentPane, ACTUALIZARPRESTAMOS);
+        if (privilegios == 1){
+            contentPane.remove(actualizarPrestamosPanel);
+            actualizarPrestamosPanel = new ActualizarPrestamos();
+            contentPane.add(actualizarPrestamosPanel, ACTUALIZARPRESTAMOS);
+            CardLayout cardPanel = (CardLayout)(contentPane.getLayout());
+            cardPanel.show(contentPane, ACTUALIZARPRESTAMOS);           
+        } else{
+            final JPanel panel = new JPanel();
+            JOptionPane.showMessageDialog(panel, "No tiene los privilegios necesarios para esta zona", "Error", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_actualizarPrestamosActionPerformed
 
     private void registrarSalidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrarSalidaActionPerformed
@@ -1142,11 +1211,16 @@ public class AppMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_consultarSalidaActionPerformed
 
     private void nominaEmpleadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nominaEmpleadosActionPerformed
-        contentPane.remove(nominasPanel);
-        Nominas nominasPanel = new Nominas();
-        contentPane.add(nominasPanel, NOMINAS);
-        CardLayout cardPanel = (CardLayout)(contentPane.getLayout());
-        cardPanel.show(contentPane, NOMINAS);
+        if (privilegios == 1){
+            contentPane.remove(nominasPanel);
+            Nominas nominasPanel = new Nominas();
+            contentPane.add(nominasPanel, NOMINAS);
+            CardLayout cardPanel = (CardLayout)(contentPane.getLayout());
+            cardPanel.show(contentPane, NOMINAS);           
+        } else{
+            final JPanel panel = new JPanel();
+            JOptionPane.showMessageDialog(panel, "No tiene los privilegios necesarios para esta zona", "Error", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_nominaEmpleadosActionPerformed
         
     private void constanciaEstudioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_constanciaEstudioActionPerformed
@@ -1197,7 +1271,7 @@ public class AppMenu extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AppMenu().setVisible(true);
+                new AppMenu(1).setVisible(true);
             }
         });
     }

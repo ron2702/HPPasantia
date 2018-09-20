@@ -123,7 +123,9 @@ public class ModificarEmpleado extends javax.swing.JPanel {
                         Lugar parroquiaEmpleado = buscarLugarPorNombre(listaParroquias, empleadoSeleccionado.getParroquia());
                         cb_parroquias.setSelectedItem(parroquiaEmpleado);
                         cb_tareasDirigidas.setSelectedItem(empleadoSeleccionado.getTareasDirigidas());
-                        
+                        if (!empleadoSeleccionado.getFoto().equals("")){
+                            lbl_foto.setIcon(new ImageIcon(empleadoSeleccionado.getFoto()));
+                        }
                     } catch (Exception ex) {
                         Logger.getLogger(ModificarEmpleado.class.getName()).log(Level.SEVERE, null, ex);
                     }
@@ -655,7 +657,7 @@ try {
 
     private void btn_cargarImagenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cargarImagenActionPerformed
         FileFilter filtroImagenes = new FileNameExtensionFilter("Archivos de imagen", ImageIO.getReaderFileSuffixes());
-        JFileChooser exploradorArchivos = new JFileChooser();
+        JFileChooser exploradorArchivos = new JFileChooser("FotosEmpleados");
         exploradorArchivos.setAcceptAllFileFilterUsed(false);
         exploradorArchivos.addChoosableFileFilter(filtroImagenes);
         int opcionElegida = exploradorArchivos.showOpenDialog(null);
@@ -694,8 +696,7 @@ try {
                 && (!dc_fechaNac.getText().equals("")) && (!txt_telefonoCasa.getText().equals("")) 
                 && (!txt_telefonoMovil.getText().equals("")) && (!txt_cargo.getText().equals("")) 
                 && (cb_tareasDirigidas.getSelectedItem() != null) && (cb_estados.getSelectedItem() != null) 
-                && (cb_municipios.getSelectedItem() != null) && (cb_parroquias.getSelectedItem() != null) 
-                && (archivoSeleccionado != null)) {
+                && (cb_municipios.getSelectedItem() != null) && (cb_parroquias.getSelectedItem() != null)) {
             
             try {
                 Lugar estadoSeleccionado = (Lugar) cb_estados.getSelectedItem();
@@ -705,11 +706,17 @@ try {
                 Date fechaIngreso = parseFecha.parse(dc_fechaIngreso.getText());
                 Date fechaNacimiento = parseFecha.parse(dc_fechaNac.getText());
                 ManejadorImagen img = new ManejadorImagen();
+                String file = "";
+                if (archivoSeleccionado != null){
+                    file = "FotosEmpleados\\" + archivoSeleccionado.getName();
+                }else{
+                    file = empleadoModificar.getFoto();
+                }
                 empleadoModificar = new Empleado(empleadoModificar.getCedula(), txt_primerNombre.getText(), txt_segundoNombre.getText(), 
                                                           txt_primerApellido.getText(), txt_segundoApellido.getText(), (String) cb_banco.getSelectedItem(),  
                                                           (Integer.parseInt(txt_sueldoMensual.getText())), fechaIngreso, fechaNacimiento,
-                                                          txt_telefonoCasa.getText(), txt_telefonoMovil.getText(), txt_cargo.getText(), null, 
-                                                          "", "", (String) cb_tareasDirigidas.getSelectedItem(), estadoSeleccionado.getNombre(), 
+                                                          txt_telefonoCasa.getText(), txt_telefonoMovil.getText(), txt_cargo.getText(), file, 
+                                                          empleadoModificar.getUsuario(), empleadoModificar.getClave(), (String) cb_tareasDirigidas.getSelectedItem(), estadoSeleccionado.getNombre(), 
                                                           municipioSeleccionado.getNombre(), parroquiaSeleccionada.getNombre());
                 ComunicacionREST comRest = new ComunicacionREST();
                 Empleado empleadoRegistrado = comRest.modificarEmpleado(empleadoModificar);

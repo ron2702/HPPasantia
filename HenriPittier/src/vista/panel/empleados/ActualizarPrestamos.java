@@ -275,15 +275,24 @@ public class ActualizarPrestamos extends javax.swing.JPanel {
 
     private void btn_restarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_restarActionPerformed
         try {
-            if ((empleadoSeleccionado != null) && (txt_montoNuevo.getText().equals(""))){
+            if ((empleadoSeleccionado != null) && (!txt_montoNuevo.getText().equals(""))){
                 int montoActual = Integer.parseInt(txt_montoActual.getText());
                 int montoRestar = Integer.parseInt(txt_montoNuevo.getText());
                 int resta = montoActual - montoRestar;
                 if (resta >= 0){
-                    Prestamo prestamoRegistrar = registrarPrestamo(1);
+                    Prestamo prestamoRegistrar = registrarPrestamo(-1);
                     if (prestamoRegistrar.getError() == Registry.RESULTADO_CODIGO_RECURSO_CREADO){
                             final JPanel panel = new JPanel();
                             JOptionPane.showMessageDialog(panel, "Se registró exitosamente el préstamo", "Información", JOptionPane.INFORMATION_MESSAGE);
+                            DefaultTableModel model = (DefaultTableModel) tb_historicoPrestamos.getModel();
+                            DateFormat dateFormat = new SimpleDateFormat("dd/MM/yy");
+
+                            //to convert Date to String, use format method of SimpleDateFormat class.
+                            String fecPrestamo = dateFormat.format(prestamoRegistrar.getFechaPrestamo());
+                            
+                            model.addRow(new Object[] {fecPrestamo, prestamoRegistrar.getMonto()});
+                            String montoNuevo = String.valueOf(resta);
+                            txt_montoActual.setText(montoNuevo);
                     }else{
                         final JPanel panel = new JPanel();
                         JOptionPane.showMessageDialog(panel, "No se ha podido registrar el préstamo, intente nuevamente", "Error", JOptionPane.ERROR_MESSAGE);
@@ -303,7 +312,7 @@ public class ActualizarPrestamos extends javax.swing.JPanel {
 
     private void btn_sumarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_sumarActionPerformed
         try {
-            if ((empleadoSeleccionado != null) && (txt_montoNuevo.getText().equals(""))){
+            if ((empleadoSeleccionado != null) && (!txt_montoNuevo.getText().equals(""))){
                 Prestamo prestamoRegistrar = registrarPrestamo(1);
                 if (prestamoRegistrar.getError() == Registry.RESULTADO_CODIGO_RECURSO_CREADO){
                         final JPanel panel = new JPanel();
@@ -314,6 +323,12 @@ public class ActualizarPrestamos extends javax.swing.JPanel {
                         //to convert Date to String, use format method of SimpleDateFormat class.
                         String fecPrestamo = dateFormat.format(prestamoRegistrar.getFechaPrestamo());
                         model.addRow(new Object[] {fecPrestamo, prestamoRegistrar.getMonto()});
+                        
+                        int montoActual = Integer.parseInt(txt_montoActual.getText());
+                        int montoRestar = Integer.parseInt(txt_montoNuevo.getText());
+                        int suma = montoActual + montoRestar;
+                        String montoNuevo = String.valueOf(suma);
+                        txt_montoActual.setText(montoNuevo);
                 }else{
                     final JPanel panel = new JPanel();
                     JOptionPane.showMessageDialog(panel, "No se ha podido registrar el préstamo, intente nuevamente", "Error", JOptionPane.ERROR_MESSAGE);

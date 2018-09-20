@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.ImageIcon;
 import javax.swing.table.DefaultTableModel;
 import modelo.ComunicacionREST;
 import modelo.Registry;
@@ -373,6 +374,9 @@ public class ConsultarEmpleados extends javax.swing.JPanel {
                 txt_estado.setText(empleadoConsultar.getEstado());
                 txt_municipio.setText(empleadoConsultar.getMunicipio());
                 txt_parroquia.setText(empleadoConsultar.getParroquia());
+                if (!empleadoConsultar.getFoto().equals("")){
+                    lbl_foto.setIcon(new ImageIcon(empleadoConsultar.getFoto()));
+                }
             }
         }catch(Exception ex){
             ex.printStackTrace();
