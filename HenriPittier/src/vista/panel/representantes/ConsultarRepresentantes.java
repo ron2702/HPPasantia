@@ -6,6 +6,7 @@
 package vista.panel.representantes;
 
 import comun.Representante;
+import java.awt.Image;
 import java.awt.event.ActionListener;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -15,6 +16,7 @@ import java.util.Calendar;
 import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.ImageIcon;
 import javax.swing.table.DefaultTableModel;
 import modelo.ComunicacionREST;
 import modelo.Registry;
@@ -61,11 +63,11 @@ public class ConsultarRepresentantes extends javax.swing.JPanel {
         txt_municipio = new javax.swing.JTextField();
         lbl_parroquia = new javax.swing.JLabel();
         txt_parroquia = new javax.swing.JTextField();
-        lbl_foto = new javax.swing.JLabel();
         lbl_fotoRepresentantes = new javax.swing.JLabel();
         txt_fechaNac = new javax.swing.JTextField();
         lbl_email = new javax.swing.JLabel();
         txt_email = new javax.swing.JTextField();
+        lbl_foto = new javax.swing.JLabel();
         lbl_titulo = new javax.swing.JLabel();
 
         pnl_datos.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -136,11 +138,6 @@ public class ConsultarRepresentantes extends javax.swing.JPanel {
         txt_parroquia.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         txt_parroquia.setEnabled(false);
 
-        lbl_foto.setBackground(new java.awt.Color(255, 255, 255));
-        lbl_foto.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        lbl_foto.setForeground(new java.awt.Color(255, 255, 255));
-        lbl_foto.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-
         lbl_fotoRepresentantes.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         lbl_fotoRepresentantes.setText("Foto del Representante:");
 
@@ -154,6 +151,8 @@ public class ConsultarRepresentantes extends javax.swing.JPanel {
         txt_email.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         txt_email.setEnabled(false);
 
+        lbl_foto.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
         javax.swing.GroupLayout pnl_datosLayout = new javax.swing.GroupLayout(pnl_datos);
         pnl_datos.setLayout(pnl_datosLayout);
         pnl_datosLayout.setHorizontalGroup(
@@ -161,16 +160,6 @@ public class ConsultarRepresentantes extends javax.swing.JPanel {
             .addGroup(pnl_datosLayout.createSequentialGroup()
                 .addGap(39, 39, 39)
                 .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnl_datosLayout.createSequentialGroup()
-                        .addComponent(lbl_email)
-                        .addGap(132, 132, 132)
-                        .addComponent(txt_email, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(pnl_datosLayout.createSequentialGroup()
-                        .addComponent(sp_representantes, javax.swing.GroupLayout.PREFERRED_SIZE, 605, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lbl_foto, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lbl_fotoRepresentantes)))
                     .addGroup(pnl_datosLayout.createSequentialGroup()
                         .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lbl_telefonoCasa)
@@ -194,11 +183,23 @@ public class ConsultarRepresentantes extends javax.swing.JPanel {
                                     .addComponent(txt_estado, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(txt_municipio, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(txt_parroquia, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(43, 43, 43))
+                                .addGap(43, 62, Short.MAX_VALUE))
                             .addGroup(pnl_datosLayout.createSequentialGroup()
                                 .addComponent(txt_tipo, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE)))))
-                .addGap(0, 19, Short.MAX_VALUE))
+                                .addGap(0, 457, Short.MAX_VALUE))))
+                    .addGroup(pnl_datosLayout.createSequentialGroup()
+                        .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(pnl_datosLayout.createSequentialGroup()
+                                .addComponent(lbl_email)
+                                .addGap(132, 132, 132)
+                                .addComponent(txt_email, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(pnl_datosLayout.createSequentialGroup()
+                                .addComponent(sp_representantes, javax.swing.GroupLayout.PREFERRED_SIZE, 605, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lbl_fotoRepresentantes)
+                                    .addComponent(lbl_foto, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(0, 38, Short.MAX_VALUE))))
         );
         pnl_datosLayout.setVerticalGroup(
             pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -211,9 +212,9 @@ public class ConsultarRepresentantes extends javax.swing.JPanel {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnl_datosLayout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(lbl_fotoRepresentantes)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(lbl_foto, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(37, 37, 37)))
+                        .addGap(32, 32, 32)))
                 .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(lbl_fechaNac, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -298,6 +299,14 @@ public class ConsultarRepresentantes extends javax.swing.JPanel {
             txt_estado.setText(representanteConsultar.getEstado());
             txt_municipio.setText(representanteConsultar.getMunicipio());
             txt_parroquia.setText(representanteConsultar.getParroquia());
+            if (!representanteConsultar.getFoto().equals("")){
+                    ImageIcon imagenRepresentante;
+                    imagenRepresentante = new ImageIcon(representanteConsultar.getFoto());
+                    Image img = imagenRepresentante.getImage();
+                    Image newimg = img.getScaledInstance(134, 134,  java.awt.Image.SCALE_SMOOTH);
+                    ImageIcon newIcon = new ImageIcon(newimg);
+                    lbl_foto.setIcon(newIcon);
+                }
         }
     }//GEN-LAST:event_tb_consultarRepresentantesMouseClicked
 

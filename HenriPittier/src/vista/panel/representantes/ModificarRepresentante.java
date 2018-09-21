@@ -7,6 +7,7 @@ package vista.panel.representantes;
 
 import comun.Lugar;
 import comun.Representante;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -117,6 +118,14 @@ public class ModificarRepresentante extends javax.swing.JPanel {
                         cb_municipios.setSelectedItem(municipioEmpleado);
                         Lugar parroquiaEmpleado = buscarLugarPorNombre(listaParroquias, representanteModificar.getParroquia());
                         cb_parroquias.setSelectedItem(parroquiaEmpleado);
+                        if (!representanteModificar.getFoto().equals("")){
+                            ImageIcon imagenRepresentante;
+                            imagenRepresentante = new ImageIcon(representanteModificar.getFoto());
+                            Image img = imagenRepresentante.getImage();
+                            Image newimg = img.getScaledInstance(134, 134,  java.awt.Image.SCALE_SMOOTH);
+                            ImageIcon newIcon = new ImageIcon(newimg);
+                            lbl_foto.setIcon(newIcon);
+                        }
                     } catch (Exception ex) {
                         Logger.getLogger(ModificarRepresentante.class.getName()).log(Level.SEVERE, null, ex);
                     }
@@ -183,12 +192,12 @@ public class ModificarRepresentante extends javax.swing.JPanel {
         cb_estados = new javax.swing.JComboBox();
         cb_municipios = new javax.swing.JComboBox();
         cb_parroquias = new javax.swing.JComboBox();
-        lbl_foto = new javax.swing.JLabel();
         btn_cargarImagen = new javax.swing.JButton();
         cb_listaRepresentantes = new javax.swing.JComboBox();
         lbl_tituloModificar = new javax.swing.JLabel();
         lbl_email = new javax.swing.JLabel();
         txt_email = new javax.swing.JTextField();
+        lbl_foto = new javax.swing.JLabel();
         lbl_tituloModificarRepresentantes = new javax.swing.JLabel();
 
         pnl_datos.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -356,8 +365,6 @@ public class ModificarRepresentante extends javax.swing.JPanel {
 
     cb_parroquias.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
 
-    lbl_foto.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-
     btn_cargarImagen.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
     btn_cargarImagen.setText("Cargar imagen");
     btn_cargarImagen.addActionListener(new java.awt.event.ActionListener() {
@@ -380,6 +387,8 @@ public class ModificarRepresentante extends javax.swing.JPanel {
             txt_emailKeyTyped(evt);
         }
     });
+
+    lbl_foto.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
     javax.swing.GroupLayout pnl_datosLayout = new javax.swing.GroupLayout(pnl_datos);
     pnl_datos.setLayout(pnl_datosLayout);
@@ -415,9 +424,9 @@ public class ModificarRepresentante extends javax.swing.JPanel {
                     .addComponent(txt_email)))
             .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(pnl_datosLayout.createSequentialGroup()
-                    .addGap(111, 111, 111)
+                    .addGap(83, 83, 83)
                     .addComponent(lbl_foto, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addGap(32, 32, 32)
                     .addComponent(btn_cargarImagen))
                 .addGroup(pnl_datosLayout.createSequentialGroup()
                     .addGap(44, 44, 44)
@@ -456,9 +465,50 @@ public class ModificarRepresentante extends javax.swing.JPanel {
                     .addComponent(cb_listaRepresentantes, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lbl_tituloModificar))
                 .addComponent(lbl_fechaNac))
+            .addGap(46, 46, 46)
             .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(pnl_datosLayout.createSequentialGroup()
-                    .addGap(50, 50, 50)
+                    .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txt_primerNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lbl_primerNombre))
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txt_segundoNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lbl_segundoNombre))
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txt_primerApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lbl_primerApellido))
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txt_segundoApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lbl_segundoApellido))
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(lbl_telefonoCasa)
+                        .addComponent(txt_telefonoCasa, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txt_telefonoMovil, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lbl_telefonoMovil))
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txt_email, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lbl_email))
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(pnl_datosLayout.createSequentialGroup()
+                    .addComponent(cb_tipo, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
+                    .addComponent(cb_estados, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(cb_municipios, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(cb_parroquias, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(28, 28, 28)
+                    .addComponent(btn_cargarImagen)
+                    .addGap(140, 140, 140))
+                .addGroup(pnl_datosLayout.createSequentialGroup()
+                    .addGap(4, 4, 4)
                     .addComponent(lbl_tipo)
                     .addGap(16, 16, 16)
                     .addComponent(lbl_direccion)
@@ -468,55 +518,9 @@ public class ModificarRepresentante extends javax.swing.JPanel {
                     .addComponent(lbl_municipio)
                     .addGap(18, 18, 18)
                     .addComponent(lbl_parroquia)
-                    .addGap(157, 200, Short.MAX_VALUE))
-                .addGroup(pnl_datosLayout.createSequentialGroup()
-                    .addGap(46, 46, 46)
-                    .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(pnl_datosLayout.createSequentialGroup()
-                            .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(txt_primerNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(lbl_primerNombre))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(txt_segundoNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(lbl_segundoNombre))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(txt_primerApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(lbl_primerApellido))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(txt_segundoApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(lbl_segundoApellido))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(lbl_telefonoCasa)
-                                .addComponent(txt_telefonoCasa, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(txt_telefonoMovil, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(lbl_telefonoMovil))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(txt_email, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(lbl_email))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGroup(pnl_datosLayout.createSequentialGroup()
-                            .addComponent(cb_tipo, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(cb_estados, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(cb_municipios, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(cb_parroquias, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(pnl_datosLayout.createSequentialGroup()
-                                    .addGap(18, 18, 18)
-                                    .addComponent(lbl_foto, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(pnl_datosLayout.createSequentialGroup()
-                                    .addGap(28, 28, 28)
-                                    .addComponent(btn_cargarImagen)))
-                            .addGap(39, 39, 39)))))
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lbl_foto, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(29, 29, 29)))
             .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                 .addComponent(btn_modificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addComponent(btn_limpiar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -605,10 +609,16 @@ public class ModificarRepresentante extends javax.swing.JPanel {
                 SimpleDateFormat parseFecha = new SimpleDateFormat("dd/MM/yy");
                 Date fechaNacimiento = parseFecha.parse(dc_fechaNac.getText());
                 ManejadorImagen img = new ManejadorImagen();
+                String file = "";
+                if (archivoSeleccionado != null){
+                    file = "FotosRepresentantes\\" + archivoSeleccionado.getName();
+                }else{
+                    file = representanteModificar.getFoto();
+                }
                 
                 representanteModificar = new Representante(representanteModificar.getCedula(), txt_primerNombre.getText(),
                     txt_segundoNombre.getText(), txt_primerApellido.getText(), txt_segundoApellido.getText(), fechaNacimiento, txt_email.getText(),
-                    txt_telefonoCasa.getText(), txt_telefonoMovil.getText(), (String) cb_tipo.getSelectedItem(), "Foto",
+                    txt_telefonoCasa.getText(), txt_telefonoMovil.getText(), (String) cb_tipo.getSelectedItem(), file,
                     estadoSeleccionado.getNombre(), municipioSeleccionado.getNombre(), parroquiaSeleccionada.getNombre());
                 
                 ComunicacionREST comRest = new ComunicacionREST();
@@ -631,16 +641,19 @@ public class ModificarRepresentante extends javax.swing.JPanel {
 
     private void btn_cargarImagenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cargarImagenActionPerformed
         FileFilter filtroImagenes = new FileNameExtensionFilter("Archivos de imagen", ImageIO.getReaderFileSuffixes());
-        JFileChooser exploradorArchivos = new JFileChooser();
+        JFileChooser exploradorArchivos = new JFileChooser("FotosRepresentantes");
         exploradorArchivos.setAcceptAllFileFilterUsed(false);
         exploradorArchivos.addChoosableFileFilter(filtroImagenes);
         int opcionElegida = exploradorArchivos.showOpenDialog(null);
         if (opcionElegida == JFileChooser.APPROVE_OPTION)
         {
             archivoSeleccionado = exploradorArchivos.getSelectedFile();
-            ImageIcon imagenEmpleado;
-            imagenEmpleado = new ImageIcon(archivoSeleccionado.getAbsoluteFile().getAbsolutePath());
-            lbl_foto.setIcon(imagenEmpleado);
+            ImageIcon imagenRepresentante;
+            imagenRepresentante = new ImageIcon(archivoSeleccionado.getAbsoluteFile().getAbsolutePath());
+            Image img = imagenRepresentante.getImage();
+            Image newimg = img.getScaledInstance(134, 134,  java.awt.Image.SCALE_SMOOTH);
+            ImageIcon newIcon = new ImageIcon(newimg);
+            lbl_foto.setIcon(newIcon);
         }
     }//GEN-LAST:event_btn_cargarImagenActionPerformed
 
