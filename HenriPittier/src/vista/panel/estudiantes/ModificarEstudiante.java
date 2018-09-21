@@ -415,15 +415,15 @@ public class ModificarEstudiante extends javax.swing.JPanel {
     }//GEN-LAST:event_txt_cedulaEscolarKeyTyped
 
     private void btn_modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_modificarActionPerformed
-       if ((!txt_primerNombre.getText().equals("")) && (!txt_primerApellido.getText().equals("")) && (!txt_segundoNombre.getText().equals(""))
-            && (!txt_segundoApellido.getText().equals("")) &&(!dc_fechaNac.getText().equals(""))){
+       if ((!txt_primerNombre.getText().equals("")) && (!txt_primerApellido.getText().equals("")) 
+           &&(!dc_fechaNac.getText().equals("")) && (cb_sexo.getSelectedItem() != null)){
            
            try {
                
                SimpleDateFormat parseFecha = new SimpleDateFormat("dd/MM/yy");
                Date fechaNacimiento = parseFecha.parse(dc_fechaNac.getText());
                long ciEscolar = Long.parseLong(txt_cedulaEscolar.getText());
-               estudianteModificar = new Estudiante(ciEscolar, txt_primerNombre.getText(), txt_primerApellido.getText(), txt_segundoNombre.getText(),
+               estudianteModificar = new Estudiante(ciEscolar, txt_primerNombre.getText(), txt_segundoNombre.getText(), txt_primerApellido.getText(),
                                         txt_segundoApellido.getText(), fechaNacimiento, "", txt_cedulaMapfre.getText(), (String) cb_sexo.getSelectedItem());
                ComunicacionREST comRest = new ComunicacionREST();
                Estudiante estudianteModificado = comRest.modificarEstudiante(estudianteModificar);

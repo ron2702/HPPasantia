@@ -262,7 +262,7 @@ public class RegistrarSalida extends javax.swing.JPanel {
     private void btn_registrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_registrarActionPerformed
         String horaSalida = null;
         
-        if((!txt_cedulaEstudiante.getText().equals("")) && (!txt_cedulaRepresentante.getText().equals(""))) {
+        if((!txt_cedulaEstudiante.getText().equals("")) && (!txt_cedulaRepresentante.getText().equals("")) &&(!dc_fechaSalida.getText().equals(""))) {
             try {
 
                 cedulaRepresentante = Integer.parseInt(txt_cedulaRepresentante.getText());

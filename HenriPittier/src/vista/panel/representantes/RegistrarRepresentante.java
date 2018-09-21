@@ -536,9 +536,9 @@ public class RegistrarRepresentante extends javax.swing.JPanel {
         Object objeto = cb_estados.getSelectedItem();
         Object objeto1 = cb_municipios.getSelectedItem();
         Object objeto2 = cb_parroquias.getSelectedItem();
-        if((!txt_cedula.getText().equals("")) && (!txt_primerNombre.getText().equals("")) && (!txt_segundoNombre.getText().equals(""))
-            && (!txt_primerApellido.getText().equals("")) && (!txt_segundoApellido.getText().equals("")) && (!dc_fechaNac.getText().equals("")) && (!txt_telefonoCasa.getText().equals(""))
-            && (!txt_telefonoMovil.getText().equals("")) && (!txt_email.getText().equals("")) && (cb_tipo.getSelectedItem() != null) && (cb_estados.getSelectedItem() != null)
+        if((!txt_cedula.getText().equals("")) && (!txt_primerNombre.getText().equals("")) 
+            && (!txt_primerApellido.getText().equals("")) && (!dc_fechaNac.getText().equals(""))
+            && (cb_tipo.getSelectedItem() != null) && (cb_estados.getSelectedItem() != null)
             && (cb_municipios.getSelectedItem() != null) && (cb_parroquias.getSelectedItem() != null) && (archivoSeleccionado != null)) {
 
             try {
