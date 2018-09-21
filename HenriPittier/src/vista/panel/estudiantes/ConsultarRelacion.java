@@ -5,11 +5,14 @@
  */
 package vista.panel.estudiantes;
 
+import comun.Estudiante;
 import comun.Rep_Est;
 import comun.Representante;
+import java.awt.Image;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.ImageIcon;
 import javax.swing.table.DefaultTableModel;
 import modelo.ComunicacionREST;
 import modelo.Registry;
@@ -21,7 +24,9 @@ import modelo.Registry;
 public class ConsultarRelacion extends javax.swing.JPanel {
     private Rep_Est repestConsultar;
     private Representante representanteConsultar;
+    private Estudiante estudianteConsultar;
     int cedulaRepresentante;
+    long ciEstudiante;
     DefaultTableModel model;
     
     
@@ -213,17 +218,43 @@ public class ConsultarRelacion extends javax.swing.JPanel {
             index = tb_consultarRepEst.getSelectedRow();
 
             String cedula = model.getValueAt(index, 0).toString();
+            String cedulaEstudiante = model.getValueAt(index, 3).toString();
             cedulaRepresentante = Integer.parseInt(cedula);
+            ciEstudiante = Long.parseLong(cedulaEstudiante);
 
             ComunicacionREST comRest = new ComunicacionREST();
 
             Representante _representante = new Representante(cedulaRepresentante);
+            Estudiante _estudiante = new Estudiante(ciEstudiante);
             representanteConsultar = comRest.consultarRepresentanteDetalle(_representante);
-
-            if (representanteConsultar.getError() == Registry.RESULTADO_CODIGO_BIEN){
+            estudianteConsultar = comRest.consultarEstudianteDetalle(_estudiante);
+            
+            if ((representanteConsultar.getError() == Registry.RESULTADO_CODIGO_BIEN) && (estudianteConsultar.getError() == Registry.RESULTADO_CODIGO_BIEN)){
 
                 txt_telfonoCasa.setText(representanteConsultar.getTelefonoCasa());
                 txt_telefonoMovil.setText(representanteConsultar.getTelefonoMovil());
+                
+                if (!representanteConsultar.getFoto().equals("")){
+                    
+                    ImageIcon imagenRepresentante;
+                    imagenRepresentante = new ImageIcon(representanteConsultar.getFoto());
+                    Image img = imagenRepresentante.getImage();
+                    Image newimg = img.getScaledInstance(134, 134,  java.awt.Image.SCALE_SMOOTH);
+                    ImageIcon newIcon = new ImageIcon(newimg);
+                    lbl_fotoRepresentante.setIcon(newIcon);
+                    
+                }
+                
+                if (!estudianteConsultar.getFoto().equals("")){
+                    
+                    ImageIcon imagenEstudiante;
+                    imagenEstudiante = new ImageIcon(estudianteConsultar.getFoto());
+                    Image img = imagenEstudiante.getImage();
+                    Image newimg = img.getScaledInstance(134, 134,  java.awt.Image.SCALE_SMOOTH);
+                    ImageIcon newIcon = new ImageIcon(newimg);
+                    lbl_fotoEstudiante.setIcon(newIcon);
+                    
+                }
                 
             }
         } catch (Exception ex) {
