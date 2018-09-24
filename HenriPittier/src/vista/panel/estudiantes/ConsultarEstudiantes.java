@@ -8,12 +8,14 @@ package vista.panel.estudiantes;
 import comun.Estudiante;
 import comun.Rep_Est;
 import comun.Representante;
+import java.awt.Image;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.ImageIcon;
 import javax.swing.table.DefaultTableModel;
 import modelo.ComunicacionREST;
 import modelo.Registry;
@@ -207,6 +209,16 @@ public class ConsultarEstudiantes extends javax.swing.JPanel {
                 String nacimiento = dateFormat.format(estudianteConsultar.getFechaNac());
                 txt_fechaNac.setText(nacimiento);
                 txt_cedulaMAPFRE.setText(estudianteConsultar.getCedulaMAPFRE());
+                if (!estudianteConsultar.getFoto().equals("")){
+                    
+                    ImageIcon imagenEstudiante;
+                    imagenEstudiante = new ImageIcon(estudianteConsultar.getFoto());
+                    Image img = imagenEstudiante.getImage();
+                    Image newimg = img.getScaledInstance(134, 134,  java.awt.Image.SCALE_SMOOTH);
+                    ImageIcon newIcon = new ImageIcon(newimg);
+                    lbl_foto.setIcon(newIcon);
+                    
+                }
             }
         } catch (Exception ex) {
             Logger.getLogger(ConsultarEstudiantes.class.getName()).log(Level.SEVERE, null, ex);

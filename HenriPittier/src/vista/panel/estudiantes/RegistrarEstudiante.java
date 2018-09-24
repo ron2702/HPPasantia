@@ -5,6 +5,7 @@ package vista.panel.estudiantes;
 import comun.Estudiante;
 import comun.Rep_Est;
 import comun.Representante;
+import java.awt.Image;
 import java.awt.event.KeyEvent;
 import java.io.File;
 import java.text.SimpleDateFormat;
@@ -21,6 +22,7 @@ import javax.swing.JTextField;
 import javax.swing.filechooser.FileFilter;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import modelo.ComunicacionREST;
+import modelo.ManejadorImagen;
 import modelo.Registry;
 
 
@@ -298,9 +300,9 @@ public class RegistrarEstudiante extends javax.swing.JPanel {
                         .addComponent(txt_segundoNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(lbl_segundoNombre))
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                    .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(lbl_primerApellido)
-                        .addComponent(txt_primerApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txt_primerApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lbl_primerApellido)))
                 .addGroup(pnl_datosLayout.createSequentialGroup()
                     .addGap(29, 29, 29)
                     .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -372,24 +374,27 @@ public class RegistrarEstudiante extends javax.swing.JPanel {
 
     private void btn_cargarImagenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cargarImagenActionPerformed
         FileFilter filtroImagenes = new FileNameExtensionFilter("Archivos de imagen", ImageIO.getReaderFileSuffixes());
-        JFileChooser exploradorArchivos = new JFileChooser();
+        JFileChooser exploradorArchivos = new JFileChooser("FotosEstudiantes");
         exploradorArchivos.setAcceptAllFileFilterUsed(false);
         exploradorArchivos.addChoosableFileFilter(filtroImagenes);
         int opcionElegida = exploradorArchivos.showOpenDialog(null);
-        if (opcionElegida == JFileChooser.APPROVE_OPTION)
+        if (opcionElegida == JFileChooser.APPROVE_OPTION) 
         {
             archivoSeleccionado = exploradorArchivos.getSelectedFile();
-            ImageIcon imagenEmpleado;
-            imagenEmpleado = new ImageIcon(archivoSeleccionado.getAbsoluteFile().getAbsolutePath());
-            lbl_foto.setIcon(imagenEmpleado);
+            ImageIcon imagenEstudiante;
+            imagenEstudiante = new ImageIcon(archivoSeleccionado.getAbsoluteFile().getAbsolutePath());
+            Image img = imagenEstudiante.getImage();
+            Image newimg = img.getScaledInstance(134, 134,  java.awt.Image.SCALE_SMOOTH);
+            ImageIcon newIcon = new ImageIcon(newimg);
+            lbl_foto.setIcon(newIcon);
         }
     }//GEN-LAST:event_btn_cargarImagenActionPerformed
 
     private void btn_registrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_registrarActionPerformed
 
     flag = 0;
-    if ((!txt_primerNombre.getText().equals("")) && (!txt_primerApellido.getText().equals("")) && (!txt_segundoNombre.getText().equals(""))
-            && (!txt_segundoApellido.getText().equals("")) &&(!dc_fechaNac.getText().equals(""))){
+    if ((!txt_primerNombre.getText().equals("")) && (!txt_primerApellido.getText().equals(""))
+             &&(!dc_fechaNac.getText().equals("")) && (cb_sexo.getSelectedItem() != null) && (cb_parentezco.getSelectedItem() != null) && (!txt_cedulaRepresentante.getText().equals(""))){
         
         try {
             
@@ -475,8 +480,11 @@ public class RegistrarEstudiante extends javax.swing.JPanel {
                 String cedulaMAPFRE = ciRep + "-" + anoAString;
                 /*Pasos para generar cedula MAPFRE FIN*/
                 
-                Estudiante estudianteRegistrar = new Estudiante(cedulaEscolar, txt_primerNombre.getText(), txt_primerApellido.getText(), txt_segundoNombre.getText(),
-                                            txt_segundoApellido.getText(), fechaNacimiento, "fotico", cedulaMAPFRE, (String) cb_sexo.getSelectedItem());
+                ManejadorImagen img = new ManejadorImagen();
+                String file = "FotosEstudiantes\\" + archivoSeleccionado.getName();
+                
+                Estudiante estudianteRegistrar = new Estudiante(cedulaEscolar, txt_primerNombre.getText(), txt_segundoNombre.getText(), txt_primerApellido.getText(),
+                                            txt_segundoApellido.getText(), fechaNacimiento, file, cedulaMAPFRE, (String) cb_sexo.getSelectedItem());
                 Rep_Est repestRegistar = new Rep_Est(cedulaRepresentante, cedulaEscolar, (String) cb_parentezco.getSelectedItem());
                 ComunicacionREST comRest = new ComunicacionREST();
                 ComunicacionREST comRest2 = new ComunicacionREST();

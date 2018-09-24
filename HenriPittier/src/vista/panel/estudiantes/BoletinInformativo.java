@@ -344,7 +344,10 @@ public class BoletinInformativo extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_crearDocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_crearDocActionPerformed
-        
+        if((!txt_desde.getText().equals("")) && (!txt_hasta.getText().equals("")) && (!txt_proyectos.getText().equals(""))
+            && (!txt_formacion.getText().equals("")) && (!txt_relacion.getText().equals("")) && (!txt_observaciones.getText().equals(""))
+            &(!dc_fechaDoc.getText().equals(""))){
+            
         try {
             
              Estudiante estudianteSeleccionado = (Estudiante) cb_listaEstudiantes.getSelectedItem();
@@ -505,6 +508,10 @@ public class BoletinInformativo extends javax.swing.JPanel {
             Logger.getLogger(BoletinInformativo.class.getName()).log(Level.SEVERE, null, ex);
         }
         
+        }else{
+            final JPanel panel = new JPanel();
+            JOptionPane.showMessageDialog(panel, "Existen campos en blanco", "Error", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_btn_crearDocActionPerformed
 
 

@@ -3,6 +3,7 @@
 package vista.panel.estudiantes;
 
 import comun.Estudiante;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
@@ -20,12 +21,14 @@ import javax.swing.JPanel;
 import javax.swing.filechooser.FileFilter;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import modelo.ComunicacionREST;
+import modelo.ManejadorImagen;
 import modelo.Registry;
 
 
 public class ModificarEstudiante extends javax.swing.JPanel {
     private File archivoSeleccionado;
     private Estudiante estudianteModificar;
+    Estudiante estudianteSeleccionado;
     
     
     public ModificarEstudiante() {
@@ -41,7 +44,7 @@ public class ModificarEstudiante extends javax.swing.JPanel {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     try {
-                        Estudiante estudianteSeleccionado = (Estudiante) cb_listaEstudiantes.getSelectedItem();
+                        estudianteSeleccionado = (Estudiante) cb_listaEstudiantes.getSelectedItem();
                         String cedulaEscolar = Long.toString(estudianteSeleccionado.getCedulaEscolar());
                         txt_cedulaEscolar.setText(cedulaEscolar);
                         txt_primerNombre.setText(estudianteSeleccionado.getPrimerNombre());
@@ -53,6 +56,14 @@ public class ModificarEstudiante extends javax.swing.JPanel {
                         dc_fechaNac.setSelectedDate(calNac);
                         cb_sexo.setSelectedItem(estudianteSeleccionado.getSexo());
                         txt_cedulaMapfre.setText(estudianteSeleccionado.getCedulaMAPFRE());
+                        if (!estudianteSeleccionado.getFoto().equals("")){
+                            ImageIcon imagenEstudiante;
+                            imagenEstudiante = new ImageIcon(estudianteSeleccionado.getFoto());
+                            Image img = imagenEstudiante.getImage();
+                            Image newimg = img.getScaledInstance(134, 134,  java.awt.Image.SCALE_SMOOTH);
+                            ImageIcon newIcon = new ImageIcon(newimg);
+                            lbl_foto.setIcon(newIcon);
+                        }
                     } catch (Exception ex) {
                         Logger.getLogger(ModificarEstudiante.class.getName()).log(Level.SEVERE, null, ex);
                     }
@@ -397,16 +408,19 @@ public class ModificarEstudiante extends javax.swing.JPanel {
 
     private void btn_cargarImagenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cargarImagenActionPerformed
         FileFilter filtroImagenes = new FileNameExtensionFilter("Archivos de imagen", ImageIO.getReaderFileSuffixes());
-        JFileChooser exploradorArchivos = new JFileChooser();
+        JFileChooser exploradorArchivos = new JFileChooser("FotosEstudiantes");
         exploradorArchivos.setAcceptAllFileFilterUsed(false);
         exploradorArchivos.addChoosableFileFilter(filtroImagenes);
         int opcionElegida = exploradorArchivos.showOpenDialog(null);
-        if (opcionElegida == JFileChooser.APPROVE_OPTION)
+        if (opcionElegida == JFileChooser.APPROVE_OPTION) 
         {
             archivoSeleccionado = exploradorArchivos.getSelectedFile();
-            ImageIcon imagenEmpleado;
-            imagenEmpleado = new ImageIcon(archivoSeleccionado.getAbsoluteFile().getAbsolutePath());
-            lbl_foto.setIcon(imagenEmpleado);
+            ImageIcon imagenEstudiante;
+            imagenEstudiante = new ImageIcon(archivoSeleccionado.getAbsoluteFile().getAbsolutePath());
+            Image img = imagenEstudiante.getImage();
+            Image newimg = img.getScaledInstance(134, 134,  java.awt.Image.SCALE_SMOOTH);
+            ImageIcon newIcon = new ImageIcon(newimg);
+            lbl_foto.setIcon(newIcon);
         }
     }//GEN-LAST:event_btn_cargarImagenActionPerformed
 
@@ -415,16 +429,25 @@ public class ModificarEstudiante extends javax.swing.JPanel {
     }//GEN-LAST:event_txt_cedulaEscolarKeyTyped
 
     private void btn_modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_modificarActionPerformed
-       if ((!txt_primerNombre.getText().equals("")) && (!txt_primerApellido.getText().equals("")) && (!txt_segundoNombre.getText().equals(""))
-            && (!txt_segundoApellido.getText().equals("")) &&(!dc_fechaNac.getText().equals(""))){
+       if ((!txt_primerNombre.getText().equals("")) && (!txt_primerApellido.getText().equals("")) 
+           &&(!dc_fechaNac.getText().equals("")) && (cb_sexo.getSelectedItem() != null)){
            
            try {
                
                SimpleDateFormat parseFecha = new SimpleDateFormat("dd/MM/yy");
                Date fechaNacimiento = parseFecha.parse(dc_fechaNac.getText());
                long ciEscolar = Long.parseLong(txt_cedulaEscolar.getText());
-               estudianteModificar = new Estudiante(ciEscolar, txt_primerNombre.getText(), txt_primerApellido.getText(), txt_segundoNombre.getText(),
-                                        txt_segundoApellido.getText(), fechaNacimiento, "", txt_cedulaMapfre.getText(), (String) cb_sexo.getSelectedItem());
+               
+               ManejadorImagen img = new ManejadorImagen();
+               String file = "";
+               if (archivoSeleccionado != null){
+                    file = "FotosEstudiantes\\" + archivoSeleccionado.getName();
+                }else{
+                    file = estudianteSeleccionado.getFoto();
+                }
+               
+               estudianteModificar = new Estudiante(ciEscolar, txt_primerNombre.getText(), txt_segundoNombre.getText(), txt_primerApellido.getText(),
+                                        txt_segundoApellido.getText(), fechaNacimiento, file, txt_cedulaMapfre.getText(), (String) cb_sexo.getSelectedItem());
                ComunicacionREST comRest = new ComunicacionREST();
                Estudiante estudianteModificado = comRest.modificarEstudiante(estudianteModificar);
                if (estudianteModificado.getError() == Registry.RESULTADO_CODIGO_RECURSO_CREADO){

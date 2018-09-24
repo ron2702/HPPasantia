@@ -7,6 +7,7 @@ package vista.panel.representantes;
 
 import comun.Lugar;
 import comun.Representante;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -108,7 +109,6 @@ public class RegistrarRepresentante extends javax.swing.JPanel {
         lbl_segundoNombre = new javax.swing.JLabel();
         lbl_segundoApellido = new javax.swing.JLabel();
         txt_telefonoMovil = new javax.swing.JTextField();
-        lbl_foto = new javax.swing.JLabel();
         btn_cargarImagen = new javax.swing.JButton();
         lbl_tipo = new javax.swing.JLabel();
         lbl_fechaNac = new javax.swing.JLabel();
@@ -134,6 +134,7 @@ public class RegistrarRepresentante extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         lbl_email = new javax.swing.JLabel();
         txt_email = new javax.swing.JTextField();
+        lbl_foto = new javax.swing.JLabel();
         lbl_tituloRepresentante = new javax.swing.JLabel();
 
         pnl_datos.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -164,8 +165,6 @@ public class RegistrarRepresentante extends javax.swing.JPanel {
                 txt_telefonoMovilKeyTyped(evt);
             }
         });
-
-        lbl_foto.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         btn_cargarImagen.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         btn_cargarImagen.setText("Cargar imagen");
@@ -329,25 +328,27 @@ public class RegistrarRepresentante extends javax.swing.JPanel {
         }
     });
 
+    lbl_foto.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
     javax.swing.GroupLayout pnl_datosLayout = new javax.swing.GroupLayout(pnl_datos);
     pnl_datos.setLayout(pnl_datosLayout);
     pnl_datosLayout.setHorizontalGroup(
         pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
         .addGroup(pnl_datosLayout.createSequentialGroup()
+            .addGap(40, 40, 40)
+            .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(lbl_primerNombre)
+                .addComponent(lbl_segundoNombre)
+                .addComponent(lbl_primerApellido)
+                .addComponent(lbl_segundoApellido)
+                .addComponent(lbl_cedula)
+                .addComponent(lbl_telefonoCasa)
+                .addComponent(lbl_telefonoMovil)
+                .addComponent(lbl_email)
+                .addComponent(lbl_foto, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGap(32, 32, 32)
             .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(pnl_datosLayout.createSequentialGroup()
-                    .addGap(40, 40, 40)
-                    .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(lbl_primerNombre)
-                        .addComponent(lbl_segundoNombre)
-                        .addComponent(lbl_primerApellido)
-                        .addComponent(lbl_segundoApellido)
-                        .addComponent(lbl_cedula)
-                        .addComponent(lbl_telefonoCasa)
-                        .addComponent(lbl_telefonoMovil)
-                        .addComponent(lbl_foto, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(lbl_email))
-                    .addGap(32, 32, 32)
                     .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(btn_cargarImagen)
                         .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -385,7 +386,7 @@ public class RegistrarRepresentante extends javax.swing.JPanel {
                             .addGap(61, 61, 61)
                             .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGroup(pnl_datosLayout.createSequentialGroup()
-                    .addGap(307, 307, 307)
+                    .addGap(153, 153, 153)
                     .addComponent(btn_limpiar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                     .addComponent(btn_registrar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -451,17 +452,19 @@ public class RegistrarRepresentante extends javax.swing.JPanel {
             .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                 .addComponent(lbl_email)
                 .addComponent(txt_email, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
             .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(lbl_foto, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(pnl_datosLayout.createSequentialGroup()
-                    .addGap(23, 23, 23)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
                     .addComponent(btn_cargarImagen)
                     .addGap(96, 96, 96)
                     .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(btn_limpiar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btn_registrar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-            .addGap(21, 21, 21))
+                        .addComponent(btn_registrar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGap(21, 21, 21))
+                .addGroup(pnl_datosLayout.createSequentialGroup()
+                    .addGap(18, 18, 18)
+                    .addComponent(lbl_foto, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
     );
 
     lbl_tituloRepresentante.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -499,16 +502,19 @@ public class RegistrarRepresentante extends javax.swing.JPanel {
 
     private void btn_cargarImagenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cargarImagenActionPerformed
         FileFilter filtroImagenes = new FileNameExtensionFilter("Archivos de imagen", ImageIO.getReaderFileSuffixes());
-        JFileChooser exploradorArchivos = new JFileChooser();
+        JFileChooser exploradorArchivos = new JFileChooser("FotosRepresentantes");
         exploradorArchivos.setAcceptAllFileFilterUsed(false);
         exploradorArchivos.addChoosableFileFilter(filtroImagenes);
         int opcionElegida = exploradorArchivos.showOpenDialog(null);
-        if (opcionElegida == JFileChooser.APPROVE_OPTION)
+        if (opcionElegida == JFileChooser.APPROVE_OPTION) 
         {
             archivoSeleccionado = exploradorArchivos.getSelectedFile();
-            ImageIcon imagenEmpleado;
-            imagenEmpleado = new ImageIcon(archivoSeleccionado.getAbsoluteFile().getAbsolutePath());
-            lbl_foto.setIcon(imagenEmpleado);
+            ImageIcon imagenRepresentante;
+            imagenRepresentante = new ImageIcon(archivoSeleccionado.getAbsoluteFile().getAbsolutePath());
+            Image img = imagenRepresentante.getImage();
+            Image newimg = img.getScaledInstance(134, 134,  java.awt.Image.SCALE_SMOOTH);
+            ImageIcon newIcon = new ImageIcon(newimg);
+            lbl_foto.setIcon(newIcon);
         }
     }//GEN-LAST:event_btn_cargarImagenActionPerformed
 
@@ -536,9 +542,9 @@ public class RegistrarRepresentante extends javax.swing.JPanel {
         Object objeto = cb_estados.getSelectedItem();
         Object objeto1 = cb_municipios.getSelectedItem();
         Object objeto2 = cb_parroquias.getSelectedItem();
-        if((!txt_cedula.getText().equals("")) && (!txt_primerNombre.getText().equals("")) && (!txt_segundoNombre.getText().equals(""))
-            && (!txt_primerApellido.getText().equals("")) && (!txt_segundoApellido.getText().equals("")) && (!dc_fechaNac.getText().equals("")) && (!txt_telefonoCasa.getText().equals(""))
-            && (!txt_telefonoMovil.getText().equals("")) && (!txt_email.getText().equals("")) && (cb_tipo.getSelectedItem() != null) && (cb_estados.getSelectedItem() != null)
+        if((!txt_cedula.getText().equals("")) && (!txt_primerNombre.getText().equals("")) 
+            && (!txt_primerApellido.getText().equals("")) && (!dc_fechaNac.getText().equals(""))
+            && (cb_tipo.getSelectedItem() != null) && (cb_estados.getSelectedItem() != null)
             && (cb_municipios.getSelectedItem() != null) && (cb_parroquias.getSelectedItem() != null) && (archivoSeleccionado != null)) {
 
             try {
@@ -547,10 +553,11 @@ public class RegistrarRepresentante extends javax.swing.JPanel {
                 Lugar parroquiaSeleccionada = (Lugar) cb_parroquias.getSelectedItem();
                 SimpleDateFormat parseFecha = new SimpleDateFormat("dd/MM/yy");
                 Date fechaNacimiento = parseFecha.parse(dc_fechaNac.getText());
-                ManejadorImagen img = new ManejadorImagen();  
+                ManejadorImagen img = new ManejadorImagen();
+                String file = "FotosRepresentantes\\" + archivoSeleccionado.getName();
                 Representante representanteRegistrar = new Representante(Integer.parseInt(txt_cedula.getText()), txt_primerNombre.getText(), txt_segundoNombre.getText(),
                     txt_primerApellido.getText(), txt_segundoApellido.getText(), fechaNacimiento, txt_email.getText(), txt_telefonoCasa.getText(), txt_telefonoMovil.getText(),
-                    (String) cb_tipo.getSelectedItem(), "fotico", estadoSeleccionado.getNombre(), municipioSeleccionado.getNombre(), parroquiaSeleccionada.getNombre());
+                    (String) cb_tipo.getSelectedItem(), file, estadoSeleccionado.getNombre(), municipioSeleccionado.getNombre(), parroquiaSeleccionada.getNombre());
                 
                 ComunicacionREST comRest = new ComunicacionREST();
                 Representante representanteRegistrado = comRest.registrarRepresentante(representanteRegistrar);

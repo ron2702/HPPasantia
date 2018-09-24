@@ -387,6 +387,7 @@ public class ConstanciaEstudio extends javax.swing.JPanel {
 
     private void btn_crearDocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_crearDocActionPerformed
 
+        if((!dc_fechaDoc.getText().equals(""))){
             FileNameExtensionFilter filtroWord = new FileNameExtensionFilter("Microsoft Word", "docx");
             final JFileChooser miConstancia = new JFileChooser();
             miConstancia.setFileFilter(filtroWord);
@@ -517,6 +518,11 @@ public class ConstanciaEstudio extends javax.swing.JPanel {
                 }
 
             }
+        }else{
+            final JPanel panel = new JPanel();
+            JOptionPane.showMessageDialog(panel, "Elija una fecha", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+            
     }//GEN-LAST:event_btn_crearDocActionPerformed
 
 
