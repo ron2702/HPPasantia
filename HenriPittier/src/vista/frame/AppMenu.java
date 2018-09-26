@@ -332,7 +332,6 @@ public class AppMenu extends javax.swing.JFrame {
         jMenu1 = new javax.swing.JMenu();
         constanciaEstudio = new javax.swing.JMenuItem();
         boletinInformativo = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
         menuConfiguracion = new javax.swing.JMenu();
         inicio = new javax.swing.JMenuItem();
         menuSalir = new javax.swing.JMenu();
@@ -748,9 +747,6 @@ public class AppMenu extends javax.swing.JFrame {
         jMenu1.add(boletinInformativo);
 
         menuDocumentos.add(jMenu1);
-
-        jMenu2.setText("Contabilidad");
-        menuDocumentos.add(jMenu2);
 
         barraMenu.add(menuDocumentos);
 
@@ -1310,7 +1306,6 @@ public class AppMenu extends javax.swing.JFrame {
     private javax.swing.JMenuItem eliminarRepresentante;
     private javax.swing.JMenuItem inicio;
     private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu menuAsignarGrupo;
     private javax.swing.JMenu menuConfiguracion;
     private javax.swing.JMenu menuDocumentos;
