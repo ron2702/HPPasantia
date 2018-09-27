@@ -693,8 +693,7 @@ try {
         Object objeto2 = cb_parroquias.getSelectedItem();
         if((!txt_primerNombre.getText().equals("")) && (!txt_primerApellido.getText().equals("")) 
                 && (!txt_sueldoMensual.getText().equals("")) && (!dc_fechaIngreso.getText().equals("")) 
-                && (!dc_fechaNac.getText().equals("")) && (!txt_telefonoCasa.getText().equals("")) 
-                && (!txt_telefonoMovil.getText().equals("")) && (!txt_cargo.getText().equals("")) 
+                && (!dc_fechaNac.getText().equals("")) && (!txt_cargo.getText().equals("")) 
                 && (cb_tareasDirigidas.getSelectedItem() != null) && (cb_estados.getSelectedItem() != null) 
                 && (cb_municipios.getSelectedItem() != null) && (cb_parroquias.getSelectedItem() != null)) {
             
