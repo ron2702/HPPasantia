@@ -347,6 +347,7 @@ public class ModificarRepresentante extends javax.swing.JPanel {
         e1.printStackTrace();
     }
     dc_fechaNac.setFieldFont(new java.awt.Font("Tahoma", java.awt.Font.PLAIN, 12));
+    dc_fechaNac.setLocale(new java.util.Locale("es", "ES", ""));
     dc_fechaNac.setNavigateFont(new java.awt.Font("Serif", java.awt.Font.PLAIN, 8));
 
     lbl_fechaNac.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N

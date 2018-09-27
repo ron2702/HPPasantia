@@ -180,6 +180,7 @@ public class ModificarMensualidad extends javax.swing.JPanel {
     dc_fechaPago.setCalendarBackground(new java.awt.Color(255, 255, 255));
     dc_fechaPago.setCalendarPreferredSize(new java.awt.Dimension(400, 250));
     dc_fechaPago.setFieldFont(new java.awt.Font("Tahoma", java.awt.Font.PLAIN, 12));
+    dc_fechaPago.setLocale(new java.util.Locale("es", "ES", ""));
     dc_fechaPago.setNavigateFont(new java.awt.Font("Serif", java.awt.Font.PLAIN, 8));
 
     btn_limpiar.setBackground(new java.awt.Color(153, 0, 0));
@@ -209,7 +210,7 @@ public class ModificarMensualidad extends javax.swing.JPanel {
 
     txt_cedulaRepresentante.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
     txt_cedulaRepresentante.setToolTipText("");
-    txt_cedulaRepresentante.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+    txt_cedulaRepresentante.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
     txt_cedulaRepresentante.setEnabled(false);
     txt_cedulaRepresentante.addKeyListener(new java.awt.event.KeyAdapter() {
         public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -253,7 +254,7 @@ public class ModificarMensualidad extends javax.swing.JPanel {
 
     txt_cedulaEstudiante.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
     txt_cedulaEstudiante.setToolTipText("");
-    txt_cedulaEstudiante.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+    txt_cedulaEstudiante.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
     txt_cedulaEstudiante.setEnabled(false);
     txt_cedulaEstudiante.addKeyListener(new java.awt.event.KeyAdapter() {
         public void keyTyped(java.awt.event.KeyEvent evt) {

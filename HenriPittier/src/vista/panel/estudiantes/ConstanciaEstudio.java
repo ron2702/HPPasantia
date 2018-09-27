@@ -220,6 +220,7 @@ public class ConstanciaEstudio extends javax.swing.JPanel {
     dc_fechaDoc.setCalendarBackground(new java.awt.Color(255, 255, 255));
     dc_fechaDoc.setCalendarPreferredSize(new java.awt.Dimension(400, 250));
     dc_fechaDoc.setFieldFont(new java.awt.Font("Tahoma", java.awt.Font.PLAIN, 12));
+    dc_fechaDoc.setLocale(new java.util.Locale("es", "ES", ""));
     dc_fechaDoc.setNavigateFont(new java.awt.Font("Serif", java.awt.Font.PLAIN, 8));
 
     lbl_fecha.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N

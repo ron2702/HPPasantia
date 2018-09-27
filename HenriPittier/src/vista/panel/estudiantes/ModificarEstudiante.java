@@ -209,6 +209,7 @@ public class ModificarEstudiante extends javax.swing.JPanel {
     dc_fechaNac.setCalendarBackground(new java.awt.Color(255, 255, 255));
     dc_fechaNac.setCalendarPreferredSize(new java.awt.Dimension(400, 250));
     dc_fechaNac.setFieldFont(new java.awt.Font("Tahoma", java.awt.Font.PLAIN, 12));
+    dc_fechaNac.setLocale(new java.util.Locale("es", "ES", ""));
     dc_fechaNac.setNavigateFont(new java.awt.Font("Serif", java.awt.Font.PLAIN, 8));
 
     lbl_fechaNac.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
