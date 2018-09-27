@@ -7,6 +7,7 @@ package vista.panel.empleados;
 
 import comun.Empleado;
 import comun.Lugar;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -107,7 +108,7 @@ public class ModificarEmpleado extends javax.swing.JPanel {
                         txt_segundoApellido.setText(empleadoSeleccionado.getSegundoApellido());
                         txt_telefonoCasa.setText(empleadoSeleccionado.getTelefonoCasa());
                         txt_telefonoMovil.setText(empleadoSeleccionado.getTelefonoMovil());
-                        txt_cargo.setText(empleadoSeleccionado.getCargo());
+                        cb_cargo.setSelectedItem(empleadoSeleccionado.getCargo());
                         txt_sueldoMensual.setText(sueldomensual);
                         Calendar calNac = Calendar.getInstance();
                         calNac.setTime(empleadoSeleccionado.getFechaNac());
@@ -124,7 +125,12 @@ public class ModificarEmpleado extends javax.swing.JPanel {
                         cb_parroquias.setSelectedItem(parroquiaEmpleado);
                         cb_tareasDirigidas.setSelectedItem(empleadoSeleccionado.getTareasDirigidas());
                         if (!empleadoSeleccionado.getFoto().equals("")){
-                            lbl_foto.setIcon(new ImageIcon(empleadoSeleccionado.getFoto()));
+                            ImageIcon imagenEmpleado;
+                            imagenEmpleado = new ImageIcon(empleadoSeleccionado.getFoto());
+                            Image img = imagenEmpleado.getImage();
+                            Image newimg = img.getScaledInstance(134, 134,  java.awt.Image.SCALE_SMOOTH);
+                            ImageIcon newIcon = new ImageIcon(newimg);
+                            lbl_foto.setIcon(newIcon);
                         }
                     } catch (Exception ex) {
                         Logger.getLogger(ModificarEmpleado.class.getName()).log(Level.SEVERE, null, ex);
@@ -169,7 +175,6 @@ public class ModificarEmpleado extends javax.swing.JPanel {
         lbl_cargo = new javax.swing.JLabel();
         lbl_sueldoMensual = new javax.swing.JLabel();
         txt_sueldoMensual = new javax.swing.JTextField();
-        txt_cargo = new javax.swing.JTextField();
         lbl_primerNombre = new javax.swing.JLabel();
         txt_telefonoMovil = new javax.swing.JTextField();
         lbl_segundoNombre = new javax.swing.JLabel();
@@ -196,6 +201,7 @@ public class ModificarEmpleado extends javax.swing.JPanel {
         lbl_tituloModificar = new javax.swing.JLabel();
         lbl_tareasDirigidas = new javax.swing.JLabel();
         cb_tareasDirigidas = new javax.swing.JComboBox();
+        cb_cargo = new javax.swing.JComboBox();
         lbl_tituloModificarEmpleados = new javax.swing.JLabel();
 
         setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
@@ -252,13 +258,6 @@ public class ModificarEmpleado extends javax.swing.JPanel {
         txt_sueldoMensual.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txt_sueldoMensualKeyTyped(evt);
-            }
-        });
-
-        txt_cargo.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        txt_cargo.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txt_cargoKeyTyped(evt);
             }
         });
 
@@ -441,7 +440,6 @@ try {
 
     cb_parroquias.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
 
-    lbl_foto.setIcon(new javax.swing.ImageIcon("C:\\Users\\LuisAlejandro\\Pictures\\Blanco.PNG")); // NOI18N
     lbl_foto.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
     btn_cargarImagen.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
@@ -468,78 +466,85 @@ try {
         }
     });
 
+    cb_cargo.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+    cb_cargo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Docente", "Auxiliar", "Director/a", "Secretario/a", "Obrero/a", "Coordinador/a", "Administrador/a" }));
+
     javax.swing.GroupLayout pnl_datosLayout = new javax.swing.GroupLayout(pnl_datos);
     pnl_datos.setLayout(pnl_datosLayout);
     pnl_datosLayout.setHorizontalGroup(
         pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnl_datosLayout.createSequentialGroup()
+        .addGroup(pnl_datosLayout.createSequentialGroup()
             .addGap(35, 35, 35)
             .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(lbl_cargo)
                 .addGroup(pnl_datosLayout.createSequentialGroup()
-                    .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(lbl_segundoNombre)
-                        .addComponent(lbl_primerApellido)
-                        .addComponent(lbl_segundoApellido)
-                        .addComponent(lbl_primerNombre)
-                        .addComponent(lbl_telefonoCasa)
-                        .addComponent(lbl_tituloModificar)
-                        .addComponent(lbl_sueldoMensual)
-                        .addComponent(lbl_telefonoMovil))
-                    .addGap(35, 35, 35)
-                    .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(txt_telefonoCasa, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(txt_primerApellido, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(txt_segundoApellido, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(txt_telefonoMovil, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txt_cargo, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txt_sueldoMensual, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txt_primerNombre)
-                            .addComponent(txt_segundoNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(cb_listaEmpleados, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGroup(pnl_datosLayout.createSequentialGroup()
-                    .addComponent(lbl_tareasDirigidas)
-                    .addGap(18, 18, 18)
-                    .addComponent(cb_tareasDirigidas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-            .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(pnl_datosLayout.createSequentialGroup()
-                    .addGap(94, 94, 94)
-                    .addComponent(lbl_foto, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                    .addComponent(btn_cargarImagen))
-                .addGroup(pnl_datosLayout.createSequentialGroup()
-                    .addGap(45, 45, 45)
                     .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(pnl_datosLayout.createSequentialGroup()
+                            .addGap(270, 270, 270)
+                            .addComponent(btn_limpiar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(btn_modificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(pnl_datosLayout.createSequentialGroup()
+                            .addComponent(lbl_tareasDirigidas)
+                            .addGap(25, 25, 25)
+                            .addComponent(cb_tareasDirigidas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(pnl_datosLayout.createSequentialGroup()
+                    .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(lbl_cargo)
+                        .addGroup(pnl_datosLayout.createSequentialGroup()
+                            .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(lbl_segundoNombre)
+                                .addComponent(lbl_primerApellido)
+                                .addComponent(lbl_segundoApellido)
+                                .addComponent(lbl_primerNombre)
+                                .addComponent(lbl_telefonoCasa)
+                                .addComponent(lbl_tituloModificar)
+                                .addComponent(lbl_telefonoMovil))
+                            .addGap(35, 35, 35)
+                            .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(txt_telefonoCasa, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addComponent(txt_primerApellido, javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(txt_segundoApellido, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(txt_telefonoMovil, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txt_sueldoMensual, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(cb_cargo, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(txt_primerNombre)
+                                    .addComponent(txt_segundoNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(cb_listaEmpleados, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(lbl_sueldoMensual))
+                    .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(pnl_datosLayout.createSequentialGroup()
+                            .addGap(94, 94, 94)
+                            .addComponent(lbl_foto, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(btn_cargarImagen))
+                        .addGroup(pnl_datosLayout.createSequentialGroup()
+                            .addGap(45, 45, 45)
                             .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(pnl_datosLayout.createSequentialGroup()
-                                    .addGap(93, 93, 93)
-                                    .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(lbl_estado)
-                                        .addComponent(lbl_municipio)
-                                        .addComponent(lbl_parroquia)))
-                                .addComponent(lbl_fechaIngreso))
-                            .addGap(34, 34, 34)
-                            .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(dc_fechaIngreso, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(dc_fechaNac, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(cb_banco, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(cb_estados, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(cb_municipios, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(cb_parroquias, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addComponent(lbl_direccion)
-                        .addComponent(lbl_banco)
-                        .addComponent(lbl_fechaNac))))
-            .addGap(0, 35, Short.MAX_VALUE))
-        .addGroup(pnl_datosLayout.createSequentialGroup()
-            .addGap(305, 305, 305)
-            .addComponent(btn_limpiar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-            .addComponent(btn_modificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(pnl_datosLayout.createSequentialGroup()
+                                            .addGap(93, 93, 93)
+                                            .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                                .addComponent(lbl_estado)
+                                                .addComponent(lbl_municipio)
+                                                .addComponent(lbl_parroquia)))
+                                        .addComponent(lbl_fechaIngreso))
+                                    .addGap(34, 34, 34)
+                                    .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(dc_fechaIngreso, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(dc_fechaNac, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(cb_banco, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(cb_estados, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(cb_municipios, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(cb_parroquias, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(lbl_direccion)
+                                .addComponent(lbl_banco)
+                                .addComponent(lbl_fechaNac))))
+                    .addGap(0, 35, Short.MAX_VALUE))))
     );
     pnl_datosLayout.setVerticalGroup(
         pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -566,7 +571,7 @@ try {
                     .addComponent(lbl_municipio)
                     .addGap(18, 18, 18)
                     .addComponent(lbl_parroquia)
-                    .addGap(157, 204, Short.MAX_VALUE))
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGroup(pnl_datosLayout.createSequentialGroup()
                     .addComponent(dc_fechaIngreso, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -596,21 +601,24 @@ try {
                                 .addComponent(txt_telefonoMovil, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(lbl_telefonoMovil))
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(txt_cargo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(lbl_cargo))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(txt_sueldoMensual, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(lbl_sueldoMensual))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(lbl_cargo)
+                                .addComponent(cb_cargo, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(pnl_datosLayout.createSequentialGroup()
+                                    .addGap(10, 10, 10)
+                                    .addComponent(lbl_sueldoMensual))
+                                .addGroup(pnl_datosLayout.createSequentialGroup()
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(txt_sueldoMensual, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGap(18, 18, 18)
                             .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(lbl_tareasDirigidas)
                                 .addComponent(cb_tareasDirigidas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGroup(pnl_datosLayout.createSequentialGroup()
                             .addComponent(cb_banco, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
                             .addComponent(cb_estados, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addComponent(cb_municipios, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -666,7 +674,10 @@ try {
             archivoSeleccionado = exploradorArchivos.getSelectedFile();
             ImageIcon imagenEmpleado;
             imagenEmpleado = new ImageIcon(archivoSeleccionado.getAbsoluteFile().getAbsolutePath());
-            lbl_foto.setIcon(imagenEmpleado);
+            Image img = imagenEmpleado.getImage();
+            Image newimg = img.getScaledInstance(134, 134,  java.awt.Image.SCALE_SMOOTH);
+            ImageIcon newIcon = new ImageIcon(newimg);
+            lbl_foto.setIcon(newIcon);
         }
     }//GEN-LAST:event_btn_cargarImagenActionPerformed
 
@@ -677,7 +688,7 @@ try {
         txt_segundoApellido.setText("");
         txt_telefonoCasa.setText("");
         txt_telefonoMovil.setText("");
-        txt_cargo.setText("");
+        cb_cargo.setSelectedItem(null);
         txt_sueldoMensual.setText("");
         dc_fechaIngreso.setCurrent(null);
         dc_fechaNac.setCurrent(null);
@@ -693,7 +704,7 @@ try {
         Object objeto2 = cb_parroquias.getSelectedItem();
         if((!txt_primerNombre.getText().equals("")) && (!txt_primerApellido.getText().equals("")) 
                 && (!txt_sueldoMensual.getText().equals("")) && (!dc_fechaIngreso.getText().equals("")) 
-                && (!dc_fechaNac.getText().equals("")) && (!txt_cargo.getText().equals("")) 
+                && (!dc_fechaNac.getText().equals("")) && (cb_cargo.getSelectedItem() != null) 
                 && (cb_tareasDirigidas.getSelectedItem() != null) && (cb_estados.getSelectedItem() != null) 
                 && (cb_municipios.getSelectedItem() != null) && (cb_parroquias.getSelectedItem() != null)) {
             
@@ -714,7 +725,7 @@ try {
                 empleadoModificar = new Empleado(empleadoModificar.getCedula(), txt_primerNombre.getText(), txt_segundoNombre.getText(), 
                                                           txt_primerApellido.getText(), txt_segundoApellido.getText(), (String) cb_banco.getSelectedItem(),  
                                                           (Integer.parseInt(txt_sueldoMensual.getText())), fechaIngreso, fechaNacimiento,
-                                                          txt_telefonoCasa.getText(), txt_telefonoMovil.getText(), txt_cargo.getText(), file, 
+                                                          txt_telefonoCasa.getText(), txt_telefonoMovil.getText(), (String) cb_cargo.getSelectedItem(), file, 
                                                           empleadoModificar.getUsuario(), empleadoModificar.getClave(), (String) cb_tareasDirigidas.getSelectedItem(), estadoSeleccionado.getNombre(), 
                                                           municipioSeleccionado.getNombre(), parroquiaSeleccionada.getNombre());
                 ComunicacionREST comRest = new ComunicacionREST();
@@ -755,10 +766,6 @@ try {
         keyTypedSoloNumeros(evt, txt_telefonoMovil, 11);
     }//GEN-LAST:event_txt_telefonoMovilKeyTyped
 
-    private void txt_cargoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_cargoKeyTyped
-        keyTypedSoloLetras(evt, txt_cargo, 30); 
-    }//GEN-LAST:event_txt_cargoKeyTyped
-
     private void txt_sueldoMensualKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_sueldoMensualKeyTyped
         keyTypedSoloNumeros(evt, txt_sueldoMensual, 5); 
     }//GEN-LAST:event_txt_sueldoMensualKeyTyped
@@ -778,6 +785,7 @@ try {
     private javax.swing.JButton btn_limpiar;
     private javax.swing.JButton btn_modificar;
     private javax.swing.JComboBox cb_banco;
+    private javax.swing.JComboBox cb_cargo;
     private javax.swing.JComboBox cb_estados;
     private javax.swing.JComboBox cb_listaEmpleados;
     private javax.swing.JComboBox cb_municipios;
@@ -805,7 +813,6 @@ try {
     private javax.swing.JLabel lbl_tituloModificar;
     private javax.swing.JLabel lbl_tituloModificarEmpleados;
     private javax.swing.JPanel pnl_datos;
-    private javax.swing.JTextField txt_cargo;
     private javax.swing.JTextField txt_primerApellido;
     private javax.swing.JTextField txt_primerNombre;
     private javax.swing.JTextField txt_segundoApellido;

@@ -7,6 +7,7 @@ package vista.panel.empleados;
 
 import comun.Empleado;
 import comun.Lugar;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -128,7 +129,6 @@ public class RegistrarEmpleado extends javax.swing.JPanel {
         txt_primerNombre = new javax.swing.JTextField();
         txt_telefonoCasa = new javax.swing.JTextField();
         lbl_cargo = new javax.swing.JLabel();
-        txt_cargo = new javax.swing.JTextField();
         lbl_cedula = new javax.swing.JLabel();
         txt_cedula = new javax.swing.JTextField();
         lbl_direccion = new javax.swing.JLabel();
@@ -143,6 +143,7 @@ public class RegistrarEmpleado extends javax.swing.JPanel {
         cb_banco = new javax.swing.JComboBox();
         lbl_tareasDirigidas = new javax.swing.JLabel();
         cb_tareasDirigidas = new javax.swing.JComboBox();
+        cb_cargo = new javax.swing.JComboBox();
         lbl_tituloRegistroEmpleados = new javax.swing.JLabel();
 
         setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
@@ -339,13 +340,6 @@ txt_primerApellido.addKeyListener(new java.awt.event.KeyAdapter() {
     lbl_cargo.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
     lbl_cargo.setText("Cargo:");
 
-    txt_cargo.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-    txt_cargo.addKeyListener(new java.awt.event.KeyAdapter() {
-        public void keyTyped(java.awt.event.KeyEvent evt) {
-            txt_cargoKeyTyped(evt);
-        }
-    });
-
     lbl_cedula.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
     lbl_cedula.setText("Cédula de Identidad:");
 
@@ -412,6 +406,9 @@ txt_primerApellido.addKeyListener(new java.awt.event.KeyAdapter() {
         }
     });
 
+    cb_cargo.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+    cb_cargo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Docente", "Auxiliar", "Director/a", "Secretario/a", "Obrero/a", "Coordinador/a", "Administrador/a" }));
+
     javax.swing.GroupLayout pnl_datosLayout = new javax.swing.GroupLayout(pnl_datos);
     pnl_datos.setLayout(pnl_datosLayout);
     pnl_datosLayout.setHorizontalGroup(
@@ -419,36 +416,49 @@ txt_primerApellido.addKeyListener(new java.awt.event.KeyAdapter() {
         .addGroup(pnl_datosLayout.createSequentialGroup()
             .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(pnl_datosLayout.createSequentialGroup()
+                    .addGap(307, 307, 307)
+                    .addComponent(btn_limpiar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(btn_registrar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(pnl_datosLayout.createSequentialGroup()
                     .addGap(40, 40, 40)
                     .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(lbl_sueldoMensual)
-                        .addComponent(lbl_primerNombre)
-                        .addComponent(lbl_segundoNombre)
-                        .addComponent(lbl_primerApellido)
-                        .addComponent(lbl_segundoApellido)
-                        .addComponent(lbl_cedula)
-                        .addComponent(lbl_telefonoCasa)
-                        .addComponent(lbl_telefonoMovil)
-                        .addComponent(lbl_cargo)
-                        .addComponent(lbl_tareasDirigidas))
-                    .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(pnl_datosLayout.createSequentialGroup()
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(lbl_tareasDirigidas)
+                            .addGap(18, 18, 18)
+                            .addComponent(cb_tareasDirigidas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(245, 245, 245)
+                            .addComponent(lbl_foto, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(btn_cargarImagen))
+                        .addGroup(pnl_datosLayout.createSequentialGroup()
                             .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(txt_primerApellido, javax.swing.GroupLayout.DEFAULT_SIZE, 175, Short.MAX_VALUE)
-                                .addComponent(txt_primerNombre)
-                                .addComponent(txt_segundoNombre)
-                                .addComponent(txt_telefonoCasa)
-                                .addComponent(txt_cargo)
-                                .addComponent(txt_sueldoMensual)
-                                .addComponent(txt_telefonoMovil)
-                                .addComponent(txt_segundoApellido)
-                                .addComponent(txt_cedula)))
-                        .addGroup(pnl_datosLayout.createSequentialGroup()
-                            .addGap(31, 31, 31)
-                            .addComponent(cb_tareasDirigidas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(pnl_datosLayout.createSequentialGroup()
+                                .addGroup(pnl_datosLayout.createSequentialGroup()
+                                    .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(lbl_primerNombre)
+                                        .addComponent(lbl_segundoNombre)
+                                        .addComponent(lbl_primerApellido)
+                                        .addComponent(lbl_segundoApellido)
+                                        .addComponent(lbl_cedula)
+                                        .addComponent(lbl_telefonoCasa)
+                                        .addComponent(lbl_telefonoMovil)
+                                        .addComponent(lbl_cargo))
+                                    .addGap(42, 42, 42)
+                                    .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(cb_cargo, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(txt_primerApellido, javax.swing.GroupLayout.DEFAULT_SIZE, 175, Short.MAX_VALUE)
+                                            .addComponent(txt_primerNombre)
+                                            .addComponent(txt_segundoNombre)
+                                            .addComponent(txt_telefonoCasa)
+                                            .addComponent(txt_telefonoMovil)
+                                            .addComponent(txt_segundoApellido)
+                                            .addComponent(txt_cedula))))
+                                .addGroup(pnl_datosLayout.createSequentialGroup()
+                                    .addComponent(lbl_sueldoMensual)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(txt_sueldoMensual, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGap(27, 27, 27)
                             .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(pnl_datosLayout.createSequentialGroup()
                                     .addGap(52, 52, 52)
@@ -470,18 +480,8 @@ txt_primerApellido.addKeyListener(new java.awt.event.KeyAdapter() {
                                 .addComponent(cb_banco, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(cb_estados, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(cb_municipios, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(cb_parroquias, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGroup(pnl_datosLayout.createSequentialGroup()
-                            .addGap(119, 119, 119)
-                            .addComponent(lbl_foto, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(btn_cargarImagen))))
-                .addGroup(pnl_datosLayout.createSequentialGroup()
-                    .addGap(307, 307, 307)
-                    .addComponent(btn_limpiar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                    .addComponent(btn_registrar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-            .addContainerGap(48, Short.MAX_VALUE))
+                                .addComponent(cb_parroquias, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+            .addContainerGap(31, Short.MAX_VALUE))
     );
     pnl_datosLayout.setVerticalGroup(
         pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -536,32 +536,37 @@ txt_primerApellido.addKeyListener(new java.awt.event.KeyAdapter() {
                     .addComponent(lbl_parroquia)))
             .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(pnl_datosLayout.createSequentialGroup()
-                    .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(pnl_datosLayout.createSequentialGroup()
-                            .addGap(18, 18, 18)
-                            .addComponent(lbl_foto, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(pnl_datosLayout.createSequentialGroup()
-                            .addGap(29, 29, 29)
-                            .addComponent(btn_cargarImagen)))
-                    .addGap(23, 84, Short.MAX_VALUE))
-                .addGroup(pnl_datosLayout.createSequentialGroup()
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                    .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(txt_cargo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(lbl_cargo))
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                    .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(txt_sueldoMensual, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(lbl_sueldoMensual))
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                    .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(lbl_tareasDirigidas)
-                        .addComponent(cb_tareasDirigidas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGap(59, 59, 59)
+                    .addComponent(lbl_sueldoMensual)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(btn_limpiar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(btn_registrar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGap(38, 38, 38))))
+                    .addGap(38, 38, 38))
+                .addGroup(pnl_datosLayout.createSequentialGroup()
+                    .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(pnl_datosLayout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addComponent(lbl_foto, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(pnl_datosLayout.createSequentialGroup()
+                                .addGap(29, 29, 29)
+                                .addComponent(btn_cargarImagen)))
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnl_datosLayout.createSequentialGroup()
+                            .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(pnl_datosLayout.createSequentialGroup()
+                                    .addGap(17, 17, 17)
+                                    .addComponent(lbl_cargo))
+                                .addGroup(pnl_datosLayout.createSequentialGroup()
+                                    .addGap(10, 10, 10)
+                                    .addComponent(cb_cargo, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGap(11, 11, 11)
+                            .addComponent(txt_sueldoMensual, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(18, 18, 18)
+                            .addGroup(pnl_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(cb_tareasDirigidas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(lbl_tareasDirigidas))))
+                    .addGap(23, 84, Short.MAX_VALUE))))
     );
 
     lbl_tituloRegistroEmpleados.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -600,7 +605,10 @@ txt_primerApellido.addKeyListener(new java.awt.event.KeyAdapter() {
             archivoSeleccionado = exploradorArchivos.getSelectedFile();
             ImageIcon imagenEmpleado;
             imagenEmpleado = new ImageIcon(archivoSeleccionado.getAbsoluteFile().getAbsolutePath());
-            lbl_foto.setIcon(imagenEmpleado);
+            Image img = imagenEmpleado.getImage();
+            Image newimg = img.getScaledInstance(134, 134,  java.awt.Image.SCALE_SMOOTH);
+            ImageIcon newIcon = new ImageIcon(newimg);
+            lbl_foto.setIcon(newIcon);
         }
     }//GEN-LAST:event_btn_cargarImagenActionPerformed
 
@@ -636,17 +644,13 @@ txt_primerApellido.addKeyListener(new java.awt.event.KeyAdapter() {
         keyTypedSoloLetras(evt, txt_segundoApellido, 30); 
     }//GEN-LAST:event_txt_segundoApellidoKeyTyped
 
-    private void txt_cargoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_cargoKeyTyped
-        keyTypedSoloLetras(evt, txt_cargo, 30); 
-    }//GEN-LAST:event_txt_cargoKeyTyped
-
     private void btn_registrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_registrarActionPerformed
         Object objeto = cb_estados.getSelectedItem();
         Object objeto1 = cb_municipios.getSelectedItem();
         Object objeto2 = cb_parroquias.getSelectedItem();
         if((!txt_cedula.getText().equals("")) && (!txt_primerNombre.getText().equals("")) && (!txt_primerApellido.getText().equals("")) 
                 && (!txt_sueldoMensual.getText().equals("")) && (!dc_fechaIngreso.getText().equals("")) && (!dc_fechaNac.getText().equals("")) 
-                && (!txt_telefonoCasa.getText().equals("")) && (!txt_telefonoMovil.getText().equals("")) && (!txt_cargo.getText().equals("")) 
+                && (!txt_telefonoCasa.getText().equals("")) && (!txt_telefonoMovil.getText().equals("")) && (cb_cargo.getSelectedItem() != null) 
                 && (cb_tareasDirigidas.getSelectedItem() != null) && (cb_estados.getSelectedItem() != null) && (cb_municipios.getSelectedItem() != null) 
                 && (cb_parroquias.getSelectedItem() != null) && (archivoSeleccionado != null)) {
             
@@ -662,7 +666,7 @@ txt_primerApellido.addKeyListener(new java.awt.event.KeyAdapter() {
                 Empleado empleadoRegistrar = new Empleado(Integer.parseInt(txt_cedula.getText()), txt_primerNombre.getText(), txt_segundoNombre.getText(), 
                                                           txt_primerApellido.getText(), txt_segundoApellido.getText(), (String) cb_banco.getSelectedItem(),  
                                                           (Integer.parseInt(txt_sueldoMensual.getText())), fechaIngreso, fechaNacimiento,
-                                                          txt_telefonoCasa.getText(), txt_telefonoMovil.getText(), txt_cargo.getText(), file, 
+                                                          txt_telefonoCasa.getText(), txt_telefonoMovil.getText(), (String) cb_cargo.getSelectedItem(), file, 
                                                           "", "", (String) cb_tareasDirigidas.getSelectedItem(), estadoSeleccionado.getNombre(), 
                                                           municipioSeleccionado.getNombre(), parroquiaSeleccionada.getNombre());
                 ComunicacionREST comRest = new ComunicacionREST();
@@ -692,7 +696,7 @@ txt_primerApellido.addKeyListener(new java.awt.event.KeyAdapter() {
         txt_segundoApellido.setText("");
         txt_telefonoCasa.setText("");
         txt_telefonoMovil.setText("");
-        txt_cargo.setText("");
+        cb_cargo.setSelectedItem(null);
         txt_sueldoMensual.setText("");
         dc_fechaIngreso.setCurrent(null);
         dc_fechaNac.setCurrent(null);
@@ -713,6 +717,7 @@ txt_primerApellido.addKeyListener(new java.awt.event.KeyAdapter() {
     private javax.swing.JButton btn_limpiar;
     private javax.swing.JButton btn_registrar;
     private javax.swing.JComboBox cb_banco;
+    private javax.swing.JComboBox cb_cargo;
     private javax.swing.JComboBox cb_estados;
     private javax.swing.JComboBox cb_municipios;
     private javax.swing.JComboBox cb_parroquias;
@@ -739,7 +744,6 @@ txt_primerApellido.addKeyListener(new java.awt.event.KeyAdapter() {
     private javax.swing.JLabel lbl_telefonoMovil;
     private javax.swing.JLabel lbl_tituloRegistroEmpleados;
     private javax.swing.JPanel pnl_datos;
-    private javax.swing.JTextField txt_cargo;
     private javax.swing.JTextField txt_cedula;
     private javax.swing.JTextField txt_primerApellido;
     private javax.swing.JTextField txt_primerNombre;

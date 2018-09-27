@@ -6,6 +6,7 @@
 package vista.panel.empleados;
 
 import comun.Empleado;
+import java.awt.Image;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -375,7 +376,13 @@ public class ConsultarEmpleados extends javax.swing.JPanel {
                 txt_municipio.setText(empleadoConsultar.getMunicipio());
                 txt_parroquia.setText(empleadoConsultar.getParroquia());
                 if (!empleadoConsultar.getFoto().equals("")){
-                    lbl_foto.setIcon(new ImageIcon(empleadoConsultar.getFoto()));
+                    //lbl_foto.setIcon(new ImageIcon(empleadoConsultar.getFoto()));
+                    ImageIcon imagenEmpleado;
+                    imagenEmpleado = new ImageIcon(empleadoConsultar.getFoto());
+                    Image img = imagenEmpleado.getImage();
+                    Image newimg = img.getScaledInstance(134, 134,  java.awt.Image.SCALE_SMOOTH);
+                    ImageIcon newIcon = new ImageIcon(newimg);
+                    lbl_foto.setIcon(newIcon);
                 }
             }
         }catch(Exception ex){
