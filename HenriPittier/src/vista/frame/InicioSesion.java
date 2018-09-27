@@ -168,7 +168,7 @@ public class InicioSesion extends javax.swing.JFrame {
         lbl_nit.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         lbl_nit.setText("N.I.T. 032550532 ");
 
-        lbl_logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/img/logomini.png"))); // NOI18N
+        lbl_logo.setIcon(new javax.swing.ImageIcon("C:\\Users\\Bárbara Fernández\\Documents\\GitHub\\HPPasantia\\HenriPittier\\src\\vista\\img\\logomini.png")); // NOI18N
 
         javax.swing.GroupLayout pnl_blancoLayout = new javax.swing.GroupLayout(pnl_blanco);
         pnl_blanco.setLayout(pnl_blancoLayout);
